@@ -71,86 +71,61 @@ def prepare_email_summary(email_texts):
     
     sender_domains = {}
     subjects = []
-    
+    email_senders = []
+
     for email_data in email_texts:
         from_line = next((line for line in email_data['text'].split('\n') if line.startswith('From:')), "")
         if '@' in from_line:
-            domain = from_line.split('@')[1].split()[0].strip()
+            email_address = from_line.split('From:')[1].strip()
+            domain = email_address.split('@')[1].split()[0].strip()
             sender_domains[domain] = sender_domains.get(domain, 0) + 1
+            email_senders.append(email_address)
         subject_line = next((line for line in email_data['text'].split('\n') if line.startswith('Subject:')), "")
         if subject_line:
             subjects.append(subject_line[9:].strip())
     
     summary.append("\nSENDER DOMAINS:")
-    summary.extend([f"- {domain}: {count} emails" for domain, count in sorted(sender_domains.items(), key=lambda x: x[1], reverse=True)[:10]])
+    summary.extend([f"- {domain}: {count} emails" for domain, count in sorted(sender_domains.items(), key=lambda x: x[1], reverse=True)[:10]])  
     
-    summary.append("\nSAMPLE SUBJECTS:")
+    summary.append("\nSENDER EMAILS:")
+    summary.extend([f"- {email}" for email in email_senders])
+    
+    summary.append("\nLIST OF EMAIL HEADERS:")
     summary.extend([f"- {subject}" for subject in subjects[:10] if subject])
     
     return "\n".join(summary)
 
+
+def get_base_prompt():
+    """Return the base prompt for the digital forensics assistant."""
+    return """You are ForensicAI, a specialized AI Digital Forensic Investigator Assistant trained to support professionals in analyzing and interpreting digital evidence. Your current focus is on assisting with the forensic examination of email communications, particularly .eml files and text-based email data.
+
+Your responsibilities include:
+
+Parsing and interpreting headers, metadata, and body content from emails
+
+Identifying anomalies, spoofing attempts, suspicious links, and potential phishing content
+
+Recognizing communication patterns, entities, and relationships within and across email threads
+
+Supporting timeline reconstruction and investigation narratives from email activity
+
+Explaining technical forensic concepts clearly and concisely, including metadata relevance, email delivery paths, and encoding details
+
+Offering investigative insights and hypotheses based on email content and context
+
+You always think like a digital forensic investigator—careful, detail-oriented, and methodical and sensitive information such as names, places, times and organisations are important and must mention to the user as this will help them with thier investigations. Provide your reasoning step-by-step, highlight what stands out, and explain your conclusions based on the evidence presented.
+
+Assume input will primarily consist of email content or structured text. When needed, you may ask for additional context or clarify missing pieces to ensure accurate analysis.
+"""
+
 def analyze_emails_with_ollama(email_texts):
     """Analyze email texts using Ollama's Mistral model and stream output."""
     email_summary = prepare_email_summary(email_texts)
-    prompt = f"""you are a Digital Forensics Investigator AI Assistant, designed to analyze and intepret digital evidence . for investigations or other forensic cases.
-    your role is to provide accurate, insightful, and actionable responses based on the data provided . you will employ your expertiese in computer systems, digital forensics methodologies, legal standards, and cybersecurity to assist in the analysis.
-**Key Attributes and Skills:**
+    base_prompt = get_base_prompt()
 
-1. **Technical Expertise:**
-   - Understand computer systems, operating systems (Windows, Linux, macOS), file systems, networking, and internet protocols.
-   - Use industry-standard forensic tools like FTK, EnCase, X1, Autopsy, Cellebrite, etc.
-   - Analyze encrypted data and understand decryption methods.
-   - Conduct mobile device forensics (iOS/Android) and cloud forensics.
-
-2. **Attention to Detail:**
-   - Ensure the integrity of digital evidence, including using methods like hashing to verify authenticity.
-   - Maintain comprehensive and clear documentation, preserving the chain of custody.
-   - Recover deleted files and analyze unallocated space.
-
-3. **Problem-Solving & Analytical Thinking:**
-   - Apply critical thinking to connect various pieces of digital evidence.
-   - Recognize patterns in data and identify potential criminal activities (e.g., hacking, fraud).
-   - Reverse engineer malware and suspicious files.
-
-4. **Legal Knowledge:**
-   - Understand how to collect, preserve, and present digital evidence in accordance with legal standards (e.g., Federal Rules of Evidence, GDPR).
-   - Ensure compliance with privacy regulations like HIPAA or GDPR.
-   - Prepare for expert testimony, explaining findings clearly and credibly in legal proceedings.
-
-5. **Communication Skills:**
-   - Write detailed, clear, and structured reports summarizing findings and methodologies.
-   - Communicate findings effectively with law enforcement, legal teams, and other stakeholders.
-   - Present complex technical data in a clear, understandable way for non-technical audiences.
-
-6. **Ethical Conduct:**
-   - Uphold confidentiality and integrity in handling sensitive evidence.
-   - Maintain impartiality, following evidence where it leads, and avoid bias in the investigation.
-   - Adhere to professional codes of ethics and conduct throughout the investigation.
-
-7. **Adaptability and Continuous Learning:**
-   - Stay current with evolving technologies, cybersecurity threats, and emerging forensic techniques.
-   - Integrate new hacking methods, encryption, and digital crime trends into your workflow.
-   - Pursue certifications (e.g., EnCE, GCFA, CCFE) and other training to remain proficient.
-
-8. **Cybersecurity Knowledge:**
-   - Understand common cyber threats (e.g., ransomware, malware, phishing) and how they manifest in digital evidence.
-   - Familiar with cybersecurity incident response and how forensic evidence ties into broader security investigations.
-
-9. **Organizational & Time Management Skills:**
-   - Effectively manage multiple investigations and prioritize tasks to meet deadlines.
-   - Collaborate with other cybersecurity professionals, law enforcement, and legal teams as needed.
-
-10. **Knowledge of Digital Evidence Types:**
-    - Recognize and analyze various types of digital evidence such as logs, emails, browser history, metadata, and physical storage devices.
-    - Perform forensic imaging and duplication to ensure the preservation of evidence.
-
-11. **Forensic Methodology and Standards:**
-    - Follow standardized operating procedures (SOPs) for evidence handling, documentation, and analysis.
-    - Apply data analysis techniques like timeline analysis, keyword searching, and artifact analysis to extract meaningful insights.
-
-12. **Crisis Management:**
-    - Maintain composure under pressure, especially in urgent or high-stakes cases.
-    - Handle stress effectively while ensuring accurate and timely analysis.
+    
+    initial_prompt = f"""{base_prompt}
 
 ### **Task:**
 Please analyze the provided data, identify any relevant findings, and deliver a report or summary based on the following steps:
@@ -164,47 +139,108 @@ Please analyze the provided data, identify any relevant findings, and deliver a 
    - Look for deleted files, metadata inconsistencies, encryption traces, or other forensic artifacts.
    - Cross-reference findings with known threats (e.g., malware signatures, hacking techniques).
    - advise on what evidence to look towards to and study
-   - i would want details such as names , places, dates and stories , and your suspected insights based on the emails just like this person was at this place in this timing . and other evidence like . this person contacted this email asking about a particular product or action 
+   - i would want details such as names, places, dates and stories, and your suspected insights based on the emails just like this person was at this place in this timing. and other evidence like this person contacted this email asking about a particular product or action 
 
 3. **Reporting:**
    - Generate a clear, well-documented report summarizing your findings, including any relevant timeline, artifacts, or patterns.
    - Ensure that all conclusions are backed by the evidence and are legally sound.
    - generate an overview or summary of all the emails analysed 
    
-
-4. ** findings collation**
-    - outline your findings and follow up on how and why you got your findings. please make sure that your findings make sense .
-
+4. **Findings Collation:**
+    - outline your findings and follow up on how and why you got your findings. please make sure that your findings make sense.
 
 You are analyzing a collection of {len(email_texts)} emails. \n
 Here is the email dataset overview:\n\n{email_summary}\n
 Please analyze this information and provide your insights. Be specific and highlight anything unusual or noteworthy. include emojis as well to make the report more nicer.
 
-At the end of your report , give me a list of names of all people,places and organisations mentioned from the emails that you have analysed. (please do keep in mind you are a digital forensic investigator assistant so its important for the digital forensic investigator to know the list of names and organisations in the emails to gain some leads in forensic analysis)
+At the end of your report, give me a list of names of all people, places and organisations mentioned from the emails that you have analyzed. (please do keep in mind you are a digital forensic investigator assistant so its important for the digital forensic investigator to know the list of names and organisations in the emails to gain some leads in forensic analysis)
+
 """
     
     try:
         print("Sending data to Ollama for analysis...\n")
         response = ollama.chat(
             model='mistral',
-            messages=[{'role': 'user', 'content': prompt}],
+            messages=[{'role': 'user', 'content': initial_prompt}],
             stream=True
         )
         print("\n======== Email Analysis Results ========\n")
         
+        output = ""
         for chunk in response:
-            sys.stdout.write(chunk['message']['content'])
+            content = chunk['message']['content']
+            output += content
+            sys.stdout.write(content)
             sys.stdout.flush()
         
-        print("\n======================================\n")
+        print("\n\n======== Email Summary Data ========\n")
         print(email_summary)
         print("\n======================================\n")
         
+        return email_texts, email_summary, output
+        
     except Exception as e:
         print(f"Error analyzing emails with Ollama: {str(e)}")
+        return email_texts, prepare_email_summary(email_texts), ""
+
+def interactive_qa_mode(email_texts, email_summary, initial_analysis):
+    """Start an interactive Q&A session with the AI about the emails."""
+    print("\n======== Interactive Q&A Mode ========")
+    print("You can now ask questions about the emails. Type 'exit' to quit.")
+    
+    base_prompt = get_base_prompt()
+    
+    conversation_context = [
+        {
+            'role': 'system', 
+            'content': f"{base_prompt}\n\nYou have already analyzed a collection of {len(email_texts)} emails and provided an initial analysis. You should reference this data or conversation when answering questions. Remember you are a digital forensics investigator assistant helping to analyze evidence."
+        },
+        {
+            'role': 'user',
+            'content': f"Here is the email dataset overview:\n\n{email_summary}\n\nPlease analyze this information."
+        },
+        {
+            'role': 'assistant',
+            'content': initial_analysis
+        }
+    ]
+    
+    while True:
+        try:
+            user_question = input("\nQuestion (or 'exit' to quit): ")
+            if user_question.lower() in ['exit', 'quit', 'q']:
+                print("Exiting Q&A mode. Goodbye!")
+                break
+                
+            conversation_context.append({'role': 'user', 'content': user_question})
+            
+            print("\nAnalyzing your question...")
+            response = ollama.chat(
+                model='mistral',
+                messages=conversation_context,
+                stream=True
+            )
+            
+            print("\n")
+            assistant_response = ""
+            for chunk in response:
+                content = chunk['message']['content']
+                assistant_response += content
+                sys.stdout.write(content)
+                sys.stdout.flush()
+            print("\n")
+            
+            conversation_context.append({'role': 'assistant', 'content': assistant_response})
+            
+        except KeyboardInterrupt:
+            print("\nExiting Q&A mode. Goodbye!")
+            break
+        except Exception as e:
+            print(f"\nError: {str(e)}")
+            print("Let's continue with a new question.")
 
 def main():
-    parser = argparse.ArgumentParser(description='Analyze emails in a specified folder.')
+    parser = argparse.ArgumentParser(description='Analyze emails in a specified folder with interactive Q&A.')
     parser.add_argument('--folder', type=str, help='Path to folder containing .eml files')
     args = parser.parse_args()
     
@@ -231,7 +267,12 @@ def main():
     
     print(f"Found {len(email_texts)} emails in the specified date range.")
     print("\nAnalyzing emails with large language model...\n")
-    analyze_emails_with_ollama(email_texts)
+    
+    # Get initial analysis and save context for interactive mode
+    email_texts, email_summary, initial_analysis = analyze_emails_with_ollama(email_texts)
+    
+    # Start interactive Q&A mode
+    interactive_qa_mode(email_texts, email_summary, initial_analysis)
     
 if __name__ == "__main__":
     main()
