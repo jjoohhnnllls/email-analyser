@@ -1,0 +1,25 @@
+12 Mar 2025 18:10:32
+12 Mar 2025 18:23:04
+
+2025-03-13 18:10
+2025-03-13 18:23
+
+C:\Users\Demo PC2\Desktop\Email to EML downloader\gmail_export_20250320_104947\INBOX
+
+#newsletters
+2025-03-14
+2025-03-15
+
+#with testdata
+2025-03-13
+2025-03-14
+
+30 to 40 seconds
+
+important
+
+
+test emails
+C:\Users\Demo PC2\Desktop\Email to EML downloader\gmail_export_20250320_104947\test
+2025-03-11
+2025-03-13
