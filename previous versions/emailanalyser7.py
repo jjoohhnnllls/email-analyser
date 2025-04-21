@@ -16,7 +16,7 @@ def extract_email_date(email_content):
     if date_str:
         try:
             dt = parser.parse(date_str)
-            return dt.replace(tzinfo=None)
+            return dt.replace(tzinfo=None)-
         except:
             return None
     return None
