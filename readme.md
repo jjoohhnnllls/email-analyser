@@ -105,10 +105,6 @@ To use a different Ollama model:
 
 Logs are stored in the `logs` directory with timestamps. Check these for debugging information if you encounter issues.
 
-## License
-
-[MIT License]
-
 ## Future Improvements
 
 - Add support for other email formats beyond .eml

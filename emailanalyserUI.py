@@ -5,6 +5,7 @@ from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, QH
 from PyQt6.QtGui import QIcon, QFont, QPixmap, QColor
 from PyQt6.QtCore import Qt, QSize
 
+
 class EmailAnalyzerApp(QMainWindow):
     def __init__(self):
         super().__init__()

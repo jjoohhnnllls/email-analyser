@@ -1,0 +1,19 @@
+2025-04-25 10:32:22,083 - email_analyzer - INFO - Logging initialized. Log file: logs\email_analyzer_20250425_103222.log
+2025-04-25 10:32:22,089 - email_analyzer - INFO - Starting Email Analyzer application
+2025-04-25 10:32:32,676 - email_analyzer - INFO - Requesting date range from user
+2025-04-25 10:32:44,484 - email_analyzer - INFO - Date range set: 2025-03-11 to 2025-04-24
+2025-04-25 10:32:44,485 - file_handler - INFO - Searching for .eml files in C:\Users\Demo PC2\Desktop\Email to EML downloader\gmail_export_20250320_104947\test
+2025-04-25 10:32:44,486 - file_handler - INFO - Found 17 .eml files in folder
+2025-04-25 10:32:44,506 - file_handler - INFO - Found 17 emails within the specified date range
+2025-04-25 10:32:44,506 - email_analyzer - INFO - Found 17 emails in the specified date range
+2025-04-25 10:32:44,507 - llm_analyzer - INFO - Starting email analysis with Ollama
+2025-04-25 10:32:44,507 - llm_analyzer - INFO - Preparing email summary for LLM
+2025-04-25 10:32:44,507 - llm_analyzer - INFO - Preparing full email content for LLM
+2025-04-25 10:32:44,508 - llm_analyzer - INFO - Sending data to Ollama for analysis
+2025-04-25 10:32:54,450 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-04-25 10:33:29,019 - llm_analyzer - INFO - Adding QA guidance to conversation context
+2025-04-25 10:34:02,667 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-04-25 10:34:02,668 - llm_analyzer - INFO - Starting interactive Q&A mode
+2025-04-25 10:34:15,481 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-04-25 12:40:43,916 - llm_analyzer - INFO - User exited Q&A mode
+2025-04-25 12:40:43,917 - email_analyzer - INFO - Email Analyzer application completed successfully

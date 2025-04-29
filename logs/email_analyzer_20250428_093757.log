@@ -1,0 +1,4 @@
+2025-04-28 09:37:57,973 - email_analyzer - INFO - Logging initialized. Log file: logs\email_analyzer_20250428_093757.log
+2025-04-28 09:37:57,975 - email_analyzer - INFO - Starting Email Analyzer application
+2025-04-28 09:38:12,166 - email_analyzer - INFO - Requesting date range from user
+2025-04-28 09:38:16,740 - email_analyzer - ERROR - Invalid date format: unconverted data remains: \

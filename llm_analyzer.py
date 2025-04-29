@@ -91,7 +91,7 @@ def prepare_email_content(email_texts):
 
 def analyze_emails_with_ollama(email_texts):
     """
-    Analyze email texts using Ollama's Mistral model and start interactive Q&A.
+    Analyze email texts using model and start interactive Q&A.
     
     Args:
         email_texts (list): List of email data dictionaries
@@ -103,6 +103,9 @@ def analyze_emails_with_ollama(email_texts):
     email_content = prepare_email_content(email_texts)
     base_prompt = get_base_prompt()
     qa_prompt = get_qa_prompt()
+
+  
+    
 
     # Build the conversation context
     conversation_context = [
@@ -116,6 +119,7 @@ def analyze_emails_with_ollama(email_texts):
 Please analyze the provided data, identify any relevant findings, and deliver a report or summary based on the following steps:
 
 1. **Assessment:**
+   - first mention the number of emails that you had analysed
    - Review the provided digital evidence (files, logs, devices, etc.) to determine its significance.
    - Identify any potential anomalies, stories, suspicious patterns, or signs of cybercrime.
 
@@ -146,7 +150,7 @@ Here are the full contents of the emails:
 
 Please analyze this information and provide your insights. Be specific and highlight anything unusual or noteworthy. Include emojis as well to make the report more nicer.
 
-At the end of your report, give me a list of names of all people, places and organisations mentioned in all the emails that you have analyzed. (please do keep in mind you are a digital forensic investigator assistant so it's important for the digital forensic investigator to know the list of names and organisations in the emails to gain some leads in forensic analysis)
+At the end of your report, give me a list of places and organisations mentioned in all the emails that you have analyzed. (please do keep in mind you are a digital forensic investigator assistant so it's important for the digital forensic investigator to know the list of names and organisations in the emails to gain some leads in forensic analysis)
 """
         }
     ]
@@ -160,10 +164,10 @@ At the end of your report, give me a list of names of all people, places and org
         print(email_summary)
         print("\n======================================\n")
         print("\n======== Email Analysis Results ========\n")
-        
+       
         # Stream the LLM response
         response = ollama.chat(
-            model='mistral',
+            model='gemma3',
             messages=conversation_context,
             stream=True
         )
@@ -220,7 +224,7 @@ def run_interactive_qa(conversation_context):
             
             print("\nAnalyzing your question...")
             response = ollama.chat(
-                model='mistral',
+                model='gemma3',
                 messages=conversation_context,
                 stream=True
             )

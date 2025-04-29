@@ -14,6 +14,8 @@ import logging
 from utils import setup_logging
 from file_handler import get_emails_in_timeframe
 from llm_analyzer import analyze_emails_with_ollama
+from visualisations import create_social_graph, visualize_social_graph, analyze_network
+from file_handler import get_raw_email_contents
 
 def parse_arguments():
     """
@@ -82,6 +84,39 @@ def main():
     print(f"Found {len(email_texts)} emails in the specified date range.")
     print("\nAnalyzing emails with large language model...\n")
     
+    # Create and analyze social graph
+    print("\nCreating social graph of email communications...")
+    raw_contents = get_raw_email_contents(email_texts)
+    
+    social_graph = create_social_graph(raw_contents)
+    
+    # Print network statistics
+    stats = analyze_network(social_graph)
+    print("\n======== Email Network Analysis ========")
+    print(f"Total unique contacts: {stats['nodes']}")
+    print(f"Total connections: {stats['edges']}")
+    
+    print("\nTop senders:")
+    for sender, count in stats['top_senders']:
+        print(f"- {sender}: {count} emails sent")
+    
+    print("\nTop recipients:")
+    for recipient, count in stats['top_recipients']:
+        print(f"- {recipient}: {count} emails received")
+    
+    if stats.get('key_connectors'):
+        print("\nKey connectors (people who bridge communication groups):")
+        for person, score in stats['key_connectors']:
+            print(f"- {person}: {score:.4f}")
+    
+    # Ask user if they want to visualize the graph
+    visualize = input("\nWould you like to visualize the email network? (y/n): ")
+    if visualize.lower() in ['y', 'yes']:
+        output_file = "outputs/email_network.png"
+        visualize_social_graph(social_graph, output_file=output_file)
+        print(f"\nNetwork visualization saved to {output_file}")
+
+
     # Analyze emails with LLM and start interactive Q&A
     analyze_emails_with_ollama(email_texts)
     

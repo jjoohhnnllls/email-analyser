@@ -1,0 +1,439 @@
+2025-04-28 09:39:50,894 - email_analyzer - INFO - Logging initialized. Log file: logs\email_analyzer_20250428_093950.log
+2025-04-28 09:39:50,896 - email_analyzer - INFO - Starting Email Analyzer application
+2025-04-28 09:39:54,439 - email_analyzer - INFO - Requesting date range from user
+2025-04-28 09:40:03,726 - email_analyzer - INFO - Date range set: 2025-03-11 to 2025-04-24
+2025-04-28 09:40:03,727 - file_handler - INFO - Searching for .eml files in C:\Users\Demo PC2\Desktop\Email to EML downloader\gmail_export_20250320_104947\test
+2025-04-28 09:40:03,727 - file_handler - INFO - Found 17 .eml files in folder
+2025-04-28 09:40:03,845 - file_handler - INFO - Found 17 emails within the specified date range
+2025-04-28 09:40:03,845 - email_analyzer - INFO - Found 17 emails in the specified date range
+2025-04-28 09:40:03,846 - llm_analyzer - INFO - Starting email analysis with Ollama
+2025-04-28 09:40:03,846 - llm_analyzer - INFO - Preparing email summary for LLM
+2025-04-28 09:40:03,846 - llm_analyzer - INFO - Preparing full email content for LLM
+2025-04-28 09:40:03,896 - llm_analyzer - INFO - 
+EMAIL #1 (2025-03-11 09:10:22) - File: 20250311_091022_010001958478297e-72e73af1-8428-4436-aad4-eb8c8d695.eml
+================================================================================
+Subject: Verify your new Amazon account
+
+From: Amazon <account-update@amazon.com>
+
+
+  
+
+Verify your new Amazon account
+
+
+To verify your email address, please use the following One Time Password (OTP):
+
+
+:193337
+
+
+
+Don't share this OTP with anyone. Amazon takes your account security very seriously. Amazon Customer Service will never ask you to disclose or verify your Amazon password, OTP, credit card, or banking account number. If you receive a suspicious email with a link to update your account information, do not click on the link—instead, report the email to Amazon for investigation.  Thank you
+ 
+ 
+
+©2025 Amazon.com, Inc. or its affiliates. Amazon and all related marks are trademarks of Amazon.com, Inc. or its affiliates, Amazon.com, Inc. 410 Terry Avenue N., Seattle, WA 98109.
+
+Amazon.com
+--------------------------------------------------------------------------------
+
+EMAIL #2 (2025-03-12 23:19:17) - File: 20250312_231917_67d278e5_170a0220_1b84c0_1ecc_at_mx_google_com.eml
+================================================================================
+Subject: No subject found
+
+From: Susan Thomas <desgtest2.email@gmail.com>
+
+ Subject: Unauthorized Transaction on Account Number 1234567890
+
+Dear [Customer's Name],
+
+I hope this message finds you well. I am writing to address a concern that has recently come to our attention regarding an unauthorized transaction made on your account number 1234567890 with [Our Bank].
+
+On [Date of Transaction], a withdrawal in the amount of $950 was initiated from your account without any prior notification or authorization. We understand that such unexpected transactions can cause distress and we sincerely apologize for this inconvenience.
+
+Upon receiving your complaint, we immediately launched an investigation into the matter. Our team has found no evidence suggesting any fraudulent activities originating from your end. We are working closely with our security department to ensure the safety and integrity of your account.
+
+In the meantime, we have reversed the unauthorized transaction and refunded the amount back into your account. To prevent any such incidents in the future, we recommend you to regularly monitor your account activities online or through our mobile app. If you notice any suspicious activity, please do not hesitate to contact us immediately.
+
+We value your trust and are committed to providing you with a secure banking experience. Your satisfaction is our top priority, and we regret any discomfort this incident may have caused. If you have any further questions or concerns, please feel free to reply to this email or call us at [Customer Service Phone Number].
+
+Thank you for your understanding and patience. We are here to assist you 24/7.
+
+Best Regards,
+
+[Your Name]
+[Your Position]
+[Our Bank]
+--------------------------------------------------------------------------------
+
+EMAIL #3 (2025-03-12 23:19:35) - File: 20250312_231935_67d278f7_170a0220_39f97a_1e2f_at_mx_google_com.eml
+================================================================================
+Subject: No subject found
+
+From: Joseph Wilson <desgtest2.email@gmail.com>
+
+ Subject: Order Confirmation for Part Number MN03-1234567890
+
+   Dear Valued Customer,
+
+   I hope this message finds you well. I am writing to confirm your recent order for the specified quantity of Part Number MN03-1234567890. Your order has been successfully processed and will be shipped from our facilities on Monday, August 23rd, 2021.
+
+   The shipping address provided (ABC Company, 123 Main Street, City, State, Zip Code) matches the billing information on file. If there are any changes to this address or any other details regarding your order, please do not hesitate to contact us immediately at orders@ourmanufacturingco.com or by calling (555) 123-4567.
+
+   We appreciate your business and look forward to serving you again in the future. If you have any questions or concerns, our customer service team is always ready to assist you.
+
+   Warm regards,
+
+   John Doe
+   Customer Service Representative
+   Our Manufacturing Company Inc.
+--------------------------------------------------------------------------------
+
+EMAIL #4 (2025-03-12 23:28:08) - File: 20250312_232808_67d27af8_050a0220_147b4b_1d02_at_mx_google_com.eml
+================================================================================
+Subject: No subject found
+
+From: Richard Martin <desgtest2.email@gmail.com>
+
+ Subject: Patient Feedback Regarding Recent Visit
+
+   Dear [Patient's Name],
+
+   I hope this message finds you in good health and spirits. I am writing to express my gratitude for choosing [Your Hospital's Name] as your healthcare provider during your recent visit.
+
+   Your feedback is crucial to our ongoing efforts to improve the quality of care we provide, and I appreciate the time you took to share your thoughts. It was heartening to learn that our team made you feel comfortable and cared for throughout your stay.
+
+   Specifically, I would like to acknowledge the praise directed towards Dr. [Doctor's Name] and her dedication during your treatment. We are proud of the exceptional care she provides, and it is uplifting to hear that this commitment has made a positive impact on our patients.
+
+   Your feedback on the efficiency of the check-in process was also noted. We are currently working on streamlining these procedures further to minimize wait times and improve overall patient experience.
+
+   If you have any additional comments or suggestions, please do not hesitate to share them with us. Your input is invaluable in helping us serve our patients better.
+
+   Once again, thank you for choosing [Your Hospital's Name] and for taking the time to provide your feedback. We look forward to continuing to serve you and the community.
+
+   Warm regards,
+
+   [Your Name]
+   [Your Position]
+   [Your Contact Information]
+--------------------------------------------------------------------------------
+
+EMAIL #5 (2025-03-12 23:28:28) - File: 20250312_232828_67d27b0c_050a0220_2c1aab_1b83_at_mx_google_com.eml
+================================================================================
+Subject: No subject found
+
+From: Jennifer Johnson <desgtest2.email@gmail.com>
+
+ Subject: Feedback on Our Recent Consulting Engagement
+
+Dear [Client's Name],
+
+I hope this message finds you well. I am writing to express our sincere gratitude for the opportunity to work with your esteemed organization on our recent consulting engagement.
+
+The project was challenging, but your openness to new ideas and willingness to collaborate made it a highly productive experience for us. We particularly appreciated your swift response times and clear communication throughout the process, which allowed us to deliver the results you needed in a timely manner.
+
+We are especially pleased with the successful implementation of our proposed strategy. We believe that this will not only help your company meet its immediate goals but also position it for future growth and success.
+
+We value your feedback and would be grateful if you could spare a few moments to complete our post-project survey, which we have linked below. Your insights will help us improve our services and better serve clients like yourself in the future.
+
+Once again, thank you for entrusting [Our Company's Name] with this important project. We look forward to the possibility of collaborating with you again in the future.
+
+Best Regards,
+
+[Your Name]
+[Your Position]
+[Company's Name]
+[Company's Contact Information]
+--------------------------------------------------------------------------------
+
+EMAIL #6 (2025-03-12 23:30:25) - File: 20250312_233025_67d27b81_050a0220_287957_147e_at_mx_google_com.eml
+================================================================================
+Subject: Test Email from Python Script
+
+From: Test Sender <desgtest2.email@gmail.com>
+
+Hello,
+
+This is a test email sent from your Python email generator script.
+If you're receiving this email, your SMTP settings are correctly configured.
+
+Time sent: 2025-03-13 14:30:23
+
+Regards,
+Your Python Script
+
+--------------------------------------------------------------------------------
+
+EMAIL #7 (2025-03-12 23:31:12) - File: 20250312_233112_67d27bb0_630a0220_2a1bf_1c86_at_mx_google_com.eml
+================================================================================
+Subject: Follow-up on Your Recent Appointment at XYZ Healthcare
+
+From: Susan Hernandez <desgtest2.email@gmail.com>
+
+ 
+   Dear Mr. Johnson,
+
+   I hope this message finds you in good health. I am writing to follow up on your recent appointment with us at XYZ Healthcare on March 15th.
+
+   Firstly, I would like to express my gratitude for choosing our facility for your medical care. We strive to make every patient's experience comfortable and informative, and it was a pleasure serving you.
+
+   During our conversation, we discussed your concern regarding your diabetes management. I understand that this is a complex issue, and finding the right balance can be challenging. To help support you better, I have attached a detailed dietary plan and an explanation of the medication regimen recommended by Dr. Lee.
+
+   We also discussed arranging follow-up appointments to monitor your progress. Please find my suggested schedule below:
+
+   - April 12th, 20XX - Regular Check-up
+   - June 8th, 20XX - HbA1c Test and Consultation
+   - August 17th, 20XX - Comprehensive Review and Adjustments (if necessary)
+
+   If you have any questions or concerns about the attached materials, please do not hesitate to contact me. I am always here to help!
+
+   Wishing you all the best in managing your health. We look forward to seeing you again on April 12th.
+
+   Sincerely,
+
+   Jane Doe
+   Patient Care Coordinator, XYZ Healthcare
+   345-6789 Extension 123
+   Example Xyzhealthcare.com(http://XYZHealthcare.com)
+--------------------------------------------------------------------------------
+
+EMAIL #8 (2025-03-12 23:31:31) - File: 20250312_233131_67d27bc3_170a0220_3d0fe3_1fdf_at_mx_google_com.eml
+================================================================================
+Subject: Your Order #12345 has been processed
+
+From: Richard Garcia <desgtest2.email@gmail.com>
+
+ 
+   Dear Mr. Johnson,
+
+   I hope this message finds you well. I am writing to confirm that your order #12345 has been successfully processed at XYZ Manufacturing Inc.
+
+   As per our conversation, we have prepared and shipped 100 units of the XR-900 industrial machine with custom specifications: RPM range 900-1000, voltage 220V, and color blue. The shipment was dispatched yesterday via FedEx, and you can track it using the provided tracking number: 12345678901234567890.
+
+   We appreciate your business and look forward to serving you again in the future. If you have any questions or concerns regarding this order, please do not hesitate to contact us at support@xyzmanufacturing.com or call us directly at 555-1234.
+
+   Warm regards,
+
+   Example Your name
+   Example Your position
+   XYZ Manufacturing Inc.
+--------------------------------------------------------------------------------
+
+EMAIL #9 (2025-03-12 23:34:11) - File: 20250312_233411_67d27c63_050a0220_1c0c01_1b38_at_mx_google_com.eml
+================================================================================
+Subject: Your Order Shipping Update - TheTechStore.com
+
+From: Advanced Retail <desgtest2.email@gmail.com>
+
+ 
+   Dear Valued Customer John Doe,
+
+   I hope this message finds you well. I am writing to update you on the shipping status of your recent purchase from TheTechStore.com.
+
+   We are pleased to inform you that your order (order number #12345678) containing the Apple iPhone 13 Pro and Beats Studio3 Wireless Headphones has been shipped today, October 15th.
+
+   Your package is expected to be delivered between October 18th and October 20th, according to our shipping partner, FedEx. You will receive a tracking number via email once it is assigned by FedEx.
+
+   In the meantime, if you have any questions or concerns regarding your order, please do not hesitate to contact us at support@thetechstore.com or call us at (555) 123-4567 during our business hours (9 AM - 6 PM EST).
+
+   We appreciate your patience and are committed to ensuring a smooth shopping experience with TheTechStore.com. Thank you for choosing us as your preferred online tech store.
+
+   Warm regards,
+
+   Sarah Johnson
+   Customer Support Specialist
+   TheTechStore.com
+--------------------------------------------------------------------------------
+
+EMAIL #10 (2025-03-12 23:34:29) - File: 20250312_233429_67d27c75_050a0220_43651_1dc8_at_mx_google_com.eml
+================================================================================
+Subject: Query Regarding My Recent Investment in XYZ Fund
+
+From: Karen Martinez <desgtest2.email@gmail.com>
+
+ 
+   Dear Mr. Johnson,
+
+   I hope this message finds you well. I am writing to you regarding my recent investment in the XYZ Fund under your expert management.
+
+   I have been following the fund's performance closely and am impressed by its consistent growth. However, I noticed a slight dip in the returns last month which I found unusual. I was wondering if there were any specific reasons for this anomaly or if it could be attributed to broader market fluctuations?
+
+   Furthermore, I would appreciate if you could provide me with a detailed breakdown of the fund's composition, especially the weightage given to specific sectors and industries. This would help me in better understanding where my investment is allocated.
+
+   I am looking forward to hearing from you soon. In case there are any other updates or insights related to the fund, I would be grateful if they could be shared with me as well.
+
+   Thank you for your time and consideration. I appreciate the effort you put into managing my investments.
+
+   Best regards,
+
+   Example Your name
+   Example Your contact information
+--------------------------------------------------------------------------------
+
+EMAIL #11 (2025-03-12 23:34:48) - File: 20250312_233448_67d27c88_170a0220_24d2bb_a58b_at_mx_google_com.eml
+================================================================================
+Subject: Inquiry Regarding Integration of XYZ Solutions in Our Electronic
+ Health Records System
+
+From: Michael Johnson <desgtest2.email@gmail.com>
+
+ 
+   Dear Dr. Johnson,
+
+   I hope this message finds you well. I am writing to you from ABC Healthcare Providers, a leading healthcare organization serving over 10,000 patients annually.
+
+   We have recently come across XYZ Solutions, a pioneer in the field of telehealth and patient engagement solutions, and we are interested in exploring a potential partnership with your esteemed company. Our primary concern is to enhance our electronic health records (EHR) system for better patient care.
+
+   In particular, we are intrigued by XYZ Solutions' remote monitoring capabilities and how they could potentially improve the management of chronic diseases such as diabetes and hypertension for our patients. We believe that your innovative solutions could significantly augment the quality of care we provide at ABC Healthcare Providers.
+
+   I would appreciate it if you could arrange a meeting or call to discuss the possibilities of integrating XYZ Solutions into our EHR system, and to understand more about your offerings, pricing, and implementation process. Kindly let me know a suitable time for you, and I will coordinate accordingly.
+
+   Looking forward to hearing from you soon.
+
+   Best regards,
+
+   Example Your name
+   Example Your position
+   ABC Healthcare Providers
+--------------------------------------------------------------------------------
+
+EMAIL #12 (2025-04-24 02:17:24) - File: i love cats.eml
+================================================================================
+Subject: i love cats
+
+From: desg test2 <desgtest2.email@gmail.com>
+
+this emails is to test with CC and BCC on. meow meow meow , best regards , tester
+
+--------------------------------------------------------------------------------
+
+EMAIL #13 (2025-04-24 02:31:41) - File: Potential Partnership Proposal for Expanding Our Retail Presence.eml
+================================================================================
+Subject: Potential Partnership Proposal for Expanding Our Retail Presence
+
+From: Susan Garcia <desgtest2.email@gmail.com>
+
+ 
+   Dear Jane Doe,
+
+   I hope this message finds you well. I am writing to propose a potential partnership between our esteemed retail store, MegaMart, and your remarkable home goods boutique, The Nesting Box.
+
+   Over the years, MegaMart has grown significantly by catering to diverse customer needs, and we believe that partnering with The Nesting Box could add an exciting new dimension to our product offerings. Your unique selection of high-quality home goods aligns perfectly with our commitment to providing our customers with a wide array of top-tier products.
+
+   We are eager to explore the possibility of collaborating on exclusive product lines, co-branded marketing campaigns, and perhaps even joint ventures for select store locations. Our goal is to create a mutually beneficial relationship that would not only bolster our respective brands but also delight our shared customer base.
+
+   To further discuss this opportunity, I propose a meeting at your convenience in the coming week. I am confident that we can create something truly remarkable together and look forward to hearing from you soon.
+
+   Best regards,
+   Jayden Thompson
+   Retail Expansion Manager, MegaMart
+
+--------------------------------------------------------------------------------
+
+EMAIL #14 (2025-04-24 02:31:58) - File: Re_ Query on Q3 Financial Analysis for XYZ Project.eml
+================================================================================
+Subject: Re: Query on Q3 Financial Analysis for XYZ Project
+
+From: James Jackson <desgtest2.email@gmail.com>
+
+ 
+   Dear Dr. Johnson,
+
+   I hope this message finds you well. I am writing in response to your recent inquiry regarding the Q3 financial analysis for the XYZ project.
+
+   As discussed during our meeting last week, we have compiled a comprehensive report detailing the financial performance of the project during the third quarter. The report includes an in-depth analysis of revenue streams, costs, and profit margins, as well as a comparison with the projected figures.
+
+   I have attached the report to this email for your convenience. Please find the password for the file at the end of the meeting minutes. If you require any further clarification or have questions about specific aspects of the report, feel free to reach out.
+
+   We appreciate your continued trust in our services and look forward to working closely with you on the XYZ project.
+
+   Best regards,
+
+   Emily Brown
+   Senior Consultant
+   ABC Consulting Firm
+
+--------------------------------------------------------------------------------
+
+EMAIL #15 (2025-04-24 02:32:23) - File: Inquiry for Customized Travel Packages to the Maldives.eml
+================================================================================
+Subject: Inquiry for Customized Travel Packages to the Maldives
+
+From: Premium Voyages <desgtest2.email@gmail.com>
+
+ 
+   Dear TravelPulse Team,
+
+   I hope this message finds you well and that your new office space is serving its purpose in fostering creativity and productivity.
+
+   I am writing on behalf of the Smith family, who are planning a memorable vacation in the near future. We have been impressed by the wide array of travel packages you offer, particularly those focusing on exotic destinations such as the Maldives.
+
+   The Smith family consists of four members: John (age 50), Mary (48), and their two children, Emily (16) and Sam (13). John is a keen scuba diver, while Mary prefers snorkeling and spa treatments. The children are enthusiastic about marine life and would enjoy interacting with sea turtles.
+
+   We are seeking a customized travel package that includes:
+   1. Scuba diving sessions for John, guided by an experienced instructor.
+   2. Snorkeling trips for Mary, focusing on coral reefs and underwater wildlife.
+   3. Educational marine life encounters for Emily and Sam, such as a visit to a sea turtle conservation center.
+   4. Relaxing spa treatments for both parents at a luxurious resort.
+   5. Family-friendly activities like island hopping and sunset cruises.
+
+   We would greatly appreciate it if you could provide us with a detailed itinerary, along with competitive pricing and any available discounts for booking through your agency. Please let us know the earliest possible date for this trip, considering that we aim to travel within the next six months.
+
+   Thank you in advance for your prompt attention to our request. We look forward to planning an unforgettable vacation with TravelPulse.
+
+   Best regards,
+   Jane Doe
+
+--------------------------------------------------------------------------------
+
+EMAIL #16 (2025-04-24 02:32:42) - File: Your Request for Secure Investment Transfer Confirmed.eml
+================================================================================
+Subject: Your Request for Secure Investment Transfer Confirmed
+
+From: Nancy Miller <desgtest2.email@gmail.com>
+
+ 
+   Dear Mr. Thompson,
+
+I hope this message finds you well. I am writing to confirm that we have successfully processed your recent request to transfer funds from your investment account with us.
+
+The transaction ID for the transfer is TRANS-003456789 and the amount transferred was $250,000 as per your instructions. The funds will be credited to the specified account at XYZ Bank within 2 business days.
+
+You will receive a separate confirmation email from XYZ Bank once the transfer is complete. If you have any questions or concerns regarding this transaction, please do not hesitate to contact us at support@finserv.com or call our customer service line at 1-800-555-1234.
+
+Thank you for choosing FinServ Wealth Management for your financial needs. We appreciate your trust and are committed to providing you with the best possible service.
+
+Best regards,
+
+Jayden Smith
+Client Relationship Manager
+FinServ Wealth Management
+
+--------------------------------------------------------------------------------
+
+EMAIL #17 (2025-04-24 02:33:02) - File: Your Order #3271 Confirmation_ Delivery Scheduled for Next Week.eml
+================================================================================
+Subject: Your Order #3271 Confirmation: Delivery Scheduled for Next Week
+
+From: Nancy Miller <desgtest2.email@gmail.com>
+
+ 
+   Dear Mr. Johnson,
+
+   I hope this message finds you well. I am writing to confirm that we have received your order #3271 for 500 units of our Standard Gearbox model with serial numbers ranging from GTBX-26489 to GTBX-26988, as per our conversation on March 15th.
+
+   The goods will be carefully packed and prepared for delivery by our logistics team next week, Monday, March 23rd at the latest. You will receive another email with the exact shipping details once everything is arranged. If there are any changes to your order or delivery requirements, kindly let us know immediately so we can make adjustments accordingly.
+
+   In case you have any questions or concerns regarding this order, please feel free to reach out to our Customer Service team at +1 (555) 123-4567 or email us at Example Customerservice@examplemanufacturingco.com(mailto:customerservice@examplemanufacturingco.com).
+
+   We appreciate your business and look forward to serving you again in the future.
+
+   Best regards,
+   Jayden
+   Operations Manager
+   Example Manufacturing Co.
+
+--------------------------------------------------------------------------------
+2025-04-28 09:40:03,947 - llm_analyzer - INFO - Sending data to Ollama for analysis
+2025-04-28 09:40:40,607 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
