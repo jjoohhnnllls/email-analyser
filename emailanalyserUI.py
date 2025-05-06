@@ -366,87 +366,48 @@ class EmailAnalyzerApp(QMainWindow):
         main_layout = QHBoxLayout(page)
         main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.setSpacing(0)
-        
         # Report content area
         content_area = QWidget()
         layout = QVBoxLayout(content_area)
         layout.setContentsMargins(30, 30, 30, 30)
-        
         # Title
         title = QLabel("Analysis Report")
         title.setStyleSheet("font-size: 24px; font-weight: bold; color: #111827;")
         layout.addWidget(title)
         layout.addSpacing(20)
-        
         # Create scroll area for report content
         scroll_area = QScrollArea()
         scroll_area.setWidgetResizable(True)
         scroll_area.setStyleSheet("border: none;")
-        
         scroll_content = QWidget()
         scroll_layout = QVBoxLayout(scroll_content)
-        
-        # Summary section
-        summary_frame = QFrame()
-        summary_frame.setFrameShape(QFrame.Shape.StyledPanel)
-        summary_frame.setStyleSheet("""
-            QFrame {
-                background-color: white;
-                border-radius: 8px;
-                border: 1px solid #E5E7EB;
-            }
-        """)
-        summary_layout = QVBoxLayout(summary_frame)
-        
-        # Header
-        summary_header = QWidget()
-        summary_header_layout = QVBoxLayout(summary_header)
-        summary_header_layout.setContentsMargins(0, 0, 0, 15)
-        
-        summary_title = QLabel("Email Analysis Summary")
-        summary_title.setStyleSheet("font-size: 18px; font-weight: bold; color: #111827;")
-        
-        summary_date = QLabel()
-        summary_date.setObjectName("summary_date")
-        summary_date.setStyleSheet("color: #6B7280;")
-        
-        summary_header_layout.addWidget(summary_title)
-        summary_header_layout.addWidget(summary_date)
-        
-        # Stats section
-        self.stats_widget = QWidget()
-        stats_layout = QHBoxLayout(self.stats_widget)
-        stats_layout.setContentsMargins(0, 15, 0, 15)
-        
-        total_emails = QLabel()
-        total_emails.setObjectName("total_emails")
-        time_period = QLabel()
-        time_period.setObjectName("time_period")
-        unique_senders = QLabel()
-        unique_senders.setObjectName("unique_senders")
-        
-        stats_layout.addWidget(total_emails)
-        stats_layout.addWidget(time_period)
-        stats_layout.addWidget(unique_senders)
-        
-        # Key findings
-        findings_title = QLabel("Key Findings")
-        findings_title.setStyleSheet("font-size: 16px; font-weight: bold; color: #111827; margin-top: 10px;")
-        
-        # LLM report QTextBrowser
+        # AI Analysis Report section
+        ai_report_title = QLabel("AI Analysis Report")
+        ai_report_title.setStyleSheet("font-size: 18px; font-weight: bold; color: #111827; margin-top: 10px;")
         self.llm_report_browser = QTextBrowser()
         self.llm_report_browser.setOpenExternalLinks(True)
         self.llm_report_browser.setStyleSheet("font-size: 14px; background: #F9FAFB; border: none; padding: 8px; border-radius: 6px;")
         self.llm_report_browser.setMinimumHeight(250)
-        
-        # Add all widgets to summary layout
-        summary_layout.addWidget(summary_header)
-        summary_layout.addWidget(QLabel(""))  # Separator
-        summary_layout.addWidget(self.stats_widget)
-        summary_layout.addWidget(QLabel(""))  # Separator
-        summary_layout.addWidget(findings_title)
-        summary_layout.addWidget(self.llm_report_browser)
-        
+        scroll_layout.addWidget(ai_report_title)
+        scroll_layout.addWidget(self.llm_report_browser)
+        # Email Summary section
+        summary_title = QLabel("Email Summary")
+        summary_title.setStyleSheet("font-size: 16px; font-weight: bold; color: #111827; margin-top: 20px;")
+        self.email_summary_browser = QTextBrowser()
+        self.email_summary_browser.setOpenExternalLinks(True)
+        self.email_summary_browser.setStyleSheet("font-size: 13px; background: #F3F4F6; border: none; padding: 8px; border-radius: 6px;")
+        self.email_summary_browser.setMinimumHeight(120)
+        scroll_layout.addWidget(summary_title)
+        scroll_layout.addWidget(self.email_summary_browser)
+        # Network Statistics section
+        network_stats_title = QLabel("Network Statistics")
+        network_stats_title.setStyleSheet("font-size: 16px; font-weight: bold; color: #111827; margin-top: 20px;")
+        self.network_stats_browser = QTextBrowser()
+        self.network_stats_browser.setOpenExternalLinks(True)
+        self.network_stats_browser.setStyleSheet("font-size: 13px; background: #F3F4F6; border: none; padding: 8px; border-radius: 6px;")
+        self.network_stats_browser.setMinimumHeight(120)
+        scroll_layout.addWidget(network_stats_title)
+        scroll_layout.addWidget(self.network_stats_browser)
         # Network visualization section
         network_frame = QFrame()
         network_frame.setFrameShape(QFrame.Shape.StyledPanel)
@@ -458,27 +419,20 @@ class EmailAnalyzerApp(QMainWindow):
             }
         """)
         network_layout = QVBoxLayout(network_frame)
-        
         network_title = QLabel("Communication Network")
         network_title.setStyleSheet("font-size: 18px; font-weight: bold; color: #111827;")
-        
         self.network_viz = QLabel()
         self.network_viz.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.network_viz.setFixedHeight(250)
         self.network_viz.setStyleSheet("background-color: #F3F4F6; border-radius: 4px;")
-        
         network_layout.addWidget(network_title)
         network_layout.addWidget(self.network_viz)
-        
         # Add sections to scroll layout
-        scroll_layout.addWidget(summary_frame)
         scroll_layout.addSpacing(20)
         scroll_layout.addWidget(network_frame)
         scroll_layout.addStretch()
-        
         scroll_area.setWidget(scroll_content)
         layout.addWidget(scroll_area)
-        
         # Ask AI button
         ask_ai_btn = QPushButton("Ask AI about findings 💬")
         ask_ai_btn.setStyleSheet("""
@@ -495,21 +449,17 @@ class EmailAnalyzerApp(QMainWindow):
             }
         """)
         ask_ai_btn.clicked.connect(lambda: self.stacked_widget.setCurrentIndex(3))
-        
         button_layout = QHBoxLayout()
         button_layout.addStretch()
         button_layout.addWidget(ask_ai_btn)
         layout.addLayout(button_layout)
-        
         # Sidebar for report sections
         sidebar = QWidget()
         sidebar.setFixedWidth(250)
         sidebar.setStyleSheet("background-color: #F9FAFB; border-left: 1px solid #E5E7EB;")
         sidebar_layout = QVBoxLayout(sidebar)
-        
         sections_label = QLabel("Report Sections")
         sections_label.setStyleSheet("font-size: 16px; font-weight: bold; color: #374151;")
-        
         sections_list = QListWidget()
         sections_list.addItems([
             "Summary",
@@ -534,10 +484,8 @@ class EmailAnalyzerApp(QMainWindow):
             }
         """)
         sections_list.setCurrentRow(0)
-        
         export_label = QLabel("Export Options")
         export_label.setStyleSheet("font-size: 16px; font-weight: bold; color: #374151; margin-top: 20px;")
-        
         export_pdf_btn = QPushButton("📄 PDF Report")
         export_pdf_btn.setStyleSheet("""
             QPushButton {
@@ -551,7 +499,6 @@ class EmailAnalyzerApp(QMainWindow):
                 background-color: #F3F4F6;
             }
         """)
-        
         export_evidence_btn = QPushButton("👁️ Evidence View")
         export_evidence_btn.setStyleSheet("""
             QPushButton {
@@ -565,7 +512,6 @@ class EmailAnalyzerApp(QMainWindow):
                 background-color: #F3F4F6;
             }
         """)
-        
         sidebar_layout.addWidget(sections_label)
         sidebar_layout.addWidget(sections_list)
         sidebar_layout.addSpacing(10)
@@ -573,10 +519,8 @@ class EmailAnalyzerApp(QMainWindow):
         sidebar_layout.addWidget(export_pdf_btn)
         sidebar_layout.addWidget(export_evidence_btn)
         sidebar_layout.addStretch()
-        
         main_layout.addWidget(content_area)
         main_layout.addWidget(sidebar)
-        
         return page
     
     def create_chat_page(self):
@@ -720,7 +664,7 @@ class EmailAnalyzerApp(QMainWindow):
         self.messages_widget.parent().verticalScrollBar().setValue(
             self.messages_widget.parent().verticalScrollBar().maximum()
         )
-
+    
     def run_analysis(self):
         """Start the email analysis process"""
         if not hasattr(self, 'selected_files') or not self.selected_files:
@@ -777,32 +721,33 @@ class EmailAnalyzerApp(QMainWindow):
         """Update the report page with analysis results"""
         if not self.current_results:
             return
-        
         stats = self.current_results['stats']
         analysis_results = self.current_results['analysis']
         llm_report = analysis_results.get('llm_report', '')
+        email_summary = analysis_results.get('email_summary', '')
         # Convert markdown to HTML for display
         html = markdown2.markdown(llm_report)
         self.llm_report_browser.setHtml(html)
-        
-        # Update stats
-        self.stats_widget.findChild(QLabel, "total_emails").setText(
-            f"<b>Total Emails Analyzed:</b> {len(self.current_results['email_texts'])}")
-        self.stats_widget.findChild(QLabel, "time_period").setText(
-            f"<b>Time Period:</b> {self.start_date.date().toString('MMM yyyy')} - {self.end_date.date().toString('MMM yyyy')}")
-        self.stats_widget.findChild(QLabel, "unique_senders").setText(
-            f"<b>Unique Senders:</b> {stats.get('nodes', 0)}")
-        
+        # Email summary as simple HTML
+        summary_html = f'<ul>' + ''.join(f'<li>{line}</li>' for line in email_summary.split('\n') if line.strip()) + '</ul>'
+        self.email_summary_browser.setHtml(summary_html)
+        # Network stats as simple HTML
+        network_stats = []
+        network_stats.append(f"<b>Nodes (Unique Contacts):</b> {stats.get('nodes', 0)}")
+        network_stats.append(f"<b>Edges (Connections):</b> {stats.get('edges', 0)}")
+        if stats.get('top_senders'):
+            network_stats.append("<b>Top Senders:</b><ul>" + ''.join(f'<li>{sender}: {count}</li>' for sender, count in stats['top_senders']) + "</ul>")
+        if stats.get('top_recipients'):
+            network_stats.append("<b>Top Recipients:</b><ul>" + ''.join(f'<li>{recipient}: {count}</li>' for recipient, count in stats['top_recipients']) + "</ul>")
+        if stats.get('key_connectors'):
+            network_stats.append("<b>Key Connectors:</b><ul>" + ''.join(f'<li>{person}: {score:.4f}</li>' for person, score in stats['key_connectors']) + "</ul>")
+        self.network_stats_browser.setHtml('<br>'.join(network_stats))
         # Generate and display network visualization
         if self.current_results.get('social_graph'):
             output_file = "outputs/email_network.png"
             visualize_social_graph(self.current_results['social_graph'], output_file=output_file)
-            
-            # Update visualization in UI
             pixmap = QPixmap(output_file)
             self.network_viz.setPixmap(pixmap.scaled(self.network_viz.size(), Qt.AspectRatioMode.KeepAspectRatio))
-        
-        # Enable Ask AI button only after report is generated
         self.chat_btn.setEnabled(True)
 
 class ChatWorker(QThread):
