@@ -1,0 +1,20 @@
+2025-05-06 14:36:59,822 - email_analyzer - INFO - Logging initialized. Log file: logs\email_analyzer_20250506_143659.log
+2025-05-06 14:36:59,825 - email_analyzer - INFO - Starting Email Analyzer application
+2025-05-06 14:37:13,409 - email_analyzer - INFO - Requesting date range from user
+2025-05-06 14:37:21,800 - email_analyzer - INFO - Date range set: 2025-03-11 to 2025-03-13
+2025-05-06 14:37:21,801 - file_handler - INFO - Searching for .eml files in C:\Users\Demo PC2\Desktop\Email to EML downloader\gmail_export_20250320_104947\test
+2025-05-06 14:37:21,802 - file_handler - INFO - Found 17 .eml files in folder
+2025-05-06 14:37:21,900 - file_handler - INFO - Found 11 emails within the specified date range
+2025-05-06 14:37:21,900 - email_analyzer - INFO - Found 11 emails in the specified date range
+2025-05-06 14:37:21,901 - visualisations - INFO - Creating social graph from email data
+2025-05-06 14:37:21,920 - visualisations - INFO - Created social graph with 12 nodes and 11 edges
+2025-05-06 14:37:21,921 - visualisations - INFO - Analyzing email network
+2025-05-06 14:37:29,472 - llm_analyzer - INFO - Starting email analysis with Ollama
+2025-05-06 14:37:29,473 - llm_analyzer - INFO - Preparing email summary for LLM
+2025-05-06 14:37:29,473 - llm_analyzer - INFO - Preparing full email content for LLM
+2025-05-06 14:37:29,474 - llm_analyzer - INFO - Sending data to Ollama for analysis
+2025-05-06 14:37:46,345 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-05-06 14:40:40,699 - llm_analyzer - INFO - Adding QA guidance to conversation context
+2025-05-06 14:40:40,706 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 404 Not Found"
+2025-05-06 14:40:40,708 - llm_analyzer - ERROR - Error analyzing emails with Ollama: model "mistral" not found, try pulling it first (status code: 404)
+2025-05-06 14:40:40,709 - email_analyzer - INFO - Email Analyzer application completed successfully

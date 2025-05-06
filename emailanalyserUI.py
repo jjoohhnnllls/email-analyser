@@ -1,10 +1,69 @@
 import sys
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, 
                             QPushButton, QLabel, QStackedWidget, QFileDialog, QCheckBox,
-                            QFrame, QScrollArea, QTextEdit, QListWidget, QSplitter)
+                            QFrame, QScrollArea, QTextEdit, QListWidget, QSplitter,
+                            QDateEdit, QMessageBox, QProgressBar, QTextBrowser)
 from PyQt6.QtGui import QIcon, QFont, QPixmap, QColor
-from PyQt6.QtCore import Qt, QSize
+from PyQt6.QtCore import Qt, QSize, QDate, QThread, pyqtSignal
+import datetime
+from pathlib import Path
+import logging
+import markdown2
 
+from utils import setup_logging
+from file_handler import get_emails_in_timeframe, get_raw_email_contents
+from llm_analyzer import analyze_emails_with_ollama
+from visualisations import create_social_graph, visualize_social_graph, analyze_network
+
+class AnalysisWorker(QThread):
+    """Worker thread for running email analysis"""
+    progress = pyqtSignal(int)  # Signal for progress updates (0-100)
+    finished = pyqtSignal(dict)  # Signal for completion with results
+    error = pyqtSignal(str)  # Signal for error messages
+
+    def __init__(self, folder_path, start_date, end_date):
+        super().__init__()
+        self.folder_path = folder_path
+        self.start_date = start_date
+        self.end_date = end_date
+
+    def run(self):
+        try:
+            # Load emails within timeframe
+            self.progress.emit(10)
+            email_texts = get_emails_in_timeframe(self.folder_path, self.start_date, self.end_date)
+            
+            if not email_texts:
+                self.error.emit("No emails found in the specified date range")
+                return
+            
+            # Create social graph
+            self.progress.emit(30)
+            raw_contents = get_raw_email_contents(email_texts)
+            social_graph = create_social_graph(raw_contents)
+            
+            # Analyze network
+            self.progress.emit(50)
+            stats = analyze_network(social_graph)
+            
+            # Perform LLM analysis
+            self.progress.emit(70)
+            analysis_results = analyze_emails_with_ollama(email_texts)
+            
+            # Prepare results dictionary
+            results = {
+                'email_texts': email_texts,
+                'social_graph': social_graph,
+                'stats': stats,
+                'analysis': analysis_results
+            }
+            
+            # Emit results
+            self.progress.emit(100)
+            self.finished.emit(results)
+            
+        except Exception as e:
+            self.error.emit(str(e))
 
 class EmailAnalyzerApp(QMainWindow):
     def __init__(self):
@@ -13,7 +72,10 @@ class EmailAnalyzerApp(QMainWindow):
         self.setMinimumSize(1200, 800)
         
         # State tracking
-        self.analysis_complete = False
+        self.is_analysis_complete = False
+        self.current_results = None
+        self.logger = setup_logging()
+        self.worker = None
         
         # Setup UI
         self.setup_ui()
@@ -158,13 +220,18 @@ class EmailAnalyzerApp(QMainWindow):
         drop_icon.setStyleSheet("font-size: 48px; color: #9CA3AF;")
         drop_icon.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
-        drop_text = QLabel("Drag and drop email files here")
+        drop_text = QLabel("Select the folder containing the emails")
         drop_text.setStyleSheet("font-size: 18px; color: #374151;")
         drop_text.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
-        drop_format = QLabel("Supports .eml, .msg, .pst, and .mbox formats")
+        drop_format = QLabel("Supports .eml formats")
         drop_format.setStyleSheet("font-size: 14px; color: #6B7280;")
         drop_format.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        
+        # Add file label
+        self.file_label = QLabel("No folder selected")
+        self.file_label.setStyleSheet("font-size: 14px; color: #6B7280;")
+        self.file_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
         browse_btn = QPushButton("Browse Files")
         browse_btn.setStyleSheet("""
@@ -180,11 +247,12 @@ class EmailAnalyzerApp(QMainWindow):
                 background-color: #B91C1C;
             }
         """)
-        browse_btn.clicked.connect(self.browse_files)
+        browse_btn.clicked.connect(self.select_files)
         
         drop_layout.addWidget(drop_icon)
         drop_layout.addWidget(drop_text)
         drop_layout.addWidget(drop_format)
+        drop_layout.addWidget(self.file_label)
         drop_layout.addSpacing(15)
         drop_layout.addWidget(browse_btn, alignment=Qt.AlignmentFlag.AlignCenter)
         
@@ -226,118 +294,52 @@ class EmailAnalyzerApp(QMainWindow):
         layout.addWidget(title)
         layout.addSpacing(20)
         
-        # Email sources section
-        sources_frame = QFrame()
-        sources_frame.setFrameShape(QFrame.Shape.StyledPanel)
-        sources_frame.setStyleSheet("""
+        # Date range selection
+        date_frame = QFrame()
+        date_frame.setFrameShape(QFrame.Shape.StyledPanel)
+        date_frame.setStyleSheet("""
             QFrame {
                 background-color: white;
                 border-radius: 8px;
                 border: 1px solid #E5E7EB;
             }
         """)
-        sources_layout = QVBoxLayout(sources_frame)
+        date_layout = QVBoxLayout(date_frame)
         
-        sources_title = QLabel("Email Sources")
-        sources_title.setStyleSheet("font-size: 16px; font-weight: bold; color: #111827;")
+        date_title = QLabel("Select Date Range")
+        date_title.setStyleSheet("font-size: 16px; font-weight: bold; color: #111827;")
         
-        sources_items = QWidget()
-        sources_items_layout = QHBoxLayout(sources_items)
-        sources_items_layout.setContentsMargins(0, 0, 0, 0)
+        date_range_widget = QWidget()
+        date_range_layout = QHBoxLayout(date_range_widget)
         
-        source1 = QFrame()
-        source1.setStyleSheet("""
-            QFrame {
-                background-color: #F3F4F6;
-                border-radius: 4px;
-                padding: 5px;
-            }
-        """)
-        source1_layout = QHBoxLayout(source1)
-        source1_layout.setContentsMargins(10, 5, 10, 5)
-        source1_label = QLabel("📄 emails_july2024.pst")
-        source1_label.setStyleSheet("color: #374151;")
-        source1_layout.addWidget(source1_label)
+        self.start_date = QDateEdit()
+        self.start_date.setDate(QDate.currentDate().addMonths(-1))
+        self.start_date.setCalendarPopup(True)
         
-        source2 = QFrame()
-        source2.setStyleSheet("""
-            QFrame {
-                background-color: #F3F4F6;
-                border-radius: 4px;
-                padding: 5px;
-            }
-        """)
-        source2_layout = QHBoxLayout(source2)
-        source2_layout.setContentsMargins(10, 5, 10, 5)
-        source2_label = QLabel("📄 investigation_emails.mbox")
-        source2_label.setStyleSheet("color: #374151;")
-        source2_layout.addWidget(source2_label)
+        self.end_date = QDateEdit()
+        self.end_date.setDate(QDate.currentDate())
+        self.end_date.setCalendarPopup(True)
         
-        sources_items_layout.addWidget(source1)
-        sources_items_layout.addWidget(source2)
-        sources_items_layout.addStretch()
+        date_range_layout.addWidget(QLabel("From:"))
+        date_range_layout.addWidget(self.start_date)
+        date_range_layout.addWidget(QLabel("To:"))
+        date_range_layout.addWidget(self.end_date)
+        date_range_layout.addStretch()
         
-        sources_layout.addWidget(sources_title)
-        sources_layout.addWidget(sources_items)
+        date_layout.addWidget(date_title)
+        date_layout.addWidget(date_range_widget)
         
-        layout.addWidget(sources_frame)
+        layout.addWidget(date_frame)
         layout.addSpacing(15)
         
-        # Analysis options section
-        options_frame = QFrame()
-        options_frame.setFrameShape(QFrame.Shape.StyledPanel)
-        options_frame.setStyleSheet("""
-            QFrame {
-                background-color: white;
-                border-radius: 8px;
-                border: 1px solid #E5E7EB;
-            }
-        """)
-        options_layout = QVBoxLayout(options_frame)
-        
-        options_title = QLabel("Analysis Options")
-        options_title.setStyleSheet("font-size: 16px; font-weight: bold; color: #111827;")
-        
-        options_grid = QWidget()
-        options_grid_layout = QHBoxLayout(options_grid)
-        options_grid_layout.setContentsMargins(0, 0, 0, 0)
-        
-        options_col1 = QVBoxLayout()
-        options_col2 = QVBoxLayout()
-        
-        # Create checkboxes
-        option1 = QCheckBox("Entity extraction")
-        option2 = QCheckBox("Sentiment analysis")
-        option3 = QCheckBox("Thread reconstruction")
-        option4 = QCheckBox("Anomaly detection")
-        option5 = QCheckBox("Header analysis")
-        option6 = QCheckBox("Attachment inspection")
-        
-        # Set all checked by default
-        for option in [option1, option2, option3, option4, option5, option6]:
-            option.setChecked(True)
-            option.setStyleSheet("QCheckBox { color: #374151; }")
-        
-        options_col1.addWidget(option1)
-        options_col1.addWidget(option2)
-        options_col1.addWidget(option3)
-        
-        options_col2.addWidget(option4)
-        options_col2.addWidget(option5)
-        options_col2.addWidget(option6)
-        
-        options_grid_layout.addLayout(options_col1)
-        options_grid_layout.addLayout(options_col2)
-        
-        options_layout.addWidget(options_title)
-        options_layout.addWidget(options_grid)
-        
-        layout.addWidget(options_frame)
-        layout.addStretch()
+        # Progress bar
+        self.progress_bar = QProgressBar()
+        self.progress_bar.setVisible(False)
+        layout.addWidget(self.progress_bar)
         
         # Start analysis button
-        analyze_btn = QPushButton("Start Analysis 🔍")
-        analyze_btn.setStyleSheet("""
+        self.analyze_btn = QPushButton("Start Analysis 🔍")
+        self.analyze_btn.setStyleSheet("""
             QPushButton {
                 background-color: #DC2626;
                 color: white;
@@ -350,11 +352,11 @@ class EmailAnalyzerApp(QMainWindow):
                 background-color: #B91C1C;
             }
         """)
-        analyze_btn.clicked.connect(self.run_analysis)
+        self.analyze_btn.clicked.connect(self.run_analysis)
         
         button_layout = QHBoxLayout()
         button_layout.addStretch()
-        button_layout.addWidget(analyze_btn)
+        button_layout.addWidget(self.analyze_btn)
         layout.addLayout(button_layout)
         
         return page
@@ -404,47 +406,46 @@ class EmailAnalyzerApp(QMainWindow):
         summary_title = QLabel("Email Analysis Summary")
         summary_title.setStyleSheet("font-size: 18px; font-weight: bold; color: #111827;")
         
-        summary_date = QLabel("Completed on April 21, 2025 at 14:32")
+        summary_date = QLabel()
+        summary_date.setObjectName("summary_date")
         summary_date.setStyleSheet("color: #6B7280;")
         
         summary_header_layout.addWidget(summary_title)
         summary_header_layout.addWidget(summary_date)
         
         # Stats section
-        stats_widget = QWidget()
-        stats_layout = QHBoxLayout(stats_widget)
+        self.stats_widget = QWidget()
+        stats_layout = QHBoxLayout(self.stats_widget)
         stats_layout.setContentsMargins(0, 15, 0, 15)
         
-        stat1 = QLabel("<b>Total Emails Analyzed:</b> 5,247")
-        stat2 = QLabel("<b>Time Period:</b> Jan 2025 - Mar 2025")
-        stat3 = QLabel("<b>Unique Senders:</b> 187")
+        total_emails = QLabel()
+        total_emails.setObjectName("total_emails")
+        time_period = QLabel()
+        time_period.setObjectName("time_period")
+        unique_senders = QLabel()
+        unique_senders.setObjectName("unique_senders")
         
-        stats_layout.addWidget(stat1)
-        stats_layout.addWidget(stat2)
-        stats_layout.addWidget(stat3)
+        stats_layout.addWidget(total_emails)
+        stats_layout.addWidget(time_period)
+        stats_layout.addWidget(unique_senders)
         
         # Key findings
         findings_title = QLabel("Key Findings")
         findings_title.setStyleSheet("font-size: 16px; font-weight: bold; color: #111827; margin-top: 10px;")
         
-        finding1 = QLabel("⚠️ <b>Suspicious Communication Patterns</b><br>3 email clusters detected with unusual timing patterns")
-        finding1.setStyleSheet("color: #374151; margin-top: 5px;")
-        
-        finding2 = QLabel("⚠️ <b>Potential Data Exfiltration</b><br>Large attachments sent to external domains")
-        finding2.setStyleSheet("color: #374151; margin-top: 5px;")
-        
-        finding3 = QLabel("⚠️ <b>Security Policy Violations</b><br>Financial data shared via unencrypted channels")
-        finding3.setStyleSheet("color: #374151; margin-top: 5px;")
+        # LLM report QTextBrowser
+        self.llm_report_browser = QTextBrowser()
+        self.llm_report_browser.setOpenExternalLinks(True)
+        self.llm_report_browser.setStyleSheet("font-size: 14px; background: #F9FAFB; border: none; padding: 8px; border-radius: 6px;")
+        self.llm_report_browser.setMinimumHeight(250)
         
         # Add all widgets to summary layout
         summary_layout.addWidget(summary_header)
         summary_layout.addWidget(QLabel(""))  # Separator
-        summary_layout.addWidget(stats_widget)
+        summary_layout.addWidget(self.stats_widget)
         summary_layout.addWidget(QLabel(""))  # Separator
         summary_layout.addWidget(findings_title)
-        summary_layout.addWidget(finding1)
-        summary_layout.addWidget(finding2)
-        summary_layout.addWidget(finding3)
+        summary_layout.addWidget(self.llm_report_browser)
         
         # Network visualization section
         network_frame = QFrame()
@@ -461,13 +462,13 @@ class EmailAnalyzerApp(QMainWindow):
         network_title = QLabel("Communication Network")
         network_title.setStyleSheet("font-size: 18px; font-weight: bold; color: #111827;")
         
-        network_viz = QLabel("[Network Visualization Graph]")
-        network_viz.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        network_viz.setFixedHeight(250)
-        network_viz.setStyleSheet("background-color: #F3F4F6; border-radius: 4px;")
+        self.network_viz = QLabel()
+        self.network_viz.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.network_viz.setFixedHeight(250)
+        self.network_viz.setStyleSheet("background-color: #F3F4F6; border-radius: 4px;")
         
         network_layout.addWidget(network_title)
-        network_layout.addWidget(network_viz)
+        network_layout.addWidget(self.network_viz)
         
         # Add sections to scroll layout
         scroll_layout.addWidget(summary_frame)
@@ -610,66 +611,22 @@ class EmailAnalyzerApp(QMainWindow):
         chat_messages.setWidgetResizable(True)
         chat_messages.setStyleSheet("border: none;")
         
-        messages_widget = QWidget()
-        messages_layout = QVBoxLayout(messages_widget)
-        messages_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
-        messages_layout.setSpacing(15)
+        self.messages_widget = QWidget()
+        self.messages_layout = QVBoxLayout(self.messages_widget)
+        self.messages_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+        self.messages_layout.setSpacing(15)
         
-        # Sample messages
-        user_msg1 = QFrame()
-        user_msg1.setStyleSheet("background-color: #F3F4F6; border-radius: 8px; padding: 10px;")
-        user_msg1_layout = QVBoxLayout(user_msg1)
-        user_msg1_layout.setContentsMargins(15, 10, 15, 10)
-        user_msg1_text = QLabel("What are the main topics discussed in these emails?")
-        user_msg1_layout.addWidget(user_msg1_text)
-        
-        ai_msg1 = QFrame()
-        ai_msg1.setStyleSheet("background-color: #FEF2F2; border-radius: 8px; padding: 10px;")
-        ai_msg1_layout = QVBoxLayout(ai_msg1)
-        ai_msg1_layout.setContentsMargins(15, 10, 15, 10)
-        ai_msg1_text = QLabel("Based on my analysis, there are 3 primary topics discussed:<br><br>"
-                             "1. Project Alpha financial reporting (42% of communications)<br>"
-                             "2. Server infrastructure updates (27% of communications)<br>"
-                             "3. Client meeting preparations (18% of communications)<br><br>"
-                             "The remaining communications cover miscellaneous topics including HR announcements and social events.")
-        ai_msg1_text.setWordWrap(True)
-        ai_msg1_layout.addWidget(ai_msg1_text)
-        
-        user_msg2 = QFrame()
-        user_msg2.setStyleSheet("background-color: #F3F4F6; border-radius: 8px; padding: 10px;")
-        user_msg2_layout = QVBoxLayout(user_msg2)
-        user_msg2_layout.setContentsMargins(15, 10, 15, 10)
-        user_msg2_text = QLabel("Who communicated most frequently with external domains?")
-        user_msg2_layout.addWidget(user_msg2_text)
-        
-        ai_msg2 = QFrame()
-        ai_msg2.setStyleSheet("background-color: #FEF2F2; border-radius: 8px; padding: 10px;")
-        ai_msg2_layout = QVBoxLayout(ai_msg2)
-        ai_msg2_layout.setContentsMargins(15, 10, 15, 10)
-        ai_msg2_text = QLabel("User john.smith@dataexpert.sg had the highest volume of external communications "
-                             "(214 emails), primarily with clients at acme-corp.com and consultant-group.com domains.<br><br>"
-                             "Would you like me to provide more details about these communications?")
-        ai_msg2_text.setWordWrap(True)
-        ai_msg2_layout.addWidget(ai_msg2_text)
-        
-        # Add messages to layout
-        messages_layout.addWidget(user_msg1)
-        messages_layout.addWidget(ai_msg1)
-        messages_layout.addWidget(user_msg2)
-        messages_layout.addWidget(ai_msg2)
-        messages_layout.addStretch()
-        
-        chat_messages.setWidget(messages_widget)
+        chat_messages.setWidget(self.messages_widget)
         
         # Input area
         input_widget = QWidget()
         input_layout = QHBoxLayout(input_widget)
         input_layout.setContentsMargins(0, 0, 0, 0)
         
-        chat_input = QTextEdit()
-        chat_input.setPlaceholderText("Ask a question about the analyzed emails...")
-        chat_input.setMaximumHeight(80)
-        chat_input.setStyleSheet("""
+        self.chat_input = QTextEdit()
+        self.chat_input.setPlaceholderText("Ask a question about the analyzed emails...")
+        self.chat_input.setMaximumHeight(80)
+        self.chat_input.setStyleSheet("""
             QTextEdit {
                 border: 1px solid #E5E7EB;
                 border-radius: 8px;
@@ -693,8 +650,9 @@ class EmailAnalyzerApp(QMainWindow):
                 background-color: #B91C1C;
             }
         """)
+        send_btn.clicked.connect(self.send_chat_message)
         
-        input_layout.addWidget(chat_input)
+        input_layout.addWidget(self.chat_input)
         input_layout.addWidget(send_btn)
         
         # Add all elements to chat layout
@@ -706,59 +664,176 @@ class EmailAnalyzerApp(QMainWindow):
         
         return page
     
-    def browse_files(self):
-        files, _ = QFileDialog.getOpenFileNames(
+    def select_files(self):
+        """Open file dialog to select email files"""
+        folder_path = QFileDialog.getExistingDirectory(
             self,
-            "Select Email Files",
+            "Select Email Folder",
             "",
-            "Email Files (*.eml *.msg *.pst *.mbox);;All Files (*)"
+            QFileDialog.Option.ShowDirsOnly
         )
-        # In a real app, you would process these files
-        if files:
-            print(f"Selected files: {files}")
+        
+        if folder_path:
+            self.selected_files = folder_path
+            self.file_label.setText(f"Selected folder: {folder_path}")
+            self.analyze_btn.setEnabled(True)
     
-    def run_analysis(self):
-        # In a real app, this would start the actual analysis process
-        # For demo purposes, we'll just switch to the report page after a delay
-        self.analyze_btn.setText("Analyzing...")
-        self.analyze_btn.setStyleSheet("""
-            QPushButton {
-                background-color: #9CA3AF;
-                color: white;
-                border: none;
-                border-radius: 6px;
-                padding: 12px 24px;
-                font-size: 16px;
-            }
+    def send_chat_message(self):
+        if not self.is_analysis_complete:
+            QMessageBox.warning(self, "No Analysis", "Please analyze emails first before asking questions.")
+            return
+            
+        message = self.chat_input.toPlainText().strip()
+        if not message:
+            return
+            
+        # Add user message to chat
+        self.add_chat_message(message, is_user=True)
+        self.chat_input.clear()
+        
+        # Create worker for LLM response
+        self.chat_worker = ChatWorker(self.current_results['email_texts'], message)
+        self.chat_worker.finished.connect(lambda response: self.add_chat_message(response, is_user=False))
+        self.chat_worker.error.connect(lambda error: QMessageBox.critical(self, "Error", error))
+        self.chat_worker.start()
+        
+    def add_chat_message(self, message, is_user=True):
+        msg_frame = QFrame()
+        msg_frame.setStyleSheet(f"""
+            QFrame {{
+                background-color: {'#F3F4F6' if is_user else '#FEF2F2'};
+                border-radius: 8px;
+                padding: 10px;
+            }}
         """)
-        self.analyze_btn.setEnabled(False)
+        msg_layout = QVBoxLayout(msg_frame)
+        msg_layout.setContentsMargins(15, 10, 15, 10)
         
-        # Simulate analysis delay
+        msg_text = QLabel(message)
+        msg_text.setWordWrap(True)
+        msg_layout.addWidget(msg_text)
+        
+        self.messages_layout.addWidget(msg_frame)
+        
+        # Scroll to bottom
         QApplication.processEvents()
-        import time
-        time.sleep(2)  # In a real app, you would use QTimer instead
+        self.messages_widget.parent().verticalScrollBar().setValue(
+            self.messages_widget.parent().verticalScrollBar().maximum()
+        )
+
+    def run_analysis(self):
+        """Start the email analysis process"""
+        if not hasattr(self, 'selected_files') or not self.selected_files:
+            QMessageBox.warning(self, "Warning", "Please select a folder containing email files first.")
+            return
         
-        # Complete analysis and update UI
-        self.analysis_complete = True
+        # Get date range
+        start_date = self.start_date.date().toPyDate()
+        end_date = self.end_date.date().toPyDate()
+        
+        # Create and start worker
+        self.worker = AnalysisWorker(self.selected_files, start_date, end_date)
+        
+        # Connect signals
+        self.worker.progress.connect(self.progress_bar.setValue)
+        self.worker.error.connect(self.show_error)
+        self.worker.finished.connect(self.handle_analysis_complete)
+        
+        # Update UI
+        self.progress_bar.setVisible(True)
+        self.analyze_btn.setEnabled(False)
+        self.worker.start()
+
+    def handle_analysis_complete(self, results):
+        """Handle analysis completion"""
+        if not isinstance(results, dict):
+            self.show_error("Invalid analysis results received")
+            return
+            
+        self.current_results = results
+        self.is_analysis_complete = True
+        
+        # Update UI
+        self.progress_bar.setVisible(False)
+        self.analyze_btn.setEnabled(True)
+        self.analyze_btn.setText("Start Analysis 🔍")
+        
+        # Enable report and chat buttons
         self.report_btn.setEnabled(True)
         self.chat_btn.setEnabled(True)
-        self.stacked_widget.setCurrentIndex(2)  # Switch to report page
-        self.report_btn.setStyleSheet(self.report_btn.styleSheet() + "background-color: #DC2626;")
-        self.analyze_btn.setText("Start Analysis 🔍")
+        
+        # Switch to report page
+        self.stacked_widget.setCurrentIndex(2)
+        self.update_report_page()
+
+    def show_error(self, error_message):
+        """Handle analysis errors"""
+        QMessageBox.critical(self, "Analysis Error", error_message)
+        self.progress_bar.setVisible(False)
         self.analyze_btn.setEnabled(True)
-        self.analyze_btn.setStyleSheet("""
-            QPushButton {
-                background-color: #DC2626;
-                color: white;
-                border: none;
-                border-radius: 6px;
-                padding: 12px 24px;
-                font-size: 16px;
-            }
-            QPushButton:hover {
-                background-color: #B91C1C;
-            }
-        """)
+        self.analyze_btn.setText("Start Analysis 🔍")
+
+    def update_report_page(self):
+        """Update the report page with analysis results"""
+        if not self.current_results:
+            return
+        
+        stats = self.current_results['stats']
+        analysis_results = self.current_results['analysis']
+        llm_report = analysis_results.get('llm_report', '')
+        # Convert markdown to HTML for display
+        html = markdown2.markdown(llm_report)
+        self.llm_report_browser.setHtml(html)
+        
+        # Update stats
+        self.stats_widget.findChild(QLabel, "total_emails").setText(
+            f"<b>Total Emails Analyzed:</b> {len(self.current_results['email_texts'])}")
+        self.stats_widget.findChild(QLabel, "time_period").setText(
+            f"<b>Time Period:</b> {self.start_date.date().toString('MMM yyyy')} - {self.end_date.date().toString('MMM yyyy')}")
+        self.stats_widget.findChild(QLabel, "unique_senders").setText(
+            f"<b>Unique Senders:</b> {stats.get('nodes', 0)}")
+        
+        # Generate and display network visualization
+        if self.current_results.get('social_graph'):
+            output_file = "outputs/email_network.png"
+            visualize_social_graph(self.current_results['social_graph'], output_file=output_file)
+            
+            # Update visualization in UI
+            pixmap = QPixmap(output_file)
+            self.network_viz.setPixmap(pixmap.scaled(self.network_viz.size(), Qt.AspectRatioMode.KeepAspectRatio))
+        
+        # Enable Ask AI button only after report is generated
+        self.chat_btn.setEnabled(True)
+
+class ChatWorker(QThread):
+    """Worker thread for handling chat messages"""
+    finished = pyqtSignal(str)
+    error = pyqtSignal(str)
+    
+    def __init__(self, email_texts, message):
+        super().__init__()
+        self.email_texts = email_texts
+        self.message = message
+        
+    def run(self):
+        try:
+            # Prepare prompt for Ollama
+            prompt = f"""Based on the analyzed emails, please answer the following question:
+            
+{self.message}
+
+Please provide a detailed and insightful response, focusing on any patterns, anomalies, or important findings from the email analysis."""
+            
+            # Get response from Ollama
+            response = ollama.chat(
+                model='mistral',
+                messages=[{'role': 'user', 'content': prompt}]
+            )
+            
+            self.finished.emit(response['message']['content'])
+            
+        except Exception as e:
+            self.error.emit(str(e))
 
 # Main application
 if __name__ == "__main__":

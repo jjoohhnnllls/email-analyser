@@ -1,8 +1,8 @@
 """
-Email Analyzer - Main Module
+Email Analyzer - CLI Module
 
-This is the entry point for the Email Analyzer application.
-It handles command line arguments and coordinates the analysis process.
+This is the command-line interface (CLI) version of the Email Analyzer application.
+For the graphical user interface (GUI), please run run.py instead.
 """
 
 import sys
@@ -33,7 +33,8 @@ def parse_arguments():
 
 def main():
     """
-    Main function to run the email analyzer application.
+    Main function to run the email analyzer application in CLI mode.
+    For GUI mode, please run run.py instead.
     """
     # Set up logging
     logger = setup_logging()
@@ -45,7 +46,7 @@ def main():
     log_level = getattr(logging, args.log_level)
     logger.setLevel(log_level)
     
-    logger.info("Starting Email Analyzer application")
+    logger.info("Starting Email Analyzer application in CLI mode")
     
     # Get folder path from args or user input
     folder_path = args.folder
@@ -116,7 +117,6 @@ def main():
         visualize_social_graph(social_graph, output_file=output_file)
         print(f"\nNetwork visualization saved to {output_file}")
 
-
     # Analyze emails with LLM and start interactive Q&A
     analyze_emails_with_ollama(email_texts)
     
@@ -124,4 +124,6 @@ def main():
     return 0
 
 if __name__ == "__main__":
+    print("\nNote: This is the CLI version of Email Analyzer.")
+    print("For the graphical user interface (GUI), please run 'python run.py' instead.\n")
     sys.exit(main())

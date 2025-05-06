@@ -1,0 +1,17 @@
+2025-05-06 15:39:26,146 - email_analyzer - INFO - Logging initialized. Log file: logs\email_analyzer_20250506_153926.log
+2025-05-06 15:39:44,131 - file_handler - INFO - Searching for .eml files in C:/Users/Demo PC2/Desktop/Email to EML downloader/gmail_export_20250320_104947/test
+2025-05-06 15:39:44,132 - file_handler - INFO - Found 17 .eml files in folder
+2025-05-06 15:39:44,143 - file_handler - INFO - Found 17 emails within the specified date range
+2025-05-06 15:39:44,144 - visualisations - INFO - Creating social graph from email data
+2025-05-06 15:39:44,157 - visualisations - INFO - Created social graph with 20 nodes and 21 edges
+2025-05-06 15:39:44,160 - visualisations - INFO - Analyzing email network
+2025-05-06 15:39:44,161 - llm_analyzer - INFO - Starting email analysis with Ollama
+2025-05-06 15:39:44,162 - llm_analyzer - INFO - Preparing email summary for LLM
+2025-05-06 15:39:53,249 - file_handler - INFO - Searching for .eml files in C:/Users/Demo PC2/Desktop/Email to EML downloader/gmail_export_20250320_104947/test
+2025-05-06 15:39:53,250 - file_handler - INFO - Found 17 .eml files in folder
+2025-05-06 15:39:53,260 - file_handler - INFO - Found 11 emails within the specified date range
+2025-05-06 15:39:53,261 - visualisations - INFO - Creating social graph from email data
+2025-05-06 15:39:53,271 - visualisations - INFO - Created social graph with 12 nodes and 11 edges
+2025-05-06 15:39:53,272 - visualisations - INFO - Analyzing email network
+2025-05-06 15:39:53,272 - llm_analyzer - INFO - Starting email analysis with Ollama
+2025-05-06 15:39:53,273 - llm_analyzer - INFO - Preparing email summary for LLM

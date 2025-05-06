@@ -9,6 +9,7 @@ import sys
 import ollama
 import logging
 from prompts import get_base_prompt, get_qa_prompt
+import email
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +18,7 @@ def prepare_email_summary(email_texts):
     Prepare a summary of emails for the LLM with metadata and statistics.
     
     Args:
-        email_texts (list): List of email data dictionaries
+        email_texts (list): List of raw email content strings
         
     Returns:
         str: Formatted summary of the emails
@@ -26,29 +27,27 @@ def prepare_email_summary(email_texts):
     total_emails = len(email_texts)
     
     summary = []
-    if total_emails > 0:
-        summary.append(f"TOTAL EMAILS: {total_emails} ({email_texts[0]['date'].strftime('%Y-%m-%d')} to {email_texts[-1]['date'].strftime('%Y-%m-%d')})")
-    else:
-        summary.append("TOTAL EMAILS: 0")
+    summary.append(f"TOTAL EMAILS: {total_emails}")
     
     # Analyze sender domains and collect subjects
     sender_domains = {}
     subjects = []
     email_senders = []
 
-    for email_data in email_texts:
-        # Extract sender domain
-        from_line = next((line for line in email_data['text'].split('\n') if line.startswith('From:')), "")
-        if '@' in from_line:
-            email_address = from_line.split('From:')[1].strip()
-            domain = email_address.split('@')[1].split()[0].strip()
-            sender_domains[domain] = sender_domains.get(domain, 0) + 1
-            email_senders.append(email_address)
-            
-        # Extract subject
-        subject_line = next((line for line in email_data['text'].split('\n') if line.startswith('Subject:')), "")
-        if subject_line:
-            subjects.append(subject_line[9:].strip())
+    for email_content in email_texts:
+        try:
+            msg = email.message_from_string(email_content)
+            from_field = msg.get('From', '')
+            subject_field = msg.get('Subject', '')
+            if from_field:
+                email_senders.append(from_field)
+                if '@' in from_field:
+                    domain = from_field.split('@')[1].split()[0].strip()
+                    sender_domains[domain] = sender_domains.get(domain, 0) + 1
+            if subject_field:
+                subjects.append(subject_field.strip())
+        except Exception as e:
+            logger.warning(f"Error parsing email for summary: {e}")
     
     # Add sender domain statistics
     summary.append("\nSENDER DOMAINS:")
@@ -57,8 +56,8 @@ def prepare_email_summary(email_texts):
     
     # Add sender email addresses
     summary.append("\nSENDER EMAILS:")
-    for email in email_senders:
-        summary.append(f"- {email}")
+    for email_addr in email_senders:
+        summary.append(f"- {email_addr}")
     
     # Add sample subjects
     summary.append("\nSAMPLE SUBJECTS:")
@@ -73,7 +72,7 @@ def prepare_email_content(email_texts):
     Prepare full content of all emails for the LLM.
     
     Args:
-        email_texts (list): List of email data dictionaries
+        email_texts (list): List of raw email content strings
         
     Returns:
         str: Formatted content of all emails
@@ -81,45 +80,65 @@ def prepare_email_content(email_texts):
     logger.info("Preparing full email content for LLM")
     email_content = []
     
-    for i, email_data in enumerate(email_texts):
-        email_content.append(f"\nEMAIL #{i+1} ({email_data['date'].strftime('%Y-%m-%d %H:%M:%S')}) - File: {email_data['file']}")
-        email_content.append("=" * 80)
-        email_content.append(email_data['text'])
-        email_content.append("-" * 80)
+    for i, email_raw in enumerate(email_texts):
+        try:
+            msg = email.message_from_string(email_raw)
+            subject = msg.get('Subject', '')
+            from_field = msg.get('From', '')
+            email_content.append(f"\nEMAIL #{i+1} - Subject: {subject} - From: {from_field}")
+            email_content.append("=" * 80)
+            # Try to extract the plain text body
+            body = ""
+            if msg.is_multipart():
+                for part in msg.walk():
+                    content_type = part.get_content_type()
+                    content_disposition = str(part.get('Content-Disposition'))
+                    if 'attachment' in content_disposition:
+                        continue
+                    if content_type == 'text/plain':
+                        try:
+                            body += part.get_payload(decode=True).decode('utf-8', errors='ignore')
+                        except Exception:
+                            pass
+            else:
+                try:
+                    body += msg.get_payload(decode=True).decode('utf-8', errors='ignore')
+                except Exception:
+                    pass
+            email_content.append(body)
+            email_content.append("-" * 80)
+        except Exception as e:
+            logger.warning(f"Error parsing email for content: {e}")
     
     return "\n".join(email_content)
 
 def analyze_emails_with_ollama(email_texts):
     """
-    Analyze email texts using model and start interactive Q&A.
-    
+    Analyze email texts using model and return the LLM report, email summary, and email content.
     Args:
-        email_texts (list): List of email data dictionaries
+        email_texts (list): List of raw email content strings
+    Returns:
+        dict: {'llm_report': ..., 'email_summary': ..., 'email_content': ...}
     """
     logger.info("Starting email analysis with Ollama")
-    
-    # Prepare data for the LLM
     email_summary = prepare_email_summary(email_texts)
     email_content = prepare_email_content(email_texts)
     base_prompt = get_base_prompt()
     qa_prompt = get_qa_prompt()
-
-  
-    
-
-    # Build the conversation context
     conversation_context = [
         {
-            'role': 'system', 
+            'role': 'system',
             'content': base_prompt
         },
         {
             'role': 'user',
-            'content': f"""### **Task:**
+            'content': f"""
+### **Task:**
+
 Please analyze the provided data, identify any relevant findings, and deliver a report or summary based on the following steps:
 
 1. **Assessment:**
-   - first mention the number of emails that you had analysed
+   - First mention the number of emails that you had analysed.
    - Review the provided digital evidence (files, logs, devices, etc.) to determine its significance.
    - Identify any potential anomalies, stories, suspicious patterns, or signs of cybercrime.
 
@@ -127,124 +146,187 @@ Please analyze the provided data, identify any relevant findings, and deliver a 
    - Apply forensic tools and methodologies to examine and analyse the emails.
    - Look for deleted files, metadata inconsistencies, encryption traces, or other forensic artifacts.
    - Cross-reference findings with known threats (e.g., malware signatures, hacking techniques).
-   - advise on what evidence to look towards to and study
-   - i would want details such as names, places, dates and stories, and your suspected insights based on the emails just like this person was at this place in this timing. and other evidence like this person contacted this email asking about a particular product or action 
+   - Advise on what evidence to look towards and study.
+   - I would want details such as names, places, dates and stories, and your suspected insights based on the emails, just like:
+     - "This person was at this place at this time."
+     - "This person contacted this email asking about a particular product or action."
 
 3. **Reporting:**
    - Generate a clear, well-documented and complete report of all the emails summarizing your findings, including any relevant timeline, artifacts, or patterns.
    - Ensure that all conclusions are backed by the evidence and are legally sound.
-   - generate an overview or summary of all the emails analysed 
-   
+   - Generate an overview or summary of all the emails analysed.
+
 4. **Findings Collation:**
-    - outline your findings and follow up on how and why you got your findings. please make sure that your findings make sense.
+   - Outline your findings and follow up on how and why you got your findings.
+   - Please make sure that your findings make sense.
 
-You are analyzing a collection of {len(email_texts)} emails. 
+You are analyzing a collection of {len(email_texts)} emails.
 
-Here is the email dataset overview:
+---
+
+### **Email Dataset Overview:**
 
 {email_summary}
 
-Here are the full contents of the emails:
+---
+
+### **Full Contents of the Emails:**
 
 {email_content}
 
-Please analyze this information and provide your insights. Be specific and highlight anything unusual or noteworthy. Include emojis as well to make the report more nicer.
+---
 
-At the end of your report, give me a list of places and organisations mentioned in all the emails that you have analyzed. (please do keep in mind you are a digital forensic investigator assistant so it's important for the digital forensic investigator to know the list of names and organisations in the emails to gain some leads in forensic analysis)
+Please analyze this information and provide your insights. Be specific and highlight anything unusual or noteworthy. Include emojis as well to make the report more engaging.
+
+---
+
+### **Analyze the emails and *ONLY* respond in the following format:**
+
+**Email Analysis Report**
+
+**Date and Time Sent:**  
+[timestamp]
+
+**Summary of Email Content:**  
+[summarize the main message]
+
+**Key Points / Highlights:**  
+[point 1]  
+[point 2]  
+[point 3]  
+
+**Tone and Intent:**  
+[describe the tone and intent]
+
+**Notable Entities Identified:**  
+[entity 1]  
+[entity 2]  
+
+**Potential Red Flags (if any):**  
+[list if present]
+
+**Overall Analysis/Conclusion:**  
+[final thoughts or important insight]  
+(Please do keep in mind you are a digital forensic investigator assistant, so it's important for the digital forensic investigator to know the list of names and organisations in the emails to gain some leads in forensic analysis)
 """
+
         }
     ]
-    
     try:
         logger.info("Sending data to Ollama for analysis")
-        print("Sending data to Ollama for analysis...\n")
-        
-        # Display email summary
-        print("\n\n======== Email Summary Data ========\n")
-        print(email_summary)
-        print("\n======================================\n")
-        print("\n======== Email Analysis Results ========\n")
-       
-        # Stream the LLM response
+        response = ollama.chat(
+            model='gemma3',
+            messages=conversation_context
+        )
+        llm_report = response['message']['content']
+        return {
+            'llm_report': llm_report,
+            'email_summary': email_summary,
+            'email_content': email_content
+        }
+    except Exception as e:
+        logger.error(f"Error analyzing emails with Ollama: {str(e)}")
+        return {
+            'llm_report': f"Error analyzing emails with Ollama: {str(e)}",
+            'email_summary': email_summary,
+            'email_content': email_content
+        }
+
+def analyze_emails_with_ollama_stream(email_texts):
+    """
+    Stream LLM markdown output for email analysis. Yields each markdown chunk as it arrives.
+    Args:
+        email_texts (list): List of raw email content strings
+    Yields:
+        str: Markdown chunk from the LLM
+    """
+    logger.info("Starting streaming email analysis with Ollama (markdown output)")
+    email_summary = prepare_email_summary(email_texts)
+    email_content = prepare_email_content(email_texts)
+    base_prompt = get_base_prompt()
+    conversation_context = [
+        {
+            'role': 'system',
+            'content': base_prompt
+        },
+        {
+            'role': 'user',
+            'content': f'''
+### **Task:**
+
+Please analyze the provided data and deliver a concise, visually structured, and easy-to-read report in markdown. **Follow these formatting and content rules:**
+
+- Use clear headings, subheadings, and whitespace.
+- Use bullet points or numbered lists for key points.
+- Limit each section to the 3–5 most important items.
+- Use tables for statistics or lists if appropriate.
+- Keep explanations concise (1–2 sentences per point).
+- Avoid repeating information.
+- Make the report visually scannable and easy to read.
+- Use emojis for section headers or to highlight important points.
+
+---
+
+**Email Analysis Report**
+
+**Date and Time Sent:**  
+[timestamp]
+
+**Summary of Email Content:**  
+- [1–2 sentence summary]
+
+**Key Points / Highlights:**  
+- [Point 1]
+- [Point 2]
+- [Point 3]
+
+**Statistics:**
+| Metric         | Value |
+| -------------- | ----- |
+| Unique Senders |   X   |
+| Top Sender     |   Y   |
+
+**Notable Entities Identified:**  
+- [Entity 1]
+- [Entity 2]
+
+**Potential Red Flags (if any):**  
+- [Red flag 1]
+- [Red flag 2]
+
+**Overall Analysis/Conclusion:**  
+- [1–2 sentence conclusion]
+
+---
+
+You are analyzing a collection of {len(email_texts)} emails.
+
+### **Email Dataset Overview:**
+
+{email_summary}
+
+---
+
+### **Full Contents of the Emails:**
+
+{email_content}
+
+---
+
+**IMPORTANT:** Format your entire response using markdown. Do not repeat information. Make the report visually appealing and easy to scan for a digital forensics investigator. Do not include any other text or response other than the markdown.
+'''
+        }
+    ]
+    try:
+        logger.info("Sending data to Ollama for streaming markdown analysis")
         response = ollama.chat(
             model='gemma3',
             messages=conversation_context,
             stream=True
         )
-        
-        assistant_response = ""
         for chunk in response:
             content = chunk['message']['content']
-            assistant_response += content
-            sys.stdout.write(content)
-            sys.stdout.flush()
-        
-        # Add the assistant's response to the conversation context
-        conversation_context.append({'role': 'assistant', 'content': assistant_response})
-        
-        # Add the QA prompt to guide concise responses
-        logger.info("Adding QA guidance to conversation context")
-        conversation_context.append({'role': 'user', 'content': qa_prompt})
-        response = ollama.chat(
-            model='mistral',
-            messages=conversation_context
-        )
-        conversation_context.append({'role': 'assistant', 'content': response['message']['content']})
-        
-        # Start interactive Q&A loop
-        logger.info("Starting interactive Q&A mode")
-        print("\n\n======== Interactive Q&A Mode ========")
-        print("You can now ask questions about the emails. Type 'exit' to quit.")
-        
-        run_interactive_qa(conversation_context)
-        
+            yield content
     except Exception as e:
-        logger.error(f"Error analyzing emails with Ollama: {str(e)}")
-        print(f"Error analyzing emails with Ollama: {str(e)}")
-
-def run_interactive_qa(conversation_context):
-    """
-    Run an interactive Q&A session with the LLM using the established conversation context.
-    
-    Args:
-        conversation_context (list): The conversation history for context
-    """
-    while True:
-        try:
-            user_question = input("\nQuestion (or 'exit' to quit): ")
-            if user_question.lower() in ['exit', 'quit', 'q']:
-                logger.info("User exited Q&A mode")
-                print("Exiting Q&A mode. Goodbye!")
-                break
-            
-            # For each question, remind the model to be concise
-            actual_question = f"Please answer this question directly and concisely: {user_question}"
-            logger.debug(f"User question: {user_question}")
-            conversation_context.append({'role': 'user', 'content': actual_question})
-            
-            print("\nAnalyzing your question...")
-            response = ollama.chat(
-                model='gemma3',
-                messages=conversation_context,
-                stream=True
-            )
-            
-            print("\n")
-            assistant_response = ""
-            for chunk in response:
-                content = chunk['message']['content']
-                assistant_response += content
-                sys.stdout.write(content)
-                sys.stdout.flush()
-            print("\n")
-            
-            conversation_context.append({'role': 'assistant', 'content': assistant_response})
-            
-        except KeyboardInterrupt:
-            logger.info("User interrupted Q&A mode with keyboard")
-            print("\nExiting Q&A mode. Goodbye!")
-            break
-        except Exception as e:
-            logger.error(f"Error in Q&A mode: {str(e)}")
-            print(f"\nError: {str(e)}")
-            print("Let's continue with a new question.")
+        logger.error(f"Error streaming analysis with Ollama: {str(e)}")
+        yield f"**Error analyzing emails with Ollama:** {str(e)}"

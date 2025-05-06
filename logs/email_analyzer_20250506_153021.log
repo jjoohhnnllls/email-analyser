@@ -1,0 +1,21 @@
+2025-05-06 15:30:21,426 - email_analyzer - INFO - Logging initialized. Log file: logs\email_analyzer_20250506_153021.log
+2025-05-06 15:30:55,687 - file_handler - INFO - Searching for .eml files in C:/Users/Demo PC2/Desktop/Email to EML downloader/gmail_export_20250320_104947/test
+2025-05-06 15:30:55,688 - file_handler - INFO - Found 17 .eml files in folder
+2025-05-06 15:30:55,691 - file_handler - ERROR - Error parsing date in 20250311_091022_010001958478297e-72e73af1-8428-4436-aad4-eb8c8d695.eml: can't compare offset-naive and offset-aware datetimes
+2025-05-06 15:30:55,692 - file_handler - ERROR - Error parsing date in 20250312_231917_67d278e5_170a0220_1b84c0_1ecc_at_mx_google_com.eml: can't compare offset-naive and offset-aware datetimes
+2025-05-06 15:30:55,694 - file_handler - ERROR - Error parsing date in 20250312_231935_67d278f7_170a0220_39f97a_1e2f_at_mx_google_com.eml: can't compare offset-naive and offset-aware datetimes
+2025-05-06 15:30:55,696 - file_handler - ERROR - Error parsing date in 20250312_232808_67d27af8_050a0220_147b4b_1d02_at_mx_google_com.eml: can't compare offset-naive and offset-aware datetimes
+2025-05-06 15:30:55,697 - file_handler - ERROR - Error parsing date in 20250312_232828_67d27b0c_050a0220_2c1aab_1b83_at_mx_google_com.eml: can't compare offset-naive and offset-aware datetimes
+2025-05-06 15:30:55,699 - file_handler - ERROR - Error parsing date in 20250312_233025_67d27b81_050a0220_287957_147e_at_mx_google_com.eml: can't compare offset-naive and offset-aware datetimes
+2025-05-06 15:30:55,700 - file_handler - ERROR - Error parsing date in 20250312_233112_67d27bb0_630a0220_2a1bf_1c86_at_mx_google_com.eml: can't compare offset-naive and offset-aware datetimes
+2025-05-06 15:30:55,701 - file_handler - ERROR - Error parsing date in 20250312_233131_67d27bc3_170a0220_3d0fe3_1fdf_at_mx_google_com.eml: can't compare offset-naive and offset-aware datetimes
+2025-05-06 15:30:55,704 - file_handler - ERROR - Error parsing date in 20250312_233411_67d27c63_050a0220_1c0c01_1b38_at_mx_google_com.eml: can't compare offset-naive and offset-aware datetimes
+2025-05-06 15:30:55,706 - file_handler - ERROR - Error parsing date in 20250312_233429_67d27c75_050a0220_43651_1dc8_at_mx_google_com.eml: can't compare offset-naive and offset-aware datetimes
+2025-05-06 15:30:55,708 - file_handler - ERROR - Error parsing date in 20250312_233448_67d27c88_170a0220_24d2bb_a58b_at_mx_google_com.eml: can't compare offset-naive and offset-aware datetimes
+2025-05-06 15:30:55,710 - file_handler - ERROR - Error parsing date in i love cats.eml: can't compare offset-naive and offset-aware datetimes
+2025-05-06 15:30:55,711 - file_handler - ERROR - Error parsing date in Inquiry for Customized Travel Packages to the Maldives.eml: can't compare offset-naive and offset-aware datetimes
+2025-05-06 15:30:55,712 - file_handler - ERROR - Error parsing date in Potential Partnership Proposal for Expanding Our Retail Presence.eml: can't compare offset-naive and offset-aware datetimes
+2025-05-06 15:30:55,714 - file_handler - ERROR - Error parsing date in Re_ Query on Q3 Financial Analysis for XYZ Project.eml: can't compare offset-naive and offset-aware datetimes
+2025-05-06 15:30:55,715 - file_handler - ERROR - Error parsing date in Your Order #3271 Confirmation_ Delivery Scheduled for Next Week.eml: can't compare offset-naive and offset-aware datetimes
+2025-05-06 15:30:55,716 - file_handler - ERROR - Error parsing date in Your Request for Secure Investment Transfer Confirmed.eml: can't compare offset-naive and offset-aware datetimes
+2025-05-06 15:30:55,717 - file_handler - INFO - Found 0 emails within the specified date range

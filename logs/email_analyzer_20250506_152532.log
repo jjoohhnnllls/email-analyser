@@ -1,0 +1,53 @@
+2025-05-06 15:25:32,331 - email_analyzer - INFO - Logging initialized. Log file: logs\email_analyzer_20250506_152532.log
+2025-05-06 15:25:50,987 - file_handler - INFO - Searching for .eml files in C:\Users\Demo PC2\Desktop\email-analyser\tests
+2025-05-06 15:25:50,988 - file_handler - INFO - Found 0 .eml files in folder
+2025-05-06 15:25:50,989 - file_handler - INFO - Found 0 emails within the specified date range
+2025-05-06 15:26:15,315 - file_handler - INFO - Searching for .eml files in C:\Users\Demo PC2\Desktop\email-analyser\tests
+2025-05-06 15:26:15,316 - file_handler - INFO - Found 0 .eml files in folder
+2025-05-06 15:26:15,318 - file_handler - INFO - Found 0 emails within the specified date range
+2025-05-06 15:27:22,340 - file_handler - INFO - Searching for .eml files in C:\Users\Demo PC2\Desktop\email-analyser\tests
+2025-05-06 15:27:22,341 - file_handler - INFO - Found 0 .eml files in folder
+2025-05-06 15:27:22,342 - file_handler - INFO - Found 0 emails within the specified date range
+2025-05-06 15:27:42,702 - file_handler - INFO - Searching for .eml files in C:\Users\Demo PC2\Desktop\email-analyser\tests
+2025-05-06 15:27:42,703 - file_handler - INFO - Found 0 .eml files in folder
+2025-05-06 15:27:42,703 - file_handler - INFO - Found 0 emails within the specified date range
+2025-05-06 15:28:24,364 - file_handler - INFO - Searching for .eml files in C:\Users\Demo PC2\Desktop\Email to EML downloader\gmail_export_20250320_104947\test
+2025-05-06 15:28:24,365 - file_handler - INFO - Found 17 .eml files in folder
+2025-05-06 15:28:24,368 - file_handler - ERROR - Error processing 20250311_091022_010001958478297e-72e73af1-8428-4436-aad4-eb8c8d695.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:28:24,372 - file_handler - ERROR - Error processing 20250312_231917_67d278e5_170a0220_1b84c0_1ecc_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:28:24,373 - file_handler - ERROR - Error processing 20250312_231935_67d278f7_170a0220_39f97a_1e2f_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:28:24,375 - file_handler - ERROR - Error processing 20250312_232808_67d27af8_050a0220_147b4b_1d02_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:28:24,377 - file_handler - ERROR - Error processing 20250312_232828_67d27b0c_050a0220_2c1aab_1b83_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:28:24,380 - file_handler - ERROR - Error processing 20250312_233025_67d27b81_050a0220_287957_147e_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:28:24,382 - file_handler - ERROR - Error processing 20250312_233112_67d27bb0_630a0220_2a1bf_1c86_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:28:24,383 - file_handler - ERROR - Error processing 20250312_233131_67d27bc3_170a0220_3d0fe3_1fdf_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:28:24,385 - file_handler - ERROR - Error processing 20250312_233411_67d27c63_050a0220_1c0c01_1b38_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:28:24,388 - file_handler - ERROR - Error processing 20250312_233429_67d27c75_050a0220_43651_1dc8_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:28:24,390 - file_handler - ERROR - Error processing 20250312_233448_67d27c88_170a0220_24d2bb_a58b_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:28:24,392 - file_handler - ERROR - Error processing i love cats.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:28:24,393 - file_handler - ERROR - Error processing Inquiry for Customized Travel Packages to the Maldives.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:28:24,395 - file_handler - ERROR - Error processing Potential Partnership Proposal for Expanding Our Retail Presence.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:28:24,398 - file_handler - ERROR - Error processing Re_ Query on Q3 Financial Analysis for XYZ Project.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:28:24,399 - file_handler - ERROR - Error processing Your Order #3271 Confirmation_ Delivery Scheduled for Next Week.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:28:24,401 - file_handler - ERROR - Error processing Your Request for Secure Investment Transfer Confirmed.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:28:24,402 - file_handler - INFO - Found 0 emails within the specified date range
+2025-05-06 15:29:47,538 - file_handler - INFO - Searching for .eml files in C:\Users\Demo PC2\Desktop\Email to EML downloader\gmail_export_20250320_104947\test
+2025-05-06 15:29:47,539 - file_handler - INFO - Found 17 .eml files in folder
+2025-05-06 15:29:47,541 - file_handler - ERROR - Error processing 20250311_091022_010001958478297e-72e73af1-8428-4436-aad4-eb8c8d695.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:29:47,543 - file_handler - ERROR - Error processing 20250312_231917_67d278e5_170a0220_1b84c0_1ecc_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:29:47,545 - file_handler - ERROR - Error processing 20250312_231935_67d278f7_170a0220_39f97a_1e2f_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:29:47,547 - file_handler - ERROR - Error processing 20250312_232808_67d27af8_050a0220_147b4b_1d02_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:29:47,552 - file_handler - ERROR - Error processing 20250312_232828_67d27b0c_050a0220_2c1aab_1b83_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:29:47,553 - file_handler - ERROR - Error processing 20250312_233025_67d27b81_050a0220_287957_147e_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:29:47,555 - file_handler - ERROR - Error processing 20250312_233112_67d27bb0_630a0220_2a1bf_1c86_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:29:47,557 - file_handler - ERROR - Error processing 20250312_233131_67d27bc3_170a0220_3d0fe3_1fdf_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:29:47,559 - file_handler - ERROR - Error processing 20250312_233411_67d27c63_050a0220_1c0c01_1b38_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:29:47,561 - file_handler - ERROR - Error processing 20250312_233429_67d27c75_050a0220_43651_1dc8_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:29:47,563 - file_handler - ERROR - Error processing 20250312_233448_67d27c88_170a0220_24d2bb_a58b_at_mx_google_com.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:29:47,566 - file_handler - ERROR - Error processing i love cats.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:29:47,569 - file_handler - ERROR - Error processing Inquiry for Customized Travel Packages to the Maldives.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:29:47,570 - file_handler - ERROR - Error processing Potential Partnership Proposal for Expanding Our Retail Presence.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:29:47,572 - file_handler - ERROR - Error processing Re_ Query on Q3 Financial Analysis for XYZ Project.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:29:47,573 - file_handler - ERROR - Error processing Your Order #3271 Confirmation_ Delivery Scheduled for Next Week.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:29:47,574 - file_handler - ERROR - Error processing Your Request for Secure Investment Transfer Confirmed.eml: '<=' not supported between instances of 'datetime.date' and 'datetime.datetime'
+2025-05-06 15:29:47,575 - file_handler - INFO - Found 0 emails within the specified date range
