@@ -10,6 +10,7 @@ import ollama
 import logging
 from prompts import get_base_prompt, get_qa_prompt
 import email
+from PyQt6.QtCore import QThread, pyqtSignal
 
 logger = logging.getLogger(__name__)
 
@@ -330,3 +331,103 @@ You are analyzing a collection of {len(email_texts)} emails.
     except Exception as e:
         logger.error(f"Error streaming analysis with Ollama: {str(e)}")
         yield f"**Error analyzing emails with Ollama:** {str(e)}"
+
+class ChatWorker(QThread):
+    """Worker thread for handling chat messages"""
+    finished = pyqtSignal(str)
+    error = pyqtSignal(str)
+    
+    def __init__(self, email_texts, message, analysis_results=None, social_graph=None, stats=None):
+        super().__init__()
+        self.email_texts = email_texts
+        self.message = message
+        self.analysis_results = analysis_results
+        self.social_graph = social_graph
+        self.stats = stats
+        
+    def run(self):
+        try:
+            # Prepare context from analysis results
+            context = []
+            
+            # Add email summary if available
+            if self.analysis_results and 'email_summary' in self.analysis_results:
+                context.append("Email Summary:")
+                context.append(self.analysis_results['email_summary'])
+            
+            # Add network statistics if available
+            if self.stats:
+                context.append("\nNetwork Statistics:")
+                if 'nodes' in self.stats:
+                    context.append(f"Total unique contacts: {self.stats['nodes']}")
+                if 'edges' in self.stats:
+                    context.append(f"Total connections: {self.stats['edges']}")
+                if 'top_senders' in self.stats:
+                    context.append("\nTop Senders:")
+                    for sender, count in self.stats['top_senders']:
+                        context.append(f"- {sender}: {count} emails")
+                if 'top_recipients' in self.stats:
+                    context.append("\nTop Recipients:")
+                    for recipient, count in self.stats['top_recipients']:
+                        context.append(f"- {recipient}: {count} emails")
+                if 'key_connectors' in self.stats:
+                    context.append("\nKey Connectors:")
+                    for person, score in self.stats['key_connectors']:
+                        context.append(f"- {person}: {score:.4f} connection score")
+            
+            # Add LLM analysis if available
+            if self.analysis_results and 'llm_report' in self.analysis_results:
+                context.append("\nPrevious AI Analysis:")
+                context.append(self.analysis_results['llm_report'])
+            
+            # Combine all context
+            full_context = "\n".join(context)
+            
+            # Prepare prompt for Ollama
+            prompt = f"""You are an AI assistant analyzing email communications. Here is the context from the email analysis:
+
+{full_context}
+
+Based on this context and the analyzed emails, please answer the following question:
+{self.message}
+
+Please provide a detailed and insightful response that:
+1. Directly addresses the question using the available context
+2. References specific patterns or findings from the email analysis
+3. Provides concrete examples or statistics when relevant
+4. Maintains a professional and analytical tone
+5. Acknowledges any limitations in the available data
+
+Your response:"""
+            
+            try:
+                # Get response from Ollama
+                response = ollama.chat(
+                    model='gemma3',
+                    messages=[{'role': 'user', 'content': prompt}]
+                )
+                
+                self.finished.emit(response['message']['content'])
+            except Exception as e:
+                self.error.emit(f"Error connecting to Ollama: {str(e)}. Please ensure Ollama is running and the gemma3 model is installed.")
+            
+        except Exception as e:
+            self.error.emit(str(e))
+
+def get_chat_response(email_texts, message, analysis_results=None, social_graph=None, stats=None):
+    """
+    Get a response from the AI assistant for a chat message.
+    
+    Args:
+        email_texts (list): List of email content strings
+        message (str): The user's question
+        analysis_results (dict): Results from previous analysis
+        social_graph: The social network graph
+        stats (dict): Network statistics
+        
+    Returns:
+        ChatWorker: A worker thread that will emit the response
+    """
+    logger.info("Creating chat worker for AI response")
+    worker = ChatWorker(email_texts, message, analysis_results, social_graph, stats)
+    return worker

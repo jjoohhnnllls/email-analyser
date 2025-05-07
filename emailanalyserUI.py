@@ -4,15 +4,16 @@ from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, QH
                             QFrame, QScrollArea, QTextEdit, QListWidget, QSplitter,
                             QDateEdit, QMessageBox, QProgressBar, QTextBrowser)
 from PyQt6.QtGui import QIcon, QFont, QPixmap, QColor
-from PyQt6.QtCore import Qt, QSize, QDate, QThread, pyqtSignal
+from PyQt6.QtCore import Qt, QSize, QDate, QThread, pyqtSignal, QTimer
 import datetime
 from pathlib import Path
 import logging
 import markdown2
+import ollama
 
 from utils import setup_logging
 from file_handler import get_emails_in_timeframe, get_raw_email_contents
-from llm_analyzer import analyze_emails_with_ollama
+from llm_analyzer import analyze_emails_with_ollama, get_chat_response
 from visualisations import create_social_graph, visualize_social_graph, analyze_network
 
 class AnalysisWorker(QThread):
@@ -551,16 +552,16 @@ class EmailAnalyzerApp(QMainWindow):
         chat_header.setStyleSheet("color: #6B7280; padding: 10px 0;")
         
         # Chat messages area
-        chat_messages = QScrollArea()
-        chat_messages.setWidgetResizable(True)
-        chat_messages.setStyleSheet("border: none;")
+        self.chat_messages = QScrollArea()
+        self.chat_messages.setWidgetResizable(True)
+        self.chat_messages.setStyleSheet("border: none;")
         
         self.messages_widget = QWidget()
         self.messages_layout = QVBoxLayout(self.messages_widget)
         self.messages_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
         self.messages_layout.setSpacing(15)
         
-        chat_messages.setWidget(self.messages_widget)
+        self.chat_messages.setWidget(self.messages_widget)
         
         # Input area
         input_widget = QWidget()
@@ -601,7 +602,7 @@ class EmailAnalyzerApp(QMainWindow):
         
         # Add all elements to chat layout
         chat_layout.addWidget(chat_header)
-        chat_layout.addWidget(chat_messages)
+        chat_layout.addWidget(self.chat_messages)
         chat_layout.addWidget(input_widget)
         
         layout.addWidget(chat_frame)
@@ -635,10 +636,20 @@ class EmailAnalyzerApp(QMainWindow):
         self.add_chat_message(message, is_user=True)
         self.chat_input.clear()
         
-        # Create worker for LLM response
-        self.chat_worker = ChatWorker(self.current_results['email_texts'], message)
-        self.chat_worker.finished.connect(lambda response: self.add_chat_message(response, is_user=False))
-        self.chat_worker.error.connect(lambda error: QMessageBox.critical(self, "Error", error))
+        # Show loading message
+        loading_msg = "AI is thinking..."
+        loading_frame = self.add_chat_message(loading_msg, is_user=False)
+        
+        # Create worker for LLM response with full context
+        self.chat_worker = get_chat_response(
+            self.current_results['email_texts'],
+            message,
+            analysis_results=self.current_results['analysis'],
+            social_graph=self.current_results['social_graph'],
+            stats=self.current_results['stats']
+        )
+        self.chat_worker.finished.connect(lambda response: self.handle_chat_response(response, loading_frame))
+        self.chat_worker.error.connect(lambda error: self.handle_chat_error(error, loading_frame))
         self.chat_worker.start()
         
     def add_chat_message(self, message, is_user=True):
@@ -648,22 +659,52 @@ class EmailAnalyzerApp(QMainWindow):
                 background-color: {'#F3F4F6' if is_user else '#FEF2F2'};
                 border-radius: 8px;
                 padding: 10px;
+                margin: 5px;
             }}
         """)
         msg_layout = QVBoxLayout(msg_frame)
         msg_layout.setContentsMargins(15, 10, 15, 10)
         
+        # Add sender label
+        sender_label = QLabel("You" if is_user else "AI Assistant")
+        sender_label.setStyleSheet("font-weight: bold; color: #374151;")
+        msg_layout.addWidget(sender_label)
+        
+        # Add message text
         msg_text = QLabel(message)
         msg_text.setWordWrap(True)
+        msg_text.setStyleSheet("color: #1F2937;")
         msg_layout.addWidget(msg_text)
         
         self.messages_layout.addWidget(msg_frame)
         
-        # Scroll to bottom
-        QApplication.processEvents()
-        self.messages_widget.parent().verticalScrollBar().setValue(
-            self.messages_widget.parent().verticalScrollBar().maximum()
-        )
+        # Scroll to bottom using the scroll area
+        QTimer.singleShot(100, lambda: self.scroll_to_bottom())
+        
+        return msg_frame
+        
+    def scroll_to_bottom(self):
+        """Scroll the chat messages to the bottom"""
+        if self.chat_messages:
+            self.chat_messages.verticalScrollBar().setValue(
+                self.chat_messages.verticalScrollBar().maximum()
+            )
+    
+    def handle_chat_response(self, response, loading_frame):
+        # Remove loading message
+        self.messages_layout.removeWidget(loading_frame)
+        loading_frame.deleteLater()
+        
+        # Add AI response
+        self.add_chat_message(response, is_user=False)
+        
+    def handle_chat_error(self, error, loading_frame):
+        # Remove loading message
+        self.messages_layout.removeWidget(loading_frame)
+        loading_frame.deleteLater()
+        
+        # Show error message
+        self.add_chat_message(f"Error: {error}", is_user=False)
     
     def run_analysis(self):
         """Start the email analysis process"""
@@ -749,36 +790,6 @@ class EmailAnalyzerApp(QMainWindow):
             pixmap = QPixmap(output_file)
             self.network_viz.setPixmap(pixmap.scaled(self.network_viz.size(), Qt.AspectRatioMode.KeepAspectRatio))
         self.chat_btn.setEnabled(True)
-
-class ChatWorker(QThread):
-    """Worker thread for handling chat messages"""
-    finished = pyqtSignal(str)
-    error = pyqtSignal(str)
-    
-    def __init__(self, email_texts, message):
-        super().__init__()
-        self.email_texts = email_texts
-        self.message = message
-        
-    def run(self):
-        try:
-            # Prepare prompt for Ollama
-            prompt = f"""Based on the analyzed emails, please answer the following question:
-            
-{self.message}
-
-Please provide a detailed and insightful response, focusing on any patterns, anomalies, or important findings from the email analysis."""
-            
-            # Get response from Ollama
-            response = ollama.chat(
-                model='mistral',
-                messages=[{'role': 'user', 'content': prompt}]
-            )
-            
-            self.finished.emit(response['message']['content'])
-            
-        except Exception as e:
-            self.error.emit(str(e))
 
 # Main application
 if __name__ == "__main__":
