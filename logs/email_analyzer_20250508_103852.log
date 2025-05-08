@@ -1,0 +1,21 @@
+2025-05-08 10:38:52,851 - root - INFO - Starting Email Analyzer with log level: INFO
+2025-05-08 10:38:52,851 - root - INFO - Log file: logs\email_analyzer_20250508_103852.log
+2025-05-08 10:38:52,852 - root - INFO - Starting in GUI mode
+2025-05-08 10:38:52,894 - email_analyzer - INFO - Logging initialized. Log file: logs\email_analyzer_20250508_103852.log
+2025-05-08 10:38:53,075 - email_analyzer - INFO - Starting report generation
+2025-05-08 10:38:53,082 - email_analyzer - INFO - Report generation completed in 0.01 seconds
+2025-05-08 10:38:53,698 - root - INFO - GUI window displayed
+2025-05-08 10:39:34,982 - file_handler - INFO - Searching for .eml files in C:/Users/Demo PC2/Desktop/Email to EML downloader/gmail_export_20250320_104947/test
+2025-05-08 10:39:34,984 - file_handler - INFO - Found 17 .eml files in folder
+2025-05-08 10:39:34,995 - file_handler - INFO - Found 11 emails within the specified date range
+2025-05-08 10:39:34,996 - visualisations - INFO - Creating social graph from email data
+2025-05-08 10:39:35,007 - visualisations - INFO - Created social graph with 12 nodes and 11 edges
+2025-05-08 10:39:35,008 - visualisations - INFO - Analyzing email network
+2025-05-08 10:39:35,011 - llm_analyzer - INFO - Starting email analysis with Ollama
+2025-05-08 10:39:35,012 - llm_analyzer - INFO - Preparing email summary for LLM
+2025-05-08 10:39:35,028 - llm_analyzer - INFO - Preparing full email content for LLM
+2025-05-08 10:39:35,037 - llm_analyzer - INFO - Sending data to Ollama for analysis
+2025-05-08 10:39:50,120 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-05-08 10:39:50,123 - email_analyzer - INFO - Starting report generation
+2025-05-08 10:39:50,127 - visualisations - INFO - Starting word cloud generation
+2025-05-08 10:39:51,547 - visualisations - INFO - Word cloud generation completed in 1.42 seconds

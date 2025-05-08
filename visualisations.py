@@ -10,8 +10,43 @@ import matplotlib.pyplot as plt
 import logging
 from email_parser import extract_sender, extract_recipients
 import os
+from wordcloud import WordCloud
+from collections import Counter
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
 
 logger = logging.getLogger(__name__)
+
+def download_nltk_data():
+    """Download required NLTK data if not already present."""
+    try:
+        # Download punkt tokenizer
+        try:
+            nltk.data.find('tokenizers/punkt')
+        except LookupError:
+            logger.info("Downloading NLTK punkt tokenizer...")
+            nltk.download('punkt')
+        
+        # Download stopwords
+        try:
+            nltk.data.find('corpora/stopwords')
+        except LookupError:
+            logger.info("Downloading NLTK stopwords...")
+            nltk.download('stopwords')
+            
+        logger.info("NLTK data download completed successfully")
+    except Exception as e:
+        logger.error(f"Error downloading NLTK data: {str(e)}")
+        # Try to download all data at once as a fallback
+        try:
+            logger.info("Attempting to download all NLTK data...")
+            nltk.download('all')
+        except Exception as e:
+            logger.error(f"Failed to download NLTK data: {str(e)}")
+
+# Download NLTK data when module is imported
+download_nltk_data()
 
 def create_social_graph(email_contents):
     """
@@ -184,3 +219,108 @@ def analyze_network(graph):
         logger.warning("Could not calculate betweenness centrality")
         
     return stats
+
+def generate_wordcloud(text, output_file="outputs/wordcloud.png"):
+    """
+    Generate a word cloud from the given text and save it to a file.
+    
+    Args:
+        text (str): The text to generate the word cloud from
+        output_file (str): Path to save the word cloud image
+        
+    Returns:
+        str: Path to the saved word cloud image
+    """
+    logger.info("Generating word cloud from text")
+    
+    try:
+        # Simple word tokenization using split
+        words = text.lower().split()
+        
+        # Get stopwords
+        try:
+            stop_words = set(stopwords.words('english'))
+        except LookupError:
+            logger.info("Downloading NLTK stopwords...")
+            nltk.download('stopwords')
+            stop_words = set(stopwords.words('english'))
+        
+        # Add email metadata and technical terms to filter out
+        custom_stop_words = {
+            # Email metadata
+            'from', 'to', 'cc', 'bcc', 'subject', 'date', 'sent', 'received',
+            'message-id', 'messageid', 'reply-to', 'replyto', 'return-path',
+            'returnpath', 'delivered-to', 'deliveredto', 'received-spf',
+            'receivedspf', 'dkim-signature', 'dkimsignature', 'mime-version',
+            'mimeversion', 'content-type', 'contenttype', 'content-transfer-encoding',
+            'contenttransferencoding', 'x-mailer', 'xmailer', 'x-mimeole',
+            'xmimeole', 'x-ms-has-attach', 'xmshasattach', 'x-ms-tnef-correlator',
+            'xmstnefcorrelator', 'thread-index', 'threadindex', 'thread-topic',
+            'threadtopic', 'references', 'in-reply-to', 'inreplyto',
+            
+            # Technical terms
+            'domain', 'smtp', 'mso', 'id', 'http', 'https', 'www', 'com',
+            'org', 'net', 'edu', 'gov', 'mail', 'email', 'message', 'attachment',
+            'attachments', 'forwarded', 'forward', 'original', 'message',
+            'html', 'text', 'plain', 'multipart', 'alternative', 'related',
+            'mixed', 'boundary', 'charset', 'utf-8', 'utf8', 'iso-8859-1',
+            'iso88591', 'base64', 'quoted-printable', 'quotedprintable',
+            '7bit', '8bit', 'binary', 'x-', 'x_', 'x.', 'x:', 'x;',
+            
+            # Common email client terms
+            'outlook', 'gmail', 'yahoo', 'hotmail', 'microsoft', 'google',
+            'apple', 'mail', 'thunderbird', 'mozilla', 'firefox', 'chrome',
+            'safari', 'edge', 'internet', 'explorer', 'windows', 'mac',
+            'linux', 'android', 'ios', 'mobile', 'desktop', 'laptop',
+            'computer', 'device', 'server', 'client', 'browser', 'web',
+            'internet', 'online', 'offline', 'network', 'wifi', 'ethernet',
+            'ip', 'dns', 'tcp', 'udp', 'ssl', 'tls', 'ssh', 'ftp', 'sftp',
+            'pop3', 'imap', 'exchange', 'active', 'directory', 'ldap',
+            'kerberos', 'ntlm', 'oauth', 'saml', 'jwt', 'token', 'cookie',
+            'session', 'cache', 'proxy', 'firewall', 'router', 'switch',
+            'gateway', 'vpn', 'lan', 'wan', 'man', 'pan', 'wlan', 'bluetooth',
+            'nfc', 'rfid', 'gps', 'gsm', 'cdma', 'lte', '5g', '4g', '3g',
+            '2g', 'wifi', 'ethernet', 'bluetooth', 'nfc', 'rfid', 'gps',
+            'gsm', 'cdma', 'lte', '5g', '4g', '3g', '2g'
+        }
+        
+        # Combine NLTK stopwords with custom stopwords
+        all_stop_words = stop_words.union(custom_stop_words)
+        
+        # Remove stopwords, numbers, and special characters
+        words = [word for word in words if word.isalpha() and word not in all_stop_words]
+        
+        if not words:
+            logger.warning("No valid words found for word cloud generation")
+            return None
+        
+        # Count word frequencies
+        word_freq = Counter(words)
+        
+        # Generate word cloud
+        wordcloud = WordCloud(
+            width=800,
+            height=400,
+            background_color='white',
+            max_words=100,
+            contour_width=1,
+            contour_color='#E5E7EB'
+        ).generate_from_frequencies(word_freq)
+        
+        # Create directory if it doesn't exist
+        os.makedirs(os.path.dirname(output_file) if os.path.dirname(output_file) else '.', exist_ok=True)
+        
+        # Save the word cloud
+        plt.figure(figsize=(10, 5))
+        plt.imshow(wordcloud, interpolation='bilinear')
+        plt.axis('off')
+        plt.tight_layout(pad=0)
+        plt.savefig(output_file, dpi=300, bbox_inches='tight')
+        plt.close()
+        
+        logger.info(f"Word cloud saved to {output_file}")
+        return output_file
+        
+    except Exception as e:
+        logger.error(f"Error generating word cloud: {str(e)}")
+        return None

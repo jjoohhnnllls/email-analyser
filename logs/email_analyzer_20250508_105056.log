@@ -1,0 +1,18 @@
+2025-05-08 10:50:56,454 - root - INFO - Starting Email Analyzer with log level: INFO
+2025-05-08 10:50:56,454 - root - INFO - Log file: logs\email_analyzer_20250508_105056.log
+2025-05-08 10:50:56,455 - root - INFO - Starting in GUI mode
+2025-05-08 10:50:56,488 - email_analyzer - INFO - Logging initialized. Log file: logs\email_analyzer_20250508_105056.log
+2025-05-08 10:50:56,560 - root - ERROR - Application error: type object 'Qt' has no attribute 'AlignCenter'
+Traceback (most recent call last):
+  File "C:\Users\Demo PC2\Desktop\email-analyser\run.py", line 100, in main
+    window = EmailAnalyzerApp()
+  File "C:\Users\Demo PC2\Desktop\email-analyser\emailanalyserUI.py", line 82, in __init__
+    self.setup_ui()
+    ~~~~~~~~~~~~~^^
+  File "C:\Users\Demo PC2\Desktop\email-analyser\emailanalyserUI.py", line 157, in setup_ui
+    self.report_page = self.create_report_page()
+                       ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Demo PC2\Desktop\email-analyser\emailanalyserUI.py", line 399, in create_report_page
+    self.wordcloud_label.setAlignment(Qt.AlignCenter)
+                                      ^^^^^^^^^^^^^^
+AttributeError: type object 'Qt' has no attribute 'AlignCenter'

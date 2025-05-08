@@ -1,0 +1,30 @@
+2025-05-07 15:15:39,393 - root - INFO - Starting Email Analyzer with log level: INFO
+2025-05-07 15:15:39,393 - root - INFO - Log file: logs\email_analyzer_20250507_151539.log
+2025-05-07 15:15:39,394 - root - INFO - Starting in GUI mode
+2025-05-07 15:15:39,432 - email_analyzer - INFO - Logging initialized. Log file: logs\email_analyzer_20250507_151539.log
+2025-05-07 15:15:40,216 - root - INFO - GUI window displayed
+2025-05-07 15:16:00,196 - file_handler - INFO - Searching for .eml files in C:/Users/Demo PC2/Desktop/Email to EML downloader/gmail_export_20250320_104947/test
+2025-05-07 15:16:00,198 - file_handler - INFO - Found 17 .eml files in folder
+2025-05-07 15:16:00,209 - file_handler - INFO - Found 11 emails within the specified date range
+2025-05-07 15:16:00,210 - visualisations - INFO - Creating social graph from email data
+2025-05-07 15:16:00,221 - visualisations - INFO - Created social graph with 12 nodes and 11 edges
+2025-05-07 15:16:00,221 - visualisations - INFO - Analyzing email network
+2025-05-07 15:16:00,223 - llm_analyzer - INFO - Starting email analysis with Ollama
+2025-05-07 15:16:00,224 - llm_analyzer - INFO - Preparing email summary for LLM
+2025-05-07 15:16:00,232 - llm_analyzer - INFO - Preparing full email content for LLM
+2025-05-07 15:16:00,244 - llm_analyzer - INFO - Sending data to Ollama for analysis
+2025-05-07 15:17:26,213 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-05-07 15:17:26,244 - visualisations - INFO - Visualizing social graph
+2025-05-07 15:17:27,141 - visualisations - INFO - Saved social graph visualization to outputs/email_network.png
+2025-05-07 15:17:51,952 - visualisations - INFO - Visualizing social graph
+2025-05-07 15:17:52,695 - visualisations - INFO - Saved social graph visualization to outputs/email_network.png
+2025-05-07 15:18:06,311 - visualisations - INFO - Visualizing social graph
+2025-05-07 15:18:07,044 - visualisations - INFO - Saved social graph visualization to outputs/email_network.png
+2025-05-07 15:18:27,591 - visualisations - INFO - Visualizing social graph
+2025-05-07 15:18:28,299 - visualisations - INFO - Saved social graph visualization to outputs/email_network.png
+2025-05-07 15:18:38,375 - visualisations - INFO - Visualizing social graph
+2025-05-07 15:18:39,086 - visualisations - INFO - Saved social graph visualization to outputs/email_network.png
+2025-05-07 15:18:59,043 - visualisations - INFO - Visualizing social graph
+2025-05-07 15:18:59,750 - visualisations - INFO - Saved social graph visualization to outputs/email_network.png
+2025-05-07 15:20:31,035 - llm_analyzer - INFO - Creating chat worker for AI response
+2025-05-07 15:20:34,743 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"

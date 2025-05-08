@@ -185,8 +185,6 @@ Please analyze this information and provide your insights. Be specific and highl
 
 **Email Analysis Report**
 
-**Date and Time Sent:**  
-[timestamp]
 
 **Summary of Email Content:**  
 [summarize the main message]
@@ -209,6 +207,7 @@ Please analyze this information and provide your insights. Be specific and highl
 **Overall Analysis/Conclusion:**  
 [final thoughts or important insight]  
 (Please do keep in mind you are a digital forensic investigator assistant, so it's important for the digital forensic investigator to know the list of names and organisations in the emails to gain some leads in forensic analysis)
+limit your response to 1000 words
 """
 
         }
@@ -270,8 +269,6 @@ Please analyze the provided data and deliver a concise, visually structured, and
 
 **Email Analysis Report**
 
-**Date and Time Sent:**  
-[timestamp]
 
 **Summary of Email Content:**  
 - [1–2 sentence summary]
@@ -397,6 +394,7 @@ Please provide a detailed and insightful response that:
 3. Provides concrete examples or statistics when relevant
 4. Maintains a professional and analytical tone
 5. Acknowledges any limitations in the available data
+6. Limit your response to 100 words
 
 Your response:"""
             
@@ -409,7 +407,7 @@ Your response:"""
                 
                 self.finished.emit(response['message']['content'])
             except Exception as e:
-                self.error.emit(f"Error connecting to Ollama: {str(e)}. Please ensure Ollama is running and the gemma3 model is installed.")
+                self.error.emit(f"Error connecting to Ollama: {str(e)}. Please ensure Ollama is running and the model is installed.")
             
         except Exception as e:
             self.error.emit(str(e))

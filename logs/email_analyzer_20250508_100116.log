@@ -1,0 +1,43 @@
+2025-05-08 10:01:16,289 - root - INFO - Starting Email Analyzer with log level: INFO
+2025-05-08 10:01:16,290 - root - INFO - Log file: logs\email_analyzer_20250508_100116.log
+2025-05-08 10:01:16,290 - root - INFO - Starting in GUI mode
+2025-05-08 10:01:16,324 - email_analyzer - INFO - Logging initialized. Log file: logs\email_analyzer_20250508_100116.log
+2025-05-08 10:01:17,255 - root - INFO - GUI window displayed
+2025-05-08 10:01:36,306 - file_handler - INFO - Searching for .eml files in C:/Users/Demo PC2/Desktop/Email to EML downloader/gmail_export_20250320_104947/test
+2025-05-08 10:01:36,309 - file_handler - INFO - Found 17 .eml files in folder
+2025-05-08 10:01:36,319 - file_handler - INFO - Found 11 emails within the specified date range
+2025-05-08 10:01:36,320 - visualisations - INFO - Creating social graph from email data
+2025-05-08 10:01:36,329 - visualisations - INFO - Created social graph with 12 nodes and 11 edges
+2025-05-08 10:01:36,330 - visualisations - INFO - Analyzing email network
+2025-05-08 10:01:36,332 - llm_analyzer - INFO - Starting email analysis with Ollama
+2025-05-08 10:01:36,334 - llm_analyzer - INFO - Preparing email summary for LLM
+2025-05-08 10:01:36,339 - llm_analyzer - INFO - Preparing full email content for LLM
+2025-05-08 10:01:36,344 - llm_analyzer - INFO - Sending data to Ollama for analysis
+2025-05-08 10:03:14,094 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-05-08 10:03:14,128 - visualisations - INFO - Generating word cloud from text
+2025-05-08 10:03:14,131 - visualisations - INFO - Downloading NLTK averaged_perceptron_tagger...
+2025-05-08 10:03:14,135 - visualisations - ERROR - Error generating word cloud: 
+**********************************************************************
+  Resource [93mpunkt_tab[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt_tab')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt_tab/english/[0m
+
+  Searched in:
+    - 'C:\\Users\\Demo PC2/nltk_data'
+    - 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.1008.0_x64__qbz5n2kfra8p0\\nltk_data'
+    - 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.1008.0_x64__qbz5n2kfra8p0\\share\\nltk_data'
+    - 'C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.1008.0_x64__qbz5n2kfra8p0\\lib\\nltk_data'
+    - 'C:\\Users\\Demo PC2\\AppData\\Roaming\\nltk_data'
+    - 'C:\\nltk_data'
+    - 'D:\\nltk_data'
+    - 'E:\\nltk_data'
+**********************************************************************
+
+2025-05-08 10:03:14,141 - visualisations - INFO - Visualizing social graph
+2025-05-08 10:03:14,906 - visualisations - INFO - Saved social graph visualization to outputs/email_network.png

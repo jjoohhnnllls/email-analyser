@@ -1,0 +1,22 @@
+2025-05-07 14:45:17,550 - root - INFO - Starting Email Analyzer with log level: INFO
+2025-05-07 14:45:17,551 - root - INFO - Log file: logs\email_analyzer_20250507_144517.log
+2025-05-07 14:45:17,551 - root - INFO - Starting in GUI mode
+2025-05-07 14:45:17,590 - email_analyzer - INFO - Logging initialized. Log file: logs\email_analyzer_20250507_144517.log
+2025-05-07 14:45:18,508 - root - INFO - GUI window displayed
+2025-05-07 14:45:45,600 - file_handler - INFO - Searching for .eml files in C:/Users/Demo PC2/Desktop/Email to EML downloader/gmail_export_20250320_104947/test
+2025-05-07 14:45:45,603 - file_handler - INFO - Found 17 .eml files in folder
+2025-05-07 14:45:45,614 - file_handler - INFO - Found 11 emails within the specified date range
+2025-05-07 14:45:45,615 - visualisations - INFO - Creating social graph from email data
+2025-05-07 14:45:45,626 - visualisations - INFO - Created social graph with 12 nodes and 11 edges
+2025-05-07 14:45:45,626 - visualisations - INFO - Analyzing email network
+2025-05-07 14:45:45,627 - llm_analyzer - INFO - Starting email analysis with Ollama
+2025-05-07 14:45:45,628 - llm_analyzer - INFO - Preparing email summary for LLM
+2025-05-07 14:45:45,633 - llm_analyzer - INFO - Preparing full email content for LLM
+2025-05-07 14:45:45,644 - llm_analyzer - INFO - Sending data to Ollama for analysis
+2025-05-07 14:47:14,730 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-05-07 14:47:14,754 - visualisations - INFO - Visualizing social graph
+2025-05-07 14:47:15,548 - visualisations - INFO - Saved social graph visualization to outputs/email_network.png
+2025-05-07 14:48:27,164 - llm_analyzer - INFO - Creating chat worker for AI response
+2025-05-07 14:48:30,659 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-05-07 14:52:03,686 - llm_analyzer - INFO - Creating chat worker for AI response
+2025-05-07 14:52:07,175 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"

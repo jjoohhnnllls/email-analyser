@@ -14,7 +14,7 @@ import ollama
 from utils import setup_logging
 from file_handler import get_emails_in_timeframe, get_raw_email_contents
 from llm_analyzer import analyze_emails_with_ollama, get_chat_response
-from visualisations import create_social_graph, visualize_social_graph, analyze_network
+from visualisations import create_social_graph, visualize_social_graph, analyze_network, generate_wordcloud
 
 class AnalysisWorker(QThread):
     """Worker thread for running email analysis"""
@@ -364,24 +364,22 @@ class EmailAnalyzerApp(QMainWindow):
     
     def create_report_page(self):
         page = QWidget()
-        main_layout = QHBoxLayout(page)
-        main_layout.setContentsMargins(0, 0, 0, 0)
-        main_layout.setSpacing(0)
-        # Report content area
-        content_area = QWidget()
-        layout = QVBoxLayout(content_area)
+        layout = QVBoxLayout(page)
         layout.setContentsMargins(30, 30, 30, 30)
+        
         # Title
         title = QLabel("Analysis Report")
         title.setStyleSheet("font-size: 24px; font-weight: bold; color: #111827;")
         layout.addWidget(title)
         layout.addSpacing(20)
+        
         # Create scroll area for report content
         scroll_area = QScrollArea()
         scroll_area.setWidgetResizable(True)
         scroll_area.setStyleSheet("border: none;")
         scroll_content = QWidget()
         scroll_layout = QVBoxLayout(scroll_content)
+        
         # AI Analysis Report section
         ai_report_title = QLabel("AI Analysis Report")
         ai_report_title.setStyleSheet("font-size: 18px; font-weight: bold; color: #111827; margin-top: 10px;")
@@ -391,24 +389,37 @@ class EmailAnalyzerApp(QMainWindow):
         self.llm_report_browser.setMinimumHeight(250)
         scroll_layout.addWidget(ai_report_title)
         scroll_layout.addWidget(self.llm_report_browser)
+        
         # Email Summary section
         summary_title = QLabel("Email Summary")
         summary_title.setStyleSheet("font-size: 16px; font-weight: bold; color: #111827; margin-top: 20px;")
         self.email_summary_browser = QTextBrowser()
         self.email_summary_browser.setOpenExternalLinks(True)
         self.email_summary_browser.setStyleSheet("font-size: 13px; background: #F3F4F6; border: none; padding: 8px; border-radius: 6px;")
-        self.email_summary_browser.setMinimumHeight(120)
+        self.email_summary_browser.setMinimumHeight(300)
         scroll_layout.addWidget(summary_title)
         scroll_layout.addWidget(self.email_summary_browser)
+        
         # Network Statistics section
         network_stats_title = QLabel("Network Statistics")
         network_stats_title.setStyleSheet("font-size: 16px; font-weight: bold; color: #111827; margin-top: 20px;")
         self.network_stats_browser = QTextBrowser()
         self.network_stats_browser.setOpenExternalLinks(True)
         self.network_stats_browser.setStyleSheet("font-size: 13px; background: #F3F4F6; border: none; padding: 8px; border-radius: 6px;")
-        self.network_stats_browser.setMinimumHeight(120)
+        self.network_stats_browser.setMinimumHeight(300)
         scroll_layout.addWidget(network_stats_title)
         scroll_layout.addWidget(self.network_stats_browser)
+        
+        # Word Cloud section
+        wordcloud_title = QLabel("Word Cloud Analysis")
+        wordcloud_title.setStyleSheet("font-size: 16px; font-weight: bold; color: #111827; margin-top: 20px;")
+        self.wordcloud_label = QLabel()
+        self.wordcloud_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.wordcloud_label.setMinimumHeight(300)
+        self.wordcloud_label.setStyleSheet("background-color: white; border-radius: 8px; border: 1px solid #E5E7EB;")
+        scroll_layout.addWidget(wordcloud_title)
+        scroll_layout.addWidget(self.wordcloud_label)
+        
         # Network visualization section
         network_frame = QFrame()
         network_frame.setFrameShape(QFrame.Shape.StyledPanel)
@@ -428,12 +439,14 @@ class EmailAnalyzerApp(QMainWindow):
         self.network_viz.setStyleSheet("background-color: #F3F4F6; border-radius: 4px;")
         network_layout.addWidget(network_title)
         network_layout.addWidget(self.network_viz)
+        
         # Add sections to scroll layout
         scroll_layout.addSpacing(20)
         scroll_layout.addWidget(network_frame)
         scroll_layout.addStretch()
         scroll_area.setWidget(scroll_content)
         layout.addWidget(scroll_area)
+        
         # Ask AI button
         ask_ai_btn = QPushButton("Ask AI about findings 💬")
         ask_ai_btn.setStyleSheet("""
@@ -454,74 +467,7 @@ class EmailAnalyzerApp(QMainWindow):
         button_layout.addStretch()
         button_layout.addWidget(ask_ai_btn)
         layout.addLayout(button_layout)
-        # Sidebar for report sections
-        sidebar = QWidget()
-        sidebar.setFixedWidth(250)
-        sidebar.setStyleSheet("background-color: #F9FAFB; border-left: 1px solid #E5E7EB;")
-        sidebar_layout = QVBoxLayout(sidebar)
-        sections_label = QLabel("Report Sections")
-        sections_label.setStyleSheet("font-size: 16px; font-weight: bold; color: #374151;")
-        sections_list = QListWidget()
-        sections_list.addItems([
-            "Summary",
-            "Communication Network",
-            "Timeline Analysis",
-            "Entity Relationships",
-            "Anomaly Detection",
-            "Attachment Analysis"
-        ])
-        sections_list.setStyleSheet("""
-            QListWidget {
-                border: none;
-                background-color: transparent;
-            }
-            QListWidget::item {
-                padding: 8px;
-                border-radius: 4px;
-            }
-            QListWidget::item:selected {
-                background-color: #FEE2E2;
-                color: #DC2626;
-            }
-        """)
-        sections_list.setCurrentRow(0)
-        export_label = QLabel("Export Options")
-        export_label.setStyleSheet("font-size: 16px; font-weight: bold; color: #374151; margin-top: 20px;")
-        export_pdf_btn = QPushButton("📄 PDF Report")
-        export_pdf_btn.setStyleSheet("""
-            QPushButton {
-                text-align: left;
-                padding: 8px;
-                border: 1px solid #E5E7EB;
-                border-radius: 4px;
-                background-color: white;
-            }
-            QPushButton:hover {
-                background-color: #F3F4F6;
-            }
-        """)
-        export_evidence_btn = QPushButton("👁️ Evidence View")
-        export_evidence_btn.setStyleSheet("""
-            QPushButton {
-                text-align: left;
-                padding: 8px;
-                border: 1px solid #E5E7EB;
-                border-radius: 4px;
-                background-color: white;
-            }
-            QPushButton:hover {
-                background-color: #F3F4F6;
-            }
-        """)
-        sidebar_layout.addWidget(sections_label)
-        sidebar_layout.addWidget(sections_list)
-        sidebar_layout.addSpacing(10)
-        sidebar_layout.addWidget(export_label)
-        sidebar_layout.addWidget(export_pdf_btn)
-        sidebar_layout.addWidget(export_evidence_btn)
-        sidebar_layout.addStretch()
-        main_layout.addWidget(content_area)
-        main_layout.addWidget(sidebar)
+        
         return page
     
     def create_chat_page(self):
@@ -766,23 +712,47 @@ class EmailAnalyzerApp(QMainWindow):
         analysis_results = self.current_results['analysis']
         llm_report = analysis_results.get('llm_report', '')
         email_summary = analysis_results.get('email_summary', '')
+        email_texts = self.current_results.get('email_texts', [])
+        
         # Convert markdown to HTML for display
         html = markdown2.markdown(llm_report)
         self.llm_report_browser.setHtml(html)
-        # Email summary as simple HTML
-        summary_html = f'<ul>' + ''.join(f'<li>{line}</li>' for line in email_summary.split('\n') if line.strip()) + '</ul>'
-        self.email_summary_browser.setHtml(summary_html)
-        # Network stats as simple HTML
+        
+        # Email summary as plain text
+        self.email_summary_browser.setPlainText(email_summary)
+        
+        # Network stats as plain text
         network_stats = []
-        network_stats.append(f"<b>Nodes (Unique Contacts):</b> {stats.get('nodes', 0)}")
-        network_stats.append(f"<b>Edges (Connections):</b> {stats.get('edges', 0)}")
+        network_stats.append(f"Nodes (Unique Contacts): {stats.get('nodes', 0)}")
+        network_stats.append(f"Edges (Connections): {stats.get('edges', 0)}")
         if stats.get('top_senders'):
-            network_stats.append("<b>Top Senders:</b><ul>" + ''.join(f'<li>{sender}: {count}</li>' for sender, count in stats['top_senders']) + "</ul>")
+            network_stats.append("\nTop Senders:")
+            for sender, count in stats['top_senders']:
+                network_stats.append(f"- {sender}: {count}")
         if stats.get('top_recipients'):
-            network_stats.append("<b>Top Recipients:</b><ul>" + ''.join(f'<li>{recipient}: {count}</li>' for recipient, count in stats['top_recipients']) + "</ul>")
+            network_stats.append("\nTop Recipients:")
+            for recipient, count in stats['top_recipients']:
+                network_stats.append(f"- {recipient}: {count}")
         if stats.get('key_connectors'):
-            network_stats.append("<b>Key Connectors:</b><ul>" + ''.join(f'<li>{person}: {score:.4f}</li>' for person, score in stats['key_connectors']) + "</ul>")
-        self.network_stats_browser.setHtml('<br>'.join(network_stats))
+            network_stats.append("\nKey Connectors:")
+            for person, score in stats['key_connectors']:
+                network_stats.append(f"- {person}: {score:.4f}")
+        
+        self.network_stats_browser.setPlainText('\n'.join(network_stats))
+        
+        # Generate and display word cloud
+        if email_texts:
+            # Combine all email texts
+            all_text = ' '.join(email_texts)
+            wordcloud_path = generate_wordcloud(all_text)
+            if wordcloud_path:
+                wordcloud_pixmap = QPixmap(wordcloud_path)
+                self.wordcloud_label.setPixmap(wordcloud_pixmap.scaled(
+                    self.wordcloud_label.size(),
+                    Qt.AspectRatioMode.KeepAspectRatio,
+                    Qt.TransformationMode.SmoothTransformation
+                ))
+        
         # Generate and display network visualization
         if self.current_results.get('social_graph'):
             output_file = "outputs/email_network.png"

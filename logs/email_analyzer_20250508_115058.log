@@ -1,0 +1,21 @@
+2025-05-08 11:50:58,856 - root - INFO - Starting Email Analyzer with log level: INFO
+2025-05-08 11:50:58,856 - root - INFO - Log file: logs\email_analyzer_20250508_115058.log
+2025-05-08 11:50:58,856 - root - INFO - Starting in GUI mode
+2025-05-08 11:50:58,905 - email_analyzer - INFO - Logging initialized. Log file: logs\email_analyzer_20250508_115058.log
+2025-05-08 11:51:02,404 - root - INFO - GUI window displayed
+2025-05-08 11:51:26,419 - file_handler - INFO - Searching for .eml files in C:/Users/Demo PC2/Desktop/Email to EML downloader/gmail_export_20250320_104947/test
+2025-05-08 11:51:26,421 - file_handler - INFO - Found 17 .eml files in folder
+2025-05-08 11:51:26,553 - file_handler - INFO - Found 11 emails within the specified date range
+2025-05-08 11:51:26,553 - visualisations - INFO - Creating social graph from email data
+2025-05-08 11:51:26,565 - visualisations - INFO - Created social graph with 12 nodes and 11 edges
+2025-05-08 11:51:26,566 - visualisations - INFO - Analyzing email network
+2025-05-08 11:51:26,567 - llm_analyzer - INFO - Starting email analysis with Ollama
+2025-05-08 11:51:26,568 - llm_analyzer - INFO - Preparing email summary for LLM
+2025-05-08 11:51:26,573 - llm_analyzer - INFO - Preparing full email content for LLM
+2025-05-08 11:51:26,579 - llm_analyzer - INFO - Sending data to Ollama for analysis
+2025-05-08 11:51:26,593 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 400 Bad Request"
+2025-05-08 11:51:26,595 - llm_analyzer - ERROR - Error analyzing emails with Ollama: model is required (status code: 400)
+2025-05-08 11:51:26,610 - visualisations - INFO - Generating word cloud from text
+2025-05-08 11:51:28,218 - visualisations - INFO - Word cloud saved to outputs/wordcloud.png
+2025-05-08 11:51:28,368 - visualisations - INFO - Visualizing social graph
+2025-05-08 11:51:29,075 - visualisations - INFO - Saved social graph visualization to outputs/email_network.png

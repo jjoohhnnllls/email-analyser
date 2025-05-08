@@ -1,0 +1,20 @@
+2025-05-07 16:01:27,199 - root - INFO - Starting Email Analyzer with log level: INFO
+2025-05-07 16:01:27,199 - root - INFO - Log file: logs\email_analyzer_20250507_160127.log
+2025-05-07 16:01:27,200 - root - INFO - Starting in GUI mode
+2025-05-07 16:01:27,237 - email_analyzer - INFO - Logging initialized. Log file: logs\email_analyzer_20250507_160127.log
+2025-05-07 16:01:28,046 - root - INFO - GUI window displayed
+2025-05-07 16:01:53,294 - file_handler - INFO - Searching for .eml files in C:/Users/Demo PC2/Desktop/Email to EML downloader/gmail_export_20250320_104947/test
+2025-05-07 16:01:53,297 - file_handler - INFO - Found 17 .eml files in folder
+2025-05-07 16:01:53,307 - file_handler - INFO - Found 11 emails within the specified date range
+2025-05-07 16:01:53,308 - visualisations - INFO - Creating social graph from email data
+2025-05-07 16:01:53,317 - visualisations - INFO - Created social graph with 12 nodes and 11 edges
+2025-05-07 16:01:53,318 - visualisations - INFO - Analyzing email network
+2025-05-07 16:01:53,319 - llm_analyzer - INFO - Starting email analysis with Ollama
+2025-05-07 16:01:53,320 - llm_analyzer - INFO - Preparing email summary for LLM
+2025-05-07 16:01:53,325 - llm_analyzer - INFO - Preparing full email content for LLM
+2025-05-07 16:01:53,331 - llm_analyzer - INFO - Sending data to Ollama for analysis
+2025-05-07 16:03:27,821 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-05-07 16:03:27,850 - visualisations - INFO - Visualizing social graph
+2025-05-07 16:03:28,665 - visualisations - INFO - Saved social graph visualization to outputs/email_network.png
+2025-05-07 16:04:25,790 - llm_analyzer - INFO - Creating chat worker for AI response
+2025-05-07 16:04:29,467 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
