@@ -1,0 +1,2 @@
+2025-05-08 14:38:54,619 - email_analyzer - INFO - Logging initialized. Log file: logs\email_analyzer_20250508_143854.log
+2025-05-08 14:38:54,621 - email_analyzer - INFO - Starting Email Analyzer application in CLI mode
