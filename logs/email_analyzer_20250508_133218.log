@@ -1,0 +1,44 @@
+2025-05-08 13:32:18,045 - root - INFO - Starting Email Analyzer with log level: INFO
+2025-05-08 13:32:18,046 - root - INFO - Log file: logs\email_analyzer_20250508_133218.log
+2025-05-08 13:32:18,046 - root - INFO - Starting in GUI mode
+2025-05-08 13:32:18,085 - email_analyzer - INFO - Logging initialized. Log file: logs\email_analyzer_20250508_133218.log
+2025-05-08 13:32:19,019 - root - INFO - GUI window displayed
+2025-05-08 13:32:43,552 - file_handler - INFO - Searching for .eml files in C:/Users/Demo PC2/Desktop/Email to EML downloader/gmail_export_20250320_104947/test
+2025-05-08 13:32:43,554 - file_handler - INFO - Found 17 .eml files in folder
+2025-05-08 13:32:43,564 - file_handler - INFO - Found 17 emails within the specified date range
+2025-05-08 13:32:43,565 - visualisations - INFO - Creating social graph from email data
+2025-05-08 13:32:43,578 - visualisations - INFO - Created social graph with 20 nodes and 21 edges
+2025-05-08 13:32:43,578 - visualisations - INFO - Analyzing email network
+2025-05-08 13:32:43,581 - llm_analyzer - INFO - Starting email analysis with Ollama
+2025-05-08 13:32:43,582 - llm_analyzer - INFO - Preparing email summary for LLM
+2025-05-08 13:32:43,592 - llm_analyzer - INFO - Preparing full email content for LLM
+2025-05-08 13:32:43,604 - llm_analyzer - INFO - Sending data to Ollama for analysis
+2025-05-08 13:34:33,621 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-05-08 13:34:33,623 - visualisations - INFO - Visualizing social graph
+2025-05-08 13:34:34,504 - visualisations - INFO - Saved social graph visualization to outputs/email_network.png
+2025-05-08 13:34:34,505 - visualisations - INFO - Generating word cloud from text
+2025-05-08 13:34:36,100 - visualisations - INFO - Word cloud saved to outputs/wordcloud.png
+2025-05-08 13:34:36,101 - visualisations - INFO - Creating email volume heatmap (daily)
+2025-05-08 13:34:36,253 - visualisations - WARNING - Error parsing date for heatmap: name 'email' is not defined
+2025-05-08 13:34:36,257 - visualisations - WARNING - Error parsing date for heatmap: name 'email' is not defined
+2025-05-08 13:34:36,258 - visualisations - WARNING - Error parsing date for heatmap: name 'email' is not defined
+2025-05-08 13:34:36,258 - visualisations - WARNING - Error parsing date for heatmap: name 'email' is not defined
+2025-05-08 13:34:36,259 - visualisations - WARNING - Error parsing date for heatmap: name 'email' is not defined
+2025-05-08 13:34:36,259 - visualisations - WARNING - Error parsing date for heatmap: name 'email' is not defined
+2025-05-08 13:34:36,260 - visualisations - WARNING - Error parsing date for heatmap: name 'email' is not defined
+2025-05-08 13:34:36,260 - visualisations - WARNING - Error parsing date for heatmap: name 'email' is not defined
+2025-05-08 13:34:36,261 - visualisations - WARNING - Error parsing date for heatmap: name 'email' is not defined
+2025-05-08 13:34:36,261 - visualisations - WARNING - Error parsing date for heatmap: name 'email' is not defined
+2025-05-08 13:34:36,262 - visualisations - WARNING - Error parsing date for heatmap: name 'email' is not defined
+2025-05-08 13:34:36,262 - visualisations - WARNING - Error parsing date for heatmap: name 'email' is not defined
+2025-05-08 13:34:36,263 - visualisations - WARNING - Error parsing date for heatmap: name 'email' is not defined
+2025-05-08 13:34:36,264 - visualisations - WARNING - Error parsing date for heatmap: name 'email' is not defined
+2025-05-08 13:34:36,264 - visualisations - WARNING - Error parsing date for heatmap: name 'email' is not defined
+2025-05-08 13:34:36,264 - visualisations - WARNING - Error parsing date for heatmap: name 'email' is not defined
+2025-05-08 13:34:36,265 - visualisations - WARNING - Error parsing date for heatmap: name 'email' is not defined
+2025-05-08 13:34:36,265 - visualisations - WARNING - No valid dates found for heatmap
+2025-05-08 13:34:36,310 - visualisations - INFO - Generating word cloud from text
+2025-05-08 13:34:37,695 - visualisations - INFO - Word cloud saved to outputs/wordcloud.png
+2025-05-08 13:34:37,844 - visualisations - INFO - Visualizing social graph
+2025-05-08 13:34:38,706 - visualisations - INFO - Saved social graph visualization to outputs/email_network.png
+2025-05-08 13:34:38,893 - email_analyzer - ERROR - Error updating heatmap: type object 'QThread' has no attribute 'create'

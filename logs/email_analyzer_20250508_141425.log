@@ -1,0 +1,43 @@
+2025-05-08 14:14:25,118 - root - INFO - Starting Email Analyzer with log level: INFO
+2025-05-08 14:14:25,119 - root - INFO - Log file: logs\email_analyzer_20250508_141425.log
+2025-05-08 14:14:25,119 - root - INFO - Starting in GUI mode
+2025-05-08 14:14:25,151 - email_analyzer - INFO - Logging initialized. Log file: logs\email_analyzer_20250508_141425.log
+2025-05-08 14:14:25,831 - root - INFO - GUI window displayed
+2025-05-08 14:14:45,212 - file_handler - INFO - Searching for .eml files in C:/Users/Demo PC2/Desktop/Email to EML downloader/gmail_export_20250320_104947/test
+2025-05-08 14:14:45,214 - file_handler - INFO - Found 17 .eml files in folder
+2025-05-08 14:14:45,225 - file_handler - INFO - Found 17 emails within the specified date range
+2025-05-08 14:14:45,226 - visualisations - INFO - Creating social graph from email data
+2025-05-08 14:14:45,243 - visualisations - INFO - Created social graph with 20 nodes and 21 edges
+2025-05-08 14:14:45,243 - visualisations - INFO - Analyzing email network
+2025-05-08 14:14:45,245 - llm_analyzer - INFO - Starting email analysis with Ollama
+2025-05-08 14:14:45,246 - llm_analyzer - INFO - Preparing email summary for LLM
+2025-05-08 14:14:45,256 - llm_analyzer - INFO - Preparing full email content for LLM
+2025-05-08 14:14:45,265 - llm_analyzer - INFO - Sending data to Ollama for analysis
+2025-05-08 14:16:31,104 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-05-08 14:16:31,106 - visualisations - INFO - Visualizing social graph
+2025-05-08 14:16:31,992 - visualisations - INFO - Saved social graph visualization to outputs/email_network.png
+2025-05-08 14:16:31,992 - visualisations - INFO - Generating word cloud from text
+2025-05-08 14:16:33,202 - visualisations - INFO - Word cloud saved to outputs/wordcloud.png
+2025-05-08 14:16:33,203 - visualisations - INFO - Creating email volume heatmap (daily)
+2025-05-08 14:16:33,838 - visualisations - INFO - Saved email volume heatmap to outputs/email_heatmap.png
+2025-05-08 14:16:34,032 - visualisations - INFO - Generating word cloud from text
+2025-05-08 14:16:35,021 - visualisations - INFO - Word cloud saved to outputs/wordcloud.png
+2025-05-08 14:16:35,118 - visualisations - INFO - Visualizing social graph
+2025-05-08 14:16:35,951 - visualisations - INFO - Saved social graph visualization to outputs/email_network.png
+2025-05-08 14:16:36,143 - visualisations - INFO - Creating email volume heatmap (daily)
+2025-05-08 14:16:36,656 - visualisations - INFO - Saved email volume heatmap to outputs/email_heatmap_daily.png
+2025-05-08 14:18:41,451 - visualisations - INFO - Visualizing social graph
+2025-05-08 14:18:51,860 - visualisations - INFO - Generating word cloud from text
+2025-05-08 14:18:52,746 - visualisations - INFO - Word cloud saved to outputs/wordcloud.png
+2025-05-08 14:18:52,862 - visualisations - INFO - Generating word cloud from text
+2025-05-08 14:18:53,787 - visualisations - INFO - Word cloud saved to outputs/wordcloud.png
+2025-05-08 14:18:58,934 - visualisations - INFO - Generating word cloud from text
+2025-05-08 14:18:59,807 - visualisations - INFO - Word cloud saved to outputs/wordcloud.png
+2025-05-08 14:19:06,587 - visualisations - INFO - Creating email volume heatmap (daily)
+2025-05-08 14:19:07,082 - visualisations - INFO - Saved email volume heatmap to outputs/email_heatmap.png
+2025-05-08 14:19:37,774 - visualisations - INFO - Creating email volume heatmap (monthly)
+2025-05-08 14:19:38,259 - visualisations - INFO - Saved email volume heatmap to outputs/email_heatmap_monthly.png
+2025-05-08 14:19:42,172 - visualisations - INFO - Creating email volume heatmap (weekly)
+2025-05-08 14:19:42,704 - visualisations - INFO - Saved email volume heatmap to outputs/email_heatmap_weekly.png
+2025-05-08 14:19:43,641 - visualisations - INFO - Creating email volume heatmap (weekly)
+2025-05-08 14:19:44,161 - visualisations - INFO - Saved email volume heatmap to outputs/email_heatmap.png

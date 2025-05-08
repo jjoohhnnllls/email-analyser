@@ -6,15 +6,22 @@ social network graphs of senders and recipients.
 """
 
 import networkx as nx
+import matplotlib
+matplotlib.use('Agg')  # Use non-interactive backend
 import matplotlib.pyplot as plt
 import logging
-from email_parser import extract_sender, extract_recipients
+from email_parser import extract_sender, extract_recipients, extract_email_date
 import os
 from wordcloud import WordCloud
 from collections import Counter
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
+import pandas as pd
+import seaborn as sns
+from datetime import datetime, timedelta
+import email
+import email.utils
 
 logger = logging.getLogger(__name__)
 
@@ -104,80 +111,97 @@ def create_social_graph(email_contents):
     logger.info(f"Created social graph with {graph.number_of_nodes()} nodes and {graph.number_of_edges()} edges")
     return graph
 
-def visualize_social_graph(graph, output_file=None):
+def visualize_social_graph(graph, output_file=None, ax=None):
     """
     Visualize the social graph and optionally save to a file.
     
     Args:
         graph (networkx.Graph): The social graph to visualize
         output_file (str, optional): Path to save the visualization
+        ax (matplotlib.axes.Axes, optional): Axes to plot on
     """
     logger.info("Visualizing social graph")
     
-    plt.figure(figsize=(15, 12))
-    
-    # Use spring layout for positioning nodes
-    pos = nx.spring_layout(graph, k=0.15, iterations=50)
-    
-    # Get node colors based on whether they're primarily senders or recipients
-    node_colors = []
-    for node in graph.nodes():
-        in_degree = graph.in_degree(node)
-        out_degree = graph.out_degree(node)
+    try:
+        # Use provided axes or create new figure
+        if ax is None:
+            plt.figure(figsize=(15, 12))
+            ax = plt.gca()
         
-        if out_degree > in_degree:
-            node_colors.append('lightblue')  # Primarily a sender
-        elif in_degree > out_degree:
-            node_colors.append('lightgreen')  # Primarily a recipient
-        else:
-            node_colors.append('lightgray')  # Equal sending/receiving
-    
-    # Draw nodes
-    nx.draw_networkx_nodes(graph, pos, node_size=800, alpha=0.8, node_color=node_colors)
-    
-    # Draw edges
-    nx.draw_networkx_edges(graph, pos, width=1.0, alpha=0.5, 
-                          arrowsize=15, arrowstyle='->')
-    
-    # Create shortened labels for display
-    labels = {}
-    for node in graph.nodes():
-        if '<' in node:
-            name = node.split('<')[0].strip()
-            email = node.split('<')[1].split('>')[0]
-            # Use name if available, otherwise use email username
-            if name:
-                short_name = name
+        # Use spring layout for positioning nodes
+        pos = nx.spring_layout(graph, k=0.15, iterations=50)
+        
+        # Get node colors based on whether they're primarily senders or recipients
+        node_colors = []
+        for node in graph.nodes():
+            in_degree = graph.in_degree(node)
+            out_degree = graph.out_degree(node)
+            
+            if out_degree > in_degree:
+                node_colors.append('lightblue')  # Primarily a sender
+            elif in_degree > out_degree:
+                node_colors.append('lightgreen')  # Primarily a recipient
             else:
-                short_name = email.split('@')[0]
-            labels[node] = short_name
-        else:
-            # Just show the username part of the email
-            labels[node] = node.split('@')[0]
-    
-    # Draw labels
-    nx.draw_networkx_labels(graph, pos, labels=labels, font_size=10)
-    
-    plt.title("Email Communication Network", fontsize=16)
-    plt.axis('off')
-    
-    # Add a legend
-    from matplotlib.lines import Line2D
-    legend_elements = [
-        Line2D([0], [0], marker='o', color='w', markerfacecolor='lightblue', markersize=10, label='Primarily Sender'),
-        Line2D([0], [0], marker='o', color='w', markerfacecolor='lightgreen', markersize=10, label='Primarily Recipient'),
-        Line2D([0], [0], marker='o', color='w', markerfacecolor='lightgray', markersize=10, label='Both Sender/Recipient')
-    ]
-    plt.legend(handles=legend_elements, loc='lower right')
-    
-    # Save figure if output file is specified
-    if output_file:
-        # Create directory if it doesn't exist
-        os.makedirs(os.path.dirname(output_file) if os.path.dirname(output_file) else '.', exist_ok=True)
-        plt.savefig(output_file, bbox_inches='tight', dpi=300)
-        logger.info(f"Saved social graph visualization to {output_file}")
-    
-    plt.show()
+                node_colors.append('lightgray')  # Equal sending/receiving
+        
+        # Draw nodes
+        nx.draw_networkx_nodes(graph, pos, node_size=800, alpha=0.8, node_color=node_colors, ax=ax)
+        
+        # Draw edges
+        nx.draw_networkx_edges(graph, pos, width=1.0, alpha=0.5, 
+                              arrowsize=15, arrowstyle='->', ax=ax)
+        
+        # Create shortened labels for display
+        labels = {}
+        for node in graph.nodes():
+            if '<' in node:
+                name = node.split('<')[0].strip()
+                email = node.split('<')[1].split('>')[0]
+                # Use name if available, otherwise use email username
+                if name:
+                    short_name = name
+                else:
+                    short_name = email.split('@')[0]
+                labels[node] = short_name
+            else:
+                # Just show the username part of the email
+                labels[node] = node.split('@')[0]
+        
+        # Draw labels
+        nx.draw_networkx_labels(graph, pos, labels=labels, font_size=10, ax=ax)
+        
+        ax.set_title("Email Communication Network", fontsize=16)
+        ax.axis('off')
+        
+        # Add a legend
+        from matplotlib.lines import Line2D
+        legend_elements = [
+            Line2D([0], [0], marker='o', color='w', markerfacecolor='lightblue', markersize=10, label='Primarily Sender'),
+            Line2D([0], [0], marker='o', color='w', markerfacecolor='lightgreen', markersize=10, label='Primarily Recipient'),
+            Line2D([0], [0], marker='o', color='w', markerfacecolor='lightgray', markersize=10, label='Both Sender/Recipient')
+        ]
+        ax.legend(handles=legend_elements, loc='lower right')
+        
+        # Save figure if output file is specified
+        if output_file:
+            # Create directory if it doesn't exist
+            os.makedirs(os.path.dirname(output_file) if os.path.dirname(output_file) else '.', exist_ok=True)
+            plt.savefig(output_file, bbox_inches='tight', dpi=300)
+            logger.info(f"Saved social graph visualization to {output_file}")
+        
+    except Exception as e:
+        logger.error(f"Error visualizing social graph: {str(e)}")
+        if output_file:
+            # Try to create a simple error visualization
+            try:
+                plt.figure(figsize=(10, 6))
+                plt.text(0.5, 0.5, f"Error creating network visualization:\n{str(e)}", 
+                        ha='center', va='center', wrap=True)
+                plt.axis('off')
+                plt.savefig(output_file, bbox_inches='tight')
+                plt.close()
+            except:
+                pass
 
 def analyze_network(graph):
     """
@@ -220,16 +244,14 @@ def analyze_network(graph):
         
     return stats
 
-def generate_wordcloud(text, output_file="outputs/wordcloud.png"):
+def generate_wordcloud(text, output_file="outputs/wordcloud.png", ax=None):
     """
     Generate a word cloud from the given text and save it to a file.
     
     Args:
         text (str): The text to generate the word cloud from
         output_file (str): Path to save the word cloud image
-        
-    Returns:
-        str: Path to the saved word cloud image
+        ax (matplotlib.axes.Axes, optional): Axes to plot on
     """
     logger.info("Generating word cloud from text")
     
@@ -307,20 +329,130 @@ def generate_wordcloud(text, output_file="outputs/wordcloud.png"):
             contour_color='#E5E7EB'
         ).generate_from_frequencies(word_freq)
         
+        # Use provided axes or create new figure
+        if ax is None:
+            plt.figure(figsize=(10, 5))
+            ax = plt.gca()
+        
+        # Display the word cloud
+        ax.imshow(wordcloud, interpolation='bilinear')
+        ax.axis('off')
+        
         # Create directory if it doesn't exist
         os.makedirs(os.path.dirname(output_file) if os.path.dirname(output_file) else '.', exist_ok=True)
         
-        # Save the word cloud
-        plt.figure(figsize=(10, 5))
-        plt.imshow(wordcloud, interpolation='bilinear')
-        plt.axis('off')
-        plt.tight_layout(pad=0)
-        plt.savefig(output_file, dpi=300, bbox_inches='tight')
-        plt.close()
+        # Save the word cloud if output file is specified
+        if output_file:
+            plt.savefig(output_file, dpi=300, bbox_inches='tight')
+            logger.info(f"Word cloud saved to {output_file}")
         
-        logger.info(f"Word cloud saved to {output_file}")
         return output_file
         
     except Exception as e:
         logger.error(f"Error generating word cloud: {str(e)}")
+        return None
+
+def create_email_heatmap(email_contents, timeframe='daily', output_file="outputs/email_heatmap.png", ax=None):
+    """
+    Create a heatmap visualization of email volume over time.
+    
+    Args:
+        email_contents (list): List of raw email content strings
+        timeframe (str): 'daily', 'weekly', or 'monthly'
+        output_file (str): Path to save the heatmap image
+        ax (matplotlib.axes.Axes, optional): Axes to plot on
+    """
+    logger.info(f"Creating email volume heatmap ({timeframe})")
+    
+    # Extract dates from emails
+    dates = []
+    for email_content in email_contents:
+        try:
+            msg = email.message_from_string(email_content)
+            date_str = msg.get('date')
+            if date_str:
+                try:
+                    # Parse the date string
+                    parsed_date = email.utils.parsedate_to_datetime(date_str)
+                    # Convert to naive datetime (remove timezone info)
+                    if parsed_date.tzinfo is not None:
+                        parsed_date = parsed_date.replace(tzinfo=None)
+                    dates.append(parsed_date)
+                except Exception as e:
+                    logger.warning(f"Error parsing date string '{date_str}': {e}")
+        except Exception as e:
+            logger.warning(f"Error parsing email for heatmap: {e}")
+    
+    if not dates:
+        logger.warning("No valid dates found for heatmap")
+        return None
+    
+    try:
+        # Convert to DataFrame and ensure datetime column
+        df = pd.DataFrame({'datetime': dates})
+        df['datetime'] = pd.to_datetime(df['datetime'])
+        
+        # Group by timeframe
+        if timeframe == 'daily':
+            df['date'] = df['datetime'].dt.date
+            df['hour'] = df['datetime'].dt.hour
+            pivot_data = df.groupby(['date', 'hour']).size().unstack(fill_value=0)
+            title = "Email Volume by Hour of Day"
+            xlabel = "Hour of Day"
+            ylabel = "Date"
+            
+        elif timeframe == 'weekly':
+            df['week'] = df['datetime'].dt.isocalendar().week
+            df['day'] = df['datetime'].dt.day_name()
+            # Ensure days are in correct order
+            day_order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+            pivot_data = df.groupby(['week', 'day']).size().unstack(fill_value=0)
+            pivot_data = pivot_data.reindex(columns=day_order)
+            title = "Email Volume by Day of Week"
+            xlabel = "Day of Week"
+            ylabel = "Week Number"
+            
+        else:  # monthly
+            df['month'] = df['datetime'].dt.month
+            df['day'] = df['datetime'].dt.day
+            pivot_data = df.groupby(['month', 'day']).size().unstack(fill_value=0)
+            title = "Email Volume by Day of Month"
+            xlabel = "Day of Month"
+            ylabel = "Month"
+        
+        # Use provided axes or create new figure
+        if ax is None:
+            plt.figure(figsize=(12, 8))
+            ax = plt.gca()
+        
+        # Create the heatmap
+        sns.heatmap(pivot_data, 
+                    cmap='YlOrRd',
+                    annot=True,
+                    fmt='g',
+                    cbar_kws={'label': 'Number of Emails'},
+                    ax=ax)
+        
+        ax.set_title(title, pad=20)
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel(ylabel)
+        
+        # Rotate x-axis labels for better readability
+        plt.xticks(rotation=45)
+        
+        # Adjust layout
+        plt.tight_layout()
+        
+        # Create directory if it doesn't exist
+        os.makedirs(os.path.dirname(output_file) if os.path.dirname(output_file) else '.', exist_ok=True)
+        
+        # Save the heatmap if output file is specified
+        if output_file:
+            plt.savefig(output_file, dpi=300, bbox_inches='tight')
+            logger.info(f"Saved email volume heatmap to {output_file}")
+        
+        return output_file
+        
+    except Exception as e:
+        logger.error(f"Error creating heatmap: {str(e)}")
         return None

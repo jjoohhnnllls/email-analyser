@@ -2,7 +2,7 @@ import sys
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, 
                             QPushButton, QLabel, QStackedWidget, QFileDialog, QCheckBox,
                             QFrame, QScrollArea, QTextEdit, QListWidget, QSplitter,
-                            QDateEdit, QMessageBox, QProgressBar, QTextBrowser)
+                            QDateEdit, QMessageBox, QProgressBar, QTextBrowser, QComboBox, QDialog)
 from PyQt6.QtGui import QIcon, QFont, QPixmap, QColor
 from PyQt6.QtCore import Qt, QSize, QDate, QThread, pyqtSignal, QTimer
 import datetime
@@ -10,17 +10,23 @@ from pathlib import Path
 import logging
 import markdown2
 import ollama
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
+from matplotlib.figure import Figure
+import os
 
 from utils import setup_logging
 from file_handler import get_emails_in_timeframe, get_raw_email_contents
 from llm_analyzer import analyze_emails_with_ollama, get_chat_response
-from visualisations import create_social_graph, visualize_social_graph, analyze_network, generate_wordcloud
+from visualisations import create_social_graph, visualize_social_graph, analyze_network, generate_wordcloud, create_email_heatmap
 
 class AnalysisWorker(QThread):
     """Worker thread for running email analysis"""
     progress = pyqtSignal(int)  # Signal for progress updates (0-100)
     finished = pyqtSignal(dict)  # Signal for completion with results
     error = pyqtSignal(str)  # Signal for error messages
+    visualization_ready = pyqtSignal(str, str)  # Signal for visualization updates (type, path)
 
     def __init__(self, folder_path, start_date, end_date):
         super().__init__()
@@ -51,6 +57,25 @@ class AnalysisWorker(QThread):
             self.progress.emit(70)
             analysis_results = analyze_emails_with_ollama(email_texts)
             
+            # Generate visualizations in the worker thread
+            self.progress.emit(80)
+            
+            # Generate network visualization
+            network_output = "outputs/email_network.png"
+            visualize_social_graph(social_graph, output_file=network_output)
+            self.visualization_ready.emit("network", network_output)
+            
+            # Generate word cloud
+            all_text = ' '.join(email_texts)
+            wordcloud_output = generate_wordcloud(all_text)
+            if wordcloud_output:
+                self.visualization_ready.emit("wordcloud", wordcloud_output)
+            
+            # Generate initial heatmap
+            heatmap_output = create_email_heatmap(email_texts, timeframe='daily')
+            if heatmap_output:
+                self.visualization_ready.emit("heatmap", heatmap_output)
+            
             # Prepare results dictionary
             results = {
                 'email_texts': email_texts,
@@ -66,6 +91,76 @@ class AnalysisWorker(QThread):
         except Exception as e:
             self.error.emit(str(e))
 
+class HeatmapWorker(QThread):
+    """Worker thread for generating heatmap visualizations"""
+    finished = pyqtSignal(str)  # Signal for completion with file path
+    error = pyqtSignal(str)  # Signal for error messages
+
+    def __init__(self, email_texts, timeframe, output_file):
+        super().__init__()
+        self.email_texts = email_texts
+        self.timeframe = timeframe
+        self.output_file = output_file
+
+    def run(self):
+        try:
+            heatmap_path = create_email_heatmap(
+                self.email_texts,
+                timeframe=self.timeframe,
+                output_file=self.output_file
+            )
+            if heatmap_path:
+                self.finished.emit(heatmap_path)
+            else:
+                self.error.emit("Failed to generate heatmap")
+        except Exception as e:
+            self.error.emit(str(e))
+
+class VisualizationWindow(QDialog):
+    """Window for displaying interactive visualizations"""
+    def __init__(self, title, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle(title)
+        self.setGeometry(100, 100, 1000, 800)  # Made window larger
+        
+        # Create layout
+        layout = QVBoxLayout()
+        
+        # Create matplotlib figure
+        self.figure = Figure(figsize=(10, 8))  # Made figure larger
+        self.canvas = FigureCanvas(self.figure)
+        
+        # Add navigation toolbar
+        self.toolbar = NavigationToolbar(self.canvas, self)
+        layout.addWidget(self.toolbar)
+        
+        # Add canvas
+        layout.addWidget(self.canvas)
+        
+        self.setLayout(layout)
+        
+        # Enable interactive features
+        self.canvas.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
+        self.canvas.setFocus()
+        
+        # Add close button
+        close_btn = QPushButton("Close")
+        close_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #DC2626;
+                color: white;
+                border: none;
+                border-radius: 6px;
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            QPushButton:hover {
+                background-color: #B91C1C;
+            }
+        """)
+        close_btn.clicked.connect(self.close)
+        layout.addWidget(close_btn, alignment=Qt.AlignmentFlag.AlignRight)
+
 class EmailAnalyzerApp(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -77,6 +172,20 @@ class EmailAnalyzerApp(QMainWindow):
         self.current_results = None
         self.logger = setup_logging()
         self.worker = None
+        
+        # Initialize widgets as None
+        self.llm_report_browser = None
+        self.email_summary_browser = None
+        self.network_stats_browser = None
+        self.wordcloud_label = None
+        self.network_viz = None
+        self.heatmap_viz = None
+        self.timeframe_combo = None
+        
+        # Initialize visualization windows
+        self.network_window = None
+        self.wordcloud_window = None
+        self.heatmap_window = None
         
         # Setup UI
         self.setup_ui()
@@ -410,16 +519,6 @@ class EmailAnalyzerApp(QMainWindow):
         scroll_layout.addWidget(network_stats_title)
         scroll_layout.addWidget(self.network_stats_browser)
         
-        # Word Cloud section
-        wordcloud_title = QLabel("Word Cloud Analysis")
-        wordcloud_title.setStyleSheet("font-size: 16px; font-weight: bold; color: #111827; margin-top: 20px;")
-        self.wordcloud_label = QLabel()
-        self.wordcloud_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.wordcloud_label.setMinimumHeight(300)
-        self.wordcloud_label.setStyleSheet("background-color: white; border-radius: 8px; border: 1px solid #E5E7EB;")
-        scroll_layout.addWidget(wordcloud_title)
-        scroll_layout.addWidget(self.wordcloud_label)
-        
         # Network visualization section
         network_frame = QFrame()
         network_frame.setFrameShape(QFrame.Shape.StyledPanel)
@@ -437,13 +536,144 @@ class EmailAnalyzerApp(QMainWindow):
         self.network_viz.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.network_viz.setFixedHeight(250)
         self.network_viz.setStyleSheet("background-color: #F3F4F6; border-radius: 4px;")
+        
+        # Add interactive button for network graph
+        network_btn = QPushButton("View Network Graph")
+        network_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #DC2626;
+                color: white;
+                border: none;
+                border-radius: 6px;
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            QPushButton:hover {
+                background-color: #B91C1C;
+            }
+        """)
+        network_btn.clicked.connect(self.show_network_graph)
+        
         network_layout.addWidget(network_title)
         network_layout.addWidget(self.network_viz)
+        network_layout.addWidget(network_btn, alignment=Qt.AlignmentFlag.AlignCenter)
         
-        # Add sections to scroll layout
+        # Add network frame to scroll layout
         scroll_layout.addSpacing(20)
         scroll_layout.addWidget(network_frame)
+        
+        # Word Cloud section with interactive button
+        wordcloud_frame = QFrame()
+        wordcloud_frame.setFrameShape(QFrame.Shape.StyledPanel)
+        wordcloud_frame.setStyleSheet("""
+            QFrame {
+                background-color: white;
+                border-radius: 8px;
+                border: 1px solid #E5E7EB;
+            }
+        """)
+        wordcloud_layout = QVBoxLayout(wordcloud_frame)
+        
+        wordcloud_title = QLabel("Word Cloud Analysis")
+        wordcloud_title.setStyleSheet("font-size: 18px; font-weight: bold; color: #111827;")
+        self.wordcloud_label = QLabel()
+        self.wordcloud_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.wordcloud_label.setMinimumHeight(300)
+        self.wordcloud_label.setStyleSheet("background-color: white; border-radius: 8px; border: 1px solid #E5E7EB;")
+        
+        # Add interactive button for word cloud
+        wordcloud_btn = QPushButton("View Word Cloud")
+        wordcloud_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #DC2626;
+                color: white;
+                border: none;
+                border-radius: 6px;
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            QPushButton:hover {
+                background-color: #B91C1C;
+            }
+        """)
+        wordcloud_btn.clicked.connect(self.show_wordcloud)
+        
+        wordcloud_layout.addWidget(wordcloud_title)
+        wordcloud_layout.addWidget(self.wordcloud_label)
+        wordcloud_layout.addWidget(wordcloud_btn, alignment=Qt.AlignmentFlag.AlignCenter)
+        
+        scroll_layout.addWidget(wordcloud_frame)
+        
+        # Add heatmap visualization section
+        heatmap_frame = QFrame()
+        heatmap_frame.setFrameShape(QFrame.Shape.StyledPanel)
+        heatmap_frame.setStyleSheet("""
+            QFrame {
+                background-color: white;
+                border-radius: 8px;
+                border: 1px solid #E5E7EB;
+            }
+        """)
+        heatmap_layout = QVBoxLayout(heatmap_frame)
+        
+        # Heatmap title and controls
+        heatmap_header = QWidget()
+        heatmap_header_layout = QHBoxLayout(heatmap_header)
+        
+        heatmap_title = QLabel("Email Volume Analysis")
+        heatmap_title.setStyleSheet("font-size: 18px; font-weight: bold; color: #111827;")
+        
+        # Timeframe selector
+        timeframe_label = QLabel("Timeframe:")
+        self.timeframe_combo = QComboBox()
+        self.timeframe_combo.addItems(["Daily", "Weekly", "Monthly"])
+        self.timeframe_combo.setStyleSheet("""
+            QComboBox {
+                border: 1px solid #E5E7EB;
+                border-radius: 4px;
+                padding: 5px;
+                background: white;
+            }
+        """)
+        self.timeframe_combo.currentTextChanged.connect(self.update_heatmap)
+        
+        heatmap_header_layout.addWidget(heatmap_title)
+        heatmap_header_layout.addStretch()
+        heatmap_header_layout.addWidget(timeframe_label)
+        heatmap_header_layout.addWidget(self.timeframe_combo)
+        
+        # Heatmap visualization
+        self.heatmap_viz = QLabel()
+        self.heatmap_viz.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.heatmap_viz.setFixedHeight(300)
+        self.heatmap_viz.setStyleSheet("background-color: #F3F4F6; border-radius: 4px;")
+        
+        # Add interactive button for heatmap
+        heatmap_btn = QPushButton("View Heatmap")
+        heatmap_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #DC2626;
+                color: white;
+                border: none;
+                border-radius: 6px;
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            QPushButton:hover {
+                background-color: #B91C1C;
+            }
+        """)
+        heatmap_btn.clicked.connect(self.show_heatmap)
+        
+        heatmap_layout.addWidget(heatmap_header)
+        heatmap_layout.addWidget(self.heatmap_viz)
+        heatmap_layout.addWidget(heatmap_btn, alignment=Qt.AlignmentFlag.AlignCenter)
+        
+        # Add heatmap frame to scroll layout
+        scroll_layout.addSpacing(20)
+        scroll_layout.addWidget(heatmap_frame)
         scroll_layout.addStretch()
+        
         scroll_area.setWidget(scroll_content)
         layout.addWidget(scroll_area)
         
@@ -669,33 +899,66 @@ class EmailAnalyzerApp(QMainWindow):
         self.worker.progress.connect(self.progress_bar.setValue)
         self.worker.error.connect(self.show_error)
         self.worker.finished.connect(self.handle_analysis_complete)
+        self.worker.visualization_ready.connect(self.update_visualization)
         
         # Update UI
         self.progress_bar.setVisible(True)
         self.analyze_btn.setEnabled(False)
         self.worker.start()
 
+    def update_visualization(self, viz_type, file_path):
+        """Update a specific visualization from the worker thread"""
+        try:
+            if viz_type == "network" and hasattr(self, 'network_viz') and self.network_viz is not None:
+                pixmap = QPixmap(file_path)
+                self.network_viz.setPixmap(pixmap.scaled(
+                    self.network_viz.size(),
+                    Qt.AspectRatioMode.KeepAspectRatio,
+                    Qt.TransformationMode.SmoothTransformation
+                ))
+            elif viz_type == "wordcloud" and hasattr(self, 'wordcloud_label') and self.wordcloud_label is not None:
+                pixmap = QPixmap(file_path)
+                self.wordcloud_label.setPixmap(pixmap.scaled(
+                    self.wordcloud_label.size(),
+                    Qt.AspectRatioMode.KeepAspectRatio,
+                    Qt.TransformationMode.SmoothTransformation
+                ))
+            elif viz_type == "heatmap" and hasattr(self, 'heatmap_viz') and self.heatmap_viz is not None:
+                pixmap = QPixmap(file_path)
+                self.heatmap_viz.setPixmap(pixmap.scaled(
+                    self.heatmap_viz.size(),
+                    Qt.AspectRatioMode.KeepAspectRatio,
+                    Qt.TransformationMode.SmoothTransformation
+                ))
+        except Exception as e:
+            self.logger.error(f"Error updating {viz_type} visualization: {str(e)}")
+
     def handle_analysis_complete(self, results):
         """Handle analysis completion"""
-        if not isinstance(results, dict):
-            self.show_error("Invalid analysis results received")
-            return
+        try:
+            if not isinstance(results, dict):
+                self.show_error("Invalid analysis results received")
+                return
+                
+            self.current_results = results
+            self.is_analysis_complete = True
             
-        self.current_results = results
-        self.is_analysis_complete = True
-        
-        # Update UI
-        self.progress_bar.setVisible(False)
-        self.analyze_btn.setEnabled(True)
-        self.analyze_btn.setText("Start Analysis 🔍")
-        
-        # Enable report and chat buttons
-        self.report_btn.setEnabled(True)
-        self.chat_btn.setEnabled(True)
-        
-        # Switch to report page
-        self.stacked_widget.setCurrentIndex(2)
-        self.update_report_page()
+            # Update UI
+            self.progress_bar.setVisible(False)
+            self.analyze_btn.setEnabled(True)
+            self.analyze_btn.setText("Start Analysis 🔍")
+            
+            # Enable report and chat buttons
+            self.report_btn.setEnabled(True)
+            self.chat_btn.setEnabled(True)
+            
+            # Switch to report page
+            self.stacked_widget.setCurrentIndex(2)
+            self.update_report_page()
+            
+        except Exception as e:
+            self.logger.error(f"Error handling analysis completion: {str(e)}")
+            self.show_error(f"Error updating report: {str(e)}")
 
     def show_error(self, error_message):
         """Handle analysis errors"""
@@ -706,60 +969,216 @@ class EmailAnalyzerApp(QMainWindow):
 
     def update_report_page(self):
         """Update the report page with analysis results"""
-        if not self.current_results:
+        try:
+            if not self.current_results:
+                return
+            
+            stats = self.current_results['stats']
+            analysis_results = self.current_results['analysis']
+            llm_report = analysis_results.get('llm_report', '')
+            email_summary = analysis_results.get('email_summary', '')
+            email_texts = self.current_results.get('email_texts', [])
+            
+            # Check if widgets exist before updating
+            if hasattr(self, 'llm_report_browser') and self.llm_report_browser is not None:
+                try:
+                    # Convert markdown to HTML for display
+                    html = markdown2.markdown(llm_report)
+                    self.llm_report_browser.setHtml(html)
+                except Exception as e:
+                    self.logger.error(f"Error updating LLM report: {str(e)}")
+            
+            if hasattr(self, 'email_summary_browser') and self.email_summary_browser is not None:
+                try:
+                    # Email summary as plain text
+                    self.email_summary_browser.setPlainText(email_summary)
+                except Exception as e:
+                    self.logger.error(f"Error updating email summary: {str(e)}")
+            
+            if hasattr(self, 'network_stats_browser') and self.network_stats_browser is not None:
+                try:
+                    # Network stats as plain text
+                    network_stats = []
+                    network_stats.append(f"Nodes (Unique Contacts): {stats.get('nodes', 0)}")
+                    network_stats.append(f"Edges (Connections): {stats.get('edges', 0)}")
+                    if stats.get('top_senders'):
+                        network_stats.append("\nTop Senders:")
+                        for sender, count in stats['top_senders']:
+                            network_stats.append(f"- {sender}: {count}")
+                    if stats.get('top_recipients'):
+                        network_stats.append("\nTop Recipients:")
+                        for recipient, count in stats['top_recipients']:
+                            network_stats.append(f"- {recipient}: {count}")
+                    if stats.get('key_connectors'):
+                        network_stats.append("\nKey Connectors:")
+                        for person, score in stats['key_connectors']:
+                            network_stats.append(f"- {person}: {score:.4f}")
+                    
+                    self.network_stats_browser.setPlainText('\n'.join(network_stats))
+                except Exception as e:
+                    self.logger.error(f"Error updating network stats: {str(e)}")
+            
+            # Generate and display word cloud
+            if email_texts and hasattr(self, 'wordcloud_label') and self.wordcloud_label is not None:
+                try:
+                    # Combine all email texts
+                    all_text = ' '.join(email_texts)
+                    wordcloud_path = generate_wordcloud(all_text)
+                    if wordcloud_path:
+                        wordcloud_pixmap = QPixmap(wordcloud_path)
+                        self.wordcloud_label.setPixmap(wordcloud_pixmap.scaled(
+                            self.wordcloud_label.size(),
+                            Qt.AspectRatioMode.KeepAspectRatio,
+                            Qt.TransformationMode.SmoothTransformation
+                        ))
+                except Exception as e:
+                    self.logger.error(f"Error updating word cloud: {str(e)}")
+            
+            # Generate and display network visualization
+            if (self.current_results.get('social_graph') and 
+                hasattr(self, 'network_viz') and 
+                self.network_viz is not None):
+                try:
+                    output_file = "outputs/email_network.png"
+                    visualize_social_graph(self.current_results['social_graph'], output_file=output_file)
+                    pixmap = QPixmap(output_file)
+                    self.network_viz.setPixmap(pixmap.scaled(
+                        self.network_viz.size(), 
+                        Qt.AspectRatioMode.KeepAspectRatio
+                    ))
+                except Exception as e:
+                    self.logger.error(f"Error updating network visualization: {str(e)}")
+            
+            # Update heatmap
+            if hasattr(self, 'heatmap_viz') and self.heatmap_viz is not None:
+                try:
+                    self.update_heatmap()
+                except Exception as e:
+                    self.logger.error(f"Error updating heatmap: {str(e)}")
+            
+            self.chat_btn.setEnabled(True)
+            
+        except Exception as e:
+            self.logger.error(f"Error updating report page: {str(e)}")
+            QMessageBox.warning(self, "Update Error", 
+                              "There was an error updating the report page. Some visualizations may not be displayed correctly.")
+
+    def update_heatmap(self):
+        """Update the heatmap visualization based on selected timeframe"""
+        try:
+            if not self.is_analysis_complete or not self.current_results:
+                return
+                
+            if not hasattr(self, 'timeframe_combo') or self.timeframe_combo is None:
+                self.logger.error("Timeframe combo box not initialized")
+                return
+                
+            timeframe = self.timeframe_combo.currentText().lower()
+            output_file = f"outputs/email_heatmap_{timeframe}.png"
+            
+            # Create and start worker thread
+            self.heatmap_worker = HeatmapWorker(
+                self.current_results['email_texts'],
+                timeframe,
+                output_file
+            )
+            
+            # Connect signals
+            self.heatmap_worker.finished.connect(
+                lambda path: self.update_visualization("heatmap", path)
+            )
+            self.heatmap_worker.error.connect(
+                lambda error: self.logger.error(f"Error generating heatmap: {error}")
+            )
+            
+            # Start the worker
+            self.heatmap_worker.start()
+            
+        except Exception as e:
+            self.logger.error(f"Error updating heatmap: {str(e)}")
+            QMessageBox.warning(self, "Heatmap Error", 
+                              "There was an error updating the heatmap visualization.")
+
+    def show_network_graph(self):
+        """Show the interactive network graph in a separate window"""
+        if not self.is_analysis_complete or not self.current_results:
             return
-        stats = self.current_results['stats']
-        analysis_results = self.current_results['analysis']
-        llm_report = analysis_results.get('llm_report', '')
-        email_summary = analysis_results.get('email_summary', '')
-        email_texts = self.current_results.get('email_texts', [])
+            
+        if not self.network_window:
+            self.network_window = VisualizationWindow("Email Communication Network")
         
-        # Convert markdown to HTML for display
-        html = markdown2.markdown(llm_report)
-        self.llm_report_browser.setHtml(html)
+        # Clear previous figure
+        self.network_window.figure.clear()
         
-        # Email summary as plain text
-        self.email_summary_browser.setPlainText(email_summary)
+        # Create new plot
+        ax = self.network_window.figure.add_subplot(111)
+        visualize_social_graph(self.current_results['social_graph'], ax=ax)
         
-        # Network stats as plain text
-        network_stats = []
-        network_stats.append(f"Nodes (Unique Contacts): {stats.get('nodes', 0)}")
-        network_stats.append(f"Edges (Connections): {stats.get('edges', 0)}")
-        if stats.get('top_senders'):
-            network_stats.append("\nTop Senders:")
-            for sender, count in stats['top_senders']:
-                network_stats.append(f"- {sender}: {count}")
-        if stats.get('top_recipients'):
-            network_stats.append("\nTop Recipients:")
-            for recipient, count in stats['top_recipients']:
-                network_stats.append(f"- {recipient}: {count}")
-        if stats.get('key_connectors'):
-            network_stats.append("\nKey Connectors:")
-            for person, score in stats['key_connectors']:
-                network_stats.append(f"- {person}: {score:.4f}")
+        # Update canvas
+        self.network_window.canvas.draw()
+        self.network_window.show()
+
+    def show_wordcloud(self):
+        """Show the interactive word cloud in a separate window"""
+        if not self.is_analysis_complete or not self.current_results:
+            return
+            
+        if not self.wordcloud_window:
+            self.wordcloud_window = VisualizationWindow("Word Cloud Analysis")
         
-        self.network_stats_browser.setPlainText('\n'.join(network_stats))
+        # Clear previous figure
+        self.wordcloud_window.figure.clear()
         
-        # Generate and display word cloud
-        if email_texts:
-            # Combine all email texts
-            all_text = ' '.join(email_texts)
-            wordcloud_path = generate_wordcloud(all_text)
-            if wordcloud_path:
-                wordcloud_pixmap = QPixmap(wordcloud_path)
-                self.wordcloud_label.setPixmap(wordcloud_pixmap.scaled(
-                    self.wordcloud_label.size(),
-                    Qt.AspectRatioMode.KeepAspectRatio,
-                    Qt.TransformationMode.SmoothTransformation
-                ))
+        # Create new plot
+        ax = self.wordcloud_window.figure.add_subplot(111)
         
-        # Generate and display network visualization
-        if self.current_results.get('social_graph'):
-            output_file = "outputs/email_network.png"
-            visualize_social_graph(self.current_results['social_graph'], output_file=output_file)
-            pixmap = QPixmap(output_file)
-            self.network_viz.setPixmap(pixmap.scaled(self.network_viz.size(), Qt.AspectRatioMode.KeepAspectRatio))
-        self.chat_btn.setEnabled(True)
+        # Load the existing word cloud image
+        wordcloud_path = "outputs/wordcloud.png"
+        if os.path.exists(wordcloud_path):
+            img = plt.imread(wordcloud_path)
+            ax.imshow(img)
+            ax.axis('off')
+        else:
+            # Fallback to generating new word cloud if file doesn't exist
+            all_text = ' '.join(self.current_results['email_texts'])
+            generate_wordcloud(all_text, ax=ax)
+        
+        # Update canvas
+        self.wordcloud_window.canvas.draw()
+        self.wordcloud_window.show()
+
+    def show_heatmap(self):
+        """Show the interactive heatmap in a separate window"""
+        if not self.is_analysis_complete or not self.current_results:
+            return
+            
+        if not self.heatmap_window:
+            self.heatmap_window = VisualizationWindow("Email Volume Analysis")
+        
+        # Clear previous figure
+        self.heatmap_window.figure.clear()
+        
+        # Create new plot
+        ax = self.heatmap_window.figure.add_subplot(111)
+        
+        # Load the existing heatmap image
+        timeframe = self.timeframe_combo.currentText().lower()
+        heatmap_path = f"outputs/email_heatmap_{timeframe}.png"
+        if os.path.exists(heatmap_path):
+            img = plt.imread(heatmap_path)
+            ax.imshow(img)
+            ax.axis('off')
+        else:
+            # Fallback to generating new heatmap if file doesn't exist
+            create_email_heatmap(
+                self.current_results['email_texts'],
+                timeframe=timeframe,
+                ax=ax
+            )
+        
+        # Update canvas
+        self.heatmap_window.canvas.draw()
+        self.heatmap_window.show()
 
 # Main application
 if __name__ == "__main__":
