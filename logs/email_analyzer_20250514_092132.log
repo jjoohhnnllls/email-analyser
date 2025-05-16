@@ -1,0 +1,5 @@
+2025-05-14 09:21:32,901 - root - INFO - Starting Email Analyzer with log level: INFO
+2025-05-14 09:21:32,902 - root - INFO - Log file: logs\email_analyzer_20250514_092132.log
+2025-05-14 09:21:32,904 - root - INFO - Starting in GUI mode
+2025-05-14 09:21:33,042 - email_analyzer - INFO - Logging initialized. Log file: logs\email_analyzer_20250514_092133.log
+2025-05-14 09:21:39,207 - root - INFO - GUI window displayed

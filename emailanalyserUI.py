@@ -492,32 +492,35 @@ class EmailAnalyzerApp(QMainWindow):
         # AI Analysis Report section
         ai_report_title = QLabel("AI Analysis Report")
         ai_report_title.setStyleSheet("font-size: 18px; font-weight: bold; color: #111827; margin-top: 10px;")
-        self.llm_report_browser = QTextBrowser()
-        self.llm_report_browser.setOpenExternalLinks(True)
-        self.llm_report_browser.setStyleSheet("font-size: 14px; background: #F9FAFB; border: none; padding: 8px; border-radius: 6px;")
-        self.llm_report_browser.setMinimumHeight(250)
+        self.llm_report_label = QLabel()
+        self.llm_report_label.setWordWrap(True)
+        self.llm_report_label.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
+        self.llm_report_label.setStyleSheet("font-size: 14px; background: #F9FAFB; border: none; padding: 8px; border-radius: 6px;")
+        self.llm_report_label.setMinimumHeight(250)
         scroll_layout.addWidget(ai_report_title)
-        scroll_layout.addWidget(self.llm_report_browser)
+        scroll_layout.addWidget(self.llm_report_label)
         
         # Email Summary section
         summary_title = QLabel("Email Summary")
         summary_title.setStyleSheet("font-size: 16px; font-weight: bold; color: #111827; margin-top: 20px;")
-        self.email_summary_browser = QTextBrowser()
-        self.email_summary_browser.setOpenExternalLinks(True)
-        self.email_summary_browser.setStyleSheet("font-size: 13px; background: #F3F4F6; border: none; padding: 8px; border-radius: 6px;")
-        self.email_summary_browser.setMinimumHeight(300)
+        self.email_summary_label = QLabel()
+        self.email_summary_label.setWordWrap(True)
+        self.email_summary_label.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
+        self.email_summary_label.setStyleSheet("font-size: 13px; background: #F3F4F6; border: none; padding: 8px; border-radius: 6px;")
+        self.email_summary_label.setMinimumHeight(300)
         scroll_layout.addWidget(summary_title)
-        scroll_layout.addWidget(self.email_summary_browser)
+        scroll_layout.addWidget(self.email_summary_label)
         
         # Network Statistics section
         network_stats_title = QLabel("Network Statistics")
         network_stats_title.setStyleSheet("font-size: 16px; font-weight: bold; color: #111827; margin-top: 20px;")
-        self.network_stats_browser = QTextBrowser()
-        self.network_stats_browser.setOpenExternalLinks(True)
-        self.network_stats_browser.setStyleSheet("font-size: 13px; background: #F3F4F6; border: none; padding: 8px; border-radius: 6px;")
-        self.network_stats_browser.setMinimumHeight(300)
+        self.network_stats_label = QLabel()
+        self.network_stats_label.setWordWrap(True)
+        self.network_stats_label.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
+        self.network_stats_label.setStyleSheet("font-size: 13px; background: #F3F4F6; border: none; padding: 8px; border-radius: 6px;")
+        self.network_stats_label.setMinimumHeight(300)
         scroll_layout.addWidget(network_stats_title)
-        scroll_layout.addWidget(self.network_stats_browser)
+        scroll_layout.addWidget(self.network_stats_label)
         
         # Network visualization section
         network_frame = QFrame()
@@ -980,22 +983,22 @@ class EmailAnalyzerApp(QMainWindow):
             email_texts = self.current_results.get('email_texts', [])
             
             # Check if widgets exist before updating
-            if hasattr(self, 'llm_report_browser') and self.llm_report_browser is not None:
+            if hasattr(self, 'llm_report_label') and self.llm_report_label is not None:
                 try:
                     # Convert markdown to HTML for display
                     html = markdown2.markdown(llm_report)
-                    self.llm_report_browser.setHtml(html)
+                    self.llm_report_label.setText(html)
                 except Exception as e:
                     self.logger.error(f"Error updating LLM report: {str(e)}")
             
-            if hasattr(self, 'email_summary_browser') and self.email_summary_browser is not None:
+            if hasattr(self, 'email_summary_label') and self.email_summary_label is not None:
                 try:
                     # Email summary as plain text
-                    self.email_summary_browser.setPlainText(email_summary)
+                    self.email_summary_label.setText(email_summary)
                 except Exception as e:
                     self.logger.error(f"Error updating email summary: {str(e)}")
             
-            if hasattr(self, 'network_stats_browser') and self.network_stats_browser is not None:
+            if hasattr(self, 'network_stats_label') and self.network_stats_label is not None:
                 try:
                     # Network stats as plain text
                     network_stats = []
@@ -1014,7 +1017,7 @@ class EmailAnalyzerApp(QMainWindow):
                         for person, score in stats['key_connectors']:
                             network_stats.append(f"- {person}: {score:.4f}")
                     
-                    self.network_stats_browser.setPlainText('\n'.join(network_stats))
+                    self.network_stats_label.setText('\n'.join(network_stats))
                 except Exception as e:
                     self.logger.error(f"Error updating network stats: {str(e)}")
             
