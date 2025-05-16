@@ -1,0 +1,109 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp2176865rcd;
+        Mon, 17 Mar 2025 01:38:58 -0700 (PDT)
+X-Received: by 2002:a05:6a20:d704:b0:1f5:8b9b:ab54 with SMTP id adf61e73a8af0-1f5c12099e8mr18474335637.23.1742200738259;
+        Mon, 17 Mar 2025 01:38:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742200738; cv=none;
+        d=google.com; s=arc-20240605;
+        b=cTc9fmy7mYohgG0TJt5QsQnn/iDVUiIp22za6yMjbWP8/0GaqYiOw2FM8Za2NmHi4+
+         m0h3p5xQAScDSS2aHrgEBoOUlQ/jTE/qrVUI6aYUSsv1Lrj+fNn9cIL4uKDsEIFznDnD
+         RZW/5BqeFuYiDM1MKSjRj8bo3tqaFBGjOnblaGjQKdA//WMN1/iaBr8CXvTgqBkm8fEe
+         vXuj5ttPQCLBgwcMiJB5TDCEkWmTxA66VUyx0N+bzJjxE6HQjZMdheLkYf4n0FascVxZ
+         tUZsKyA+GBOQ1G45Hdhs2udYM3jz2EeJ3C6T0pvyXMtLk3OamxVs+jsfDQ6Qza55PS+I
+         4gqg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=yHCZl73MuSVW6m1Gd/BiPU4FV/EC2wmvR2uaD6NZjgs=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=Z0C5IhxVe+OvMLu61qiWYMszpT015WFvSe4/BLoxOgs1NIjxbAYDdGrb/Uu63+zAv7
+         7IiFqlQZLn0y71wlctx0/Bb3BJHzhTB9YAa6hMme6C/Kb/wdqfzgBJZWNSHVxZiC39OD
+         mBJOs5EpXXMHTD2AsG1SvVlSg0ZbTqvbBq3Sfjx6Ty+Shps+uJ+nAadsWYpOjOOCNgjc
+         J6q7HYVZC87BgXSbvh4DcBjiOCowfFBIbLJrSkxzDnhOL29OQGt0H8E5TKsI385cyynp
+         RxdHi4EHZr3R0+QytS6KMqg+J/GnqNCQOPwP/UraaJmSi6kDRFfqzEbHYcGgEA4nN4KC
+         V3tA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=W+M0euY2;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id 41be03b00d2f7-af56e9028b7sor6055449a12.0.2025.03.17.01.38.58
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Mon, 17 Mar 2025 01:38:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=W+M0euY2;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742200737; x=1742805537; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=yHCZl73MuSVW6m1Gd/BiPU4FV/EC2wmvR2uaD6NZjgs=;
+        b=W+M0euY2w8HAvS5SqU2W6o5G1xSy1L4MDHqO/IH65qI9fzLTiQSJJ6rgOYTSyjmK34
+         sVgLegs8M1wZS64mdV0uCbxEQpifzL50k4krrZ/p182gU+dT+w8p1T+XJgkEN7Q/bnZO
+         WQJAPp6hXpnBxQVOXP8Z5n6rek+9WkfgZBaq+MWEX91HnKsOniZ8AfJEJtHYmZVYf7FY
+         x5BebTokCpBudJlm0Mwh7Qo9JpcpvomCKjZaMTUIrsUIIKhkAbrf+gtc5Qc/pidviwYM
+         RxTdgGF+iwiPClqO2deZfN0Hq4SAXDHCLrRuEZNvcuSNloAW9QsQSqwtLjaYuodZokXZ
+         oMyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742200737; x=1742805537;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=yHCZl73MuSVW6m1Gd/BiPU4FV/EC2wmvR2uaD6NZjgs=;
+        b=GYT0wKvejjK71u3SRyrdDvOwGvUTQlbrTRQGDKW7q6VOZ/Hofdt6gtXvWJAwi66js8
+         sYOOUbkjIlJGtesLahQlybeFudTAlKSQ6H4TjsL3umFPhwGRZe8NYne5UQo6vW+JbxUu
+         L3CjzZ5twuc7B64cLonhV3d3sxJb02Cah5e+6l7VgkT92FcqdIhNviR/fohhmY2SghdE
+         2oiOy+WasOtc0BTvFVImNoQgIGuiCzchaArz5dRHz6ehZOUs7199iZ54JBhxHp1BnlfQ
+         Fw2qPZ8Kvd50BwGV7vkAk/WBxOvl3Sgy3r7aTcMN4KJ3L8dpSX1SBeQbOFWfl6tVJZiq
+         9jHw==
+X-Gm-Message-State: AOJu0YwRI/U2+HCHEr7GU00zLCNZNZ0bK0g7HTLDzwjkIJWD+MRb0z85
+	NrFjGO2uWN6s/hsKZh+9hGeXMa6dNuYkCNbq5HjBC6YrNEWUiex6qVSAGMPY
+X-Gm-Gg: ASbGncugcw6sDEruPSBdA372gyzxJt9IVvaA6Mk9yCvJAi2UKk8dzODs78lOEjZtpLB
+	Gz51uPM4eMFgk857H2g2MaeEdaQKEkQNPLuZJgHgz0/E6Bv3duZiq7dDGpLjzwoO/KyESLpfb3I
+	HKYh82+E7ROoRZMjwhvlcAVyTP5GQ8g9zzfqYgy8McM4UODKWkUtyEu3SQvRZKqsYtnOAl/OUHx
+	Gd/oCwMF9PGqP4IRfnEHXAe/xBLbJxVkoWhd1vTDilJd5OrrV0nz9In0VLvdtSjRr8R4qpgLX0/
+	PSb2tpWw15fVLqPRKwK7j2LCOng5BsYW6jHxbXtgaMEuo/ZfJ3Y0PriTiKWPjLNtHcMqOA==
+X-Google-Smtp-Source: AGHT+IFBJPuBI81FcgyK3J3f3aYFBgfeH6/7HTHTJ5Yimse438Om+sZaza5epEc9dlLyxcZx4u35Hg==
+X-Received: by 2002:a17:90b:3a10:b0:2fe:b174:31fe with SMTP id 98e67ed59e1d1-30151c7a291mr14823115a91.2.1742200737555;
+        Mon, 17 Mar 2025 01:38:57 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3015353462asm5464265a91.27.2025.03.17.01.38.56
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Mar 2025 01:38:57 -0700 (PDT)
+Message-ID: <67d7dfa1.170a0220.347286.a259@mx.google.com>
+Date: Mon, 17 Mar 2025 01:38:57 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============7901743402961081064=="
+MIME-Version: 1.0
+From: Sarah Thomas <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Proposal for Q4 Performance Review Meeting - Product Analytics
+ Discussion
+
+--===============7901743402961081064==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Alex Johnson,
+
+   I hope this message finds you well. I am writing to propose a meeting next week, specifically on Wednesday, October 20th at 10:00 AM, to discuss our Q4 performance and delve deeper into the product analytics.
+
+   With the holiday season fast approaching, it's crucial that we analyze and optimize our product offerings to capitalize on the increased traffic and sales. I believe a comprehensive review of our current analytics will provide valuable insights for strategic decision-making.
+
+   To make the most of this meeting, I would appreciate if you could bring any recent findings from your side, particularly regarding customer behavior trends and potential areas for improvement in our product lineup.
+
+   Kindly confirm your availability as soon as possible, so we can finalize the details. If there's a different day or time that works better for you, please feel free to suggest it.
+
+   Looking forward to our productive discussion.
+
+   Best regards,
+   Jayden Perez
+--===============7901743402961081064==--

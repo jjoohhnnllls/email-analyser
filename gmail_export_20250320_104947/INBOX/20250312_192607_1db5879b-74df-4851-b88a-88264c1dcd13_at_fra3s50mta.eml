@@ -1,0 +1,922 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp665836rch;
+        Wed, 12 Mar 2025 18:26:08 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH0s32YGPp2HtBhvFQBEZK/g/VbzXpVzyE4ASToJylKzASHZyHkKAc9zpveG8wtSuCDUOOC
+X-Received: by 2002:a05:622a:214:b0:474:fa6b:c402 with SMTP id d75a77b69052e-476bab90ef2mr11922681cf.18.1741829168641;
+        Wed, 12 Mar 2025 18:26:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741829168; cv=none;
+        d=google.com; s=arc-20240605;
+        b=WHWhq3lsdYeBCBcQfm2iYTjn9FjbYd6h58nE7KNNVBxBjqk0F5UlbGTXGzz2mhQEgP
+         kGPeoJ3Llqga3LhCIxEEcBbBWTc3+Bj3URmhS0fxJW3jtxnuB+y5qEQbUCpvy/0Wpgee
+         AY8daCxrG52Z9Lp0BJFCOGMfaRpTC0rLqKqG86csG4Fn1mJJZqTBZ9bgd7GL7QpHfB41
+         QtF5ppZQHBg+xpmpVG0xhEHozj9STzctkMqYE/ry1A4qWAn3bZpPjli1YwbP4lwMu3T0
+         nTfru7PvGYkBKT2WTzn2vwstnEX+lS7Cnsx55+fL7rjzVhWpIsHCbo/4b3FrcIsBVoLO
+         gi3Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:message-id:reply-to:mime-version:list-unsubscribe-post
+         :list-unsubscribe:date:subject:to:from:dkim-signature:dkim-signature;
+        bh=tRdrq1PGMzkOSbt5hNf9rJG7d/SUc3re0G7O2QR2iO0=;
+        fh=Z42/sksvnhDvDFnfstFQ0N6Md9gou+Wvip9q9TPxIkw=;
+        b=YjTcOoHdT3/MNFmpcjgPQFaVmFAZfMov0lNbgocZTphEPQABdi6g9pKu/kumViuC3y
+         CD6eVzPFxUv87CiOLIEEmgAJ1LasY2bA7MO/MwIaPPf6uuI2lTD9KMjuCPHfgs3pVHnz
+         /y1ZwEqyRiqaPbiqiFDnC0khZneX6Iv3bf3zY1k3KeNE+atK8fm3bJkXBosokv2mPKEY
+         CRiWi3k5gVuWpMV8gOVPqFtoxrHmSn0G2jXxgDVO1xliDgB89MU5QgOC/w9+92imIHd/
+         ATV1087i3tFIFOGma2cbzA69qGaHZlHVRRcK5FtruvGczYh+pPFyzqgVv6RBromB7nK3
+         GPgw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@bbc.co.uk header.s=50dkim1 header.b=mIYWYH0S;
+       dkim=pass header.i=@s50.y.mc.salesforce.com header.s=fbldkim50 header.b=mwjUFy6b;
+       spf=pass (google.com: domain of bounce-20_html-137735398-67131-7225356-766523@bounce.ma.mailenvelope.bbc.co.uk designates 161.71.36.21 as permitted sender) smtp.mailfrom=bounce-20_HTML-137735398-67131-7225356-766523@bounce.ma.mailenvelope.bbc.co.uk;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=bbc.co.uk
+Return-Path: <bounce-20_HTML-137735398-67131-7225356-766523@bounce.ma.mailenvelope.bbc.co.uk>
+Received: from mta2.ma.mailenvelope.bbc.co.uk (mta2.ma.mailenvelope.bbc.co.uk. [161.71.36.21])
+        by mx.google.com with ESMTPS id d75a77b69052e-476bb856af2si4108461cf.517.2025.03.12.18.26.08
+        for <desgtest.email@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 12 Mar 2025 18:26:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-20_html-137735398-67131-7225356-766523@bounce.ma.mailenvelope.bbc.co.uk designates 161.71.36.21 as permitted sender) client-ip=161.71.36.21;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@bbc.co.uk header.s=50dkim1 header.b=mIYWYH0S;
+       dkim=pass header.i=@s50.y.mc.salesforce.com header.s=fbldkim50 header.b=mwjUFy6b;
+       spf=pass (google.com: domain of bounce-20_html-137735398-67131-7225356-766523@bounce.ma.mailenvelope.bbc.co.uk designates 161.71.36.21 as permitted sender) smtp.mailfrom=bounce-20_HTML-137735398-67131-7225356-766523@bounce.ma.mailenvelope.bbc.co.uk;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=bbc.co.uk
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=50dkim1; d=bbc.co.uk;
+ h=From:To:Subject:Date:List-Unsubscribe:List-Unsubscribe-Post:MIME-Version:
+ Reply-To:Message-ID:Content-Type; i=bbcaccount@bbc.co.uk;
+ bh=tRdrq1PGMzkOSbt5hNf9rJG7d/SUc3re0G7O2QR2iO0=;
+ b=mIYWYH0SqJADgoSukR3JFA2XY3KcrSIQ5hsir7eJ+Gs7HqAlvpZOjLsJ7nWm9YzPZ4tm4DBJYmAe
+   HUjRDhEmrXzHOp+7eZvgSOO2W746pkvJlK7hkxMcT0Jdfhc94JiHG8rPMhk5BwOfJQG1xpOAvFG8
+   KYfgWDimbHpmSm/zRjBRneoJodLcsnZkz907PG4j79xubdIFyqrnjKvbPN7ObLMSKZjW2zNAkN7F
+   wTuArOH48QJqvawmvizxjbs6kPOO5hlF9XSssKQR3Zl4lxwhUHWMmapSxoVn0Tkpxl28uwtZIYmw
+   MJat8EQmFMPchsVeUCltawIgHfJebWDWBFIvtQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=fbldkim50; d=s50.y.mc.salesforce.com;
+ h=From:To:Subject:Date:List-Unsubscribe:MIME-Version:Reply-To:Message-ID:
+ Content-Type;
+ bh=tRdrq1PGMzkOSbt5hNf9rJG7d/SUc3re0G7O2QR2iO0=;
+ b=mwjUFy6bhU/MMNcPsf2GQlMI9b1IIG1kIxLz6w/xaoB14ihNw8iFM8z9qIt4nj+R5pPC29OW772Y
+   pFt1pue7wREBBAbg2XP67REjB9KkSuCWGEAuAXNUQn59X/GjrfLb/yQWv9gcKYgZuL3yRehYuvtB
+   vYHuzTRrC3xEQ6q29nkWmbzntX0QY9m5hoSl1tQg3Lf3xVajKGKvezDIUcg/6hWI+Ru2lScNx/Pd
+   l0asp2T/GGmZ+5y/POdEUs2bHByyhoykdLEC28w34ONJHwlUCTc9i6NTjxrQ3ko9mbHInruci6Mq
+   yU4SSN5FshM1Ut1ZA63tZX1bIODO4blxDnKxqw==
+Received: by mta2.ma.mailenvelope.bbc.co.uk id hq8q302fmd48 for <desgtest.email@gmail.com>; Thu, 13 Mar 2025 01:26:07 +0000 (envelope-from <bounce-20_HTML-137735398-67131-7225356-766523@bounce.ma.mailenvelope.bbc.co.uk>)
+From: "BBC Account" <bbcaccount@bbc.co.uk>
+To: <desgtest.email@gmail.com>
+Subject: Welcome to your BBC account - let's get you started
+Date: Wed, 12 Mar 2025 19:26:07 -0600
+List-Unsubscribe: <https://click.e.bbcmail.co.uk/subscription_center.aspx?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtaWQiOiI3MjI1MzU2IiwicyI6IjEzNzczNTM5OCIsImxpZCI6IjIwIiwiaiI6IjY3MTMxIiwiamIiOiI3NjY1MjMiLCJkIjoiNTAwMDEzIn0.0uQPtFUMkAkqtCyXtvfjX3IM6hP_yQzt2yDHfZAK7DU>, <mailto:leave-fd8916701a3c402029-fe21157372630778761d78-fefd1277746705-fe9113727761077873-fec213767361067e@leave.e.bbcmail.co.uk>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+MIME-Version: 1.0
+Reply-To: "BBC Account" <reply-fefd1277746705-20_HTML-137735398-7225356-766523@ma.mailenvelope.bbc.co.uk>
+X-SFMC-Stack: 50
+x-job: 7225356_67131
+Message-ID: <1db5879b-74df-4851-b88a-88264c1dcd13@fra3s50mta23.xt.local>
+Feedback-ID: 7225356:67131:161.71.36.21:sfmktgcld
+Content-Type: multipart/alternative;
+	boundary="fS4FZMt8yUP0=_?:"
+
+This is a multi-part message in MIME format.
+
+--fS4FZMt8yUP0=_?:
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+
+BBC News
+ 
+
+ 
+https://view.e.bbcmail.co.uk/?qs=cb7137b80a80d96218d668befb7341e98a80509d521f4cbac5cebad8246aae74d65737c8cad2c1d312bba60153a74a07afff56ef4c938fcd688c0677b1351dc437933593d96077a4a1588f6f6661fab9 
+View
+ this email online 
+
+https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5e844cecc23ea4692c2df28310f73436d01a6e28e151da58560c5d04e1cc9a37c9731db3156ea79338b6ef1c9f06bb4e6c799e127f38a6639a 
+
+
+ 
+ Welcome to your BBC account
+
+ You can use your account to sign into the 
+https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5e87caeb2eec413527fa20c5d1ecbb519a7808637828a22ab45dc91ba66dcacd077d9661c36b83e9468cbc619a313005904f5b407f76e2b775 
+BBC website  and use special features. Subscriptions to the suite of BBC newsletters can also be managed using your account.
+
+
+ You can always manage your account 
+https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5eb50b68b6df74efee35afebbc30fae504bebf2f84669e7eb0f822dfd88ab88d52a60d6bb4533ebce528bf591bbfdeed464a393899ea1ccce6 
+here .
+ 
+
+
+ The BBC takes your data privacy seriously. To learn more, read our 
+https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5e4e07e130599d36e268e53cc9486d84b4a827d1378e600aef02138297b0a2a043fbfb219a7522df982dec57a1fdc11dff06c457beeaa412ec 
+privacy policy  and account 
+https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5ec54d346b80afd8e5308d9060e5edc85de71d2ff6281455ad2f7efe8f9369abd2bbb0b28d47e394b20a3acc586eaef8bb5edf7ce2fcedd18e 
+FAQs .
+ 
+
+
+ All the best,
+
+ The BBC
+ 
+
+https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5e87caeb2eec413527fa20c5d1ecbb519a7808637828a22ab45dc91ba66dcacd077d9661c36b83e9468cbc619a313005904f5b407f76e2b775 
+
+https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5ec54d346b80afd8e5308d9060e5edc85de71d2ff6281455ad2f7efe8f9369abd2bbb0b28d47e394b20a3acc586eaef8bb5edf7ce2fcedd18e 
+About BBC Accounts  | 
+https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5e4e07e130599d36e268e53cc9486d84b4a827d1378e600aef02138297b0a2a043fbfb219a7522df982dec57a1fdc11dff06c457beeaa412ec 
+Privacy and Cookies  | 
+https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5e642769dd55c1d3461e583d2a868d7be74cfb11778b9732cd6a36811f2e8be8b8c0e312fd1791d3e965f8633ae1e062f867cd396bd2f31efe 
+Terms of Use 
+You are receiving this service email because you signed up for a BBC
+ account.
+
+This email is sent from an automated account which is not monitored and so
+ we're unable to respond to replies to this email. If you have any questions about your
+ account, you'll find lots of useful info on our 
+https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5ec54d346b80afd8e5308d9060e5edc85de71d2ff6281455ad2f7efe8f9369abd2bbb0b28d47e394b20a3acc586eaef8bb5edf7ce2fcedd18e 
+FAQs  page.
+To find out how we use your personal information, see the 
+https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5e0423870550f40a92917ae197b381b232a2171baf6dfee7f34c1248e8b9c0cfc45b783aa34adc7a3e348cfcd339ab27fe4163ffa97e37c4dc 
+BBC
+ Privacy Policy. 
+BBC Studios Distribution Limited.British Broadcasting Corporation
+Registered Number: 01420028 England
+ 
+Registered office:1 Television Centre, 101 Wood
+ Lane, London, W12 7FA, United Kingdom  
+BBC Broadcasting House Portland Place, LONDON,
+ W1A 1AA
+
+https://click.e.bbcmail.co.uk/profile_center.aspx?qs=333a7899576030f2703470d79767352c7fa1d4ea44e5a2a3a51cb2aeebcf0788f9d5b6c02dc3786d6072d0812631e84024f18a9c454bdc410402f0f49ab2b33422c8af61e85edb2e 
+Update
+ Profile 
+
+
+                      
+                      
+                
+ 
+
+--fS4FZMt8yUP0=_?:
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: 8bit
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"   xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+  <title>BBC News</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="format-detection" content="address=no">
+  <meta name="format-detection" content="date=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="color-scheme" content="light dark">
+  <meta name="supported-color-schemes" content="light dark">
+
+  <!--[if mso]> <style> td, table, a, span {   font-family: Arial, Helvetica, sans-serif !important; } </style> <![endif]-->
+
+  <!--[if gte mso 9]><xml> <o:OfficeDocumentSettings> <o:AllowPNG/> <o:PixelPerInch>96</o:PixelsPerInch> </o:OfficeDocumentSettings> </xml><![endif]-->
+
+  <!--[if gte mso 12]> <style type="text/css"> table {font-size:1px; line-height:1; mso-margin-top-alt:0px; mso-margin-bottom-alt:0px;}   </style> <![endif]-->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link     href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"     rel="stylesheet">
+
+  <style type="text/css">
+    :root {
+      color-scheme: light dark;
+      supported-color-schemes: light dark;
+    }
+
+    /*----- Dark Mode Modifications ------ */
+    @media (prefers-color-scheme: dark) {
+
+      /* Shows Dark Mode-Only Content, Like Images */
+      .dark-img {
+        display: block !important;
+        width: auto !important;
+        overflow: visible !important;
+        float: none !important;
+        max-height: inherit !important;
+        max-width: inherit !important;
+        line-height: auto !important;
+        margin-top: 0px !important;
+        visibility: inherit !important;
+      }
+
+      .dark-img2 {
+        display: inline-block !important;
+        width: auto !important;
+        overflow: visible !important;
+        float: none !important;
+        max-height: inherit !important;
+        max-width: inherit !important;
+        line-height: auto !important;
+        margin-top: 0px !important;
+        visibility: inherit !important;
+      }
+
+      /* Hides Light Mode-Only Content, Like Images */
+      .light-img {
+        display: none;
+        display: none !important;
+        overflow: hidden;
+        float: left;
+        width: 0px;
+        max-height: 0px;
+        max-width: 0px;
+        line-height: 0px;
+        visibility: hidden;
+      }
+
+      /* Custom Dark Mode Colors */
+      .dm_TemplateBG {
+        background-color: #141414 !important;
+      }
+
+      .dm_CTABG {
+        background-color: #fefefe !important;
+        border-color: #fefefe !important;
+      }
+
+      .dm_TextColor {
+        color: #ffffff !important;
+      }
+
+      .dm_TextColor_dark {
+        color: #202224 !important;
+      }
+
+      .dm_CTAColor,
+      .dm_CTAColor a {
+        color: #141414 !important;
+      }
+
+      .dm_BorderLeft {
+        border-left: 1px solid #8a8c8e !important;
+      }
+
+    }
+
+
+
+    /*----- Gmail Overrides */
+    .im {
+      color: #141414 !important;
+    }
+
+    .ii a[href] {
+      text-decoration: none;
+      color: #141414;
+    }
+
+    a:-webkit-any-link {
+      text-decoration: none;
+    }
+
+    .gmailfix {
+      display: none;
+      display: none !important;
+    }
+
+
+    /*----- Apple Link Fixes ------ */
+    .applelinks a {
+      color: #141414 !important;
+    }
+
+    .applelinks {
+      color: #141414 !important;
+    }
+
+
+
+    /*----- Standard CSS ------ */
+    a,
+    a:visited,
+    a:focus,
+    a:active,
+    a:hover {
+      outline: 0 none !important;
+      text-decoration: none;
+    }
+
+    a,
+    a:link,
+    a:visited {
+      color: #141414;
+      text-decoration: none;
+    }
+
+    a,
+    a:link,
+    a:visited img {
+      border: none;
+    }
+
+    a:hover,
+    a:active img {
+      border: none;
+    }
+
+    p {
+      margin: 1em 0;
+    }
+
+    a img {
+      border: none;
+    }
+
+    img {
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+      display: block;
+    }
+
+    .ReadMsgBody {
+      width: 100%;
+    }
+
+    .ExternalClass {
+      width: 100%;
+    }
+
+    .ExternalClass,
+    .ExternalClass p,
+    .ExternalClass span,
+    .ExternalClass font,
+    .ExternalClass td,
+    .ExternalClass div {
+      line-height: 100%;
+    }
+
+    body {
+      width: 100% !important;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    table {
+      border-spacing: 0;
+    }
+
+    table td {
+      border-collapse: collapse;
+    }
+
+    table {
+      border-collapse: collapse;
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+
+    .yshortcuts a {
+      border-bottom: none !important;
+    }
+
+    #outlook a {
+      padding: 0;
+    }
+
+    a[href^="tel"],
+    a[href^="sms"] {
+      text-decoration: none;
+      pointer-events: none;
+      cursor: default;
+    }
+
+    /*----- Standard CSS ------ */
+    .button:focus {
+      outline: none;
+    }
+
+    :focus {
+      outline: none;
+    }
+
+    * [office365] div,
+    button {
+      margin: 0 !important;
+      padding: 0 !important;
+      display: block !important;
+    }
+
+
+
+
+    /*----- Media Queries-Allows for Mobile Responsiveness ------ */
+    @media screen and (max-width: 620px) {
+
+
+      /*----- Template Specific  ----- */
+      #googlefix {
+        min-width: 0px !important;
+      }
+
+      #email_header .fullwidth {
+        width: 100% !important;
+        height: auto !important;
+      }
+
+      #base_emailcontainer .fullwidth {
+        width: 100% !important;
+        height: auto !important;
+      }
+
+
+      #base_emailcontainer .icon {
+        width: 10px !important;
+      }
+
+
+      #base_emailcontainer .blockme {
+        display: block !important;
+        width: 100% !important;
+
+      }
+
+      #base_emailcontainer .removeme {
+        display: none !important;
+      }
+
+      #base_emailcontainer .halfwidth {
+        width: 50% !important;
+      }
+
+      #base_emailcontainer .hideme {
+        display: none !important;
+        mso-hide: all;
+        font-size: 0px !important;
+        height: 0px !important;
+        line-height: 0px !important;
+      }
+
+      #base_emailcontainer .vaw {
+        padding-right: 10px !important;
+      }
+
+      /*--- Images --- */
+      #base_emailcontainer .centerme img {
+        display: inline-block !important;
+      }
+
+      #base_emailcontainer .img_center {
+        float: none !important;
+        text-align: center !important;
+      }
+
+      #base_emailcontainer td.fullwidth img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+      }
+
+      #base_emailcontainer img.fullwidth {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+      }
+
+      #base_emailcontainer .header-logo {
+        width: 140px !important;
+      }
+
+      #base_emailcontainer .header-top {
+        padding-bottom: 40px !important;
+        padding-top: 40px !important;
+      }
+
+
+      /*--- Text --- */
+      #base_emailcontainer .headline-text {
+        font-size: 23px !important;
+        line-height: 24px !important;
+      }
+
+      /*--- Buttons --- */
+      #base_emailcontainer .button_normal {
+        width: 100%;
+        float: none !important;
+        mso-ansi-font-size: 18px !important;
+      }
+
+      #base_emailcontainer .button_normal a {
+        display: block !important;
+        width: auto !important;
+        text-align: center !important;
+        mso-ansi-font-size: 18px !important;
+      }
+
+      #base_emailcontainer .button_normal.noresize {
+        width: auto !important;
+      }
+
+      /*--- Padding ---*/
+      #base_emailcontainer .horizontal_pad30 {
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+      }
+
+      #base_emailcontainer .horizontal_pad20 {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+
+      #base_emailcontainer .padleft10 {
+        padding-left: 10px !important;
+      }
+
+      #base_emailcontainer .padright10 {
+        padding-right: 10px !important;
+      }
+
+      #base_emailcontainer .padright20 {
+        padding-right: 20px !important;
+      }
+
+      #base_emailcontainer .padright0 {
+        padding-right: 0px !important;
+      }
+
+      #base_emailcontainer .padleft0 {
+        padding-left: 0px !important;
+      }
+
+      #base_emailcontainer .removepad {
+        padding: 0px !important;
+      }
+
+      #base_emailcontainer .removepad_bottom {
+        padding-bottom: 0px !important;
+      }
+
+      #base_emailcontainer .removepad_top {
+        padding-top: 0px !important;
+      }
+
+      #base_emailcontainer .padbottom5 {
+        padding-bottom: 5px !important;
+      }
+
+      #base_emailcontainer .padbottom10 {
+        padding-bottom: 10px !important;
+      }
+
+      #base_emailcontainer .padbottom20 {
+        padding-bottom: 20px !important;
+      }
+
+      #base_emailcontainer .padbottom30 {
+        padding-bottom: 30px !important;
+      }
+
+      #base_emailcontainer .padbottom40 {
+        padding-bottom: 15px !important;
+      }
+
+
+      /*--- Positioning ---*/
+      #base_emailcontainer .alignleft {
+        float: none !important;
+        text-align: left !important;
+      }
+
+      #base_emailcontainer .alignright {
+        float: none !important;
+        text-align: right !important;
+      }
+
+      #base_emailcontainer .aligntop {
+        vertical-align: top !important;
+      }
+
+      #base_emailcontainer .alignbottom {
+        vertical-align: bottom !important;
+      }
+
+      #base_emailcontainer .centerme {
+        float: none !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+      }
+
+
+    }
+
+
+    /* -----  Media Queries 480px DO NOT EDIT -------- */
+    @media screen and (max-width: 480px) {
+
+      /*--- Image Swapping ---*/
+      #base_emailcontainer .desktop {
+        display: none !important;
+      }
+
+      #base_emailcontainer .mobile {
+        overflow: visible !important;
+        float: none !important;
+        display: block !important;
+        line-height: 100% !important;
+        max-height: 100% !important;
+      }
+
+
+    }
+
+    @media screen and (max-width: 415px) {
+
+
+      #base_emailcontainer .stack330 {
+        display: block !important;
+        width: 100% !important;
+      }
+
+    }
+
+
+
+    /*----- End Media Queries-Allows for Mobile Responsiveness ------ */
+  </style>
+</head>
+
+<body   style="margin: 0px; padding: 0px; background-color: #ffffff; mso-cellspacing: 0px; mso-padding-alt: 0px 0px 0px 0px; color:#000;"   class="body dm_TextColor dm_TemplateBG" id="body"><style type="text/css">
+div.preheader 
+{ display: none !important; } 
+</style>
+<div class="preheader" style="font-size: 1px; display: none !important;">Your account is key to getting much more from the BBC</div>
+
+  <!--Begin Personalization-->
+  <div style="display:none !important; height:0px; mso-hide: all;">
+    
+
+    <img src="https://click.e.bbcmail.co.uk/open.aspx?ffcb10-fefd1277746705-fe211572706c01757d1075-fe9113727761077873-ff9d1670-fe21157372630778761d78-fec213767361067e&d=500013&bmt=0" width="1" height="1" alt="">
+  </div>
+  <!--End Personalization-->
+
+
+  <table id="base_emailcontainer" width="100%" border="0" cellspacing="0" cellpadding="0" align="center"     style="margin:0 auto; mso-cellspacing: 0px; mso-padding-alt: 0px 0px 0px 0px;">
+    <tr>
+      <td valign="top" style="padding: 15px 0px 10px 0px;">
+        <table width="650" border="0" cellspacing="0" cellpadding="0" align="center"           style="mso-cellspacing: 0px; mso-padding-alt: 0px 0px 0px 0px; width: 650px; margin: 0 auto;"           class="fullwidth">
+
+          <!--Begin Template VAW -->
+
+          <tr>
+            <td valign="top">
+              <table id="email_header" align="center" width="650" cellpadding="0" cellspacing="0" border="0"                 style="mso-cellspacing: 0px; mso-padding-alt: 0px 0px 0px 0px; width: 650px; margin: auto;"                 class="fullwidth">
+                <tr>
+                  <td align="center"                     style="font-family: 'Roboto', Helvetica, Arial, sans-serif; font-size:11px; font-weight:normal;">
+                    <a href="https://view.e.bbcmail.co.uk/?qs=cb7137b80a80d96218d668befb7341e98a80509d521f4cbac5cebad8246aae74d65737c8cad2c1d312bba60153a74a07afff56ef4c938fcd688c0677b1351dc4fde6baafd7c5179e04ee28a76c08bfc8" style="color:#141414;text-decoration:underline !important;"                                              class="dm_TextColor">View
+                      this email online</a>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!--End Template VAW-->
+
+
+          <!--Begin Template Header Top-->
+
+          <tr>
+            <td style="padding: 0px 15px 0px; background-color:#fefefe;" align="center" class="dm_TemplateBG">
+              <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"                 style="margin: 0 auto; mso-cellspacing: 0px; mso-padding-alt: 0px 0px 0px 0px;">
+
+                <tr>
+                  <td valign="top" align="center" style="padding-bottom:48px; padding-top:48px;" class="header-top">
+                    <a href="https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5ed9f380e51663020834b06605373a47d4aaa9de2a2d6c0152c57a92391af105489a1b7a490081f21777dbda25640eab4c59ec54296a364855" target="_blank" >
+                      <img src="https://image.email.bbc.com/lib/fe3111727564047f7c1078/m/1/285e1ab0-24f8-4d71-a5fe-7393a3509aaf.png"                         alt="" border="0"                         style="display: block;  font-family:  Arial, Helvetica, sans-serif; font-weight: normal; text-decoration: none; color: #141414; font-size: 30px; line-height: 36px; width: 162px;"                         width="162" class="light-img header-logo" />
+
+                      <!--[if !mso]><! -->
+                      <div class="dark-img"                         style="display:none; overflow:hidden; float:none; width:0px; max-height:0px; max-width:0px; line-height:0px; visibility:hidden;"                         align="center">
+                        <img                           src="https://image.email.bbc.com/lib/fe3111727564047f7c1078/m/1/763f055d-7f4c-4c9b-8b53-a554eb87b79c.png"                           alt="" border="0"                           style="display: block;  font-family: 'Roboto', Helvetica, Arial, sans-serif; font-weight: normal; text-decoration: none; color: #ffffff; width: 162px;"                           width="162" class="header-logo" />
+                      </div><!--<![endif]-->
+                    </a>
+                  </td>
+                </tr>
+
+
+
+
+              </table>
+            </td>
+          </tr>
+          <!--End Template Header Top-->
+
+
+
+          <!--Divider-->
+          <tr>
+            <td valign="top" style="padding-bottom:24px; padding-left:15px; padding-right:15px;"               class="horizontal_pad20">
+              <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td valign="top" style="height:1px; line-height:1px; background-color:#8A8C8E; width: 100%;"                     height="1"></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+
+
+          <!--Begin Content Master Wrapper-->
+          <tr>
+            <td id="googlefix" style="min-width:600px;" bgcolor="#ffffff" class="dm_TemplateBG">
+              <table align="center" class="fullwidth" width="650" border="0" cellspacing="0" cellpadding="0"                 style="mso-cellspacing: 0px; mso-padding-alt: 0px 0px 0px 0px; width: 650px; margin: 0 auto;">
+                <!--Begin Template Content Wrapper-->
+                <tr>
+                  <td valign="top">
+                    <table class="fullwidth" width="650" align="center" border="0" cellspacing="0" cellpadding="0"                       style="mso-cellspacing: 0px; mso-padding-alt: 0px 0px 0px 0px; width: 650px;">
+                      <tr>
+                        <td>
+                          <table cellpadding="0" cellspacing="0" width="100%" role="presentation"                             style="min-width: 100%; " class="stylingblock-content-wrapper">
+                            <tr>
+                              <td class="stylingblock-content-wrapper camarker-inner">
+                                <!--  Begin Title and Description  -->
+                                <div style="height: 0px; display: none !important;">
+                                  </div>
+                                <table align="center" border="0" cellpadding="0" cellspacing="0" class="fullwidth"                                   style="width: 650px;" width="650">
+
+                                  <tr>
+                                    <td class="horizontal_pad20" style="padding: 0px 30px 24px 30px;">
+                                      <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <!--  Title -->
+                                        <tr>
+                                          <td class="headline-text dm_TextColor"                                             style="padding-bottom:15px; font-weight:bold; font-family: 'Roboto Slab', Georgia, serif;; font-size:16px;
+                                  color:#202224; line-height:20px;font-weight: 500; font-size:29px; line-height: 30px;"                                             valign="top">
+                                            Welcome to your BBC account</td>
+                                        </tr><!--  Row 1 -->
+                                        <tr>
+                                          <td align="left" class="description_text dm_TextColor"                                             style="font-family:'Roboto Slab', Georgia, serif;; font-size:16px;
+                                  color:#202224; line-height:20px;font-weight: 400; font-size:16px; line-height: 23px;">
+                                            You can use your account to sign into the <a href="https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5eb6a7fc5d838acd4799f20991b7ae6eb2b38e7b1acdda738bf0e3a05c0bf5193c78bf954be1394381c07eb4110d005fb20402eec4502a43cd"                                                style="color:#000000;text-decoration:underline !important; font-weight:bold;"                                               class="dm_TextColor" target="_blank">BBC website</a> and use special features. Subscriptions to the suite of BBC newsletters can also be managed using your account.<br><br>
+                                            You can always manage your account <a                                               href="https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5e744344d16b2eb28c7765e07dcf6ab3cc01731a6792ab7a96bbf808974ee9bc453006fd85cc2bf45a0d4c817941954b6da507b8feaa26c42e"   style="color:#000000;text-decoration:underline !important; font-weight:bold;"                                               class="dm_TextColor" target="_blank">here</a>.
+                                            <br><br>
+                                            The BBC takes your data privacy seriously. To learn more, read our <a                                               href="https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5e88924b79ac7a3355be1e66d75c4bd2c1c4876ea64e95f1fbaacc48caae5fddec2f945f4d4427379e1fab86747622a6516a2460a8cf3a5be3"                                                style="color:#000000;text-decoration:underline !important; font-weight:bold;"                                               class="dm_TextColor" target="_blank">privacy policy</a> and account <a                                               href="https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5edc4e8e885b5634bd9d36eb136684e5718403a8b34196c1ffcb4221501a72a381ae22045b3e205a984c0c779800b3c6761deca18deb889d69"  style="color:#000000;text-decoration:underline !important; font-weight:bold;" class="dm_TextColor" target="_blank">FAQs</a>.
+                                            <br><br>
+                                            All the best,<br>
+                                            The BBC
+                                          </td>
+                                        </tr>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                </table><!--  End Title and Description -->
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+
+                 
+
+                    </table>
+                  </td>
+                </tr>
+
+              </table>
+            </td>
+          </tr>
+          <!--End Content Master Wrapper-->
+
+          <!--Begin Footer Master Wrapper -->
+          <tr>
+            <td valign="top" style="padding: 0px 30px 25px 30px; background-color:#ffffff;"               class="dm_TemplateBG horizontal_pad20">
+              <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+
+                <tr>
+                  <td valign="top" align="left" valign="top" class="blockme">
+                    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+                      <!--Divider-->
+                      <tr>
+                        <td valign="top" style="padding-bottom:24px;">
+                          <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                              <td valign="top"                                 style="height:1px; line-height:1px; background-color:#8A8C8E; width: 100%;" height="1">
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+
+
+
+                      <!--Begin BBC Footer Logo-->
+                      <tr>
+
+                        <td valign="top" align="center" style="padding-bottom:24px;">
+                          <a href="https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5ed1851fc998da66252f45e71c92e9c56f5ed2ae434da7c5b3e10712b077c0acc54194a51ffec21286dae524d2b0dcf1c5c8510d3042852062" target="_blank"                             >
+                            <img src="https://image.email.bbc.com/lib/fe3111727564047f7c1078/m/1/285e1ab0-24f8-4d71-a5fe-7393a3509aaf.png"                               alt="BBC - News" border="0" style="display: block;  font-family:  Arial, Helvetica, sans-serif; font-weight: normal; text-decoration: none; color: #141414; font-size: 18px; line-height: 26px; width: 90px;" width="90" class="light-img" />
+
+                            <!--[if !mso]><! -->
+                            <div class="dark-img"                               style="display:none; overflow:hidden; float:none; width:0px; max-height:0px; max-width:0px; line-height:0px; visibility:hidden;"                               align="center">
+                              <img src="https://image.email.bbc.com/lib/fe3111727564047f7c1078/m/1/763f055d-7f4c-4c9b-8b53-a554eb87b79c.png"                                 alt="BBC - News" border="0" style="display: block;  font-family: 'Roboto', Helvetica, Arial, sans-serif; font-weight: normal; text-decoration: none; color: #ffffff; width: 90px;" width="90" />
+                            </div><!--<![endif]-->
+                          </a>
+                        </td>
+
+
+                      </tr>
+                      <!--End BBC Footer Logo-->
+                      <tr>
+                        <td valign="top"                           style="font-family: 'Roboto', Helvetica, Arial sans-serif; font-size: 12px; line-height:15px; text-align:center; padding-bottom:10px; color: #141414; font-weight:bold;"                           class="dm_TextColor"> <a href="https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5ee625a92da07f3510dcadafa11630429d860c0716040d99c922ce96f3a8bdcc7524df9bb6166bbbdd5ae5e9ca94ac4e2eade9082c3f0cc6b3"                             title="About BBC Accounts" style="text-decoration: underline !important; color: #141414;"                             target="_blank"  class="dm_TextColor">About BBC Accounts</a> | 
+<a                             href="https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5e7d6da3c0d1f4eb96b8199ae30378135faa302d4214e9911a0d74d71f8dc8bad5c6c0b53266d47897834538d714b21593c0a583829c44c10a" title=""                             style="text-decoration: underline !important; color: #141414;" target="_blank"                              class="dm_TextColor">Privacy and Cookies</a> | <a                             href="https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5ed6eb031a0799979a09143a29cd89e807c5700caa7fe54d2c3f98281a1f43825085cb06a9a3a69e02e686aaaa1f09e6cddbf21d94ecd5141d" title=""                             style="text-decoration: underline !important; color: #141414;" target="_blank"                              class="dm_TextColor">Terms of Use</a></td>
+                      </tr>
+
+                      <tr>
+                        <td valign="top"                           style="font-family: 'Roboto', Helvetica, Arial sans-serif; font-size: 12px; line-height:15px; text-align:center; padding-bottom:10px; color: #141414;"                           class="dm_TextColor">You are receiving this service email because you signed up for a BBC
+                          account.<br><br>This email is sent from an automated account which is not monitored and so
+                          we're unable to respond to replies to this email. If you have any questions about your
+                          account, you'll find lots of useful info on our <a                             href="https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5e34c4004c74331a2d328749d3f8c39aea4214432f976fd6472244487e25b354374c5f2163034051751bfc346cc7f5b9d5b2226f00d8ada26a" title=""                             style="text-decoration: underline !important; color: #141414; font-weight:bold;"                             target="_blank" class="dm_TextColor" >FAQs</a> page.</td>
+                      </tr>
+
+
+
+                      <tr>
+                        <td valign="top"                           style="font-family: 'Roboto', Helvetica, Arial, sans-serif; font-size: 12px; line-height:15px; text-align:center; padding-bottom: 10px; color: #141414;"                           class="dm_TextColor">To find out how we use your personal information, see the <strong><a                               href="https://click.e.bbcmail.co.uk/?qs=97eea7a8fa70fa5e31641aebe5f9851999c85520cedff34128335436accafe40d03e280945f72b8d5e148522319d0d218e2d2bce0f2a0b9823401f5506ba85a1" target="_blank"                                                              style="text-decoration: underline !important; color:#000;" class="dm_TextColor">BBC
+                              Privacy Policy.</a></strong></td>
+                      </tr>
+
+                      <tr>
+                        <td valign="top"                           style="font-family: 'Roboto', Helvetica, Arial, sans-serif; font-size: 12px; line-height:15px; text-align:center; padding-bottom: 10px; color: #141414;"                           class="dm_TextColor">BBC Studios Distribution Limited.<span                             style="display:none; mso-hide:all;" class="dm_TextColor">British Broadcasting Corporation</span></td>
+                      </tr>
+
+                      <tr>
+                        <td valign="top"                           style="font-family: 'Roboto', Helvetica, Arial, sans-serif; font-size: 12px; line-height:15px; text-align:center; padding-bottom: 10px; color: #141414;"                           class="dm_TextColor"><span style="font-weight:500;">Registered Number:</span> 01420028 England
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td valign="top"                           style="font-family: 'Roboto', Helvetica, Arial, sans-serif; font-size: 12px; line-height:15px; text-align:center;color: #141414;"                           class="dm_TextColor"> <span style="font-weight:500;">Registered office:</span> <a                             class="applelinks_black dm_TextColor" style="color: #141414;">1 Television Centre, 101 Wood
+                            Lane, London, W12 7FA, United Kingdom <span                               style="display:none; mso-hide:all;">BBC Broadcasting House Portland Place, LONDON,
+                              W1A 1AA</span></a></td>
+                      </tr>
+
+                      <tr>
+                        <td valign="top" style="display:none; mso-hide:all; height:0px; line-height:0px;"                           class="dm_TextColor">
+                          <a href="https://click.e.bbcmail.co.uk/profile_center.aspx?qs=333a7899576030f2703470d79767352c7fa1d4ea44e5a2a3a51cb2aeebcf0788f9d5b6c02dc3786d6072d0812631e8402a627e9e50eb580e81f5146b12bf940737fb055b01a48d9f"                                                          style="display:none; mso-hide:all; height:0px; line-height:0px;" class="dm_TextColor">Update
+                            Profile</a>
+                        </td>
+                      </tr>
+
+                      <!--Divider-->
+                      <tr>
+                        <td valign="top" style="padding-bottom:24px; padding-top:24px;">
+                          <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                              <td valign="top"                                 style="height:1px; line-height:1px; background-color:#8A8C8E; width: 100%;" height="1">
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+
+
+
+
+                    </table>
+                  </td>
+
+                </tr>
+              </table>
+
+
+
+
+            </td>
+          </tr>
+
+          <!-- End Footer Wrapper-->
+
+
+        </table>
+
+
+
+      </td>
+    </tr>
+  </table>
+
+  <!-- This row fixes Gmail app scaling issues on iPhone -->
+  <div class="gmailfix" style="white-space:nowrap; font:15px courier; line-height:0;">
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  </div>
+
+</body>
+
+</html>
+
+--fS4FZMt8yUP0=_?:--
+

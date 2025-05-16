@@ -1,0 +1,109 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp399531rcd;
+        Thu, 13 Mar 2025 21:28:50 -0700 (PDT)
+X-Received: by 2002:a17:902:cf07:b0:223:fbc7:25f4 with SMTP id d9443c01a7336-225e0a6c368mr16309915ad.14.1741926530344;
+        Thu, 13 Mar 2025 21:28:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741926530; cv=none;
+        d=google.com; s=arc-20240605;
+        b=bbF2cMOVnn46dLMg62ygFFd+N/zNpZ3mCX/eseSgxrKzMI0SClJw+FkE3PmnR5J1l8
+         pLH7MCc8J81ORHw4sZQ34qsioFDsDlFIbtlezz9+f13ZvYwzOU7lbVC0h5uPpPOu/on5
+         0NaNSbv0K1ewwt47J7CB14JPgf1SpKe2buE+mScnAes7qWtbIwfHM7g6LeUY8pkbLHna
+         GtBlWA7vcaTiTQ1Vstsi2hUcFPF8sQlZVffH3bLRHLuFyoupKA9CKB6HMvZ6CYX6PP3D
+         YdhdSkyIUGXlw7hXrOsRv1egj5UK1VBDlZMBQ+7hZWLREHw+w+4xK/TmP8ikMBXSUTZC
+         IaAg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=yasHrPqqqXysD6fHYd2AUc6FrLRj1C33WOcF0Uu/0Mg=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=VXEFGQalUxNWlYCS/QRzkq48UWCWnJUz9XqmD8ezD8n0jTEPartkjXicdYQYVz/9/R
+         hBEUHMZJF406d9TfttEXiyqEny52D13td2x7af2FypgjAhKStvrLd0D3sfUvvpv+Z6s9
+         Vhb5wIALzbz6NrwmK3OsyMwG70en1FQHcVKTCi3EN81Nw4czoNCzTy6WP0/qYJLRFRlG
+         rid/fs2oQlXhO77d+HOAWKzdd3RK82O1hjQ7QJlt60RLQAW4tKBbtVLSijhaHg5xJlXb
+         EUUhXBP8ampHPu2sqcC//+U9bZt9jBEa6+ASGV+BuOXWw8ZRDBLO54Y3odWwlkpA9qvh
+         OzUg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="azyMH5/x";
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c66b8ee3sor20531645ad.0.2025.03.13.21.28.50
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 21:28:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="azyMH5/x";
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741926529; x=1742531329; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=yasHrPqqqXysD6fHYd2AUc6FrLRj1C33WOcF0Uu/0Mg=;
+        b=azyMH5/xPY5FZLsbxVW4RI42jvHIiLcV911ifutszdmViVxYsGng1tIcPKy3SkahUB
+         pPHA7ZpstXAMsaa8Np8Gt8/86IfxoPJohYtfUV1y1yQiNtcyjSDXEdNvTZpNPTDbQJhm
+         Cxi7WFLi7jQwGjPxVBnTNhycA9GQ6nIdbOyAHAyRyZbxrYWGCC8OydvDd+sF5HjlQjG0
+         T3xKE3EGD5TtOpxAz1/7swuggefG50pIHH2th5sg/fc4wjoo1QyubWQquffUGbDOvLxx
+         Cy27bEEpslLssxuTxqlCL3rEqAscyLZsItHaz32cDNAxaT0vGyd8PKcoybBJtXjDBaal
+         dI2g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741926529; x=1742531329;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=yasHrPqqqXysD6fHYd2AUc6FrLRj1C33WOcF0Uu/0Mg=;
+        b=cQY4dtNnStPYjK6ds+GCFNSNCDIlnmt5vAjTy94lrR81fFN8BqAH0k27TOz7C2T9s2
+         R1eLwTtXIjVkZIoSyY/EqvxfhKvez2tTFs47X8TF+XM+bjWvV5RDBniB07tsCOTujm9l
+         sf0IeN+1k35ati7gVv4Srrx1flquffA4N1pqWvkm14RwpLhNk50MjGkuQXsogOn5bRsa
+         qy0x3LT9soavZ4ylqYn8tgLV+fQd1Otj7DSmIRs3rUnt/6GqKvf2KabrEZ5tHVSAVYm3
+         00rSwUZ4H1ReP4OVlksnZtvbHZrtdzUfwebzmWnaRULEgoSSgwK0iVbKxyWS9RF6tI8C
+         fxqw==
+X-Gm-Message-State: AOJu0Yz7HAcP45DqZElEiqXS1u2nb9w4E+BTsPkfmBF21JDjIqsb73nq
+	zkHBfKJ5s/pfJeZvSpGqQHsS9Re9nwwElvg3tyTDDmPr2wsZagYyoUQsxwcZ
+X-Gm-Gg: ASbGncsoNImVONc8wDKGa6xEZCetTggK6xcbReqA4xlPnrQIauOlk5bSuVs93FQYfHR
+	iQQXCwTrV3HI3uXTAGtCrEe97XqBayv82p72MG95sz/F+LV/J5Q2FlySO6Nj9CZqnQ4ug849AZm
+	XySsnbFIPDBLSHJp3xmioeCBffGa03MjHDjDn/uyvlQ1SCCiBG21dOIQIFiwAPMk9rpNyhk5cM0
+	2MWUjLu+T6SIb5cJCMuQlCPtiRoL/QcwSUK3oBbEPytRR3AGSuHwhLnQvmm+w0fWF5kCCzz8shK
+	8tUD+wFAQ5PYGWBJkweBJhmFhSOixUycNeBFZFZ1FSKnSAANlPqpHm4SMPHXFHtp+0nCjN2Huy2
+	Gktib
+X-Google-Smtp-Source: AGHT+IGcS00NtWlqi6L2QTKceU6w0Mehy6o3V1dY7CC4nqwZHYHQ+dfpQ4ROG9DtWer+iTeneLaFPw==
+X-Received: by 2002:a17:903:18e:b0:224:3c6:7865 with SMTP id d9443c01a7336-225e0a529bcmr11813585ad.3.1741926529401;
+        Thu, 13 Mar 2025 21:28:49 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c68a413fsm21949415ad.63.2025.03.13.21.28.48
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 21:28:49 -0700 (PDT)
+Message-ID: <67d3b081.170a0220.2e3dd4.6e20@mx.google.com>
+Date: Thu, 13 Mar 2025 21:28:49 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============6173156790367315698=="
+MIME-Version: 1.0
+From: Charles Anderson <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Inquiry Regarding Your High-Quality Organic Cotton T-Shirts
+
+--===============6173156790367315698==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Alice,
+
+   I hope this message finds you well at GreenThreads, our leading eco-friendly apparel retailer. I recently came across your impressive selection of organic cotton t-shirts and found them to be quite appealing for my online store, EarthFriendlyFashions.com.
+
+   Our customers are deeply passionate about sustainable living, and we are always on the lookout for high-quality eco-friendly products like the ones you offer. In particular, I am interested in the 'EcoChic' and 'GreenWarrior' collections due to their stylish designs and commitment to environmental responsibility.
+
+   If it is convenient for you, I would be grateful if we could discuss potential partnership opportunities. I believe that our values align closely, and together we can make a significant impact in promoting sustainable fashion choices among consumers. Please find attached our most recent product catalog as well as some key performance indicators (KPIs) of our store's success to give you an idea of our customer base and reach.
+
+   I look forward to hearing from you soon, Alice. Your prompt response would be greatly appreciated so that we can plan accordingly for upcoming seasons.
+
+   Warm regards,
+
+   Kevin
+   Co-Founder, EarthFriendlyFashions.com
+--===============6173156790367315698==--

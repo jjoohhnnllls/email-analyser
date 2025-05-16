@@ -1,0 +1,110 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp768160rch;
+        Wed, 12 Mar 2025 23:35:08 -0700 (PDT)
+X-Received: by 2002:a05:6a00:8d0:b0:736:339b:8290 with SMTP id d2e1a72fcca58-736aaae450fmr31359472b3a.17.1741847708431;
+        Wed, 12 Mar 2025 23:35:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741847708; cv=none;
+        d=google.com; s=arc-20240605;
+        b=bjBmEWSDWu+2woAOlLLZ4fS82QU7zhirjstmGV0p8LaJL2D3ZN0k8wBD9ZS6YoIqxN
+         eRfYGWgq7iQzC1Oswrf8IdCkj27ppjrG0BO/kZbGdTXgUTZKZMyqqZLBuShWZEI3eyFf
+         2h8aTG9QMPz3lsiD85TZ8rZOzwMKzetuIg583uOas8uiLppu4Gk9Hqs2uOgc6On5hM8E
+         4EFMoqxBVkw99TQvhC+tNo7x6cw1AOgjr3esfJYyvlRtUdkjUQYtFR1SXNqjaBUdRzSc
+         5CMyKNReBhN0Dl9jgNHdf9WDEgO89aN7CuyL2jWTDnmgqRJ6MCNGrTw81sLY3FFxyjaM
+         3f3w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=pvx2U11LXMZeURtgSbfioQY7aT/g7UYnccKm/AOmLvU=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=dWUPCj+aev+pAapL52WJenoswOgHBS7hKZlowagAx9mR60DncIPE8clrKlrqUATR8c
+         q2uHZCTt5X9RtSYMSl/C/qqp2sx2aIkdxdOLGgFH8uDelnCyuqAX6ZHHmH73R41YWPx2
+         TTVcUGmPfh3jlD68eL2pgRLFZvXfBxSwkRjc/evQIpNGwZnEx6Q7s8/t964u5tgx4woh
+         26JIf2+xxd+5+MJD8t2BjmjavaamyhmDd6ZUr78/5RyDl2CKn0Y0POUOKZmXW4zG2+H6
+         NzIDMkSP14whPtZ+0I22liu8s4aYqIQnigKGAAgIz/lXREdRdG/1+3X3cv/0tRsqasL4
+         gidg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=K57b1OS2;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-7371152b857sor449116b3a.1.2025.03.12.23.35.08
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:35:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=K57b1OS2;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741847707; x=1742452507; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=pvx2U11LXMZeURtgSbfioQY7aT/g7UYnccKm/AOmLvU=;
+        b=K57b1OS29DnObZf84oWNFxcaKtQKGEaZi0tJmt88bW/TzjWqNfSsVjcIxfdfuS0n3l
+         /nqlp8PSfvtTsv352EJPW15c9ie3ZfH3CUDShRpaY9K9FCcDoO+wNmrOmTRhAOn/4tUL
+         gNLzyOx35jlW8tNh3kXfwdKyhKmA0FHBp7X9aTxJt4QNz2DOZop5KprFsN2BjGgGagfc
+         gn4qGdzULrwYE5dEknpt8g78T71guWOzvkMsQ9hB428sjrCDgXls0GBWEtRNKI0oEQZF
+         sUVxc+EeLpBkPA27BGfL07qVorhRM1EfdIKQiZ01RzFEwjgIznAb+eZWN5raGlbuK19G
+         4UtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741847707; x=1742452507;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=pvx2U11LXMZeURtgSbfioQY7aT/g7UYnccKm/AOmLvU=;
+        b=TnYJ+U9tTq3Iz0cJhWIFRzKH0HGQvjtJPldZr8GtbmqN3iPvW6rvD0CjoH8Cojvwks
+         3jQ1lTKkHQV+2yA2Nd1lqC6B8XQ0gHA0XhZzamjck8a/7jak79RPHFP17EyI8N2O30sD
+         JDqqgZ9mA2jia+D/R52/eLCuZsopkUmgt4zgFPq8prpeHWNbCjO/k5w0krQJk6UzaooA
+         VwLVZJHIKvo16kw9wrOpQNWr8yihEI6pfZG39+OZtGBYkEL1yzn2dU+JpQgoeEt/lKSu
+         RLjAC49RGfILipT1mmEops2QEnh6DIrJkP6vl9Nyn0JKmcLtfG7MeJcDBtnVWNwQXfzE
+         kxYg==
+X-Gm-Message-State: AOJu0YwEnaUIrUlQOiQmJbe/MqCfv7zWh+ZSe9p6dfsdBqrbktxQZ5xw
+	6z7y0bMl+GUv1mv5ZYeNdCURrTOTaBA07yBl/FDjx2EhlAeyMDCtiNRsZAb6
+X-Gm-Gg: ASbGncvF7pvH4SBIyEmus9TtUlPDk7c4G7qYu+5TUG1/HMuSdEyIsYMKG8e9B76BP68
+	eflCck8gGCPmTzHKT02FDH+l296QNiuF/H1Dt0SJlEQZ08vTEkUuVqvxUtCmq7hl99nXGEnGoKx
+	50dwcWbsqUmWZGZrqUmhFISOafm0GQJHyZ4wL7GqM5KKe7MwCK6Mhm6OYr6UHIxDbOGMAqDNV96
+	dWuJXQLqo1SxvHncN2YPfCvnXNBGfez8ltVVvuggOgh8c9sxFdUAG/TU8M9KH1Tul8rp8Unbayz
+	vnUJ6y18v1nCKgIb2HSypzqZ/sVw0fLeng0fKjROBlu8RUWE9SpL0iE0Crnc/a16NLYM1w==
+X-Google-Smtp-Source: AGHT+IEi184YXn0IxOdeYnB+bnYabYTjMoFGctJ8IEUvQwLELxaf0cq0B7Xj81jck6+DG6KHWlUs0g==
+X-Received: by 2002:a05:6a00:928b:b0:736:4d44:8b77 with SMTP id d2e1a72fcca58-736aaa1cf9fmr43839392b3a.8.1741847707333;
+        Wed, 12 Mar 2025 23:35:07 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7371167df03sm603026b3a.106.2025.03.12.23.35.06
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:35:07 -0700 (PDT)
+Message-ID: <67d27c9b.050a0220.14a218.1d9d@mx.google.com>
+Date: Wed, 12 Mar 2025 23:35:07 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============8004848879710440952=="
+MIME-Version: 1.0
+From: Innovative Tech <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Proposal for Tech Stack Discussion Next Week
+
+--===============8004848879710440952==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Alex,
+
+   I trust this email finds you well. I'm writing to propose a meeting next week to delve deeper into our tech stack and discuss potential improvements that could be implemented at MobTech.
+
+   Over the past few weeks, our team has been exploring various technological advancements that we believe could significantly enhance our current system. Some of these include upgrading our database management system, implementing a more robust testing framework, and integrating AI for predictive analytics.
+
+   I would greatly appreciate your insights on these matters given your extensive experience in the field. I believe a discussion with you will provide us with valuable perspectives and help us make informed decisions.
+
+   If next week doesn't work for you, please let me know an alternative time that suits your schedule. In the meantime, feel free to reach out if you have any thoughts or questions regarding this proposal.
+
+   I look forward to our productive conversation.
+
+   Best regards,
+
+   John Doe
+   Co-founder & CTO, MobTech Inc.
+--===============8004848879710440952==--

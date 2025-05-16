@@ -1,0 +1,113 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp2108721rcd;
+        Sun, 16 Mar 2025 22:39:34 -0700 (PDT)
+X-Received: by 2002:a05:6a00:464f:b0:736:52d7:daca with SMTP id d2e1a72fcca58-737223ccd7dmr15215601b3a.18.1742189974198;
+        Sun, 16 Mar 2025 22:39:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742189974; cv=none;
+        d=google.com; s=arc-20240605;
+        b=eGdO7KNb9MjheYVK1/BIG8wEAY1hk4vrHvlLJIUMmGQl4WU4wmVgZ9xbDzH7z87Jmb
+         cC/E3VRJCz2O3Ze8wr2gUB3olEoUIcyuJ/tMWBoiq+gk296pXlYnbDT5zUdoJpKObfgM
+         O/JNzDYQwBo1mk3tb7/KDh/jKSytOtWaFP50V7lGZNA5BfKcMX5Ex14m/Is7/lQeQDnI
+         1/XClvT35lL/IsA5xfzCgVeyj5fE38Athc/Add7SlDB7R4fmg0+6IJupnBwH+0z7viGd
+         PDTvoA8QAJUinUVyXJQNdSAkwbiq/VElCKwDiWNN9Knv1LQuBk/yWcHhgZu/wQ7juGBm
+         0+5A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=idDhg3ohDwgPNISkxiRBfg8MAuO0Fb1BaZeWiRrK3XE=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=e8DkugX+PsivFr7/ckNHdD6EOqZvsyFc9E0HJDaMHw8H6QPMsCSu6nk4bzccy8i4Dm
+         peItYvtplSRiCfZohFD+e3soJhZUILSBrI5Rpa2rV3/YeFSNaaPU53Yxq1DJC0KzukLS
+         37L63u/prLIf/DzhehV1TuJiPZfUMo9mNVnzIMQ0ZITObuVb82Vdb591W2KkT6ob5g7R
+         wZ5zvBpIqSqgEe1eG/Hz8FeokAKpsCzaT+2dDMdOTP3G5Ad7PxbAlyCLkw+9//zxuxVz
+         phVDe5HtGe2qngpBp8pS8xy7EFZz6EdDqNDVTRk0H0VQMEpAFJ6HRYy5PnIEOLoJT+IZ
+         Ht0w==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gRbCOneh;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-737115512a7sor5904449b3a.4.2025.03.16.22.39.34
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Sun, 16 Mar 2025 22:39:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gRbCOneh;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742189973; x=1742794773; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=idDhg3ohDwgPNISkxiRBfg8MAuO0Fb1BaZeWiRrK3XE=;
+        b=gRbCOnehYITRbBIH8CEwXdKeYJSUuFhznLqPv4d+ilySU+meC62oVQ8Ev+d+sbRQmm
+         bahswNr3NWZU9D+iLKz4sPfKSHwzhcWcbyYcgJAsvVmygat0sGQRlnePCitCBHHhHKlt
+         hMmvr1Pvw1oa52+0824iRduzmRecb4l0iA7zdFn5QAHWSIK8GeVqR1j46JuxIiluJdCF
+         QVKZwxaPiRriZsMgTbbOQqS08wzRvbgwETOZFP8ZOrMX/RO6hXF57xR1qsZSdusbnMza
+         tVatJih8CNI/H/xx2iTvJkBgD6PkPPYxTjBsh+nHgbhvrEEdwvF2lo74rGgQNHggnFW9
+         SEUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742189973; x=1742794773;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=idDhg3ohDwgPNISkxiRBfg8MAuO0Fb1BaZeWiRrK3XE=;
+        b=czOzAqc2xNi/RMDYxZa4JwIXKUVwU8YmhWMNx0z6RcL0maXWm/cLYjPJpDgJ/VDvab
+         V1LRcl49vS4U7qDa8l3dJTdrAFIjrY8sfcEo29NYieJ/RUJ9X6PIoFAH2QC2P143VDaQ
+         wt4aISn4lPNH/YjopvzKer+PPb6oFr2aCUXsf5Pgs3TcaaNhifyUHEDtCImevPMIv6Nb
+         plUXrQqHeAmEw00JwL0FDUe1o9CZIkaIutx/YdlyOaIEXUMAYPaZFwDXM3GIMwCiKaSV
+         vvMq4konE2RXReJO0gYKBrUAT2bOim3/gZq5s/5w0PlQ9rKNxgfe64ba7AtIco4i8UvO
+         qhFg==
+X-Gm-Message-State: AOJu0Yw8ZJrtMeYTk1mruA6aIXCMMEHQDwSB4HQEJ8R5rpXNjZkbJQZ5
+	vbIQ/41VUb+eJ6qXFfynPpH8JvzqOtATfA2tzou6ikWj4gzeAR3hmtak/Q==
+X-Gm-Gg: ASbGncvluizMhPT86l3ptg3oPjU32J77iKnVhmRt7UHzmB/c+fq8+ct+3HhBR6shH84
+	ogqXU/uh2N5Jg12TxGL+9REvI8lD3AC7HUkhi5HmcfMIhJx7IXBWEiMaPIJJ2eRNMNffoC5sXxE
+	op8OdEVksFcTURfH8UTLeEK1ogjm0lU/rRMQxKL9X4rg42ZwpXtY4j9v6i8GqWFkhB4K5dSmdWf
+	LCVhwfny1Ap59oXwL9bo+bdyMJdBUMvdFCaj2oQdcz7h6z0PGpVR2T3jkYQ/1rXmDK4QIsa4p7H
+	gPJkBfLuayDkBCRdLOsnziZb6kcBJDXbSDwDZJG+flo6IXd4bAED152dih36KXpLf9MPlQ==
+X-Google-Smtp-Source: AGHT+IE1HEq5illhIO9KL3q3D48IH1ZS5h+X9UsyLfr1/bOXSa/UETPTbYJvWdLbzQV5S1Rx1LWhhw==
+X-Received: by 2002:a05:6a00:4fcb:b0:736:eb7e:df39 with SMTP id d2e1a72fcca58-737223ed4ecmr14186896b3a.24.1742189973155;
+        Sun, 16 Mar 2025 22:39:33 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73711578e09sm6705288b3a.73.2025.03.16.22.39.32
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 16 Mar 2025 22:39:32 -0700 (PDT)
+Message-ID: <67d7b594.050a0220.a043a.e687@mx.google.com>
+Date: Sun, 16 Mar 2025 22:39:32 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============1961037320355126857=="
+MIME-Version: 1.0
+From: Next-Gen Shops <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Follow-up on Invoice #4567 - Outstanding Payment Reminder
+
+--===============1961037320355126857==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear John,
+
+   I hope this email finds you well. It has been over a week since we sent Invoice #4567 for our recent purchase order from your beautiful store in Downtown City. As of today, the payment is still pending and I wanted to follow up with you.
+
+   To clarify, the invoice totaled $2,980.00 for the items purchased on August 15th. The items include the latest collection of sunglasses, designer scarves, and handbags that have been flying off our shelves since they arrived last week! I'm confident they will boost your sales in the coming months as well.
+
+   If there is any issue with the invoice or if you require additional information, please do not hesitate to let me know. Our accounting team is always available to provide support and answer questions at their earliest convenience.
+
+   We value our business partnership with your store and hope to continue working together in a mutually beneficial manner. I kindly request that you settle the outstanding payment at your earliest possible convenience so we can move forward with future orders.
+
+   Looking forward to hearing from you soon,
+
+   Best Regards,
+
+   Example Your name
+   Retail Operations Manager
+   ABC Retail Store
+   123 Main Street, Anytown USA
+   (555) 123-4567 | abcstore@example.com
+--===============1961037320355126857==--

@@ -1,0 +1,115 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp768401rch;
+        Wed, 12 Mar 2025 23:35:52 -0700 (PDT)
+X-Received: by 2002:a17:903:1b04:b0:215:58be:334e with SMTP id d9443c01a7336-225c6647c8emr20230405ad.10.1741847752542;
+        Wed, 12 Mar 2025 23:35:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741847752; cv=none;
+        d=google.com; s=arc-20240605;
+        b=QMtAanZCQO9pIoWQJ10BdtDvv1dJDElwyI5F4W1C8EY6/r2GG1/JdY+JN2rdkY/rDB
+         erokM33mhLxltKbx9MguE2nBc6/Xm2CUVbKy2xXeNqWwUKZKhSalwQxr/K4EUu9Cs8/c
+         MQ7H5pgWAYmk6mJO9ISn8LzhnB2Fssh5avCR/bNg7BEeA5dgv0n//amDOWJcFJNYzq1H
+         HvQRH/L/2jaeCk8Ba5zx55nfrWOgNkJrODZ5Hh9oWNIJM3qPcIvCRIVRBQ4F1wWE8Kj+
+         KQ+UhP/2xNY2RObDg+zT6sJuEL0IWwzpslx5jVZg5wtXkY2qpEUhyfatsKcqWamlJZO2
+         UkqQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=1gzw2WzkELB1Z+4PAxaiCfmeBQzQCdVQyHC9v5HeKzE=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=Ex4mxjSPFnIBDKaEz7MG2OLSe9F8abSl/8SM9LV+yaRax6Vg7bXsnLJJRZMbYWLWxO
+         CDqqawghbIuTrdyqa4h9oGcgDwnpNGdqkr1zqaxlnTFysW+VeZbuHxQuAVDHGei4y7ZF
+         VMQQbNi6HBhNBf3+RjbAWR5HNzgjA9LeHGj6+2mUxeUxw68HPD1dW9ITKC81p91a/txT
+         huNfsnbLMbS7h2LMuWZJ8OOD/JMAEl5nSHJ9E7SlAJS5SM94gnb1lTsJp+Ct9MZHnZOo
+         l526fDsQRmsNrr0Lg15MUwM0BpuNuhvF17H0Oy4dXkQL+g3GheIJF/YQfIPi0OAY97hh
+         vdmA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=huQ8oBt1;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c6b09aa9sor5298955ad.5.2025.03.12.23.35.52
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:35:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=huQ8oBt1;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741847751; x=1742452551; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=1gzw2WzkELB1Z+4PAxaiCfmeBQzQCdVQyHC9v5HeKzE=;
+        b=huQ8oBt18bnHqGxyVsmFb4002czSMY2I8kmmFA7O0AaP5ZzJhK+klEgqs6x3FgUixj
+         0Od3ID14DIknztPBuAP9ZbkIt3yp/dRFjgQBku/4IpVidWCe/b35MI7q6W8PwbR84jsd
+         jMrdGYmHo3kGFR43mosXSghPISZn5J+bvm6u0wE/yXELdszkoT1O5kA28WDRyb/V1cPv
+         YkLectQDv3rxKdjmU+Bx8/4wb+KOKeHAcqRv2UDygOWjMnAglP4dtaDVjNJvJ85rbHtt
+         KdGbHTJ7WA0hBbbklHblq6sf3BbMCNjy9iS5bc9O293C35RhOyPJu+73xMdqO8WV/Bwf
+         SI3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741847751; x=1742452551;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=1gzw2WzkELB1Z+4PAxaiCfmeBQzQCdVQyHC9v5HeKzE=;
+        b=QUX3jiER3vtKImQSq1LRNHP7ZQUecozZ/gzKqOAETpUafyIcoW5saVjFsDe/yzBGY7
+         w89UXvCLsqZODmzJjjNGMCkktVPiSFgdJBQSfMl2IIOgzUeKQdjm9cNVxomMEku39gIf
+         UMoG7t4x6JZvZPRbsUZHZJNkw6fJcJo7NUDMgw1vo2gpNuyjzHySpv+4LSGDT/Jh+P8U
+         UuThhOvJVzVpAbkgkePyo0j/GRz4UFoO5Cy0GyoPmEnUjTRaSsQqR0DKuwJ5bzT8jZuk
+         aL+4pgLCK6qTMgBN/4gMvrjqI9GF1/imPXUU2UF0IJdVyUCjWG5ttvevivT1Y/zStLa2
+         fkiQ==
+X-Gm-Message-State: AOJu0YxmjRn6ZdutH+YVFOu5up3AwCzxNqNRIxphsyjVCZXTCdlpE8mR
+	WbsvWFCHFpun7+RwMNXG8AdunJS2c+vqt0fRhX+OWviMNsbJSa3a2E760Q8N
+X-Gm-Gg: ASbGncvJASrne6TJXcVCMZ/qHsiATFPjpcsq9jFN2xYUEMFCwaZmrHX9xg0IrwUPzZP
+	9d+POFzFr2ccDnRdbcbr0Vt0yLNYSGW3vAc/lFb77gvz256ke2TjgxsKBOnryej3iTHOabick6A
+	Hmo2BI/S5wEuPomfKl9ypi5wP5KO4A0cBpbIyAofCLTq0E9YAM8XJQWD4BdfSe7mRJCHk17vHFm
+	fo9hb7OPyOO0ri++4uFvb0dxgRUqwXZuqbaUS6SFDL0bfjOBHkBK75tIBJymuWuTYRqu15Nk16q
+	EmpSi4r5x76q8hUivPovd3r9tny8d0wI4QOe7Amm05dpVy0UtsTGVP0kXfB9koEPlFy6bQ==
+X-Google-Smtp-Source: AGHT+IEN6dCo8fCTwzzCTnkubj7PMmVGTP8W/Ix2d3sOY5FziMFYoE5rvFB3hrtMgztSgMmOX18dYA==
+X-Received: by 2002:a17:902:f681:b0:21f:6f33:f96 with SMTP id d9443c01a7336-225c651f518mr16289035ad.6.1741847751568;
+        Wed, 12 Mar 2025 23:35:51 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-737115781f3sm592663b3a.76.2025.03.12.23.35.50
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:35:51 -0700 (PDT)
+Message-ID: <67d27cc7.050a0220.349fb3.1c65@mx.google.com>
+Date: Wed, 12 Mar 2025 23:35:51 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============9134649118027124411=="
+MIME-Version: 1.0
+From: Nancy Moore <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Collaborative Proposal for Strategic Consulting Services
+
+--===============9134649118027124411==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Mr. Johnson,
+
+   I hope this message finds you well. I am writing to you on behalf of Innovate Consulting Group (ICG), a leading firm specializing in business strategy and transformation.
+
+   We have been closely monitoring your company's growth trajectory and admire the innovative solutions you have provided to the market. Given our shared vision for continuous improvement and our expertise in strategic consulting, I believe a partnership between ICG and your esteemed organization could yield significant benefits.
+
+   Our team has identified several key areas where we can collaborate to enhance your company's performance:
+
+   1. Strategic Planning & Implementation: Aligning your business goals with industry trends and market conditions for optimal results.
+   2. Business Transformation: Streamlining processes, improving efficiency, and driving growth through strategic initiatives.
+   3. Digital Transformation Strategy: Leveraging technology to enhance operational capabilities, customer engagement, and competitive advantage.
+
+   We invite you to a virtual meeting to discuss these opportunities in greater detail. During the session, we will present our approach, share case studies, and address any questions or concerns you might have.
+
+   I look forward to the possibility of working together and contributing to your company's continued success. Please find my contact information below for scheduling the meeting at your earliest convenience.
+
+   Best regards,
+
+   Example Your name
+   Partner & Strategic Consultant
+   Innovate Consulting Group
+--===============9134649118027124411==--

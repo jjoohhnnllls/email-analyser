@@ -1,0 +1,111 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp769651rch;
+        Wed, 12 Mar 2025 23:39:21 -0700 (PDT)
+X-Received: by 2002:a17:902:f648:b0:21b:b3c9:38ff with SMTP id d9443c01a7336-22428bdec84mr376635255ad.37.1741847960754;
+        Wed, 12 Mar 2025 23:39:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741847960; cv=none;
+        d=google.com; s=arc-20240605;
+        b=dYBHko8coV5gxZa0+LqspLk6Vv/ieNMFEbm7Or19sRxU7ulySEVbMEtmN0FYAIUqTs
+         +mZw3eJOHZuY1UJBzyTX52WTfSr+41CmXUnIGX6qs87zNJNwOenNlF0MtCSa7pxvqCpq
+         5++y/iXVSHn7r6BDD9kXtjg2/qRTZQwzhysfZ6rkSGnb+6uRRc7V8xEhSTzVrz3DNbYu
+         2mSq/7GGGTdOSftrCjLHguAiiVVg42N/fzuObzGpqtYuo8q3v2OzmtwyHc81TPfKjXuE
+         ZtXvQISz5h26+/wvjK7Mn//yzGAvAXsNJhCYpee/L1iKd51SDLGPpF9+qbem6Fr3HFcr
+         NktA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=VaraaoEffKo/wZUvpE1AyyRcDmdu5RdYoE5LDogL5zw=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=ZH/xrdIr0HEL3DK7RcH0W5ePMASfOq89OfLnWX2TkhoyRe4S4BIxwitaj9SlEbU4yS
+         2m9gAA9QvLhRC5MFNzHAT9zGIyj7zLGE9T5KGrxs2jCXzSJqvdNE0vY1bae26Q5FTHq4
+         WfYoklCb1HeVlrIN5VuVjYmldCcASEsqEUlWrDDIzhXDCDkBkDUEdavMkPcrRoejDAwC
+         kR9T75TeKSoKSeJXXh6wlwyeHnzYc6fIRvuNxvOnmv/M6GcAU9PeteVvtYx/wf14mLVL
+         VV4bchPS8gGs8l0RfpEWZeMBylF8Uf5FU7LagLUYl0vo2ie7zML/NWYW0+XNkXMYzobY
+         vohw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DYNB3Kxs;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c6c13d41sor6369605ad.15.2025.03.12.23.39.20
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:39:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DYNB3Kxs;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741847960; x=1742452760; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=VaraaoEffKo/wZUvpE1AyyRcDmdu5RdYoE5LDogL5zw=;
+        b=DYNB3KxsVaG6qublB0bF3+z377ccEjMY1kusGPLEfR0XzxE0aFLc/fYuCkzgjeI3Wm
+         DhNSPrLTWBJ8X3hY1gXM0kKvi/qluX6kPuRvfINIp59ivIdZYJwJcSXP/rhQ1ysG4kfj
+         /rckDbSPA05v+Zo66bC0Rvkpr37ofQJgXpvGspaIZVuxuv3xLX1IQlYSGexbHetpRKeQ
+         ObSUqqV5zuiUR9NmqPsTnRoKtkr1vXdDLN52hVcm31SA3OoJKctL+HID1CQzXjPSdBga
+         /KYFTB16DM8Wlr/4r+iAoxvdxEB31tBrX0YXXgCfYEf2AB+WecWXOByX+OAfhEeNtCal
+         oxPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741847960; x=1742452760;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=VaraaoEffKo/wZUvpE1AyyRcDmdu5RdYoE5LDogL5zw=;
+        b=fh6Gp7WFJF36A+yfQFaLPg2tV93j5Mg7+UtXWtBw/N9WBSc9ngBXsQNcn49e2Hz1uF
+         RGwLIUFbi0Mi6VEKrATXs3376GGg96dmIFjtfQYbKEJ11GERipfaqiaKx4fQoMxbdBve
+         XlQJKl5EEyp5msJ2VWYeCr7jFxsoYCxdH7XetYKJYVpwtex4G1iMAqy4XTJn9fB3Z9eW
+         E6PTT68RoSUneMBWa603jNTvpK+KgVyZfG9VdK6/fplloMEW+/bc97KnXuQXfh36bf2X
+         ogbVoS3pvFUHRvhcItqt/sF0UN50y9720wll59a6+QbKECU61q6TIRelFqpl0dL7SOkj
+         IQfA==
+X-Gm-Message-State: AOJu0Yxt8t6yxE+8Ok2u3eiPJzFL0/0dyvXKO7SDFSxowBKyQFCGP6Ob
+	UXMrdXGOm4Fk4hHJ0XClr4UfGo27/z4mmnHGbU18pJFJMKoDpBJk/9KkHSyW
+X-Gm-Gg: ASbGnctL3HnXfqKjqvJKNyFAYhzATYlAdLYQathAGmW/gJFtpfK1jHSKNAUsu+MJ9Gg
+	7BLdtCGPUkDtRcRHde7Ovy6S7QP5Wluo0WAO6RSfDSdCCSiFONCPofBKuDq52RlSMU0QTn0O1AV
+	v4pDheyn8q7zTH0xPDHAnQ3Ih3xjOFtdzONzhUIr6wDA+9fqQpnFNhjQ/CbxEwgGnYyWsmd1hVB
+	d+L+e4S7pRPPw6BqkbP76H2Lf4A2K3tsppK+y0/v/fJlNmwGt/PypDI7jywk9E0ctAUWZJ1ZTRv
+	RLK+uoaUOET4i4+UhOFhigAVBDO5db2KkHq/6tQcK62W2RinVapoQh/8Fk+tffIZKvVKCw==
+X-Google-Smtp-Source: AGHT+IEBf7DZsrHUX4QO99GAzY1vPa+14WcftMudIjJ3iM6rZ3XVXApC+re4P279fdNjHKqdJFrmTg==
+X-Received: by 2002:a17:903:1b63:b0:223:536d:f67b with SMTP id d9443c01a7336-22428bded61mr416405895ad.38.1741847960050;
+        Wed, 12 Mar 2025 23:39:20 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c68aa6absm6182815ad.90.2025.03.12.23.39.19
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:39:19 -0700 (PDT)
+Message-ID: <67d27d97.170a0220.2bc57.1e54@mx.google.com>
+Date: Wed, 12 Mar 2025 23:39:19 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============2883925181769007153=="
+MIME-Version: 1.0
+From: Modern Digital <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Proposal for Strategic Partnership - Collaboration on Next-Gen AR
+ Solutions
+
+--===============2883925181769007153==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Mr. Johnson,
+
+   I hope this message finds you well. I am writing to you from XR Labs, a rapidly growing technology startup specializing in Augmented Reality (AR) and Virtual Reality (VR) solutions. Our team has been closely following your work at Quantum Tech Inc., particularly your groundbreaking advancements in AI and machine learning.
+
+   We believe that by combining our respective expertise, we could create an exceptional product that would revolutionize the AR industry. At XR Labs, we have developed a unique AR platform with advanced features such as real-time object recognition, holographic projections, and intuitive gesture controls. Integrating these capabilities with your state-of-the-art AI algorithms could pave the way for unprecedented user experiences.
+
+   As you might be aware, the AR market is projected to grow exponentially in the coming years. By partnering with XR Labs, Quantum Tech Inc. can tap into this rapidly expanding market and establish itself as a pioneer in the field. In addition, we offer flexible collaboration models that allow for seamless integration of our resources without disrupting your current operations.
+
+   If you are interested in discussing potential partnership opportunities, please let me know at your earliest convenience. I would be delighted to arrange a meeting or call at a time that suits you best.
+
+   Looking forward to hearing from you soon.
+
+   Best regards,
+
+   Example Your name
+   Co-Founder & CEO, XR Labs
+--===============2883925181769007153==--

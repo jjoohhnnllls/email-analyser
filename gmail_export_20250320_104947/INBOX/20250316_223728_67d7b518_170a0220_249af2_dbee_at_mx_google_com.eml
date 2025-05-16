@@ -1,0 +1,107 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp2108104rcd;
+        Sun, 16 Mar 2025 22:37:29 -0700 (PDT)
+X-Received: by 2002:a17:902:db09:b0:210:fce4:11ec with SMTP id d9443c01a7336-225e0a2417cmr130633925ad.1.1742189848987;
+        Sun, 16 Mar 2025 22:37:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742189848; cv=none;
+        d=google.com; s=arc-20240605;
+        b=iU/aK4OfSrF7Ug4VDB9mnHJzI7KqIWjk+GhgbuJH8lqmoyl0LgKqIhx7QbG5zUU/sz
+         U2Csr8rt2PsSaLyduVYePwLNPwLqUJcIVeATDGDTWzys3ld3VfHLrPLHTIOSl+vKM7+y
+         AJP2uHPAbw0jJA6DaniFVYIp4bW307bA9Cl6qdhlcqqSNV2vIz9DoIDQjFKe93uGUD2T
+         qPZdg9T9cMSwECgNiWHP/0mlD59k4XGch0Udy8OZF7mdiV9vaXekna3gdO9R5i+h45RE
+         50NZGdbadX1XpOxwLj7SUyvqSbljiUP6uS5i7kEiczlt3BbclxTicEftdX8tX8hfngiK
+         +WhA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=R8lutndKjBkGTV8JBgzyFPvOlCFpDypAmIaNkkGC0yc=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=Nv3U01B3UvL6X0MHWsyW1kBn6YUSZwQ9i1+4a8PJHnfQNjZ2XxEMgBJyhUzIMyWNzU
+         XrO2GDZJRMZcMQA1/Fk85LJmb3Noc41jyJQwmam/G8sgi9FU93POjR433Y/ef35E8lvB
+         ywP2d8NxJSw+FKNJeaj04r5HLDhoMjJNUV86WONx6l/0yJpt4cg7dfFNnLK4bEOpgg3z
+         TvL/noxmD3xZWXL9qghKkkea98UWcUYyxautWf19GLEGK8VSYzEcmqqPK5hQiwIjFa+L
+         uVnz3JB5xrf0fxWUUt3EsquiILn0+hXjtWOEqDgRiRC0XUTq28LbecKDYZHbaH0YHX/3
+         fzDQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=I8wWvVez;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c6b577e5sor43922385ad.17.2025.03.16.22.37.28
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Sun, 16 Mar 2025 22:37:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=I8wWvVez;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742189848; x=1742794648; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=R8lutndKjBkGTV8JBgzyFPvOlCFpDypAmIaNkkGC0yc=;
+        b=I8wWvVezKdxZlY/1kaMtACAPbaTRvrCSuJo03T4C3elwz5yIjKPi0gTXTSAGieaCUL
+         eEPa6srnSsc9TYeRibNqQ1SkCXaHXvc6qxyZLIO/bSfcTRgcVLg3gfoEbq3sgDCQ0rbM
+         4i911zInfilxZNQp/L+ug/KLDqMrZC4DlK7kCZs2BbNY/W3vz50j61E8TUjKNvZXB00n
+         QIj+3I8VRZ5ipABlw+vKLeKFTbkiokZC0uXzQq3YyDj/W68pEw0/l19Nah22jxqesR2B
+         w6GAxmB2ZL+nVir/OmZD4xe5THELMHDBZENZTpJsrNPODR4GUM80rnAbPaooMS1UYNUq
+         atkw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742189848; x=1742794648;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=R8lutndKjBkGTV8JBgzyFPvOlCFpDypAmIaNkkGC0yc=;
+        b=NypmqrKLV01Zy8wqQ+NeCWydUKV6uidS4emuvilsRccHiILMRIllMoP00xGDDEGqUN
+         GCMQP9xqeh4TcS+xnb9ZJjdo37sKoAAjlZ6JjrP2qX/Hhj7M8KJLcZs0y27/QBRAvjfX
+         dF+VqqpR3IzJMVWG2VApLIzhi9Xopbx7Ve5SbO2g7GSC2IV5VdZNoUyY307o/DJUoeRd
+         Iz3jMbhsvW7bh22nopmZBDsGmiuLcerUQ25Z76YH+9ERUq1/4HI83niEXwTEohqF8M/Q
+         vPKJP1MXXgB76OWSvoQcfI+0nPoxRcP9Z6iBNbeWkZ/3+UwyPqnE1KN9VhSsHha+d9Rs
+         shAA==
+X-Gm-Message-State: AOJu0YzTdI5aN17zTxK+c39klx3mNK7arGQcLLvjDTHZVwpz7xZSvST+
+	4UDSWZUbEGM1zdd5K44Apxa3IAkH1Qg8OoOYCPBV7h9n/yYda6bcAZMBQA==
+X-Gm-Gg: ASbGncssR9TUuqtiTZh7qcDVSjSSF3gbK8D1JPK69w0VIFnSag/nsD38YDHRrZn+nBN
+	7D/ou0YcALqOHbE5Jc9iNqsd7JcjHKl49yFwmKg2K6e2wZj7ymYL7jQXFTOJYJPujVRlaJMAwcL
+	VLPHF0Qd9RgzQfrovozOrFJiwPx5ecqnIHDr1usR5RdZPWLWFaWRfomgJvilTmq1NWBdcoE3/0D
+	ynw+tJL7l3Hiignago4pA1t3h1QuX2KM92qSmG6jAmM/rjFT4sq8GZdS5Corz6mH1BehrOOTFMP
+	EwlXYRBS2YojM5QtTaqPH/WTPvCzE4lRp6ehMDL9YjAOICdFLMxOmwNk5bAr2LgSPd4KWQ==
+X-Google-Smtp-Source: AGHT+IGDfXWeD0hiFbuU7dbVHug8g+TFb4ZtfDhuF5Ai3QAvqG2PU/EM0RSgJk4XWZx/acG5bP0MWA==
+X-Received: by 2002:a17:903:22c1:b0:224:2524:3047 with SMTP id d9443c01a7336-225e0a6b2damr140941935ad.26.1742189848261;
+        Sun, 16 Mar 2025 22:37:28 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6ba724asm66396265ad.152.2025.03.16.22.37.27
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 16 Mar 2025 22:37:28 -0700 (PDT)
+Message-ID: <67d7b518.170a0220.249af2.dbee@mx.google.com>
+Date: Sun, 16 Mar 2025 22:37:28 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============7185270386334090250=="
+MIME-Version: 1.0
+From: Charles Moore <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Application for Backend Developer Position at EcoShop
+
+--===============7185270386334090250==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Hiring Manager,
+
+   I hope this email finds you well. I am writing to express my interest in the Backend Developer position advertised on your company website. As a passionate developer with over 5 years of experience, I believe that my technical skills and strong problem-solving abilities make me an excellent fit for this role.
+
+   Throughout my career, I have worked extensively with languages such as Python and Java, building high-performance APIs and managing complex databases. My most recent project involved developing a scalable backend system for an e-commerce platform, where I was responsible for optimizing the checkout process to increase conversion rates by 30%.
+
+   What excites me about EcoShop is your commitment to sustainable e-commerce practices. In my personal life, I strive to minimize my carbon footprint and promote environmental awareness, which aligns perfectly with EcoShop's mission. I am eager to contribute my technical expertise towards the success of your company and help make a positive impact on our planet.
+
+   I would be grateful for the opportunity to discuss my application further. Please find attached my resume for your consideration. Thank you very much for taking the time to review my application, and I look forward to hearing from you soon.
+
+   Best regards,
+
+   Example Your name
+--===============7185270386334090250==--

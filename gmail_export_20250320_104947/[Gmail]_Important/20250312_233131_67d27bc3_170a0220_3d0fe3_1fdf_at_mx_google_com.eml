@@ -1,0 +1,107 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp766750rch;
+        Wed, 12 Mar 2025 23:31:32 -0700 (PDT)
+X-Received: by 2002:a17:902:ce0a:b0:220:f795:5f14 with SMTP id d9443c01a7336-224289946b5mr337076835ad.27.1741847492071;
+        Wed, 12 Mar 2025 23:31:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741847492; cv=none;
+        d=google.com; s=arc-20240605;
+        b=c7Vbux7jeVAGHoSL35f8GhL9iG96ZaA6IzrQBn/CW20akvlCTltND3+2dKT+7tnWAR
+         BnqIV8/pT65YUH9z1CxjRIYEGDyu4fHpO4KyQUvPGATD5MfQONfBmhpqlK9la6+n1SmL
+         1WQHyO3FbC7RCb2f60uX+jq3fhDr+oOb8O3jFGSWgKLZJeBfTMdCezYMOhjVMcaZgQzt
+         Lmy44qRptKnEzhvXAP8DXLVXjPXUID932HOqcdxDKxz3IycNtIBkFSZcaOdKo2TN/vb/
+         oDn6wM6Gw1HMnV2xo8/qtnioxYKmjmhIBnZK/3rvfdY4kAZO/KlMSfVCl/BXKzWmnJ7h
+         Wj2A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=IkFza81yxlJeFt7l04JQEPsZsdSccxQN7YD4DemeBqI=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=F1dsT1pGi9cwXTl5JPyCvL7Wfv/WoJIa/7NQ/2IoruiTt9PAPCpB0qYhhIWKNsEUaX
+         zF9tN/uiM0yHJCM2Y2HYFtiTwHIHZYU59oarHLwdn+tbtBMtnA9JtX1aodWiqB3brTZ9
+         3Y8XR0WDzgRiGP6+3DAOlU5TCGbmYJFRMAAzsVU+W10z8AzahwpmZ9GhRaHaSlfW/nb5
+         TlwZVTMMkv1rJ/8HsdAUyT0gP7hCiY2EGTUwoZt1mlWh6NRqXY+tmw2Oj1k4SULIqw0/
+         xb2uYgoAwKFhc9zJC8XeiCcRyeZyEcCvzm6H97BYf+ThIzhPKZEc4o81ZdxXdGRnazGl
+         QqEQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Rb2PeLS9;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c689d496sor6579035ad.5.2025.03.12.23.31.31
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:31:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Rb2PeLS9;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741847491; x=1742452291; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=IkFza81yxlJeFt7l04JQEPsZsdSccxQN7YD4DemeBqI=;
+        b=Rb2PeLS9k2EbGcnlFThXUAcx+6wZoqKPElgBuUprF3N6l9B89/xQkYDCR5KvK+Hd6A
+         lNnRQ0PUsUXRmhqTSrhpiyczi3ETo03uEPJpihhQLZXvl9EMPEdN+IPf2tVZBCQ3CnvJ
+         d3kXfcvw9mt8dPUp7H0yOSQBLhccx2HP7ER1oKVQm9DeC2Icm8mFKhdtfb6xWM/mBYyG
+         DQvefxyGkOyDB2TCRWkhH0XhgQw/2e5YTiPFjz08w1s4MAZNhtN+3NfahUAYm/ajgkmp
+         fWZWU+19hg9gieeO9vwBxi1cBSPSj7uPAnXDhWb6tbf2rbnvtbGZpRnQ/W8V0TMYHYlX
+         DXVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741847491; x=1742452291;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=IkFza81yxlJeFt7l04JQEPsZsdSccxQN7YD4DemeBqI=;
+        b=C7XQdT6bL5H/VKc1lutkxXgD2imFRwmdBvB997AzxZBl38iBKFePUvxURG0Pu4mCew
+         OMqn95cfBcNa6Lmt3Rr2nTRYSoqgovNry6ZKE/JaPGWI2r5XIDiwjuvSRIrvN05jDA3V
+         wagCyvDmNjQ1H9asBMpGFNY9NGKO0ZWmcDm2ISnRK4QICed/Alk5GPyuc2AHA/MohSEY
+         0mStm4lKVCD8Ugp+MH+rdwbIak1HVKT/sOCq11uzg/BtixahtNzBJ12bjKyyZIXi7GEQ
+         2AOMUF+nQ8Wyi9CaTPgLQvuxn2llq0mh+HrP1Aq9s41IeOb3d/tlWsfolMp42QVNtbJl
+         ly3Q==
+X-Gm-Message-State: AOJu0Yx+iORpS82kAxHz0T7px/1YVCWttmpltxu3W7GrhfR7qJi//U2l
+	EbhRSPXbA3tM2y2JOFGc7nzmpsgoTWUAXlqDppi2EVszssTqj5DSB1ygvWG97wU=
+X-Gm-Gg: ASbGncsusSxCc62f9OVKnniNNZnh/MmXxqdE7XncxHzToy0SKKGNJZHxgxgVWZsQY3r
+	InxQVeM3Ns0aZWQEztC4r70sDKD74Iwb74cgnITkL3sWPJWjwpfr/JJa7AyoNC8R3YJ68bOt6yO
+	SuoAUEQK1Dl/BQYtgy9asp3KmNNVOCZLxun4NdOzJI4LCGBjBwuT29ZxW8d0cMSOWMgAtO6gavx
+	vynINcIZbVyHs1kLuIni1V08lTru8DRJ49vhIyJry2FRL/a4z/XoaixWo6kHuwItu5cDVgGGYqN
+	Y/taY0C/g3woxE/wUiALeXjok8EJA9rrkmo14cYQzFaCB7fkKKdqTEn15Z9l1I4sRoGQrQ==
+X-Google-Smtp-Source: AGHT+IEuenkaTKpIWMclhaw8ygVUaCzNBduhy+L9dgvN25FFX34z5rmONdZlxp7EJOCRzV2A81rflw==
+X-Received: by 2002:a17:902:cecd:b0:223:65a9:ab86 with SMTP id d9443c01a7336-2242888a563mr390068975ad.12.1741847491255;
+        Wed, 12 Mar 2025 23:31:31 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6888653sm6089955ad.22.2025.03.12.23.31.30
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:31:31 -0700 (PDT)
+Message-ID: <67d27bc3.170a0220.3d0fe3.1fdf@mx.google.com>
+Date: Wed, 12 Mar 2025 23:31:31 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============4805611187046493516=="
+MIME-Version: 1.0
+From: Richard Garcia <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Your Order #12345 has been processed
+
+--===============4805611187046493516==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Mr. Johnson,
+
+   I hope this message finds you well. I am writing to confirm that your order #12345 has been successfully processed at XYZ Manufacturing Inc.
+
+   As per our conversation, we have prepared and shipped 100 units of the XR-900 industrial machine with custom specifications: RPM range 900-1000, voltage 220V, and color blue. The shipment was dispatched yesterday via FedEx, and you can track it using the provided tracking number: 12345678901234567890.
+
+   We appreciate your business and look forward to serving you again in the future. If you have any questions or concerns regarding this order, please do not hesitate to contact us at support@xyzmanufacturing.com or call us directly at 555-1234.
+
+   Warm regards,
+
+   Example Your name
+   Example Your position
+   XYZ Manufacturing Inc.
+--===============4805611187046493516==--

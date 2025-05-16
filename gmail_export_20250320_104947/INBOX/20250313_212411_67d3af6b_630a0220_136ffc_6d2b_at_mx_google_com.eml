@@ -1,0 +1,114 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp398150rcd;
+        Thu, 13 Mar 2025 21:24:12 -0700 (PDT)
+X-Received: by 2002:a05:6a00:6586:b0:732:56a7:a935 with SMTP id d2e1a72fcca58-737108106d0mr5791171b3a.12.1741926252432;
+        Thu, 13 Mar 2025 21:24:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741926252; cv=none;
+        d=google.com; s=arc-20240605;
+        b=d3f5J9+RWNF6YN4Nz7gYyN4rDyMakfA/BpKECbB1od+e5q1+yWtCW+YbMNAwc24gyN
+         2BQSzqydQAonVUXe9B71v4EWA34n/3DiQhqLBvNmDkKvZAnXZO5bFh0sJ3/o5NkHHaJi
+         3dX++Rf6blJId9+sJu8F1kOTVvwj8ejMko6iOJrR84m4YprAad0fNFIjRLQALbS7Jwok
+         sVOhB8xjPx5wAe0dBUCM9AZfN5UkepVQLz24/c3TowMR0qyoOWfZygFg/H6Aoi8jyXcx
+         v5bprQnVOut3vTPv+ourLlUvUuhLp5C/KkGvAoYAohJ1FcWMzilRKbNYv5I8KWXJaRno
+         HgVQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=PdsLM8NGFcDYxoc2fDjlpvnGKGXE2RqcDgXaPTG+lEk=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=kJXSuko0SGsGroLgogZ1dFXAbVMlbI87W2c80WSWg0cXO5f50CjxCAZL37Db6Bhf9Y
+         Tfj/YHNdXYYFpoMcl80H7K5oFIeZRJJOkJ2Xe7WJ7lu0k/I+Cr8ClPu1rh8WIHmWXaMc
+         bqDNJWXNgXferbJZPCovzJZz1wVIWY/veY6tHzq+G5Y7pQdEuw/v0SEZjiTXlZC9BzNT
+         QDrjfGhb3lBGwOtjjf5txVrb/aHudpnULXm3zYxi9AVrUfUouh2M/u+9VzaqSAwtSZU2
+         ADnRfuqktTJNC87lp0uOvyfkIQAXV+NS7+T6ZhZ5x5g/L1hTAoAvi+3mCrG9oWre/Vpv
+         ClwQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=PD6dnqkE;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-7370ff829aasor1414758b3a.3.2025.03.13.21.24.12
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 21:24:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=PD6dnqkE;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741926251; x=1742531051; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=PdsLM8NGFcDYxoc2fDjlpvnGKGXE2RqcDgXaPTG+lEk=;
+        b=PD6dnqkEjQ4aW/vmhOFJmDKjM505sEIbwEJKcgbYpW0+ls/KnqNxrCE7+9L7mMP48g
+         4DmsruI/d9LjPMPrHgU3v2F0MdWZCCrUrKLIV0jX6TRIQ/4NuHOWIJuL3SFQiUhAbT53
+         uIPcEhJntFi19ruSq+AWzWc20jXKiMPMr1YNP9bNkFOqkE8I9lDqjEYWhDhd3AdjVxvG
+         0qzmG7YpQW0RFQIGCdw2/QnM2ElUcbL5FEFKmC9WyoLC2s7XoT838WfT2KH651eOMy82
+         ErJiiLbAlKtbY/K2hf4ExT5d6oYRDvbpJOZIKApsLBWgfNCkDwI0x+sFO8Jc3fYgM6k6
+         ZdWg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741926251; x=1742531051;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=PdsLM8NGFcDYxoc2fDjlpvnGKGXE2RqcDgXaPTG+lEk=;
+        b=UdnyWsGv/TGYSZSVDCaR3aQR8PqXYonqcsQfnEXtMRZXujDnEtelsVfpUq+OiVIV2a
+         8Tigk9tknItDd5WZerIR7YEJgx4mTTmeHxutSN4CNZnbzL4JrTpgr9+snT0DzXmYXKoZ
+         8EGiHx57QY0MzSqhi6VpIRKFkkxJaBJi6wFcgTqUo3jlF0a2mq5OaDrCwcJQcnWp0bn+
+         mtx15buAWxDEXxHeLaL7CWm/vvDOZR9bOtveeojs9N6T7xFL5Rt3LuJbo8pI/JhPg2Lu
+         lwvMfGzsTyoz4Bjoj1NGu/OGrPbLfN4uhzTuueDiaD/uu/nN5J7QuLpVHtjrrzQoqn/7
+         5WeA==
+X-Gm-Message-State: AOJu0YyvNWCTtqVV4g4Fn7FiwSbKPNwIw1nl2Lf78cjedZoNGRseMzen
+	T/7Y5w5xIqpn5pBptCsFVxwhziWqz4rp5lYx+k5GNQfGLYuiFjQWIvtBymY5
+X-Gm-Gg: ASbGncupVL0tyHWzeQpEYhvE19FJAUyJP+GDORdORbm52qeofDhr7fGTvqHD+t/JFsJ
+	ScVN47nMIX1VAVmGBTot78vtoBYjPJPKoNE48H5/UbURCO4gW3jBQO5KWXaugKfmjmsJiqxvF3H
+	Tj9g/Y6MHUlYu6X3EyX9Y0xaxK+XGiyNLQziyquXAs4qhP9v0JU9sXkAy/VXKbjSdwkJevvZEXF
+	uPAITQxErSk61BmUrFWplV2YwRKaXWuaEZeCcCD3G78Q8gbLUD7Jav0Jlg6EgwHTB1KqSERjtme
+	9AVVygWEQdvQCr03WoFnGLHZH/wtjzDkjxKdYJF992AeB45nBrMOPdujTXz3b26dNGZcJg==
+X-Google-Smtp-Source: AGHT+IFR0SMz/9U9Kq48n939wnHGnOAVV3VAvdXdhot+NuPwsWogJK27yFRT6BkcMxdi0quRTb/9og==
+X-Received: by 2002:a05:6a20:a128:b0:1ee:d19c:45f9 with SMTP id adf61e73a8af0-1f5c29a20e9mr1355735637.19.1741926251458;
+        Thu, 13 Mar 2025 21:24:11 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-af56e9e0fe3sm2104616a12.24.2025.03.13.21.24.10
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 21:24:11 -0700 (PDT)
+Message-ID: <67d3af6b.630a0220.136ffc.6d2b@mx.google.com>
+Date: Thu, 13 Mar 2025 21:24:11 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============2671468265781927543=="
+MIME-Version: 1.0
+From: Global Solutions <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Important Account Update Regarding Your Subscription with Zephyr
+ Software Solutions
+
+--===============2671468265781927543==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Valued Customer, John Doe from XYZ Corporation,
+
+   I hope this message finds you well. I am writing to inform you about an important update regarding your ongoing subscription with our SaaS company, Zephyr Software Solutions.
+
+   On April 15th, we noticed a slight discrepancy in the billing information associated with your account. To ensure uninterrupted service, it is essential that we have up-to-date billing details to process transactions securely and without delay.
+
+   Therefore, we kindly request you to review and update the billing information for your account at your earliest convenience. You can do this by logging into your Zephyr Software Solutions dashboard and navigating to the "Billing" section, or alternatively, by responding to this email with the updated details.
+
+   If there have been no changes to your current billing information, we encourage you to verify and confirm it for our records. This will help us maintain a smooth service experience for your organization.
+
+   Should you encounter any issues while updating your account or have questions about this process, please do not hesitate to contact our customer support team at +1 (555) 123-4567 or by emailing us at Example Support@zephyrsolutions.com(mailto:support@zephyrsolutions.com). We are available Monday through Friday, from 9 AM to 5 PM EST.
+
+   Thank you for your prompt attention to this matter. Your continued trust in Zephyr Software Solutions means a lot to us, and we are committed to providing you with the best possible service.
+
+   Best regards,
+
+   Example Your name
+   Customer Success Manager
+   Zephyr Software Solutions
+--===============2671468265781927543==--

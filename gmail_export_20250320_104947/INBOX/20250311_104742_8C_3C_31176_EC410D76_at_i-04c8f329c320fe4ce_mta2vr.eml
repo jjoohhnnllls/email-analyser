@@ -1,0 +1,1482 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:520:b0:81:c1e5:8e27 with SMTP id 32csp1734776rch;
+        Tue, 11 Mar 2025 03:49:47 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFcU1ZmvT6T1Atz1ykeY8NnEhM8eBgjXWlNwF9f0UP3Wm0Y7kP0XEmPAmoSJ6ONDCQNNpJ6
+X-Received: by 2002:a05:690c:c96:b0:6fd:a226:fb24 with SMTP id 00721157ae682-6febf2d5d54mr239363787b3.10.1741690186908;
+        Tue, 11 Mar 2025 03:49:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741690186; cv=none;
+        d=google.com; s=arc-20240605;
+        b=KqP7lQ4bx1SwvYQJuPQUerfBjvO2rl58Ygu1yij2QYWvo5+dvOwc7ybYX6yoJw0yWM
+         wy9nBv9g/vlkn1d7AVWWkO4we9AQSAQGtSsy2h8TqKa46w1Nj2tYsCmelaDJHeM8gZPt
+         6p1mzxryyKbeugpMAXuE7zYAGtxYgjZy3wWutGXcV1K95LmaGyVHubz98ROX44wrA3kn
+         wrrWiYUW60nG7684DAJzje2FKwN+MiMg7L/xRZNvYwd5CVmbkNJy6ov5cPt6CyFAfTdt
+         UEt4Olmf5eoucYgaIF2DNrrjPxLsrT6m+XUT3EQbhxxWgPHMAAF7pwa7UKp/3DUt9/Fa
+         0jpA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=list-id:list-unsubscribe-post:list-unsubscribe:from:subject
+         :reply-to:mime-version:date:message-id:to:content-transfer-encoding
+         :dkim-signature;
+        bh=7j3y5qql4JooGgP2IN+vmZc/5dW+AJF7EX9k/bSmUVk=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=Pz4ONdjGoQza4Av8hPC6hfhOpk58W7PO5AlhGC8kAJFC2GSROR3rqF4JrTcnf33Pn/
+         hdU5BT34PDArsJCspSzThs5Fwot6l4tpNzvVfku9wtSRrn66n+9dZ7zvLoddZCUc7k1W
+         aIAOV3pBRFXHNT8leQHOr40P5FtyWz/ybYnXy9AaI3CPne9L1K1N60RCs9YvsgDeoo4+
+         v9mU6nQfzR9GEmquMCyoZJNvgVOBGQmYySJ9NPYGp0SR6uWLkyZSzOCKNbT3vJj6PrOT
+         72xnS6yqfvcX93EEb4k7jx9fgaknjv+zAsnCSJfqLLYtPvQMGcO2BKVvz4rotvZ3T+U1
+         /kOg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@nytimes.com header.s=scph0118 header.b=IM9fH+mc;
+       spf=pass (google.com: domain of msprvs1=201651gilih6f=bounces-1-3@bounce.nytimes.com designates 156.70.4.232 as permitted sender) smtp.mailfrom="msprvs1=201651giLIH6F=bounces-1-3@bounce.nytimes.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nytimes.com
+Return-Path: <msprvs1=201651giLIH6F=bounces-1-3@bounce.nytimes.com>
+Received: from mta-70-4-232.sparkpostmail.com (mta-70-4-232.sparkpostmail.com. [156.70.4.232])
+        by mx.google.com with ESMTPS id 00721157ae682-6feec98f1dfsi35148157b3.38.2025.03.11.03.49.46
+        for <desgtest.email@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 11 Mar 2025 03:49:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of msprvs1=201651gilih6f=bounces-1-3@bounce.nytimes.com designates 156.70.4.232 as permitted sender) client-ip=156.70.4.232;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@nytimes.com header.s=scph0118 header.b=IM9fH+mc;
+       spf=pass (google.com: domain of msprvs1=201651gilih6f=bounces-1-3@bounce.nytimes.com designates 156.70.4.232 as permitted sender) smtp.mailfrom="msprvs1=201651giLIH6F=bounces-1-3@bounce.nytimes.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nytimes.com
+Return-Path: <msprvs1=201651giLIH6F=bounces-1-3@bounce.nytimes.com>
+X-MSFBL: 0ogAhlmRqTTfDcAv+r7a9VDIF1ImrvolEGWfg1WG4ZI=|eyJzdWJhY2NvdW50X2l
+	kIjoiMyIsImN1c3RvbWVyX2lkIjoiMSIsInIiOiJkZXNndGVzdC5lbWFpbEBnbWF
+	pbC5jb20iLCJ0ZW5hbnRfaWQiOiJueXQiLCJtZXNzYWdlX2lkIjoiNjdiZmNlMTR
+	kMDY3NWU0OTQzYzgifQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nytimes.com;
+	s=scph0118; t=1741690062; i=@nytimes.com;
+	bh=7j3y5qql4JooGgP2IN+vmZc/5dW+AJF7EX9k/bSmUVk=;
+	h=Content-Type:To:Message-ID:Date:Subject:From:List-Unsubscribe:
+	 List-Unsubscribe-Post:From:To:Cc:Subject;
+	b=IM9fH+mctNNx83+IvvYrH9N3cxF6uwlBaqedn1Df9KWgRMIhr8vhHts5xCVOlk7bu
+	 Tna2NX66LXSsgO7LWyaE+ekc4LYTlQcNwN9oi0KlKdze1xa3uQ7hMoeS/9udTeBgR+
+	 9VnaqGS0FHLoyaFB72QCZ8TJfdS3JgikJy3krLII=
+Received: from [10.90.45.4] ([10.90.45.4])
+	by i-04c8f329c320fe4ce.mta2vrest.sd.prd.sparkpost (ecelerity 4.8.0.74368 r(msys-ecelerity:tags/4.8.0.17)) with REST
+	id 8C/3C-31176-EC410D76; Tue, 11 Mar 2025 10:47:42 +0000
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+To: desgtest.email@gmail.com
+Message-ID: <8C.3C.31176.EC410D76@i-04c8f329c320fe4ce.mta2vrest.sd.prd.sparkpost>
+Date: Tue, 11 Mar 2025 10:47:42 +0000
+MIME-Version: 1.0
+Reply-To: nytdirect@nytimes.com
+Subject: The Morning: What Covid taught us
+From: The New York Times <nytdirect@nytimes.com>
+List-Unsubscribe: <mailto:unsubscribe@nyt.mail.e.sparkpost.com?subject=unsubscribe:qQAQECdiN5wld4QRL4dA0nSIRySyh9ZGLMYwBt16osc~|eyAicmNwdF90byI6ICJkZXNndGVzdC5lbWFpbEBnbWFpbC5jb20iLCAidGVuYW50X2lkIjogIm55dCIsICJjdXN0b21lcl9pZCI6ICIxIiwgIm1lc3NhZ2VfaWQiOiAiNjdiZmNlMTRkMDY3NWU0OTQzYzgiLCAic3ViYWNjb3VudF9pZCI6ICIzIiB9>,<https://unsubscribe.spmta.com/u/R2qfa5jpM3zuMxQl2FnscA~~/AAAAARA~/DIXNGcz8Dx1xQc7vKap2c4z5G9iWJhIsayn8xxy3EcZ-3LtfqQqpJMHZRd1JmCIl-xVermuNPHfHMaF_t5OWvA~~>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+List-Id: <nyt.1.3.sparkpostmail.com>
+
+<!DOCTYPE html><html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:=
+schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:offi=
+ce"><head><title>The Morning: What Covid taught us</title><!--[if !mso]><!-=
+- --><meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"><!--<![endi=
+f]--><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-=
+8"><meta name=3D"viewport" content=3D"width=3Ddevice-width,initial-scale=3D=
+1"><style type=3D"text/css">#outlook a{padding:0}body{margin:0;padding:0;-w=
+ebkit-text-size-adjust:100%;-ms-text-size-adjust:100%}table,td{border-colla=
+pse:collapse;mso-table-lspace:0;mso-table-rspace:0}img{border:0;height:auto=
+;line-height:100%;outline:0;text-decoration:none;-ms-interpolation-mode:bic=
+ubic}p{display:block;margin:13px 0}p,ul{margin-top:0}@media (max-width:600p=
+x){body{padding:0 15px!important}}</style><!--[if mso]>=0A        <xml>=0A =
+       <o:OfficeDocumentSettings>=0A          <o:AllowPNG/>=0A          <o:=
+PixelsPerInch>96</o:PixelsPerInch>=0A        </o:OfficeDocumentSettings>=0A=
+        </xml>=0A        <![endif]--><style type=3D"text/css">.css-sdwaa1:h=
+over{-webkit-text-decoration:none!important;text-decoration:none!important}=
+@media (max-width:480px){.css-37loo4{padding:20px 0 0!important}}@media (ma=
+x-width:480px){.css-r2ey6x{width:100%!important}}@media (max-width:600px){.=
+css-xsf469{width:100%!important;height:auto!important}}@media (max-width:60=
+0px){.css-1wuwhda{width:100%!important;padding:0!important}}@media (max-wid=
+th:600px){.css-1a0tlge{font-size:28px!important;line-height:31px!important}=
+}.css-nanfcg:hover{-webkit-text-decoration:none!important;text-decoration:n=
+one!important}.css-nanfcg:hover{border-bottom:none!important}@media (max-wi=
+dth:480px){.css-1dtd48z{padding-left:30px!important}}@media (max-width:480p=
+x){.css-63f6sn{display:none!important}}@media (max-width:480px){.css-1npprw=
+9{display:table-row!important}}@media (max-width:480px){.css-sj7u5m{padding=
+-bottom:5px!important}}@media (max-width:480px){.css-1hnedf7{font-size:13px=
+!important}}@media (max-width:480px){.css-36ugzx{padding-bottom:0!important=
+}}.css-1n5iqtj:hover{-webkit-text-decoration:none!important;text-decoration=
+:none!important}@media (max-width:600px){.css-1n5iqtj{display:inline-block;=
+border-right:1px solid #dcdcdc;padding-right:10px;margin-right:10px}}.css-w=
+f08f0:hover{-webkit-text-decoration:none!important;text-decoration:none!imp=
+ortant}@media (max-width:600px){.css-wf08f0{display:inline-block!important}=
+}</style></head><body>=0D=0A<div style=3D"color:transparent;visibility:hidd=
+en;opacity:0;font-size:0px;border:0;max-height:1px;width:1px;margin:0px;pad=
+ding:0px;border-width:0px!important;display:none!important;line-height:0px!=
+important;"><img border=3D"0" width=3D"1" height=3D"1" src=3D"https://nl.ny=
+times.com/q/32v4Xfj6oei-VqxRQYUOwQ~~/AAAAARA~/YNqDfgAbRmACrFOLrfFhnGWwsJlw7=
+aOD-x0Fml2XeB2SsbjSHtwA6E5_qw0_Kr4GU3WZv3Ns6qzoPZDAKqTzMw~~" alt=3D""/></di=
+v>=0D=0A<div style=3D"display:none;font-size:1px;color:#fff;line-height:1px=
+;max-height:0;max-width:0;opacity:0;overflow:hidden">Plus, the stock market=
+, an activist arrest and balloon art.</div><div><!--[if mso | IE]><table bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"margin-right: auto;=
+ margin-left: auto" width=3D"600" align=3D"center"><tr><td><![endif]--><tab=
+le width=3D"100%" align=3D"left" border=3D"0" style=3D"margin:0" bgcolor=3D=
+"#FFFFFF"><tbody><tr><td id=3D"EMAIL_CONTAINER" align=3D"left" width=3D"100=
+%"><div style=3D"margin:0 auto;max-width:600px;width:100%"><table border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"width:100%"><tbody><tr><td=
+ style=3D"padding:15px 0 5px;text-align:center;width:100%"><div style=3D"fo=
+nt-family:arial,sans-serif;font-size:12px;text-align:center;width:100%;padd=
+ing-bottom:10px"><a title=3D"View in browser" href=3D"https://nl.nytimes.co=
+m/f/a/sP4XfypghiTT4N4SNPmi4Q~~/AAAAARA~/ICrKpMqqVoxKVJv0lpSf9umV-S28iVj4WFr=
+rnTZOuQ4peOeRZG9HBlZlW2Zc28GAXjSEC654mfa9SYCOJbNMMSY4XzDvb5f8rvs2etoHxqW5_5=
+A0RicalmGBqStrpqUh4L-pjAEDhkgnTOl_y33_c78ObIaiGuj7MmqQyZAOp0e7Ka9XTeIn54lVH=
+YUX8HhtwHMgfJW5h_ZPHNCkjXkeoAJqNU1dSARcYRGChI0mgtxTrty8iVRoeCTS-JvAE9XKw_9k=
+Ecz4i7KIftiN3KggLqgV84XV60jhyEhz7g-mCzDlHFKIwfIKc3vv5KJJJ6YB2EOVPPiOWa4p0mA=
+k0GwPRJp6QKHgfwQ46XVdBmy1TvPXnUsuaBdxacQiV_gMyi-_3_XyFMb-nEOWy9Cr9qMR7vYlcE=
+wwuqggPDRo0wa1QHSVGzy0yNwvgEs_uaE2v_x0QOaaNZEMNcSj5o_BCKBU8mov4ZxQ_iiHf6Uk-=
+itvKgtFxA6bnl5Ira_51RW7NyskK0v941aWRm4G22Pzyd-ZrQ~~" class=3D"css-sdwaa1" s=
+tyle=3D"color:#666;-webkit-text-decoration:none;text-decoration:none;line-h=
+eight:18px">View in browser</a><span style=3D"color:#dcdcdc;margin:0 10px">=
+|</span><a title=3D"The New York Times" href=3D"https://nl.nytimes.com/f/a/=
+RE7pv65dd5Iunq6t39D8dw~~/AAAAARA~/N81yZQ_MlVMA7X_xOpCRlrbys3k6ody8ekeN6vL5-=
+kFOmRMzIr5nVGclzoVA1Oo4ehYZe_2v8IQbF2IJ5mFkKlnHaUIYsH5-BKLwXSfoTuhK-sYgRCf8=
+_lCU3XG-ZwZzwaUCd5MEobsy1vtClfeihe3nyl32KMkylqi29yX4vqLUXV0Bo5UbvvTAzmg3QUa=
+dU5VpDS-A44hlqA-uLDBMkem1Xa-GXU_hzot9b8u1GLt1PbCh2LXGqC3A0Zo7N1ia2gcHufzkM4=
+GRFuytXCeUcp-sjUtxR8xeU9cRcscdCFs_gLrTJUUx1VfUFt6jo-cW" class=3D"css-sdwaa1=
+" style=3D"color:#666;-webkit-text-decoration:none;text-decoration:none;lin=
+e-height:18px">nytimes.com</a></div><table border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" style=3D"width:100%"><tbody><tr aria-hidden=3D"true"><td><=
+span style=3D"text-align:center;line-height:0;font-size:0"><table style=3D"=
+margin:0 auto" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tbody><tr>=
+<td><a rel=3D"noopener noreferrer nofollow" tabindex=3D"-1" target=3D"_blan=
+k" href=3D"https://nl.nytimes.com/f/a/SdevytKE8YJeG65HeHqsxw~~/AAAAARA~/-Lh=
+rNcjZd9VlV8-mGmwfijOLA0_lIEEPu62K1d3XNl9a3h2sQ7-fJmzOcBpB1s88exGezNDopq2GF1=
+9i5SgEgM96QjxESAXF3LAXkkp8c3XXN03-Q18Z6jYs0QeE_dfGHzEY9BHu_32J1jC8HhnaYXr7r=
+nVDaAclOezBhnyfLobCu8V54_irvO0ByMdWbt5Zk8jtBS5gWhvShUzBog3TdxpZt-iW-uAyN98E=
+k2RyLS1waX_XyM7FYM9NSAqr7uSQ" class=3D"css-sdwaa1" style=3D"color:#286ed0;-=
+webkit-text-decoration:underline;text-decoration:underline"><img alt=3D"Ad"=
+ src=3D"https://liveintent.newyorktimesinfo.com/imp=3Fs=3D859181&li=3DNN&m=
+=3Dfd9e7c2d5c7f4d66bbc5ef24246f3a94&p=3DNN_20250311&stpe=3Ddefault" width=
+=3D"600" style=3D"width:100%;max-width:600px"></a></td></tr></tbody></table=
+></span></td></tr><tr><td height=3D"10"></td></tr></tbody></table></td></tr=
+></tbody></table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" st=
+yle=3D"width:100%"><tbody><tr><td style=3D"border-top:1px solid #dcdcdc"></=
+td></tr><tr><td style=3D"padding:19px 0 0;width:100%;text-align:center" cla=
+ss=3D"css-37loo4"><div style=3D"margin-bottom:15px"><a title=3D"The Morning=
+" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:under=
+line;text-decoration:underline"><img src=3D"https://static.nytimes.com/emai=
+l-images/N-TheMorning%402x.png" alt=3D"The Morning" width=3D"300" style=3D"=
+width:300px" class=3D"css-r2ey6x"></a></div><p style=3D"width:100%;margin-b=
+ottom:31px;font:12px/12px georgia,serif">March 11, 2025</p><p style=3D"font=
+-size:0;line-height:0;margin:0" aria-hidden=3D"true"><a rel=3D"noopener nor=
+eferrer nofollow" tabindex=3D"-1" target=3D"_blank" href=3D"https://nl.nyti=
+mes.com/f/a/-K66d0G53DrKP-IuWU7UPg~~/AAAAARA~/vEUGti_TKf0QbUynR4PKyPRPkp7a8=
+mKbENEituoUU0DgH59Af6ppiETzONevunqhOOoW1ak9HXquNHmKysW2nEASdCZ1gkfo4qfCqwrE=
+gjgZU2FMp8IE2TNQ6Yh0vzRZWSSjTJK_zrQ941E68o5-ddSdN7dMO28J879z0YG5pMMr3T30_7B=
+B44RTgEM3O4RDGPgIFBCYAmaIxtafBCSNfSDzAgYNA3PnGR7WpJFLoCF1oqdJ9RO1Dfv4J3RomD=
+mN" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:und=
+erline;text-decoration:underline"><img alt=3D"Ad" src=3D"https://liveintent=
+=2Enewyorktimesinfo.com/imp=3Fs=3D1080679&li=3DNN&m=3Dfd9e7c2d5c7f4d66bbc5e=
+f24246f3a94&p=3DNN_20250311&stpe=3Ddefault&li_coord=3Ddesktop&collapse_widt=
+h=3D600" width=3D"600" style=3D"max-width:600px;width:100%"></a></p></td></=
+tr><tr><td style=3D"border-bottom:1px solid #dcdcdc"></td></tr><tr><td heig=
+ht=3D"20"></td></tr></tbody></table><p style=3D"display:block;color:#333;fo=
+nt:400 18.5px/26px georgia,serif;margin:0 0 10px"><span>Good morning. Our c=
+olleague Claire Cain Miller shares some lessons from the pandemic. We=E2=80=
+=99re also covering the stock market, an activist arrest and balloon art.</=
+span></p><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"w=
+idth:100%"><tbody><tr><td height=3D"20"></td></tr><tr><td height=3D"14" wid=
+th=3D"100%" style=3D"background-color:#000;font-size:0;line-height:0"></td>=
+</tr><tr><td height=3D"20"></td></tr></tbody></table><table border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" style=3D"width:100%"><tbody><tr><td style=
+=3D"text-align:center"><img width=3D"500" height=3D"500" style=3D"display:i=
+nline-block;width:83%;max-width:500px;height:auto;padding-top:10px;padding-=
+bottom:0;line-height:0" class=3D"css-xsf469" src=3D"https://static01.nyt.co=
+m/images/2025/03/07/upshot/11themorning-nl-COVID/11themorning-nl-COVID-jumb=
+o.jpg" alt=3D"An anthropomorphic drawing of the Covid virus surrounded by s=
+pike proteins. "></td></tr><tr><td style=3D"text-align:center;width:100%;pa=
+dding-top:3px;padding-bottom:20px;line-height:12px"><span style=3D"width:83=
+%;max-width:500px;display:inline-block;text-align:right" class=3D"css-1wuwh=
+da"><span style=3D"margin:0;font:11px/11px georgia,serif;color:#888;letter-=
+spacing:.01em;padding-left:0">Liana Finck</span></span></td></tr></tbody></=
+table><h1 style=3D"color:#000;font:700 31px/34px nyt-cheltenham,georgia,ser=
+if;margin:0 0 10px" class=3D"css-1a0tlge"><span>What Covid taught us</span>=
+</h1><div style=3D"margin:0 auto;max-width:600px;width:100%"><table style=
+=3D"width:100%" cellpadding=3D"0"><tbody><tr><td style=3D"padding:0 9px 0 0=
+;box-sizing:content-box;vertical-align:middle;width:45px" width=3D"45" vali=
+gn=3D"middle"><a class=3D"css-sdwaa1" href=3D"https://nl.nytimes.com/f/news=
+letter/pkJhyQD96eyieEvnCjrGZw~~/AAAAARA~/uaw1c9405SvVWp3-FVGQwu_KeBdc2du-Hm=
+DXyb2Km5X-wkukmE95g2W2fFwGxAvCi91z04mLLYiHLQwX8M_LvG_VrZ1NpTJr4hsv528S-fbYd=
+3E1eER27WPDaq4cmRgcthxoQ_T128kyJTDUHNrXL6xJCjvLLKIy2G-20mLEXSRdQ812ZIBBBeuP=
+hFXGyWJOsv0CG43yY925ufwjJhN5stamj2GfXO-vXOF8dLT5b2U1R1BKVdjosUDsznzKoHbG1fd=
+5cdqy0VFqWSNIg2bwTgC6alq1gfaD3FsBW3bxgf8VY5kooZUrS__Bjzb_ZGiMTXIo3sPBeLaZDv=
+yXUTBdlQ~~" style=3D"-webkit-text-decoration:underline;text-decoration:unde=
+rline;color:inherit"><img src=3D"https://static01.nyt.com/images/2018/06/13=
+/multimedia/author-claire-cain-miller/author-claire-cain-miller-blogSmallTh=
+umb-v2.png" alt=3D"Author Headshot" style=3D"width:45px;height:45px;border-=
+radius:100%" width=3D"45" height=3D"45"></a></td><td style=3D"padding:0;box=
+-sizing:content-box;vertical-align:middle" valign=3D"middle"><p style=3D"fo=
+nt:13px/18px arial,sans-serif;letter-spacing:.2px;color:#000;font:600 13px/=
+18px arial,sans-serif;margin-bottom:0">By <a class=3D"css-nanfcg" href=3D"h=
+ttps://nl.nytimes.com/f/newsletter/pkJhyQD96eyieEvnCjrGZw~~/AAAAARA~/uaw1c9=
+405SvVWp3-FVGQwu_KeBdc2du-HmDXyb2Km5X-wkukmE95g2W2fFwGxAvCi91z04mLLYiHLQwX8=
+M_LvG_VrZ1NpTJr4hsv528S-fbYd3E1eER27WPDaq4cmRgcthxoQ_T128kyJTDUHNrXL6xJCjvL=
+LKIy2G-20mLEXSRdQ812ZIBBBeuPhFXGyWJOsv0CG43yY925ufwjJhN5stamj2GfXO-vXOF8dLT=
+5b2U1R1BKVdjosUDsznzKoHbG1fd5cdqy0VFqWSNIg2bwTgC6alq1gfaD3FsBW3bxgf8VY5kooZ=
+UrS__Bjzb_ZGiMTXIo3sPBeLaZDvyXUTBdlQ~~" style=3D"-webkit-text-decoration:un=
+derline;text-decoration:underline;-webkit-text-decoration:none;text-decorat=
+ion:none;border-bottom:1px solid #ccc;color:inherit">Claire Cain Miller</a>=
+</p><p style=3D"font:13px/18px arial,sans-serif;letter-spacing:.2px;color:#=
+000;margin-bottom:0"><span style=3D"color:inherit">I cover gender, families=
+ and education.</span></p></td></tr><tr><td height=3D"15"></td></tr></tbody=
+></table></div><p style=3D"font:normal 17px/25px georgia,serif;color:#333;m=
+argin:0 0 15px"><span>When the pandemic upended our lives five years ago to=
+day, it gave researchers a rare chance to learn more about who we are and h=
+ow we live. The entire world changed at once, creating natural experiments =
+everywhere. What happens when sports teams play in empty stadiums=3F When t=
+he government sends people money=3F When women stop wearing high heels=3F W=
+hen children stop going to school=3F</span></p><p style=3D"font:normal 17px=
+/25px georgia,serif;color:#333;margin:0 0 15px"><span>In many cases, it was=
+ impossible to know what caused the specific changes =E2=80=94 some aspect =
+of the Covid pandemic or another invisible influence. But the findings demy=
+stified several aspects of our world. My colleague Irineo Cabreros and I wr=
+ote about them </span><a href=3D"https://nl.nytimes.com/f/newsletter/Rijx0x=
+KiejNAvHIQXThLOg~~/AAAAARA~/4xlhbxWHjQE7MOlcOxkLbWoWqr7J8MvJb1ZR4GzWFllB4fk=
+7U2ulx-nXZ2eUZ2RVpG-E1kasWAFe-noBy0aG9GpPLK_XzsM7wAPcyQBYVz9CNhXiM_Ps7gy9fV=
+0qoJ5omKrmEug4fTw8Gxg6jVLG7VqbVlcZdluFzzaEazdbGJn-3ec3g_ZQrul_wWSraOvXK3v2n=
+Hm_XPAMtnIdL8j4J17AOV7hTbsNj7sydBnS3fU1YSF6l0jZ3yd_p_FQVLiIlPaQhCW_plXJTnMm=
+P6wbJnwkddyPgXg9NWMUOM08vpNycl_jdR0m3tWVtfBLAM--HHW6ko16usSpCV2poYmJNaFe9AL=
+LaHnPKqqVRy2Hfzrv_EEsPy2J811l85w8NIPF" class=3D"css-sdwaa1" style=3D"color:=
+#286ed0;-webkit-text-decoration:underline;text-decoration:underline">in a s=
+tory we published today</a><span>. Here are some highlights:</span></p><h2 =
+style=3D"color:#000;font:700 24px/31px nyt-cheltenham,georgia,serif;margin:=
+0 0 10px"><span>Crowds help the home team</span></h2><p style=3D"font:norma=
+l 17px/25px georgia,serif;color:#333;margin:0 0 15px"><span>When sports tea=
+ms played in empty stadiums, research showed that yes, the fans made a diff=
+erence: </span><a href=3D"https://nl.nytimes.com/f/a/rns_0s7hPAnAiP81yLgMnA=
+~~/AAAAARA~/RWZAs97yvHlVjT0n1VbkF7xPQKdWgmaBoUcs0JKWY0rMicM8AC0aGTGXU7fGP3d=
+DZ-HUF3W3L8QI-CYKQHpx3bbxGRpf4_aD8qHrGXboTSQWAHmapF8ePjHDrEGVG4_Q2eNBTVuTyt=
+xB0ZMZEHvpTgFkaWo22rv55QzoFpewUf_YmaT7P2Gf5aKv6z0AKnuvwvYTBHT_kqzLF2VMuum49=
+FHHHmdgll5ZqtMnhTGDLnIJFggD5a8bKgCjIT-BVaWDSqlpJ7EfVD0HKasu09WcGH3_c49OnRl-=
+XJBfwVGqFz9FNTe4vEkv8sGzlONJ5tM25YnZV5CqBrJHu_kQ-BXENqZ3yV2xjnjkUEGLTLJ15To=
+~" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:unde=
+rline;text-decoration:underline">Home teams played worse</a><span> without =
+them around. They were less likely to win at home and had poorer performanc=
+es. The effect was smaller for teams already accustomed to smaller crowds. =
+But the home advantage wasn=E2=80=99t </span><span style=3D"font-style:ital=
+ic">just</span><span> about fans. When the N.B.A. restarted play, the top 2=
+2 teams isolated in Orlando, Fla., allowing researchers to </span><a href=
+=3D"https://nl.nytimes.com/f/a/TxwlwmnYbcNK57637HY1hA~~/AAAAARA~/a6uT_CJuYA=
+EhG9BBCOy89hw7WYFpf-lUy2tTsFpT_t-Ub1NrV7udFT3rp5duzlrMjVo9HYeeusVXOH_So35RD=
+u2pWdREzD8lP8YgzTWhjVwRxeuCiUwQkchDqq0t7g7BZWNHW_hXfgeMyEWuL0_Z2Rq02lyR497v=
+n0F4cEmcozTJQOTsKNdqeH9JRCu-KyULKfBREmOF6U4QfZfSQTIxGxbtO3JDGTpQv7QXOXHXzgU=
+R1ljKKhxXeakuwZoHExg2KYt0C2xkX5MQtd31uhlQhPjLt4um5QYBEtEXMdIXpaKpxTsvwbPBu-=
+IHk7TeZF_QQM_pg7v_Vw90A0fJtXzKew~~" class=3D"css-sdwaa1" style=3D"color:#28=
+6ed0;-webkit-text-decoration:underline;text-decoration:underline">study the=
+ effects of jet lag</a><span>. Rebounding, shooting accuracy and wins were =
+all higher among players who hadn=E2=80=99t traveled across time zones.</sp=
+an></p><h2 style=3D"color:#000;font:700 24px/31px nyt-cheltenham,georgia,se=
+rif;margin:0 0 10px"><span>Virtual doctor visits work =E2=80=A6</span></h2>=
+<p style=3D"font:normal 17px/25px georgia,serif;color:#333;margin:0 0 15px"=
+><span>Telehealth, once uncommon, accounted for </span><a href=3D"https://n=
+l.nytimes.com/f/a/BfhJJD7V2iVBWcf9LiBymg~~/AAAAARA~/ck-r-CT_GcqMHQkSASllKFi=
+MPQXDCfkcKwzQAGrLCkTUWtoi3Xurhl7mgnIqJehIwD2BGzhlnogIR4FUADDLkJyAtYE8Ti0iPz=
+IoWVLROf2LqZmpBgBam_V5raUMwjTHdnBN1eeQ0-QxmccXRVrRa7Nk0Gdu0SC0bER-bvqAI2ETW=
+hw1lyOk-mTWrZzVtxZKpBRkiSpbLR3fjeyDWOlydqFwsXjFZcbzt8ULo2IGOOQPWkTjQaTV4Xrl=
+lsqArz0bckSPFyLajiBipO_Y0WAZiZgJUIWLn6BadaXJAQBM8b7m59ZGudhW5Nz9C-GXZtDsg1q=
+tuP7XI-5G2Gbwrwa1j8G6NrW5dwf_89cugL_ZdTcp75GEx9Ixahlhp-d2XbKw" class=3D"css=
+-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:underline;text-deco=
+ration:underline">half of medical visits</a><span> early in the pandemic. M=
+ostly, patients and doctors were satisfied with seeing one another online. =
+Telehealth lowered health care costs. It was especially useful for treating=
+ chronic illnesses and for psychotherapy. And in some cases, the pandemic r=
+evealed, people don=E2=80=99t need to see a doctor at all. The number of pa=
+tients showing up with mild appendicitis decreased, while the number with c=
+omplicated appendicitis didn=E2=80=99t change, which suggested that some pe=
+ople who would typically have had surgery recovered on their own.</span></p=
+><h2 style=3D"color:#000;font:700 24px/31px nyt-cheltenham,georgia,serif;ma=
+rgin:0 0 10px"><span>=E2=80=A6 but virtual school doesn=E2=80=99t</span></h=
+2><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"width:10=
+0%"><tbody><tr><td style=3D"text-align:center"><img width=3D"500" height=3D=
+"500" style=3D"display:inline-block;width:83%;max-width:500px;height:auto;p=
+adding-top:10px;padding-bottom:0;line-height:0" class=3D"css-xsf469" src=3D=
+"https://static01.nyt.com/images/2025/03/05/upshot/11themorning-nl-COVID-Sc=
+hool/11themorning-nl-COVID-School-jumbo-v2.jpg" alt=3D"A drawing of a robot=
+ standing in front of a chalkboard. There is only one student, who is sitti=
+ng at a desk and frowning. "></td></tr><tr><td style=3D"text-align:center;w=
+idth:100%;padding-top:3px;padding-bottom:20px;line-height:12px"><span style=
+=3D"width:83%;max-width:500px;display:inline-block;text-align:right" class=
+=3D"css-1wuwhda"><span style=3D"margin:0;font:11px/11px georgia,serif;color=
+:#888;letter-spacing:.01em;padding-left:0">Liana Finck</span></span></td></=
+tr></tbody></table><p style=3D"font:normal 17px/25px georgia,serif;color:#3=
+33;margin:0 0 15px"><span>When it came to learning, </span><a href=3D"https=
+://nl.nytimes.com/f/newsletter/WQWf4NHFnqcIgy84pgiCQg~~/AAAAARA~/_gABMy8vxw=
+QK5s4q4fTvdq791VT-aJfxSshNmEB48E3AZtv0ZCNvfaVLc8BFYWUS7AJp03iG209_r-NaqSh3s=
+8qc2wto6QSCnsv9d_aT_NNoubNjBltapqlZt-bRJmMuV4y1sHKZqtOB8SwExjfDBl8dR9cQNhXA=
+MFpAyVre4e97MXDnXr_tJoOcm9LDlS3Z_xTscyJw8bmQlLP2xAh6KGhNJ5TTIp2mdUDnQyetdy3=
+nbypoRNmk4SeF3YjXXyEovWGFo4IWzjTO8M-BY5ogM8hc1hw2qGrBV3xliJOki2VEIZDqiYvz51=
+i3C7-nXU3Jf8fOUkEDkhtYJbyPBbSMqQr6rp2SOVwjOHAGqPkIPd5YJtumOZRNbbV6QiiTQlzk"=
+ class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:underl=
+ine;text-decoration:underline">remote schooling wasn=E2=80=99t enough</a><s=
+pan>. Across the country, in rich and poor districts, and among white, Blac=
+k and Hispanic students, test scores in reading and math fell. Many student=
+s still haven=E2=80=99t caught up. There was learning loss even in countrie=
+s that had shorter school closures than the United States did. But the data=
+ is clear: The sooner children returned to classrooms, even part time, the =
+better they did.</span></p><h2 style=3D"color:#000;font:700 24px/31px nyt-c=
+heltenham,georgia,serif;margin:0 0 10px"><span>Dolphins talked more</span><=
+/h2><p style=3D"font:normal 17px/25px georgia,serif;color:#333;margin:0 0 1=
+5px"><span>When humans were less active =E2=80=94 what scientists call the =
+anthropause =E2=80=94 animals began breeding more and traveling farther. Do=
+lphins whistled longer, birds changed their songs, sea turtles laid more eg=
+gs. In some places, predators or invasive species arrived. Urban wildlife t=
+hat had become accustomed to coexisting with humans (and our trash), like c=
+rows or raccoons, retreated. It revealed the ways in which humans both thre=
+aten and protect the natural world, scientists said.</span></p><h2 style=3D=
+"color:#000;font:700 24px/31px nyt-cheltenham,georgia,serif;margin:0 0 10px=
+"><span>Men do less</span></h2><p style=3D"font:normal 17px/25px georgia,se=
+rif;color:#333;margin:0 0 15px"><span>The lockdowns brought a crush of dome=
+stic labor. More dishes piled up, and more needy children were underfoot. B=
+ut even when men worked from home, women still handled more of the work. Ei=
+ght in 10 mothers said they managed remote schooling. (Fathers </span><a hr=
+ef=3D"https://nl.nytimes.com/f/newsletter/FYsnHekGTB0kAHoG35PXNg~~/AAAAARA~=
+/fLkus7rJ-n5P1drVOzr4i26dC-vQnOxkA8ra3QQJmctTkaDDpw4QDTrzG5P6zO_y1ZoLw_nLIL=
+LrloEpEeXPX1G_Ftdpmr175Ulcpna-4BKbdHgQrOTCt3nasBVB5cMCIazhY2xP3cTkrMcp1b4_u=
+GXFBn3SZoUSVycjDXQMG4YkV_ryptdDhs90yOVizaYANQFA7E_ZY9gVrPDAWIoNkU72Bs5W6aWL=
+DSVBGpwvq7pUtlmxLtGIC8enaZCsYismif0SdGTiiahPI5s-SzbwaM9cWJQjVPLY2rftRniC6Z9=
+mO1IZ6KGHMHScnMaf6YWChxi0nhvEpMbTZAWUFAxYcOVSyAoWmogccAa2mNOBg7zpBENrc-GcGV=
+7-ZFdQ3VZ0" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decora=
+tion:underline;text-decoration:underline">overestimated</a><span> their con=
+tribution, surveys found.) That=E2=80=99s likely a reason mothers=E2=80=99 =
+antidepressant use increased when schools were closed, but not fathers=E2=
+=80=99. Mothers were also more likely than men to cut back at work =E2=80=
+=94 though they returned as soon as they could. Only couples who want egali=
+tarian relationships, researchers wrote, can overcome =E2=80=9Cthe stickine=
+ss of gender inequality in household work.=E2=80=9D</span></p><h2 style=3D"=
+color:#000;font:700 24px/31px nyt-cheltenham,georgia,serif;margin:0 0 10px"=
+><span>Plants make us happy</span></h2><table border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" style=3D"width:100%"><tbody><tr><td style=3D"text-align=
+:center"><img width=3D"500" height=3D"500" style=3D"display:inline-block;wi=
+dth:83%;max-width:500px;height:auto;padding-top:10px;padding-bottom:0;line-=
+height:0" class=3D"css-xsf469" src=3D"https://static01.nyt.com/images/2025/=
+03/05/upshot/11themorning-nl-COVID-Plant/11themorning-nl-COVID-Plant-jumbo-=
+v2.jpg" alt=3D"A drawing of a person kneeling at the base of a tree and hug=
+ging its trunk."></td></tr><tr><td style=3D"text-align:center;width:100%;pa=
+dding-top:3px;padding-bottom:20px;line-height:12px"><span style=3D"width:83=
+%;max-width:500px;display:inline-block;text-align:right" class=3D"css-1wuwh=
+da"><span style=3D"margin:0;font:11px/11px georgia,serif;color:#888;letter-=
+spacing:.01em;padding-left:0">Liana Finck</span></span></td></tr></tbody></=
+table><p style=3D"font:normal 17px/25px georgia,serif;color:#333;margin:0 0=
+ 15px"><span>People flocked to natural areas when they could, and they were=
+ better off for it. A study in Hong Kong compared people who lived near urb=
+an green spaces with those who didn=E2=80=99t. It found that parks provided=
+ physical activity and a refuge. A study in nine countries found that acces=
+s to nature =E2=80=94 even a balcony or a garden at home =E2=80=94 improved=
+ people=E2=80=99s moods. And a study in Taiwan analyzed the =E2=80=9Cwindow=
+/wall ratio=E2=80=9D in people=E2=80=99s quarantine rooms and found that mo=
+re windows, especially ones that offered views of vegetation, made them hap=
+pier.</span></p><p style=3D"font:normal 17px/25px georgia,serif;color:#333;=
+margin:0 0 15px"><span>There were so many other striking findings =E2=80=94=
+ such as how easy it is to lift children out of poverty and how dangerous h=
+igh heels can be for women. </span><a href=3D"https://nl.nytimes.com/f/news=
+letter/Rijx0xKiejNAvHIQXThLOg~~/AAAAARA~/4xlhbxWHjQE7MOlcOxkLbWoWqr7J8MvJb1=
+ZR4GzWFllB4fk7U2ulx-nXZ2eUZ2RVpG-E1kasWAFe-noBy0aG9GpPLK_XzsM7wAPcyQBYVz9CN=
+hXiM_Ps7gy9fV0qoJ5omKrmEug4fTw8Gxg6jVLG7VqbVlcZdluFzzaEazdbGJn-3ec3g_ZQrul_=
+wWSraOvXK3v2nHm_XPAMtnIdL8j4J17AOV7hTbsNj7sydBnS3fU1YSF6l0jZ3yd_p_FQVLiIlPa=
+QhCW_plXJTnMmP6wbJnwkddyPgXg9NWMUOM08vpNycl_jdR0m3tWVtfBLAM--HHW6ko16usSpCV=
+2poYmJNaFe9ALLaHnPKqqVRy2Hfzrv_EEsPy2J811l85w8NIPF" class=3D"css-sdwaa1" st=
+yle=3D"color:#286ed0;-webkit-text-decoration:underline;text-decoration:unde=
+rline">Read the whole list here</a><span>.</span></p><h2 style=3D"color:#00=
+0;font:700 24px/31px nyt-cheltenham,georgia,serif;margin:0 0 10px"><span>Mo=
+re on the Covid anniversary</span></h2><table border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" style=3D"width:100%"><tbody><tr><td style=3D"text-align=
+:center"><img width=3D"500" height=3D"500" style=3D"display:inline-block;wi=
+dth:83%;max-width:500px;height:auto;padding-top:10px;padding-bottom:0;line-=
+height:0" class=3D"css-xsf469" src=3D"https://static01.nyt.com/images/2025/=
+03/07/multimedia/11themorning-nl-COVID/11themorning-nl-COVID-jumbo.gif" alt=
+=3D"Images of the pandemic: hospitals, graveyards, isolated living, a violi=
+nist playing to a single listener on a rooftop. "></td></tr><tr><td style=
+=3D"text-align:center;width:100%;padding-top:3px;padding-bottom:20px;line-h=
+eight:12px"><span style=3D"width:83%;max-width:500px;display:inline-block;t=
+ext-align:right" class=3D"css-1wuwhda"><span style=3D"margin:0;font:11px/11=
+px georgia,serif;color:#888;letter-spacing:.01em;padding-left:0">The New Yo=
+rk Times</span></span></td></tr></tbody></table><div style=3D"margin:0 auto=
+;max-width:600px;width:100%"><table><tbody><tr><td style=3D"padding:0 0 5px=
+"><ul style=3D"color:#333;font:10px georgia,serif;text-align:left;padding-l=
+eft:50px" class=3D"css-1dtd48z"><li style=3D"margin:0 0 10px 0;line-height:=
+27.5px"><span style=3D"font:normal 17px/25px georgia,serif;vertical-align:m=
+iddle">The Times asked 19 photographers to revisit their most enduring imag=
+es of the pandemic. </span><a href=3D"https://nl.nytimes.com/f/newsletter/k=
+UR87_LWmDtnuYxjWcFm1A~~/AAAAARA~/-ld73DGcZpnSsAUvAgeCJ25VJAKFr8HXuOxW_Xympa=
+hB9OSTDl8eUUbpOrnz5n3Cs8nyfgC50vc6u41GfRBEYSfZbh7axWyyLUL0Uzs5IomPdmpjNGcp3=
+g6J3XlKWAbzE6jpU5XSF8EdY_0omTvx8TUCrkK2zoCBw5VqqBgI1Sefdxnu0tx8l-WlRYLBciy3=
+rXKmtoTjO3ylMNTY9TccWYFgUf3MRQfP6u8QqMDy-gwfa3Lwnf8TCeRg-2Nibki9Tcpb2bK7A_Z=
+cclvIHLhrCJ7oJqJP3yd8xXTlg6xi3FGZd70JiuAP-hfo0OWtkQbTbkc84Jnq6Ir_B7IiKlpI2C=
+OB9JRZVIv8MBK2y9cEg1X47XMucmgT-ScyvyVxVEIb" class=3D"css-sdwaa1" style=3D"c=
+olor:#286ed0;-webkit-text-decoration:underline;text-decoration:underline;fo=
+nt:normal 17px/25px georgia,serif;vertical-align:middle">See their pictures=
+ here</a><span style=3D"font:normal 17px/25px georgia,serif;vertical-align:=
+middle">.</span></li><li style=3D"margin:0 0 10px 0;line-height:27.5px"><sp=
+an style=3D"font:normal 17px/25px georgia,serif;vertical-align:middle">Rest=
+ructured family dynamics and going makeup-free: Twenty-nine Americans share=
+d </span><a href=3D"https://nl.nytimes.com/f/newsletter/DVscrXXh9MsJR3KV2sX=
+KCA~~/AAAAARA~/fTCfIpu04m1WjQMSu7_ZYbk45nGaJd0F3bzdcdVjgHIabyU6dHOp0cjSU7DL=
+ROO0xVhWppLZ-JfalRz0-Z4Ibhn3tA_Kupu3AHLVdP5vSDyXn2xGEPlOOUhvhjT9auRdwORDuIQ=
+pH0GsIIm9JTnSwhj7CTbl7qpEvWK2Bhj4QNlU2x206wEZFUd1TMKT6GyyU8QB9ptE5XQNGa6rcE=
+rCQlw99nv-d0EWRZcU34TVMUffxsT_8bOX-XnN328_GD8YOMMcd2uD82VqZdhYzhrU7_QmXDfgs=
+6P6BexHGjsZ7rbiNJH7Hw7KZ4Zv-qDzFLYWxqbEBZyLzkdARm7DxXGQkhWdZf6jLmvPQAyLtQl-=
+AW4BNrIVMfElKAIsXT2s-hpe" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webk=
+it-text-decoration:underline;text-decoration:underline;font:normal 17px/25p=
+x georgia,serif;vertical-align:middle">how the pandemic changed their lives=
+</a><span style=3D"font:normal 17px/25px georgia,serif;vertical-align:middl=
+e">, for better and for worse.</span></li></ul></td></tr></tbody></table></=
+div><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"width:=
+100%"><tbody><tr><td height=3D"10"></td></tr><tr><td style=3D"border-top:1p=
+x solid #dcdcdc;padding-top:15px"></td></tr><tr aria-hidden=3D"true"><td><d=
+iv style=3D"width:100%;text-align:center;line-height:0"><img alt=3D"Ad" src=
+=3D"https://liveintent.newyorktimesinfo.com/imp=3Fs=3D859191&li=3DNN&m=3Dfd=
+9e7c2d5c7f4d66bbc5ef24246f3a94&p=3DNN_20250311&stpe=3Ddefault" border=3D"0"=
+ style=3D"max-width:96px;margin-bottom:7px"></div><span style=3D"text-align=
+:center"><table style=3D"margin:0 auto" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0"><tbody><tr><td style=3D"line-height:0;font-size:0"><a rel=3D"=
+noopener noreferrer nofollow" tabindex=3D"-1" target=3D"_blank" href=3D"htt=
+ps://nl.nytimes.com/f/a/dezYgQtpGkvKS8pWzGPH4g~~/AAAAARA~/-LhrNcjZd9VlV8-mG=
+mwfijOLA0_lIEEPu62K1d3XNl9a3h2sQ7-fJmzOcBpB1s88T0pRzqSm-9ljNxTI-EL3wO8QKoBo=
+kk9412Cw4NP_ALe_dzJbmnQGT2YHaLPAzHXY09bhJdCy21jfpPeQ2Q-Y93Xg_6lcOfUWqrJ0ROb=
+EIVjaUINVn8iorTTiaCOXArksnAebeaj0RT9pAImpRURNYjpWCKakjVbJuWhz_nDwCCDkiVEL8n=
+4e447Om4AAmN-S" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-de=
+coration:underline;text-decoration:underline"><img src=3D"https://liveinten=
+t.newyorktimesinfo.com/imp=3Fs=3D859187&li=3DNN&m=3Dfd9e7c2d5c7f4d66bbc5ef2=
+4246f3a94&p=3DNN_20250311&stpe=3Ddefault&li_coord=3Ddesktop&collapse_width=
+=3D600" alt=3D"Ad" border=3D"0" width=3D"600" style=3D"display:block;width:=
+100%;max-width:600px" class=3D"css-63f6sn"></a></td></tr><tr style=3D"displ=
+ay:none" class=3D"css-1npprw9"><td style=3D"line-height:0;font-size:0"><a r=
+el=3D"noopener noreferrer nofollow" tabindex=3D"-1" target=3D"_blank" href=
+=3D"https://nl.nytimes.com/f/a/dezYgQtpGkvKS8pWzGPH4g~~/AAAAARA~/-LhrNcjZd9=
+VlV8-mGmwfijOLA0_lIEEPu62K1d3XNl9a3h2sQ7-fJmzOcBpB1s88T0pRzqSm-9ljNxTI-EL3w=
+O8QKoBokk9412Cw4NP_ALe_dzJbmnQGT2YHaLPAzHXY09bhJdCy21jfpPeQ2Q-Y93Xg_6lcOfUW=
+qrJ0RObEIVjaUINVn8iorTTiaCOXArksnAebeaj0RT9pAImpRURNYjpWCKakjVbJuWhz_nDwCCD=
+kiVEL8n4e447Om4AAmN-S" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-=
+text-decoration:underline;text-decoration:underline"><img src=3D"https://li=
+veintent.newyorktimesinfo.com/imp=3Fs=3D859187&li=3DNN&m=3Dfd9e7c2d5c7f4d66=
+bbc5ef24246f3a94&p=3DNN_20250311&stpe=3Ddefault&li_coord=3Dmobile&collapse_=
+width=3D480" alt=3D"Ad" border=3D"0" width=3D"480" style=3D"display:block;w=
+idth:100%;max-width:480px"></a></td></tr></tbody></table></span></td></tr><=
+tr><td style=3D"padding-bottom:15px;border-bottom:1px solid #dcdcdc"></td><=
+/tr><tr><td height=3D"20"></td></tr></tbody></table><table border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" style=3D"width:100%"><tbody><tr><td height=
+=3D"30"></td></tr><td style=3D"padding:0;font-size:0;border-top:14px solid =
+#000"><h3 style=3D"color:#000;font:700 17px/25px arial,sans-serif;margin:5p=
+x 0 30px 0;letter-spacing:.2px"><span style=3D"font-weight:700">THE LATEST =
+NEWS</span></h3></td></tbody></table><p style=3D"padding-bottom:10px;font:7=
+00 17px/15px arial,sans-serif;color:#000;padding-top:undefined;margin:0" cl=
+ass=3D"css-sj7u5m">Stock Market</p><div style=3D"margin:0 auto;max-width:60=
+0px;width:100%"><table><tbody><tr><td style=3D"padding:0 0 5px"><ul style=
+=3D"color:#333;font:10px georgia,serif;text-align:left;padding-left:50px" c=
+lass=3D"css-1dtd48z"><li style=3D"margin:0 0 10px 0;line-height:27.5px"><sp=
+an style=3D"font:normal 17px/25px georgia,serif;vertical-align:middle">Wall=
+ Street had its </span><a href=3D"https://nl.nytimes.com/f/newsletter/-GlTN=
+zRfjszmGv-2T03Jow~~/AAAAARA~/39Fus4znq_kjD8QMV2x5NvXfWGr_HULUYK8bHExOBY6x3n=
+M2aIqeKtieXE7rNAKqxZbaQq2weHcNVQwOZckxBtYmN4WWmhkOzHSVP-Cl9VXJyE2pmV0h4RD9f=
+HZBacvw1wGBMfu5NOmOdpajPqfxyBdVQp_rTIY1JzvmSX4bo2FIffZk97p1vbtXJut8C-qM-P7T=
+ciWUVVZ4VjIiUj-WlSQb9NqBXclylElVtpJPWrEVMvL8e6muGTVtoSYKUD-mGi5CnP2jsG2cYgL=
+i4l3JdeCBg5KZcCxCzibRrjcNgN5daxptNlbHDhKnFygiaLDs2lMj8I9d-0CfLm-A8NN6o3_YW2=
+fOvPyThAhsO7kjrbwOUbtQad9VPzCQL8ZHwxeJP2NA5g2AaEgJga_VD-af4g~~" class=3D"cs=
+s-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:underline;text-dec=
+oration:underline;font:normal 17px/25px georgia,serif;vertical-align:middle=
+">worst day of the year</a><span style=3D"font:normal 17px/25px georgia,ser=
+if;vertical-align:middle"> so far after President Trump suggested that his =
+trade policies could cause a recession. Markets in Asia </span><a href=3D"h=
+ttps://nl.nytimes.com/f/newsletter/G6k95Bqu7AXavZcmgFkJDA~~/AAAAARA~/ck-r-C=
+T_GcqMHQkSASllKLwpBO0SSGKG7jh95UpBOEiAYpVZsPmfiMCZRZn4EyCCFtjryERfaYPuiaJuc=
+JZno69KX0vzaH6qVRXRyjZE0yboH5l6E4I_JC_aOUoAYi_OfI6MTbMU0X67oj_e0ZisnHDVKxa3=
+Bwy25G0_ByujCSJILex7r97J-g_ZEA2YZ-y5aqyluowkqy7cg5oV_XwzIDTp5cKw0b82yILsdQa=
+nq_Ano_Lic_shLT6fCXwXERt7W2Shsn0r0RFuYbbjrmXpvE2jkdiKOQZiLgZJVyLbfp0okiSoCi=
+wzigLmDYqiMTdrXKu5cve-dYnHRVVx4z2t64TUm80wD8LzUfkabSxCBVkbTk5VjA1IxKkXj6BD2=
+Ox5" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:un=
+derline;text-decoration:underline;font:normal 17px/25px georgia,serif;verti=
+cal-align:middle">are down this morning</a><span style=3D"font:normal 17px/=
+25px georgia,serif;vertical-align:middle">.</span></li><li style=3D"margin:=
+0 0 10px 0;line-height:27.5px"><span style=3D"font:normal 17px/25px georgia=
+,serif;vertical-align:middle">Tech stocks suffered some of the hardest fall=
+s. The tech-heavy Nasdaq experienced </span><a href=3D"https://nl.nytimes.c=
+om/f/a/rjSnRq4ni4HconGp9_lEtg~~/AAAAARA~/NSbA4MoyKuJXElw2AWPFtKBRnVPy2IjRYD=
+LvgRkB_3nUasqRSxKVmHkVQdgUTjmasf6UND4adP0FASF26llOujPT7QqB_eKFSDvY9mpkJVM6N=
+ULD0DmVISRbUbcA_zC_Pz3tMl4wZq56E54vbBklMwP-CH0tLQq2ZnPEt6t7hBFciEy8P-CtOJ0V=
+WhHelv0is5cg0v718k0qA9NqMZ2prJjxA7ClziUWJxW6i7y_N-WWjKWX3drVuGBzsGQXiPKTt0C=
+NeGxIHXXu27JhnRi6V_NSam7e7UubdYC69v0MWJsS8Tv6-nAk0UqdDaM7RqMI_2X_VctG0O4oAY=
+XGqAiQjIJqs6U9gdkMhiox09srtWrKa1rNQ7bgUW8I_yRIeh1t" class=3D"css-sdwaa1" st=
+yle=3D"color:#286ed0;-webkit-text-decoration:underline;text-decoration:unde=
+rline;font:normal 17px/25px georgia,serif;vertical-align:middle">its bigges=
+t one-day drop since 2022</a><span style=3D"font:normal 17px/25px georgia,s=
+erif;vertical-align:middle">, The Wall Street Journal reports.</span></li><=
+li style=3D"margin:0 0 10px 0;line-height:27.5px"><span style=3D"font:norma=
+l 17px/25px georgia,serif;vertical-align:middle">Tesla shares fell 15 perce=
+nt in a day. The company=E2=80=99s stock price, which soared after the elec=
+tion, </span><a href=3D"https://nl.nytimes.com/f/newsletter/Pgfe54ck0vEnM14=
+VRbeigg~~/AAAAARA~/ww4aogD6Xo9xgG8DGdYDvxU57VnkFjeTn0Q034rHWqCcji_gowNDuBoS=
+YHsxhdXJFj38BapzgFqNoFD5Enui-9_uojhQM3dORSjQoolwLYakavGAPciSmQYlkgwvyFbUNX_=
+OVObROdiOkFpz0S4Fi6ZCWZNaUhgFWOQa4Y8nM1eDE_FmWd9d-Dg9e6AinKTNHAWJNp7iMOwhOi=
+knfaJIhjZq--qnkpsK2xeRqHugHl1Wvo4aZ5l_oTFH19TKc9zKswCRXxrBaRJ6ZulaJsiRYtkGr=
+COgy5dXYgbkZyL1sqfRXVPJJZmby94a1hn1_NndmjuHPBs01kjOw7iDuCoJH3RbN-UVhVwwmOrd=
+6kVNR3wtd_EBM93tvZvfRG0dgHH1" class=3D"css-sdwaa1" style=3D"color:#286ed0;-=
+webkit-text-decoration:underline;text-decoration:underline;font:normal 17px=
+/25px georgia,serif;vertical-align:middle">has halved since December</a><sp=
+an style=3D"font:normal 17px/25px georgia,serif;vertical-align:middle">.</s=
+pan></li><li style=3D"margin:0 0 10px 0;line-height:27.5px"><span style=3D"=
+font:normal 17px/25px georgia,serif;vertical-align:middle">Trump campaigned=
+ on a promise of =E2=80=9Cskyrocketing wealth.=E2=80=9D His tariffs have </=
+span><a href=3D"https://nl.nytimes.com/f/newsletter/wITgWqMVI-NOJmNrDZKYjw~=
+~/AAAAARA~/-OB9u0QABqprSLbbBuSgjm-5Cf4zIl9WC6BF6QnxNZxyC5sC5wIkNBr3VP3HUGTq=
+G34-QFm-D-wwSj2Df4pTadTj1eLDpo3H_wheWJfPWNjMj0xjueAgYGRcr2boxZDD_iD6TlQgoJP=
+NIoc_H8N1MJw6mwMeORrCUVog3PdimxyMt2hoicbDKi4pcpjVkZNBsohcaxYFJs_IZYJpLAnfqx=
+sw78hoN9787Nyrm_FAxkt7mOzkeXFLSBadWJmGr0iCih3vOJlIdagMz0_52hq7XKn6NrNv7grPg=
+6s-6jVFFPSirEhQS0rVy86ElRnFe5c_dRzkdZ1Oz3IDTjVkdMRGK6GzrS6-ZejHAXar_joq_Z6x=
+40Ja2BVgcyCkm_yt8M-DM3_jP_A-ZCnD7TChOijcig~~" class=3D"css-sdwaa1" style=3D=
+"color:#286ed0;-webkit-text-decoration:underline;text-decoration:underline;=
+font:normal 17px/25px georgia,serif;vertical-align:middle">made that a diff=
+icult promise to keep</a><span style=3D"font:normal 17px/25px georgia,serif=
+;vertical-align:middle">.</span></li></ul></td></tr></tbody></table></div><=
+p style=3D"padding-bottom:10px;font:700 17px/15px arial,sans-serif;color:#0=
+00;padding-top:15px;margin:0" class=3D"css-sj7u5m">Russia</p><div style=3D"=
+margin:0 auto;max-width:600px;width:100%"><table><tbody><tr><td style=3D"pa=
+dding:0 0 5px"><ul style=3D"color:#333;font:10px georgia,serif;text-align:l=
+eft;padding-left:50px" class=3D"css-1dtd48z"><li style=3D"margin:0 0 10px 0=
+;line-height:27.5px"><a href=3D"https://nl.nytimes.com/f/newsletter/DkIuQ0g=
+DM--DQzKfWMOf-Q~~/AAAAARA~/BWRrntN_eaHbJRxpyC-M3ulY1IwiqIDJrkS5FF87lS1EPf50=
+g9iEECiAP6P-G87v1lx0j3XsqD6uDHGQ93vQJYIM6-_s5c-0Nj3YsJs-FP705XgrBG9rw5eQJY4=
+B-bgyavCvH4Odx65w6YKNYEl_SXFNj0b9OuetbJ0-moNQbkf0jrkQr76UO19QRk8SrGiguWfFP7=
+qNwn4-JLUx2Vh14rBfC1uPjUf6ApaSheMNaIvqm0OMdwVJifqBGWCAuSIxOtINb4cMlwpfpBVuA=
+8kDQonsyqDqGpKMBBDeZE0SQRzyixAd6ey_g9izHevg4wUedTTzfWMfqkkQWN2fmtyQxiTYY1GM=
+dWMXq8qL3YdBvfaPR3SMyV5I3IfZdN0NDey-TUEtRIrWgGi-BCRmy4642Q~~" class=3D"css-=
+sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:underline;text-decor=
+ation:underline;font:normal 17px/25px georgia,serif;vertical-align:middle">=
+Ukraine targeted Moscow</a><span style=3D"font:normal 17px/25px georgia,ser=
+if;vertical-align:middle"> with a major drone attack. Moscow=E2=80=99s mayo=
+r said the attack was the largest against the city since the war began.</sp=
+an></li><li style=3D"margin:0 0 10px 0;line-height:27.5px"><span style=3D"f=
+ont:normal 17px/25px georgia,serif;vertical-align:middle">Volodymyr Zelensk=
+y has offered a truce on long-range strikes like this. But Ukraine appears =
+to be sending a reminder of its power.</span></li><li style=3D"margin:0 0 1=
+0px 0;line-height:27.5px"><span style=3D"font:normal 17px/25px georgia,seri=
+f;vertical-align:middle">Ukrainian and American officials will meet today f=
+or </span><a href=3D"https://nl.nytimes.com/f/newsletter/nBMTpsOZqMERnfV8Oo=
+hvYg~~/AAAAARA~/6ryKYMjGhuxawsGV4t0aIDSwYoAlGBX3NpHUqGTbmgIJl87aWHAvgf5l3_N=
+h5Qom1Ko5ve2_RnMHM0exlMQvA5x1ylBb0KYL_UH_NIeLeYmJmNgXHqmVR0Z9Jl2wftVAvs0G5K=
+pVon2OprIq07YyL_MQRUTEO2qetaRE4RvgZAUoS25meGuj2XtaDBZYrcPmLTDp-HTRv5M7NElK0=
+MHtUsHIJGYupAG1OT0F3nlC_E0LHvT3SluOkGdmf6EHrce7XxLxW-HDJDqKBTkdaIJslNRtljyR=
+ZEikeS_GmghPjbJ3pM4qH3kPhjfxd5N53GSgBo7UI8u69URV9kborfPN5h4fUXOGVPsCZMPrjNU=
+39XJVwK6-4JZitO5Bg_EB6st5vv0hzj8TlDOAWkGxcaz8Fw~~" class=3D"css-sdwaa1" sty=
+le=3D"color:#286ed0;-webkit-text-decoration:underline;text-decoration:under=
+line;font:normal 17px/25px georgia,serif;vertical-align:middle">their first=
+ high-level talks</a><span style=3D"font:normal 17px/25px georgia,serif;ver=
+tical-align:middle"> on a cease-fire since an Oval Office shouting match be=
+tween their presidents.</span></li></ul></td></tr></tbody></table></div><p =
+style=3D"padding-bottom:20px;font:700 17px/15px arial,sans-serif;color:#000=
+;padding-top:15px;margin:0">More International News</p><table border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" style=3D"width:100%"><tbody><tr><td sty=
+le=3D"text-align:center"><img width=3D"500" height=3D"500" style=3D"display=
+:inline-block;width:83%;max-width:500px;height:auto;padding-top:10px;paddin=
+g-bottom:0;line-height:0" class=3D"css-xsf469" src=3D"https://static01.nyt.=
+com/images/2025/03/10/multimedia/11themorning-int-icc-duterte/11themorning-=
+int-icc-duterte-jumbo.jpg" alt=3D"Rodrigo Duterte standing at a lectern mad=
+e of a transparent material."></td></tr><tr><td style=3D"text-align:center;=
+width:100%;padding-top:6px;padding-bottom:20px;line-height:12px"><span styl=
+e=3D"width:83%;max-width:500px;display:inline-block;text-align:left" class=
+=3D"css-1wuwhda"><span style=3D"color:#666;font:normal 12px georgia,serif" =
+class=3D"css-1hnedf7">Former President Rodrigo Duterte of the Philippines=
+=C2=A0</span><span style=3D"margin:0;font:11px/11px georgia,serif;color:#88=
+8;letter-spacing:.01em;padding-left:5px">Anthony Kwan/Getty Images</span></=
+span></td></tr></tbody></table><div style=3D"margin:0 auto;max-width:600px;=
+width:100%"><table><tbody><tr><td style=3D"padding:0 0 5px"><ul style=3D"co=
+lor:#333;font:10px georgia,serif;text-align:left;padding-left:50px" class=
+=3D"css-1dtd48z"><li style=3D"margin:0 0 10px 0;line-height:27.5px"><span s=
+tyle=3D"font:normal 17px/25px georgia,serif;vertical-align:middle">Rodrigo =
+Duterte, the former president of the Philippines, was </span><a href=3D"htt=
+ps://nl.nytimes.com/f/newsletter/3y5VyhqMKy29veuXKWIF6w~~/AAAAARA~/mOVNYg1c=
+6axoMSFOcsn9oY7izZI2I0C6HfXVDBJOmRRNNtE6Tp2pu39jEiCCybass2-1YAv8Eyg9rDexw2i=
+A1xi6y2CpidnB5pZKgo-EL6rfMolXxbFUYN7ioSp74ZsWn1nIapu1W0R9wZYueVQDn8TAtpUB9i=
+JUfhWuhj-3G8HWSNzgd2aLLzCkc51SAl6yG1agzVomiSV6zS8h7yJgyJ_JkBsftyi7gbIsragyR=
+wHYoUbESqT46xnHX6z7gun0Lx15aC4Nsfh07s6aJJyyEKwF7JZkRMdCPzs3jbTfcdbAKpDfP3Ed=
+--5w-tDc-nUDG0s1oC1Qr37fW9F0UkAzx-e7PiFcBBDqM__VYxJ731enV8vUVGQ1jXjhas1NZ9L=
+K" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:unde=
+rline;text-decoration:underline;font:normal 17px/25px georgia,serif;vertica=
+l-align:middle">arrested on an International Criminal Court warrant</a><spa=
+n style=3D"font:normal 17px/25px georgia,serif;vertical-align:middle">. The=
+ court accuses him of crimes against humanity in his war on drugs.</span></=
+li><li style=3D"margin:0 0 10px 0;line-height:27.5px"><span style=3D"font:n=
+ormal 17px/25px georgia,serif;vertical-align:middle">Pope Francis is </span=
+><a href=3D"https://nl.nytimes.com/f/newsletter/Wp2_o7VDH16Vz7do-IpURg~~/AA=
+AAARA~/-OB9u0QABqprSLbbBuSgjm-5Cf4zIl9WC6BF6QnxNZwW5hRjBaiKshm1-kaaKiErbl-o=
+XQ1KWHoMWbNvdu33nu7VsSmoUt9zFZq2XL1y6Ob4FE_TO99x73u-Ulku186IPFHrcQSjdgIKOfQ=
+4epc64HG-naPG1ZOTaq83q4tqqVO2ceMP2o2hMRobZdfdbj8iMmFrNc0mfTkRfvnJ1HRM3-ZgN6=
+vgSKzeyvvlY1FkQBWhho3TebjQn6i42y6w-LG3qJrKL_MqMl6LNkYuFwKRnEqG1FxQCcax1Y-zp=
+Zy62tEWW1d4YiajhbchVzGvNyAaz_qUAsqjMuLvcINWl_RrSsBhShwR0-ele1ROs39qfqZ9qx5w=
+ErVKHGAN8NvyGeO1rM_sI2bPSTUnLzNuM-xeHw~~" class=3D"css-sdwaa1" style=3D"col=
+or:#286ed0;-webkit-text-decoration:underline;text-decoration:underline;font=
+:normal 17px/25px georgia,serif;vertical-align:middle">out of imminent dang=
+er</a><span style=3D"font:normal 17px/25px georgia,serif;vertical-align:mid=
+dle"> from pneumonia, the Vatican said.</span></li><li style=3D"margin:0 0 =
+10px 0;line-height:27.5px"><span style=3D"font:normal 17px/25px georgia,ser=
+if;vertical-align:middle">The Kurdish-led militia that controls northeaster=
+n Syria </span><a href=3D"https://nl.nytimes.com/f/newsletter/LgXxPMgNNt7yG=
+hGqGGWgBg~~/AAAAARA~/fTCfIpu04m1WjQMSu7_ZYbk45nGaJd0F3bzdcdVjgHJ0T6_6qGqfSN=
+VRcOZoELUJR04k4qG-MaNAaY7J6BL4y3Q_iqS6qH63MEC0hcCXUETWa4pP0kRr2stAyNF2wtKJd=
+5Z6L9Ve0NP1LVwn1B7Rb_LueWLT2gLv-nNVaIVFYvVtQYcxZtMgsXJ2U_4j7QflxWZ_cWVKwPzv=
+MqKhtzvlc4jEt5TSb8ZIXSJtdHS6aky-7r6asUM7JxDuuvef27G0n3UBy36wiLWaQ9SKweToS8f=
+f40gdT7OxmQxX5NgYI4YwJvptC9GhvmVO0CN_LCdezoaEO-zy4mRWs-gGYe0xCPQcJ95G3PdzJK=
+JWFu1flQxOS5VxYSiOptx-Iztnctc2" class=3D"css-sdwaa1" style=3D"color:#286ed0=
+;-webkit-text-decoration:underline;text-decoration:underline;font:normal 17=
+px/25px georgia,serif;vertical-align:middle">agreed to merge</a><span style=
+=3D"font:normal 17px/25px georgia,serif;vertical-align:middle"> with the co=
+untry=E2=80=99s new government.</span></li><li style=3D"margin:0 0 10px 0;l=
+ine-height:27.5px"><span style=3D"font:normal 17px/25px georgia,serif;verti=
+cal-align:middle">Despite backing rebels at war in Congo, Rwanda </span><a =
+href=3D"https://nl.nytimes.com/f/newsletter/zhwDklZA02anT-A-DcrKFw~~/AAAAAR=
+A~/qqDSKUAnCTxWaTy6uU4CUiKHrKCVNq2BZszSZsQ1IJhlWXEMxZFLH7ZsAeRjMGi_Kb6W4Frw=
+MaeH22_mYLImvSZzadeZ9ZurxLDzEGOruXJ_ct1UNuv0jQeg6YsjXi23pPcV8VnYWWJ1sSXsiUS=
+nGzEZWnW6FNPgvGtKyKaazlEcVRj9l5_f_B5padhd2GctGYnbYInh56PTyMTLv2ih7pG2geMrAP=
+3oNqR2Mm1iBLD6xLhDZqgfkks6ESjYgZbBZOSj89DzJj4P8UzPyr2CX84pZjwDJi7sNUb_vspXT=
+Qyc7Q0KEfYAWDXp90jeqXuaIUczfyUx54WdKUpYY_wm8Wpom2XKkWY4-L7j_MqsVaiUTrYQi77k=
+j5RxbGnw6FM_3aJWwJCMLmNjN9lkhlKX3Q~~" class=3D"css-sdwaa1" style=3D"color:#=
+286ed0;-webkit-text-decoration:underline;text-decoration:underline;font:nor=
+mal 17px/25px georgia,serif;vertical-align:middle">still lures tourists and=
+ investors</a><span style=3D"font:normal 17px/25px georgia,serif;vertical-a=
+lign:middle">.</span></li></ul></td></tr></tbody></table></div><p style=3D"=
+padding-bottom:10px;font:700 17px/15px arial,sans-serif;color:#000;padding-=
+top:15px;margin:0" class=3D"css-sj7u5m">Government Overhaul</p><div style=
+=3D"margin:0 auto;max-width:600px;width:100%"><table><tbody><tr><td style=
+=3D"padding:0 0 5px"><ul style=3D"color:#333;font:10px georgia,serif;text-a=
+lign:left;padding-left:50px" class=3D"css-1dtd48z"><li style=3D"margin:0 0 =
+10px 0;line-height:27.5px"><span style=3D"font:normal 17px/25px georgia,ser=
+if;vertical-align:middle">A judge ordered the State Department and U.S.A.I.=
+D. </span><a href=3D"https://nl.nytimes.com/f/newsletter/-Bkn801-nglJmbPrnj=
+9qIQ~~/AAAAARA~/i5zw86dpFl48SQJs66lGmBERZpLC6gseDAzeCSBnvITiNjJVZJOxbf3P-bg=
+xy44w2V8lYZCQpfV-87jnS7mKDiD14Izvmb1VVQJ39vAA2qe7cWllNP0PQwYsoK54Q0Q0zDBc2n=
+I_OCinHtam_FLQGi0yoEhTEQ6gb5sNk2HTaPySlgL9GTEKFQYQpQhzoSukbcIpAgFnSnRu9E0_A=
+Bemkc_q9_EWGn4P1RJ8wQQ4WHE3j5jmXbRSLCTrc9GqWCO8ahJzEBVu0C20TC72yTJnAKaMkYMX=
+nV2UvRK9lliMWZnCv_YFwW1euFVtMeGjSurz_k6xXCfCuxlGQg_H8cfHO6514vrAW8iVNHy9BTz=
+WbNzqdDA2VHP_1BfvkVx9mUFdf2M2fsdgfO-dkgJCho-AdA~~" class=3D"css-sdwaa1" sty=
+le=3D"color:#286ed0;-webkit-text-decoration:underline;text-decoration:under=
+line;font:normal 17px/25px georgia,serif;vertical-align:middle">to pay gran=
+t recipients</a><span style=3D"font:normal 17px/25px georgia,serif;vertical=
+-align:middle"> for work completed in the first weeks of Trump=E2=80=99s te=
+rm.</span></li><li style=3D"margin:0 0 10px 0;line-height:27.5px"><span sty=
+le=3D"font:normal 17px/25px georgia,serif;vertical-align:middle">Another ju=
+dge found that Elon Musk=E2=80=99s DOGE is probably subject to public discl=
+osure laws and </span><a href=3D"https://nl.nytimes.com/f/newsletter/m3FKfa=
+dlkloWx5WWqCalBg~~/AAAAARA~/sl2bLjtGcSZ3fqozqi5LhMqTvWiLzogTc7BS525ob4TjBDr=
+Ji003ayWGkSnP6YmMpbjAuSnpFubIUPqPf82dS_KST8mJKIYwoafOH6_X94dBlhgyHFswfmWULP=
+WtYYDQvz545sTstGzC8e8bQa3kqGgZbUcI16zUC5Z-wMOzO9m9FA4YH5Q-zl8Xgqc1kuEog617R=
+6AKFQBpn_jaRmLBxwdLnSwmP-wQJTDqIYidNC3AHvF8iGt9sBOPtkLbt0vPUveG0HTQ_WHoQN_w=
+m6Yn7ND0XUKHAQMW9gbny3Z05AVmMPGJmTJ2L9FBo22fqiPT2NmUHFReUv3M_cC8QFrpuJrqQnA=
+F70I5O6D83N0035EdTMplBWA6De1UhXXocd6_" class=3D"css-sdwaa1" style=3D"color:=
+#286ed0;-webkit-text-decoration:underline;text-decoration:underline;font:no=
+rmal 17px/25px georgia,serif;vertical-align:middle">must hand over document=
+s</a><span style=3D"font:normal 17px/25px georgia,serif;vertical-align:midd=
+le"> to a group that sued for access to its emails.</span></li><li style=3D=
+"margin:0 0 10px 0;line-height:27.5px"><a href=3D"https://nl.nytimes.com/f/=
+newsletter/v7BxoZL70I4F8S4TAxFS9g~~/AAAAARA~/39Fus4znq_kjD8QMV2x5NvXfWGr_HU=
+LUYK8bHExOBY6JDMi5n4H2BMVw4qPqQ6SZLAPy2SA9CSlKBUdEgtKLMkyLZI1xvdhz_uBkrqLBd=
+rtrHUKkL3oYQAm5AsnT1KT63ILGryMw-kYrZ3jvWQrPC7WNAkfJinJ8kNCyVZ_NycHGOufgsmtS=
+RrJb9ClsXx0MjpGyI4LQfxLYM2CeLbiPNOXNfBnEO6Y2OzLTmbELrM5u-MaSYuczHPzvlrHWp4E=
+sFMf-5qZFMLnjMUtSfVy5OxnqSULz98r_XiIHN4jBqJsyq09aNwPwTvXiQwmuJtL2r8WMgHDOMq=
+432Bu4F4T-8OaO0sTTBKyvkUEmiJ3L4TUOlR1logGe3JHprE5tvf3k9sp_91evGrtXtKRKK3qJR=
+A~~" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:un=
+derline;text-decoration:underline;font:normal 17px/25px georgia,serif;verti=
+cal-align:middle">Harvard froze hiring</a><span style=3D"font:normal 17px/2=
+5px georgia,serif;vertical-align:middle">. It said Trump=E2=80=99s threats =
+to cut funding for higher had created uncertainty.</span></li></ul></td></t=
+r></tbody></table></div><p style=3D"padding-bottom:10px;font:700 17px/15px =
+arial,sans-serif;color:#000;padding-top:15px;margin:0" class=3D"css-sj7u5m"=
+>Activist Arrest</p><div style=3D"margin:0 auto;max-width:600px;width:100%"=
+><table><tbody><tr><td style=3D"padding:0 0 5px"><ul style=3D"color:#333;fo=
+nt:10px georgia,serif;text-align:left;padding-left:50px" class=3D"css-1dtd4=
+8z"><li style=3D"margin:0 0 10px 0;line-height:27.5px"><span style=3D"font:=
+normal 17px/25px georgia,serif;vertical-align:middle">The Trump administrat=
+ion is </span><a href=3D"https://nl.nytimes.com/f/newsletter/MzdNG4wFMvcMJr=
+pCS0ETHQ~~/AAAAARA~/39Fus4znq_kjD8QMV2x5NvXfWGr_HULUYK8bHExOBY7ZJ-a0ctDZltJ=
+SCbYBE1NgwB4P-Sr2_5qkmVBcN4u65-eCkZCWsHTyla7JDuKxXp6sbDvtlDoSxqMxGhN0jZQ1Gd=
+-06F7AHM8jD6FYo19_5laO-Aps260QndURingLZivR745r3AQdrLf83xD0zlAXO8q0ga53qaEUO=
+R2_dDsIHib6PvvsCW4EG8p09_ArcA4tPRcHvypRghVdItT2zPOPr5hF1L9oH7F-4GzqPkn1ul9D=
+EkjTMlhBVF87t3V42bmFkgfwrA-3bNy-jYD4hhQnp9ZNQK8WTmXzGYKk3cLjunY0_BabjFbOVje=
+uN00hlrqM6hmtV9SPUHhm-4vm0ATodQnzn6P75QWQfvdRjJURvg~~" class=3D"css-sdwaa1"=
+ style=3D"color:#286ed0;-webkit-text-decoration:underline;text-decoration:u=
+nderline;font:normal 17px/25px georgia,serif;vertical-align:middle">relying=
+ on an obscure law</a><span style=3D"font:normal 17px/25px georgia,serif;ve=
+rtical-align:middle"> in its effort to deport a pro-Palestinian student act=
+ivist.</span></li><li style=3D"margin:0 0 10px 0;line-height:27.5px"><span =
+style=3D"font:normal 17px/25px georgia,serif;vertical-align:middle">The act=
+ivist, Mahmoud Khalil, has a green card and is married to a U.S. citizen. A=
+fter his arrest, officials </span><a href=3D"https://nl.nytimes.com/f/newsl=
+etter/DY3CMOP8gCohkIwU7ceaEw~~/AAAAARA~/ww4aogD6Xo9xgG8DGdYDvxU57VnkFjeTn0Q=
+034rHWqB7678e6i8LiAP5-wwOidaKNZCiQARgP87xrqBr5zsIXFAbZ3ELzxa5SNuM739Kj7GNIJ=
+_CveLiduzS5kZveGQT2jwwhl5alj14dtlszomsK64EW3Pv_lSwyONBVavx0ebOrytHQMWSwIa7j=
+dY1zkBSh9-8k8eINpi4LXdZQk3HBRwRbECKsL91qJ7S6V8nOieUSD1ADB3_X_PSw-UAJ-2WOENE=
+Hk_cwZdYpBy-On16D8oNgSWhTmHIdX8qXhXZLm0gfAwqiSidDRh9hhWDQNlDm63W_DBR4LWeqO6=
+uySDCcNxQf9mePIDiQyY-n139ysc-jBAfSksIN104v_E-2Zye" class=3D"css-sdwaa1" sty=
+le=3D"color:#286ed0;-webkit-text-decoration:underline;text-decoration:under=
+line;font:normal 17px/25px georgia,serif;vertical-align:middle">moved him t=
+o an ICE detention center in Louisiana</a><span style=3D"font:normal 17px/2=
+5px georgia,serif;vertical-align:middle">.</span></li><li style=3D"margin:0=
+ 0 10px 0;line-height:27.5px"><span style=3D"font:normal 17px/25px georgia,=
+serif;vertical-align:middle">Trump cheered Khalil=E2=80=99s arrest, writing=
+ on social media, =E2=80=9CThis is the first arrest of many to come.=E2=80=
+=9D</span></li><li style=3D"margin:0 0 10px 0;line-height:27.5px"><span sty=
+le=3D"font:normal 17px/25px georgia,serif;vertical-align:middle">The arrest=
+ </span><a href=3D"https://nl.nytimes.com/f/newsletter/Aats2Dvt5HZH6N3RjqY5=
+sg~~/AAAAARA~/i5zw86dpFl48SQJs66lGmBERZpLC6gseDAzeCSBnvISIyPo0U-cQ3epzlM2PS=
+yv6N7nUi278sr2co0xdrCHOgDoWjbcT8oePDFYmWNPlxoFviZJf_44MkJubQVQl9KM2zP3VVu5Q=
+sVeXJu_AuZFmi_uYYCWXP-D5uZQhzh9OTU-wmTDlGcRrOl5QcNtOTdK7p7Kbh_qhgh8mS1jYLkJ=
+Hja8NX-KRdWW-4AKZvIE5GD3nyLWjZ2pCiQkr7RRJi0jbQJSGJqx_7yoANSzIUQcGlbqvZfpmYd=
+tlTOKOgRaC0otPBxSsswDf_Ope9QTSfCK_HwfiTp7nwjTde78lnvKD32m7ZiqQTrntuDXhkjiZ2=
+A3w9jsHduikCpk1WBz3kKP4YMX0NgeizqjvEjAPbEVQKQ~~" class=3D"css-sdwaa1" style=
+=3D"color:#286ed0;-webkit-text-decoration:underline;text-decoration:underli=
+ne;font:normal 17px/25px georgia,serif;vertical-align:middle">divided the A=
+merican Jewish community</a><span style=3D"font:normal 17px/25px georgia,se=
+rif;vertical-align:middle">, which is trying to reconcile its support for I=
+srael with its long commitment to civil liberties.</span></li></ul></td></t=
+r></tbody></table></div><p style=3D"padding-bottom:10px;font:700 17px/15px =
+arial,sans-serif;color:#000;padding-top:15px;margin:0" class=3D"css-sj7u5m"=
+>More on the Trump Administration</p><div style=3D"margin:0 auto;max-width:=
+600px;width:100%"><table><tbody><tr><td style=3D"padding:0 0 5px"><ul style=
+=3D"color:#333;font:10px georgia,serif;text-align:left;padding-left:50px" c=
+lass=3D"css-1dtd48z"><li style=3D"margin:0 0 10px 0;line-height:27.5px"><sp=
+an style=3D"font:normal 17px/25px georgia,serif;vertical-align:middle">Trum=
+p is wooing Republican lawmakers, while maintaining an implicit threat to <=
+/span><a href=3D"https://nl.nytimes.com/f/newsletter/r2vc0kOEtsOj-Bm9QR6BSw=
+~~/AAAAARA~/fTCfIpu04m1WjQMSu7_ZYbk45nGaJd0F3bzdcdVjgHI13c9nWgxejzrmMy0cDYW=
+Z36DnMw6p_UTgWfzd05oobyEUqec-mE-vZDn_od6emH9m-lJ7HRdFo5SAIWteMLE9dPN0dCz7GD=
+HDZjwSBmrcLm8eZGcZNvMj_epNFi2cLnY46etuYj9X7TfA_kO3NA9PLCWNsNnJqLJgEud8CWezs=
+U9BN24DlnnjHRJsprnOgu_59CzrS7Ls3XJBoJAeiATQsaPgvY0AlAGwwOOpIWokguM0jvgIZFNp=
+oH8CDlvVIi13JIEYFRH34kFPnVVwZ41Rf7RwyvxTJJk4qEJXWM1UVe1j7QUHd2ur2SYJFOmsXf5=
+3PglPs9FoKUAr1XJlTz-0" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-=
+text-decoration:underline;text-decoration:underline;font:normal 17px/25px g=
+eorgia,serif;vertical-align:middle">ruin them if they stray from his agenda=
+</a><span style=3D"font:normal 17px/25px georgia,serif;vertical-align:middl=
+e">.</span></li><li style=3D"margin:0 0 10px 0;line-height:27.5px"><span st=
+yle=3D"font:normal 17px/25px georgia,serif;vertical-align:middle">At the st=
+art of his term, Trump said Guant=C3=A1namo Bay would house as many as 30,0=
+00 migrants awaiting deportation. As of this weekend, </span><a href=3D"htt=
+ps://nl.nytimes.com/f/newsletter/WGb7_s0gcKYYLNF-xQLg6A~~/AAAAARA~/-OB9u0QA=
+BqprSLbbBuSgjm-5Cf4zIl9WC6BF6QnxNZxyC5sC5wIkNBr3VP3HUGTqRaytsHId4YMN9yhBmiN=
+5mqx6ZtWcTMXSvip820PYj1PHqwwchOlnJLhpj-Ozh8IX7lZAmKvvetCIoIUJl01gxRftzhmW_X=
+UNt-dWxXUF7EIWrBCx2vJ1r2MwySEW79haxNONs9swpLPgYUI4UP4T6UBruSyykWjE2Ugd6Nof1=
+ES5J3FVz16EkEz9Kt0kGyvCwo1obD7wKP8k3PiG3L02KCJs-EgYDmx1MwHptDUNFXPSrSw0uKoc=
+7V-Qzbkn2AH29rbCaE0AVaIeDXsCayqED41jR3DPnqJoxYWr0s854QySj-MPEkqzsz4FBg3FTsI=
+aFWvc1_HWrttqb3nl6-cyZA~~" class=3D"css-sdwaa1" style=3D"color:#286ed0;-web=
+kit-text-decoration:underline;text-decoration:underline;font:normal 17px/25=
+px georgia,serif;vertical-align:middle">40 were there</a><span style=3D"fon=
+t:normal 17px/25px georgia,serif;vertical-align:middle">.</span></li><li st=
+yle=3D"margin:0 0 10px 0;line-height:27.5px"><span style=3D"font:normal 17p=
+x/25px georgia,serif;vertical-align:middle">As a measles outbreak spreads, =
+Robert F. Kennedy Jr. </span><a href=3D"https://nl.nytimes.com/f/newsletter=
+/xNwXEA_GpK-RCtt-EqY31Q~~/AAAAARA~/4xlhbxWHjQE7MOlcOxkLbWoWqr7J8MvJb1ZR4GzW=
+Fllg286Xpx-Jqiytgd7c45JMu4nfVEK-wQuoGdsDLfgvZnmbGcEGzYhjAd6X-beEWiRWGYc2i2m=
+Z0Z7KV2JwOXMnAjwX2YP5rBGtSSTtJx-y9O22PnSVfW4VWm4MPBm6AOLbkW_BXMtKJK949dymGM=
+GJznFNHLVOaRuSEcB6Ojonatw5Z-LnFy-41k1ZjpybM5WXQ-7Llo6klLFxE2ji2ALQU7fEf82i0=
+kSs0yFyi-FszHuCwtyBlkz6cpPbu1YoFE1gM3a9Sa-EQXsYz7QsWfq9PVew4oCwrWm0VwKi5dks=
+wpJf1wWYrYfg_CfQE9NWrrF_D-FzKuDck3nk5k14sreL" class=3D"css-sdwaa1" style=3D=
+"color:#286ed0;-webkit-text-decoration:underline;text-decoration:underline;=
+font:normal 17px/25px georgia,serif;vertical-align:middle">raised alarms ab=
+out measles vaccines</a><span style=3D"font:normal 17px/25px georgia,serif;=
+vertical-align:middle">, despite evidence of their safety.</span></li></ul>=
+</td></tr></tbody></table></div><div style=3D"margin:0 auto;max-width:600px=
+;width:100%"><table><tbody><tr><td style=3D"padding:0 0 5px"><ul style=3D"c=
+olor:#333;font:10px georgia,serif;text-align:left;padding-left:50px" class=
+=3D"css-1dtd48z"><li style=3D"margin:0 0 10px 0;line-height:27.5px"><span s=
+tyle=3D"font:normal 17px/25px georgia,serif;vertical-align:middle">The Just=
+ice Department=E2=80=99s pardon attorney opposed a request to </span><a hre=
+f=3D"https://nl.nytimes.com/f/newsletter/JC_RQHMKS663vhEQLEEx8A~~/AAAAARA~/=
+FGDxubCXvl4qCD9sv3iyy7uiERARMoF6Qv4Jo8_N5ZtFnR9tbX9wX7hT0vXm5HdN6WNQLlR9eJa=
+2p3pMSddgk3tF9Kw3cUMJMy4TMiCBij-6qeKq_6GpxGXrAfJ9OyvySX4tPeu3qj1SyHTiXTcBs0=
+98HMvFgaTDOdeIZIFsoOrqrZyNCFY4BeNgEZ0bXHgieP-Q9BpVu7aVH1oAVycjZVkJo5eh-yKfu=
+r4P9oshc6H2qsVePsLz8GQJOUtsCapY4Fi2F1SRVUKFhdl2Ufm_A5XsSWr8U0DTJ21vWZQiq7NF=
+f1oMUcGi7_22-pUzcbv4sFoI7hqzfVsYC1KwA0HUEHPjKYYGRAl1peXbklvtYZBpOtQNeE2JjPG=
+hiE886abb" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decorat=
+ion:underline;text-decoration:underline;font:normal 17px/25px georgia,serif=
+;vertical-align:middle">restore Mel Gibson=E2=80=99s gun rights</a><span st=
+yle=3D"font:normal 17px/25px georgia,serif;vertical-align:middle">. The dep=
+artment fired her a day later.</span></li><li style=3D"margin:0 0 10px 0;li=
+ne-height:27.5px"><span style=3D"font:normal 17px/25px georgia,serif;vertic=
+al-align:middle">The U.S. energy secretary, before a crowd of oil and gas e=
+xecutives, promised to </span><a href=3D"https://nl.nytimes.com/f/newslette=
+r/CUIqUlPR8-FM8uGnQUFQxA~~/AAAAARA~/KgMY3XlbVl5HfXWQQaj7Vm1JNzG3vUv0Ik0g8RJ=
+r1qzP7jm13YYPMcn1cwKedQSvMd8w2mEE900ex1A-BBgMo0aARajiY77dGlKDvfkMSdfJBAWPJ-=
+LzXYBUxm-2x7nNWHo1hORqQqn7HxTuCMfIz4BZoKzoOOxabDq2VJ5ETJrt6MmaNUZEra11L7soY=
+ZnEl84RvdZmHwDv30ndfdiO-lZtuu6c0AurquPoNLOLpieJ2Cyvt2If5WF-6LYloLEsNQ19QrKu=
+MJFSUe9IpLfCPZjn_phGvHlWzZLNvJ5gUKPZEfDcS2ClNV7C5WkZIPFcTh9Lx-TnuKVcBlLNeGg=
+0ltS7jc8D8LsFXJZcg5zwe5KCnZwfKRkKB9py5tFjMgOhmUHe2CDexILLnnaJTgtvdA~~" clas=
+s=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:underline;t=
+ext-decoration:underline;font:normal 17px/25px georgia,serif;vertical-align=
+:middle">reverse the government=E2=80=99s focus on climate change</a><span =
+style=3D"font:normal 17px/25px georgia,serif;vertical-align:middle">.</span=
+></li><li style=3D"margin:0 0 10px 0;line-height:27.5px"><span style=3D"fon=
+t:normal 17px/25px georgia,serif;vertical-align:middle">Amazon </span><a hr=
+ef=3D"https://nl.nytimes.com/f/newsletter/_3LvqhrBtQKUBaAwq0iQkQ~~/AAAAARA~=
+/mOVNYg1c6axoMSFOcsn9oY7izZI2I0C6HfXVDBJOmRR6LcAtTQOeyBhg-WJLlWVQsytz97831H=
+YA9yEe8H2zNoPZ24Irx5K6P_pvPrh3-64YvnbdV85DJuexi7WwVF6n_0v084uzPHIJCwxJlAiAd=
+WmO3DeKtrDhYp0uE9YA3nT-3pFh8IevmaZ1v9604SDDX4bLtqz7egOVHrTVurRJx_a7wLCCRhhr=
+J7usKt5nvu_1_KzNzm2JjiFmhd6HASyDmLQV0X8wSCTKUxF47Dpp9Sr6jDVSUzK0qnF7LebPz0V=
+dqSnCohX8ug06Hzpk9GFet5B9DNXCs9HfOBsVJ2wAcCSS8TBqkb67qF3AU9Ul8mL4edcstYO2o3=
+7h3oZ7J_o0" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decora=
+tion:underline;text-decoration:underline;font:normal 17px/25px georgia,seri=
+f;vertical-align:middle">will stream =E2=80=9CThe Apprentice,=E2=80=9D</a><=
+span style=3D"font:normal 17px/25px georgia,serif;vertical-align:middle"> d=
+eepening the company=E2=80=99s relationship with Trump. =E2=80=9CI look for=
+ward to watching this show myself,=E2=80=9D Trump said in an Amazon stateme=
+nt.</span></li></ul></td></tr></tbody></table></div><p style=3D"padding-bot=
+tom:10px;font:700 17px/15px arial,sans-serif;color:#000;padding-top:15px;ma=
+rgin:0" class=3D"css-sj7u5m">Other Big Stories</p><div style=3D"margin:0 au=
+to;max-width:600px;width:100%"><table><tbody><tr><td style=3D"padding:0 0 5=
+px"><ul style=3D"color:#333;font:10px georgia,serif;text-align:left;padding=
+-left:50px" class=3D"css-1dtd48z"><li style=3D"margin:0 0 10px 0;line-heigh=
+t:27.5px"><span style=3D"font:normal 17px/25px georgia,serif;vertical-align=
+:middle">Researchers </span><a href=3D"https://nl.nytimes.com/f/newsletter/=
+qyEu1PFxLc7Z491MMRc7-g~~/AAAAARA~/ww4aogD6Xo9xgG8DGdYDvxU57VnkFjeTn0Q034rHW=
+qD3lnaEoUMcdVk1evWTCZeVOT9Jq1T67ZhBzWvPkMA2GWIGBjrZPxroODB7yc7i3mxzKojpJY1E=
+nZ46UqKzUM-kntM1omACk9O7_jDHj478pNCMzs746Ip_adxfTDoYxk3MgTQNqFqxhudS7cJILjj=
+hRwrjKM0ld2KzFMppDJcDW4tHKllFD90kryAP4K2nvM4YOIdgFdHJPqKK42ePQPX1nI_UR02AQZ=
+B0zU3vMnu7gkDYYYDWcrmbuN7bNhVgTC2JY8GpgnQl0MeEyQCzJgJsEZF97v9AHRIwMWoEy9lxa=
+R0cjwmbD2DbSwDNC_UXS1bPnLVZeZCkx82SyBK7LWyC" class=3D"css-sdwaa1" style=3D"=
+color:#286ed0;-webkit-text-decoration:underline;text-decoration:underline;f=
+ont:normal 17px/25px georgia,serif;vertical-align:middle">repaired a diseas=
+e-causing gene mutation</a><span style=3D"font:normal 17px/25px georgia,ser=
+if;vertical-align:middle"> for the first time, using a single infusion to c=
+orrect a spelling error in patients=E2=80=99 DNA.</span></li><li style=3D"m=
+argin:0 0 10px 0;line-height:27.5px"><span style=3D"font:normal 17px/25px g=
+eorgia,serif;vertical-align:middle">Mississippi became the </span><a href=
+=3D"https://nl.nytimes.com/f/a/Z-sUs7tb0dzK_nRFVHdckw~~/AAAAARA~/-a0UlBZnMu=
+hwPvjIVz-I5lwRSwPwfxvFm9C1S4aKTT_DS1tnZKsz8rYdJfPAM6DhZ5uJwy53VNZ6lcGD_hIDs=
+UvXhNv9nTmqHdL2UCyAKJklETrdp_zlIrbJ3b9T6waA-L0t1gtFqbmxTIL1WBf8flo9QvVTGpl1=
+EUCrDfuW3IAuS-Y6FC2KYZm9PV-06tvhRLnzN7DANZ8ASOTm3CjUZbgg08KLi15wLU6ZOzi_8qj=
+mjzd716b1irvjiYXuqwaqTjF4cXL5eWPb_B2XnIHP3zz63tfY63Ws_ID21KVSay5C7Q__LELH8i=
+Ph0cgMbCSWkjXYKDhHZ4VS_NFvvORrEX_W6yr0i_x8_QSHe8q1WLw7EfBbZP_eWpislVzrJ38Vy=
+hnlmhRqhwD7ZvDsYZ9J2ogUmVlMr-MtiVnxqT0yxP1wVEGmLp3kXQ69VQNnlf37yVlcJNKUZHA1=
+LzYKYxt69BlPTn1RecnzgXI6Uf6VSkg~" class=3D"css-sdwaa1" style=3D"color:#286e=
+d0;-webkit-text-decoration:underline;text-decoration:underline;font:normal =
+17px/25px georgia,serif;vertical-align:middle">third state to ban lab-grown=
+ meat</a><span style=3D"font:normal 17px/25px georgia,serif;vertical-align:=
+middle">, after Florida and Alabama, Wired reports. Georgia and Nebraska ma=
+y soon follow.</span></li><li style=3D"margin:0 0 10px 0;line-height:27.5px=
+"><span style=3D"font:normal 17px/25px georgia,serif;vertical-align:middle"=
+>A number of colleges, faced with increasing political pressure, have adopt=
+ed policies </span><a href=3D"https://nl.nytimes.com/f/newsletter/zcJd93ZGc=
+8bs9bWb1StdiA~~/AAAAARA~/KgMY3XlbVl5HfXWQQaj7Vm1JNzG3vUv0Ik0g8RJr1qxWaitPXz=
+-nn9ts6vuUMpjBG6LwAmaXMRCs1O5Kb5p2l_QN7rcwYYAtyq9NnlWWwXzEZJrdzjG9ErxuTWNxA=
+ImnZ_oR5THcxHrCKRf4pLRMWzLxRS_tV41RNaWPNdaPD0u7T-HghZQSkNGrrscq975dbQIQDrzg=
+vTMp-Ze8ZnBh3W_RGAhK6cHYTloA0gC--vt0p-fEC42XAc5fO6lTGbf2rmRU8HEdgaKo6N1c-Bo=
+41oOaub1v32mgBOSA1aJHnfLhuADGLlj3dtrKF8ryEEg-6JIx0ZTs5x6GnyzbDEe1qR9a3ETNMh=
+yuoPjtKv1bLm8hYfC2hlS4Sp5giPF9c8X33mPg1otd0RcH5nKEhZ6O7A~~" class=3D"css-sd=
+waa1" style=3D"color:#286ed0;-webkit-text-decoration:underline;text-decorat=
+ion:underline;font:normal 17px/25px georgia,serif;vertical-align:middle">to=
+ stay silent on social issues</a><span style=3D"font:normal 17px/25px georg=
+ia,serif;vertical-align:middle">.</span></li></ul></td></tr></tbody></table=
+></div><p style=3D"padding-bottom:10px;font:700 17px/15px arial,sans-serif;=
+color:#000;padding-top:15px;margin:0" class=3D"css-sj7u5m">Opinions</p><p s=
+tyle=3D"font:normal 17px/25px georgia,serif;color:#333;margin:0 0 15px"><sp=
+an>Companies should </span><a href=3D"https://nl.nytimes.com/f/newsletter/2=
+0LCLlVXynJUxaXz_7r3HQ~~/AAAAARA~/ww4aogD6Xo9xgG8DGdYDvxU57VnkFjeTn0Q034rHWq=
+CDmE0FYeXEXl7Q7QcZU232_ZstgR6Nx3I-S7dlVpQMsEyI9JuXVI16_xKsnAOOWjtj94LD4R22_=
+JaFqOC-b4LMfBiz17Nenov0GBKLFJa13wv8b5G1Qo751w0IiqoZsD1qqrIu8Dt6-dr78E-Iq91e=
+tL9_8ztsKqXjhikEWO9eSxqc9gupGU9IAfInDkQ0ZNdXvWaY17Sqeoqtmo6ba5tPmj1B-VoHxI9=
+F4gGKY9-nizqakjKGSLpqCar6JqUv1GAX8NrsQ9ZQ8x3504pwcx-OOs75ifHrySWgZvjjE8yQ6P=
+AE-4u3Mf8-up0g9JVKbUjoLwE5mrzpgVSE1dy2xLu5" class=3D"css-sdwaa1" style=3D"c=
+olor:#286ed0;-webkit-text-decoration:underline;text-decoration:underline">g=
+et rid of their D.E.I. policies and hire people on their merits</a><span>, =
+</span><span style=3D"font-weight:700">Anson Frericks</span><span> writes.<=
+/span></p><p style=3D"font:normal 17px/25px georgia,serif;color:#333;margin=
+:0 0 15px"><span>Here are columns by </span><span style=3D"font-weight:700"=
+>Lydia Polgreen </span><span>on </span><a href=3D"https://nl.nytimes.com/f/=
+newsletter/wNHo1sUV3SmAT9lgSX926Q~~/AAAAARA~/DOiwu1WuSjk7_IqRwaaVoDd0QUkUyj=
+0BVWTVd_OVeMXSpOTm_2GKqMJUV9TzP8THkGlJF3dUziXsc_xJSMoz-rd4XXR8d9aT-n-TB6r4s=
+CzG-ZfZ45pzl1OZ6OU35A8DsoW8Qwy1eCnCynjd66nJMSlCPV3-RRu8ByQ1ePGbIL0v3FUq9m25=
+gVkCA4SasdkLYxzTtpkbk2a_Y8jMnYlGgtUpYjiqedxTUNC0azQwiwIoLfKy7OseYnLrZmoEHfc=
+NPdNsW8SwAvQ0z_SYJ6LwMKj8-_sYedAJka0sssE5KnndpPTLxOM7s7y2Whkx0RcWMnwjqgpUNs=
+Wv8CY8MNWY4nWyhoDjUARlKQHZR9Ob9aLJAgxHXHfbyX5MJh26Tyd4" class=3D"css-sdwaa1=
+" style=3D"color:#286ed0;-webkit-text-decoration:underline;text-decoration:=
+underline">migration in Dubai</a><span> and </span><span style=3D"font-weig=
+ht:700">Michelle Goldberg </span><span>on </span><a href=3D"https://nl.nyti=
+mes.com/f/newsletter/fre7KfzAS_W2PfTqrr6spA~~/AAAAARA~/sl2bLjtGcSZ3fqozqi5L=
+hMqTvWiLzogTc7BS525ob4TmLCwcAYuACyQ6vI13oGMIjgSVuBTWTqnlbRjF_zBVL5RiytVUk7h=
+ydx2Y-jZQXQ0HwOVxX2srXK1a2-47H8MYHsiGSd_sOWbWcW7a_Bzo3XErzSt10nNi4UkdHOkMir=
+KPFF5LxN9Z2hadiaZSimY0Wmc3jjxPAiFSr35Un2Vyi0nm__HK-6eWMwD2LhpQFRI32leFLww1s=
+772VmIqAKz_oHdVnrgYb3sx-c4a568oQa108Jy25jSzJfgIbsvscMtj5zb0IOfLxwywgMDDfykR=
+-N-SG0fl5JKoylJ7KAHs5S-R31rY9wG_ybcvpGWFWD-J7ceG770wzmG_RKit-x0W" class=3D"=
+css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:underline;text-d=
+ecoration:underline">the arrest of the student activist</a><span>.</span></=
+p><table width=3D"100%"><tbody><tr><td style=3D"padding-bottom:15px" class=
+=3D"css-36ugzx"></td></tr><tr><td style=3D"border-top:1px solid #dcdcdc;pad=
+ding-bottom:15px"></td></tr></tbody></table><p style=3D"font:normal 17px/25=
+px georgia,serif;color:#333;margin:0 0 15px"><span style=3D"font-style:ital=
+ic;font-weight:700">Save up to 75% on Games. Our best offer won=E2=80=99t l=
+ast.</span></p><p style=3D"font:normal 17px/25px georgia,serif;color:#333;m=
+argin:0 0 15px"><span style=3D"font-style:italic">Love to play=3F Discover =
+all our games. Subscribe to New York Times Games today and save up to 75% o=
+n your first year =E2=80=94 improve your Wordle strategy with Wordle Bot, r=
+each Genius on Spelling Bee, plus more. </span><a href=3D"https://nl.nytime=
+s.com/f/a/tHvbijY8r9TAuS6gpvjYMQ~~/AAAAARA~/5w81rJbhdkw0-awHeSnuTbtfUFb6HiX=
+vknORCbW3CIzBwho-MkUecfTkRvAyhfHVaAogAIVgeWobk60lZRq9uDevb97j64ZkcpU6n-iKdN=
+JzaYhcFIA0Tp8X1b6z_2gPOB2VWZuzqF7w-3H2-zddlcWDrc3uJ-c6aHOO1bDLXIBu_htnQw7tP=
+Ihg2pkjMlwfFFbdeXWfqC9tFCiu2poENqipDYtkTetr3r6h1NQkFbrTREH7XJqDf6gKxcDLtPo-=
+cC-REc1FK4RxuH1GjXSZ7HzcGjpOT2U6pmOIJtFWs8jSJkfYuHJYQubMjCiFGoed0eg14Rh4qoy=
+diVRHx7hgHc3cHPWfT3nwA2GUNFufHt8~" class=3D"css-sdwaa1" style=3D"color:#286=
+ed0;-webkit-text-decoration:underline;text-decoration:underline;font-style:=
+italic">Come play with us</a><span style=3D"font-style:italic">.</span></p>=
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"width:100%=
+"><tbody><tr><td height=3D"30"></td></tr><td style=3D"padding:0;font-size:0=
+;border-top:14px solid #000"><h3 style=3D"color:#000;font:700 17px/25px ari=
+al,sans-serif;margin:5px 0 30px 0;letter-spacing:.2px"><span style=3D"font-=
+weight:700">MORNING READS</span></h3></td></tbody></table><table border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" style=3D"width:100%"><tbody><tr><td =
+style=3D"text-align:center"><img width=3D"500" height=3D"500" style=3D"disp=
+lay:inline-block;width:83%;max-width:500px;height:auto;padding-top:10px;pad=
+ding-bottom:0;line-height:0" class=3D"css-xsf469" src=3D"https://static01.n=
+yt.com/images/2025/03/12/multimedia/11themorning-nl-coffee/11themorning-nl-=
+coffee-jumbo.jpg" alt=3D"A coffee shop counter is bustling with customers l=
+ined up in front of it, as four workers behind it busily tend to them."></t=
+d></tr><tr><td style=3D"text-align:center;width:100%;padding-top:6px;paddin=
+g-bottom:20px;line-height:12px"><span style=3D"width:83%;max-width:500px;di=
+splay:inline-block;text-align:left" class=3D"css-1wuwhda"><span style=3D"co=
+lor:#666;font:normal 12px georgia,serif" class=3D"css-1hnedf7">In Bay Ridge=
+, Brooklyn.=C2=A0</span><span style=3D"margin:0;font:11px/11px georgia,seri=
+f;color:#888;letter-spacing:.01em;padding-left:5px">Janice Chung for The Ne=
+w York Times</span></span></td></tr></tbody></table><p style=3D"font:normal=
+ 17px/25px georgia,serif;color:#333;margin:0 0 15px"><span style=3D"font-we=
+ight:700">Caffeine at 3 a.m.: </span><span>Yemeni immigrants are </span><a =
+href=3D"https://nl.nytimes.com/f/newsletter/3Clek40RJNblO5-rjGDPOQ~~/AAAAAR=
+A~/ck-r-CT_GcqMHQkSASllKLwpBO0SSGKG7jh95UpBOEgsmbwnk-sPMhr6pr7sHdscq8aNnH9Z=
+Za73wigTf8aL1vFddeSGdu7rR2h8mwkPSRporLQNBVqvcy5LaJS4m6CcNoCzkx8KrHa0hdQuuyU=
+VqOxOgtq4GS7DTwnkXXwc7ojUIGP2TPpv8xoxhlwLBVZxRD_O0tydLpxg735aEPWO3WIzVPLvqf=
+ysNsdA6toZ8nfVveZfzxluFkRm79nb7PCayDF7S5-6OENMfMetHF7ckKcc98oUmBCSDXhEGaynz=
+2SWFNUtnUzgSq_lzqinUyN3Rm9RjIHApjD-ESBXfkwN3xrcUZ3DFLOVfbXPc---xbOgGSzN7MXT=
+-o0WWUv2qxb0" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-deco=
+ration:underline;text-decoration:underline">making their mark on U.S. coffe=
+e</a><span>.</span></p><p style=3D"font:normal 17px/25px georgia,serif;colo=
+r:#333;margin:0 0 15px"><span style=3D"font-weight:700">Bright lights, bot =
+city: </span><span>Can an </span><a href=3D"https://nl.nytimes.com/f/newsle=
+tter/Vv9rBE769bANXdA_KrbxnQ~~/AAAAARA~/DOiwu1WuSjk7_IqRwaaVoDd0QUkUyj0BVWTV=
+d_OVeMUezQBqLL0DUDIhzP1qovJQlIovEn8Pc9AmfeIuFlu7xUmNlIjQnmxRW8hN4GxzhPm2tBe=
+Gim2PwOoRkURIV7TN9-qSkOaCDnoyHMnupMmTDGYxmwGxIX5FXwfmrcBS9Fu4e0SFl21WWspq2g=
+cFeiUpGBmZ7qG8sZExehNNQ-Fn8I1SLO2gnGLLVzbW0th1xbEnZ9UCjk_S4I993-C9pZiVzZv93=
+N8YZTyNuUUGMoEHOiBiYnWEmia7T0sk_T_-i1vOp37-_i6m5Nz8Vzb7j61Otz7X4l8-MAwfPRUl=
+Z21J4qCmgRRcyY8uMkYfXn2XLs4il67w6UtHJhQs4gelA2Ha" class=3D"css-sdwaa1" styl=
+e=3D"color:#286ed0;-webkit-text-decoration:underline;text-decoration:underl=
+ine">A.I. travel agent</a><span> plan a dream trip to New York City=3F</spa=
+n></p><p style=3D"font:normal 17px/25px georgia,serif;color:#333;margin:0 0=
+ 15px"><span style=3D"font-weight:700">Look again: </span><span>You may not=
+ actually </span><a href=3D"https://nl.nytimes.com/f/newsletter/TvtqOuNReuI=
+8Jb_UVZiIsg~~/AAAAARA~/n9SWCt7tsbpU3mhUjr8pf9xABLCoNjG659Ln1L8VpetMFjFmOdZJ=
+uJlrTJ-tmPaOg5rQnssxVIEMB0KBgyiGO_QQasu94ctPYlZtqj3up6uSJMdIbWgB6wyXZMsiOM4=
+JYNMkh7GMoTLK773gudEjNjkVeKyD_niA06R9dpqOSFpxo2Qa64KXbCTDLTmZkziKkNfvJFlp44=
+J1ZxIMNxW9ucEkjuz6wwZe8SSCxk7PeY7ma1gk4Q2Pmw79todAi-RHyQMsbOFhRBQjzUyIHmR7Q=
+3qHlg9Zx5dqtk8Gng-5u2swrPK3CfaigSnU5D3wC6N_LchgJr70ytcnAtMOOxrW26OAngULWejU=
+XWbQq83dxFQ~" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-deco=
+ration:underline;text-decoration:underline">understand your dog</a><span>.<=
+/span></p><p style=3D"font:normal 17px/25px georgia,serif;color:#333;margin=
+:0 0 15px"><span style=3D"font-weight:700">Most clicked yesterday: </span><=
+span>Scientists are beginning to understand how Covid can </span><a href=3D=
+"https://nl.nytimes.com/f/newsletter/28qLbiVfYmDbbKAZQLFnkw~~/AAAAARA~/sl2b=
+LjtGcSZ3fqozqi5LhMqTvWiLzogTc7BS525ob4ThPVjB1WCFe05-hISBFNyIR9Zh3MIq-7FRHKj=
+_tTnamGukW3s_7crhK9hv8IPZ6nwBwN8Daopd23LdamH2Zb12lMs3-zCzDs7VMEGZG0dQ__icf8=
+ONqcfQlPbY59GC4UEUm9Sb75zMJpe4EeMafH6Js-GqDhEYCN6hXgpoRAqAvgi8SoRgNAEqqN0vs=
+BhvVYoHz8mUrlvgrngbW_vgHq9UM0OEbH56w48uMqSclRKWNIDCT6oUo4e67qL9ZYYDqV9bNgXu=
+RFyDtN_wQgSf280BjDcMDtvBjOY0epgLfKiRYRwgLAWDMCyJ7ZS9wDzFfODX8zLuoHLfEIy0dhU=
+ujZyr" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:=
+underline;text-decoration:underline">sometimes cause invisible damage to th=
+e body</a><span>.</span></p><p style=3D"font:normal 17px/25px georgia,serif=
+;color:#333;margin:0 0 15px"><span style=3D"font-weight:700">Lives Lived: <=
+/span><span>David Sellers believed architects would plan better if they did=
+ their own construction, and he became the father of the design-build movem=
+ent. </span><a href=3D"https://nl.nytimes.com/f/newsletter/eQayWEbAVqeJMQGv=
+3aXjqQ~~/AAAAARA~/NSbA4MoyKuJXElw2AWPFtOfP4YyAqmUgL7S4MdWreYqTr4jDjwoW_fad4=
+0q2qkPPDswa8kB4LTPD3S_mtIm1ybYjxP2AoxZBO3vYNndELLv4Lax_uopbAmakLu0LQiGBCush=
+U2n3fQr19krot2qRzUmZiYglk92lbtAcmd_H-9zAAwFtYGT4YmybN0z0r-Cd78NwvTbJGyFGta1=
+O2HQ3kcEXScdzyccFDyolxGIcBetl7cyTAWAm6JqhGzbDMHJ4QgprPDd9JbpoUcwOxzxVHZnNlW=
+VonnzUFGuVPgDI7MlsFUU0hgrEVyc5_DTr9TewoRx1tibLIOwEPkfbghan9Sy4k-F1h63V4Ar1B=
+VY8HkHdSkvOisGhdbLozgUkkeKM" class=3D"css-sdwaa1" style=3D"color:#286ed0;-w=
+ebkit-text-decoration:underline;text-decoration:underline">He died at 86</a=
+><span>.</span></p><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+style=3D"width:100%"><tbody><tr><td height=3D"30"></td></tr><td style=3D"pa=
+dding:0;font-size:0;border-top:14px solid #000"><h3 style=3D"color:#000;fon=
+t:700 17px/25px arial,sans-serif;margin:5px 0 30px 0;letter-spacing:.2px"><=
+span style=3D"font-weight:700">SPORTS</span></h3></td></tbody></table><p st=
+yle=3D"font:normal 17px/25px georgia,serif;color:#333;margin:0 0 15px"><spa=
+n style=3D"font-weight:700">N.F.L.: </span><span>The Seahawks and the top f=
+ree-agent quarterback Sam Darnold agreed to </span><a href=3D"https://nl.ny=
+times.com/f/a/-odVgRLBI8PDe_vboXKYYg~~/AAAAARA~/-OB9u0QABqprSLbbBuSgjm-5Cf4=
+zIl9WC6BF6QnxNZyQB2UzZafIpoGA1wCPyHbGv7VXmE7ttleBpCRpPZBzBYyje1iKHIj6BCxh1d=
+PMKICGcNW5rkEyj4amazvpPQI-QlmizKdofRw5VnmBQ1Ee7vYTJKucx07wMexkqLg6PtFoAEtOI=
+sCqlI-QGqcLRHoWlO1xMktkEMoGcL87Meiq2_rnjJA9zBJTdiCsY-iqNZupKrD-8H0AC5Zqr8MX=
+JexIGKVEpJTIjz52wc__91hUO5RMoBXLikXvZSUWLJo6HtZlmEX-I8k33prS5eqxbg3XOqthaZc=
+eHCdy4ViGJ6iUMu8B1WOo8kuzSWKghkSMBrd0NQp9rRzl_s4ltvuG5o4g0nZywrgdLKLAYAtijj=
+II6Q~~" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration=
+:underline;text-decoration:underline">a three-year, nearly $101 million con=
+tract</a><span>. It was the biggest deal on </span><a href=3D"https://nl.ny=
+times.com/f/a/UG9Do8oOriF8lmZPFZluDA~~/AAAAARA~/p2Jy4Y6bkIAmQnV5TzcApfUQzgV=
+VWpSF9kuRAngFPIJB7Q4UGZfaXnyCIqN3nB680g9Z7CWBiNjQBpJPQOK2CxSVkdoL6XlNxHMNwC=
+B1aPhn-Q19k60g82F3kV-K6TdMGPRqoibXyIP3TK1pQYHUwujpEwnjY-HMoty3Ht43CmpTRYa2v=
+rxoY9mnSj-Cjtayl7DeWz0SfkpIrrm97GuvEfQW7ziZFWZtHcjI341U-FY_SaOwt8CfWgu9YogC=
+l-DbQjocLxyVrK14Vm9s3NVxGcRVeARPxYHTNi7GHgQ_pg8bX6PKV5tXRo7B6OivlVFkooYfMfj=
+uoZtTySFgChvNIQqdWU1HUoVClDvBbfcQndWAtDfB17cjqV9FTKyzekzd" class=3D"css-sdw=
+aa1" style=3D"color:#286ed0;-webkit-text-decoration:underline;text-decorati=
+on:underline">a day full of them</a><span>.</span></p><p style=3D"font:norm=
+al 17px/25px georgia,serif;color:#333;margin:0 0 15px"><span style=3D"font-=
+weight:700">M.L.B.:</span><span> The Yankees ace Gerrit Cole will undergo T=
+ommy John surgery, </span><a href=3D"https://nl.nytimes.com/f/a/T1nf1pkFpDH=
+olC2A2linsg~~/AAAAARA~/Ol41doGIMJwSCeLLY6s7039LS7cJTGl4u9wKDQV2Eb-PYL2XQ60U=
+3r1ZYPR3PRvDJAEan89XQhPTGtYw7OgB8PeklkWP8tb1-Ar8KmTzD3lccOmoIVoFHh7IcXdp_FD=
+fQ99lr1RmAfAh15AWEP8CEelC36Vb7PTHazBvFru4h9P2VpAJXVTUG_3fmhagKlmTjVT0amlXjh=
+W0sfiKjSG1ZLZC5sRciVUAJ_zhcr8A7hmE2dnZUuONE8r58cpVr7_CSxxQO6xs-YwJ73zOKiQrQ=
+2fGVUl81o7wsjciyola2yQdt6nyxF9At5HvNat1zb4cdjjpHk3bD57nr71t5U2Wssq3YWOa15Q8=
+VRQK5PzsWRx9A01AIZ9sqMiMQZUafem5Hq3RQ9hR3sBX-ssslwESYuoB60c5qKvGC-grlajPGBw=
+~" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:unde=
+rline;text-decoration:underline">ending his 2025 season</a><span> before it=
+ began.</span></p><p style=3D"font:normal 17px/25px georgia,serif;color:#33=
+3;margin:0 0 15px"><span style=3D"font-weight:700">Memorabilia: </span><spa=
+n>A new line of M.L.B. hats upset and amused fans; one accidentally spelt o=
+ut a vulgarity. </span><a href=3D"https://nl.nytimes.com/f/a/P2A3LcPnk0fRJ9=
+rfhEEfvg~~/AAAAARA~/8ZEyNSmzBNAN0Wj-1dTakU4n1Yuwj28mo0FdVskhx1MBxm3LATyR8L9=
+cLc5aSadoLepqlLvgoHv0rilv-WT_S_9sIikSKzl7sHIY9wHXa4wQ-gSsU0yQYDprbpgNZM3F9j=
+CVGrJgXzOQfUVzg5fcmFvQfHJVh2B36D74mgvz81TMPQ2XSgg966X8vyuJczqYaokx6XxN8100L=
+HhQ82CSuYfrTfz7OlhrT90XcAZeP4xzwgePVnPolHB5uk-MK32pkyqX1qF8G00rOq5u-rm58APZ=
+pmv94UrljoZSAUqh8VmwRJjV7UTtQZkRZD_LZSXTnmzQPeHcb51k6gWiuVFSDLeexZGVzvC2diI=
+nR49bxnvocshUMR_QWCw4srf15V0Q" class=3D"css-sdwaa1" style=3D"color:#286ed0;=
+-webkit-text-decoration:underline;text-decoration:underline">See the hats</=
+a><span>.</span></p><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ style=3D"width:100%"><tbody><tr><td height=3D"10"></td></tr><tr><td style=
+=3D"border-top:1px solid #dcdcdc;padding-top:15px"></td></tr><tr aria-hidde=
+n=3D"true"><td><div style=3D"width:100%;text-align:center;line-height:0"><i=
+mg alt=3D"Ad" src=3D"https://liveintent.newyorktimesinfo.com/imp=3Fs=3D8591=
+96&li=3DNN&m=3Dfd9e7c2d5c7f4d66bbc5ef24246f3a94&p=3DNN_20250311&stpe=3Ddefa=
+ult" border=3D"0" style=3D"max-width:96px;margin-bottom:7px"></div><span st=
+yle=3D"text-align:center"><table style=3D"margin:0 auto" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0"><tbody><tr><td style=3D"line-height:0;font-s=
+ize:0"><a rel=3D"noopener noreferrer nofollow" tabindex=3D"-1" target=3D"_b=
+lank" href=3D"https://nl.nytimes.com/f/a/wHgxMqcn61Smep_sduvxBg~~/AAAAARA~/=
+-LhrNcjZd9VlV8-mGmwfijOLA0_lIEEPu62K1d3XNl9a3h2sQ7-fJmzOcBpB1s88GC2EZNy4iZx=
+fiQ9UGYHeLxY0a2-7Ns11vllgHpwqpeK22Dt9RD5l8gS2gZFQNb9Zot30xeVqewPD2eI3BLXpxX=
+Q0vznX36B9_EuoRDDJMy1n3DoW1V-1QqSKB3FwKw0d2bzlzAoPeprqH3Jrb7jKIjQjZUSEEtZ34=
+qeJl7Fb9mzvXfSMhFVS5kQ1aiOx4w2q" class=3D"css-sdwaa1" style=3D"color:#286ed=
+0;-webkit-text-decoration:underline;text-decoration:underline"><img src=3D"=
+https://liveintent.newyorktimesinfo.com/imp=3Fs=3D859192&li=3DNN&m=3Dfd9e7c=
+2d5c7f4d66bbc5ef24246f3a94&p=3DNN_20250311&stpe=3Ddefault&li_coord=3Ddeskto=
+p&collapse_width=3D600" alt=3D"Ad" border=3D"0" width=3D"600" style=3D"disp=
+lay:block;width:100%;max-width:600px" class=3D"css-63f6sn"></a></td></tr><t=
+r style=3D"display:none" class=3D"css-1npprw9"><td style=3D"line-height:0;f=
+ont-size:0"><a rel=3D"noopener noreferrer nofollow" tabindex=3D"-1" target=
+=3D"_blank" href=3D"https://nl.nytimes.com/f/a/wHgxMqcn61Smep_sduvxBg~~/AAA=
+AARA~/-LhrNcjZd9VlV8-mGmwfijOLA0_lIEEPu62K1d3XNl9a3h2sQ7-fJmzOcBpB1s88GC2EZ=
+Ny4iZxfiQ9UGYHeLxY0a2-7Ns11vllgHpwqpeK22Dt9RD5l8gS2gZFQNb9Zot30xeVqewPD2eI3=
+BLXpxXQ0vznX36B9_EuoRDDJMy1n3DoW1V-1QqSKB3FwKw0d2bzlzAoPeprqH3Jrb7jKIjQjZUS=
+EEtZ34qeJl7Fb9mzvXfSMhFVS5kQ1aiOx4w2q" class=3D"css-sdwaa1" style=3D"color:=
+#286ed0;-webkit-text-decoration:underline;text-decoration:underline"><img s=
+rc=3D"https://liveintent.newyorktimesinfo.com/imp=3Fs=3D859192&li=3DNN&m=3D=
+fd9e7c2d5c7f4d66bbc5ef24246f3a94&p=3DNN_20250311&stpe=3Ddefault&li_coord=3D=
+mobile&collapse_width=3D480" alt=3D"Ad" border=3D"0" width=3D"480" style=3D=
+"display:block;width:100%;max-width:480px"></a></td></tr></tbody></table></=
+span></td></tr><tr><td style=3D"padding-bottom:15px;border-bottom:1px solid=
+ #dcdcdc"></td></tr><tr><td height=3D"20"></td></tr></tbody></table><table =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"width:100%"><tbod=
+y><tr><td height=3D"30"></td></tr><td style=3D"padding:0;font-size:0;border=
+-top:14px solid #000"><h3 style=3D"color:#000;font:700 17px/25px arial,sans=
+-serif;margin:5px 0 30px 0;letter-spacing:.2px"><span style=3D"font-weight:=
+700">ARTS AND IDEAS</span></h3></td></tbody></table><table border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" style=3D"width:100%"><tbody><tr><td style=
+=3D"text-align:center"><img width=3D"500" height=3D"500" style=3D"display:i=
+nline-block;width:83%;max-width:500px;height:auto;padding-top:10px;padding-=
+bottom:0;line-height:0" class=3D"css-xsf469" src=3D"https://static01.nyt.co=
+m/images/2025/03/10/multimedia/11themorning-nl-balloons1/11themorning-nl-ba=
+lloons1-jumbo-v5.jpg" alt=3D"A sculpture made of balloons depicts a dog bit=
+ing the neck of a white animal as an alarmed person tries to restrain the d=
+og. "></td></tr><tr><td style=3D"text-align:center;width:100%;padding-top:6=
+px;padding-bottom:20px;line-height:12px"><span style=3D"width:83%;max-width=
+:500px;display:inline-block;text-align:left" class=3D"css-1wuwhda"><span st=
+yle=3D"color:#666;font:normal 12px georgia,serif" class=3D"css-1hnedf7">A b=
+alloon sculpture by DJ Morrow.=C2=A0</span><span style=3D"margin:0;font:11p=
+x/11px georgia,serif;color:#888;letter-spacing:.01em;padding-left:5px">Jake=
+ Michaels for The New York Times</span></span></td></tr></tbody></table><p =
+style=3D"font:normal 17px/25px georgia,serif;color:#333;margin:0 0 15px"><s=
+pan>You won=E2=80=99t find one of DJ Morrow=E2=80=99s balloons at a childre=
+n=E2=80=99s birthday party. Morrow, an avant-garde artist, creates ephemera=
+l inflatable sculptures that can disturb as much as they delight. His works=
+ have explored political power, mental health and his upbringing in a cult.=
+ </span><a href=3D"https://nl.nytimes.com/f/newsletter/zY39v5kveb4qFsCrgSo5=
+Rw~~/AAAAARA~/ww4aogD6Xo9xgG8DGdYDvxU57VnkFjeTn0Q034rHWqA_5eGsLRhI7Mud3tDy_=
+w1GdSbXOJVp2fkhqtSOju71oWJhqYvtE7ZBp5oUjx7kc7h4nDwXCze82ZMUMTIjXyzVrsvG0J49=
+Few6kf902qv8v8IfJkn0nj8hBDrDeJxftXWJSLygbkfmXY1A7aWSTiXsAYA34FGvCgr8A3074RZ=
+acyUTxz5BVNFY1nZefE7BvVmzN2AjC_9R1MYlQfiXnC5poCkhMQcVAcn4A5Hvr0B1Lwth_VVFMR=
+2i3LlnkYUTxkgMBaOaIq56GdZkfsabjA-BmRKCOvdcLskd1a-bEd5GY-F8WPCjUAMTy8MB3n1CG=
+JBsmwx0HpXrVvNntv6AoppH" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webki=
+t-text-decoration:underline;text-decoration:underline">See him at work</a><=
+span>.</span></p><h2 style=3D"color:#000;font:700 24px/31px nyt-cheltenham,=
+georgia,serif;margin:0 0 10px"><span>More on culture</span></h2><div style=
+=3D"margin:0 auto;max-width:600px;width:100%"><table><tbody><tr><td style=
+=3D"padding:0 0 5px"><ul style=3D"color:#333;font:10px georgia,serif;text-a=
+lign:left;padding-left:50px" class=3D"css-1dtd48z"><li style=3D"margin:0 0 =
+10px 0;line-height:27.5px"><span style=3D"font:normal 17px/25px georgia,ser=
+if;vertical-align:middle">In a new book, a former Facebook executive </span=
+><a href=3D"https://nl.nytimes.com/f/newsletter/39XHzei8UqjHEb9pdyc9PQ~~/AA=
+AAARA~/8utGjXoxhDOMkQ9tdFic_mIYjTqpg7qK5FFp3Xp_coZS8uGMJGqxrtdQmoZRqczXF4d5=
+aW8_Z1A5RPrM7WpnTHvhb9Q5mUCcTOY_HdzOGlw1lpT5LYHCZ8P0r9Jy_wOxlY41_M7CDH_52_X=
+QoXxogf6Bz_N06Fr1vwgCnK0WVUFyP_v1BELJr8jC1hlm_uWZ49JWsMKDlpRjtKVNaPe_mI4ph9=
+c_DzNkEFM44TDK-e8snfEp5yepLMqF0u1NNenr8viIsibfVkanUo6nZP1XWn9NJHbgWULpUDvlB=
+2ldpmN6xHKxum0s8nCvPDnxihCjTgBP3jhTHv2QsJ1zaehNyoWVfsPE2A6VoOXhtmHUXvnj3FFY=
+uO-MPma6r3a4WQV-23IzbDGzr2H1HSV0-xMwfg~~" class=3D"css-sdwaa1" style=3D"col=
+or:#286ed0;-webkit-text-decoration:underline;text-decoration:underline;font=
+:normal 17px/25px georgia,serif;vertical-align:middle">offers an expos=C3=
+=A9</a><span style=3D"font:normal 17px/25px georgia,serif;vertical-align:mi=
+ddle"> about her time at the company. =E2=80=9CNot only does she have the s=
+torytelling chops to unspool a gripping narrative; she also delivers the go=
+ods,=E2=80=9D Jennifer Szalai writes.</span></li><li style=3D"margin:0 0 10=
+px 0;line-height:27.5px"><span style=3D"font:normal 17px/25px georgia,serif=
+;vertical-align:middle">Jimmy Fallon </span><a href=3D"https://nl.nytimes.c=
+om/f/newsletter/P1jEKcQI_c_mHtWGPfwBxg~~/AAAAARA~/BWRrntN_eaHbJRxpyC-M3ulY1=
+IwiqIDJrkS5FF87lS36MdcrHF1tB_XN7VOmqW-V5zqCsH0q4MaPc3qLiD29i4xP7YL-ckBg7Zev=
+kplknyXDlVG-zQTfmvp_8PviVYUuFJGR5MGJVMvNBCpuGz_808C6vNMNhau2F0CZb6uSNbT4M--=
+1iJOKSMVuwFMLKVcsESLXmXDpQiUT0NDXpt0d5Z6WetWZu9m3XDz92GJm5MxT8vSpavNl3GIawI=
+S2LBOWzZFXQJHeOXx0gR43VjAimz03pn3lO-E0E9SWYgcshXILnNbcCL0MknLVavGjnqYLfQs7q=
+ZXDdPVCePWQ3PdO5JCwtEQ3B_qMIYX3Cqeu9UBBoEKEr1UFvVghLTnayYR-Y1ajnE3jh4MDf53r=
+5ogexA~~" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decorati=
+on:underline;text-decoration:underline;font:normal 17px/25px georgia,serif;=
+vertical-align:middle">joked about Trump and the stock market</a><span styl=
+e=3D"font:normal 17px/25px georgia,serif;vertical-align:middle">: =E2=80=9C=
+It=E2=80=99s not great when the summary of your first two months in office =
+is =E2=80=98Stocks down, measles up.=E2=80=99=E2=80=9D</span></li></ul></td=
+></tr></tbody></table></div><table border=3D"0" cellpadding=3D"0" cellspaci=
+ng=3D"0" style=3D"width:100%"><tbody><tr><td height=3D"30"></td></tr><td st=
+yle=3D"padding:0;font-size:0;border-top:14px solid #000"><h3 style=3D"color=
+:#000;font:700 17px/25px arial,sans-serif;margin:5px 0 30px 0;letter-spacin=
+g:.2px"><span style=3D"font-weight:700">THE MORNING RECOMMENDS =E2=80=A6</s=
+pan></h3></td></tbody></table><table border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" style=3D"width:100%"><tbody><tr><td style=3D"text-align:center">=
+<img width=3D"500" height=3D"500" style=3D"display:inline-block;width:83%;m=
+ax-width:500px;height:auto;padding-top:10px;padding-bottom:0;line-height:0"=
+ class=3D"css-xsf469" src=3D"https://static01.nyt.com/images/2025/03/11/mul=
+timedia/11themorning-nl-COOKING/11themorning-nl-COOKING-jumbo.jpg" alt=3D"A=
+ bowl of spaghetti coated with a buttery sauce and topped with scallion gre=
+ens."></td></tr><tr><td style=3D"text-align:center;width:100%;padding-top:3=
+px;padding-bottom:20px;line-height:12px"><span style=3D"width:83%;max-width=
+:500px;display:inline-block;text-align:right" class=3D"css-1wuwhda"><span s=
+tyle=3D"margin:0;font:11px/11px georgia,serif;color:#888;letter-spacing:.01=
+em;padding-left:0">Sang An for The New York Times</span></span></td></tr></=
+tbody></table><p style=3D"font:normal 17px/25px georgia,serif;color:#333;ma=
+rgin:0 0 15px"><span style=3D"font-weight:700">Smash </span><span>20 cloves=
+ of garlic for </span><a href=3D"https://nl.nytimes.com/f/cooking/hrngmeg40=
+2_3TrGBlWw1lw~~/AAAAARA~/qqDSKUAnCTxWaTy6uU4CUi_GSEonfNl4-ImsI3eHzKEPp26MM0=
+XIuegc-_16N3jXLY1NvK663EmM0Z1sgWIexK1jV-OCeXVkcwZxEteAG-gjoGPevpVZT1ibKhUvJ=
+7H3Unmupnd8PxAjJTI8HGpZda_ds_BDG0Q0r9bFwSANpGeRHdLRLpbu1kwWDhcu3A1gPzHCi073=
+XFnV1LAHWvBZRSxHaVG0RENfl9LIra6PSY-49MfyEv-_r5xWhnZCcawjNkO-5N6TnOHfC0qQrtO=
+4e2avI40JyeLoEQOYCebsHepPvsL33Cm45C2sr53DdXw8fShD_HkyLgIxGbQzkNHmS4pOdc2Lhu=
+IJy7T1wjF8cOeBXAYpbdsgwrbCcWLdFsnaOVCJ_r-Uy1974ORu6kHPWQ~~" class=3D"css-sd=
+waa1" style=3D"color:#286ed0;-webkit-text-decoration:underline;text-decorat=
+ion:underline">these San Francisco-style noodles</a><span>.</span></p><p st=
+yle=3D"font:normal 17px/25px georgia,serif;color:#333;margin:0 0 15px"><spa=
+n style=3D"font-weight:700">Improve </span><a href=3D"https://nl.nytimes.co=
+m/f/newsletter/dwS5g1KDtmxxBza_4MPKWA~~/AAAAARA~/n_K4OW5gB7j7Vx_XmaHpmSTCN2=
+q1B4oHqQ_xsbiVLlrOYm4b31_5vwblLnmXh4mApSqV31e5y96DtrITZm8CINQdWqIORBAbNjy8r=
+hiIVgDTDu945EOFNSUkUuNk7fP2TOdMti_c4f6YLLn7hJ_gwYfPfQ1TDdRSRAQ4jBy2X3axfTzz=
+a_wmCAtvaDgvCIKmA1YeryGioiTikfmVulJ5-1oDiqedMDDQyiPnQFeduYF2LQuX02O550VhfOj=
+TRtFH1E7OR-EESs4MQ2Mrw9DkOEqTFyFaojVJCR0xFetpb-FnEVOLIVAuX35zyiAHIyj9iV-sBb=
+vX4UzJmtciMlmwCb9M-EAJKuXw094dL6Njn3FXuRiXb-RyfBlRZZ5k9Fhb" class=3D"css-sd=
+waa1" style=3D"color:#286ed0;-webkit-text-decoration:underline;text-decorat=
+ion:underline">bone density and coordination</a><span>.</span></p><p style=
+=3D"font:normal 17px/25px georgia,serif;color:#333;margin:0 0 15px"><span s=
+tyle=3D"font-weight:700">Prepare </span><span>for the worst </span><a href=
+=3D"https://nl.nytimes.com/f/a/tcoPrq_qCQauv_uISOIM3g~~/AAAAARA~/sl2bLjtGcS=
+Z3fqozqi5LhMqTvWiLzogTc7BS525ob4Ss_A7NFIqftdybVm_bxIvcJp0uks-iBJbrNl7_x3eNV=
+GfSYLtWhiVs3PfI5_CnI1yNFGXnpgG2fxucloejc5J1txC63J6g2AzBPw-j1eopnBqCkoOfMir4=
+K8hgctI5JoBIlX3kN056d-vBeAi6awYRDgjwtt8XOn0q7c_Di4VKWEX_72XkBUm8ruWFps8NnWl=
+lmTdE0oG0q92YQF_lC_a4BWoRK2MANoK-EK64_R-pG3vArWA6I49c4vUgj_N6PYNmOUUB7Rama6=
+ucnd8mVfwV_dDseP6z2DEMacnslOaLluqTqDsfKiX7RVuftSK7EUt3wYuyjgBv9FT2O8IgyA5i"=
+ class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:underl=
+ine;text-decoration:underline">with a medical alert system</a><span>.</span=
+></p><p style=3D"font:normal 17px/25px georgia,serif;color:#333;margin:0 0 =
+15px"><span style=3D"font-weight:700">Replace </span><a href=3D"https://nl.=
+nytimes.com/f/a/FdjWEm5-FjLoiOk39h3jyg~~/AAAAARA~/DOiwu1WuSjk7_IqRwaaVoDd0Q=
+UkUyj0BVWTVd_OVeMU50kErR6NMoiov1LUja5QUecTu43E9LY-kK_SEUrYt1ULLsy3xoUxlkLZ-=
+l5VCyF_vtL07WbaeUkceGzmliTawYALqykaOYYI5vRg9NNHeG9-WOLoOQIu86Kh22QKKa1lvqMB=
+NQdA1OINjJlIB4EWLPLk2dIb561uR4M4ZMixXwU3gxjnFvxXzbIK5fNiOV6rWQ_jJ9O0sB_pHV3=
+mKkkKKIUdE9Pb2o6I3NcLSaT1hcEEdrpRUPjNa_eZIrckVxlXtH2ewBsfscKk7PBlH3R7UxUuvp=
+JdUqmsgrK7NXttlvxt-IZYcHXyKs-Rtq8gQr19YmvIQGKVyFNe8cuCFC1Ty" class=3D"css-s=
+dwaa1" style=3D"color:#286ed0;-webkit-text-decoration:underline;text-decora=
+tion:underline">exhausted household essentials</a><span>.</span></p><table =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"width:100%"><tbod=
+y><tr><td height=3D"30"></td></tr><td style=3D"padding:0;font-size:0;border=
+-top:14px solid #000"><h3 style=3D"color:#000;font:700 17px/25px arial,sans=
+-serif;margin:5px 0 30px 0;letter-spacing:.2px"><span style=3D"font-weight:=
+700">GAMES</span></h3></td></tbody></table><table border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" style=3D"width:100%"><tbody><tr><td style=3D"text-=
+align:center"><a href=3D"https://nl.nytimes.com/f/a/f8vKe4creiPCdK4IRTO4cQ~=
+~/AAAAARA~/ayGia_oA2q6SSjDw2lkjOBZRMJofMBxXh_3zBz3qMXqWPXjBgeTrLMhNRv33qnaf=
+PfSJn987W4vKZ75iohrPXfYHNNo6Z2sQSSrYEv4wbvRGh2uwbyd9WWMg0Ixo_y9wpy4ySXkdNoH=
+SOSlbXt6j9XkvhkTOfn6MpSvDuXrjKL_QYDRlQHJgKaznEa5eibbRMnHIWI1mqMCljcX-lzmuiO=
+uSogcgktzU3OFJQD9INgJZsV9mbZgpZw8gHiK7F2mGlktTtkp042XiFFTslWYwfQh7X9UrecZfX=
+yve2P1nBVUxgA6r8KmkDyGT1IbS21hmuYeQUfy9uze0dsw1_Kjj7g~~" class=3D"css-sdwaa=
+1" style=3D"color:#286ed0;-webkit-text-decoration:underline;text-decoration=
+:underline"><img width=3D"500" height=3D"222" style=3D"display:inline-block=
+;width:83%;max-width:500px;height:auto;padding-top:10px;padding-bottom:20px=
+;line-height:0" class=3D"css-xsf469" src=3D"https://static01.nyt.com/images=
+/2025/03/11/multimedia/11morning-bee/11morning-bee-jumbo.png" alt></a></td>=
+</tr></tbody></table><p style=3D"font:normal 17px/25px georgia,serif;color:=
+#333;margin:0 0 15px"><span>Here is </span><a href=3D"https://nl.nytimes.co=
+m/f/a/f8vKe4creiPCdK4IRTO4cQ~~/AAAAARA~/ayGia_oA2q6SSjDw2lkjOBZRMJofMBxXh_3=
+zBz3qMXqWPXjBgeTrLMhNRv33qnafPfSJn987W4vKZ75iohrPXfYHNNo6Z2sQSSrYEv4wbvRGh2=
+uwbyd9WWMg0Ixo_y9wpy4ySXkdNoHSOSlbXt6j9XkvhkTOfn6MpSvDuXrjKL_QYDRlQHJgKaznE=
+a5eibbRMnHIWI1mqMCljcX-lzmuiOuSogcgktzU3OFJQD9INgJZsV9mbZgpZw8gHiK7F2mGlktT=
+tkp042XiFFTslWYwfQh7X9UrecZfXyve2P1nBVUxgA6r8KmkDyGT1IbS21hmuYeQUfy9uze0dsw=
+1_Kjj7g~~" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decorat=
+ion:underline;text-decoration:underline">today=E2=80=99s Spelling Bee</a><s=
+pan>. Yesterday=E2=80=99s pangram was </span><span style=3D"font-style:ital=
+ic">liturgy</span><span>.</span></p><p style=3D"font:normal 17px/25px georg=
+ia,serif;color:#333;margin:0 0 15px"><span>And here are </span><a href=3D"h=
+ttps://nl.nytimes.com/f/a/7rxNYulkTvSW5zQuHVZX7Q~~/AAAAARA~/ayGia_oA2q6SSjD=
+w2lkjOBZRMJofMBxXh_3zBz3qMXq4yuptElVhoOUu4R8AEDb8MxuKIOGoy_x6lrAlWGj7MxU7WN=
+qkjnYQyM6-yqorGPCzGgnYIepe8EwAmuJ9aJI4mG2PBiiJ9fJ_CuJSl744cIGv9TdN1JLC9yehx=
+5gqcPzRCJR0fWfcJT1ysaP2S_gdIKqT8JK_nln1dl5lfwdKt6sYn3uXEGf5LJFa2zB1QOkO1ufZ=
+eEokDJxoE_6wDFGoJ1UFLeRTlZ1alXdw86WzxCX10tq4_r24YzP07zZgugkCVPjqVJzGN24d7in=
+Y6r9Q1jkWtrG0ifWHdL9jaMcfng~~" class=3D"css-sdwaa1" style=3D"color:#286ed0;=
+-webkit-text-decoration:underline;text-decoration:underline">today=E2=80=99=
+s Mini Crossword</a><span>, </span><a href=3D"https://nl.nytimes.com/f/a/Ey=
+Qfc1z8ILCJLQcsC14qEA~~/AAAAARA~/n4CZwgUbpLVH7tar9RVRuAWrDZJe-uyrKYb0fWmAjmh=
+4USyMdnokcX1goH7amJQybEzfcKOQZwzYHmvGD8P1vuF9DN1iTcVa-E_CdW3d8KeyroxVJ9nAtM=
+hZ9VTKPtrbH7Cwm2jZzx0zRt6b1lsjDFXbEibGQsA7Cw8vqzyH68_RIGZxjMDEdRedIuw71KojN=
+5yiYIvcb-_Ur_TxHIIV1KMvVl1dqdCmXDR2JHcGNZN2p7M5SpZBcj0VCmjeK9HwBL_wrEVcuj8q=
+qi42xONSHb50ArGdyPxyupETmmc5X3jbQ8oFjs8Midr6Fmr3bEzAixUhdQF6Fp4idTBiHRnr4A~=
+~" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:unde=
+rline;text-decoration:underline">Wordle</a><span>, </span><a href=3D"https:=
+//nl.nytimes.com/f/a/_0NE0M094NFcv7THeC1LFQ~~/AAAAARA~/IdURB1EpQ4EimAZ64K1X=
+kpLpJET1lYrRexifLx_7DL8jdhxr-Fuzhmux65Gt2QHzHz9UvoTTfXND8jweqee19MT4HjDx4dg=
+IsRnk-4Gf7QzDTVtTZfWUqSDN8W8eiN9eokGt3GrmPHfOJdkGZ3XKDFnaUdtKVXKUXZX2iTxsrB=
+_6gyuXEurlQWwi9aG7VJIzPWJjjK4kOMqff-dUBHrvVQsebgacxCyziuTcHa5_7smgG3dd31DIk=
+HdWZ1YJz_fv-SJ-qHbRcKEyKMV5dQJe3Oy8WlkqWG6K9IFW4qQtI_Nbj3rsiler3jZUT7YUblMX=
+c1su2CU6OOGML7VudrTvTg~~" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webk=
+it-text-decoration:underline;text-decoration:underline">Sudoku</a><span>, <=
+/span><a href=3D"https://nl.nytimes.com/f/a/MRMIF2bCzj7FA3Y6BhFwWg~~/AAAAAR=
+A~/b74-9jlphpkbn1wGe7Qq8t7CBAp6jvbekGKtKvBVqR4bGrf-apL8-WvrObrvL91NtTHKuXw2=
+QVO76aulRdpwfZlXsHeX3_-PHhD5okpkRncrHMQNuvh73Rfr9Wj-hljml1YMAYwYxegEbEen_4m=
+OaYGJtO5eTW_3mDDNITmDXX2VgrnA5he2IIGHq_l-Gt0r3EIINuQijfX0D2LHoseUvll9BsN444=
+N1QlZcCLf7DWqnGPM6LKnyzH5-wsSx5_QnBqfGA8fDh8AnU-3szqR0fBEwzYUnP-6RxQvvII60m=
+anmAhgLgf7FK_kNNcdfCeUfB2-WCKJTssdS_Lvap9m2Jg~~" class=3D"css-sdwaa1" style=
+=3D"color:#286ed0;-webkit-text-decoration:underline;text-decoration:underli=
+ne">Connections</a><span> and </span><a href=3D"https://nl.nytimes.com/f/a/=
+hMUZ3YDhSoA2wJI_5RPQ8w~~/AAAAARA~/4avXs4nCZN_MdnAaDVy7Pci6E6ktxI68ybRn-rPUT=
+ItCqNwcYfjq6E0OfA0XtEwaXSaa5CxrCWgKluhAZ3XdTWw3OLoj0qsu0ZqP-mTsoWp4DQquloRm=
+YQrSRx-dp-5SnH4zcmeuHE3ZhNLtu5pTXc8D3oR7joq8wwMvqSW1YJNbdZ8Nr1gxLU2dtOh3b-m=
+z-LyTqDmtolIDrTHUKF6sFB6XCFG7FE62MZxBUiKvagmU4-AttmTEAnLQ671aVqSDqt2jnczMGL=
+luNFHli9lJHPctwJckUXXkBcn-Ay5YeZjwxQ16Px0g_7Zrt2WZwjcbGBFHIwNfSkd8Wsj8TV-Y3=
+w~~" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:un=
+derline;text-decoration:underline">Strands</a><span>.</span></p><table widt=
+h=3D"100%"><tbody><tr><td style=3D"padding-bottom:15px" class=3D"css-36ugzx=
+"></td></tr><tr><td style=3D"border-top:1px solid #dcdcdc;padding-bottom:15=
+px"></td></tr></tbody></table><p style=3D"font:normal 17px/25px georgia,ser=
+if;color:#333;margin:0 0 15px"><span style=3D"font-style:italic;font-weight=
+:700">Thanks for spending part of your morning with The Times. See you tomo=
+rrow.</span></p><p style=3D"font:normal 17px/25px georgia,serif;color:#333;=
+margin:0 0 15px"><a href=3D"https://nl.nytimes.com/f/a/eN2ouTEklyTxxxycKGrs=
+_A~~/AAAAARA~/n3zl2-JbqHW373xpMKNvZzi4GcWT6V0XvchoBDSM_0VW7USmb7p_1T8hpwjgd=
+hi9nVwd69Qd_T29lhW_pwJ27F371gS9CM_kVCdWOn2IIZv7f2Vm_07auILqjZqXyqHaYiCnM21U=
+XwGQXNwelwsqdlF3_w4X8Waq8roJ3ZaO5HgW-mapoZRoPxBXz_l_rAmbj_rnIf1VRIteHici_7r=
+mxR4gqKpcaV4ic38sBXHLt04eM8SVmZC2A4PcwSBQvQlbFdq5rFcNnoWkmmXW5OCNPmHfkRPYht=
+XWOvGrru7RE16-EhW6_TNGfD-V4m5t-zpog9oxnNXrOltnEbQpu5txpMh6alJE8NESyU_8Sobha=
+TU~" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:un=
+derline;text-decoration:underline;font-style:italic">Sign up here to get th=
+is newsletter in your inbox</a><span style=3D"font-style:italic">. Reach ou=
+r team at </span><a href=3D"mailto:themorning@nytimes.com" class=3D"css-sdw=
+aa1" style=3D"color:#286ed0;-webkit-text-decoration:underline;text-decorati=
+on:underline;font-style:italic">themorning@nytimes.com</a><span style=3D"fo=
+nt-style:italic">.</span></p><div style=3D"overflow:hidden;height:0;width:1=
+00%;max-width:600px;margin:0 auto" aria-hidden=3D"true"><table cellpadding=
+=3D"0" cellspacing=3D"0" border=3D"0" width=3D"40"><tbody><tr><td height=3D=
+"6"><img src=3D"https://liveintent.newyorktimesinfo.com/imp=3Fs=3D126745500=
+&sz=3D2x1&m=3Dfd9e7c2d5c7f4d66bbc5ef24246f3a94&p=3DNN_20250311&li=3DNN" wid=
+th=3D"2" height=3D"6" border=3D"0"></td><td height=3D"6"><img src=3D"https:=
+//liveintent.newyorktimesinfo.com/imp=3Fs=3D126745501&sz=3D2x1&m=3Dfd9e7c2d=
+5c7f4d66bbc5ef24246f3a94&p=3DNN_20250311&li=3DNN" width=3D"2" height=3D"6" =
+border=3D"0"></td><td height=3D"6"><img src=3D"https://liveintent.newyorkti=
+mesinfo.com/imp=3Fs=3D126745502&sz=3D2x1&m=3Dfd9e7c2d5c7f4d66bbc5ef24246f3a=
+94&p=3DNN_20250311&li=3DNN" width=3D"2" height=3D"6" border=3D"0"></td><td =
+height=3D"6"><img src=3D"https://liveintent.newyorktimesinfo.com/imp=3Fs=3D=
+126745503&sz=3D2x1&m=3Dfd9e7c2d5c7f4d66bbc5ef24246f3a94&p=3DNN_20250311&li=
+=3DNN" width=3D"2" height=3D"6" border=3D"0"></td><td height=3D"6"><img src=
+=3D"https://liveintent.newyorktimesinfo.com/imp=3Fs=3D126745504&sz=3D2x1&m=
+=3Dfd9e7c2d5c7f4d66bbc5ef24246f3a94&p=3DNN_20250311&li=3DNN" width=3D"2" he=
+ight=3D"6" border=3D"0"></td></tr></tbody></table></div><table border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" style=3D"width:100%"><tbody><tr><td st=
+yle=3D"border-top:1px solid #dcdcdc;padding:20px 0"><img width=3D"100%" sty=
+le=3D"display:block" src=3D"https://static.nytimes.com/email-images/morning=
+-briefing/us/morning-briefing-footer-credit-logo.png" alt=3D"The Morning Ne=
+wsletter Logo"></td></tr><tr><td style=3D"padding:0 0 30px"><p style=3D"fon=
+t:400 12px/18px arial,sans-serif;color:#333;letter-spacing:0;margin:0"><spa=
+n style=3D"font:700 12px/18px arial,sans-serif">Editor:</span> Adam B. Kush=
+ner</p><p style=3D"font:400 12px/18px arial,sans-serif;color:#333;letter-sp=
+acing:0;margin:0"><span style=3D"font:700 12px/18px arial,sans-serif">News =
+Editor:</span> Tom Wright-Piersanti</p><p style=3D"font:400 12px/18px arial=
+,sans-serif;color:#333;letter-spacing:0;margin:0"><span style=3D"font:700 1=
+2px/18px arial,sans-serif">Associate Editor:</span> Lauren Jackson</p><p st=
+yle=3D"font:400 12px/18px arial,sans-serif;color:#333;letter-spacing:0;marg=
+in:0"><span style=3D"font:700 12px/18px arial,sans-serif">News Staff:</span=
+> <span style=3D"display:inline-block">Desiree Ibekwe</span>, <span style=
+=3D"display:inline-block">Brent Lewis</span>, <span style=3D"display:inline=
+-block">German Lopez</span>, <span style=3D"display:inline-block">Ashley Wu=
+</span></p><p style=3D"font:400 12px/18px arial,sans-serif;color:#333;lette=
+r-spacing:0;margin:0"><span style=3D"font:700 12px/18px arial,sans-serif">N=
+ews Assistant:</span> Lyna Bentahar</p><p style=3D"font:400 12px/18px arial=
+,sans-serif;color:#333;letter-spacing:0;margin:0"><span style=3D"font:700 1=
+2px/18px arial,sans-serif">Saturday Writer:</span> Melissa Kirsch</p></td><=
+/tr></tbody></table><table><tbody><tr><td style=3D"height:15px"></td></tr><=
+tr><td style=3D"padding:12px 0;border-top:1px solid #000"><p style=3D"font:=
+12px/15px arial,sans-serif;color:#666;margin-bottom:7px">Need help=3F Revie=
+w our <a href=3D"https://nl.nytimes.com/f/a/FVB4cMvH8fwWlQfipK5kSA~~/AAAAAR=
+A~/bTZBF9piY02OIpW9vplVYBjEpL5FVH2PCThPiFoZPMhVXIzxgL1jTTi65Cc6kZqtbKxaZDQH=
+TdBmxRLo-bq3QS80r1cJX6yv2FtKiQgtcaq-gMxgKAWtKPrTizasR7YGqIW_1k4YScj9wQkzxVS=
+FoDAxQHmzukrWecg89ZoUghSfkU_fA5K69nNZOJbVe5f3J2BhKLc3hJpy9jUHSEVgDueU1kvv98=
+PGk_UI43PLeLeHcKG0-bu0UjrscIH6ELQM_EeTxewcWM-5gMqZjLsPVhcmSkeNlypJv4thqxIcJ=
+_MoWNS0yLpijrY3QRRG3sMRFIPs5BeI7MhS-6KFvCeCm5gitS-cVao5-glC2KEQ1wk~" class=
+=3D"css-sdwaa1" style=3D"-webkit-text-decoration:underline;text-decoration:=
+none;color:#286ed0">newsletter help page</a> or <a href=3D"https://nl.nytim=
+es.com/f/a/DbgdxBNxzu-d41rwA23vIA~~/AAAAARA~/n9SWCt7tsbpU3mhUjr8pf6JjGYEQJ9=
+nVHjUVExKxPYsBNTdchGaOYLp5nIp6oqXTwghDsoZMyvxE3-q6K-fT8GvOYmfh626PZJJalna6P=
+zZLivlctEDPaoP0e5eGt8TB3XZhzTMBbKWlqC_pO8h6ZxOsR8XyhIbDVOmZaRvaALAdokNpDUon=
+De405slEG3fszyQewSFFLveN7Dvzkv8x_BW8R3at3_uKN4sBAqBbFQrO4Iij4h4ZnxLReyNPJno=
+Lq0OaIEgNYdmLY98CfSC-KgEKnioAP2lScUxmR7FvdeZAefjTv5JzhUI30-uhM9TfCj4ViLF7g-=
+8ZCM0speIxLCG2ok5p45Xhd10CQ-SG6to~" class=3D"css-sdwaa1" style=3D"-webkit-t=
+ext-decoration:underline;text-decoration:none;color:#286ed0">contact us</a>=
+ for assistance.</p><p style=3D"font:12px/15px arial,sans-serif;color:#666;=
+margin-bottom:7px"><span>You received this email because you signed up for =
+the Morning newsletter from The New York Times, or as part of your New York=
+ Times account.</span></p><p style=3D"font:12px/15px arial,sans-serif;color=
+:#666;margin-bottom:7px">To stop receiving The Morning, <a href=3D"https://=
+nl.nytimes.com/f/a/lyywcvEk5H5I3RX6A4-WDA~~/AAAAARA~/B1s63HIAZ17F-5elczk59C=
+flHdnivV3BBPa2CG09sxD-dhRtq7ib0ofYFfUvkFZVnUrG9fZ1kouRNEUL0AXXktQ-YCRNe3VbO=
+DyuHPCmaWEIRlTSNnLuUfWc-7uVZBd3E_4UUgCdjePlNQZJGANYmzJVHSqE7NveAobSxFtkFNv0=
+CcOm3YsDjzBry-j5rFcLsYnWo-2wbxE0BeY9r2YvzG5OaYeDKIKH769g5jG-5z3yob7r2T15Mp4=
+WpH2FDeEPvvOxArxkMDfyf3cIpopZeiUKCB_5oyEsli7dEYVGj8YIPne8zIcJUgmpEIW5AjnW" =
+class=3D"css-sdwaa1" style=3D"-webkit-text-decoration:underline;text-decora=
+tion:none;color:#286ed0">unsubscribe</a>. To opt out of other promotional e=
+mails from The Times, including those regarding The Athletic, <a href=3D"ht=
+tps://nl.nytimes.com/f/a/ygOGnF_FO7QPtuQg1ko2lQ~~/AAAAARA~/zlYwoIEaDrXQiUa9=
+Y4eaK9Ejuo3FNckB5so00spOm8mfB43YZgvxYdMuQDsRUnFtxpkUw8g-PDAkI4XFrdEKrz49PWo=
+JQKisIoUe8A7mC1pod7GT8d1a62zzkSOIXNHNVRTkojLtDdal215qxWpsyScLb2oXLdD-Xkk8tO=
+4EUA8jwNeEbhg4n4n1_0iJtk2ZL8duzrfuvR0-QctlBE536SsXSBeYzzjUy6rfRWNAxqlWIEtzK=
+D3RHqjXcbynWYwPuPsavIjBpoVffFaLON0I23sFCrrTBofa0bje3ygFTd4DonxDrV0s5he7dKoT=
+xHe-" class=3D"css-sdwaa1" style=3D"-webkit-text-decoration:underline;text-=
+decoration:none;color:#286ed0">manage your=C2=A0email=C2=A0settings</a>. To=
+ opt out of updates and offers sent from The Athletic, <a href=3D"https://n=
+l.nytimes.com/f/a/qjisXCxUMX_5TAGBhhF6sg~~/AAAAARA~/YT3oL9NHUDL5TdhNPlv1FFV=
+208tUu7I4lte-5Hr7n4ZiH-UCa3Rf4G3Zo0k-0RVGh_SJN3f-ZJ3_-VMUjmb-WmrINAYX2WT8Q4=
+-rQzKd0FNKvQ2HUpCKpPznDRIVD2n_0tUzYAdqonojfAAUZjEZE3ImBU2Jl09QSpnf_wz0kwh2Y=
+-uXJbpK4SLWezb_LRHVJYFeGWWzxc0L6hJmW70fcLD3z2cMEVsWZpq6DDVkcONNCDdQW8JCR5k8=
+ZqRiCt5H5C0mF6wQ2Xj1DuFebp-ghNTXdUsCswdF6Hb0VmfcZLG6UBKCb3U3ZoOB2RxeDhMTycn=
+R6MAQCp3S06VzSVbdznXk2Dnuz0fABDlcV4Oc2g0~" class=3D"css-sdwaa1" style=3D"-w=
+ebkit-text-decoration:underline;text-decoration:none;color:#286ed0">submit =
+a request</a>.</p></td></tr><tr><td style=3D"padding:10px 0;border-top:1px =
+solid #dcdcdc"><p style=3D"font:12px/15px arial,sans-serif;color:#666;margi=
+n:0"><a class=3D"css-1n5iqtj" href=3D"https://nl.nytimes.com/f/a/hBfJ5NxURu=
+aKt5MA_JY7SA~~/AAAAARA~/YT3oL9NHUDL5TdhNPlv1FP38ImpSNEWnQE6jDJ_FgAWM-w-WhA0=
+4tfwZM53eHkZYrlbxGtm1B1pbd_lEdBdT_Dvudlxxc4THX6ugosQLvhITukdo3eCoMSznZCZpIg=
+xsFDXRyN4QLiRepznuJAHG6IyO-Y-b0sHM5S4LIn98dBU_tXItHq68v-IATM61hMvwiDugZcYk1=
+VNlFfhgUeJuvX08eyIk7F4FnF8hEDKTcnWi885z5DB9O9KBlAUSla43HQzvnC10C03q0CAiHEl4=
+po9V795Hen-RRSXIRvjiqT_qQOmnj5KZp89R_XvJYqAWL1X2maAWZXZ4lviXUK_Q-y4RJTjJNEa=
+K3LIpHN78S8U~" style=3D"-webkit-text-decoration:underline;text-decoration:n=
+one;color:#286ed0">Subscribe to The Times</a><a class=3D"css-wf08f0" href=
+=3D"https://nl.nytimes.com/f/a/yo4fcgOsfCMNkO4GEjGHxQ~~/AAAAARA~/a6uT_CJuYA=
+EhG9BBCOy89uIUbuE-C-lMrN7SoCxYT2xx6LDfqfoe-e9tVfgTbWI-i6O_fGRGkOcYQZa-QMjhn=
+k8mbXQHcYfHTEofsh5qTiNt8WupOzrPbgzIX6rsmB5X-mGzxz6kE_Xxvba_PTIm62MK19AVzGjG=
+YlgLRikjDzNcPfNGH0otcoVXrpYXemzs5NRpiDlr2xxYf5J_dt7NnRn9UYt2MwHJqQJsQXH_qwT=
+HbrY56WYUnZNYDJ8-Xq3NHmesWwDYonuxVh04BVuW0v5K2lRhrF91m79BhbzOSpcjzfup9H2hLv=
+6_WpFLyAASrGAMtyCl6loktTXBqPf1GQ~~" style=3D"-webkit-text-decoration:underl=
+ine;text-decoration:none;color:#286ed0;display:none">Get The New York Times=
+ app</a></p></td></tr><tr><td style=3D"padding:9px 0 8px;border-top:1px sol=
+id #dcdcdc"><table><tbody><tr><td style=3D"padding-right:15px"><p style=3D"=
+font:12px/15px arial,sans-serif;color:#666;margin:0">Connect with us on:</p=
+></td><td style=3D"padding-right:15px"><a href=3D"https://nl.nytimes.com/f/=
+a/zdfB3txlmPrehO_ObTbC-w~~/AAAAARA~/p1ZE2ybw_1V5xomzSqBGUgtRTxRIyQ3VBz-L_-Z=
+6rkB4TVP51XkeTMnPpJj8R_0Kk_jab5Fs7uKjrzwscggTeFYNWZrU356mp4nyJRHWayf4ataHLF=
+8Lf0NzKxKUjDJzp0Wn1DJQbLj2UpLU4yp4cKWZOskCUvSUTbnJZJeDTiG2hOca6lcZMe0DqSA6n=
+_NCY3THt2_vzwgbNGJw8qfS4axTvgkB9E7YXm1XJcTlgp8CVP07XoaY0K9ZDF6tlGPo68nOUHUG=
+zOAAECMt7JUitmaSfBRQNCd5DmnPmYo5qHle4_yJKsH6I9SVJMcaZNnT" class=3D"css-sdwa=
+a1" style=3D"color:#286ed0;-webkit-text-decoration:underline;text-decoratio=
+n:underline"><img width=3D"25" height=3D"25" alt=3D"facebook" style=3D"vert=
+ical-align:middle" src=3D"https://static.nytimes.com/email-images/design-sy=
+stem/social-icons/facebook.png"></a></td><td style=3D"padding-right:15px"><=
+a href=3D"https://nl.nytimes.com/f/a/7miUQAezTKGFiO0-P8t4gg~~/AAAAARA~/iMKi=
+nLcp9U4tTRSXy12hUwjRqDkXCr4vwnvhcXLFGGeMZ-aqmvTUCxdsK6D_hcIHFKkkGJal0UGOH9M=
+KwgeaEybpUDQlFu2ugbzZCRy6vYNllJSSTXJ0lWiYbzXJulQnTMTTZOYrKtNinEu5lDWrDx1a4B=
+xJ6KMm3C-9_vEKdA7M3yOBCSAyRmjaTjdbOXHQRR9Ow3EqbD2d9gNfzcU3lzUk4_fOuVP5A4nvH=
+q57Ub8PFJZp52vDho_UgEO_ZaoVMyGasjjKRr2ZDjf6sfIbPZ90ihuScSAL4usxVMSZ7_PcEqBL=
+9bLUqxpMDsAk_squ" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-=
+decoration:underline;text-decoration:underline"><img width=3D"25" height=3D=
+"25" alt=3D"x" style=3D"vertical-align:middle" src=3D"https://static.nytime=
+s.com/email-images/design-system/social-icons/x.png"></a></td><td style=3D"=
+padding-right:15px"><a href=3D"https://nl.nytimes.com/f/a/N0zagfR5-et-kkESV=
+eP3jQ~~/AAAAARA~/aKaiNJBFLpKYoU6OKJ5c-KKr9FCnDv7eTSEVlARcV1NhP9UkeGP6IhF9O8=
+1OGgWRhLARfY_dPhvb_7Q5Tu4ziXeZyTIFrN6rHYRBfWgaWEhw3xl4DPxDJIbOFcIhD_mP6EX2X=
+ClOBeFXzgyuHxQFdWX-xZMvnjsfltj7g7nQ-ydGkVxTpTwfbgN3MI2qzJjC6EqdDBWO3vDO_ezz=
+n2MZ8yz7DHEoOII_5Ih4VcXn4LMiEWiFDgoNZPE-mq--hYEEhdWAr9YKadSWDJDnio82paYyydL=
+5doAu6WgF-31Le3fTvIVMVbLFGbszx0SnnXPH" class=3D"css-sdwaa1" style=3D"color:=
+#286ed0;-webkit-text-decoration:underline;text-decoration:underline"><img w=
+idth=3D"25" height=3D"25" alt=3D"instagram" style=3D"vertical-align:middle"=
+ src=3D"https://static.nytimes.com/email-images/design-system/social-icons/=
+instagram.png"></a></td><td style=3D"padding-right:15px"><a href=3D"https:/=
+/nl.nytimes.com/f/a/w9yRqL1u1hhFjvUazSXpXw~~/AAAAARA~/4zm8Q8qJKnrFGHalY7hjM=
+x64uVDzkTNRdlH__6G0Xj7SMFG90vgY3hB4gurNnpaP5N2sVjvTp9gtnVWmU_xv7pNA9zN1uHe0=
+f5uD9bE8Q91cMKgJ2Xt1Rv-wIcHmMVeQGzFb9VbbQ6xvpWTd4eezdNYOkavOWAzFV_eCcj_7YVi=
+-22EUHyPyiPPdvlifVLNMH64TgV69Z9mXUlZbvutv3g8eSghKsFoyTmBucg6QCVabwn0Sd8ktj-=
+T3Qo9TanrakUCJX33TmttN012TiHzlUXeQcQlHhCzxgsh9XYEJupMXnMkjLhPc9iftrH6fAzlC6=
+vGAJ2vZpS9Boj2Fredi1rpXT2eH4s5S9_yIztPZq08~" class=3D"css-sdwaa1" style=3D"=
+color:#286ed0;-webkit-text-decoration:underline;text-decoration:underline">=
+<img width=3D"25" height=3D"25" alt=3D"whatsapp" style=3D"vertical-align:mi=
+ddle" src=3D"https://static.nytimes.com/email-images/design-system/social-i=
+cons/whatsapp.png"></a></td></tr></tbody></table></td></tr><tr><td style=3D=
+"padding:10px 0;border-top:1px solid #dcdcdc"><p style=3D"font:12px/15px ar=
+ial,sans-serif;color:#666;margin:0;line-height:20px"><a href=3D"https://nl.=
+nytimes.com/f/a/Zvfbdc2wBA6eoYBQ9TSKAg~~/AAAAARA~/ayGia_oA2q6SSjDw2lkjOHRQQ=
+akw6bQdrK4yq785LK4SGccsr39dWQ9csRjS2hmD3hyT6zIiN3uhZ1Izcaj6TOnAD9Iby3Up8qvN=
+AjGNpVNBYqNV17-jaF_JA2uF-LJjsetIDbRKLF0BJw9a601HhEqmnsD1yILOKMDWD--6Yi89hgs=
+ZfGrJfmWBJI6B7YIlt_jfIXeunaEJl_xlO-pj6uzyB88fCq5SSMy4CCpJF2iUgn_oTTaBUh70N4=
+e8gO1dOldlTfu6XuBpHNSAk1ac3StdzclctJCr2ntxGM2b_nLBudBURavB34ETmZ-vCsdE7pd7g=
+Hw6kcO_qEDOXdb0ww~~" class=3D"css-sdwaa1" style=3D"-webkit-text-decoration:=
+underline;text-decoration:none;color:#286ed0;display:inline-block;border-ri=
+ght:1px solid #dcdcdc;padding-right:10px;margin-right:10px">Change Your Ema=
+il</a><a href=3D"https://nl.nytimes.com/f/a/mkkqbrJLulnPoGvpho7Z7w~~/AAAAAR=
+A~/fTCfIpu04m1WjQMSu7_ZYbk45nGaJd0F3bzdcdVjgHJ_yiNoMUqF2xUDvI-H1xIpGpU90_0S=
+Vc1hUqg-BqlA_EPAU9i2wDv1y2KdHUkdHtIj0Z7MrV-1K1FcXHadj4d5k76f7IS-llihNxRWx9F=
+itSOekl2pRqsOAp3rJ_ONkQiP96Hnb0dTv5BgSvQsIwddCtwwaO_Cl08JOQYK3uHhI7agibyww8=
+PwDT6Za-RO5hRnzdvCvysTPACf6ycmS8hZj7oSaeL-L76XXTOkDwTWWEJ1-shtZby0wf3UXWGcw=
+CJNOHlw2hM7bC-okHt6HGgO0mfhh6wVkjZMOZJChWBeQKYxNmJXtlX3NOyLdzsRGJNeLQvbN1pn=
+8ZcOnHiOCOxg" class=3D"css-sdwaa1" style=3D"-webkit-text-decoration:underli=
+ne;text-decoration:none;color:#286ed0;display:inline-block;border-right:1px=
+ solid #dcdcdc;padding-right:10px;margin-right:10px">Privacy Policy</a><a h=
+ref=3D"https://nl.nytimes.com/f/a/W4XDnBAFZOjWiFxfg6icSg~~/AAAAARA~/n3zl2-J=
+bqHW373xpMKNvZ70ybmdqFU_5xwT_EjE1O4lJ0ejrU0uAhuVi7zNqPt6BO6XG3hJKRknZ-1qApH=
+S3ES7njPrRR-Aai8h4EiaCt49Hhk3XIdg7JI5ppV_b21QPUflNXsAgUregJGKJVjU1ekpmeiVrE=
+BMm2sLDiM0I-dT35E6v98qyJAn7FIDAw20f1Or05GKub2mXXy41zb5_aezK0Mk9X-wTTafpTn_k=
+aIUg_YJQKlpq1OJfrT9bw2-7rPWguKJefPN_iEIwMgsUi6ODF9ZKjmuk75HZB_khdINim2m--1P=
+fmqDX9MJo4v6NPQvKjuSrFVWLye3buaNTnoBoJW3yceOgWV1JgoQ0zzY~" class=3D"css-sdw=
+aa1" style=3D"-webkit-text-decoration:underline;text-decoration:none;color:=
+#286ed0;display:inline-block;border-right:1px solid #dcdcdc;padding-right:1=
+0px;margin-right:10px">Contact Us</a><a href=3D"https://nl.nytimes.com/f/a/=
+_bU0OkrNIzwvP4Zjx5ldXQ~~/AAAAARA~/dMXnCbynxQq4UAqIIryYVLBWQ-mqGhH391IS5-5cQ=
+SGjag9N_YN_jjsZpu6kRXBIZGWY1MakKifn-J8qUg1-JxbuY4oRezP6n6AGlkhIaZsibvxlv0jP=
+RKc2LBV7wf2CZd6OUksFv9UtuiImi7nfgz5djjvo876i8fUaSoYWBoEMx61eU5rOjbbIcrtztqc=
+OnlzkXWwvQAnUfzjWhCeV518U1KrO0cNh2eUb2_WOwOvk7hu9uXSVs1t8P_niNnToUpiAgpqAHO=
+XbhkmJrWWHj1tsnbpPiWAWPbIeGjI4b-D7SNG04q6mSqenVIqyxXeIQ0aKrU9w0Rf0igZ6q0jPB=
+Q~~" class=3D"css-sdwaa1" style=3D"-webkit-text-decoration:underline;text-d=
+ecoration:none;color:#286ed0">California Notices</a></p></td></tr><tr><td s=
+tyle=3D"padding:5px 0 7px;border-top:1px solid #dcdcdc"><a href=3D"https://=
+nl.nytimes.com/f/a/rgkv5dycKbUeTy7EhvRCaA~~/AAAAARA~/rz5dBJuA3XzZCQth9kUpvu=
+-WaFf8kh7tpdMRbHqO5Qnwymew90ELvOrQEjcVsPtvyIhoQzOLkX3olwc8NusptTNoPC6tWoHv-=
+bBQWjDjCNIvRkwdXfYBKQs1_GtM4UYp" class=3D"css-sdwaa1" style=3D"-webkit-text=
+-decoration:underline;text-decoration:none;color:#666;line-height:0;display=
+:inline-block;border-right:1px solid #dcdcdc;padding-right:10px;margin-righ=
+t:10px"><img width=3D"150" alt=3D"LiveIntent Logo" style=3D"vertical-align:=
+middle" src=3D"https://static.nytimes.com/email-images/design-system/ads/li=
+veintentads.png"></a><a href=3D"https://nl.nytimes.com/f/a/2k95AwHUuYNLSmHd=
+TEPukg~~/AAAAARA~/rz5dBJuA3XzZCQth9kUpvu-WaFf8kh7tpdMRbHqO5Qn02-wJmXO39ql3y=
+xjafbqXrWb9B_P7u4tvQvyx_0b4-UGT1v0xOQD1YE09xFIliwh5O_D1X9pdDWO9YYMq4gSg" cl=
+ass=3D"css-sdwaa1" style=3D"-webkit-text-decoration:underline;text-decorati=
+on:none;color:#666;line-height:0"><img width=3D"70" alt=3D"AdChoices Logo" =
+style=3D"vertical-align:middle" src=3D"https://static.nytimes.com/email-ima=
+ges/design-system/ads/adchoices.png"></a></td></tr><tr><td style=3D"border-=
+top:1px solid #dcdcdc;padding:10px 0 30px"><p style=3D"color:#999;font:12px=
+/15px arial,sans-serif;margin:0">The New York Times Company. 620 Eighth Ave=
+nue New York, NY 10018</p></td></tr></tbody></table></div></td></tr></tbody=
+></table><!--[if mso | IE]></td></tr></table><![endif]--></div>=0D=0A<img b=
+order=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://nl.nytimes.com=
+/q/rrsGF5vyO1_HAtpP587Kwg~~/AAAAARA~/DcjpKBufdoGkpN5o1FGIlS2P_FUwUT0nhOjIvm=
+TSv-1mVF4iTWGes96EaRj7F0uwWRnM_mvDspDFpjmAAV4jNw~~">=0D=0A</body></html>
+

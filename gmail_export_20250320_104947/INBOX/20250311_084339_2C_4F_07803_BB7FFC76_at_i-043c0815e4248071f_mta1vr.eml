@@ -1,0 +1,237 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:520:b0:81:c1e5:8e27 with SMTP id 32csp1675524rch;
+        Tue, 11 Mar 2025 01:43:40 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGqtIPz632S2KvAC088jIYMFEjqnCOHm5k6kpcMZwxUMlvmLlClkX7fG7qlsHUj80i0ac5s
+X-Received: by 2002:a05:690c:48c2:b0:6fb:9c08:4980 with SMTP id 00721157ae682-6febf37b540mr222976347b3.27.1741682620301;
+        Tue, 11 Mar 2025 01:43:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741682620; cv=none;
+        d=google.com; s=arc-20240605;
+        b=JytIv1z58GdO0L9Ek7qGLjvZOocq41MwxuOmWNm4KguJhXV2Tg5XjDIdnLqwC/llGl
+         n38aZ84W4Ys9jKzXkLyfAZxVnCQIfwUX4gJw/i8IN+l6P3H7D7Ka4T6GHm/a0gSa/z66
+         M74H+piqflZV/JMfwxh4ZHZfFNEHEsbNubOfJM2K7E86+v5obZTOnle5FjmwEw2WeCRG
+         Eb1+GWy8ixoFhLgjQmPje1/Qw2FWGTVXV+kpTNi3I7sDYl3vqxgHmzw38DtvQOX98ZNg
+         SIWK5yefesyCB0MsDb/xfHsfI5ofNvk9it9XdS5j5mVuSzlt8/KZd5ZCr/J/r/jPXLNh
+         d+Wg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=reply-to:from:list-unsubscribe:subject:list-unsubscribe-post
+         :mime-version:date:message-id:to:dkim-signature;
+        bh=TccUDti7ViWQt/aMFNUE4PAlS45HA07AdTsJS6zu1lI=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=OoSCHeD5829VGoX0ctkhlkDusyxgHbx9SrHbwB+L+zR2/6JMiHaURbnuxog1VJI9JS
+         lNatln35Ibz40JqnKCGCERFJP4h9ke5s4bQSFIbfQvIJEcMNibd3PneoxegQIqKtjh9W
+         98ohfAuokHn9PVSQ8gjlXZhmXCdwWnHgQFxMMHGoZl1+daLeBeitxFyWBXHYa3tr6qCo
+         um69hQb/p2WblS8zScFD1gBzO5qUdA9uhITfW+VlRQ+7P4wS89d09vrsuJy/H6CJ9sPq
+         4D5EO6r5b8vLrtNtQv7+PgW1k2nMD2UEjV0TecdglfKvmKwuDyBvTrn0BM/rp79pceVA
+         4wuA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@enl.channelnewsasia.com header.s=scph0421 header.b=jU4cccLh;
+       spf=pass (google.com: domain of msprvs1=20165gg8owgmf=bounces-266693-163@enl.channelnewsasia.com designates 223.165.117.215 as permitted sender) smtp.mailfrom="msprvs1=20165GG8OwGMF=bounces-266693-163@enl.channelnewsasia.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=enl.channelnewsasia.com
+Return-Path: <msprvs1=20165GG8OwGMF=bounces-266693-163@enl.channelnewsasia.com>
+Received: from bz1461.enl.channelnewsasia.com (bz1461.enl.channelnewsasia.com. [223.165.117.215])
+        by mx.google.com with ESMTPS id 00721157ae682-6feb2a1c484si90816857b3.40.2025.03.11.01.43.39
+        for <desgtest.email@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 11 Mar 2025 01:43:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of msprvs1=20165gg8owgmf=bounces-266693-163@enl.channelnewsasia.com designates 223.165.117.215 as permitted sender) client-ip=223.165.117.215;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@enl.channelnewsasia.com header.s=scph0421 header.b=jU4cccLh;
+       spf=pass (google.com: domain of msprvs1=20165gg8owgmf=bounces-266693-163@enl.channelnewsasia.com designates 223.165.117.215 as permitted sender) smtp.mailfrom="msprvs1=20165GG8OwGMF=bounces-266693-163@enl.channelnewsasia.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=enl.channelnewsasia.com
+Return-Path: <msprvs1=20165GG8OwGMF=bounces-266693-163@enl.channelnewsasia.com>
+X-MSFBL: oL04p9BkainCpd3P/KB7rsLsmCUiAlUHcy0S2yUt6Kk=|eyJyIjoiZGVzZ3Rlc3Q
+	uZW1haWxAZ21haWwuY29tIiwidGVuYW50X2lkIjoic3BjIiwiY3VzdG9tZXJfaWQ
+	iOiIyNjY2OTMiLCJzdWJhY2NvdW50X2lkIjoiMTYzIiwibWVzc2FnZV9pZCI6IjY
+	3YzFiYmY3Y2Y2NzA1Mjk3NGMyIn0=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=enl.channelnewsasia.com; s=scph0421; t=1741682619;
+	i=@enl.channelnewsasia.com;
+	bh=TccUDti7ViWQt/aMFNUE4PAlS45HA07AdTsJS6zu1lI=;
+	h=To:Message-ID:Date:Content-Type:List-Unsubscribe-Post:Subject:
+	 List-Unsubscribe:From:From:To:Cc:Subject;
+	b=jU4cccLhNTIWZtbmzJIWCZbZtZ3XnRFb2Y1ThZBtpBTWnetwxEXJVy2SQFMe50cTM
+	 q/AWMRsiaBAUlXnwiy4rRGHkS/Oe44FQ8qfjgHPYIQqqnO1ejCRqZq5mVTdBG3knD7
+	 GARRYFeKRonuPfloK+niy2sTR1+5fnordielbL48=
+Received: from [10.90.20.157] ([10.90.20.157])
+	by i-043c0815e4248071f.mta1vrest.sd.prd.sparkpost (ecelerity 4.8.0.74368 r(msys-ecelerity:tags/4.8.0.17)) with REST
+	id 2C/4F-07803-BB7FFC76; Tue, 11 Mar 2025 08:43:39 +0000
+To: desgtest.email@gmail.com
+Message-ID: <2C.4F.07803.BB7FFC76@i-043c0815e4248071f.mta1vrest.sd.prd.sparkpost>
+Date: Tue, 11 Mar 2025 08:43:39 +0000
+Content-Type: multipart/alternative; boundary="_----T1WCtuuxvLB59Sb1pI4/Wg===_DB/4F-07803-BB7FFC76"
+MIME-Version: 1.0
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Subject: =?utf-8?B?V2VsY29tZSB0byBDTkEgVE9EQVnigJlzIEJpZyBSZWFkIG5ld3Ns?=
+	=?utf-8?B?ZXR0ZXI=?=
+List-Unsubscribe: <https://login.mediacorp.sg/api/api/v4/subscription/OneClickUnsubscribe?app=meconnect&email=desgtest.email%40gmail.com&userid=8da66f70-9051-48f3-adf0-18e099a49f23&website=tdy_partners>
+From: "CNA TODAY" <bigread@enl.channelnewsasia.com>
+Reply-To: cnanewsletters@mediacorp.com.sg
+
+--_----T1WCtuuxvLB59Sb1pI4/Wg===_DB/4F-07803-BB7FFC76
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+
+A deep dive into the big issues that matter        Dear reader,=0A=0AThank =
+you for signing up for CNA TODAY=E2=80=99s Big Read newsletter.=0A=0AAt the=
+ end of each week, you=E2=80=99ll receive a curated round-up of=0Athe top o=
+fferings from CNA TODAY.=0A=0ATop on this list is our flagship long-form jo=
+urnalism series Big=0ARead =0A( https://ablink.channelnewsasia.com/f/a/ANLw=
+DqAR4RD2T14uGrE7dw~~/AAQRxRA~/CoLDNHeHMUeGtJarUyhYjvfYT3uIkld5AE0QMGBnDQpYF=
+yy_09t_byK5XYuoduScOl9xIFVVx_dJLtpA5gWZPfgDxuHyLYDcfggKL9_O5d1_--Q6e6uzk-8E=
+onG_39XQbH8h8_pyj-KuuHL8K45kqxOTrvN6_oKF-F1JRr_HzGmlaUbdbh1VKAIYmbgoN26kSFu=
+fSlHiSasna71CQzsDjMoztsgRU8IcosllxkpPK1k~ )=0A, which delves into the signi=
+ficant issues affecting Singapore=0Aand around the world. You=E2=80=99ll al=
+so get the best of CNA TODAY=E2=80=99s=0Ain-depth human interest and ground=
+-up features, intimate=0Ainterviews, photojournalism and more.=0A=0AYou may=
+ want to add bigread@enl.channelnewsasia.com to your=0Aaddress book to make=
+ sure our newsletters always reach your=0Ainbox.=0A=0AWant to check out wha=
+t=E2=80=99s been previously published=3F You can also=0Asee all our stories=
+ on channelnewsasia.com/today =0A( https://ablink.channelnewsasia.com/f/a/0=
+qfjR2SkgIe8186aWvDW2A~~/AAQRxRA~/lXU5U8m115C0s_NYBptMW9rqtXIdKhsCCKTZfz3puy=
+jtaL0LRmtf3ovh2tsBSFLDrMiXe-Ps8IBhJN_XKJB-p5GK_QbOZm35a4urD1RMUgBpMBit7rHNu=
+i76md55HVAtoPrJ41E7uNL56hfZE4iXi13fstaGDuyQd_OK47u-luPoDN84twezJdoN8KBBFaQC=
+fkfIZvmBI1LAHldyQHWXYhdnxaCa9fDXm8DJ3vhYDUQ~ )=0A.=0A=0AIf you have any tho=
+ughts on our newsletter or the stories we=0Atell, we always love to hear fr=
+om you. Feel free to send us your=0Atip-offs or feedback atcnanewsletters@m=
+ediacorp.com.sg.=0A=0AHappy reading.=0A=0ABest regards,=0A=0ALoh Chee Kong=
+=0A=0AChief Editor, CNA Digital=0A=0AIf you received this newsletter but di=
+d not sign up for it,=0Ayou may unsubscribe here ( https://ablink.channelne=
+wsasia.com/f/a/IfQpSQClfs8CGtW8doNKpA~~/AAQRxRA~/CoLDNHeHMUeGtJarUyhYjt6lJB=
+PX57uKAbBhOtKFAfiXUSePPifHH-1i6b4BO1ZQzZfcqCeqWRmXSIWAz9Vb0qORfrLbTe7soAZ2G=
+x0IR0W6ya5EfpdWyMCBlsoK_X3fX6qPXdMztwCEXHKRmTx_NM3IxpoFO-PofTA3DvWsjIqVaJJj=
+KA0aSguE56lFWnyiqaAcD1ty5K5bcNmb9u5GHDBSyXlHusJcjCmmGJ0WQVo~ ).
+--_----T1WCtuuxvLB59Sb1pI4/Wg===_DB/4F-07803-BB7FFC76
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!DOCTYPE html>=0A<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=
+=3D"urn:schemas-microsoft-com:office:office" lang=3D"en">=0A<head>=0A<title=
+></title>=0A<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Dutf-8">=0A<meta name=3D"viewport" content=3D"width=3Ddevice-width,initia=
+l-scale=3D1">=0A<!--[if mso]><xml><o:OfficeDocumentSettings><o:PixelsPerInc=
+h>96</o:PixelsPerInch><o:AllowPNG/></o:OfficeDocumentSettings></xml><![endi=
+f]--><!--[if !mso]><!--><!--<![endif]--><style>=0A*{box-sizing:border-box}b=
+ody{margin:0;padding:0}a[x-apple-data-detectors]{color:inherit!important;te=
+xt-decoration:inherit!important}#MessageViewBody a{color:inherit;text-decor=
+ation:none}p{line-height:inherit}.desktop_hide,.desktop_hide table{mso-hide=
+:all;display:none;max-height:0;overflow:hidden}.image_block img+div{display=
+:none}sub,sup{font-size:75%;line-height:0} @media (max-width:620px){.mobile=
+_hide{display:none}.row-content{width:100%!important}.stack .column{width:1=
+00%;display:block}.mobile_hide{min-height:0;max-height:0;max-width:0;overfl=
+ow:hidden;font-size:0}.desktop_hide,.desktop_hide table{display:table!impor=
+tant;max-height:none!important}}=0A</style>=0A<!--[if mso ]><style>sup, sub=
+ { font-size: 100% !important; } sup { mso-text-raise:10% } sub { mso-text-=
+raise:-10% }</style> <![endif]-->=0A</head>=0A<body class=3D"body" style=3D=
+"margin:0;background-color:#fff;padding:0;-webkit-text-size-adjust:none;tex=
+t-size-adjust:none">=0A<div style=3D"display:none !important;visibility:hid=
+den;mso-hide:all;font-size:1px;color:#ffffff;line-height:1px;max-height:0px=
+;max-width:0px;opacity:0;overflow:hidden;">A deep dive into the big issues =
+that matter</div>=0A<table class=3D"nl-container" width=3D"100%" border=3D"=
+0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-t=
+able-lspace:0;mso-table-rspace:0;background-color:#fff"><tbody><tr><td>=0A<=
+table class=3D"row row-1" align=3D"center" width=3D"100%" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-ls=
+pace:0;mso-table-rspace:0"><tbody><tr><td><table class=3D"row-content stack=
+" align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;background-co=
+lor:#fff;border-radius:0;color:#000;width:600px;margin:0 auto" width=3D"600=
+"><tbody><tr><td class=3D"column column-1" width=3D"100%" style=3D"mso-tabl=
+e-lspace:0;mso-table-rspace:0;font-weight:400;text-align:left;vertical-alig=
+n:top;border-top:0;border-right:0;border-bottom:0;border-left:0">=0A<table =
+class=3D"image_block block-1 mobile_hide" width=3D"100%" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lsp=
+ace:0;mso-table-rspace:0"><tr><td class=3D"pad" style=3D"width:100%"><div c=
+lass=3D"alignment" align=3D"center" style=3D"line-height:10px"><div style=
+=3D"max-width:600px"><img src=3D"https://braze-images.com/appboy/communicat=
+ion/assets/image_assets/images/66fb8fbb8395f10063526e77/original.png=3F1727=
+762363" style=3D"display:block;height:auto;border:0;width:100%" width=3D"60=
+0" alt title height=3D"auto"></div></div></td></tr></table>=0A<table class=
+=3D"image_block block-2 desktop_hide" width=3D"100%" border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:=
+0;mso-table-rspace:0;mso-hide:all;display:none;max-height:0;overflow:hidden=
+"><tr><td class=3D"pad" style=3D"width:100%"><div class=3D"alignment" align=
+=3D"center" style=3D"line-height:10px"><div style=3D"max-width:600px"><img =
+src=3D"https://braze-images.com/appboy/communication/assets/image_assets/im=
+ages/66fb8fafd0f9a00065f74e0f/original.png=3F1727762351" style=3D"display:b=
+lock;height:auto;border:0;width:100%" width=3D"600" alt title height=3D"aut=
+o"></div></div></td></tr></table>=0A</td></tr></tbody></table></td></tr></t=
+body></table>=0A<table class=3D"row row-2" align=3D"center" width=3D"100%" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" styl=
+e=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td><table class=3D"=
+row-content stack" align=3D"center" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspac=
+e:0;color:#000;width:600px;margin:0 auto" width=3D"600"><tbody><tr><td clas=
+s=3D"column column-1" width=3D"100%" style=3D"mso-table-lspace:0;mso-table-=
+rspace:0;font-weight:400;text-align:left;padding-bottom:5px;padding-top:5px=
+;vertical-align:top;border-top:0;border-right:0;border-bottom:0;border-left=
+:0">=0A<table class=3D"paragraph_block block-1" width=3D"100%" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-tab=
+le-lspace:0;mso-table-rspace:0;word-break:break-word"><tr><td class=3D"pad"=
+ style=3D"padding-bottom:10px;padding-left:5px;padding-right:5px;padding-to=
+p:15px"><div style=3D"color:#333;direction:ltr;font-family:Georgia,Arial,Sa=
+ns-serif;font-size:15px;font-weight:400;letter-spacing:0;line-height:150%;t=
+ext-align:left;mso-line-height-alt:22.5px">=0A<p style=3D"margin:0;margin-b=
+ottom:0">Dear reader,<br><br>Thank you for signing up for CNA TODAY=E2=80=
+=99s Big Read newsletter.</p>=0A<p style=3D"margin:0;margin-bottom:0">&nbsp=
+;</p>=0A<p style=3D"margin:0;margin-bottom:0">At the end of each week, you=
+=E2=80=99ll receive a curated round-up of the top offerings from CNA TODAY.=
+<br><br>=0ATop on this list is our flagship long-form journalism series <a =
+href=3D"https://ablink.channelnewsasia.com/f/a/ANLwDqAR4RD2T14uGrE7dw~~/AAQ=
+RxRA~/CoLDNHeHMUeGtJarUyhYjvfYT3uIkld5AE0QMGBnDQpYFyy_09t_byK5XYuoduScOl9xI=
+FVVx_dJLtpA5gWZPfgDxuHyLYDcfggKL9_O5d1_--Q6e6uzk-8EonG_39XQbH8h8_pyj-KuuHL8=
+K45kqxOTrvN6_oKF-F1JRr_HzGmlaUbdbh1VKAIYmbgoN26kSFufSlHiSasna71CQzsDjMoztsg=
+RU8IcosllxkpPK1k~" target=3D"_blank" style=3D"text-decoration: underline; c=
+olor: #e1082e;" data-mce-attribute-name-1 data-mce-attribute-value-1 rel=3D=
+"noopener">Big Read</a>, which delves into the significant issues affecting=
+ Singapore and around the world. You=E2=80=99ll also get the best of CNA TO=
+DAY=E2=80=99s in-depth human interest and ground-up features, intimate inte=
+rviews, photojournalism and more.</p>=0A<p style=3D"margin:0;margin-bottom:=
+0">&nbsp;</p>=0A<p style=3D"margin:0;margin-bottom:0">You may want to add <=
+a href=3D"mailto:bigread@enl.channelnewsasia.com" target=3D"_blank" title=
+=3D"bigread@enl.channelnewsasia.com" style=3D"text-decoration: underline; c=
+olor: #e1082e;" data-mce-attribute-name-1 data-mce-attribute-value-1 rel=3D=
+"noopener">bigread@enl.channelnewsasia.com</a> to your address book to make=
+ sure our newsletters always reach your inbox.</p>=0A<p style=3D"margin:0;m=
+argin-bottom:0">&nbsp;</p>=0A<p style=3D"margin:0;margin-bottom:0">Want to =
+check out what=E2=80=99s been previously published=3F You can also see all =
+our stories on <a href=3D"https://ablink.channelnewsasia.com/f/a/0qfjR2SkgI=
+e8186aWvDW2A~~/AAQRxRA~/lXU5U8m115C0s_NYBptMW9rqtXIdKhsCCKTZfz3puyjtaL0LRmt=
+f3ovh2tsBSFLDrMiXe-Ps8IBhJN_XKJB-p5GK_QbOZm35a4urD1RMUgBpMBit7rHNui76md55HV=
+AtoPrJ41E7uNL56hfZE4iXi13fstaGDuyQd_OK47u-luPoDN84twezJdoN8KBBFaQCfkfIZvmBI=
+1LAHldyQHWXYhdnxaCa9fDXm8DJ3vhYDUQ~" target=3D"_blank" style=3D"text-decora=
+tion: underline; color: #e1082e;" data-mce-attribute-name-1 data-mce-attrib=
+ute-value-1 rel=3D"noopener">channelnewsasia.com/today</a>.</p>=0A<p style=
+=3D"margin:0;margin-bottom:0">&nbsp;</p>=0A<p style=3D"margin:0;margin-bott=
+om:0">=0AIf you have any thoughts on our newsletter or the stories we tell,=
+ we always love to hear from you. Feel free to send us your tip-offs or fee=
+dback at<a href=3D"mailto:cnanewsletters@mediacorp.com.sg" target=3D"_blank=
+" title=3D"cnanewsletters@mediacorp.com.sg" style=3D"text-decoration: under=
+line; color: #e1082e;" data-mce-attribute-name-1 data-mce-attribute-value-1=
+ rel=3D"noopener"> cnanewsletters@mediacorp.com.sg</a>.</p>=0A<p style=3D"m=
+argin:0;margin-bottom:0">&nbsp;</p>=0A<p style=3D"margin:0;margin-bottom:0"=
+>Happy reading.</p>=0A<p style=3D"margin:0;margin-bottom:0">&nbsp;</p>=0A<p=
+ style=3D"margin:0;margin-bottom:0">Best regards,</p>=0A<p style=3D"margin:=
+0;margin-bottom:0">Loh Chee Kong</p>=0A<p style=3D"margin:0">Chief Editor, =
+CNA Digital</p>=0A</div></td></tr></table>=0A<table class=3D"paragraph_bloc=
+k block-2" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;word-b=
+reak:break-word"><tr><td class=3D"pad" style=3D"padding-bottom:10px;padding=
+-left:5px;padding-right:5px;padding-top:10px"><div style=3D"color:#333;dire=
+ction:ltr;font-family:Georgia,Arial,Sans-serif;font-size:13px;font-weight:4=
+00;letter-spacing:0;line-height:120%;text-align:left;mso-line-height-alt:15=
+.6px"><p style=3D"margin:0">=0AIf you received this newsletter but did not=
+ sign up for it, you may <a href=3D"https://ablink.channelnewsasia.com/f/a/=
+IfQpSQClfs8CGtW8doNKpA~~/AAQRxRA~/CoLDNHeHMUeGtJarUyhYjt6lJBPX57uKAbBhOtKFA=
+fiXUSePPifHH-1i6b4BO1ZQzZfcqCeqWRmXSIWAz9Vb0qORfrLbTe7soAZ2Gx0IR0W6ya5EfpdW=
+yMCBlsoK_X3fX6qPXdMztwCEXHKRmTx_NM3IxpoFO-PofTA3DvWsjIqVaJJjKA0aSguE56lFWny=
+iqaAcD1ty5K5bcNmb9u5GHDBSyXlHusJcjCmmGJ0WQVo~" target=3D"_blank" style=3D"t=
+ext-decoration: none; color: #e1082e;" rel=3D"noopener">unsubscribe here</a=
+>.</p></div></td></tr></table>=0A</td></tr></tbody></table></td></tr></tbod=
+y></table>=0A</td></tr></tbody></table>=0A<!-- End -->=0A=0D=0A<img border=
+=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://ablink.channelnewsa=
+sia.com/q/ZxkFgar6idLptBBLKEZgxQ~~/AAQRxRA~/1537DARM0IapTDxBAmtRUeOY4io5ZWE=
+n1m0MxhO3qnokq7b30Sx-dWYsi-ShkSwoshBhU0OYm4ndNejcfVAiKg~~">=0D=0A</body>=0A=
+</html>
+--_----T1WCtuuxvLB59Sb1pI4/Wg===_DB/4F-07803-BB7FFC76--
+

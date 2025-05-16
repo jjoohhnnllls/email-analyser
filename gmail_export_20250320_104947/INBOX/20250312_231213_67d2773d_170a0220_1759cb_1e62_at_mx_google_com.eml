@@ -1,0 +1,114 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp759807rch;
+        Wed, 12 Mar 2025 23:12:14 -0700 (PDT)
+X-Received: by 2002:a17:903:1a0e:b0:21f:7880:8472 with SMTP id d9443c01a7336-22428c0572fmr416476115ad.35.1741846334652;
+        Wed, 12 Mar 2025 23:12:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741846334; cv=none;
+        d=google.com; s=arc-20240605;
+        b=j4f2DmA1LhCWzf3LAQs9BaMOj8nxVTFKcxsBqKAwjwi0Y6PcfGW+xPBmpH/5TFQUdr
+         SrlT/2icS9bgKYWlFFGqUH4FCAw5Tv54F/DJA1FpaBBLS8TBK8hLFHS45MuxlcoG+qed
+         82roCU448l8BixZEgNNX5KVUqBL6UC5WVl7ZKeVixTDVmLFcK1PioJvQ5n+ZNtMARKcw
+         jp7i3qKCJP0JI/KysPEkFa5IFft+2Sou/37+BuTEfjFrrqGVR/XUEoW59iN6V/tQfWty
+         ZtOMQ8CXKUoghoaAIa3ZSoI7R5KBb05r/2VUyD7Iq97YqTvfys6cz4FFzDmmMDBp2DGu
+         SeZw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=o2OATglwMHTuJS1XUaHVCVMiuTcJI6T6oAPLDvU0kCg=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=esKBPlbR9/AhOse3cfVxwPM5KFNi3BT6aPQJOVs6LbnPoda2ZWRRhhlLBbPa4NoFgR
+         SftX3Aqznop+GkUO+IF7IVFhtWsg2P5hSF+tvUX/E1Gg9i8aoFY+duwktBpsYYZjCGxg
+         tF3C+PvoZYNpYhCqhtr61NKGhMg6y6foM9yUcXnUu0ZLtpHUQ2I0vp5xqQe353ZgU5cf
+         BfqDSxvhyIN3F4GyqjMBbeek4k811LLBo24LjOFQEHp7WDsoUL04yfOIjh9imHwT9JtK
+         WZC0TKOYj7Z5Jd4KO21aH7hFIEnzXA6FL4rPhyiK3rtbaF7pFITFNnQkgJnjlG/y7nHg
+         Uchg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=GNkpgbs0;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c689d75csor5193205ad.7.2025.03.12.23.12.14
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:12:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=GNkpgbs0;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741846333; x=1742451133; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=o2OATglwMHTuJS1XUaHVCVMiuTcJI6T6oAPLDvU0kCg=;
+        b=GNkpgbs0hEjO6OiEvoCAT4mu73bIa18CRlu+IwfnlOfMBMqE+e9rrjQaRwvAi02cNi
+         dC2Cbkl+oLdjqtBAoquNa9eTF9PV/DJh6Tgo4mhZ2Jcbr+LqkvrG4IpQCb48Vyu13vwu
+         LqBafAJEoA+EOCFbOdNsMPLH1Agmb70uLx2NUityduDxE+QwE9j7SdszGly67H6BCeDS
+         9iwqCUA6Jy0jcSl27k0wIFttec061ci8WBvJbtpFAmio4lYD3RdoyXlWKI96SWhiD/0/
+         43PUKMu0njYaOu2HIoRLkz2jgPN/EegGZLoTEIk6pLFgIKOl0BrZMZVE7JH4gp816n3N
+         rzfQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741846333; x=1742451133;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=o2OATglwMHTuJS1XUaHVCVMiuTcJI6T6oAPLDvU0kCg=;
+        b=SuDHRfEID7rQNGl4kzRjgaIdNhnOM3NG+T2e6nVbnfvVBsOUhY+4pVQ248c8YrnCc9
+         kiNmk1GXj6Tz1gy1W2xUfSPE3NU+NY5ynnH6J1t4KsaLQZhcrD1b3K/qvRbvxiDV73th
+         vwj32O8CW6vQ2dJMZyxVIhvn4FWA4skmgzqCQZ9ewq4yN7T0ecgL7HpNSbsYkxkWL6iM
+         nxjtSl38iq5LOl4pHP0HiQr29ddN7YQCJHAdWpUSnrgJqyf/WeMHfBGgauWMKpHnCyHe
+         FZfEXAp1CDmBdS4H/CEA8cT9yIS72OLTk+PeUldAaLNMpwIutLcmfYXx9pRhERdurWZq
+         mt7A==
+X-Gm-Message-State: AOJu0YyjANg3LkWWA9qn8zt1KY1k15NAUMpLXCqFrKRyILgV1t0XHFQs
+	5DpNoISMr0aZqP1fG+HkFldXjSZ+FtDjJuqQdP1ssF0UU4LGYofydnBdcxpS9XI=
+X-Gm-Gg: ASbGncv6gxShlen0Mbz1wuB4H17rvq5eIC3p2qbsFwB7xC2AIeUpMIOYrhTSmkNnPSP
+	/U12mEnYjmwf2KvMPE6FZrDHfhTtnSLak6DQFjNiz2bHhQ8iPDvSMOIudjdXe24ctCwbZWh6dmR
+	dQsIEQV+HhIqxiJWa44PYZoGIDhuz+hu6iF0dtDUSBmLEo43dhwFzzFmdNoN9RvP/6WdMv/jp5k
+	jtE4DdeCY8xvgwdK/cgmqqwUBWRLSvFQv53eERxnGqXop6bssu7fvp9VZOHFD2gCAnvr83TzGR3
+	/v6qp+7QTgVzpt6A4xvKnQqv9bqdMyVJGJIq7OppLmg+PY0fqhswvslRb1bfYPGqoAwjIA==
+X-Google-Smtp-Source: AGHT+IEEeWW3xpl4AeFps5X316hrzb2x5DuqjVtYrpHr/jAjvIHP3TI+3nkjkH/KVN6RE6lfjIJHFg==
+X-Received: by 2002:a17:902:e947:b0:216:6901:d588 with SMTP id d9443c01a7336-22428896951mr363266835ad.15.1741846333506;
+        Wed, 12 Mar 2025 23:12:13 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6bd53aasm5612785ad.247.2025.03.12.23.12.12
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:12:13 -0700 (PDT)
+Message-ID: <67d2773d.170a0220.1759cb.1e62@mx.google.com>
+Date: Wed, 12 Mar 2025 23:12:13 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============8400749865397779652=="
+MIME-Version: 1.0
+From: Michael Martinez <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: No subject found
+
+--===============8400749865397779652==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ Subject: Feedback Regarding Recent Order Delivery
+
+   Dear [Recipient's Name],
+
+   I hope this message finds you well. I am writing to discuss an issue that has arisen with our recent order delivery to your esteemed company, [Company Name].
+
+   On [Delivery Date], we shipped the requested quantity of our [Product Name] to your facility in [City, Country]. However, upon receiving your feedback, it appears that some parts were missing or damaged upon arrival.
+
+   I am deeply sorry for any inconvenience this may have caused you and your team. To ensure the highest quality of our products, we rigorously check all components before shipping. It is unfortunate that this particular shipment did not meet your expectations.
+
+   I kindly request you to share more specific details about the missing or damaged parts so we can conduct a thorough investigation. Our team will then work diligently to rectify the situation and reship the necessary components as soon as possible.
+
+   Once again, I apologize for any inconvenience this may have caused, and please know that your satisfaction is our top priority. We value our partnership with your company and look forward to working together to resolve this issue swiftly.
+
+   If you require any further assistance or have any questions, please do not hesitate to contact me directly at [Your Email Address] or by phone at [Your Phone Number].
+
+   Best regards,
+
+   [Your Name]
+   [Your Position]
+   [Your Company Name]
+--===============8400749865397779652==--

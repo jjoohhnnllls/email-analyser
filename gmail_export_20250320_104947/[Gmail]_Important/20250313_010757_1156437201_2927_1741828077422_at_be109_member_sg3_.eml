@@ -1,0 +1,192 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp658887rch;
+        Wed, 12 Mar 2025 18:08:04 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFY+8cigc4GU+HxNq7iua3IIx/Ej356Jkf6hkuwJJqeGIAKPBIlPRZb7eSwzzJmbGGsFw7h
+X-Received: by 2002:a17:903:1c1:b0:224:1001:6787 with SMTP id d9443c01a7336-2242888665fmr318881905ad.4.1741828083884;
+        Wed, 12 Mar 2025 18:08:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741828083; cv=none;
+        d=google.com; s=arc-20240605;
+        b=fwAVxv4DVHTsgiKE/HjmHCETXJJ6htFZUgOGUmv0UbN9Dwv/G7Y8NAL/yolXh/kKaX
+         AX5em+rEbSi+PNrN3346B3R1wq8rW0no3lEm5fm+0hRPhw/HdSZxV1DrFCa+YmSpfXXC
+         Qojtt94eprtAs4G+Y3qHzP28iI8VuDjJDhsSgcel5u5bEemiiOMkvRwlieoSKbDowGD7
+         BNwSM9DHfBof/Frcrs8+Us9dYOLK2z2hQ8/hEcPaBvnMerXrEqC2jGRr2TLEHD4J2sBD
+         hSwwyLDuTHowc1mF3G7gElZPNAE51CgSVCPxDC/rps0YUxycLxMeZ56c93Cbbt76yOm9
+         ra1A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:subject:message-id:to
+         :reply-to:from:date:dkim-signature;
+        bh=17cFat0riBU4BY8AzaEcASmd187EBVy/VrL+exVaE4E=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=YlZYPZDY9j3DAL21TgGNiiaMZhcyJu6oACZzjOA4Y5YLKrwanIkRnD7IYFmDWB0o0z
+         hv+ulo3Bfdo+sMJpVgGUomdMHUd94QpaHAXh5XiA7xG9V2q1ACNo68PtHB4MaLAqpBWz
+         ItcuRAKQVuqmOK/xSCXkvTg/0OHc1CW04JEfb3fr7WXb/SU2gxyozKXOYQ2fTOEgzyaz
+         U1wOQW5jC6Eduhq2clnd/7tXDS/rwfkIDqudsFBeI7w7+PdjhJWNfylmKp1mtnnTEgcA
+         SQ9UBM9w/EpNxEbGxFi5trqB3ytfioKEMmulaSQkQ+El2SlKD6HkZw6aYFsQbDvFr+iD
+         KubQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@techcrunch.com header.s=tc1024 header.b=F42qB6LV;
+       spf=pass (google.com: domain of accounts@returns.bulk.yahoo.com designates 106.10.240.22 as permitted sender) smtp.mailfrom=accounts@returns.bulk.yahoo.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=techcrunch.com
+Return-Path: <accounts@returns.bulk.yahoo.com>
+Received: from sonic315-49.consmr.mail.sg3.yahoo.com (sonic315-49.consmr.mail.sg3.yahoo.com. [106.10.240.22])
+        by mx.google.com with ESMTPS id d2e1a72fcca58-737115208c7si302812b3a.31.2025.03.12.18.08.03
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 12 Mar 2025 18:08:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of accounts@returns.bulk.yahoo.com designates 106.10.240.22 as permitted sender) client-ip=106.10.240.22;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@techcrunch.com header.s=tc1024 header.b=F42qB6LV;
+       spf=pass (google.com: domain of accounts@returns.bulk.yahoo.com designates 106.10.240.22 as permitted sender) smtp.mailfrom=accounts@returns.bulk.yahoo.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=techcrunch.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=techcrunch.com; s=tc1024; t=1741828082; bh=17cFat0riBU4BY8AzaEcASmd187EBVy/VrL+exVaE4E=; h=Date:From:Reply-To:To:Subject:From:Subject:Reply-To; b=F42qB6LV53RdpY1Sh5rPWzgOoc+DHAwdNT4a0b3UBmytODdhV69GQ//W70Kcpb9zR9sq7lSihp08F56KkgYv/wQs5kTxwmmijk7i38LrktYseGEpiIhWQpCrCgm7Qf9ASnw/IZY+OQollUF37pchu3Y/Rw+cwOjW1t74+Of29DM=
+X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1741828082; bh=OknXmHKJBD07GIp2CEejS/exFdWI4Ar/yF0Geoqyken=; h=X-Sonic-MF:Date:From:To:Subject:From:Subject; b=GZb3tjV7fJju/BCwsiBWvu0L3VfOaGLcdSKYr33aQGld9J1peCllb/5MAL+9CXloGpah4FlbhnyJEA/jhDxgoVYFSbduKBmi/yBuoSy7g6YtIrXr5jtC8AXoUG3OTjagePGq+zYV39OlkYNqN8dP7LB3zQjpWoByIGYTYpJkZKP3x9WD+8Mf17NMJF1QnZC0+ymYROSmmgJ25mgkhEXkrZ3uWEulCKZ9XHBZz7o1wi04S8UiYd+TtXebTcT21+ArBmSx0O5Go/NvhuTiyMa9lHYfizgP0W7dr5oKARhMeanOnGRQYrP8cXNvUhQs+d3gTCA5EN46cSwCYC/p0abTEw==
+X-Sonic-MF: accounts@returns.bulk.yahoo.com
+X-Sonic-ID: ff07641c-4846-4e5d-94b6-ff9868031462
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic315.consmr.mail.sg3.yahoo.com with HTTP; Thu, 13 Mar 2025 01:08:02 +0000
+Date: Thu, 13 Mar 2025 01:07:57 +0000 (UTC)
+From: TechCrunch <no-reply@cc.techcrunch.com>
+Reply-To: TechCrunch <no-reply@cc.techcrunch.com>
+To: desgtest.email@gmail.com
+Message-ID: <1156437201.2927.1741828077422@be109.member.sg3.yahoo.com>
+Subject: Your TechCrunch verification code is 108743
+MIME-Version: 1.0
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        html {
+        -webkit-text-size-adjust:none;
+        }
+        body {
+        width:100%;
+        margin:0 auto;
+        padding:0;
+        }
+        p {
+        width:280px;
+        line-height: 20px;
+        letter-spacing: 0.5px;
+        }
+        @font-face {
+            font-family: 'YahooSans';
+            src: url(https://s.yimg.com/os/fontserver/YahooSans/Regular.woff2) format('woff2'),url(https://s.yimg.com/os/fontserver/YahooSans/Regular.woff) format('woff');
+            font-style: normal;
+            font-display: fallback
+        }
+
+        @font-face {
+            font-family: 'YahooSans';
+            src: url(https://s.yimg.com/os/fontserver/YahooSans/Medium.woff2) format('woff2'),url(https://s.yimg.com/os/fontserver/YahooSans/Medium.woff) format('woff');
+            font-weight: 500;
+            font-style: normal;
+            font-display: fallback
+        }
+
+        @font-face {
+            font-family: 'YahooSans';
+            src: url(https://s.yimg.com/os/fontserver/YahooSans/Semibold.woff2) format('woff2'),url(https://s.yimg.com/os/fontserver/YahooSans/Semibold.woff) format('woff');
+            font-weight: 600;
+            font-style: normal;
+            font-display: fallback
+        }
+    </style>
+    <title>Your TechCrunch verification code is 108743</title>
+</head>
+<body style="font-family: 'YahooSans', Arial;">
+<div>
+    <table cellpadding="0" cellspacing="0" width="100%" bgcolor="#f4f3f8" style="table-layout:fixed; padding: 5px 10px;" dir="ltr">
+        <tbody>
+        <tr>
+            <td align="center" valign="top" style="min-width:420px;">
+                <!-- Email header table -->
+                <table cellspacing="0" cellpadding="0" width="420" height="50" bgcolor="#ffffff">
+                    <tr>
+                        <td align="left" style="padding: 22px;">
+                            <img src="https://s.yimg.com/wm/assets/images/ns/techcrunch-logov0.0.2.png" style="display:block; border:0; margin-top:10px;" width="100" alt="TechCrunch"/>
+                        </td>
+                    </tr>
+                </table>
+                <!-- Email body table -->
+                <table cellspacing="0" cellpadding="0" width="420" bgcolor="#ffffff">
+                    <!-- Salutation row -->
+                    <tr>
+                        <td style="padding-left: 22px;">
+                            <div style="font-size: 12px;">
+                                <p style="color: #000000; margin:0px;"><b>Hello!</b></p>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Main content row -->
+                    <tr>
+                        <td style="padding-left: 22px;">
+                            <!-- Additional info table -->
+                            <div style="font-family: 'YahooSans', Arial;
+                                        font-size: 12px;
+                                        color: #26282A;
+                                        line-height: 16px;">
+                                <p style="margin-top: 15px;">We sent you this email because you're signing up for a new TechCrunch account with your email address, desgtest.email@gmail.com.</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Main content row -->
+                    <tr>
+                        <td style="padding-left: 22px;">
+                            <!-- Additional info table -->
+                            <div style="font-family: 'YahooSans', Arial;
+                                        font-size: 12px;
+                                        color: #26282A;
+                                        line-height: 16px;">
+                                <p style="margin-top: 15px;">Use the following verification code to complete registration:</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Main content row -->
+                    <tr>
+                        <td style="padding-left: 22px;">
+                            <!-- Additional info table -->
+                            <div style="font-family: 'YahooSans', Arial;
+                                        font-size: 12px;
+                                        color: #26282A;
+                                        line-height: 16px;">
+                                <p style="margin-top: 15px;"><b>108743</b></p>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- From row -->
+                    <tr>
+                        <td style="padding-left: 22px;">
+                            <div style="font-family: 'YahooSans', Arial;
+                                   font-size: 12px;
+                                   color: #000000;
+                                   line-height: 16px;">
+                                <p style="margin-top: 30px; margin-bottom: 3px;">
+                                    Thanks,
+                                </p>
+                                <p style="margin: 0px;">
+                                    <b>TechCrunch</b>
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <!-- Footer -->
+                <table cellspacing="0" cellpadding="0" width="420" bgcolor="#ffffff" style="font-size:10px; line-height:20px; color:#000000; text-align:left;">
+                    <tr>
+                        <td style="padding-left: 22px; color: #878C91; padding-top: 30px;">
+                            <div style="margin-top: 10px; margin-bottom: 20px; width: 250px;">
+                                <p>We&rsquo;ll never ask you for your password in an email. If you don&rsquo;t trust a link in an email, sign in directly on techcrunch.com.</p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

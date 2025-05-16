@@ -1,0 +1,111 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp769782rch;
+        Wed, 12 Mar 2025 23:39:40 -0700 (PDT)
+X-Received: by 2002:a05:6a20:2d24:b0:1f5:7007:9ea5 with SMTP id adf61e73a8af0-1f570082691mr28496176637.2.1741847980440;
+        Wed, 12 Mar 2025 23:39:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741847980; cv=none;
+        d=google.com; s=arc-20240605;
+        b=jd3i1FMXE7QHvr1qn/XzrIecQAGUmlm7DcOgk48ATvPdNXA5XkP/O6PPqWxdKcQruw
+         o01J4yNcvTMk+fP5FMoU+T/YH0wXcPBFQgkGeIYZAPtQUtxO5NwavQeAfk6hx0h5iTjE
+         OVeFfdiMLYnMfknBOLMLjGgJ+sziwbf0Wm5tf/jOqQGVuh/TVW3JfdE2sCjpMTf16uHG
+         YSnc/Or7QStyTUdD2Fd0aMuW92Cj5kSTIiOUktEwGvFj8vuXrX7e8aQb03G4ujVDwoTE
+         ThwA3CVEvxZOI5aZq6A5G4br2jqja1+RanTeo0JGy+E186c2VmTu5qfyzh764TC7X8ns
+         sZBw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=xQiQODdLyutQ5AJzfeOoQmLzo+lBKBRiAaPdB6h9khQ=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=V6rfl3Cqz05Vp8pVtdC0cJicaawS4KSW7O6pcv2/tqf2/+Ls4NZ2YuA/dZXOGmKQ97
+         uYJkPRG2Md4hU2zttTSc4VZhmmQ6tDNuhajZNPYUFvsUO+rMm6ZV0oq5RJ97KpbOMes4
+         ndU1uzj1ayKx1I9p/z2NZrBp/8y1x+VLcKYf8I4XUREPEf/Zggh2FZs+a+PP0q29kdIO
+         dmMJrn95Q4Yse5Hcg7kO5Br9OMuGj6iGRdNsU6MrXqx14+fF7f1Ly48lrKBwhz5KYP2x
+         4CmQRgwuERydu4TUnsNPGJtWYldNUxDALqhQIXFuDLFHaBP4ei/roKVy2bDgpgKSwwkX
+         knPw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fvKddPkt;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-73711689fe6sor715428b3a.7.2025.03.12.23.39.40
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:39:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fvKddPkt;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741847980; x=1742452780; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=xQiQODdLyutQ5AJzfeOoQmLzo+lBKBRiAaPdB6h9khQ=;
+        b=fvKddPktTeKKgQHjT1XOeMPbeUuWzzN1xREbJTBMt8wSASG4mU198j7aSkOIRIy6KG
+         A0+Fppt39MYCaSLvFiRHmJpWsgSkt8gOIL7QuDCfB1DITRH+rOgLHEyP7aCeA16RLHkk
+         Q8Uo8eye8gtKaS0j2Vpr+iD1Zdi7tW1dCTgnYL6vzL4Vc8sqtSrJIz+wcLStdtOHOTe2
+         c976KV0QSg1rfXtsOchcDJrmriyXbGHNkjarYu/hBZZPMMbOopCwdnRInb+NoVVTJjYu
+         4bZD7zhmwB00RfvxRtgKKEQFdHmdWIdlJ6MlN5hSFjBDGFHfNjpOYV/HQQKh+nFXc0Tl
+         06pA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741847980; x=1742452780;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=xQiQODdLyutQ5AJzfeOoQmLzo+lBKBRiAaPdB6h9khQ=;
+        b=v/++W0riqs8u/Mjj52ORRS4RxGMqMQN12mw/xBN6cI6DrLGU5YzXLNLJXaAIj1HZgL
+         gw+Vbiv5brdyt8+89wHTB2hKgN15mY2bQpt1aDwTJDtidB+CaG1FLzbrj+xaM4S21oYY
+         0rLj53/BVuG8JXFpV4f6D9xY5PPb1zRqfa6yk3drIBuC/5cWSvbEhiR+lK3Z3JXybzKk
+         pkrtHP5pp4+RXy7ac/OIRj38REtqRPgRxCQjxfMr64/09VpnxQvHbh1AFlauowyk8GNX
+         Dw2sZOGTgMT4K6uLkyJFsL3X/w6fTbpJc24gNPwCUvXS2pa6hnatkQ6179OaXJfgc+B5
+         MJ9g==
+X-Gm-Message-State: AOJu0YzfhS63PBskoGMunENp7cVFHYYyuJW25gUCdsaGQ2fglJDTZ+Ln
+	EJ2YeXYqvkGdClafSoplSyOydQD8YQOvFdMRiiE4nNDdgpE0htJgWkI+X9Dd
+X-Gm-Gg: ASbGncueY/a65WrMFb8EPSCK3vwjidWoIdk5z86vSdcKIh7nGAr9yc11Si7WWADpqtb
+	RuAX4RKLt0MM/5jz6Ri2XL+AK53bIweB/PPVmLpnOnBhtAlrJb5IpXFnkzgemN3j56ydG7uAJZY
+	IwMlyNR7w5UebrJcp+/cUHqrZGASI7KMQD0zad1StWf0ScEQCceHqgsbHDdWAsT+tyI71Py5uM6
+	CtWle3dPIAY2lVOXWGLZJWDXwGcx3N9OkjOJj+4BfDWIhdJHzjDcrlBwVPNQIkR6yaZXGCeMT09
+	GLo6+ZIh5iYrYmqYkmTSwlBBdN+PIGXlt/suHhVOOzS5ny7R99JrTiB1527YvwSCixCUN0yVpBX
+	cTP5t
+X-Google-Smtp-Source: AGHT+IFdHAXaAoYseTyeiJ2iWFTmpKqw4hxfpxPnnX00r8ip16LvjpOpsHW2Kpvb4NtSIzUeyOFvmQ==
+X-Received: by 2002:a05:6a00:13a5:b0:736:5822:74b4 with SMTP id d2e1a72fcca58-736aab15c01mr34879417b3a.21.1741847979690;
+        Wed, 12 Mar 2025 23:39:39 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7371155077fsm599298b3a.37.2025.03.12.23.39.38
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:39:39 -0700 (PDT)
+Message-ID: <67d27dab.050a0220.2d63f1.1cca@mx.google.com>
+Date: Wed, 12 Mar 2025 23:39:39 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============5762374007846798205=="
+MIME-Version: 1.0
+From: Linda Gonzalez <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Follow-up on Outstanding Invoice #3478 (Payment Due by March 20)
+
+--===============5762374007846798205==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Alex,
+
+   I hope this message finds you well. I am writing to follow up on the outstanding invoice #3478 that we sent you last week regarding our latest software licensing fees for your startup, Augmented Reality Inc. The total amount due was $10,500, with a payment deadline of March 20.
+
+   As of today, we have not received any confirmation or payment from your end. If there are any issues or concerns related to this invoice, please let me know as soon as possible so we can address them promptly and ensure there is no delay in our services. We value your business and would hate for an oversight to impact the continuity of our partnership.
+
+   You can make the payment through our secure online portal using credit card or bank transfer, or contact us if you prefer another method. For your convenience, here is the link to access our online payment system: Example Insert secure payment system link
+
+   I look forward to hearing from you soon and resolving this matter. In the meantime, please feel free to reach out if you have any questions or need further clarification.
+
+   Best regards,
+
+   Example Your name
+   Example Your position
+   Example Your email address
+   Example Your company name
+--===============5762374007846798205==--

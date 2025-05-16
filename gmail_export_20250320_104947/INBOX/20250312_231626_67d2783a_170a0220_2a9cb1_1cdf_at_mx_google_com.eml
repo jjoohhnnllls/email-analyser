@@ -1,0 +1,104 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp761378rch;
+        Wed, 12 Mar 2025 23:16:27 -0700 (PDT)
+X-Received: by 2002:a17:903:1a0e:b0:21f:7880:8472 with SMTP id d9443c01a7336-22428c0572fmr416631275ad.35.1741846587430;
+        Wed, 12 Mar 2025 23:16:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741846587; cv=none;
+        d=google.com; s=arc-20240605;
+        b=DrnynN7XwxW861BROlYMWvgz9xevUBSp3MG/dEIDZ+9sLKsrP/+mfAUDFaGsiXmeSl
+         BN+XJWSuplI7MBJk40MSuH7jxHDRB3PzLiqMopQ61HepPUL6slbITjsGNMKMRJ7vbEXC
+         tmWjVYB9+dgL8sOZ10dqBpX7+W45j3G7e1znDFQ9uinY+Cm9cE31Fa78KplMmQj0SBhn
+         kRl4eTmR69dpfDGXdiht0Dk4TOQSP+D5olGbB+1VQ4FkfETxRelVCgCF+8wNP4o59w2q
+         2HJET6ODK76QJfhjKcKVTjrP1Ug2+uLg0yt3+VKuKJJVjypBZy45/Ob7MmP3zIxvbRGO
+         bH4w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=TC5y9XHHpJQuMs0YWrJl2sVaUJH7w2EYDgmh/iYMpzc=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=XjzSovv46CvJLihwdxR5rDk2UFzyD8l52/b8SYdzdXiVd2XgdX08wnXSiMuiAWyrVh
+         +Oe0PIK/WP2amxLKhBKxdARfKOPKZP3nSodvMmjnDLhCyZcTYOAhMaRs0D5pTAVcZsAz
+         B4fDRN6TspWWhrzesV6jfohF+GcdIvStZFGMCTIyilzEePqUtY6cGQTFrAkKhKjxaRM8
+         leyAraXfJ3uANshuG5LQy6XLrv6phIFeWbt0vYZmew9omhuPk8NTUMCp3NtEmWKjM0mT
+         qcyWmzxzMf+y/OiRRQT/IWMdM5mSETMietBThHpDz3v1KGJxjNJCW3IVD5GVJIvpQyUJ
+         XAnw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fk8fSShj;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c6b5db73sor5548505ad.16.2025.03.12.23.16.27
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:16:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fk8fSShj;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741846587; x=1742451387; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=TC5y9XHHpJQuMs0YWrJl2sVaUJH7w2EYDgmh/iYMpzc=;
+        b=fk8fSShj7OpAe+0j3Vd23DNSb4tGoHRVIIeV0zAdNJ8fClDEisd2KrpACvhOaTPxLF
+         /sMVDn7XNqwfkTldqqmB8P7ylqvfJzbRWhH91z7oAFbKaYdxxqnmyvWfmWcCxw9APZ8D
+         zWhBrF2PEDvQzoTgg9jSdHZ5jDInyP+EtQ5OYKsvmuPJ/x7ypCphHgzLf/i9xYkMhD42
+         Q+qcTqtebM6KA3qM69CusoaB49pWVRf0XMC7krB5GKlO5wkRCibj5d8A3S8Zgdn8/7hL
+         A1SZSNgvkRuzpfrcswl9Q3eFfVl0dVqbMCL3c+fy1c0vT4UvEugd2YE77mywIBCueDnm
+         D4rA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741846587; x=1742451387;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=TC5y9XHHpJQuMs0YWrJl2sVaUJH7w2EYDgmh/iYMpzc=;
+        b=jdF+kKDx4VQQ3YdE//tIXcNYIPjjEESNNlWJSEUaNWsixeyqobyLi6heqO5H5mg7XB
+         Zb9OmiwV0xuc/p0fQHRV0lvHZLT6ubdqQniI5+n0PA+ffSvjYXgZNU9tqvhEMEmS4z1V
+         n5RGbS1uhieXmvFlvb5v7IY1m84z3Bo1QYewtecnko0hKyP6mxQ/Mjn3ZjieiYkDgtmc
+         KS8o6AInsE4hER5JbmdRDaca/3l0wsIpWyoTE8ltecKkFdtWC3wP8SJmJT54dOzOfc7j
+         Gq140XGPADSBnqxj9bVEcV9f0J7/xVtKpLbC9Z4JgRiJ7GT/NXyVAI/Pz9CBt55w22VT
+         WUmA==
+X-Gm-Message-State: AOJu0Yz7hoWm8cCZ6FEXyXfsBvtKVKCz14utX9g0dJ/WN9/ZH5iZXVHA
+	F5Ftcn5jDEdvUaBKnMSBc5FDogXelOSJdyYp4TDDberFM+BFIIls/HpuKKs+dyE=
+X-Gm-Gg: ASbGnctIzr3iTBWIDDx2cz/+1Lx5d61wPoxCkb5wk8AXfDPQ77oOoDtm5ERZ+9ppClC
+	sUewigdfFXaNwLq1ZQcuL+SuBkBDnc+WXfoXpziZyH/E0jOr55RcwbVrwhShkY2xw4mJUkNZVKl
+	T3HF60N+pfZr6Jx4FJ8TaeTKQl6T1tm0XslMBxN1gjBgmtaXo8RerXvdSmeZsgKlCI2Jqj1mkFW
+	zboLtDxGbERqOnNzF85aHJLTKIx7a7oTVqBJ9iEgk9FiWP+aXOneVekiGGLpWXBGHqbo1E0Y9+6
+	fCZgKL314djms1KGd92EUnMv8XXqc7eW5TP+M2m/RfTacIwq2lmz0w4mKivhuFI2sW9p6w==
+X-Google-Smtp-Source: AGHT+IGcye8yPY6P9966faJ8I36ADzWPI1ykRNIwvCj+sRV4L7VO8indIxsnwW368YMyU/3nbFrNQg==
+X-Received: by 2002:a17:902:e802:b0:223:44dc:3f36 with SMTP id d9443c01a7336-22428c0f1c9mr366737595ad.43.1741846586751;
+        Wed, 12 Mar 2025 23:16:26 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c68a403fsm5823925ad.61.2025.03.12.23.16.25
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:16:26 -0700 (PDT)
+Message-ID: <67d2783a.170a0220.2a9cb1.1cdf@mx.google.com>
+Date: Wed, 12 Mar 2025 23:16:26 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============0260411209208436627=="
+MIME-Version: 1.0
+From: Test Sender <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Test Email from Python Script
+
+--===============0260411209208436627==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+
+Hello,
+
+This is a test email sent from your Python email generator script.
+If you're receiving this email, your SMTP settings are correctly configured.
+
+Time sent: 2025-03-13 14:16:25
+
+Regards,
+Your Python Script
+
+--===============0260411209208436627==--

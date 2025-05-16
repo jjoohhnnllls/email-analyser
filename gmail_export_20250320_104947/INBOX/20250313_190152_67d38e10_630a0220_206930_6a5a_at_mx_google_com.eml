@@ -1,0 +1,113 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp349228rcd;
+        Thu, 13 Mar 2025 19:01:53 -0700 (PDT)
+X-Received: by 2002:a17:902:d4c8:b0:223:33cb:335f with SMTP id d9443c01a7336-225e0a19355mr8643955ad.3.1741917713203;
+        Thu, 13 Mar 2025 19:01:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741917713; cv=none;
+        d=google.com; s=arc-20240605;
+        b=XwZ4K4v0uLmLP7UBvMuL+IgnKLlIfuBrmikMFRUAgThvI4kaxrO90A+q3BDfVKyTZZ
+         4CARvivFeelpIhy7yK9+QQEyBg0ZKyLUvAR4NK47g8kmVxBANIzZXJ3glMfPJY6Y59oj
+         JjLIJ6xQswZm1R1n5oO0rQDGhRZk6/DF2gCOYWDMiZXc+7iNXZh0eRjlvOA4ChCBUxL+
+         79H62TYJxLAhD/pyetZ3qLmn77w/c04KGWS0VgwKCNi9oeeIS8bMHCbopaPW4ECU+qDF
+         xrLzsupJt71Kh9/xqiflAsXZkJu1qQfs+3oYNdkAEPo6qC951IGpnwQtLBp/N7kexolE
+         L21g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=cyKuwprV+IW+cA7RumyAa9IrIMiieu1DURm7o3ydnNI=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=GuAhwdairR6JJjK9+hoysDne4VnMzv5Bitbw/JliDVYIawHajh01t2/F02QPOjYJOH
+         M+gSmk1RU0gFQ35MU6SzO4r3dPnBodEZSsnSduoF0QrEJukqppKtZ9hkDv4vzBaHRoen
+         8STaDFO2h0ho8wnNAE8vx+p98WtCVoveXmB7Yh2xbpaUhdF1ua9Yf9odaWsSJOxIid78
+         vv+49xaijmRNtmMYXuVRT7ww9y1c+5/6oepCL47Ja4TlENz4FTLfQn2dchk9FPZUuLDd
+         8GNv1XsOtz09AFfFbl5zCnkmuPSK66fS9vmpFRhH/6Ts/RnLvzcgpbKAAiVyF8Lm8e4F
+         rzHA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=MbG7g5wL;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c71ef854sor16346835ad.16.2025.03.13.19.01.53
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 19:01:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=MbG7g5wL;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741917712; x=1742522512; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=cyKuwprV+IW+cA7RumyAa9IrIMiieu1DURm7o3ydnNI=;
+        b=MbG7g5wLmcBZKlx+AakY1GKqsQmBKi8PB0CTpsoj/8eV6fqXb4wNQ1rTVHCvLp/4Xl
+         l6JMWyjgaJ1HA5i2tO8y5VRibowjl9jN64qEWp2TNzF+nJ0BP38bSO1C3Sdtk6rXbRWZ
+         c3itTONGI+HJ0RasaanE3SRUmZyWC0UEYBRCDuTTkhJRVJI+SDtTlQBZQ7fMyzGweV2/
+         A0Rt76vlMQPZtcI+hYC88sJ1DVphsnVA70qCvKqh06TCUxYPSS42vr4c1rLdyNB/joOR
+         GMfppnlLAnU7FVMLg/Ey/ctpy2hiSgM8Rmqtx3iPl/xbycaYPizewWL29OH/E0y+zKS/
+         B5DQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741917712; x=1742522512;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=cyKuwprV+IW+cA7RumyAa9IrIMiieu1DURm7o3ydnNI=;
+        b=dm8NcMEIR4cK0Wzde0JX/UzIGtoqU+V012MSlXi4gNwL6aM9orTahyYFEXnlguqmUg
+         W+n2sfxUAiOHF1DW+PWfoUlMohS3sqSZiaYUcg3dteCTZ+kobBpPdzPJjUVIlmR+l0uS
+         5qLJBPWuQMRU5YtC8r8c49MM0HgECyQj+kwoi2SExd1xbOz8RGDYVTn+PzTw0wkGwvOD
+         YRdugAkr3r/AB1B01kqVvB/vzgQVPj7wi9C7RC3vpAW09y8dispE3maQGRDo3Umczy3t
+         HXDeqVsNQ4twbRLMGy3wYQsX69GNyp+n/jNfFFtjZPKsQFKEFC+NINWwCjWtslzHCy5R
+         87wQ==
+X-Gm-Message-State: AOJu0YxwjVFFk33whI7GlCBotlzZvKGif5CRUa0181IGaABbbcpGutvq
+	MjGO9DFiqMoWdRVmNMSRwp/DtbTSDqn8MhkpiUlas6EEW7ZRe7fjLPQ5Ekay
+X-Gm-Gg: ASbGncuONx+/MAiocufD+hAQ02SljW6f1LLmWVVTZ90Q7YarG3nmQlYiYrIG9k9iMG2
+	0N0IeHAfDaWJpyEo62wh6+Prld88fJFueA3X03LFYi8x1ylt51WxH57DLT6yZRYHRADqZk4W1dn
+	HYq9H4+OPc8OtgLPlJkIsyXs0U61pNbbUk3mdWrmYVjb6dcrfHBXMPcb7FPsutUPM1AFexfDRM+
+	Tc/TmJnvVfygscFdUglWfUvx6zKW//y4e2LpNdXjippD81Z/EMoXSlQE+sdliwM92FAzvQPWuf9
+	HwH18/NfrFsBfZcN3wzjxrmXqmGsoICd5Toock4LXWN2kpS3cGDuSZIlxLBU7JPl/FHyqw==
+X-Google-Smtp-Source: AGHT+IGa6ucTFAokTpZIJqpM3yi1vWvZJoB1Q9bjtj0cBbT8lU3/CN6/e5Q3el5r3VfMZSl/4EfUGw==
+X-Received: by 2002:a17:903:41d0:b0:223:37b8:c213 with SMTP id d9443c01a7336-225e0b2a363mr11357645ad.52.1741917712441;
+        Thu, 13 Mar 2025 19:01:52 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-af56ea96e58sm1977186a12.78.2025.03.13.19.01.51
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 19:01:52 -0700 (PDT)
+Message-ID: <67d38e10.630a0220.206930.6a5a@mx.google.com>
+Date: Thu, 13 Mar 2025 19:01:52 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============0276961818103000738=="
+MIME-Version: 1.0
+From: Modern Travel <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Urgent: Unsatisfactory Service During Our Recent Trip to Bali
+
+--===============0276961818103000738==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear TravelEscape Team,
+
+   I hope this message finds you well. I am writing to express my dissatisfaction with the services provided during our recent vacation in Bali, which was booked through your agency.
+
+   Booking Reference: TRV123456
+   Travel Dates: 01-JAN-2023 to 08-JAN-2023
+
+   The hotel reservation at the Blue Lagoon Resort was incorrectly made for the first two nights of our stay. As a result, we had to navigate through the busy streets of Bali late at night to find an alternative accommodation, causing us significant inconvenience and stress.
+
+   Additionally, the transportation service arranged for our airport pickup was nowhere to be found upon arrival. We were left stranded with our luggage, which added to our frustration after a long flight.
+
+   I have always appreciated TravelEscape's professionalism and attention to detail; however, this experience has left me disappointed. I kindly request that you rectify this issue and provide us with the compensation we rightfully deserve for the inconvenience caused.
+
+   I look forward to hearing from you soon regarding a resolution to this matter.
+
+   Best regards,
+
+   Example Your name
+   Example Your contact information
+--===============0276961818103000738==--

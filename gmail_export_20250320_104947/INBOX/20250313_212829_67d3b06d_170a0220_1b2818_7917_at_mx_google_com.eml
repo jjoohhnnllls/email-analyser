@@ -1,0 +1,108 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp399449rcd;
+        Thu, 13 Mar 2025 21:28:31 -0700 (PDT)
+X-Received: by 2002:a05:6a20:7f9e:b0:1f3:36f7:c0d2 with SMTP id adf61e73a8af0-1f5c1322bd1mr1733048637.41.1741926510742;
+        Thu, 13 Mar 2025 21:28:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741926510; cv=none;
+        d=google.com; s=arc-20240605;
+        b=D/gUVlbT4WxmD+dxKQL66EI85C8vOdCbglPhvAanthQ2ZsqET9Wiz0Y6DbA7B11aWz
+         v7bJBy4uJcO9ZiMI+mJtpeFnH43Daau9ty3TTzZ+WFLfyjCSDD5gX1NjMeaC+E5JcnZ0
+         PP9IZFOoMlHELUWEg91wKwFoxoC35flcygbiOIjpGMjPr4GMZ1Eyn3dibyWu5+5w5hd/
+         IcXC2sa4AkPsBGV59l8/MO3XdC+0rh56TjnrseUk8ppXJe5VJBeZzYZX1F6PPeMw3JMg
+         WR3WDXUo0iAUWOKrV34gpcAmKe9qOkruq16qZD7zsK9mf3CTcyVGikPjr40kLwzoPqwk
+         qsIw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=FrCSyxJojWLaFmHg47sxAQe/uEobG2EhHlS1HaFKfjI=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=CIPJB/8U6TKo2/RW9f4UE9jFnFMk5Hl6Eyl10f1yyRS9q9RmuVvKJklgw+Qc1h0qsn
+         5OeJWJetkf5Hys/OUqSa5AxO0cwIFqyPsyvIr6KFb4cX5t0vVnleFvD+9RhCLAlK7iC3
+         gowsn0YLU1SBT5+RwINpfX22y9IJGOz86u1JI3aHXuFxyKn/po+36sUIsDkRrYhrURc1
+         rtSWEZHJX92Vimgf6rhdFVsHSEk38NV0SDTbylwVl+lotlU22C9SPlNGpNYDxEJm+OhF
+         uvJZTWcNXSZ7eAuu5XyiZ/N04kNDiE3Xi8aT64dtGhRRuBy5SJDNA1aR2gTVRC2tE6MR
+         Khbw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WgWNJafU;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 41be03b00d2f7-af56f84b119sor1434476a12.0.2025.03.13.21.28.30
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 21:28:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WgWNJafU;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741926510; x=1742531310; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=FrCSyxJojWLaFmHg47sxAQe/uEobG2EhHlS1HaFKfjI=;
+        b=WgWNJafUlSpAI0FFYKaSa1JYYQoGghiupy6dGC5lB+QP4l/3oJEsJrfjXtimkCBK69
+         HJMSrPRmnDtx0PQs0ym1RaeX1atFddz6tbV1ypfsWwlezXcbK2Zhb3Uh48J8f6N93oE1
+         sK7zXrv1ekqWQtYZvSTy6/AnE4nH3zp0Ml9uL+4NNWHN+EpMTi0bYtoQNQMmNTgiQvm5
+         AJLgLfOilk+lCLagtMWkHT2yn9NzlJfhRpy3tfptDLnPUsJ7TlLCkSzS6a+HaowP77b8
+         DfaismIqD+MFjplx4C3WgLCbHM7Dgf0ucJhDfsMOzoX31bA8wuh96elLXSFRXMScMy84
+         i9PA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741926510; x=1742531310;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=FrCSyxJojWLaFmHg47sxAQe/uEobG2EhHlS1HaFKfjI=;
+        b=Tpqm8ZfJ2nPpBqxPGyhGY2SFnOUqFHBUrJ8BpTPpgpMoIK24b1b+mipgE5+Q1Bk6RD
+         VjcIPFNmg4z/W2FILKTY2hCqCqSYNuxP0ZWZzLTrH+W1oC6gTqDXkKf5dlDyA0N9x9MJ
+         NqUMiZplMYqM8GqZT1wVC9jmp7FFlbudjcB35/A7cj1ALlVqRpWUD2NHf0J5yW6pxQPU
+         pghP0zlklg3FRCeN4Zyo34eia/pU2MXNnI4Bsgo0FocCP1HZxN+JGFIGeXYhaUccVZMt
+         PFfkMay7PiiGeP63JUV862a7qN/8co3S2SBUu8bfqciN+knEvPghjF+VBNtFWfM9JJUg
+         caOw==
+X-Gm-Message-State: AOJu0YyOHJ/Ytb6B7wMU9kJM7LtV4be656dujg1Jn6I/V69ULWoLhtM0
+	EO+AhVPxaE8f7fTj/TLSpd/lAzaAAzTXysYCSU+A57ALrvqF1PRZs9kcubrE
+X-Gm-Gg: ASbGncvhXt/vY+zCP0IUajewL16CpzUvHQ+itw6g1NfSsUBDRq4p4Wdcdo8CkhZlBda
+	4QR2b7fyANvGE3FXYvZKNjHnQ+jFOHp49J+F3hxllNy4s+6WWz1ccLsRykvKsOoIezkOWKmLHQf
+	NKlfjritlpAqyKNAsiVOuLW7+atAFYaFJgIJTVAF1cO0bmWg2K3p8dKRw5g9tZJS5A6De5/nJjw
+	AbkeFfi4Wo0WwJscLmuNgGXsZI7LlaUgAM/BmQGBtvWPEEZ4CoFGpv9seCSE5FPuSdqvMHRQIoQ
+	fWvT0RbQeWIv8BEkIOJlqIcfOD7tPMkxAaH/M/cUrn9f1wNJBAMkojFWihRkilpwZAIPMA==
+X-Google-Smtp-Source: AGHT+IGBYP/gPPjTwnAv+kkmv1J0qIW6/ex7fHHVVQ7dc9q/KeU7OL0ERfSuwZRytTCvZL5eIRwnNg==
+X-Received: by 2002:a17:90b:56c3:b0:2f6:d266:f462 with SMTP id 98e67ed59e1d1-30151dc756dmr1464639a91.35.1741926510051;
+        Thu, 13 Mar 2025 21:28:30 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c68884ecsm21935715ad.5.2025.03.13.21.28.29
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 21:28:29 -0700 (PDT)
+Message-ID: <67d3b06d.170a0220.1b2818.7917@mx.google.com>
+Date: Thu, 13 Mar 2025 21:28:29 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============4167082711102791658=="
+MIME-Version: 1.0
+From: Thomas Taylor <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Proposal for a Collaborative Meeting on QR-Code Tech Integration
+
+--===============4167082711102791658==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Alex,
+
+   I trust this message finds you well. I'm reaching out from AgileTech, where we're currently developing cutting-edge solutions for the retail sector. Our team has been closely following your work at Retail Revolution and admire the innovative strides you have made.
+
+   Recently, our team has been focusing on integrating QR code technology into our product line, aiming to streamline user experiences and boost sales conversions. We believe that a collaboration between AgileTech and Retail Revolution could result in a synergistic partnership, benefiting both parties significantly.
+
+   With this in mind, I would like to propose a meeting to discuss potential areas of collaboration and explore the possibilities of working together. The meeting can take place on your preferred platform next Tuesday at 3 PM EST or alternatively, Thursday at 10 AM EST. Please let me know which date and time works best for you, so we can confirm the details.
+
+   I'm looking forward to our discussion and am hopeful that this collaboration will be a fruitful one for both companies.
+
+   Best regards,
+
+   Example Your name
+   Co-founder & CTO, AgileTech Inc.
+--===============4167082711102791658==--

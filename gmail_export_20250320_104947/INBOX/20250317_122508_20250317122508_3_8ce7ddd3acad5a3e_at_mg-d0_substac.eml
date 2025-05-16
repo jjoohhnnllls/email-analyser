@@ -1,0 +1,1737 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp2296284rcd;
+        Mon, 17 Mar 2025 05:25:19 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFCrC0tjOgByXAyRJUh3c321w8UgL8Bvc22ngstRGKHzMUlWNMruUT7Utm+vDVFEr5j2ibE
+X-Received: by 2002:a17:903:3bac:b0:215:8d49:e2a7 with SMTP id d9443c01a7336-225e0b2a42bmr132134345ad.50.1742214318957;
+        Mon, 17 Mar 2025 05:25:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742214318; cv=none;
+        d=google.com; s=arc-20240605;
+        b=esV2YJKQzOfg50KICosfb+Ww2oTnL7y+LSJ7UTarZFxX8y8RfUxsVdYeOks0qCJBsc
+         zr7fEjoofLq0rRSNi35qJnSZdhoNt4FgCgs4MysbMlxEXN1kRbil7rtc2b5BpMHg2cQP
+         vU9t1c2qTGn5CBVCYvJUJhG7/gCp4GPYN/tVal9g6VneVxaEIfioP1Bioytgr718TMPE
+         Wj6cR0igO8ZQrPcs0ng+B4Go+/mq4T7peBdu4yxlLLcJjfxrcX2BxPCd7IlJ48u7M62q
+         gBNoucHkAjE8LIiM9Rxr4gRLaFzJB3I2F80tuvNGbJHcxcoruHR3MUqAXsAPVjAwGSh6
+         E8Og==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=list-unsubscribe-post:list-unsubscribe:list-post:list-id
+         :list-archive:list-url:list-owner:reply-to:in-reply-to:references
+         :sender:feedback-id:date:message-id:to:from:subject:mime-version
+         :dkim-signature:dkim-signature;
+        bh=fKl0jJIRit/hKqORkWj/AtBw1lUYhMBNz27Ec5Yugoc=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=Z8bAXMMlYwnAPEPvtgEpx6KQQkVJ+1jo9C2157Fm6j981r0JU92ZX/K/SRxlJLZpN6
+         GceUNeY+4SIFvR50zCGDEFAQq85PrNzAQ1jMDpSuySCdvPW8kpRBeMuZeTnJbbOOf+Ee
+         TIsha/DC0A8Ff/ngmL19dxH+su/wTHGqR29AOCinBNmYcOEUbvE8ahPeMY9luQ3waBIu
+         IW8rhVZrctOg+Lmo2sxEkxfXVZpQEZOacSiunPT12FpaB6Te9lsp0vCdCXGc2+ixvG87
+         sb1hBTk+39BFayXv/dfgw7KlokoCm6Avmu9RlXSEWrZyIFSkxrJp55F6kzCaj6EgVlJZ
+         dUTQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mg-d0.substack.com header.s=mailo header.b=j0k7oaVk;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=sv5fZjR0;
+       spf=pass (google.com: domain of bounce+0c4ef0.63af5d-desgtest.email=gmail.com@mg-d0.substack.com designates 161.38.202.170 as permitted sender) smtp.mailfrom="bounce+0c4ef0.63af5d-desgtest.email=gmail.com@mg-d0.substack.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=substack.com
+Return-Path: <bounce+0c4ef0.63af5d-desgtest.email=gmail.com@mg-d0.substack.com>
+Received: from mg-202-170.substack.com (mg-202-170.substack.com. [161.38.202.170])
+        by mx.google.com with UTF8SMTPS id d9443c01a7336-225c688e521si109787295ad.16.2025.03.17.05.25.18
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 17 Mar 2025 05:25:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce+0c4ef0.63af5d-desgtest.email=gmail.com@mg-d0.substack.com designates 161.38.202.170 as permitted sender) client-ip=161.38.202.170;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mg-d0.substack.com header.s=mailo header.b=j0k7oaVk;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=sv5fZjR0;
+       spf=pass (google.com: domain of bounce+0c4ef0.63af5d-desgtest.email=gmail.com@mg-d0.substack.com designates 161.38.202.170 as permitted sender) smtp.mailfrom="bounce+0c4ef0.63af5d-desgtest.email=gmail.com@mg-d0.substack.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=substack.com
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg-d0.substack.com; q=dns/txt; s=mailo; t=1742214318; x=1742221518;
+ h=List-Unsubscribe-Post: List-Unsubscribe: List-Post: List-Id: List-Archive: List-Owner: Reply-To: In-Reply-To: References: sender: sender: Date: Message-Id: To: To: From: From: Subject: Subject: Content-Type: Mime-Version: X-Feedback-Id;
+ bh=fKl0jJIRit/hKqORkWj/AtBw1lUYhMBNz27Ec5Yugoc=;
+ b=j0k7oaVkz5zWlvEOTnBCC4qiO5AKH0p/O0RMWuAkzvgtwLvKZgOnCsr1/tTQ7j4DeJBTxvusHxrTs4mt54vu+FLuagbMwcS1UGxedL0sCZpGehqcJC7unXtKQTHc0l8w08i++k3u0kvt/lgOuazomsBUBbm8AbHbbZf4kX1pFpE=
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mailgun.org; q=dns/txt; s=mg; t=1742214318; x=1742221518;
+ h=List-Unsubscribe-Post: List-Unsubscribe: List-Post: List-Id: List-Archive: List-Owner: Reply-To: In-Reply-To: References: sender: sender: Date: Message-Id: To: To: From: From: Subject: Subject: Content-Type: Mime-Version: X-Feedback-Id;
+ bh=fKl0jJIRit/hKqORkWj/AtBw1lUYhMBNz27Ec5Yugoc=;
+ b=sv5fZjR0AZHBgdTJzmWbSnCY7Rr5cbMMmPdyaR8hM92jJkkhyjwTV1JMjc+w7oWfyrp84tl03SWzh0QzZrkIHB6dujZ+ewv5jw0wrLGwcS1zCrk9pFPX7kyW9vB23n6Qnjnt45BRMT3vCcl2YzZW19RxE9veUR1dWfgR5vt9XRM=
+X-Feedback-Id: postmaster@mg-d0.substack.com:post:6148c7d8a45790427cda307f:mailgun
+X-Mailgun-Sending-Ip: 161.38.202.170
+X-Mailgun-Sending-Ip-Pool-Name: 
+X-Mailgun-Sending-Ip-Pool: 
+X-Mailgun-Sid: WyI1ODRiZiIsImRlc2d0ZXN0LmVtYWlsQGdtYWlsLmNvbSIsIjYzYWY1ZCJd
+Received: by 9b37a9be25e3 with HTTP id 67d814ac5e0ebb77ce823019; Mon, 17 Mar 2025
+ 12:25:14 GMT
+X-Mailgun-Batch-Id: 67d814aa6f7a8e691a9a289f
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="60ec2c019db456570cb56e98ad154785209a88032791cf2476e81cc2937c"
+Subject: How Independent Labels, Artists Can Win the AI Race; Apple Music Classical
+ Available on the Web
+From: Platform & Stream <platformstream@substack.com>
+To: desgtest.email@gmail.com
+X-Mailgun-Tag: post
+X-Mailgun-Track-Clicks: false
+Message-Id: <20250317122508.3.8ce7ddd3acad5a3e@mg-d0.substack.com>
+Date: Mon, 17 Mar 2025 12:25:08 +0000
+Feedback-ID: post-158040826:cat-post:pub-1243763:substack
+sender: Platform & Stream <platformstream@substack.com>
+References: <post-158040826@substack.com>
+In-Reply-To: <post-158040826@substack.com>
+Reply-To: Platform & Stream
+ <reply+2m3d2y&5dpnf1&&60b4b9f0e7154ee52d2cda5cf29d4d2bd92bc8ea09c1b3a8f6cc1900650a5770@mg1.substack.com>
+List-Owner: <mailto:platformstream@substack.com>
+List-URL: <https://platformstream.substack.com/>
+List-Archive: <https://platformstream.substack.com/archive>
+List-Id: <platformstream.substack.com>
+List-Post: <https://platformstream.substack.com/p/how-independent-labels-artists-can>
+List-Unsubscribe: <https://platformstream.substack.com/action/disable_email/disable?token=eyJ1c2VyX2lkIjozMjUzNjI2MzcsInBvc3RfaWQiOjE1ODA0MDgyNiwiaWF0IjoxNzQyMjE0MzE0LCJleHAiOjE3NzM3NTAzMTQsImlzcyI6InB1Yi0xMjQzNzYzIiwic3ViIjoiZGlzYWJsZV9lbWFpbCJ9.EiI4kUdeKAblHLxfOAf5G95n5pGbLQL5VcRJH-rOXaA>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-Mailgun-Variables: {"category": "post", "email_generated_at": "1742214314060", "is_freemail":
+ "true", "post_audience": "everyone", "post_id": "158040826", "post_type":
+ "newsletter", "pub_community_enabled": "true", "publication_id": "1243763",
+ "subdomain": "platformstream", "user_id": "325362637"}
+
+--60ec2c019db456570cb56e98ad154785209a88032791cf2476e81cc2937c
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+View this post on the web at https://platformstream.substack.com/p/how-inde=
+pendent-labels-artists-can
+
+=F0=9F=8C=8A Innovation Waves #3: FinTech=E2=80=99s Impact on the Music Ind=
+ustry
+The music industry is in a state of transformation, but traditional revenue=
+ streams are struggling to keep up. With rising touring costs, declining sy=
+nc values, and complex royalty systems, artists and industry stakeholders f=
+ace increasing challenges. How can FinTech provide a solution?
+Join Miquido [ https://substack.com/redirect/e0816fd0-671d-48ff-8dcb-f90555=
+a815f0?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ =
+] on March 19th for a free webinar to explore how financial technology is r=
+eshaping the music industry. Learn about innovations that are driving trans=
+parency, simplifying payments, and creating sustainable revenue models for =
+artists, platforms, and labels.
+=F0=9F=94=8D What You=E2=80=99ll Learn:
+=E2=9C=85 How FinTech is revolutionizing royalty payments and building trus=
+t
+=E2=9C=85 The role of AI in music monetization and funding models
+=E2=9C=85 How automation is unlocking new business opportunities
+Expert speakers  [ https://substack.com/redirect/6bdf3b4b-af55-412c-aafa-e4=
+2674bbac9f?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJ=
+jZQ ]Linda Portnoff [ https://substack.com/redirect/6bdf3b4b-af55-412c-aafa=
+-e42674bbac9f?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNC=
+OeJjZQ ], Emelie Olsson [ https://substack.com/redirect/84b839f1-8807-4a19-=
+ac32-e124f0040bdc?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZa=
+CgNCOeJjZQ ], Brian Dubb [ https://substack.com/redirect/0a1d65c5-cf68-430d=
+-b756-bd355d2079dd?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZ=
+aCgNCOeJjZQ ] and Peter Harvey [ https://substack.com/redirect/39bb7b02-6f4=
+f-4aab-b90c-bfc9335c310b?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwH=
+NgKZDZaCgNCOeJjZQ ] will share real-world insights into the future of music=
+ finance. Don=E2=80=99t miss out=E2=80=94register now to secure your spot! =
+=F0=9F=91=89 https://tiny.pl/n5w1tcxj [ https://substack.com/redirect/ba49d=
+a0f-8557-4043-aa54-53413acd58a8?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JS=
+xyLHpwHNgKZDZaCgNCOeJjZQ ].
+How independent labels and their artists can win the AI race [ https://subs=
+tack.com/redirect/9cb6300f-6bf3-4ffd-94f3-a752e2a0ea74?j=3DeyJ1IjoiNWRwbmYx=
+In0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ ]
+Marie Clausen, Managing Director for North America at independent record la=
+bel Ninja Tune, explores AI=E2=80=99s impact on the independent market, hig=
+hlighting the sector=E2=80=99s uniqueness, Merlin=E2=80=99s stance on AI, a=
+nd a strategic, value-driven approach that benefits all stakeholders.
+Apple Music Classical Available on the Web [ https://substack.com/redirect/=
+4e39f916-87b0-4180-a985-27d24dec7af1?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2W=
+Sj9JSxyLHpwHNgKZDZaCgNCOeJjZQ ]
+Apple Music Classical announced that its service will be made available on =
+the web, for those who prefer to listen on their desktop.
+As part of the launch of the web service, Apple Music Classical has made Fr=
+anz Welser-M=C3=B6st and the Cleveland Orchestra=E2=80=99s new recording of=
+ Julius Eastman=E2=80=99s Symphony No. 2 and Tchaikovsky=E2=80=99s Symphony=
+ No. 2 available exclusively on Apple Music Classical for six weeks.
+AI is reshaping the music creator economy, and that change will reshape the=
+ music business [ https://substack.com/redirect/6655a7e5-a363-40da-a3f3-975=
+c0eba0499?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJj=
+ZQ ]
+Following a pandemic surge, 2023 and 2024 were less buoyant years for music=
+ creator tools companies. Both user and revenue growth slowed, with some se=
+ctions of the market hit particularly hard.
+Soundcore=E2=80=99s AeroClip Open-Ear Clip-On Earbuds For All-Day Sporting =
+Use [ https://substack.com/redirect/39c97236-f115-43a5-a5fb-e305ca63ae4a?j=
+=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ ]
+The public appetite for open-style earbuds shows no signs of subsiding. It =
+seems that music lovers can=E2=80=99t get enough of these new clip-on earbu=
+ds that let them listen to music and still maintain awareness of all that=
+=E2=80=99s going on around them, whether that be for safety or comfort.
+How Spotify Is Driving Growth, Discovery, and Innovation in the Audiobook M=
+arket [ https://substack.com/redirect/60bd8a2f-a382-4133-a569-d36a279de5d3?=
+j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ ]
+Spotify took center stage at the London Book Fair this week, reaffirming th=
+eir commitment to the audiobook market and showcasing our impact on the pub=
+lishing industry.
+Bango report offers data on US music subscriptions [ https://substack.com/r=
+edirect/08bdb9f5-ecf2-4b1c-8bad-637ce48717f2?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pn=
+l-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ ]
+Payments-tech firm Bango has published its annual research digging into the=
+ subscriptions economy in the US, and there=E2=80=99s some interesting musi=
+c data.
+PlaylistHub Launches AI-Powered Spotify Playlist Placements for Artists [ h=
+ttps://substack.com/redirect/97eee915-bee2-4ee5-b51d-fffb4459e910?j=3DeyJ1I=
+joiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ ]
+Unlike traditional playlisting services, PlaylistHub does not operate as a =
+marketplace for curators. Instead, it provides a fully managed, AI-driven p=
+laylist network that ensures artists reach fresh, relevant listeners every =
+month through targeted placements and strategic ad campaigns.
+Aphex Twin drops 191-track playlist as part of new collab with streetwear b=
+rand Supreme [ https://substack.com/redirect/ade08c90-0921-46cc-a291-d1e064=
+6d344c?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ =
+]
+From Brian Eno to Kraftwerk, the legendary DJ returns with an eclectic play=
+list for Supreme=E2=80=99s latest drop.
+BBC Radio 6 Music Festival 2025 to offer 'unique moments' from eclectic lin=
+e-up of UK talent [ https://substack.com/redirect/f7974806-d449-4c8e-ad17-f=
+44c498f8d0f?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOe=
+JjZQ ]
+The BBC Radio 6 Music Festival =E2=80=93 the station=E2=80=99s flagship ann=
+ual music event =E2=80=93 returns to Greater Manchester this month (Wednesd=
+ay, March 26 to Saturday, March 29). This year=E2=80=99s festival features =
+headline performances at O2 Victoria Warehouse Manchester from BRITs winner=
+s Ezra Collective, Mogwai and Kae Tempest.
+Central Cee x Spotify 'Homecoming' Concert Film [ https://substack.com/redi=
+rect/e2e45104-4732-4966-9836-8ff07de4c761?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-R=
+eYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ ]
+British rapper Central Cee is taking over the world with his debut album, C=
+an=E2=80=99t Rush Greatness. The artist has partnered with Spotify on an im=
+mersive concert film detailing his inaugural performances in London, New Yo=
+rk, and Atlanta, capturing his Homecoming through the platform=E2=80=99s Fa=
+ns First program.
+Louis Vuitton Drops Music Tech-Inspired Spring 2025 Accessories [ https://s=
+ubstack.com/redirect/d6298998-654a-4eba-8ed9-3bd3eb3a0059?j=3DeyJ1IjoiNWRwb=
+mYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ ]
+Since Pharrell Williams joined Louis Vuitton, music motifs are stronger tha=
+n ever. In the new accessories released for the Spring 2025 season, Louis V=
+uitton goes back to the past, bringing old music tech artifacts back to cen=
+ter stage. The French house is no stranger to lux-ifying everyday objects a=
+nd this time, it is reaching into the archives of music players.
+To support the newsletter, consider becoming a free or paid subscriber.
+Send story ideas & feedback to: jeff@platformandstream.com [ mailto:jeff@pl=
+atformandstream.com ]
+=EF=B8=8FInterested in sponsoring the newsletter? You'll find all the detai=
+ls here [ https://substack.com/redirect/b9e09a4c-6238-49bd-8d1a-384aa0512b7=
+f?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ ].=E2=
+=80=8B
+
+Unsubscribe https://substack.com/redirect/2/eyJlIjoiaHR0cHM6Ly9wbGF0Zm9ybXN=
+0cmVhbS5zdWJzdGFjay5jb20vYWN0aW9uL2Rpc2FibGVfZW1haWw_dG9rZW49ZXlKMWMyVnlYMm=
+xrSWpvek1qVXpOakkyTXpjc0luQnZjM1JmYVdRaU9qRTFPREEwTURneU5pd2lhV0YwSWpveE56U=
+XlNakUwTXpFMExDSmxlSEFpT2pFM056TTNOVEF6TVRRc0ltbHpjeUk2SW5CMVlpMHhNalF6TnpZ=
+eklpd2ljM1ZpSWpvaVpHbHpZV0pzWlY5bGJXRnBiQ0o5LkVpSTRrVWRlS0FibEhMeGZPQWY1Rzk=
+1bjVwR2JMUUw1VmNSSkgtck9YYUEiLCJwIjoxNTgwNDA4MjYsInMiOjEyNDM3NjMsImYiOnRydW=
+UsInUiOjMyNTM2MjYzNywiaWF0IjoxNzQyMjE0MzE0LCJleHAiOjE3NDQ4MDYzMTQsImlzcyI6I=
+nB1Yi0wIiwic3ViIjoibGluay1yZWRpcmVjdCJ9.SQs2C19-_EolqvFy2KfCybHkqF9t-rH5knG=
+kEAly7ag?
+--60ec2c019db456570cb56e98ad154785209a88032791cf2476e81cc2937c
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html style=3D"scrollbar-width: thin;scrollbar-color: #dbdbdbrgb(255,255,25=
+5);"><head><meta charset=3D"utf-8"><title>How Independent Labels, Artists C=
+an Win the AI Race; Apple Music Classical Available on the Web</title><styl=
+e>
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .typography .markup table.image-wrapper img,
+  .typography.editor .markup table.image-wrapper img,
+  .typography .markup table.kindle-wrapper img,
+  .typography.editor .markup table.kindle-wrapper img {
+    max-width: 550px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .typography .markup div.youtube-overlay,
+  .typography.editor .markup div.youtube-overlay,
+  .typography .markup div.vimeo-overlay,
+  .typography.editor .markup div.vimeo-overlay {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 370px) {
+  .typography .markup div.tiktok-wrap,
+  .typography.editor .markup div.tiktok-wrap {
+    width: calc(95vw - 32px);
+    height: calc((95vw - 32px - 2px) / 0.485714);
+  }
+}
+@media screen and (max-width: 650px) {
+  .typography .markup div.embedded-publication-wrap .embedded-publication.s=
+how-subscribe,
+  .typography.editor .markup div.embedded-publication-wrap .embedded-public=
+ation.show-subscribe {
+    padding: 24px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .typography .markup div.subscription-widget-wrap .subscription-widget.sho=
+w-subscribe,
+  .typography.editor .markup div.subscription-widget-wrap .subscription-wid=
+get.show-subscribe,
+  .typography .markup div.subscription-widget-wrap-editor .subscription-wid=
+get.show-subscribe,
+  .typography.editor .markup div.subscription-widget-wrap-editor .subscript=
+ion-widget.show-subscribe,
+  .typography .markup div.captioned-button-wrap .subscription-widget.show-s=
+ubscribe,
+  .typography.editor .markup div.captioned-button-wrap .subscription-widget=
+=2Eshow-subscribe {
+    padding: 0px 24px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .typography .markup div.subscription-widget-wrap .subscription-widget.sho=
+w-subscribe .subscription-widget-subscribe .button,
+  .typography.editor .markup div.subscription-widget-wrap .subscription-wid=
+get.show-subscribe .subscription-widget-subscribe .button,
+  .typography .markup div.subscription-widget-wrap-editor .subscription-wid=
+get.show-subscribe .subscription-widget-subscribe .button,
+  .typography.editor .markup div.subscription-widget-wrap-editor .subscript=
+ion-widget.show-subscribe .subscription-widget-subscribe .button,
+  .typography .markup div.captioned-button-wrap .subscription-widget.show-s=
+ubscribe .subscription-widget-subscribe .button,
+  .typography.editor .markup div.captioned-button-wrap .subscription-widget=
+=2Eshow-subscribe .subscription-widget-subscribe .button {
+    padding: 10px 12px;
+    min-width: 110px;
+  }
+}
+@media (max-width: 650px) {
+  .typography .markup .tweet,
+  .typography.editor .markup .tweet {
+    padding: 12px;
+  }
+}
+@media (max-width: 650px) {
+  .typography .markup .tweet .tweet-text,
+  .typography.editor .markup .tweet .tweet-text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 650px) {
+  .typography .markup .tweet .tweet-photos-container.two,
+  .typography.editor .markup .tweet .tweet-photos-container.two,
+  .typography .markup .tweet .tweet-photos-container.three,
+  .typography.editor .markup .tweet .tweet-photos-container.three,
+  .typography .markup .tweet .tweet-photos-container.four,
+  .typography.editor .markup .tweet .tweet-photos-container.four {
+    height: 200px;
+  }
+}
+@media (max-width: 650px) {
+  .typography .markup .tweet a.expanded-link .expanded-link-img,
+  .typography.editor .markup .tweet a.expanded-link .expanded-link-img {
+    max-height: 180px;
+  }
+}
+@media (max-width: 650px) {
+  .typography .markup .tweet a.expanded-link .expanded-link-description,
+  .typography.editor .markup .tweet a.expanded-link .expanded-link-descript=
+ion {
+    display: none;
+  }
+}
+@media screen and (max-width: 650px) {
+  .typography .markup .apple-podcast-container,
+  .typography.editor .markup .apple-podcast-container {
+    width: unset;
+  }
+}
+@media (max-width: 420px) {
+  .typography .markup .install-substack-app-embed img.install-substack-app-=
+embed-img,
+  .typography.editor .markup .install-substack-app-embed img.install-substa=
+ck-app-embed-img {
+    margin: 0 auto 16px auto;
+  }
+}
+@media (max-width: 420px) {
+  .typography .markup .install-substack-app-embed .install-substack-app-emb=
+ed-text,
+  .typography.editor .markup .install-substack-app-embed .install-substack-=
+app-embed-text {
+    margin: 0 0 12px 0;
+    max-width: 100%;
+    width: auto;
+    text-align: center;
+  }
+}
+@media (max-width: 420px) {
+  .typography .markup .install-substack-app-embed .install-substack-app-emb=
+ed-link,
+  .typography.editor .markup .install-substack-app-embed .install-substack-=
+app-embed-link {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 481px) {
+  .share-button-container {
+    height: 38px;
+  }
+}
+@media screen and (min-width: 481px) {
+  .share-button-container a.comment {
+    height: 38px;
+    line-height: 38px;
+    padding-right: 10px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .share-button-container .separator {
+    display: block;
+    margin: 0;
+    height: 8px;
+    border-left: none;
+  }
+}
+@media screen and (max-width: 480px) {
+  .share-button-container a.share.first img {
+    padding-left: 0;
+  }
+}
+@media screen and (min-width: 481px) {
+  .share-button-container a.mobile {
+    display: none !important;
+  }
+}
+@media screen and (min-width: 541px) {
+  .settings-add-pub-modal-wrapper .container .add-recommending-pub-modal-co=
+ntainer {
+    padding: 36px;
+    height: 680px;
+  }
+}
+@media screen and (min-width: 541px) {
+  .settings-add-pub-modal-wrapper .container .add-recommending-pub-modal-co=
+ntainer .footer {
+    position: absolute;
+    bottom: 36px;
+    margin: 0px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .header-anchor-parent {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .post {
+    padding: 16px 0 0 0;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post .post-header .post-label {
+    margin-top: 8px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post .post-header .meta-author-wrap.alternative-meta .meta-right-column =
+=2Epost-meta {
+    margin-top: 6px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post .footer-facepile-container {
+    height: 64px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post .post-footer.use-separators {
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post .post-footer.next-prev {
+    height: 64px;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post-contributor-footer .post-contributor-bio-table {
+    display: block;
+  }
+  .post-contributor-footer .post-contributor-bio-table-row {
+    display: flex;
+    flex-direction: row;
+  }
+  .post-contributor-footer .post-contributor-bio-userhead-cell,
+  .post-contributor-footer .post-contributor-bio-body-cell {
+    display: block;
+  }
+  .post-contributor-footer .post-contributor-bio-body-cell {
+    flex-grow: 1;
+  }
+  .post-contributor-footer .post-contributor-bio-body-table {
+    display: block;
+  }
+  .post-contributor-footer .post-contributor-bio-body-table-row {
+    display: block;
+  }
+  .post-contributor-footer .post-contributor-bio-copy-cell,
+  .post-contributor-footer .post-contributor-bio-controls-cell {
+    display: block;
+  }
+  .post-contributor-footer .post-contributor-bio-copy-cell {
+    margin: 0 0 16px 0;
+  }
+  .post-contributor-footer .post-contributor-bio-controls-cell {
+    width: auto;
+  }
+  .post-contributor-footer .post-contributor-bio-controls {
+    margin: auto;
+  }
+  .post-contributor-footer .post-contributor-bio-controls .button.primary {
+    width: 100%;
+  }
+  .post-contributor-footer .post-contributor-bio-text {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .post-silhouette {
+    padding: 32px 0;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post-silhouette .post-silhouette-title {
+    margin-top: 10.44225025px;
+    height: 120px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post-silhouette .post-silhouette-meta {
+    width: 75%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post-silhouette .post-silhouette-meta.with-byline-image {
+    margin: 20px 0;
+  }
+}
+@media screen and (max-width: 650px) {
+  .use-theme-bg .post-meta.alternative-meta .post-meta-item,
+  .post-meta.alternative-meta .post-meta-item {
+    padding-right: 16px;
+  }
+}
+@media screen and (max-width: 370px) {
+  .use-theme-bg .post-meta.alternative-meta .post-meta-item,
+  .post-meta.alternative-meta .post-meta-item {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .use-theme-bg .post-meta.alternative-meta .post-meta-item.guest-author-pu=
+blication,
+  .post-meta.alternative-meta .post-meta-item.guest-author-publication {
+    display: none;
+  }
+}
+@media screen and (max-width: 370px) {
+  .post-meta .post-meta-item .post-meta-button {
+    height: 36px !important;
+    /* important to override in-line height style on emails */
+  }
+  .post-meta .post-meta-item .post-meta-button .meta-button-label {
+    display: none;
+  }
+  .post-meta .post-meta-item .post-meta-button > svg {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 370px) {
+  .post-meta .post-meta-item {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post .floating-subscribe-button {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  body .markup table.image-wrapper img,
+  body .markup table.kindle-wrapper img {
+    max-width: 550px;
+  }
+}
+@media screen and (max-width: 650px) {
+  body .markup div.youtube-overlay,
+  body .markup div.vimeo-overlay {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 370px) {
+  body .markup div.tiktok-wrap {
+    width: calc(95vw - 32px);
+    height: calc((95vw - 32px - 2px) / 0.485714);
+  }
+}
+@media screen and (max-width: 650px) {
+  body .markup div.embedded-publication-wrap .embedded-publication.show-sub=
+scribe {
+    padding: 24px;
+  }
+}
+@media screen and (max-width: 650px) {
+  body .markup div.subscription-widget-wrap .subscription-widget.show-subsc=
+ribe,
+  body .markup div.subscription-widget-wrap-editor .subscription-widget.sho=
+w-subscribe,
+  body .markup div.captioned-button-wrap .subscription-widget.show-subscrib=
+e {
+    padding: 0px 24px;
+  }
+}
+@media screen and (max-width: 650px) {
+  body .markup div.subscription-widget-wrap .subscription-widget.show-subsc=
+ribe .subscription-widget-subscribe .button,
+  body .markup div.subscription-widget-wrap-editor .subscription-widget.sho=
+w-subscribe .subscription-widget-subscribe .button,
+  body .markup div.captioned-button-wrap .subscription-widget.show-subscrib=
+e .subscription-widget-subscribe .button {
+    padding: 10px 12px;
+    min-width: 110px;
+  }
+}
+@media (max-width: 650px) {
+  body .markup .tweet {
+    padding: 12px;
+  }
+}
+@media (max-width: 650px) {
+  body .markup .tweet .tweet-text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 650px) {
+  body .markup .tweet .tweet-photos-container.two,
+  body .markup .tweet .tweet-photos-container.three,
+  body .markup .tweet .tweet-photos-container.four {
+    height: 200px;
+  }
+}
+@media (max-width: 650px) {
+  body .markup .tweet a.expanded-link .expanded-link-img {
+    max-height: 180px;
+  }
+}
+@media (max-width: 650px) {
+  body .markup .tweet a.expanded-link .expanded-link-description {
+    display: none;
+  }
+}
+@media screen and (max-width: 650px) {
+  body .markup .apple-podcast-container {
+    width: unset;
+  }
+}
+@media (max-width: 420px) {
+  body .markup .install-substack-app-embed img.install-substack-app-embed-i=
+mg {
+    margin: 0 auto 16px auto;
+  }
+}
+@media (max-width: 420px) {
+  body .markup .install-substack-app-embed .install-substack-app-embed-text=
+ {
+    margin: 0 0 12px 0;
+    max-width: 100%;
+    width: auto;
+    text-align: center;
+  }
+}
+@media (max-width: 420px) {
+  body .markup .install-substack-app-embed .install-substack-app-embed-link=
+ {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 500px) {
+  body .header a.logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+}
+@media screen and (max-width: 420px) {
+  body .subscription-receipt table:first-of-type .subscription-amount .subs=
+cription-discount {
+    width: 72px !important;
+  }
+}
+@media screen and (min-width: 481px) {
+  body .share-button-container {
+    height: auto;
+  }
+}
+@media screen and (max-width: 480px) {
+  body .share-button-container .separator {
+    display: block !important;
+    margin: 0 !important;
+    height: 8px !important;
+    border-left: none !important;
+  }
+}
+@media screen and (max-width: 650px) {
+  .digest .item .post-meta-item.audience {
+    display: none;
+  }
+}
+@media screen and (min-width: 500px) {
+  .digest-publication .logo img {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .comments-page .container .comment-list .collapsed-reply {
+    margin-left: calc(10 + 32px - 24px);
+  }
+}
+@media screen and (max-width: 650px) {
+  .comment > .comment-list {
+    padding-left: 24px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .finish-magic-login-modal .modal-content .container {
+    padding: 24px 0;
+  }
+}
+@media (max-width: 650px) {
+  .reader2-text-b3 {
+    line-height: 24px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .reader2-text-h4 {
+    line-height: 24px;
+  }
+}
+@media screen and (min-width: 541px) {
+  .user-profile-modal {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .subscribe-widget form.form .sideBySideWrap button.rightButton {
+    padding: 10px 12px;
+  }
+}
+@media screen and (min-width: 541px) {
+  .pub-icon:hover .logo-hover,
+  .feed-item-icon:hover .logo-hover {
+    display: block;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post-ufi.single-full-width-button .post-ufi-button-wrapper {
+    width: 100%;
+    padding: 16px;
+  }
+  .post-ufi.single-full-width-button .post-ufi-button-wrapper:empty {
+    display: none;
+  }
+  .post-ufi.single-full-width-button .post-ufi-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 768px) {
+  .file-embed-wrapper {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .file-embed-wrapper-editor {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .file-embed-wrapper-editor:active {
+    padding: 0;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .file-embed-button.wide,
+  .file-embed-error-button.wide {
+    display: none;
+  }
+}
+@media only screen and (min-width: 630px) {
+  .file-embed-button.narrow,
+  .file-embed-error-button.narrow {
+    display: none;
+  }
+}
+@media screen and (min-width: 541px) {
+  .audio-player-wrapper .audio-player {
+    min-width: 500px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .audio-player-wrapper .audio-player .audio-player-progress {
+    border-left-width: 16px;
+    border-right-width: 16px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .audio-player-wrapper .audio-player .audio-player-progress .audio-player-=
+progress-bar .audio-player-progress-bar-popup {
+    top: -54px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .audio-player-wrapper-fancy .audio-player .audio-player-progress {
+    border-left-width: 16px;
+    border-right-width: 16px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .audio-player-wrapper-fancy .audio-player .audio-player-progress .audio-p=
+layer-progress-bar .audio-player-progress-bar-popup {
+    top: -54px;
+  }
+}
+@media (min-width: 250px) {
+  .audio-player-wrapper-fancy .audio-player {
+    padding: 32px;
+  }
+  .audio-player-wrapper-fancy .audio-player .btn-group {
+    display: flex;
+  }
+  .audio-player-wrapper-fancy .audio-player .btn-group .button:last-of-type=
+ {
+    display: block;
+  }
+}
+@media (min-width: 300px) {
+  .audio-player-wrapper-fancy .audio-player .btn-group {
+    display: block;
+  }
+  .audio-player-wrapper-fancy .audio-player .btn-group .button:first-of-typ=
+e {
+    display: block;
+  }
+}
+@media (min-width: 350px) {
+  .audio-player-wrapper-fancy .audio-player .audio-player-substack-logo {
+    display: block;
+  }
+  .audio-player-wrapper-fancy .audio-player .audio-player-title {
+    margin-top: 16px;
+  }
+  .audio-player-wrapper-fancy .audio-player .audio-player-hero-image-contai=
+ner {
+    padding-top: 15%;
+    width: 15%;
+    display: block;
+  }
+  .audio-player-wrapper-fancy .audio-player .btn-group .button:first-of-typ=
+e {
+    display: block;
+  }
+  .audio-player-wrapper-fancy .audio-player .audio-player-substack-logo {
+    display: block;
+  }
+}
+@media (min-width: 350px) {
+  .audio-player-wrapper-fancy .audio-player .audio-player-hero-image-contai=
+ner {
+    padding-top: 25%;
+    width: 25%;
+    display: block;
+  }
+  .audio-player-wrapper-fancy .audio-player .btn-group {
+    display: flex;
+  }
+  .audio-player-wrapper-fancy .audio-player .btn-group .button:first-of-typ=
+e {
+    display: block;
+  }
+}
+@media (min-width: 400px) {
+  .audio-player-wrapper-fancy .audio-player .audio-player-hero-image-contai=
+ner {
+    padding-top: 40%;
+    width: 40%;
+  }
+}
+@media (max-width: 400px) {
+  .audio-player-wrapper-fancy .audio-player .btn-group {
+    margin-top: 12px;
+  }
+  .audio-player-wrapper-fancy .audio-player .btn-group .button {
+    font-size: 13px;
+    padding: 6px 12px;
+    height: auto;
+    margin-top: 10px;
+  }
+}
+@media (min-width: 600px) {
+  .audio-player-wrapper-fancy .audio-player .audio-player-hero-image-contai=
+ner {
+    padding-top: 55%;
+    width: 55%;
+  }
+}
+@media (max-width: 650px) {
+  .poll-editor-modal {
+    min-width: calc(100% - 20px);
+  }
+}
+@media (max-width: 750px) {
+  .poll-embed .poll-anchor-target .poll-anchor-copy-button {
+    left: 8px;
+    top: 45px;
+  }
+}
+@media screen and (min-width: 541px) {
+  .poll-embed .poll-wrapper.poll-web .poll-dialog .modal-table .modal-row .=
+modal-content > .container {
+    width: 552px;
+    padding: 26px 24px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .poll-embed .poll-wrapper.poll-web .poll-dialog .modal-table .modal-row .=
+modal-content > .container {
+    padding: 40px 0;
+  }
+}
+@media screen and (max-width: 650px) {
+  .poll-embed .poll-wrapper.poll-web .poll-dialog .modal-row .modal-cell .m=
+odal-exit-btn {
+    margin-right: -20px;
+  }
+}</style></head><body class=3D"email-body" style=3D"font-kerning: auto;"><i=
+mg src=3D"https://eotrx.substackcdn.com/open?token=3DeyJtIjoiPDIwMjUwMzE3MT=
+IyNTA4LjMuOGNlN2RkZDNhY2FkNWEzZUBtZy1kMC5zdWJzdGFjay5jb20-IiwidSI6MzI1MzYyN=
+jM3LCJyIjoiZGVzZ3Rlc3QuZW1haWxAZ21haWwuY29tIiwiZCI6Im1nLWQwLnN1YnN0YWNrLmNv=
+bSIsInAiOjE1ODA0MDgyNiwidCI6Im5ld3NsZXR0ZXIiLCJhIjoiZXZlcnlvbmUiLCJzIjoxMjQ=
+zNzYzLCJjIjoicG9zdCIsImYiOnRydWUsInBvc2l0aW9uIjoidG9wIiwiaWF0IjoxNzQyMjE0Mz=
+E0LCJleHAiOjE3NDQ4MDYzMTQsImlzcyI6InB1Yi0wIiwic3ViIjoiZW8ifQ.Im_Y9ONmJXuODn=
+iBOqtaCTaF5n_6p8XtmUTwc9IJw3k" alt=3D"" width=3D"1" height=3D"1" border=3D"=
+0" style=3D"height:1px !important;width:1px !important;border-width:0 !impo=
+rtant;margin-top:0 !important;margin-bottom:0 !important;margin-right:0 !im=
+portant;margin-left:0 !important;padding-top:0 !important;padding-bottom:0 =
+!important;padding-right:0 !important;padding-left:0 !important;"/><div cla=
+ss=3D"preview" style=3D"display:none;font-size:1px;color:#333333;line-heigh=
+t:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">2108 | Your =
+Daily Dose of Music Streaming News</div><div class=3D"preview" style=3D"dis=
+play:none;font-size:1px;color:#333333;line-height:1px;max-height:0px;max-wi=
+dth:0px;opacity:0;overflow:hidden;">&#847; &nbsp; &#8199; &#173;&#847; &nbs=
+p; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#=
+847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199;=
+ &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp=
+; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#8=
+47; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; =
+&#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp;=
+ &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#84=
+7; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &=
+#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; =
+&#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847=
+; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#=
+173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &=
+#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847;=
+ &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#1=
+73;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#=
+8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; =
+&nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#17=
+3;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8=
+199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &=
+nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173=
+;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#81=
+99; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &n=
+bsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;=
+&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#819=
+9; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nb=
+sp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&=
+#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199=
+; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbs=
+p; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#=
+847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199;=
+ &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp=
+; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#8=
+47; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; =
+&#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp;=
+ &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#84=
+7; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &=
+#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; =
+&#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847=
+; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#=
+173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &=
+#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847;=
+ &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#1=
+73;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#=
+8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; =
+&nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#17=
+3;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8=
+199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &=
+nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173=
+;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#81=
+99; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &n=
+bsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;=
+&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#819=
+9; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nb=
+sp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&=
+#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199=
+; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbs=
+p; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#=
+847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199;=
+ &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp=
+; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#8=
+47; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; =
+&#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp;=
+ &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#84=
+7; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &=
+#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; =
+&#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847=
+; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#=
+173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &=
+#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847;=
+ &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#1=
+73;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#=
+8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; =
+&nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#17=
+3;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8=
+199; &#173;</div><table class=3D"email-body-container" role=3D"presentation=
+" width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tbody><t=
+r><td></td><td class=3D"content" width=3D"550"></td><td></td></tr><tr><td><=
+/td><td class=3D"content" width=3D"550" align=3D"left"><div style=3D"font-s=
+ize: 16px;line-height: 26px;max-width: 550px;width: 100%;margin: 0 auto;ove=
+rflow-wrap: break-word;"><table role=3D"presentation" width=3D"100%" border=
+=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><td align=3D"right" s=
+tyle=3D"height:20px;"><table role=3D"presentation" width=3D"auto" border=3D=
+"0" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><td style=3D"vertical-al=
+ign:middle;"><span class=3D"pencraft pc-reset reset-IxiVJZ tw-font-body tw-=
+text-ssm tw-text-substack-secondary" style=3D"font-family: SF Pro Text, -ap=
+ple-system, system-ui, BlinkMacSystemFont, Inter, Segoe UI, Roboto, Helveti=
+ca, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;f=
+ont-size: 13px;color: unset;list-style: none;text-decoration: unset;margin:=
+ 0;"><div class=3D"pencraft pc-reset align-right-VJbKw5 size-12-mmZ61m rese=
+t-IxiVJZ" style=3D"list-style: none;color: unset;text-align: right;font-siz=
+e: 12px;line-height: 16px;text-decoration: unset;margin: 0;"><span class=3D=
+"pencraft pc-reset reset-IxiVJZ" translated=3D"" style=3D"list-style: none;=
+color: unset;text-decoration: unset;margin: 0;">Forwarded this email? <a cl=
+ass=3D"pencraft pc-reset decoration-underline-ClTkYc reset-IxiVJZ" href=3D"=
+https://substack.com/redirect/2/eyJlIjoiaHR0cHM6Ly9wbGF0Zm9ybXN0cmVhbS5zdWJ=
+zdGFjay5jb20vc3Vic2NyaWJlP3V0bV9zb3VyY2U9ZW1haWwmdXRtX2NhbXBhaWduPWVtYWlsLX=
+N1YnNjcmliZSZyPTVkcG5mMSZuZXh0PWh0dHBzJTNBJTJGJTJGcGxhdGZvcm1zdHJlYW0uc3Vic=
+3RhY2suY29tJTJGcCUyRmhvdy1pbmRlcGVuZGVudC1sYWJlbHMtYXJ0aXN0cy1jYW4iLCJwIjox=
+NTgwNDA4MjYsInMiOjEyNDM3NjMsImYiOnRydWUsInUiOjMyNTM2MjYzNywiaWF0IjoxNzQyMjE=
+0MzE0LCJleHAiOjE3NDQ4MDYzMTQsImlzcyI6InB1Yi0wIiwic3ViIjoibGluay1yZWRpcmVjdC=
+J9.OB4y65PUZoU2ETFKTKUYF6VSQ6FD2WywxhXUnHEJK0c?" style=3D"list-style: none;=
+color: unset;text-decoration: unset;margin: 0;-webkit-text-decoration-line:=
+ underline;text-decoration-line: underline;">Subscribe here</a> for more</s=
+pan></div></span></td></tr></tbody></table></td></tr></tbody></table><div c=
+lass=3D"post typography" dir=3D"auto" style=3D"padding: 32px 0 0 0;font-siz=
+e: 16px;line-height: 26px;"><div class=3D"post-header" style=3D"font-size: =
+16px;line-height: 26px;"><h1 class=3D"post-title published" style=3D"color:=
+ rgb(54,55,55);font-family: 'SF Pro Display', -apple-system, system-ui, Bli=
+nkMacSystemFont, 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,=
+ 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';font-weight: 700;=
+-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: antialiased;-w=
+ebkit-appearance: optimizelegibility;-moz-appearance: optimizelegibility;ap=
+pearance: optimizelegibility;margin: 0;line-height: 36px;font-size: 32px;">=
+<a href=3D"https://substack.com/app-link/post?publication_id=3D1243763&post=
+_id=3D158040826&utm_source=3Dpost-email-title&utm_campaign=3Demail-post-tit=
+le&isFreemail=3Dtrue&r=3D5dpnf1&token=3DeyJ1c2VyX2lkIjozMjUzNjI2MzcsInBvc3R=
+faWQiOjE1ODA0MDgyNiwiaWF0IjoxNzQyMjE0MzE0LCJleHAiOjE3NDQ4MDYzMTQsImlzcyI6In=
+B1Yi0xMjQzNzYzIiwic3ViIjoicG9zdC1yZWFjdGlvbiJ9.V3rjfnLDOIWmErokEQgukW7w-fgn=
+SjPc-Qi4sJy8TH4" style=3D"color: rgb(54,55,55);text-decoration: none;">How =
+Independent Labels, Artists Can Win the AI Race; Apple Music Classical Avai=
+lable on the Web</a></h1><h3 class=3D"subtitle" style=3D"font-family: 'SF P=
+ro Display',-apple-system-headline,system-ui,-apple-system,BlinkMacSystemFo=
+nt,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe =
+UI Emoji','Segoe UI Symbol';font-weight: normal;-webkit-font-smoothing: ant=
+ialiased;-moz-osx-font-smoothing: antialiased;-webkit-appearance: optimizel=
+egibility;-moz-appearance: optimizelegibility;appearance: optimizelegibilit=
+y;margin: 4px 0 0;color: #777777;line-height: 24px;font-size: 18px;margin-t=
+op: 12px;">2108 | Your Daily Dose of Music Streaming News</h3><table class=
+=3D"post-meta custom" cellpadding=3D"0" cellspacing=3D"0" style=3D"margin: =
+1em 0;height: 20px;align-items: center;"><tbody><tr><td class=3D"post-meta-=
+item post-date" title=3D"2025-03-17T12:25:11.522Z" style=3D"position: relat=
+ive;padding: 0px 12px 0px 0;height: 14px;font-size: 14px;font-family: syste=
+m-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,san=
+s-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';color: #7777=
+77;text-decoration: none;margin-right: 0;padding-right: 0;white-space: nowr=
+ap;font-weight: 400;padding-top: 0;padding-bottom: 0;"><div class=3D"pencra=
+ft pc-reset color-secondary-ls1g8s line-height-20-t4M0El font-meta-MWBumP s=
+ize-11-NuY2Zx weight-medium-fw81nC transform-uppercase-yKDgcq reset-IxiVJZ =
+meta-EgzBVA" style=3D"list-style: none;font-size: 11px;line-height: 20px;te=
+xt-decoration: unset;color: rgb(119,119,119);margin: 0;font-family: 'SF Com=
+pact',-apple-system,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',R=
+oboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Sego=
+e UI Symbol';font-weight: 500;text-transform: uppercase;letter-spacing: .2p=
+x;"><time datetime=3D"2025-03-17T12:25:11.522Z">Mar 17</time></div></td></t=
+r></tbody></table><table class=3D"email-ufi-2-top" role=3D"presentation" wi=
+dth=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=3D"bord=
+er-top: 1px solid rgb(0,0,0,.1);border-bottom: 1px solid rgb(0,0,0,.1);min-=
+width: 100%;"><tbody><tr height=3D"16"><td height=3D"16" style=3D"font-size=
+:0px;line-height:0;">&nbsp;</td></tr><tr><td><table role=3D"presentation" w=
+idth=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><=
+td><table role=3D"presentation" width=3D"auto" border=3D"0" cellspacing=3D"=
+0" cellpadding=3D"0"><tbody><tr><td style=3D"vertical-align:middle;"><table=
+ role=3D"presentation" width=3D"38" border=3D"0" cellspacing=3D"0" cellpadd=
+ing=3D"0"><tbody><tr><td align=3D"center"><a class=3D"email-icon-button" hr=
+ef=3D"https://substack.com/app-link/post?publication_id=3D1243763&post_id=
+=3D158040826&utm_source=3Dsubstack&isFreemail=3Dtrue&submitLike=3Dtrue&toke=
+n=3DeyJ1c2VyX2lkIjozMjUzNjI2MzcsInBvc3RfaWQiOjE1ODA0MDgyNiwicmVhY3Rpb24iOiL=
+inaQiLCJpYXQiOjE3NDIyMTQzMTQsImV4cCI6MTc0NDgwNjMxNCwiaXNzIjoicHViLTEyNDM3Nj=
+MiLCJzdWIiOiJyZWFjdGlvbiJ9.XkQKwM0wESznolo4F7VHEQ_LyWnv6Y8Q_NdskkfnUbE&utm_=
+medium=3Demail&utm_campaign=3Demail-reaction&r=3D5dpnf1" style=3D"font-fami=
+ly: system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,=
+Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';dis=
+play: inline-block;font-weight: 500;border: 1px solid rgb(0,0,0,.1);border-=
+radius: 9999px;text-transform: uppercase;font-size: 12px;line-height: 1;pad=
+ding: 9px 0;text-decoration: none;color: rgb(119,119,119);min-width: 38px;b=
+ox-sizing: border-box;width: 38px"><img class=3D"icon" src=3D"https://subst=
+ackcdn.com/image/fetch/w_36,c_scale,f_png,q_auto:good,fl_progressive:steep/=
+https%3A%2F%2Fsubstack.com%2Ficon%2FLucideHeart%3Fv%3D4%26height%3D36%26fil=
+l%3Dnone%26stroke%3D%2523808080%26strokeWidth%3D2" width=3D"18" height=3D"1=
+8" style=3D"border: none;vertical-align: middle;max-width: 18px" alt=3D""><=
+/a></td></tr></tbody></table></td><td width=3D"8" style=3D"min-width: 8px">=
+</td><td style=3D"vertical-align:middle;"><table role=3D"presentation" widt=
+h=3D"38" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><td al=
+ign=3D"center"><a class=3D"email-icon-button" href=3D"https://substack.com/=
+app-link/post?publication_id=3D1243763&post_id=3D158040826&utm_source=3Dsub=
+stack&utm_medium=3Demail&isFreemail=3Dtrue&comments=3Dtrue&token=3DeyJ1c2Vy=
+X2lkIjozMjUzNjI2MzcsInBvc3RfaWQiOjE1ODA0MDgyNiwiaWF0IjoxNzQyMjE0MzE0LCJleHA=
+iOjE3NDQ4MDYzMTQsImlzcyI6InB1Yi0xMjQzNzYzIiwic3ViIjoicG9zdC1yZWFjdGlvbiJ9.V=
+3rjfnLDOIWmErokEQgukW7w-fgnSjPc-Qi4sJy8TH4&r=3D5dpnf1&utm_campaign=3Demail-=
+half-magic-comments&action=3Dpost-comment&utm_source=3Dsubstack&utm_medium=
+=3Demail" style=3D"font-family: system-ui,-apple-system,BlinkMacSystemFont,=
+'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI =
+Emoji','Segoe UI Symbol';display: inline-block;font-weight: 500;border: 1px=
+ solid rgb(0,0,0,.1);border-radius: 9999px;text-transform: uppercase;font-s=
+ize: 12px;line-height: 1;padding: 9px 0;text-decoration: none;color: rgb(11=
+9,119,119);min-width: 38px;box-sizing: border-box;width: 38px"><img class=
+=3D"icon" src=3D"https://substackcdn.com/image/fetch/w_36,c_scale,f_png,q_a=
+uto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Ficon%2FLucideCom=
+ments%3Fv%3D4%26height%3D36%26fill%3Dnone%26stroke%3D%2523808080%26strokeWi=
+dth%3D2" width=3D"18" height=3D"18" style=3D"border: none;vertical-align: m=
+iddle;max-width: 18px" alt=3D""></a></td></tr></tbody></table></td><td widt=
+h=3D"8" style=3D"min-width: 8px"></td><td style=3D"vertical-align:middle;">=
+<table role=3D"presentation" width=3D"38" border=3D"0" cellspacing=3D"0" ce=
+llpadding=3D"0"><tbody><tr><td align=3D"center"><a class=3D"email-icon-butt=
+on" href=3D"https://substack.com/app-link/post?publication_id=3D1243763&pos=
+t_id=3D158040826&utm_source=3Dsubstack&utm_medium=3Demail&utm_content=3Dsha=
+re&utm_campaign=3Demail-share&action=3Dshare&triggerShare=3Dtrue&isFreemail=
+=3Dtrue&r=3D5dpnf1&token=3DeyJ1c2VyX2lkIjozMjUzNjI2MzcsInBvc3RfaWQiOjE1ODA0=
+MDgyNiwiaWF0IjoxNzQyMjE0MzE0LCJleHAiOjE3NDQ4MDYzMTQsImlzcyI6InB1Yi0xMjQzNzY=
+zIiwic3ViIjoicG9zdC1yZWFjdGlvbiJ9.V3rjfnLDOIWmErokEQgukW7w-fgnSjPc-Qi4sJy8T=
+H4" style=3D"font-family: system-ui,-apple-system,BlinkMacSystemFont,'Segoe=
+ UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji'=
+,'Segoe UI Symbol';display: inline-block;font-weight: 500;border: 1px solid=
+ rgb(0,0,0,.1);border-radius: 9999px;text-transform: uppercase;font-size: 1=
+2px;line-height: 1;padding: 9px 0;text-decoration: none;color: rgb(119,119,=
+119);min-width: 38px;box-sizing: border-box;width: 38px"><img class=3D"icon=
+" src=3D"https://substackcdn.com/image/fetch/w_36,c_scale,f_png,q_auto:good=
+,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Ficon%2FLucideShare2%3Fv%=
+3D4%26height%3D36%26fill%3Dnone%26stroke%3D%2523808080%26strokeWidth%3D2" w=
+idth=3D"18" height=3D"18" style=3D"border: none;vertical-align: middle;max-=
+width: 18px" alt=3D""></a></td></tr></tbody></table></td><td width=3D"8" st=
+yle=3D"min-width: 8px"></td><td style=3D"vertical-align:middle;"><table rol=
+e=3D"presentation" width=3D"38" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0"><tbody><tr><td align=3D"center"><a class=3D"email-icon-button" href=
+=3D"https://substack.com/redirect/2/eyJlIjoiaHR0cHM6Ly9vcGVuLnN1YnN0YWNrLmN=
+vbS9wdWIvcGxhdGZvcm1zdHJlYW0vcC9ob3ctaW5kZXBlbmRlbnQtbGFiZWxzLWFydGlzdHMtY2=
+FuP3V0bV9zb3VyY2U9c3Vic3RhY2smdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249ZW1ha=
+WwtcmVzdGFjay1jb21tZW50JmFjdGlvbj1yZXN0YWNrLWNvbW1lbnQmcj01ZHBuZjEmdG9rZW49=
+ZXlKMWMyVnlYMmxrSWpvek1qVXpOakkyTXpjc0luQnZjM1JmYVdRaU9qRTFPREEwTURneU5pd2l=
+hV0YwSWpveE56UXlNakUwTXpFMExDSmxlSEFpT2pFM05EUTRNRFl6TVRRc0ltbHpjeUk2SW5CMV=
+lpMHhNalF6TnpZeklpd2ljM1ZpSWpvaWNHOXpkQzF5WldGamRHbHZiaUo5LlYzcmpmbkxET0lXb=
+UVyb2tFUWd1a1c3dy1mZ25TalBjLVFpNHNKeThUSDQiLCJwIjoxNTgwNDA4MjYsInMiOjEyNDM3=
+NjMsImYiOnRydWUsInUiOjMyNTM2MjYzNywiaWF0IjoxNzQyMjE0MzE0LCJleHAiOjE3NDQ4MDY=
+zMTQsImlzcyI6InB1Yi0wIiwic3ViIjoibGluay1yZWRpcmVjdCJ9.GgryCiiyk7v4OnYqooHwe=
+9BEqQKHJXXENxbPSugpS-E?&utm_source=3Dsubstack&utm_medium=3Demail" style=3D"=
+font-family: system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,H=
+elvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Sy=
+mbol';display: inline-block;font-weight: 500;border: 1px solid rgb(0,0,0,.1=
+);border-radius: 9999px;text-transform: uppercase;font-size: 12px;line-heig=
+ht: 1;padding: 9px 0;text-decoration: none;color: rgb(119,119,119);min-widt=
+h: 38px;box-sizing: border-box;width: 38px"><img class=3D"icon" src=3D"http=
+s://substackcdn.com/image/fetch/w_36,c_scale,f_png,q_auto:good,fl_progressi=
+ve:steep/https%3A%2F%2Fsubstack.com%2Ficon%2FNoteForwardIcon%3Fv%3D4%26heig=
+ht%3D36%26fill%3Dnone%26stroke%3D%2523808080%26strokeWidth%3D2" width=3D"18=
+" height=3D"18" style=3D"border: none;vertical-align: middle;max-width: 18p=
+x" alt=3D""></a></td></tr></tbody></table></td></tr></tbody></table></td><t=
+d align=3D"right"><table role=3D"presentation" width=3D"auto" border=3D"0" =
+cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><td style=3D"vertical-align:=
+middle;"><table role=3D"presentation" width=3D"auto" border=3D"0" cellspaci=
+ng=3D"0" cellpadding=3D"0"><tbody><tr><td align=3D"center"><a class=3D"emai=
+l-button-outline" href=3D"https://open.substack.com/pub/platformstream/p/ho=
+w-independent-labels-artists-can?utm_source=3Demail&redirect=3Dapp-store&ut=
+m_campaign=3Demail-read-in-app" style=3D"font-family: system-ui,-apple-syst=
+em,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple C=
+olor Emoji','Segoe UI Emoji','Segoe UI Symbol';display: inline-block;font-w=
+eight: 500;border: 1px solid rgb(0,0,0,.1);border-radius: 9999px;text-trans=
+form: uppercase;font-size: 12px;line-height: 12px;padding: 9px 14px;text-de=
+coration: none;color: rgb(119,119,119);"><div class=3D"email-button-spacer"=
+ style=3D"font-size: 16px;line-height: 26px;display: inline-block;vertical-=
+align: middle;max-width: 0;min-height: 18px;"></div><span class=3D"email-bu=
+tton-text" style=3D"vertical-align: middle;margin-right: 4px">READ IN APP</=
+span><img class=3D"icon text-icon" src=3D"https://substackcdn.com/image/fet=
+ch/w_36,c_scale,f_png,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubsta=
+ck.com%2Ficon%2FLucideArrowUpRight%3Fv%3D4%26height%3D36%26fill%3Dnone%26st=
+roke%3D%2523808080%26strokeWidth%3D2" width=3D"18" height=3D"18" style=3D"m=
+in-width: 18px;min-height: 18px;border: none;vertical-align: middle;margin-=
+right: 0;margin-left: 0;max-width: 18px" alt=3D""></a></td></tr></tbody></t=
+able></td></tr></tbody></table></td></tr></tbody></table></td></tr><tr heig=
+ht=3D"16"><td height=3D"16" style=3D"font-size:0px;line-height:0;">&nbsp;</=
+td></tr></tbody></table></div></div><div class=3D"post typography" dir=3D"a=
+uto" style=3D"padding: 32px 0 0 0;font-size: 16px;line-height: 26px;"><div =
+class=3D"body markup" dir=3D"auto" style=3D"text-align: initial;font-size: =
+16px;line-height: 26px;width: 100%;word-break: break-word;margin-bottom: 16=
+px;font-family: 'SF Pro Display', -apple-system, system-ui, BlinkMacSystemF=
+ont, 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Colo=
+r Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';font-weight: 400;"><p style=
+=3D"margin: 0 0 20px 0;color: rgb(54,55,55);line-height: 26px;font-size: 16=
+px;margin-top: 0;"><span>&#127754; </span><strong>Innovation Waves #3: FinT=
+ech&#8217;s Impact on the Music Industry</strong></p><p style=3D"margin: 0 =
+0 20px 0;color: rgb(54,55,55);line-height: 26px;font-size: 16px;">The music=
+ industry is in a state of transformation, but traditional revenue streams =
+are struggling to keep up. With rising touring costs, declining sync values=
+, and complex royalty systems, artists and industry stakeholders face incre=
+asing challenges. How can FinTech provide a solution?</p><div class=3D"capt=
+ioned-image-container-static" style=3D"font-size: 16px;line-height: 26px;ma=
+rgin: 32px auto;"><figure style=3D"width: 100%;margin: 0 auto;"><table clas=
+s=3D"image-wrapper" data-component-name=3D"Image2ToDOMStatic" width=3D"100%=
+" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=3D"mso-padding-alt=
+: 1em 0 1.6em;"><tbody><tr><td style=3D"text-align: center;"></td><td class=
+=3D"content" align=3D"left" width=3D"437" style=3D"text-align: center;"><a =
+class=3D"image-link" rel=3D"" target=3D"_blank" href=3D"https://substack.co=
+m/redirect/524e0723-b4d6-4423-873e-3a50d8bafbff?j=3DeyJ1IjoiNWRwbmYxIn0.HeF=
+6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" style=3D"position: relative;flex-=
+direction: column;align-items: center;padding: 0;width: auto;height: auto;b=
+order: none;text-decoration: none;display: block;margin: 0;"><img class=3D"=
+" data-attrs=3D"{&quot;src&quot;:&quot;https://substack-post-media.s3.amazo=
+naws.com/public/images/209c9fd8-581a-491e-bad1-63edafa0141f_2400x1260.png&q=
+uot;,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imag=
+eSize&quot;:null,&quot;height&quot;:764,&quot;width&quot;:1456,&quot;resize=
+Width&quot;:437,&quot;bytes&quot;:2080330,&quot;alt&quot;:null,&quot;title&=
+quot;:null,&quot;type&quot;:&quot;image/png&quot;,&quot;href&quot;:&quot;ht=
+tps://lp.miquido.com/innovation-waves-music?utm_source=3Dnewsletter&amp;utm=
+_medium=3Dmailing&amp;utm_campaign=3Dinnovation_waves_music_3_webinar_platf=
+rom_stream_newsletter&quot;,&quot;belowTheFold&quot;:false,&quot;topImage&q=
+uot;:true,&quot;internalRedirect&quot;:&quot;https://platformstream.substac=
+k.com/i/158040826?img=3Dhttps%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%=
+2Fpublic%2Fimages%2F209c9fd8-581a-491e-bad1-63edafa0141f_2400x1260.png&quot=
+;,&quot;isProcessing&quot;:false}" alt=3D"" width=3D"437" height=3D"229.304=
+94505494505" src=3D"https://substackcdn.com/image/fetch/w_437,c_limit,f_aut=
+o,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.ama=
+zonaws.com%2Fpublic%2Fimages%2F209c9fd8-581a-491e-bad1-63edafa0141f_2400x12=
+60.png" style=3D"border: none !important;vertical-align: middle;display: bl=
+ock;-ms-interpolation-mode: bicubic;height: auto;margin-bottom: 0;width: au=
+to !important;max-width: 100% !important;margin: 0 auto;"></a></td><td styl=
+e=3D"text-align: center;"></td></tr></tbody></table></figure></div><p style=
+=3D"margin: 0 0 20px 0;color: rgb(54,55,55);line-height: 26px;font-size: 16=
+px;"><span>Join </span><a href=3D"https://substack.com/redirect/e0816fd0-67=
+1d-48ff-8dcb-f90555a815f0?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpw=
+HNgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"color: rgb(54,55,55);text-decoration:=
+ underline;">Miquido</a><span> on </span><strong>March 19th</strong><span> =
+for a free webinar to explore how financial technology is reshaping the mus=
+ic industry. Learn about innovations that are driving transparency, simplif=
+ying payments, and creating sustainable revenue models for artists, platfor=
+ms, and labels.</span></p><p style=3D"margin: 0 0 20px 0;color: rgb(54,55,5=
+5);line-height: 26px;font-size: 16px;"><span>&#128269; </span><strong><span=
+>What You&#8217;ll Learn:</span><br></strong><span>&#9989; How FinTech is r=
+evolutionizing royalty payments and building trust</span><br><span>&#9989; =
+The role of AI in music monetization and funding models</span><br><span>&#9=
+989; How automation is unlocking new business opportunities</span></p><p st=
+yle=3D"margin: 0 0 20px 0;color: rgb(54,55,55);line-height: 26px;font-size:=
+ 16px;"><span>Expert speakers</span><a href=3D"https://substack.com/redirec=
+t/6bdf3b4b-af55-412c-aafa-e42674bbac9f?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ=
+2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"color: rgb(54,55,55);tex=
+t-decoration: underline;"> </a><strong><a href=3D"https://substack.com/redi=
+rect/6bdf3b4b-af55-412c-aafa-e42674bbac9f?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-R=
+eYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"color: rgb(54,55,55);=
+text-decoration: underline;">Linda Portnoff</a><span>, </span><a href=3D"ht=
+tps://substack.com/redirect/84b839f1-8807-4a19-ac32-e124f0040bdc?j=3DeyJ1Ij=
+oiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=
+=3D"color: rgb(54,55,55);text-decoration: underline;">Emelie Olsson</a><spa=
+n>,</span></strong><span> </span><strong><a href=3D"https://substack.com/re=
+direct/0a1d65c5-cf68-430d-b756-bd355d2079dd?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl=
+-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"color: rgb(54,55,55=
+);text-decoration: underline;">Brian Dubb</a></strong><span> and </span><st=
+rong><a href=3D"https://substack.com/redirect/39bb7b02-6f4f-4aab-b90c-bfc93=
+35c310b?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ=
+" rel=3D"" style=3D"color: rgb(54,55,55);text-decoration: underline;">Peter=
+ Harvey</a></strong><span> will share real-world insights into the future o=
+f music finance. Don&#8217;t miss out&#8212;register now to secure your spo=
+t! &#128073; </span><a href=3D"https://substack.com/redirect/ba49da0f-8557-=
+4043-aa54-53413acd58a8?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNg=
+KZDZaCgNCOeJjZQ" rel=3D"" style=3D"color: rgb(54,55,55);text-decoration: un=
+derline;">https://tiny.pl/n5w1tcxj</a><span>.</span></p><div style=3D"font-=
+size: 16px;line-height: 26px;"><hr style=3D"margin: 32px 0;padding: 0;heigh=
+t: 1px;background: #e6e6e6;border: none;"></div><h3 class=3D"header-anchor-=
+post" style=3D"position: relative;--highlight-bg: rgba(var(--color-bg-accen=
+t-themed-rgb), 0.2);font-family: 'SF Pro Display',-apple-system-headline,sy=
+stem-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,=
+sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';font-weig=
+ht: bold;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: antia=
+liased;-webkit-appearance: optimizelegibility;-moz-appearance: optimizelegi=
+bility;appearance: optimizelegibility;margin: 1em 0 0.625em 0;color: rgb(54=
+,55,55);line-height: 1.16em;font-size: 1.375em;"><a href=3D"https://substac=
+k.com/redirect/9cb6300f-6bf3-4ffd-94f3-a752e2a0ea74?j=3DeyJ1IjoiNWRwbmYxIn0=
+=2EHeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaC=
+gNCOeJjZQ" rel=3D"" style=3D"color: rgb(=
+54,55,55);text-decoration: underline;">How independent labels and their art=
+ists can win the AI race</a></h3><p style=3D"margin: 0 0 20px 0;color: rgb(=
+54,55,55);line-height: 26px;font-size: 16px;">Marie Clausen, Managing Direc=
+tor for North America at independent record label Ninja Tune, explores AI&#=
+8217;s impact on the independent market, highlighting the sector&#8217;s un=
+iqueness, Merlin&#8217;s stance on AI, and a strategic, value-driven approa=
+ch that benefits all stakeholders.</p><h3 class=3D"header-anchor-post" styl=
+e=3D"position: relative;--highlight-bg: rgba(var(--color-bg-accent-themed-r=
+gb), 0.2);font-family: 'SF Pro Display',-apple-system-headline,system-ui,-a=
+pple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif=
+,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';font-weight: bold;-=
+webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: antialiased;-we=
+bkit-appearance: optimizelegibility;-moz-appearance: optimizelegibility;app=
+earance: optimizelegibility;margin: 1em 0 0.625em 0;color: rgb(54,55,55);li=
+ne-height: 1.16em;font-size: 1.375em;"><a href=3D"https://substack.com/redi=
+rect/4e39f916-87b0-4180-a985-27d24dec7af1?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-R=
+eYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"color: rgb(54,55,55);=
+text-decoration: underline;">Apple Music Classical Available on the Web</a>=
+</h3><p style=3D"margin: 0 0 20px 0;color: rgb(54,55,55);line-height: 26px;=
+font-size: 16px;">Apple Music Classical announced that its service will be =
+made available on the web, for those who prefer to listen on their desktop.=
+</p><p style=3D"margin: 0 0 20px 0;color: rgb(54,55,55);line-height: 26px;f=
+ont-size: 16px;">As part of the launch of the web service, Apple Music Clas=
+sical has made Franz Welser-M&#246;st and the Cleveland Orchestra&#8217;s n=
+ew recording of Julius Eastman&#8217;s Symphony No. 2 and Tchaikovsky&#8217=
+;s Symphony No. 2 available exclusively on Apple Music Classical for six we=
+eks.</p><h3 class=3D"header-anchor-post" style=3D"position: relative;--high=
+light-bg: rgba(var(--color-bg-accent-themed-rgb), 0.2);font-family: 'SF Pro=
+ Display',-apple-system-headline,system-ui,-apple-system,BlinkMacSystemFont=
+,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI=
+ Emoji','Segoe UI Symbol';font-weight: bold;-webkit-font-smoothing: antiali=
+ased;-moz-osx-font-smoothing: antialiased;-webkit-appearance: optimizelegib=
+ility;-moz-appearance: optimizelegibility;appearance: optimizelegibility;ma=
+rgin: 1em 0 0.625em 0;color: rgb(54,55,55);line-height: 1.16em;font-size: 1=
+=2E375em;"><a href=3D"https://substack.c=
+om/redirect/6655a7e5-a363-40da-a3f3-9=
+75c0eba0499?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOe=
+JjZQ" rel=3D"" style=3D"color: rgb(54,55,55);text-decoration: underline;">A=
+I is reshaping the music creator economy, and that change will reshape the =
+music business</a></h3><p style=3D"margin: 0 0 20px 0;color: rgb(54,55,55);=
+line-height: 26px;font-size: 16px;">Following a pandemic surge, 2023 and 20=
+24 were less buoyant years for music creator tools companies. Both user and=
+ revenue growth slowed, with some sections of the market hit particularly h=
+ard.</p><h3 class=3D"header-anchor-post" style=3D"position: relative;--high=
+light-bg: rgba(var(--color-bg-accent-themed-rgb), 0.2);font-family: 'SF Pro=
+ Display',-apple-system-headline,system-ui,-apple-system,BlinkMacSystemFont=
+,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI=
+ Emoji','Segoe UI Symbol';font-weight: bold;-webkit-font-smoothing: antiali=
+ased;-moz-osx-font-smoothing: antialiased;-webkit-appearance: optimizelegib=
+ility;-moz-appearance: optimizelegibility;appearance: optimizelegibility;ma=
+rgin: 1em 0 0.625em 0;color: rgb(54,55,55);line-height: 1.16em;font-size: 1=
+=2E375em;"><a href=3D"https://substack.c=
+om/redirect/39c97236-f115-43a5-a5fb-e=
+305ca63ae4a?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOe=
+JjZQ" rel=3D"" style=3D"color: rgb(54,55,55);text-decoration: underline;">S=
+oundcore&#8217;s AeroClip Open-Ear Clip-On Earbuds For All-Day Sporting Use=
+</a></h3><p style=3D"margin: 0 0 20px 0;color: rgb(54,55,55);line-height: 2=
+6px;font-size: 16px;">The public appetite for open-style earbuds shows no s=
+igns of subsiding. It seems that music lovers can&#8217;t get enough of the=
+se new clip-on earbuds that let them listen to music and still maintain awa=
+reness of all that&#8217;s going on around them, whether that be for safety=
+ or comfort.</p><h3 class=3D"header-anchor-post" style=3D"position: relativ=
+e;--highlight-bg: rgba(var(--color-bg-accent-themed-rgb), 0.2);font-family:=
+ 'SF Pro Display',-apple-system-headline,system-ui,-apple-system,BlinkMacSy=
+stemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','=
+Segoe UI Emoji','Segoe UI Symbol';font-weight: bold;-webkit-font-smoothing:=
+ antialiased;-moz-osx-font-smoothing: antialiased;-webkit-appearance: optim=
+izelegibility;-moz-appearance: optimizelegibility;appearance: optimizelegib=
+ility;margin: 1em 0 0.625em 0;color: rgb(54,55,55);line-height: 1.16em;font=
+-size: 1.375em;"><a href=3D"https://substack.com/redirect/60bd8a2f-a382-413=
+3-a569-d36a279de5d3?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZD=
+ZaCgNCOeJjZQ" rel=3D"" style=3D"color: rgb(54,55,55);text-decoration: under=
+line;">How Spotify Is Driving Growth, Discovery, and Innovation in the Audi=
+obook Market</a></h3><p style=3D"margin: 0 0 20px 0;color: rgb(54,55,55);li=
+ne-height: 26px;font-size: 16px;">Spotify took center stage at the London B=
+ook Fair this week, reaffirming their commitment to the audiobook market an=
+d showcasing our impact on the publishing industry.</p><h3 class=3D"header-=
+anchor-post" style=3D"position: relative;--highlight-bg: rgba(var(--color-b=
+g-accent-themed-rgb), 0.2);font-family: 'SF Pro Display',-apple-system-head=
+line,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica=
+,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';fo=
+nt-weight: bold;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing=
+: antialiased;-webkit-appearance: optimizelegibility;-moz-appearance: optim=
+izelegibility;appearance: optimizelegibility;margin: 1em 0 0.625em 0;color:=
+ rgb(54,55,55);line-height: 1.16em;font-size: 1.375em;"><a href=3D"https://=
+substack.com/redirect/08bdb9f5-ecf2-4b1c-8bad-637ce48717f2?j=3DeyJ1IjoiNWRw=
+bmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"colo=
+r: rgb(54,55,55);text-decoration: underline;">Bango report offers data on U=
+S music subscriptions</a></h3><p style=3D"margin: 0 0 20px 0;color: rgb(54,=
+55,55);line-height: 26px;font-size: 16px;">Payments-tech firm Bango has pub=
+lished its annual research digging into the subscriptions economy in the US=
+, and there&#8217;s some interesting music data.</p><h3 class=3D"header-anc=
+hor-post" style=3D"position: relative;--highlight-bg: rgba(var(--color-bg-a=
+ccent-themed-rgb), 0.2);font-family: 'SF Pro Display',-apple-system-headlin=
+e,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Ar=
+ial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';font-=
+weight: bold;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: a=
+ntialiased;-webkit-appearance: optimizelegibility;-moz-appearance: optimize=
+legibility;appearance: optimizelegibility;margin: 1em 0 0.625em 0;color: rg=
+b(54,55,55);line-height: 1.16em;font-size: 1.375em;"><a href=3D"https://sub=
+stack.com/redirect/97eee915-bee2-4ee5-b51d-fffb4459e910?j=3DeyJ1IjoiNWRwbmY=
+xIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"color: =
+rgb(54,55,55);text-decoration: underline;">PlaylistHub Launches AI-Powered =
+Spotify Playlist Placements for Artists</a></h3><p style=3D"margin: 0 0 20p=
+x 0;color: rgb(54,55,55);line-height: 26px;font-size: 16px;">Unlike traditi=
+onal playlisting services, PlaylistHub does not operate as a marketplace fo=
+r curators. Instead, it provides a fully managed, AI-driven playlist networ=
+k that ensures artists reach fresh, relevant listeners every month through =
+targeted placements and strategic ad campaigns.</p><h3 class=3D"header-anch=
+or-post" style=3D"position: relative;--highlight-bg: rgba(var(--color-bg-ac=
+cent-themed-rgb), 0.2);font-family: 'SF Pro Display',-apple-system-headline=
+,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Ari=
+al,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';font-w=
+eight: bold;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: an=
+tialiased;-webkit-appearance: optimizelegibility;-moz-appearance: optimizel=
+egibility;appearance: optimizelegibility;margin: 1em 0 0.625em 0;color: rgb=
+(54,55,55);line-height: 1.16em;font-size: 1.375em;"><a href=3D"https://subs=
+tack.com/redirect/ade08c90-0921-46cc-a291-d1e0646d344c?j=3DeyJ1IjoiNWRwbmYx=
+In0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"color: r=
+gb(54,55,55);text-decoration: underline;">Aphex Twin drops 191-track playli=
+st as part of new collab with streetwear brand Supreme</a></h3><p style=3D"=
+margin: 0 0 20px 0;color: rgb(54,55,55);line-height: 26px;font-size: 16px;"=
+>From Brian Eno to Kraftwerk, the legendary DJ returns with an eclectic pla=
+ylist for Supreme&#8217;s latest drop.</p><h3 class=3D"header-anchor-post" =
+style=3D"position: relative;--highlight-bg: rgba(var(--color-bg-accent-them=
+ed-rgb), 0.2);font-family: 'SF Pro Display',-apple-system-headline,system-u=
+i,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-s=
+erif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';font-weight: bo=
+ld;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: antialiased=
+;-webkit-appearance: optimizelegibility;-moz-appearance: optimizelegibility=
+;appearance: optimizelegibility;margin: 1em 0 0.625em 0;color: rgb(54,55,55=
+);line-height: 1.16em;font-size: 1.375em;"><a href=3D"https://substack.com/=
+redirect/f7974806-d449-4c8e-ad17-f44c498f8d0f?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6P=
+nl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"color: rgb(54,55,=
+55);text-decoration: underline;">BBC Radio 6 Music Festival 2025 to offer '=
+unique moments' from eclectic line-up of UK talent</a></h3><p style=3D"marg=
+in: 0 0 20px 0;color: rgb(54,55,55);line-height: 26px;font-size: 16px;">The=
+ BBC Radio 6 Music Festival &#8211; the station&#8217;s flagship annual mus=
+ic event &#8211; returns to Greater Manchester this month (Wednesday, March=
+ 26 to Saturday, March 29). This year&#8217;s festival features headline pe=
+rformances at O2 Victoria Warehouse Manchester from BRITs winners Ezra Coll=
+ective, Mogwai and Kae Tempest.</p><h3 class=3D"header-anchor-post" style=
+=3D"position: relative;--highlight-bg: rgba(var(--color-bg-accent-themed-rg=
+b), 0.2);font-family: 'SF Pro Display',-apple-system-headline,system-ui,-ap=
+ple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,=
+'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';font-weight: bold;-w=
+ebkit-font-smoothing: antialiased;-moz-osx-font-smoothing: antialiased;-web=
+kit-appearance: optimizelegibility;-moz-appearance: optimizelegibility;appe=
+arance: optimizelegibility;margin: 1em 0 0.625em 0;color: rgb(54,55,55);lin=
+e-height: 1.16em;font-size: 1.375em;"><a href=3D"https://substack.com/redir=
+ect/e2e45104-4732-4966-9836-8ff07de4c761?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-Re=
+YQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"color: rgb(54,55,55);t=
+ext-decoration: underline;">Central Cee x Spotify 'Homecoming' Concert Film=
+</a></h3><p style=3D"margin: 0 0 20px 0;color: rgb(54,55,55);line-height: 2=
+6px;font-size: 16px;"><span>British rapper Central Cee is taking over the w=
+orld with his debut album, </span><em>Can&#8217;t Rush Greatness</em><span>=
+=2E The artist has partnered with Spoti=
+fy on an immersive concert film detail=
+ing his inaugural performances in London, New York, and Atlanta, capturing =
+his </span><em>Homecoming</em><span> through the platform&#8217;s Fans Firs=
+t program.</span></p><h3 class=3D"header-anchor-post" style=3D"position: re=
+lative;--highlight-bg: rgba(var(--color-bg-accent-themed-rgb), 0.2);font-fa=
+mily: 'SF Pro Display',-apple-system-headline,system-ui,-apple-system,Blink=
+MacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emo=
+ji','Segoe UI Emoji','Segoe UI Symbol';font-weight: bold;-webkit-font-smoot=
+hing: antialiased;-moz-osx-font-smoothing: antialiased;-webkit-appearance: =
+optimizelegibility;-moz-appearance: optimizelegibility;appearance: optimize=
+legibility;margin: 1em 0 0.625em 0;color: rgb(54,55,55);line-height: 1.16em=
+;font-size: 1.375em;"><a href=3D"https://substack.com/redirect/d6298998-654=
+a-4eba-8ed9-3bd3eb3a0059?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwH=
+NgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"color: rgb(54,55,55);text-decoration: =
+underline;">Louis Vuitton Drops Music Tech-Inspired Spring 2025 Accessories=
+</a></h3><p style=3D"margin: 0 0 20px 0;color: rgb(54,55,55);line-height: 2=
+6px;font-size: 16px;">Since Pharrell Williams joined Louis Vuitton, music m=
+otifs are stronger than ever. In the new accessories released for the Sprin=
+g 2025 season, Louis Vuitton goes back to the past, bringing old music tech=
+ artifacts back to center stage. The French house is no stranger to lux-ify=
+ing everyday objects and this time, it is reaching into the archives of mus=
+ic players.</p><div style=3D"font-size: 16px;line-height: 26px;"><hr style=
+=3D"margin: 32px 0;padding: 0;height: 1px;background: #e6e6e6;border: none;=
+"></div><div class=3D"subscription-widget-wrap" style=3D"font-size: 16px;li=
+ne-height: 26px;"><div class=3D"subscription-widget show-subscribe" style=
+=3D"font-size: 16px;direction: ltr !important;font-weight: 400;text-decorat=
+ion: none;font-family: system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI=
+',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','S=
+egoe UI Symbol';color: #363737;line-height: 1.5;max-width: 560px;margin: 24=
+px auto;align-items: flex-start;display: block;text-align: center;padding: =
+0px 32px;"><div class=3D"preamble" style=3D"margin-top: 16px;font-family: s=
+ystem-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial=
+,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';font-siz=
+e: 18px;max-width: 384px;width: fit-content;line-height: 22px;display: flex=
+;align-items: center;text-align: center;font-weight: 400;margin-left: auto;=
+margin-right: auto;"><p style=3D"margin: 0 0 20px 0;color: rgb(54,55,55);li=
+ne-height: 26px;font-size: 16px;"><em>To support the newsletter, consider b=
+ecoming a free or paid subscriber.</em></p></div><div class=3D"subscribe-wi=
+dget is-signed-up" data-component-name=3D"SubscribeWidget" style=3D"margin:=
+ 0 0 1em;direction: ltr;font-size: 16px;line-height: 26px;"><div class=3D"p=
+encraft pc-reset button-wrapper" style=3D"text-decoration: unset;list-style=
+: none;font-size: 16px;line-height: 26px;text-align: center;cursor: pointer=
+;border-radius: 4px;"><a class=3D"button subscribe-btn primary" href=3D"htt=
+ps://substack.com/redirect/2/eyJlIjoiaHR0cHM6Ly9wbGF0Zm9ybXN0cmVhbS5zdWJzdG=
+Fjay5jb20vc3Vic2NyaWJlP3V0bV9zb3VyY2U9cG9zdCZ1dG1fY2FtcGFpZ249ZW1haWwtY2hlY=
+2tvdXQmbmV4dD1odHRwcyUzQSUyRiUyRnBsYXRmb3Jtc3RyZWFtLnN1YnN0YWNrLmNvbSUyRnAl=
+MkZob3ctaW5kZXBlbmRlbnQtbGFiZWxzLWFydGlzdHMtY2FuJnI9NWRwbmYxJnRva2VuPWV5SjF=
+jMlZ5WDJsa0lqb3pNalV6TmpJMk16Y3NJbWxoZENJNk1UYzBNakl4TkRNeE5Dd2laWGh3SWpveE=
+56UTBPREEyTXpFMExDSnBjM01pT2lKd2RXSXRNVEkwTXpjMk15SXNJbk4xWWlJNkltTm9aV05yY=
+jNWMEluMC45WHgtaHpOYUZLU2FsMEtWOUstR2FKRmV6T0FfLXVEc0RKTTdxNm56UmVJIiwicCI6=
+MTU4MDQwODI2LCJzIjoxMjQzNzYzLCJmIjp0cnVlLCJ1IjozMjUzNjI2MzcsImlhdCI6MTc0MjI=
+xNDMxNCwiZXhwIjoxNzQ0ODA2MzE0LCJpc3MiOiJwdWItMCIsInN1YiI6ImxpbmstcmVkaXJlY3=
+QifQ.OPiyricPNmT8hAjoBvjbdCm2iOKoMR6Cc0lURLmL5hM?&utm_medium=3Demail&utm_so=
+urce=3Dsubscribe-widget-preamble&utm_content=3D158040826" style=3D"font-fam=
+ily: system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica=
+,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';di=
+splay: inline-block;box-sizing: border-box;cursor: pointer;border: none;bor=
+der-radius: 8px;font-size: 14px;line-height: 20px;font-weight: 600;text-ali=
+gn: center;opacity: 1;outline: none;white-space: nowrap;text-decoration: no=
+ne !important;margin: 0 auto;background-color: #00008B;color: #ffffff !impo=
+rtant;padding: 12px 20px;height: auto;"><span style=3D"color: #ffffff;text-=
+decoration: none;">Upgrade to paid</span></a></div></div></div></div><div s=
+tyle=3D"font-size: 16px;line-height: 26px;"><hr style=3D"margin: 32px 0;pad=
+ding: 0;height: 1px;background: #e6e6e6;border: none;"></div><ul style=3D"m=
+argin-top: 0;padding: 0;"><li style=3D"margin: 8px 0 0 32px;mso-special-for=
+mat: bullet;"><p style=3D"color: rgb(54,55,55);line-height: 26px;margin-bot=
+tom: 0;box-sizing: border-box;padding-left: 4px;font-size: 16px;margin: 0;"=
+><em><span>Send story ideas &amp; feedback to: </span><a href=3D"https://su=
+bstack.com/redirect/052f09f7-c739-4579-bac8-9600ae006793?j=3DeyJ1IjoiNWRwbm=
+YxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"color:=
+ rgb(54,55,55);text-decoration: underline;">jeff@platformandstream.com</a><=
+/em></p></li><li style=3D"margin: 8px 0 0 32px;mso-special-format: bullet;"=
+><p style=3D"color: rgb(54,55,55);line-height: 26px;margin-bottom: 0;box-si=
+zing: border-box;padding-left: 4px;font-size: 16px;margin: 0;"><em><span>&#=
+65039;Interested in sponsoring the newsletter? You'll find all the details =
+</span><a href=3D"https://substack.com/redirect/b9e09a4c-6238-49bd-8d1a-384=
+aa0512b7f?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJj=
+ZQ" rel=3D"" style=3D"color: rgb(54,55,55);text-decoration: underline;">her=
+e</a><span>.&#8203;</span></em></p></li></ul><div style=3D"font-size: 16px;=
+line-height: 26px;margin-bottom: 0;"><hr style=3D"margin: 32px 0;padding: 0=
+;height: 1px;background: #e6e6e6;border: none;"></div></div></div><div clas=
+s=3D"container-border" style=3D"margin: 32px 0 0;width: 100%;box-sizing: bo=
+rder-box;border-top: 1px solid #e6e6e6;font-size: 16px;line-height: 26px;">=
+</div><div class=3D"post-cta typography markup" style=3D"font-family: 'SF P=
+ro Display', -apple-system, system-ui, BlinkMacSystemFont, 'Inter', 'Segoe =
+UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI E=
+moji', 'Segoe UI Symbol';font-weight: 400;text-align: initial;word-break: b=
+reak-word;margin-bottom: 32px;margin: 32px 0;font-size: 16px;line-height: 2=
+6px;"><p style=3D"color: rgb(54,55,55);margin: 0 auto 20px;text-align: cent=
+er;width: 90%;line-height: 26px;font-size: 16px;margin-top: 0;"><span class=
+=3D"pencraft pc-reset reset-IxiVJZ" translated=3D"" style=3D"list-style: no=
+ne;color: unset;text-decoration: unset;margin: 0;">You're currently a free =
+subscriber to <a href=3D"https://substack.com/redirect/3863aae5-51dd-4f53-9=
+267-2a4cdff21916?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaC=
+gNCOeJjZQ" style=3D"color: rgb(54,55,55);text-decoration: underline;">Platf=
+orm &amp; Stream</a>. For the full experience, <a href=3D"https://substack.=
+com/redirect/2/eyJlIjoiaHR0cHM6Ly9wbGF0Zm9ybXN0cmVhbS5zdWJzdGFjay5jb20vc3Vi=
+c2NyaWJlP3V0bV9zb3VyY2U9cG9zdCZ1dG1fY2FtcGFpZ249ZW1haWwtY2hlY2tvdXQmbmV4dD1=
+odHRwcyUzQSUyRiUyRnBsYXRmb3Jtc3RyZWFtLnN1YnN0YWNrLmNvbSUyRnAlMkZob3ctaW5kZX=
+BlbmRlbnQtbGFiZWxzLWFydGlzdHMtY2FuJnI9NWRwbmYxJnRva2VuPWV5SjFjMlZ5WDJsa0lqb=
+3pNalV6TmpJMk16Y3NJbWxoZENJNk1UYzBNakl4TkRNeE5Dd2laWGh3SWpveE56UTBPREEyTXpF=
+MExDSnBjM01pT2lKd2RXSXRNVEkwTXpjMk15SXNJbk4xWWlJNkltTm9aV05yYjNWMEluMC45WHg=
+taHpOYUZLU2FsMEtWOUstR2FKRmV6T0FfLXVEc0RKTTdxNm56UmVJIiwicCI6MTU4MDQwODI2LC=
+JzIjoxMjQzNzYzLCJmIjp0cnVlLCJ1IjozMjUzNjI2MzcsImlhdCI6MTc0MjIxNDMxNCwiZXhwI=
+joxNzQ0ODA2MzE0LCJpc3MiOiJwdWItMCIsInN1YiI6ImxpbmstcmVkaXJlY3QifQ.OPiyricPN=
+mT8hAjoBvjbdCm2iOKoMR6Cc0lURLmL5hM?&utm_source=3Dsubstack&utm_medium=3Demai=
+l&utm_content=3Dpostcta" style=3D"color: rgb(54,55,55);text-decoration: und=
+erline;">upgrade your subscription.</a></span></p><p class=3D"cta-box" styl=
+e=3D"color: rgb(54,55,55);margin: 0 auto 20px;width: 90%;line-height: 26px;=
+font-size: 16px;margin-bottom: 0;text-align: center;margin-left: auto;margi=
+n-right: auto;"><a class=3D"button primary" role=3D"button" href=3D"https:/=
+/substack.com/redirect/2/eyJlIjoiaHR0cHM6Ly9wbGF0Zm9ybXN0cmVhbS5zdWJzdGFjay=
+5jb20vc3Vic2NyaWJlP3V0bV9zb3VyY2U9cG9zdCZ1dG1fY2FtcGFpZ249ZW1haWwtY2hlY2tvd=
+XQmbmV4dD1odHRwcyUzQSUyRiUyRnBsYXRmb3Jtc3RyZWFtLnN1YnN0YWNrLmNvbSUyRnAlMkZo=
+b3ctaW5kZXBlbmRlbnQtbGFiZWxzLWFydGlzdHMtY2FuJnI9NWRwbmYxJnRva2VuPWV5SjFjMlZ=
+5WDJsa0lqb3pNalV6TmpJMk16Y3NJbWxoZENJNk1UYzBNakl4TkRNeE5Dd2laWGh3SWpveE56UT=
+BPREEyTXpFMExDSnBjM01pT2lKd2RXSXRNVEkwTXpjMk15SXNJbk4xWWlJNkltTm9aV05yYjNWM=
+EluMC45WHgtaHpOYUZLU2FsMEtWOUstR2FKRmV6T0FfLXVEc0RKTTdxNm56UmVJIiwicCI6MTU4=
+MDQwODI2LCJzIjoxMjQzNzYzLCJmIjp0cnVlLCJ1IjozMjUzNjI2MzcsImlhdCI6MTc0MjIxNDM=
+xNCwiZXhwIjoxNzQ0ODA2MzE0LCJpc3MiOiJwdWItMCIsInN1YiI6ImxpbmstcmVkaXJlY3QifQ=
+=2EOPiyricPNmT8hAjoBvjbdCm2iOKoMR6Cc0l=
+URLmL5hM?&utm_source=3Dsubstack&utm_med=
+ium=3Demail&utm_content=3Dpostcta" style=3D"font-family: system-ui,-apple-s=
+ystem,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Appl=
+e Color Emoji','Segoe UI Emoji','Segoe UI Symbol';display: inline-block;box=
+-sizing: border-box;cursor: pointer;border: none;height: 40px;border-radius=
+: 8px;font-size: 14px;line-height: 20px;font-weight: 600;text-align: center=
+;padding: 10px 20px;margin: 0;opacity: 1;outline: none;white-space: nowrap;=
+color: #ffffff !important;text-decoration: none !important;background-color=
+: #00008B;">Upgrade to paid</a></p></div><table class=3D"email-ufi-2-bottom=
+" role=3D"presentation" width=3D"100%" border=3D"0" cellspacing=3D"0" cellp=
+adding=3D"0" style=3D"border-top: 1px solid rgb(0,0,0,.1);border-bottom: 1p=
+x solid rgb(0,0,0,.1);min-width: 100%;"><tbody><tr height=3D"16"><td height=
+=3D"16" style=3D"font-size:0px;line-height:0;">&nbsp;</td></tr><tr><td><tab=
+le role=3D"presentation" width=3D"100%" border=3D"0" cellspacing=3D"0" cell=
+padding=3D"0"><tbody><tr><td><table role=3D"presentation" width=3D"auto" bo=
+rder=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=3D"margin:0 auto;"><tb=
+ody><tr><td style=3D"vertical-align:middle;"><table role=3D"presentation" w=
+idth=3D"auto" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><=
+td align=3D"center"><a class=3D"email-button-outline" href=3D"https://subst=
+ack.com/app-link/post?publication_id=3D1243763&post_id=3D158040826&utm_sour=
+ce=3Dsubstack&isFreemail=3Dtrue&submitLike=3Dtrue&token=3DeyJ1c2VyX2lkIjozM=
+jUzNjI2MzcsInBvc3RfaWQiOjE1ODA0MDgyNiwicmVhY3Rpb24iOiLinaQiLCJpYXQiOjE3NDIy=
+MTQzMTQsImV4cCI6MTc0NDgwNjMxNCwiaXNzIjoicHViLTEyNDM3NjMiLCJzdWIiOiJyZWFjdGl=
+vbiJ9.XkQKwM0wESznolo4F7VHEQ_LyWnv6Y8Q_NdskkfnUbE&utm_medium=3Demail&utm_ca=
+mpaign=3Demail-reaction&r=3D5dpnf1" style=3D"font-family: system-ui,-apple-=
+system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'App=
+le Color Emoji','Segoe UI Emoji','Segoe UI Symbol';display: inline-block;fo=
+nt-weight: 500;border: 1px solid rgb(0,0,0,.1);border-radius: 9999px;text-t=
+ransform: uppercase;font-size: 12px;line-height: 12px;padding: 9px 14px;tex=
+t-decoration: none;color: rgb(119,119,119);"><img class=3D"icon" src=3D"htt=
+ps://substackcdn.com/image/fetch/w_36,c_scale,f_png,q_auto:good,fl_progress=
+ive:steep/https%3A%2F%2Fsubstack.com%2Ficon%2FLucideHeart%3Fv%3D4%26height%=
+3D36%26fill%3Dnone%26stroke%3D%2523808080%26strokeWidth%3D2" width=3D"18" h=
+eight=3D"18" style=3D"margin-right: 8px;min-width: 18px;min-height: 18px;bo=
+rder: none;vertical-align: middle;max-width: 18px" alt=3D""><span class=3D"=
+email-button-text" style=3D"vertical-align: middle;">Like</span></a></td></=
+tr></tbody></table></td><td width=3D"8" style=3D"min-width: 8px"></td><td s=
+tyle=3D"vertical-align:middle;"><table role=3D"presentation" width=3D"auto"=
+ border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><td align=3D"c=
+enter"><a class=3D"email-button-outline" href=3D"https://substack.com/app-l=
+ink/post?publication_id=3D1243763&post_id=3D158040826&utm_source=3Dsubstack=
+&utm_medium=3Demail&isFreemail=3Dtrue&comments=3Dtrue&token=3DeyJ1c2VyX2lkI=
+jozMjUzNjI2MzcsInBvc3RfaWQiOjE1ODA0MDgyNiwiaWF0IjoxNzQyMjE0MzE0LCJleHAiOjE3=
+NDQ4MDYzMTQsImlzcyI6InB1Yi0xMjQzNzYzIiwic3ViIjoicG9zdC1yZWFjdGlvbiJ9.V3rjfn=
+LDOIWmErokEQgukW7w-fgnSjPc-Qi4sJy8TH4&r=3D5dpnf1&utm_campaign=3Demail-half-=
+magic-comments&action=3Dpost-comment&utm_source=3Dsubstack&utm_medium=3Dema=
+il" style=3D"font-family: system-ui,-apple-system,BlinkMacSystemFont,'Segoe=
+ UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji'=
+,'Segoe UI Symbol';display: inline-block;font-weight: 500;border: 1px solid=
+ rgb(0,0,0,.1);border-radius: 9999px;text-transform: uppercase;font-size: 1=
+2px;line-height: 12px;padding: 9px 14px;text-decoration: none;color: rgb(11=
+9,119,119);"><img class=3D"icon" src=3D"https://substackcdn.com/image/fetch=
+/w_36,c_scale,f_png,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack=
+=2Ecom%2Ficon%2FLucideComments%3Fv%3D4%=
+26height%3D36%26fill%3Dnone%26stroke%3=
+D%2523808080%26strokeWidth%3D2" width=3D"18" height=3D"18" style=3D"margin-=
+right: 8px;min-width: 18px;min-height: 18px;border: none;vertical-align: mi=
+ddle;max-width: 18px" alt=3D""><span class=3D"email-button-text" style=3D"v=
+ertical-align: middle;">Comment</span></a></td></tr></tbody></table></td><t=
+d width=3D"8" style=3D"min-width: 8px"></td><td style=3D"vertical-align:mid=
+dle;"><table role=3D"presentation" width=3D"auto" border=3D"0" cellspacing=
+=3D"0" cellpadding=3D"0"><tbody><tr><td align=3D"center"><a class=3D"email-=
+button-outline" href=3D"https://substack.com/redirect/2/eyJlIjoiaHR0cHM6Ly9=
+vcGVuLnN1YnN0YWNrLmNvbS9wdWIvcGxhdGZvcm1zdHJlYW0vcC9ob3ctaW5kZXBlbmRlbnQtbG=
+FiZWxzLWFydGlzdHMtY2FuP3V0bV9zb3VyY2U9c3Vic3RhY2smdXRtX21lZGl1bT1lbWFpbCZ1d=
+G1fY2FtcGFpZ249ZW1haWwtcmVzdGFjay1jb21tZW50JmFjdGlvbj1yZXN0YWNrLWNvbW1lbnQm=
+cj01ZHBuZjEmdG9rZW49ZXlKMWMyVnlYMmxrSWpvek1qVXpOakkyTXpjc0luQnZjM1JmYVdRaU9=
+qRTFPREEwTURneU5pd2lhV0YwSWpveE56UXlNakUwTXpFMExDSmxlSEFpT2pFM05EUTRNRFl6TV=
+RRc0ltbHpjeUk2SW5CMVlpMHhNalF6TnpZeklpd2ljM1ZpSWpvaWNHOXpkQzF5WldGamRHbHZia=
+Uo5LlYzcmpmbkxET0lXbUVyb2tFUWd1a1c3dy1mZ25TalBjLVFpNHNKeThUSDQiLCJwIjoxNTgw=
+NDA4MjYsInMiOjEyNDM3NjMsImYiOnRydWUsInUiOjMyNTM2MjYzNywiaWF0IjoxNzQyMjE0MzE=
+0LCJleHAiOjE3NDQ4MDYzMTQsImlzcyI6InB1Yi0wIiwic3ViIjoibGluay1yZWRpcmVjdCJ9.G=
+gryCiiyk7v4OnYqooHwe9BEqQKHJXXENxbPSugpS-E?&utm_source=3Dsubstack&utm_mediu=
+m=3Demail" style=3D"font-family: system-ui,-apple-system,BlinkMacSystemFont=
+,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI=
+ Emoji','Segoe UI Symbol';display: inline-block;font-weight: 500;border: 1p=
+x solid rgb(0,0,0,.1);border-radius: 9999px;text-transform: uppercase;font-=
+size: 12px;line-height: 12px;padding: 9px 14px;text-decoration: none;color:=
+ rgb(119,119,119);"><img class=3D"icon" src=3D"https://substackcdn.com/imag=
+e/fetch/w_36,c_scale,f_png,q_auto:good,fl_progressive:steep/https%3A%2F%2Fs=
+ubstack.com%2Ficon%2FNoteForwardIcon%3Fv%3D4%26height%3D36%26fill%3Dnone%26=
+stroke%3D%2523808080%26strokeWidth%3D2" width=3D"18" height=3D"18" style=3D=
+"margin-right: 8px;min-width: 18px;min-height: 18px;border: none;vertical-a=
+lign: middle;max-width: 18px" alt=3D""><span class=3D"email-button-text" st=
+yle=3D"vertical-align: middle;">Restack</span></a></td></tr></tbody></table=
+></td></tr></tbody></table></td><td align=3D"right"><table role=3D"presenta=
+tion" width=3D"auto" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tbod=
+y><tr></tr></tbody></table></td></tr></tbody></table></td></tr><tr height=
+=3D"16"><td height=3D"16" style=3D"font-size:0px;line-height:0;">&nbsp;</td=
+></tr></tbody></table><div class=3D"footer footer-ZM59BM" style=3D"color: r=
+gb(119,119,119);text-align: center;font-size: 16px;line-height: 26px;paddin=
+g: 24px0;"><div style=3D"font-size: 16px;line-height: 26px;padding-bottom: =
+24px"><p class=3D"pencraft pc-reset color-secondary-ls1g8s size-12-mmZ61m r=
+eset-IxiVJZ small meta-B2bqa5" style=3D"list-style: none;font-family: syste=
+m-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,san=
+s-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';padding-bott=
+om: 0;font-size: 12px;line-height: 16px;margin: 0;color: rgb(119,119,119);t=
+ext-decoration: unset;">&#169; 2025 <span>Platform &amp; Stream</span><br>5=
+48 Market Street PMB 72296, San Francisco, CA 94104 <br><a href=3D"https://=
+substack.com/redirect/2/eyJlIjoiaHR0cHM6Ly9wbGF0Zm9ybXN0cmVhbS5zdWJzdGFjay5=
+jb20vYWN0aW9uL2Rpc2FibGVfZW1haWw_dG9rZW49ZXlKMWMyVnlYMmxrSWpvek1qVXpOakkyTX=
+pjc0luQnZjM1JmYVdRaU9qRTFPREEwTURneU5pd2lhV0YwSWpveE56UXlNakUwTXpFMExDSmxlS=
+EFpT2pFM056TTNOVEF6TVRRc0ltbHpjeUk2SW5CMVlpMHhNalF6TnpZeklpd2ljM1ZpSWpvaVpH=
+bHpZV0pzWlY5bGJXRnBiQ0o5LkVpSTRrVWRlS0FibEhMeGZPQWY1Rzk1bjVwR2JMUUw1VmNSSkg=
+tck9YYUEiLCJwIjoxNTgwNDA4MjYsInMiOjEyNDM3NjMsImYiOnRydWUsInUiOjMyNTM2MjYzNy=
+wiaWF0IjoxNzQyMjE0MzE0LCJleHAiOjE3NDQ4MDYzMTQsImlzcyI6InB1Yi0wIiwic3ViIjoib=
+Gluay1yZWRpcmVjdCJ9.SQs2C19-_EolqvFy2KfCybHkqF9t-rH5knGkEAly7ag?" style=3D"=
+text-decoration: underline;color: rgb(119,119,119);"><span style=3D"color: =
+rgb(119,119,119);text-decoration: underline;">Unsubscribe</span></a></p></d=
+iv><p class=3D"footerSection-EHR0jG small powered-by-substack" style=3D"pad=
+ding: 0 24px;font-size: 12px;line-height: 20px;margin: 0;color: rgb(119,119=
+,119);font-family: system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Ro=
+boto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe=
+ UI Symbol';padding-bottom: 0;margin-top: 0;"><a href=3D"https://substack.c=
+om/redirect/5c9b12b2-7cd3-48bd-922b-34b94f3da90b?j=3DeyJ1IjoiNWRwbmYxIn0.He=
+F6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" style=3D"color: rgb(119,119,119)=
+;text-decoration: none;display: inline-block;margin: 0 4px;"><img src=3D"ht=
+tps://substackcdn.com/image/fetch/w_262,c_limit,f_auto,q_auto:good,fl_progr=
+essive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Femail%2Fgeneric-app-button%=
+402x.png" srcset=3D"https://substackcdn.com/image/fetch/w_131,c_limit,f_aut=
+o,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Femail=
+%2Fgeneric-app-button.png, https://substackcdn.com/image/fetch/w_262,c_limi=
+t,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%=
+2Femail%2Fgeneric-app-button%402x.png 2x, https://substackcdn.com/image/fet=
+ch/w_393,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubs=
+tack.com%2Fimg%2Femail%2Fgeneric-app-button%403x.png 3x" width=3D"131" alt=
+=3D"Get the app" height=3D"40" style=3D"max-width: 550px;border: none !impo=
+rtant;vertical-align: middle;"></a><a href=3D"https://substack.com/redirect=
+/2/eyJlIjoiaHR0cHM6Ly9zdWJzdGFjay5jb20vc2lnbnVwP3V0bV9zb3VyY2U9c3Vic3RhY2sm=
+dXRtX21lZGl1bT1lbWFpbCZ1dG1fY29udGVudD1mb290ZXImdXRtX2NhbXBhaWduPWF1dG9maWx=
+sZWQtZm9vdGVyJmZyZWVTaWdudXBFbWFpbD1kZXNndGVzdC5lbWFpbEBnbWFpbC5jb20mcj01ZH=
+BuZjEiLCJwIjoxNTgwNDA4MjYsInMiOjEyNDM3NjMsImYiOnRydWUsInUiOjMyNTM2MjYzNywia=
+WF0IjoxNzQyMjE0MzE0LCJleHAiOjE3NDQ4MDYzMTQsImlzcyI6InB1Yi0wIiwic3ViIjoibGlu=
+ay1yZWRpcmVjdCJ9.oHpJKjaXnfh0u2jYA-Rrzm5Rd2X7WbpZQyMO2DBt3Vo?" style=3D"col=
+or: rgb(119,119,119);text-decoration: none;display: inline-block;margin: 0 =
+4px;"><img src=3D"https://substackcdn.com/image/fetch/w_270,c_limit,f_auto,=
+q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Femail%2=
+Fpublish-button%402x.png" srcset=3D"https://substackcdn.com/image/fetch/w_1=
+35,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.c=
+om%2Fimg%2Femail%2Fpublish-button.png, https://substackcdn.com/image/fetch/=
+w_270,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstac=
+k.com%2Fimg%2Femail%2Fpublish-button%402x.png 2x, https://substackcdn.com/i=
+mage/fetch/w_405,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2=
+F%2Fsubstack.com%2Fimg%2Femail%2Fpublish-button%403x.png 3x" width=3D"135" =
+alt=3D"Start writing" height=3D"40" style=3D"max-width: 550px;border: none =
+!important;vertical-align: middle;"></a></p></div></div></td><td></td></tr>=
+</tbody></table><img src=3D"https://eotrx.substackcdn.com/open?token=3DeyJt=
+IjoiPDIwMjUwMzE3MTIyNTA4LjMuOGNlN2RkZDNhY2FkNWEzZUBtZy1kMC5zdWJzdGFjay5jb20=
+-IiwidSI6MzI1MzYyNjM3LCJyIjoiZGVzZ3Rlc3QuZW1haWxAZ21haWwuY29tIiwiZCI6Im1nLW=
+QwLnN1YnN0YWNrLmNvbSIsInAiOjE1ODA0MDgyNiwidCI6Im5ld3NsZXR0ZXIiLCJhIjoiZXZlc=
+nlvbmUiLCJzIjoxMjQzNzYzLCJjIjoicG9zdCIsImYiOnRydWUsInBvc2l0aW9uIjoiYm90dG9t=
+IiwiaWF0IjoxNzQyMjE0MzE0LCJleHAiOjE3NDQ4MDYzMTQsImlzcyI6InB1Yi0wIiwic3ViIjo=
+iZW8ifQ.2MoOnWVxjPRURIXCiCig7eIGq1KxK7AZAL8gaI8C6tQ" alt=3D"" width=3D"1" h=
+eight=3D"1" border=3D"0" style=3D"height:1px !important;width:1px !importan=
+t;border-width:0 !important;margin-top:0 !important;margin-bottom:0 !import=
+ant;margin-right:0 !important;margin-left:0 !important;padding-top:0 !impor=
+tant;padding-bottom:0 !important;padding-right:0 !important;padding-left:0 =
+!important;"/><img width=3D"1" height=3D"1" alt=3D"" src=3D"https://email.m=
+g-d0.substack.com/o/eJxEkN1qxCAQRp9mvWsw_sTc-Cxh4kxSadSg45a8fdnsQq8GzsDh8AV=
+g2ku9_FkaC_SThs2iID86o9Ro9DgLShCPZadMFZhwAf7_GjlJ8e3VqjetgpMa7UQA22idUmFbya=
+GZyYrolVRW6tGNSlk5D3qYAzlE1BAALWh6GJn2L5RD62tjCD9DKEnEtmyV7gTPtZN4hS7QMVIO5=
+OlJ9Sr5gyP60c7SyFlNb8LXST7TbzuImao4-7qEklLPka-FMqwH4Ufc1yMG4FjyLVJGu0mL6pHa=
+ztR4uCseRu6ve9e1vmJJELM_D-Ct1NS4EiTB70F7o_qSaWX1pCbtxNOrvwAAAP__WnN8uA"></b=
+ody></html>
+
+--60ec2c019db456570cb56e98ad154785209a88032791cf2476e81cc2937c--

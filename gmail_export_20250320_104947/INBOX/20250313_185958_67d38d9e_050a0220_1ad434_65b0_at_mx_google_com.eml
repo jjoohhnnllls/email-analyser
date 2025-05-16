@@ -1,0 +1,119 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp348241rcd;
+        Thu, 13 Mar 2025 18:59:59 -0700 (PDT)
+X-Received: by 2002:a05:6a21:33a9:b0:1f5:8179:242f with SMTP id adf61e73a8af0-1f5c138765cmr1283742637.30.1741917599695;
+        Thu, 13 Mar 2025 18:59:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741917599; cv=none;
+        d=google.com; s=arc-20240605;
+        b=eZkgIYEQm/WOHZWpmN+8OKcCvPWLr1D4ofAqM5j3IbVxR76PxO5MqJ60GiOvf7zxQy
+         Pe12qRaBIKDYxr9uPtE4r64VFcA4Suh+iYh4xbIr/TqP1ouhhR88HGVVSAP/hltT3fqd
+         Pa79mtAbz+GyY7t1ZnkAs3qw6xzds7io/5hH7afVfTe14G1r7e9TmJuaxqR2E1mRsp+0
+         G0PTzGHcZoc59hkMtep5Ugw7QGCGvHkKek3bhSPJPDfTLZ1cgzJgJBKGDMNHsg2LQgTL
+         ij+horzevj/iwREaT4tNhV8VmyWxnnwGQjvOQRoUHlEMKXl5Kc2gEIIhsbYzkZCaZT43
+         ltuQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=Ktgv9Pmno0B5z2bAV1Dg3lqJqJyiJdOL4GUaKZweZ3Y=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=dnUrZD+nlzA/ovA/UHMPyfQlt5Ckb2BK5uR66ETIWZvJMoFtoF+3m6lowi8TynvF+T
+         jcr1j/IZ10+LcaPmvSmJ4pErIGR4dPNggE4UDCY+6svLFWr5VZLM/9uGRnyp+392c0wr
+         IqO2nJ78o3Dslm0FjABfdg9S9ZrTMo1o4Qih8/sBE0FuPWjeF3HjO/+GLwcfOYFkbJvt
+         ZpqshgW+PBg/qkc1GRl3G/qYinMbsM6ZXffTbTwjfjFGZuYp9ES4COw2UPSYPeX7X1Mq
+         cTL2IG/AneHtr51gP9FHQbSVxp5luvcZ+IPORy01Y7ttxM6/7I/2p/UvH93MbIf15q3q
+         LqEw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=LyVUUWPC;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 41be03b00d2f7-af56ea7e45asor1395018a12.7.2025.03.13.18.59.59
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 18:59:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=LyVUUWPC;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741917599; x=1742522399; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=Ktgv9Pmno0B5z2bAV1Dg3lqJqJyiJdOL4GUaKZweZ3Y=;
+        b=LyVUUWPCKXbzoqB8ZnEaxfkaSFe+3zLPRS+vw96XrozkGXulo+vIcgesKSnVPoQb2M
+         kZ6q7syeQhX2RJdyKa165MiMYr8Z5lm0cI3XHz2m1AEveXguwk21qWo5ZdKvqA1FKb43
+         PzQJ2G2EK9hKciMVXg7D2xQ99u/kJSkiKCSR51RNgkeNd/JUZ+JiXsJeSWs14R3NXYpX
+         zunozUs4AE+/cLi4pV8aRZRUxg5E24Uvw1OrK6wQ0tGlea8ve4IzrOpo3DRyszir57Ku
+         0E7qMQJYIvBMgTTxs+aM//9R0XRXETCqk9ECMYrJycc1f0nqUKWXu16oicmXvfwFFah7
+         zQyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741917599; x=1742522399;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Ktgv9Pmno0B5z2bAV1Dg3lqJqJyiJdOL4GUaKZweZ3Y=;
+        b=QE4LwSJ2rcohVXSfVf9Wq57bDyBHVnnUvFdlKMW9oIpApxNBSJ9SuZ5NAdUJAH0gwz
+         6QEdHKGm01jpTCPH/bSWcl0zuz+6c6rIWm0agITT/tljDIzI3QA20kYL6Nbh4KpUMFTc
+         X6KsAnLpxDJRYFTHdBbhCM3h+CTusoV1WiT7+nxCABk8wwkmwgd8KxpeawpicVW7jZLP
+         bMlgLVBLLBcGokYCntV0ebSDEOVpczX12VYltShzU6H2D40uz6HayFvmrY2m0rgK6vwJ
+         scbtCiOVVNVxcz2Hk+ZtGgfNYxpYklkJRQ98AOGt6bMqCPSfcQLnshmMrFgcq2Wgj53M
+         QXGQ==
+X-Gm-Message-State: AOJu0Yz1jO6HRigOy4h+p/8uS8QuYVAD5J5H45z95yzjnhJBlJqk79+H
+	mOVCEPYGeIBNEvoAfXQ7l2WzsBAtWCXUQRl3uztbsgrsBpFahXlN3O1ml++n
+X-Gm-Gg: ASbGncshxvjsukiWP8bMoir1TKEW4OJB39NsT6mNOR7Us5y2xTN8SnCWIJGVeiQr/4a
+	IjIeXSF7OtxY0Ru+S1n8pFyVF62FHcLCLC3gvsxQzIk71Hs+hsgasvMzzIjETq5hvGaRDkgpuC6
+	x+KmKGhPISnS50uuN7yYIsIN/zNX48m2MLrdZal1xYfzZoswMS1v/fRLmfI/52dkdeyQkAD/+dt
+	NPlE5cy5ZqAIKP8eE9iadba44JKSG5KutqAObXf2/OIMbV97Z/Y3VVOxOsLsbeqlEf6Ob61C2LR
+	n/HJciLqRTyycBU7klYjo0xFRz/1oTyw3h/fCzMyEqmDTP9ah8NkRjgxHrtpsfxZaJ9+ze+TMrK
+	MQ0Eu
+X-Google-Smtp-Source: AGHT+IGPh+mjJEFQdHRvk+1I8DQop95LNL28vawxwbW5GEzkfsrV/eA4bnNUTqkQ2CDGnYvLnxPLrg==
+X-Received: by 2002:a05:6a20:9146:b0:1f5:67c2:e3e9 with SMTP id adf61e73a8af0-1f5c1385db5mr1181651637.29.1741917598958;
+        Thu, 13 Mar 2025 18:59:58 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-737116944ddsm2050192b3a.123.2025.03.13.18.59.58
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 18:59:58 -0700 (PDT)
+Message-ID: <67d38d9e.050a0220.1ad434.65b0@mx.google.com>
+Date: Thu, 13 Mar 2025 18:59:58 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============0113344965320325537=="
+MIME-Version: 1.0
+From: Jennifer Lopez <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Your Upcoming Travel Itinerary for the Grand European Tour
+
+--===============0113344965320325537==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Mr. Johnson,
+
+   I hope this message finds you well. I'm writing to inform you about the details of your upcoming trip with us, the Grand European Tour, scheduled from June 15th to July 10th.
+
+   Your itinerary includes visits to some of Europe's most captivating cities such as London, Paris, Rome, and Amsterdam. Each city offers unique experiences, from the iconic Tower of London to a private tour of the Louvre Museum in Paris, a guided stroll through the Colosseum in Rome, and a scenic canal cruise in Amsterdam.
+
+   We have booked accommodations at prestigious hotels in each city, ensuring you'll enjoy comfort and luxury throughout your journey.
+
+   Your flight details are as follows:
+   - Departure from New York (JFK) on June 15th at 9:00 AM on Air France Flight #678
+   - Arrival in London (Heathrow) at 4:30 PM the same day
+
+   We have also arranged for a representative to assist you with your check-in and provide any necessary information upon arrival.
+
+   Please find attached a detailed itinerary, travel documents, and contact information for our local representatives. If you have any questions or need further assistance, feel free to reach out to us at support@europeantravelagency.com or call us at (123) 456-7890.
+
+   We are excited to welcome you on this incredible adventure and look forward to making your travel experience memorable.
+
+   Warm Regards,
+
+   Example Your name
+   Europe Travel Agency
+   (123) 456-7890
+   support@europeantravelagency.com
+--===============0113344965320325537==--

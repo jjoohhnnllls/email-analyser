@@ -1,0 +1,108 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp398659rcd;
+        Thu, 13 Mar 2025 21:25:55 -0700 (PDT)
+X-Received: by 2002:a05:6a21:1519:b0:1f5:8221:d68c with SMTP id adf61e73a8af0-1f5c111720bmr1988384637.3.1741926355226;
+        Thu, 13 Mar 2025 21:25:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741926355; cv=none;
+        d=google.com; s=arc-20240605;
+        b=SR0dRot60VW/ndqe4Z8FT+UO6pjwgCNg5joj/cFkPSB4SNN97tghxTno4iBnBMnaI0
+         naTe2eyQ2qDx60oeLLXxj/c2RLj/Z+IM+QcI7c7nVXxdFwC51Al4BgopgZamYjHJuAQw
+         iE8zjBUxo11Ly2/sRluElnxQlCjyVT8TB5rIh8/Oy5LgEUx8ZegaWGuU4jfr9f717rUS
+         VqMPew1HgWIUX91U5e6+sF6cYZJ7RyBE72aFKBPJozGQKSjoj6aFwkGMKzaRyWBNdcA5
+         UydDNXE9Q0pvZkGJC+kEjLZ4h19bt97F51TdpNXpeczp+8EoWfbmMfZW6fCCD/yvDSa5
+         0lqw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=lDky/s7EFpiMYuDAWkmoJ2O69haKkTFok5KJFOYNXU8=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=YRh771LA/xxrTnRPrQY+4s55uMl28xSu6P26FDNz1ZSY7SlVEO6vX//ZZG6xoJR23N
+         BIiELDCwblKZGApvdQuuRGve8qlDVInmIFtvnX8ZY0DFk3dRJ2KNqdSvGGoHmQ20+MkT
+         VGdjpQLN41Fry0vKNGEX2E6KaMNKQQDBGli+Ti5aMVIhaaLiUsy+hd5hsynGYAvQ498w
+         1Y36inrWNmJa/W3VBY7tJG1uc5yZFWnNQxzEcFZVtjsb8FPLQYi2WC9Iv+TmvkW07rJC
+         FFTESxHZJGKgi9zX1N9yDoB+Hj/eeF04plwIrsaE9rBZVx0xcUzntGIL0zbTgUD2ATkU
+         iDJg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Yc+wDxVF;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 41be03b00d2f7-af56ec08ce6sor1521192a12.8.2025.03.13.21.25.55
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 21:25:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Yc+wDxVF;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741926354; x=1742531154; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=lDky/s7EFpiMYuDAWkmoJ2O69haKkTFok5KJFOYNXU8=;
+        b=Yc+wDxVFnDL3WQkklU88aPAxpXUE1U+8gapdaF1b0tXK/waaZwSsOIRPfTq3Jp2Zi+
+         pb0518tuV18Ho3YRty+dWPM5M07yE5Ux290nlvZe4O3e8k3crgv0NuL0SOqNuv4oJXo7
+         muTHtcC67UQQqPjkYwrFQO0212B/fuUgVztGnlXuLUy7cKqe4DDFBp5NyGYz8rdh9Y1A
+         mueKcLhSSCkm8LxhZOSvg+3h4eIS08tFV44R4qwEe26d75apBz6slLu1zekz6YcdTeTe
+         XpM3tFvSzHAhMeg1D7iUUS16PtA006Usa0vGPnLuH2P/5zN0eNQfgxDexpzHSPTFF3i4
+         SK5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741926354; x=1742531154;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=lDky/s7EFpiMYuDAWkmoJ2O69haKkTFok5KJFOYNXU8=;
+        b=JDs2ayvsSdN+3HfwDcqlql+gJCQ2sfwim+QE46oLAv9CtA0r56Au4/YcfkXzekiy9u
+         u7IOWy19sQi5lyryRJJ+L8sRc1kiB7lHPix9E/UUqblze1gY3pmLQ7jxSOvvaC9NJ/NY
+         /Nvdax1Xz3+96J8iFk0wniiTzKWt9YJHlkWMWZgdeWUvzJE/mw5ZnTw2klhWtALbg0Nl
+         4lme3KCIbLbo7BUPchG7Wko+8RN5UeeoiEB9ywIq/hVFO0DC11j3hp1oVmdJDtZoU5pp
+         gi+JfjMjdaLT2oqrbLHqhep6VhfHdwxP7DR+n986S2xZxEb1lrzDhIqOHApS0bDDnWys
+         hmrg==
+X-Gm-Message-State: AOJu0YwpCYhWhvFHJGgkQc7/pOpi/GlLfoTF25s1Rf3S1t0Xvv/nG1TD
+	Z7teE72LP8EZnBMonkxcbbsbUUZUssXtQxK+QnAk08L8uS47MohkwTiXDLr0
+X-Gm-Gg: ASbGncuLIrkckYN/iRhfllYjFvzct1/UoeQ+ikhDCNhil9ZFRCr4S0/NfVDocJyhJzS
+	zu+9q1werCiaI39sKa8SrbcDywssaoMs2gr0k+wso7EulzWY4+GHIRrzMqiYPHhsVmDAP0ZYbYs
+	37kTWbUJz6CpH411n8ccplv0OTSWLLNfCjHcmeVkIuQdF3ztHCCz86MSBhHv3gsrvNNwmp+9BZK
+	YKhwIB+aXiLG4YcOZWy00hCifISb9IzJPzBK1qz1ppaUM9aOPrptb0ssfOClgWzd2K4Itu7m6lE
+	4id8eBU/c++MmX/OnJWM+xSIEzH6CN2obw66jIkNGUQFFxhNBeXJmxD3IgGMxNPRb/5NXg==
+X-Google-Smtp-Source: AGHT+IE6ZO0u/90iOatw+VPjnZD6kPYkts1SKY+rZpzDOjnMXzi96Zmth2Oziowbpya1idPevDRIqQ==
+X-Received: by 2002:a05:6a21:33aa:b0:1f5:6e00:14c4 with SMTP id adf61e73a8af0-1f5c1316799mr1947894637.42.1741926354559;
+        Thu, 13 Mar 2025 21:25:54 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-af56e9ca494sm1783019a12.5.2025.03.13.21.25.53
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 21:25:54 -0700 (PDT)
+Message-ID: <67d3afd2.050a0220.272efd.3f47@mx.google.com>
+Date: Thu, 13 Mar 2025 21:25:54 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============0803826408518755974=="
+MIME-Version: 1.0
+From: Sarah Martin <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Request for a Meeting to Discuss Quarterly Financial Performance
+
+--===============0803826408518755974==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Mr. Johnson,
+
+   I hope this message finds you well. I am writing to propose a meeting to discuss our upcoming quarterly financial performance and strategic planning for the next fiscal year at ABC Bank.
+
+   Given the recent market volatility and economic uncertainties, it is crucial that we align our strategies with current trends to maintain our competitive edge. Our team has prepared comprehensive reports detailing the bank's current financial standing and potential areas of growth, which I believe would greatly benefit from your expertise.
+
+   I propose a meeting next Wednesday at 10:00 AM in Conference Room A, unless you have any conflicting schedules or preferences. Please let me know if this time is suitable for you, or if there is another date and time that works better.
+
+   Looking forward to your positive response and the insights your presence will bring to our discussion.
+
+   Best regards,
+
+   Example Your name
+   Senior Financial Analyst | ABC Bank
+--===============0803826408518755974==--

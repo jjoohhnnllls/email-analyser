@@ -1,0 +1,108 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp347736rcd;
+        Thu, 13 Mar 2025 18:58:25 -0700 (PDT)
+X-Received: by 2002:a05:6a00:1828:b0:736:62a8:e52d with SMTP id d2e1a72fcca58-737223ba83amr802163b3a.12.1741917505646;
+        Thu, 13 Mar 2025 18:58:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741917505; cv=none;
+        d=google.com; s=arc-20240605;
+        b=QiH56JuQ7o1MZ1oYJc0Ksp3W2zssy6B74dn2zkW0dbK50Ie4Sh2wdzgScRnwdRfJf1
+         IB2Fs3gal62YUO2c3v5Xe7TT8RKcURe1qK25rfIGM8fOTemu1u0U5JBitzlKIAvnIGY/
+         O6sN3VhNBJgzdFHAgTErTm1WY+tLYHOepKw5MtPt6lbjMZElqDL2Ew1pxVYmHWyhyLw3
+         0Hw2llrjjS8MqKqFSJ+Q0zbsHJVdkP5y0KFIN7dzrt9RAAkhRLaHY/PJs0Ewm41LgMos
+         CNwGP+4eElVoPWN3rd2LedxFidDXOrCsAXeAsoPGT/C8CRBYRYrzgoaPcowu4MY8+oV0
+         CzBQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=prt4ywuvt/xHgNPHq+rZ1Qvbnrs5Ly3RfKQ7TCo9PE0=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=FErK+M3h+/cVvc48RcdzFp+l/vx40OjnrhfwUlibEkbB1euKAzsf5nw5qkimdZplM4
+         cIHmBSkHFXrJaH3lm9NM43gdIYDlul6KbWjPQYl8AtuZjxnAfBH/fV8rqpC9PTkazOQh
+         f4CzTyVZCHafM6E2Z2IVmI9mUA8ia667mUBd+k7KSzt8JkRHuzPTA3JGl6p94AXJeWET
+         hpIUuV+z/l/cez+p7IFlq+64rQgVj6a7u+JM2i2nVk4OMvMn8OKzFgZbGdEC/rH5Reim
+         xIQeoTSuz5na/dIgrVYJlcDg16BcGCrjyTZ5YzOle0ShPF0H7pe6XVogc8rG94Ex3EyP
+         vUdA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Mbrtrp1c;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-737116955dbsor1316406b3a.10.2025.03.13.18.58.25
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 18:58:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Mbrtrp1c;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741917505; x=1742522305; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=prt4ywuvt/xHgNPHq+rZ1Qvbnrs5Ly3RfKQ7TCo9PE0=;
+        b=Mbrtrp1cj5700fS56JWzCrj+YtuJ5YyEAamCK02FqoocFPpZhKEiksxnyaO7gPxMnW
+         /4kdVgi+shsY3NGaYxz42Xhsx5148SkAoHF73mwS5zX1880zxkBQ2T/V2x+Qo9JGbndv
+         ziyf+0xnGA8afpLtsHi7OoibIU7sRzRHYtrxHpZadC5Ha1gL4rU7YBH6sDPqzZ4vD6BI
+         lolC+M8gYq5FUjeivWxcHNY3IcIxKHdVf0lcU5SWFC3J1BYtchRPAtUxN4VhIIuuSUGP
+         di6BH/56msoQi7Qio8cWadgH25zz8lvC33wEMeTy9KqcWbqyAuoRcjA3uWLZOKuKQIR5
+         U29Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741917505; x=1742522305;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=prt4ywuvt/xHgNPHq+rZ1Qvbnrs5Ly3RfKQ7TCo9PE0=;
+        b=W/Cx5CdBFXH6gtC6X3tHlFZzQt9sA3rh3vFLla2mnmlf6EiSSyQ+irP8kb7aT7aYEy
+         wsKk8RWGes4nIukdL9yPSTsoc4LHV9GDiX6L5ElGJyIs2a0BLYwV/7FH1KclaOk2e9Dn
+         baFrNju158mOthWJBPX+TXqaAL6XVo2o7KfdimLMqIgVRQjP7US6Tz06GrY+WHtlSQHI
+         OvbDZeVQxRkz2QrhiaOlv/PZqtuUOC3XBKWrjj3tFUKZlpvOHouUK/m1HOf2xyClNeUd
+         USr6Opd1/v0MJs1HPZ4+rmB+gJ2Kal8l8m0MAIORCSup72dFmcT9bjeBXkDoOv6R7Uv0
+         2vKQ==
+X-Gm-Message-State: AOJu0Yxj5mtKMSEiFLExzk7Dd+QKoWx4zuHhkxBHPPkec2CFPYWybHfG
+	OpwdDprH2Wg8XYFZ4+LSGfFThExLFkgQUgVAoBhm0/bjBtaa7JMEz+jf9uKr
+X-Gm-Gg: ASbGncvKGd2eQ6O1YC0+G1+XXZ43xEZei8s/4Sn5KU8byNC77O5cCJCjF6Nu+rsywNU
+	Q354gnsycqPKM87QcxHOvOnIVQjzhKgrZxkQQryofg8awdALo/dn5wzRe5+KqIultBb+v291+Xj
+	2ijAVpmHU3vWS6n44vvpetgeRUYPpUgJ5knxJ0/Ju2FQE3JWotNzWv2TgeZ+BN5B5y7mmvb0ozu
+	emUZcmsyWuLp+M3lcgvCbPSb2lLALXBG0yJfRfZ2uMqR8k1ArjQHz5NmsM+sH0Q1Bfxt8mMEuAx
+	DPgZ7u2sKwoK9yUzL8x/3gDtr99lTZ8vnQN+p0JqPoHf2Wak9f/ns2PYdLZ0wJ8Ti2YSzA==
+X-Google-Smtp-Source: AGHT+IHQemQ3tfOJ8T+vYyBrk2RAGRPobBG2sUN5ajo2U8Jci+am01uZW80Z3lbCLEvD7nrBCqHCqQ==
+X-Received: by 2002:a05:6a00:2d0e:b0:736:9fa2:bcbb with SMTP id d2e1a72fcca58-73722437095mr1039551b3a.24.1741917504854;
+        Thu, 13 Mar 2025 18:58:24 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-737116b1342sm2052975b3a.163.2025.03.13.18.58.24
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 18:58:24 -0700 (PDT)
+Message-ID: <67d38d40.050a0220.336a11.6a0b@mx.google.com>
+Date: Thu, 13 Mar 2025 18:58:24 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============4135289105925254759=="
+MIME-Version: 1.0
+From: William Hernandez <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Faulty Product Received at ABC Retails Store on [Date]
+
+--===============4135289105925254759==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Customer Care Team,
+
+   I hope this message finds you well. I recently purchased a Example Specific product name and model number at your store located on Example Store address or shopping mall name. To my dismay, upon unboxing the item, I discovered it to be faulty.
+
+   The issue lies with the Example Describe the specific problem e.g., battery not holding charge, screen cracking etc.. This has significantly affected my experience with the product, as well as its functionality. As a valued customer of ABC Retails, I expect better quality products and service.
+
+   I kindly request a replacement for this faulty item at the earliest convenience. If possible, I would also appreciate some assistance in returning the defective product to your store. I look forward to hearing from you soon regarding this matter.
+
+   Yours sincerely,
+   Example Your name
+   Example Your address
+   Example City, state zip code
+   Example Phone number
+   Example Email address
+--===============4135289105925254759==--

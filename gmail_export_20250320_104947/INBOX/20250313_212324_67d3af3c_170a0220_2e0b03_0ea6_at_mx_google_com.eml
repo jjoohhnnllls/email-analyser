@@ -1,0 +1,107 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp397903rcd;
+        Thu, 13 Mar 2025 21:23:25 -0700 (PDT)
+X-Received: by 2002:a17:902:e745:b0:220:c911:3f60 with SMTP id d9443c01a7336-225e0b096fbmr13617085ad.47.1741926205350;
+        Thu, 13 Mar 2025 21:23:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741926205; cv=none;
+        d=google.com; s=arc-20240605;
+        b=kXC5nHGMfWweOAby4kyBFroM3kWd8tVhHwd8fUX2ySEYSZGa4FO7FZrlcdK4BTyJk3
+         ATIPZD8Cz7oGu61gNDoczz+pWIuqP/BKI45dEQIo5Chj2jYJvNAt08C23lMlimE7HIse
+         0MINOpd5vfyGE2Z43LKh+8YqsBuF5wg92m+XbqPeFifK8LHXsG9syEeAWdBCdlgxvnxT
+         aias5A0tPiGJN4ia2oJ2JgKKnoES97NJPWySCO7hy57cZ2L+p+FQRxys+fByh6I+LmS5
+         PhZYJ5FVW4nhjOzX4IPIfdNdY04vAtdUY35l0qjrXISyjkJVhCqAiPG4t0jVSy6OnjSr
+         Wb2A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=45GFaLnhKMY+x5Q0e3Pc8SwB4QgQFKngj/mFK60ViUE=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=hdGJ9nSq7T6pGEErLBFLKsgcYME26HCcA3l4XjaA5hcPOLl1SL6YC68AI6WLpEFXTB
+         AOgWoRMzOF1BQGj30ud0gOnEna/WTCs1x9Ok7aFV9pCQ48TO62CYBGZZZq2HPxC6QiUt
+         H3XCyoxBMYfBdhTmGYH4xT02EAIblw1ScwMc6IHrFsbwpf1UMpija58Xl4I3/nlfBdUH
+         8eGtOTcs8d+FJO6PbB3TUkaK1akl467dNMnkmYqCdPjbzX0858WR+4D1Sm+1Clpq3tIV
+         /JrTylQyKuGDpu6W1yE2Zs5S//fckmupV4SbIQxbqqvnLMaX4Tzd5kwQ5uMpd/WcwcU5
+         C89g==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=XZSpyR2Y;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id d9443c01a7336-225c928dac2sor16569865ad.0.2025.03.13.21.23.25
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 21:23:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=XZSpyR2Y;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741926204; x=1742531004; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=45GFaLnhKMY+x5Q0e3Pc8SwB4QgQFKngj/mFK60ViUE=;
+        b=XZSpyR2YH1hQF707K2bBegC4z/BC2xHerxANVxcxQatnWxlq1IlbdubuK3bpLPkAyd
+         BVn0NOw7+H7Pf5FQI/HPCZPuJNLttR4Zx73pqmogyaXudhChcTjJW1xw3uMdETfTUKIs
+         X7MhjeavAI70Bw54UK5gwRVmDD/Z6Fd/RetY64yYb95JKww13K70+BIxVU/yA1ORcX2O
+         dWH2iTaektaG7oJejUwMp/59YsyM7tWyfqK2ZVgEwn9w7sqg3mVvcMdNZMAtW8V5XCIt
+         XezTSEoPkL0wLt0jb9HiF0HJsbxITxN/BuO+MuhJMCeTjZlcUYvPPCNkEgW1wyxcYYV9
+         GnNg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741926204; x=1742531004;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=45GFaLnhKMY+x5Q0e3Pc8SwB4QgQFKngj/mFK60ViUE=;
+        b=XnZtkiMoVae1abUbG+kiOSUBZbkc4PCP6zxV1sZt8tuFutiz0UkVl0450e4whev+gw
+         Zl2YbMa6ccM8u14i+k6VUg+tCocclLj0TrOmxLIXjHboY53tRWM+api2x0hELlKFAsS+
+         Ka3gcEVqNSWuNz7BRU/O6EtDnNXIh/fijYSXJV4j4LBKpeXxt4c5V2NKTDOFW8TjnEJy
+         wH9UZjAPhulWMwoI86eKbjEf4gzDAL3YRUZCOJ7B8CdktnLC52aPBAD8H500DaJ8flIN
+         hjCm8gQGrLT++rdOl2jPUrDUxE8NgJzsIgWoKck6/HTbokqBzHoaGDUSoPuuziQt0YoU
+         vdqw==
+X-Gm-Message-State: AOJu0YxTJJFI9AXUjHoWObyNKafnVlqk1jpHfU5o2WqN5Gsnm8Kw6wQz
+	W3SK2v0wyIXml1yD0dspsWKlKt60Lp4Qt1AjxOscB4514OAVKc5f6J5mVrn8w6w=
+X-Gm-Gg: ASbGncsG2P6x6zuc5G5ctpyhHjL7cFWBG9vdSwGy1/Z2LUm2Uv286S/AOXyA9MJD/tj
+	wETyEXlzeffhFvV/t5fr6an6lpn3r7lIEi9msS4ZG0mxKYjxencXUY6oTPZBWDaM5oNBapzNxIb
+	z1Dz5gTwsdE4NppjtEkEsUvYaL6usjVjMFRRGtMPPBqQ/MAMc3Vv/py7NDrXs660ViKFUda7qPs
+	Lq4S6DHlx+T081H1Vh6sJ7+R4Rd3sdiM66WWk7IRWyZszdqy1Vucb3poi7LSYHqJb+cLL0xa55P
+	LaQNxIUzskD9XslMqwrLStx5ROzsmTWNNIhKnCl5uRguGrJA7ZStlKSRlVO/JRjKD7OZmA==
+X-Google-Smtp-Source: AGHT+IHtmlGid9lBqFge9vUEYCUmasstjV8WSdTUWKPsBijjXZeuRnS8tECN05ysnAW8FUHSI/UX3Q==
+X-Received: by 2002:a17:90a:fc4d:b0:2fe:8a84:e033 with SMTP id 98e67ed59e1d1-30151cab3bdmr1563181a91.2.1741926204651;
+        Thu, 13 Mar 2025 21:23:24 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-301539ed074sm220690a91.15.2025.03.13.21.23.23
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 21:23:24 -0700 (PDT)
+Message-ID: <67d3af3c.170a0220.2e0b03.0ea6@mx.google.com>
+Date: Thu, 13 Mar 2025 21:23:24 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============0782558278011981889=="
+MIME-Version: 1.0
+From: Thomas Rodriguez <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Proposal for a Meeting to Discuss Q2 Performance Analysis
+
+--===============0782558278011981889==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Example Recipient's name,
+
+   I trust this message finds you well. I am writing to propose a meeting next week, specifically on Tuesday at 10 AM PST, to discuss the performance analysis for the second quarter at our company, CloudMaven SaaS.
+
+   In light of the recent surge in usage and the significant growth in customer acquisition, it would be beneficial to examine the data together and strategize potential adjustments to our services for optimal results moving forward. I believe this meeting could provide us with valuable insights and help us maintain our competitive edge.
+
+   I look forward to your confirmation and hope that we can collaborate effectively on this matter. Please let me know if there are any alternative dates or times that would better suit your schedule.
+
+   Best regards,
+
+   Example Your name
+   Example Your position
+   CloudMaven SaaS
+--===============0782558278011981889==--

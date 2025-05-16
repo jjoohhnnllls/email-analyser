@@ -1,0 +1,108 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp398481rcd;
+        Thu, 13 Mar 2025 21:25:17 -0700 (PDT)
+X-Received: by 2002:a17:902:f70b:b0:224:d72:920d with SMTP id d9443c01a7336-225e0afa009mr16247935ad.37.1741926316726;
+        Thu, 13 Mar 2025 21:25:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741926316; cv=none;
+        d=google.com; s=arc-20240605;
+        b=LwWX8+BM0VMZEgmavJTTioS6hTG/KMbj8/g3+aCXbteuPB9CZQe/kKPy0DZlJjamF2
+         djYmo4mHDJY4r/+XgSsSCLzQAhkNialU+Co52xThf4M15TtwSdwVkxvhxBdFez5GCHqI
+         kK8HrRv3MrCcWqgMSGp3P7cj9FdzGf7P8z1zRV7IUDDa2G4Vu71PnPxtQAO1MxB4tysD
+         bDbbNDVfNUWKVW41xAVH1lDxeU1Od6uP4UiUc5sHtCfO43Wel26gYHRUrIv+SGi+Se5f
+         7Lp1Zb78fLguSJGspdtmfH3OVW42zaUk/jopEPMzSn17cMwusZJOmhboZdn8G2TlIeJg
+         thkw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=XBniEg2XC4bYtpEFqGzKDWXs/iGKYLFvwJ5Zs2UDJNI=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=AN5DiijkQcYS98pxXgN5NSqQRQimzRCfkm3kBSDwMKtwRKd/kuniXBla9gq2wBoeMz
+         7tr4tbWpKYQrUEuYwPNs+NE44CyJdrFxiFsVtr6NL83BVJI09BWP5OghYNuImeXetlak
+         g3NUiWrpKPar3DAnu3xyL+QWks2MIRSMrIZy2XuqyK5IG16aSd9sr1OMJx6jhd1SSI3/
+         FM7aEZtrwk4RsY4nKWsCO7/7TDaPUiVANifcDjROX6zyqdkfhBnSZYrfmBYUgwFOMp1z
+         fiOmtCblEDLZdSYBfcyaOG6KGKf5OeHMaW8X0J2tdLIo3e0LVVIZYoF97ghNbySkyeC1
+         mfFQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=TkKeb0Se;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c6b5d67esor17579475ad.15.2025.03.13.21.25.16
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 21:25:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=TkKeb0Se;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741926316; x=1742531116; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=XBniEg2XC4bYtpEFqGzKDWXs/iGKYLFvwJ5Zs2UDJNI=;
+        b=TkKeb0Se7QY7mQaIDQnv3aCCka3ucoQnyzHr5Bn5Yh0aIG+HLaDCJBccQ3JYMYyitF
+         BGXZ5tbb9Kg3FEt/6pb6WIvBeGr2Dx9xRXvFE3tzsF7JSawjweS+MdQwlUaeS2u9qjs0
+         XdVXEdVQYS0OPkIgM8McXFUgE2weQjN4eaNH9nob6oJiIdAKDMT7W1iZjtyVvvbdd0dg
+         423a8Cnb6GfayGcw39ofHUYcsyUW+3l5svuxi/lG/yjQZjb5g6mIs86Rqqv7Ap2/IQrL
+         YOvQoUvT0EKDwGatdwrt3e9vFthgwV1ylU0kx7MqpR/p3b+DKlSHk4iEilyAhP9gn3w8
+         vDhw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741926316; x=1742531116;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=XBniEg2XC4bYtpEFqGzKDWXs/iGKYLFvwJ5Zs2UDJNI=;
+        b=Jmai/tNNhdWqV7KncT++3sUB3xwfmnvbGeGWa005ylL0NMHfl23crzUBg2ZlbBFmSz
+         qZbRF2/YcLkXXadyv4p5Ae066fwMYRd8SstE+SeAwp0npqVq4XPFUsZFCFpNLTuIhkXk
+         Q+oXdEvduJVHZE2Z4xuqUEkSh4xbNEHKabLiWPw46DUWINve1M7SjPF8KO19WSlUUQSe
+         E8MeZt7jCUIQ/YHHpkzgMWV7cdl4BcvohN8PFGDjG4Xuj+HKtSRTfjvxSbsPYyRqRZ4O
+         exSSSsKaYkpyJaqnoIBb6GSI46eqaNqJrwfDizIofoTn1anKhI16uEoEmC3dl+QW4/HJ
+         G1Tw==
+X-Gm-Message-State: AOJu0Yy+2xb62QpBo3HMnzeUNZ/QXQkY/0H34vPSGsWPXV05WhP63LgN
+	Y7As2faFUSwl5NWsFWHVMToH4TcMTLGRkDynsatZMYymALILymx+DJtO3JBD
+X-Gm-Gg: ASbGncvAERUMXD2yVEvAPsoJczFE+fYgCKnozB0n+Uz2ySRB2+V85zeXp/Axrw+KwAR
+	okI41Bl9TePLOK/8LLyjGwbXO5gaw86JTSYyYjlzh5ZhiTi3cBhSe3GbZsmnqTcniwtVdhNBjMn
+	1yFhKanukTdwsl23dhnPjIhsg+dNJ+TXuGiVnoXggndfNfolPkbtHuadUrtUfPsRAZkjvKG66Td
+	Iq3mkEBBNmnd6QnKCdDFhDuImNIgyPArrco7C07tChmCUI7SrCbykkzrAffKZGSRVt/JlUmkwiq
+	pnDjCk7ehmtjSU4ZLlcblC8WMMbiXO5OdJxcfRc0OYbujJL+OjmRByt4vNtN3s6LYFtJww==
+X-Google-Smtp-Source: AGHT+IGRimugDaoXDvKouMWe3Q0e3otIAEpDOQMH7Yf0fQyeCUE7r1uUsnDWDUO/WPCmgmHPogiRsA==
+X-Received: by 2002:a17:903:1b63:b0:224:f12:3735 with SMTP id d9443c01a7336-225e0ac4201mr17443135ad.31.1741926316015;
+        Thu, 13 Mar 2025 21:25:16 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6ba7234sm21805875ad.155.2025.03.13.21.25.15
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 21:25:15 -0700 (PDT)
+Message-ID: <67d3afab.170a0220.3807a2.6f09@mx.google.com>
+Date: Thu, 13 Mar 2025 21:25:15 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============8388408134561493704=="
+MIME-Version: 1.0
+From: Thomas Miller <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Application for Registered Nurse Position at EverCare Health Services
+
+--===============8388408134561493704==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Hiring Manager,
+
+   I hope this message finds you well. I am writing to apply for the Registered Nurse position advertised on your company's website. As a seasoned nurse with over seven years of experience in acute care, I believe my skills and dedication align perfectly with EverCare Health Services' mission to provide exceptional patient care.
+
+   In my current role at St. Joseph's Hospital, I have honed my ability to deliver compassionate care while maintaining a high level of professionalism. My expertise includes managing multiple patients simultaneously, administering medications accurately, and collaborating effectively with healthcare teams.
+
+   I am particularly drawn to EverCare Health Services due to its reputation for fostering an environment that values continuous learning and growth. I am eager to contribute my knowledge and skills while also expanding them through your dynamic team.
+
+   Enclosed is my resume for your consideration. I would appreciate the opportunity to discuss how I can contribute to the success of EverCare Health Services further during a scheduled interview. Thank you for considering my application, and I look forward to hearing from you soon.
+
+   Sincerely,
+
+   Example Your name
+   Example Your contact information
+--===============8388408134561493704==--

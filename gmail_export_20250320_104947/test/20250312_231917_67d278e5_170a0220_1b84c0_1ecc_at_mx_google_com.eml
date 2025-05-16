@@ -1,0 +1,114 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp762312rch;
+        Wed, 12 Mar 2025 23:19:19 -0700 (PDT)
+X-Received: by 2002:a17:903:1a05:b0:215:6c5f:d142 with SMTP id d9443c01a7336-225c669940cmr17792905ad.20.1741846758786;
+        Wed, 12 Mar 2025 23:19:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741846758; cv=none;
+        d=google.com; s=arc-20240605;
+        b=MPd3v0ZZooj9NIP6BXWaciSsJXI62qUHjq3DgLfUwVhgmErfMlPUavP+6/bawkFRPV
+         CH02NFeoJEdbsoIT2byRhKHwx+I8Q0c4zGq24t9bGokzdzXjxyyibySWoYRocGm8o5sh
+         6eRpJNo2vBpXuIO8tDItMkR7HBVPKPTdGeG4QWwoc1hHMkM4F9Z+f77ytJX1aJYlTrZc
+         2IgwOdEWQJfSuGV9vInM7x4oZ4Yeb2/3vXfH+UUKYLgi6pLNQxDEXp8Djpza5gT7TIqx
+         6LRaZqH5gdxHX/mg3LGVpMOlC49zSiee/GsPikmYjAyj7L3kIFCqkVpRByxNEbGcHobm
+         4uBw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=gnwdFRbVos+F2n3XAppLjStLEk3DSWCokMyG7g582yA=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=f6ZL0wFVFawQdkAhxCrraqy5yQr71TogcNEPe5vBPEDdjSgOcV+KwWm/tG4hq5S+FW
+         1eScwJf/N61mDEBxXqCsE4fC5+KptdMWs9OdfAcXUaxWDl9362hq4FepegQ3bWZy/xOj
+         TwdIYjyr1tr40KzWIqdrlb3L1rG0j4p2Zbsab/4lsG8RSV5mU15P49VrU+do+ESKcVCi
+         silrP24cNCj9U2JpTGPhDypPGYNDYgOVUHJL8BpmZmyXShfV0TNxPhM2XEZhH3Q6mIlG
+         GZ1m7ROuF9jXbHZ3Jw6PrKLXtLO0wzOjzZrYSA/i/qCx848SyTr4hDDoblHFgW3JvzUn
+         /9lA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=arBjk+Sn;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c5b8b352sor7843535ad.4.2025.03.12.23.19.18
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:19:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=arBjk+Sn;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741846758; x=1742451558; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=gnwdFRbVos+F2n3XAppLjStLEk3DSWCokMyG7g582yA=;
+        b=arBjk+SnfHJM/8Ropk8hAflkXs+bEQW5E/wBEOLgG2Ivrq+MDy/iwE4gV5hvEEmnF5
+         JegiP/W+rmV43+jbC3FKuUHWCVSVnOdy7AFV5hLv7G5UaRqu6U+I/dn3BaKpL9SV7/WU
+         IiNiTGZT4Nw0cCVbREYBB1pNxvm3VDpBYfZQxETgQt4tGyXkZEq/rsSLtK6kiAvWGQkr
+         siHVsx74Q+8CROh4HhKsMXkYdKlTpxZmSH96oJkEMo2JGheJaMI3StXB1TjsW0zanSAA
+         wPww2K35Io1M9xQ+/X9XIdtzXUjIFmQ9qrIyc9ct8ie9ZRaDcbtsbPyEPHdrWyggAk9G
+         XHsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741846758; x=1742451558;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=gnwdFRbVos+F2n3XAppLjStLEk3DSWCokMyG7g582yA=;
+        b=YxQWTqE3AV//xpDpARONugHUQQ7slpnf57AhtOk2yyV2hutHMIa29J990nnDWtthAn
+         FlCQsU2A0QoBv+8zqHFiyaRZ635XMdzLeas85XSamVZD83w1iKo5StgeIZBfodIM1mGi
+         qsYcvbetkgiDLjqd7TmrYVUv9kB/Y5KeySWl37QttdE7A0RAmGW3LTZcs1KIg7qYzQDv
+         KwiBYqa4l3rNsu+N+HXrgyXwIFS5jNBriPFzuviN7fIKRWXyHFi2I/P9W96c3v07ncYK
+         89dJm2BMtj5UHni6aceo0e6d7sjvT3kRP+hDpIkes5lW+pgbKpUDxd4D8NzjcVJmMPkI
+         ewRA==
+X-Gm-Message-State: AOJu0Yw1ZZ5BvP+gd4wPTX6IxuUuU6QGsgnj/3hCPR02M6bNiRHxBUlj
+	DN16eAffaYtdgvW9NEBpVpPt/8WouHKYuEqHxgQ8hReR1hkU6w3F9bOSZe84Pkk=
+X-Gm-Gg: ASbGncu+zcRAiB9E71lReztEWnfO/QkIsXCP3rDTQbrOopRspUp6JfcNN6YThtlQsh9
+	nCP1z0qatfRVdUiS73MxxmoNt/CGkim6M+XKFsVgPU7KcbzKl/ZJfT77nKuoHWdR46iLlpLO5Cz
+	a25iLdRpSnjigVNB5oGmOfT+AAaWFqPZ6N5rhcFCbgLt/ZlLLklZ4tWB2nnM68YW/JytjM3hFp3
+	jACt8xOsU98sLN8rOAhylLLxmxEvGy8eKcgQ+XqNEIq2ckDtOkJ63APPZHBQZiSUsg5DWcg/bF3
+	+PStx/dfJ2oD9+EehWIOCk3jfSCmkECh2HAwbtiBPOL8Sz3wK6Noq7+cwLxl6DniRUmQOg==
+X-Google-Smtp-Source: AGHT+IE8eWTMerC6QfH4NVT6xqwYnwvnTzy8DVbuGIgKb/0J+SHfMx9T3jTJ2ZRwEQ0NT4+y8TWEFA==
+X-Received: by 2002:a17:902:ef0b:b0:21f:1348:10e6 with SMTP id d9443c01a7336-225c6662159mr21002285ad.13.1741846757947;
+        Wed, 12 Mar 2025 23:19:17 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6ba70f3sm5751535ad.157.2025.03.12.23.19.17
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:19:17 -0700 (PDT)
+Message-ID: <67d278e5.170a0220.1b84c0.1ecc@mx.google.com>
+Date: Wed, 12 Mar 2025 23:19:17 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============1649216941108085459=="
+MIME-Version: 1.0
+From: Susan Thomas <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: No subject found
+
+--===============1649216941108085459==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ Subject: Unauthorized Transaction on Account Number 1234567890
+
+Dear [Customer's Name],
+
+I hope this message finds you well. I am writing to address a concern that has recently come to our attention regarding an unauthorized transaction made on your account number 1234567890 with [Our Bank].
+
+On [Date of Transaction], a withdrawal in the amount of $950 was initiated from your account without any prior notification or authorization. We understand that such unexpected transactions can cause distress and we sincerely apologize for this inconvenience.
+
+Upon receiving your complaint, we immediately launched an investigation into the matter. Our team has found no evidence suggesting any fraudulent activities originating from your end. We are working closely with our security department to ensure the safety and integrity of your account.
+
+In the meantime, we have reversed the unauthorized transaction and refunded the amount back into your account. To prevent any such incidents in the future, we recommend you to regularly monitor your account activities online or through our mobile app. If you notice any suspicious activity, please do not hesitate to contact us immediately.
+
+We value your trust and are committed to providing you with a secure banking experience. Your satisfaction is our top priority, and we regret any discomfort this incident may have caused. If you have any further questions or concerns, please feel free to reply to this email or call us at [Customer Service Phone Number].
+
+Thank you for your understanding and patience. We are here to assist you 24/7.
+
+Best Regards,
+
+[Your Name]
+[Your Position]
+[Our Bank]
+--===============1649216941108085459==--

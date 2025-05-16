@@ -1,0 +1,110 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp767948rch;
+        Wed, 12 Mar 2025 23:34:30 -0700 (PDT)
+X-Received: by 2002:a17:902:e745:b0:223:3bf6:7e6a with SMTP id d9443c01a7336-22592e2c969mr152520625ad.12.1741847670328;
+        Wed, 12 Mar 2025 23:34:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741847670; cv=none;
+        d=google.com; s=arc-20240605;
+        b=i5oJfJHl4ULT58sz5LyLDdKoWQUYZZ7OnXmywDcF5kGd2NkLxjJi9kBNPxNyf/582R
+         y3Z7Qt0L4qZbvufrOM/67STJISp32wb64i9+whC/Ak5Sq700VeXhtt/PP0LU5r1o2iix
+         Qb/CeZ+YnIEmbc76vynf1sclm57mWmOQpwKUjVQIkeLRy7Rxfk4ofsb8qjyX0pnAayG+
+         t7D1ugAnaO5AHs7LWAkhFBuoslROGMOH+9kvtxdC59Wf5MXcNEsyM8icGdjRiADJykxe
+         82IjitOweHm1t/yapPPgTrhVanK1KhaGRM/AXIq1p5uzVJUo2b0xlbkpKMAZ4WG4P+Fl
+         fXsA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=JO+3AxK00ksM4OAU6fEwE9xlbAygtffJnLZKZWBas94=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=d4HIiug0raoZw3ll4bZwcKcnMwz1gH3IlE9s/BGbdybR5kvWKRG5DO3d9tDgOX177P
+         yHMSFuVDAID09ySCtggTVLvW3dOTY9RisoITE0pO88xil9vdxmae9z/4VlgrPTd8PNiM
+         gPoBsOZm62BlUIBug9f58STw+6lo1XrHRYcCBgnzrnnpLyx7Qt2lzwb2TpyMgi62vidJ
+         0RfXVuoYy78pOO0FkZjIVu59h2kOfu8hLosgv445VHBoswGf1v98zjM/ytbSahQiz8t7
+         Wo8dJMf3Tj4PEX3N4+2u9Htn2jI6peIG2JKnVbex+ZTV8CZbyWoUyx4EtjXkQ06Wdqy0
+         /RXw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DvveRKjr;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-7371168554esor442326b3a.8.2025.03.12.23.34.30
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:34:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DvveRKjr;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741847669; x=1742452469; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=JO+3AxK00ksM4OAU6fEwE9xlbAygtffJnLZKZWBas94=;
+        b=DvveRKjrK7hneh+UThMbkxXVmxOaBNlcoN86hO8YLRpQmUvjjEJlxb6vXU7fBfwPJ1
+         9xCBG2aFURaICs+uqiUXR74XCOr9vUyVcXrOD+tmhJsUj2wgdcxuWC1LC1/tRfndpRRo
+         O3e5psDhOJcGMVg47MZU5AgC+rZvP0aSJBALqd3S5dGuyefZoqp2scjrvTUgxgxmsVbA
+         5GhzKibbt0THZcYu2nCnIhnQq3ir5T6vm+tlEM/mgxFFBZgOfDJoZzmOESpC3A1YxNbz
+         m4bRQNhiGQ2+PGXyA4TQOKI8iJNlv8FbtrFdMsdmAMfxYnhw/E1yueDybKTcFxJ4BpTC
+         kwDA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741847669; x=1742452469;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=JO+3AxK00ksM4OAU6fEwE9xlbAygtffJnLZKZWBas94=;
+        b=h8HJutagi1ukTxK14vZuvlFuJPaybTaLLq3D0BMEsl5rfZxP6GmMHDzkd47CysCBGE
+         wsCXCKpPrg7bHvXiWHPmuB2wtzHiSCUqT4qlWLZqC4vIXylqjRPrv9WI4mm7Nz+05wD3
+         2RWqEg4hKNCGCKRJkg2qmrFBKPJoOZbHlND5ahEpe16UZhE9tcyN5zb3purvRE9DfgmS
+         slvBbZBABvRhc9w2mE/dC0evH029byMKXGGylttAgQzdvq0i6OPGPOLxDXuDfY63iPdq
+         B6jRApZXF7t/z+pCY+dNimm2FnrBD6kiiuwxAFiWlCLux2HytpPL5Fub/oblK94kPGsW
+         4HFQ==
+X-Gm-Message-State: AOJu0YyqNHwNhKjqepms/CfubdE6gD7YrANSIJeDlszHXzCbFzv0mOdM
+	EnbcmEyv0K2rA1zSZRP7peL3laF04fJmGazggTaFoF36Yw2RRofxSOU8vCLz
+X-Gm-Gg: ASbGncvABG4eerR4jYCNiAHlqNJEmnwy4eAi8jS5IpW7RuU4+zF2nipL5zpAH5bp5gw
+	LpW5i/xMI+w2qn3qgr1FCgBDsDappJx6axk5kY19iNYiN6YU2movt03n3yPgHbkc5+CP4NwX2g8
+	D0TqJFa3N0ZZZiofRldNmGG/SD085bfOFKR5HVa6ADnT9n4F1daSi+TuVZogI7UbiFzKrMggccj
+	e9aFLsNzo1qUzO/HwMKUBFWvSa0hT5SMWwQA9cyzRY+YcLd9I5X0OQJVXfBAsbMM4j9hZGL6Abx
+	EtiHf7xUStm2tDdamUGZUVTPTyVJkcxSIjXIe7e6TUKV/PXZc7qS26SNvOxYTX7PqztHAg==
+X-Google-Smtp-Source: AGHT+IFIQcr3LtG69hSvzcBRyh2NU7Kbl7HW53TQ44nqpcCrqtGu2cixKt9RlwToqHm0zz3TlDimwg==
+X-Received: by 2002:a05:6a00:2d83:b0:736:a7ec:a366 with SMTP id d2e1a72fcca58-736eb7d882bmr12529516b3a.9.1741847669590;
+        Wed, 12 Mar 2025 23:34:29 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-737116b3d54sm598388b3a.173.2025.03.12.23.34.28
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:34:29 -0700 (PDT)
+Message-ID: <67d27c75.050a0220.43651.1dc8@mx.google.com>
+Date: Wed, 12 Mar 2025 23:34:29 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============0720357015787275738=="
+MIME-Version: 1.0
+From: Karen Martinez <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Query Regarding My Recent Investment in XYZ Fund
+
+--===============0720357015787275738==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Mr. Johnson,
+
+   I hope this message finds you well. I am writing to you regarding my recent investment in the XYZ Fund under your expert management.
+
+   I have been following the fund's performance closely and am impressed by its consistent growth. However, I noticed a slight dip in the returns last month which I found unusual. I was wondering if there were any specific reasons for this anomaly or if it could be attributed to broader market fluctuations?
+
+   Furthermore, I would appreciate if you could provide me with a detailed breakdown of the fund's composition, especially the weightage given to specific sectors and industries. This would help me in better understanding where my investment is allocated.
+
+   I am looking forward to hearing from you soon. In case there are any other updates or insights related to the fund, I would be grateful if they could be shared with me as well.
+
+   Thank you for your time and consideration. I appreciate the effort you put into managing my investments.
+
+   Best regards,
+
+   Example Your name
+   Example Your contact information
+--===============0720357015787275738==--

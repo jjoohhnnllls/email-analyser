@@ -1,0 +1,109 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp2176311rcd;
+        Mon, 17 Mar 2025 01:37:31 -0700 (PDT)
+X-Received: by 2002:a05:6a20:9d92:b0:1f5:8cc8:9cbe with SMTP id adf61e73a8af0-1f5c110f3b6mr16345250637.5.1742200651263;
+        Mon, 17 Mar 2025 01:37:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742200651; cv=none;
+        d=google.com; s=arc-20240605;
+        b=B3R8u34kcAXp6iMbP8D/8U68ZefQ8Ts8Mv2LS4gKleAIHQUI3YBUEBQx5wz6NfrBxp
+         fJiR6YWbLqWOI+I4eMwRyXqx7OUJ+O5hscHrM8RATloMTT9l+kAnjieTJ/E+gI1LVlF/
+         qRqbGgb2hJ3ZJHMLS70hWOMk4ijIQbUUeIMqHDwCCTW01JD62oVyJTU5FdVOp6QXN5mJ
+         U0JPvf8b6/ximM/Eq9xZuLU38UIo2zzdMI0nGuiDSnTKHee3igGPy4bUrlnX6VNLgqSQ
+         2zChICAXK7SlfJSUgGmaHnszyTc+KbRG/a7gyHvtZjj7OGYcXcpyzNJJiqM//zGqGjhu
+         5ghg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=+P2m3D+1ZC3QAlY0FKnIvnfi4uAwsC4pkgJfcnpR9BY=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=F2dWRI5s0TYt1uxfiU0hFeaaNctqAQdabxTikg/NXYmqUS4NYywCrr2W8Yj+LxO+MG
+         BuFWdMJKr3PJPFPVuhwDg7LSaaIT+EaZmTqEnyG6FQ5bxx9YgFTc10aFkxep96wpUZBN
+         pm8NWeqS5ty9IWWSKlMqyX+wA1yv6ILRjQSkIM7H2lgkpbJrNzc9PzvlHTsn3PSKzeQ2
+         DwNvekcuYb5trXd3JkiuRmoTTpeDnXr9L2KbhIO3/JHrhIVDyEvivC9f0b9KVXyktO9H
+         YkZ/khXT/UEjQ82tyjRrum1TW7WXoopetvnBAOIw0VGgxTbfoSL3dX+hJK8NKEnDK7iw
+         6Y9w==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ICL9JLIi;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 41be03b00d2f7-af56eae1b83sor4078697a12.4.2025.03.17.01.37.31
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Mon, 17 Mar 2025 01:37:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ICL9JLIi;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742200650; x=1742805450; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=+P2m3D+1ZC3QAlY0FKnIvnfi4uAwsC4pkgJfcnpR9BY=;
+        b=ICL9JLIiaI2Pgl/ZpKGteyZ3eFrDYO1Epam/LJpq9K6oFf81lH/lXGWzOxIeDuUvcW
+         r9uQT/RUHxdq0hLiVCrzyzl8ewSBj4FSCI2MGtSvPSrE1S2LtND/Xj4ONXHqVDhv9Fae
+         rfqiEnRVM+PCF49HBbVkPbcKNVwfZMBEWxU+IDnnWu4sC5BOcuS6saQ/HUMD+kPw9332
+         5sbLsMvZRhFkuCS/QtvYJ3Af4e1NAG72xluG3uChXRHU5rfJXHg08YMMJioGGtzDSsS8
+         stKIZi2BnRmjgIGQbxw/jMHe42K1UYVC3zHGEw1nQzr55eEEcI3Yow4GCe1KoM96LF4P
+         5rBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742200650; x=1742805450;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=+P2m3D+1ZC3QAlY0FKnIvnfi4uAwsC4pkgJfcnpR9BY=;
+        b=cAzfgmtGZ1KR+4Vv92Pv+DAWJ0eD4SfcDJ0D8s6GIqIVK42a442KMbKtX+4CxS04IY
+         YOK0um5cOpFyqNOepG7lfZvRV9sdWfnjCg6fopd8x4DQ+fBUKcNzWgusMS168crEKOeL
+         pwvBuz67Zc8eA3R1or0+1H82ejSJ+IpvzLTJ1UVYhmj/U+Dt1kTmggYIVCIK9CuJm46X
+         23jLylbgFsTrE/NWUt+LtNtYPVX6cOw6E9KzWMJwczzGUvW9bjsIYXWWPmtrt7sFOSuh
+         2iZRYxIJJlQOYVaSXAc1kQrk4NsvFv8q4g+iUMLjRJyD6dp1ezwSabu0plODCsmZHOs1
+         GbCA==
+X-Gm-Message-State: AOJu0YzgISht1DWgjYGcPqLPofB2wN6UxGSN23q0hIFh3WAoCDHFsYdL
+	7dXnc0n+NC2bDi4NNY2D8++jQDT+pV3Qm5IFTVvNVlPr3VVg+qUt0oO3uA==
+X-Gm-Gg: ASbGncvP2UCdM4DxkBlIZjOsY8fWsb/iUiPNXYhPfSnOqNMBsuS3nZn+dOccSRwhmdC
+	7ZJoyIGFg5BbLocr09E9QHwbdcqU4VTxwmFkgMaR8IDs4gCSCUywxglM5xPAzd6jauAesSQRd1s
+	jIRebANHL5Ac31BGyEXsZnN5yevuwWBHgvnHYtNRC0c1AFueGiVySD+XXQHXkeKsBCjiVMEbZC+
+	PkX5ZAJnfGC2wbiJCUGBnnUWHHPBaafAoHg3LiYZ3eHxGP2itDYGs2P6s6OnzotJN8e4wIIwLfR
+	bAXcQQfIkiSj434ULCo3V2QTPRjOLPmZ03Ay7bFx/kCPG3IU5LSq2bDBlKzoq6JGzMJ5cA==
+X-Google-Smtp-Source: AGHT+IGNCQlLCH6Q2lqOR1RxM81KspPOcfENptRAkmxz01qva0U9TZ/sKk6KaC+P60n4nYoajG0bkw==
+X-Received: by 2002:a17:90b:5247:b0:2ee:a583:e616 with SMTP id 98e67ed59e1d1-30151ce122fmr15503460a91.9.1742200650547;
+        Mon, 17 Mar 2025 01:37:30 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-30153534594sm5483359a91.23.2025.03.17.01.37.29
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Mar 2025 01:37:30 -0700 (PDT)
+Message-ID: <67d7df4a.170a0220.11a02e.a0eb@mx.google.com>
+Date: Mon, 17 Mar 2025 01:37:30 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============0697083662123270616=="
+MIME-Version: 1.0
+From: Innovative Mart <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Your Order Shipping Update - The Vintage Store
+
+--===============0697083662123270616==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Valued Customer John Doe,
+
+   I hope this message finds you well. I am writing to provide an update regarding your recent purchase from The Vintage Store.
+
+   We are pleased to inform you that the item you ordered, the 1960's Mod dress (Style #TVS637), has now been shipped from our warehouse and is on its way to you. You should expect delivery within the next 5-7 business days.
+
+   In the meantime, we encourage you to explore our latest collection on our website or visit our store at 221 Park Avenue for more vintage fashion finds. If you have any questions or concerns about your order, please do not hesitate to contact us at support@thevintagestore.com or call us at (555) 123-4567.
+
+   We appreciate your business and look forward to serving you again in the future.
+
+   Best regards,
+
+   Jayden
+Customer Service Representative
+The Vintage Store
+--===============0697083662123270616==--

@@ -1,0 +1,112 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp398850rcd;
+        Thu, 13 Mar 2025 21:26:34 -0700 (PDT)
+X-Received: by 2002:a17:902:e750:b0:223:607c:1d99 with SMTP id d9443c01a7336-225e1594eacmr16771525ad.0.1741926394705;
+        Thu, 13 Mar 2025 21:26:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741926394; cv=none;
+        d=google.com; s=arc-20240605;
+        b=XqGiX1o/pKvDpWrUZEHSYkFpIuKHojb3+Rbd7vZ1NjwDbEyvryHZe50EYk/F7y7k5O
+         oVsI4xUcTBGJgzITY7x45/3C7p12K/jBq2dqoV93d9tQMtgEfqOvV8tfwA/mIsG60iYR
+         Sk3Ff2IUuv0Zgx1fguIwJfkTu+MFPheRjY8BiU2ZTCSJFsrnGTnrELh1pt38R9pbIwoD
+         P7Nyzz1e8l5n3F7XhSHu6+U8ZQ+mi+b6VfWCudh+NaTUC8CJcSBMsEPVGzIPLjgE4Ige
+         GMl348WU3vyJWZlAhpiAKk+J52wZ8Lj9rizqWy33JNeZnL6n+EWdDl/NiDuZ6FA7zESB
+         AT9A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=hag/M5pUVZOS5b6eJtEmu9m3lqALdifCwohOrK6DG5M=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=c7lyoqbB/WSNmJC6s7ZswkURyjVJKoxn3UI5sE6xk/3gtCJGIVFidBzrvpmu//IBtZ
+         CEsFrKcvIVAgK2e9MHHATB0pE7viy2wcv09bTKs2smW2TIe83QiePHTFvlofpQj8u+MC
+         O7ec52Yy8/L1AAMRYj/d7bsKkAwHnKyllYMce4pq9IwR6z/N+dmo73EqJOCML/I30IOV
+         D74CEXhQ8bwoNs9TXkfT2jJUgb9CihTyxhm/FJlubJ5WZcNx9GqS1EGx06HfXFl72J6L
+         SJHI0ahGW82X9TJBHGZC4gcYFi5KPjwPcCHOC9IQxCxtiHMheQClHjO5MXvA6sgetcd5
+         8K5g==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=GERkYMXd;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id d9443c01a7336-225c5bbd1ffsor16464445ad.7.2025.03.13.21.26.34
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 21:26:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=GERkYMXd;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741926394; x=1742531194; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=hag/M5pUVZOS5b6eJtEmu9m3lqALdifCwohOrK6DG5M=;
+        b=GERkYMXdyfY8D79tnRxWr3bgb+lgYLZVSI7K8GJtexP1yzGjdG63QaxRI7tEyBWR+d
+         +8Tia6LzUu5hU+MTU+SGtq839R2q1BICeDki3LJ8uo8ds82uLaqXENMTwf3t3xI9o5od
+         RfCRmzvpEKpwO7fMk/+qCbKUOIj15P6ialfbJ6iWCVdUGpxfEh+Ix6Est06Y2DPfzFTw
+         oApQbn58Jx/PDLdMhdfqk/7U/G9ZgpJG6zL9C24kF/jhpWYblmRCwfBpGDUSDU/nrjpf
+         5BmRyj7UPWGcT+LdynhLKigeHG0ykTGne8TKQ0sCyGw7DF1/kfMSOn8moeYPavauEIvq
+         nvNA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741926394; x=1742531194;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=hag/M5pUVZOS5b6eJtEmu9m3lqALdifCwohOrK6DG5M=;
+        b=YN1hvxyw38jBLsspq0zE0vTvMNWk4xbFxEfI+BfxWMwAOjie3yN1ML8y4DU2/Kntgt
+         CpKkZO0ts3Vr2E0a1jBC3xIBiqg2kyIJXHH4tHwd1GAjtTxIkVv2M3cvoDynCM0pNQTU
+         lCRtbRzPczFCnZQ7WOq0HWpH32SdPj/LK9eNKv1h6pZF6HpoKTzRaNlNDVOIR3ANWRwc
+         9GW6V388Y8pTGWuwGisBg71LedVkZASWZTK7cUJ/2Ia+dvHTlNnLdZEKPRlNb+ngSxoN
+         Bht6lTTqsbEjQyQo60ig95j7KZn1k22w3XaqkAb+aYJfatREXLcVm1qUkqNoaw6/tNlp
+         CgDQ==
+X-Gm-Message-State: AOJu0YwXB9qjdr04yvj9lVTj9+7Qnc/dnED831SujTNVWzYMvINMiMon
+	ETlUdBm79N+t5y/Siup9/QfaCVQaA86vkIZVe6z2uIiPxnu8XI1y6mgpdPYma3Y=
+X-Gm-Gg: ASbGncukFpr3EjWKTUS+kzBtb4YEc0CCqW2gWbd8vAN8K2ETVn3rEjQmQCmN4Y8+4Wl
+	yKMNXMRSmIiTBH/nu+NXcTm3Ve5aiyTD5NPoCcAjZlGT6N1ETILIsNBu5Wun7fqnjbI8TwzLnu+
+	z/HFrJAfxpZzvD8j1MZBw6881+1eX9dspCorsTRyng6QYTL2e2f9QCKQnLU6YdwiQg+r7vE9yQZ
+	Za/UTY62344tD//7RJ3vE9wuKN7+6FtBA8jiN0PWuTbwgGQnHsuXz5mbTW8+JTISLPef37JaWiW
+	6gaOWYLEb2aTDQ6zQNf1vVq9SSv1gpoMBSUp9lgSlR3OuGYojNQJLH6BxqwY4VTGQsZFC89V7Tj
+	/ylZ7
+X-Google-Smtp-Source: AGHT+IHJATzcrEfVowvKnNaziGLBCey7MMEGWAGcsQIEZ/wYXXieFf+lyaXdi6sYlrQ2x5Thu5JjZw==
+X-Received: by 2002:a17:903:40c5:b0:21f:7078:4074 with SMTP id d9443c01a7336-225c6617ddfmr62865835ad.7.1741926393941;
+        Thu, 13 Mar 2025 21:26:33 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c688866asm22022335ad.50.2025.03.13.21.26.33
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 21:26:33 -0700 (PDT)
+Message-ID: <67d3aff9.170a0220.46e30.733e@mx.google.com>
+Date: Thu, 13 Mar 2025 21:26:33 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============8367776504001567816=="
+MIME-Version: 1.0
+From: Mary Martin <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Inquiry Regarding Exclusive Line of Handmade Artisanal Soaps for Our
+ Store
+
+--===============8367776504001567816==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Ms. Johnson,
+
+I hope this email finds you well. I am writing on behalf of Bluebell Boutique, a family-owned retail store based in the charming town of Willowbrook. We have been admiring your exquisite line of handmade artisanal soaps for quite some time now and we would like to explore the possibility of stocking them at our boutique.
+
+Our customers are always seeking unique, high-quality products that tell a story, much like the story behind each of your soaps. We believe that your brand aligns perfectly with our mission to provide a curated selection of items that inspire and delight.
+
+If you are open to collaborating with us, we would be more than happy to arrange a meeting at your convenience to discuss terms, shipping logistics, and any other details that may be necessary. We look forward to the opportunity to share our passion for unique artisanal goods with your beautiful soaps.
+
+Please let me know if you have any questions or if there is additional information you would like us to provide. We are eager to take the next step in bringing your creations to our valued customers at Bluebell Boutique.
+
+Thank you for considering our request. We look forward to hearing from you soon.
+
+Warm regards,
+
+Example Your name
+Owner, Bluebell Boutique
+--===============8367776504001567816==--

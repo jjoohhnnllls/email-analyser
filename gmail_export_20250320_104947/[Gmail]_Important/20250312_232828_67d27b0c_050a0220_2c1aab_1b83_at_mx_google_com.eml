@@ -1,0 +1,113 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp765397rch;
+        Wed, 12 Mar 2025 23:28:29 -0700 (PDT)
+X-Received: by 2002:a17:902:e5ce:b0:224:26f5:9c1e with SMTP id d9443c01a7336-22428880333mr360064675ad.2.1741847308903;
+        Wed, 12 Mar 2025 23:28:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741847308; cv=none;
+        d=google.com; s=arc-20240605;
+        b=ibIH4NQf1+ZWvVkDCKZMAqtrHbh4Nw3WhmaPnNbUMjJQE5AmX695Pli5BEx2k1uvGE
+         kSvQ4l/mBpgT5h3vFrZoCO2s+dGJqidgON6C8rzfHB5rytmf1jV134TNO7hNKhnrExKX
+         0zPljIPJShgLN0IVEt8880kA1BKIfgQ7yPidm9ASfLb9Q06bfBGf2jI38Go17lngzaKO
+         DrVzfI/Z/utkbimZ0eTHM5APwjLMRi6z+pKDIjErhtxAb8LJkL50TDcSZM5opIg7lZ+i
+         1W1mBE6rTbC4sl53XygrQFV+B81XoUuX+Did3T0a/BXqQZ2E8yb1n6/HdovPWITtzQek
+         Nyeg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=mTD3FrJNRYcWS6QmNEhDHRe43unGIBfI5yMUgzElQBs=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=IHTIHAieBBEVzchopNIysIxmdj8YYUNcCPCJITYPTC/MkE59uifzSvxJlCfl7N40zT
+         naso/cMlA5G/oLh8nC/oJs+TQpXjRXAsVdZVHTooMCeji/z1kKZvPeKs6L7yh5IQQ7wF
+         B8Du+HQXX+yWp4hW5vDFqtazmzpvhMb8AFPdV9Bvpd7WJNMAlj8j8X8ZB/BqLYZ7e3XV
+         qf+DgzLFNJGYw2MV7ONiyVsNU5Wi83ojLq+KaZv7KwcHOQ5kcdjEfk5iKlI8Qw1PyKLm
+         lx3igFTabXu2VuuDR05uuCscwjsVsyHKoazFRvbZNYAWTOsraqWlq8Y0GEI1z1Komxbg
+         qmGg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZmRnChCJ;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c6b6822asor7064825ad.5.2025.03.12.23.28.28
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:28:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZmRnChCJ;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741847308; x=1742452108; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=mTD3FrJNRYcWS6QmNEhDHRe43unGIBfI5yMUgzElQBs=;
+        b=ZmRnChCJOtt7LUxTVY6G4HKyIByVgH+U/QwUFUHP6qph5ueewVB1l0EpcgJVG7/1Si
+         AQ0lg6tsI2YZrLeIZYFtRxz8lvkbKLYnTMFyRU0VXztbjAEZ78MOXRR/Lbc2GbUgad4B
+         Jgt8x73RICICwzzx/9z4P5hm+EJQpzuyMFrDchrVktbC8OT9CxUu+bZNQk7x07zZXnkC
+         AZ1ZuVYqO3X4lnUfoYFU55rnm45qrEDyf12/3WcV5chdwZBYOAx5PXCG3JrwsHqPpcO/
+         2OaUM1d5uFyOQAeJY1XfwisZIQNGUzdeXTUwJb8umd43PhdN25k6UDSxJWMFqkbuXy5U
+         IhtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741847308; x=1742452108;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=mTD3FrJNRYcWS6QmNEhDHRe43unGIBfI5yMUgzElQBs=;
+        b=anDwONNlRyONQYV6T9HJm/ZNIdSrDWD6OX90jI3Ru3N0Ez1PY0u6yw5E5OeyeJeNCg
+         Lvt4Bd4NLVzYp+3xME5dlu8EqKUTW9MrjC0Mp2dsBBgrPoLJW0vjViZPERh/EN93dI+B
+         WpwlOsOuEfAPcJXZAGLhIgLpfORyRzdwfz9vRXl5cTFkfgIRBDuxa0p8Wu1q3xmT5ZiU
+         1C9TGETUuCvISC1D2nsjromMD0SBj38KkykS4pbdawo6icaBoPhQ7Ih4hbm09gWfMrOU
+         zd+f3HqK3xJuaOrgrdWzJNLkkv6Gakh34JstcTgBG7bvn4xBX1cZG58x6L0fWHb9baux
+         sVuQ==
+X-Gm-Message-State: AOJu0YxFfqM+ME8Fl/EIlkebmD4zWou5hnbRc42+h6cVigCvdso+yWnG
+	c7DB9P1KDHQ9wB44JdAXIFrqVAMrMDCmPurt2MOw48v0j98J57VJSH2fW756QRs=
+X-Gm-Gg: ASbGncu7/yhKSRz28YVF2Z0dVEMWrIswWiIKy3ApmQrSvMf16cDAT0mwWkvqh+Qf3xU
+	YrVKMp49G3TirFVfLUxSpgwYpk/GdwsEKlfCzaeJt6ZuwDqD8q4vexa9VrNrt1zkigh7GpN1zc1
+	xEZHpkz0FbwIMQgGjZZB2z3Ua24wpUPl6Yjz9vBHhreXDBuTR360R39g9so1iDTpwqEJIrWcRMb
+	m1AMeVliX9rOw0188yoXyjt0ua8yZDiZIIyfKe+OorhIOLWL0WDeZuq/eiS0+IqnCKjmb83szW1
+	B+os2DeBDQubVIJy1qFXV1dw2zq054gX24Y7Otm7BVbOys4GwsElwF/+kjZKjIjBEXjDxQ==
+X-Google-Smtp-Source: AGHT+IH0cc9u1ADqqHIA7xPAWOgBv/k8Afa/+UddeP+bKxpmpxS8XQ+Zsx1Eyddpfq0Z/aGWnbn9RQ==
+X-Received: by 2002:a17:902:f54e:b0:220:f59b:6e6 with SMTP id d9443c01a7336-2242888011bmr326125735ad.8.1741847308238;
+        Wed, 12 Mar 2025 23:28:28 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73711529368sm582191b3a.8.2025.03.12.23.28.27
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:28:28 -0700 (PDT)
+Message-ID: <67d27b0c.050a0220.2c1aab.1b83@mx.google.com>
+Date: Wed, 12 Mar 2025 23:28:28 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============1465712538916400910=="
+MIME-Version: 1.0
+From: Jennifer Johnson <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: No subject found
+
+--===============1465712538916400910==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ Subject: Feedback on Our Recent Consulting Engagement
+
+Dear [Client's Name],
+
+I hope this message finds you well. I am writing to express our sincere gratitude for the opportunity to work with your esteemed organization on our recent consulting engagement.
+
+The project was challenging, but your openness to new ideas and willingness to collaborate made it a highly productive experience for us. We particularly appreciated your swift response times and clear communication throughout the process, which allowed us to deliver the results you needed in a timely manner.
+
+We are especially pleased with the successful implementation of our proposed strategy. We believe that this will not only help your company meet its immediate goals but also position it for future growth and success.
+
+We value your feedback and would be grateful if you could spare a few moments to complete our post-project survey, which we have linked below. Your insights will help us improve our services and better serve clients like yourself in the future.
+
+Once again, thank you for entrusting [Our Company's Name] with this important project. We look forward to the possibility of collaborating with you again in the future.
+
+Best Regards,
+
+[Your Name]
+[Your Position]
+[Company's Name]
+[Company's Contact Information]
+--===============1465712538916400910==--

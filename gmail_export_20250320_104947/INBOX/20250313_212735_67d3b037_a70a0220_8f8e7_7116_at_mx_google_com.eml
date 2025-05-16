@@ -1,0 +1,108 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp399170rcd;
+        Thu, 13 Mar 2025 21:27:36 -0700 (PDT)
+X-Received: by 2002:a05:6a00:4b4f:b0:736:728b:5f1f with SMTP id d2e1a72fcca58-7372242e247mr1468892b3a.19.1741926456591;
+        Thu, 13 Mar 2025 21:27:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741926456; cv=none;
+        d=google.com; s=arc-20240605;
+        b=aMFt4pJ3uw97grnUhEhcRgZiTtL7/0iqNOpJA9KeNRZhMHeMkmFUDsaKsDP89Zhp2p
+         ekcpMJQVlZVyo6X8EpsRkvWRn0AWslFUUxI6iXlfxXyyNirunT3yMhBu/VgdxXZ+IbvI
+         w9rpT8nUr4SD4S6JCU6vdfjY8agP6S7jj6keNALN0XiT9lnJo5JBzV8PhcY8QhWjzgN9
+         V08mBPF+AWbAWuAgm219U4QgSeUSLzGvZ/nJkvqxhQRN0KgGonOGRIItyl9rJA/9eKgR
+         gd/yS6NdOBOFcfvrLdw7geYp2Vy7avxS+EMt3W7qUkpKdHIg3F7NkpfyOjC9zQvf9T67
+         nong==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=+N1PyjATNz6Td6S1iOj3tUQDCG3yvXvGauegl0gjLCg=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=NV9Vknyw3lCTsOMnPRH8JbuNEwUwDUkvBYdG/Amz3zDMJvjZ+k+1f4EiQKQwKePxa0
+         2WVznJocVJNgMufvetrld0BBheEytw5xRvP+7aM/13HA9UN90q3NciEBhTtG5W4IyWiJ
+         ZJ2qvuVA50oh77wcG4NdOmxt1OH7tq3POxTQxuBneCcNxjwuxT0rKGrGVuiE3vulbrKV
+         3M9VHQuhWtcgZpgzqfOzNGprv8ul2EWyksFTyvLtiv8Jw1CzBxJWN4BnQEA2qSe8Wp0/
+         7NaBhOqK8S+2jmRLgU0rjWJYeaA5hT0G12ARWJ8jhoxsaLT2Zv2VYJWlGxy5ffQMaEZ2
+         AF7w==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=C0YsTcxj;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-737116aeb7csor2299606b3a.5.2025.03.13.21.27.36
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 21:27:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=C0YsTcxj;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741926456; x=1742531256; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=+N1PyjATNz6Td6S1iOj3tUQDCG3yvXvGauegl0gjLCg=;
+        b=C0YsTcxjPsplGXPWGa42++Kyy0YbwBTOut09Y1Ajw2j4SnA0qCjcxXyeOjk4Vw2wpX
+         4LJJPP5aPXaNgC/9UZy7SzUxFY1+zsd7m8nYfTiR9TwQbKwENzXTt+152sfyR7wsEnK+
+         3e6CsB264r6Q5ngfz8oPDVJ6xDqERHtCVVhraQ6Wl00fVAuP/lT7ukGtUsVaojrQu6B6
+         tKqtjH09haK+dgHbVpLcx+KelhOBnV/KsvIMT615cb+1MSyqWLKohsJemMakn5RMz2KF
+         oAlzST49NVY4ZGaMrwHNNrCc5Yb7YTen6YPoR1OKsV4xlrqIo4xtXcJgzGfua5Fd1UEd
+         ZUUA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741926456; x=1742531256;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=+N1PyjATNz6Td6S1iOj3tUQDCG3yvXvGauegl0gjLCg=;
+        b=Dm4JqJKDeL0GdZrtzfbF/+9GIuZTqmdWmkNvj5K3g0PTCtp1BcArgXvyfGMhz7g7E/
+         B7/7G6oNT+1I9xsCh9W7gSJxjoY2+BZAqFBDEOuah934UWKkXRk+YYBUXkpjnl8fMZhc
+         M8NGreTD4T6j57oaqti3mpxy2AYks9Vc1Qs47o/6w183Ye7Y4u/9RA0utFNzhdR/4q2Q
+         GGsvJkwWjiIJ5pjDT1iGQOQucqYbxB8BaAQa8rmIixrYCxJOB9/l5pgWTDYmTMdHH6dk
+         Agef21lvTezOvyH7Gp6v+x91gGirRjWZnM0fNhLxSDiO5ojykioiDd6nFF3ME4dYNCvP
+         iftQ==
+X-Gm-Message-State: AOJu0YzD0M5orEPUv/5vLfol2lv7KRgJZaGauTqJDd+4TIPmwYva9T2D
+	z3cXhpOXqJrVjuHy9GnWx33ZONJPhZ/KTVZFROZd/NIRJRCm03OahIXJMmei
+X-Gm-Gg: ASbGncvwrMvbnMO31KVCGnobL10cEmTUkXBCJT29FArgw3znovsBlp171om4Io6m1Wu
+	VdHw/wZXcX1YB+6VR4LDdnqXGRzWmJyzA3sTkZrZDUlYzJGiwsMOyY7bLT5P3rpf8WLrp2c/LGA
+	mZVjExjnfs3YCZ6VlcQOhnLPqWgjDOWr13/B9WXlnX0hCiOO8TrUPx9Ymx0Wbvk2UeHzu6t1Ni1
+	zoTlX6TzR8kgH6jQCwMusx+/EsYnt3//+KuqTIZMJvUUszpfeQ/CjvoGbyebnLpjx/m3+9jkMw5
+	HeQD66l7xLVjeD0GIoTojKuU21k418RxslULyELp4zbSjah0D2OM/sbtIBWrH00yJ1BSmzaBmN3
+	QZqT+
+X-Google-Smtp-Source: AGHT+IHRnTJbQ2nDu/8M6xp9P8CpqPXVqLEyImJ78yzMEJxToq6l/pwcMyR2v6+pZRpzz9DqQw3j7Q==
+X-Received: by 2002:a05:6a00:b4e:b0:736:533b:f6fa with SMTP id d2e1a72fcca58-737223bf5e7mr1173315b3a.13.1741926455809;
+        Thu, 13 Mar 2025 21:27:35 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-737116b13aasm2194441b3a.169.2025.03.13.21.27.34
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 21:27:35 -0700 (PDT)
+Message-ID: <67d3b037.a70a0220.8f8e7.7116@mx.google.com>
+Date: Thu, 13 Mar 2025 21:27:35 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============4255483284357162407=="
+MIME-Version: 1.0
+From: Advanced Tech <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Application for Software Engineer Position at ZephyrTech
+
+--===============4255483284357162407==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Hiring Manager,
+
+   I came across the open position of Software Engineer at ZephyrTech on your company's website and was immediately drawn to the innovative projects you're working on. As a passionate software engineer with over 5 years of experience in developing scalable, high-performance applications, I believe my skills and enthusiasm make me an excellent fit for this role.
+
+   During my tenure at my current position at XYZ Software, I have successfully led the development of several critical features, including real-time data processing and complex algorithm implementation. I am particularly proud of my work on Project Apollo, where we improved system performance by 30% while reducing resource consumption by 25%.
+
+   I am impressed by ZephyrTech's mission to revolutionize the tech industry and am eager to contribute my skills to help achieve that goal. In particular, I am excited about the prospect of working on your flagship product, Z-OS. I am confident that my experience in building robust, efficient software systems will greatly benefit the team.
+
+   I have attached my resume for your review. I would be grateful if you could consider my application and discuss potential opportunities at ZephyrTech. I look forward to the possibility of contributing to your innovative endeavors.
+
+   Sincerely,
+
+   Example Your name
+--===============4255483284357162407==--

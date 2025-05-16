@@ -1,0 +1,111 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp769902rch;
+        Wed, 12 Mar 2025 23:40:00 -0700 (PDT)
+X-Received: by 2002:a17:90b:3911:b0:2ff:5714:6a with SMTP id 98e67ed59e1d1-2ff7ce895fbmr32088930a91.19.1741848000706;
+        Wed, 12 Mar 2025 23:40:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741848000; cv=none;
+        d=google.com; s=arc-20240605;
+        b=C/OcXTknRHmLKDDy5r9gU4mAtKsdks1dC22E7/UxBH4Z1k1DNmqZCrJHJ6wLIAfSJZ
+         ve3YLZI0voDCt1zBkQCEq3w+AdgTA0KlROA21no0rwoZt2mbTPLWj2ySLNzRqXjMzbVt
+         Ck0ane0gS05SNILsMTR8elZfkVyfsrHBtIaKlnGsxUaRib8BBzc43kJY5R7BlpAtDfBD
+         6FhARjuZZKICnt1nwZBvzhYZ/bTjgwx5mEWIOGQkln+8mRylu47Om5maSMG3HlX9MrIH
+         aBT0h2rgnPuOd7HC9S873Ht/iFeVzUICq4BSbtcy2wphjo1gs19IFIT/Iq6mJITaPHWr
+         jJPw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=jZzjV2DiPvNQ7zWdl/9fwzTMtfom802jfzLzPDAvVgc=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=Iqjzkd4zyYzDAr7OgVqDKjj7s23N8fZOdiqzuPvOuOqrlu1ZWnPbnEBR9I6dU28s6U
+         NFTuIH8luU+FX6yrv20YznNTNhgdKHd4+xk/bLN62EuLgGv+KYIlTfFFkx+c/8uAUwKm
+         bhQqwXL5AKq/tWLEWeqOQMNYF3OYhGYahcXj2iN39yjz8xY8jS+/4bbZPgtRI7jptqqD
+         ObfKJutiJVpq0l2vZHTd666ymbgcxgiKxanq9iC76Wj6/17jUVHT+/G1ulSybx7D8ebP
+         y5mqvvb68yu9jUZCezjXUuP+5jyRV3iwxcU3wIaZqAik5xB5FZVYTP8sShMOlDo8mn/z
+         a+Xw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=SdjR1aVK;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 98e67ed59e1d1-30138f4972esor571281a91.4.2025.03.12.23.40.00
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:40:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=SdjR1aVK;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741848000; x=1742452800; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=jZzjV2DiPvNQ7zWdl/9fwzTMtfom802jfzLzPDAvVgc=;
+        b=SdjR1aVK7J/kITfcGbIt+0DpTuUkj4T9XpdOjRSJARIUhmQV68Q/L23SVOCubWSaYX
+         M49gAK7/Q/9leOjMAiTodbteJe2sKvdEmhxukfStk/JCNXHtLJTvN+Z0w+umOWuhi5Ah
+         5NcETzcuSiU4cS46xbJFGuX0iZCBnM7g8DFR0xpgg6qKP3DFBTVBDc9aaqniH+as2zAp
+         b5K54OaFul/NYod+glvqC/VbCQkPQho+BE8rUg9plnmjgDyfbBNwW0YSvshBsrU+MLoK
+         V/OVjR36zsWiE4U8KTOVdgYkgkVFnZA4FT1cWxtecrUze9xg+IdnMYG3NkzfQSKubcHG
+         RHuQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741848000; x=1742452800;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=jZzjV2DiPvNQ7zWdl/9fwzTMtfom802jfzLzPDAvVgc=;
+        b=r6V5RY59CDr1RINBXGVpSpzAtdudqPJMDDCNEanBwp3zKqnXe5rTLEY4cYHrjeOOb0
+         rvVdk5xArfUZqHDWaXOK2whWnwUrDQy9ZCiLAUleNdsZGcLSiuhUcXIZ3G8Bg/gcXuzZ
+         MfOkop5X1nOuD7YMvGyr3Gfxa2QjodKvCQx4K5dyUHjgII9Rk+qunvX3DCVqkB4XjBW5
+         Zq/AwyIzPalHNFUkvEGTSWB7ShO0YTNELZLX7YB6iE5/NVFbjy4jeq3Erbtyi6bxKCBG
+         8yyuFhX2IYScBw4wC0XKm4GZgSi0rTizQjq0FbEGwIjov/z2uGRm30HmNTaaxzgqGafg
+         OxDg==
+X-Gm-Message-State: AOJu0Yx2e+Qb7ieacJQPF4wISt6CEBt6bY0nX+7jv0okwq4BonNdQZIn
+	ZaOm54NXfTfy+KS+CT1ru0YGNuTQf/Vj4YHfL/JWU+dqcadnXb+Vv60wyigv
+X-Gm-Gg: ASbGnctdYGWQr6HJYtaOviOf2TMw+v+wBRn6hniXXlEoLUm0NfFZHQ+/N/6LnfOS4J4
+	59idEDeBk6fR7OrPWZuV1DrfL6vkOe4XD7NsX5M//ppE9Hq67cfdTkypMfWu8UtgXEjwkl5upv1
+	qPYoO6xHQagAWLu4rSv9TKY7BeQAtLJNkG/oUWrhJ8ZciSHNtkXDQNlevkUgOQ3IfgHe0xwGTq3
+	15GRmCHlZsfgqhSTstPbZevoAGKLYiXShdUXbX150nh3i7/ELS7sHfjaGwAtN34J7TMybTWvgkR
+	dYwPTS1oTT3EAAx6XU8NRRGICecZB+6Qh/IbeQotQz3WhXR5hkoyuZRBvbNo5gtpr2TPdg==
+X-Google-Smtp-Source: AGHT+IFnjUnwMkpqYWyXArjLwnOvFgxwW8eSHAu651C5qiV5wPvyK4pn6yVt1YlXvnGgKGJM+E768w==
+X-Received: by 2002:a17:90b:3e8a:b0:2ee:b6c5:1def with SMTP id 98e67ed59e1d1-2ff7ce6c96emr34941132a91.8.1741847999795;
+        Wed, 12 Mar 2025 23:39:59 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-30118234fe6sm3020647a91.12.2025.03.12.23.39.59
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:39:59 -0700 (PDT)
+Message-ID: <67d27dbf.170a0220.1985b0.a5a0@mx.google.com>
+Date: Wed, 12 Mar 2025 23:39:59 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============5105038781566107357=="
+MIME-Version: 1.0
+From: Jennifer Wilson <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Request for Information on Investment Opportunities in Green Tech
+ Sector
+
+--===============5105038781566107357==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Mr. Johnson,
+
+I hope this message finds you well. I am writing to you from Merrill Lynch Wealth Management, where we specialize in providing bespoke investment solutions to our esteemed clients.
+
+Recently, I have come across a unique opportunity in the Green Tech sector that I believe could align perfectly with your long-term investment goals. The company, Solara Energy Solutions (Solara), is a leading innovator in renewable energy technology, and they are currently seeking strategic investors to support their ambitious expansion plans.
+
+Solara's proprietary solar panel technology offers increased efficiency compared to traditional solutions, with the potential for substantial cost savings over time. Moreover, the company is committed to sustainable practices, making it an attractive investment from both a financial and ethical standpoint.
+
+I would be delighted to discuss this opportunity further with you at your earliest convenience. If you are available next week, perhaps we could arrange a call on Wednesday or Thursday? In the meantime, please find attached a brief overview of Solara Energy Solutions for your perusal.
+
+Looking forward to hearing from you soon.
+
+Warm regards,
+
+Example Your name
+Senior Wealth Advisor | Merrill Lynch Wealth Management
+--===============5105038781566107357==--

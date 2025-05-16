@@ -1,0 +1,113 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp2108195rcd;
+        Sun, 16 Mar 2025 22:37:47 -0700 (PDT)
+X-Received: by 2002:a05:6a21:8dc2:b0:1f5:8262:2c0b with SMTP id adf61e73a8af0-1f5c10f6669mr17592054637.2.1742189867246;
+        Sun, 16 Mar 2025 22:37:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742189867; cv=none;
+        d=google.com; s=arc-20240605;
+        b=aqsBbnuuNaqQsUnKpTtYwtW7QcVA87F25bjkfPxtSmxxQnch92xRFYyXmixt8I3tnm
+         QRrtdcHozhKEosYus4g5EXh+zb8SjLIlz8v6/54yJpeNHNdxl7PsvKoxVE/ai1JR7ZQ6
+         GyA0yQJaTLUzSGPsk+yB4snfcZgDwZJn8/T3wSVbthzWU4G4VSgPzr5OqREhLA5RPPJZ
+         2ZdcFF9/+OHW8VPAlNMefd0NBC9xKcgnll7kloVSkx2S2UjqbeNI6d1mPvF+t9mFaXrt
+         91Y3uoCpql1r1LIfkzEiQmHhGG8OZsluqDyk1coCaJmgN/ygVkETtn1lgME0E3n4VnER
+         rraw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=P+ZiaJrB+9f0RLrD5ApD7DNwOUzOaZNO7hPBsLnyNzM=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=J/jV9MG3RvXi/WuHYTOZwoCVTllLKoNjlIce9cG8QF20CrA5uiZ4VmKrEnfBRsshph
+         eeQqlBFlm/MJJeRNfm7t2tejp5UEaIHCqQLQsxCeOyLyA1sD4su5kLr62ugIONo77Pz5
+         9t1uo8dYR9CvhzcoJrIoO64/+y2wP9VyM0wlqcCIOnJu3GJ8CoCosjohbRySUUFrWKOx
+         aGuVqxfgf7TaSAmuSwAISBzuL7qg1XyqR5TVbLgSHkvAxjL/K6AJPgWFM+JXOFJBm1Uo
+         V8jUlHdvZua8G0nhm6HqK3cnnjKInhudrqesuyegTDATU01RRriDnuTII/iCRkowPUAN
+         2EGg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ihn90HwT;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 41be03b00d2f7-af56ea6bf52sor5144193a12.5.2025.03.16.22.37.47
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Sun, 16 Mar 2025 22:37:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ihn90HwT;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742189866; x=1742794666; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=P+ZiaJrB+9f0RLrD5ApD7DNwOUzOaZNO7hPBsLnyNzM=;
+        b=ihn90HwT1n4WpkIGy09oxZDR38xMvV85o11tQa7gPAXDzs2fCH3sDcqsCjisJv1RWQ
+         Z5s7R/7FzvsTvaQcdTEQ5ZlT7BgY7Hn4TID0De2+jzeS4wqkQP+ufFhOzc1d3ZotgrXJ
+         R7yo8S49ZfEux1MWp+N+02zI9t7luDK5uc19zS2XDyJgmqgyC1oDM7JHg/3PMt35PPNv
+         Vb4igctuUlN1sWKLgMfhsZbmiZ8Dq/AwkyFwULdLbJlkJ9CN/cCFKxImeyuULeCHW1i/
+         zrzl5fRJsUjF32s84bgHKdvuvFRotiMcdoCWDSBsijaCJLKmzKx+8qglgGXfxMl5aXWV
+         CBQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742189866; x=1742794666;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=P+ZiaJrB+9f0RLrD5ApD7DNwOUzOaZNO7hPBsLnyNzM=;
+        b=CUkXntzPj5iKwWyc6VTYS3Fo2ye5XZykV3M+SmFXGPWEMTaPkv+UHsVHPPfuT+E2Kz
+         XdGC7TXnkf/ohSeSMCRCUnXznBZAa8bSyBw4xUgQtq0jnA+OqewpVz/qfndUwxsMD13+
+         77jNHTMxIvyu6pZmpGcevZhKHLUMSV7SpRWjQ5vh7czgcKtYmX7vHpOfTdLUpjiuxOgM
+         eiTsDw+cy3nvk9Af7yNvdtToNvRO4wt2XEL1JZW2kUAp4hu5BtTwgE6iROiSXfjTgzDg
+         fv8/0SKrDamHtvPCTkhKeK99ZjrTSQoYRFzSFT5qpw5EngOrfm8XwfOnF+q7fBWrKC91
+         WmCw==
+X-Gm-Message-State: AOJu0YwQ/K4xFT14w8OGzm+Q/4talf2NgsYF3gpq4SUas6fGoNbxMcZp
+	9WutZ72ZDQmmV+vcPQViZdaBCvRmKRQ3x7N1QdE9R2WJQlSlF9kD7cYdsA==
+X-Gm-Gg: ASbGncuWnmgoFTHNIoU2wl+AiG2+cuBk0J8hlL0o7QNQFFud4M1eIB6Ocky4E3pITs5
+	TNitbEUHR8hMF7EfyB7ndwU7F9/vR5hOz+sedKVfrz7CpdeYEeKu2zZK8LMGibZR6nkz86vU8A4
+	26/C9nWDZHfPV8sBXIQtHpGr0VJ9fzLJPYhZ/3FxKUJgApJLuHARKmFzNtU6vHnzSL30tDibLfm
+	kYynvJqatNzYKgJFlzWVHstneOnwuIWeEdd9AuDt8uBz5b7UOY4HoYeggTgWj6LrFqS2ge5zxm0
+	SID/pS6VzOX9MFpepHMDrzTl11Vw2Cg9STXE0Vsdo/YS1YXo9Sq3kBOLL5S7tUY/mfE8Sg==
+X-Google-Smtp-Source: AGHT+IEn79YDV1dIi+a6/XI7KqYaXueKTLYSAyjmd3vjiaxqvchKzlcB0pgFRmAZLmgbmNRJMphvWQ==
+X-Received: by 2002:a05:6a20:7f94:b0:1f5:8655:3287 with SMTP id adf61e73a8af0-1f5c1316cd7mr15015536637.40.1742189866541;
+        Sun, 16 Mar 2025 22:37:46 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-af56ea7bcc0sm6340249a12.56.2025.03.16.22.37.45
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 16 Mar 2025 22:37:46 -0700 (PDT)
+Message-ID: <67d7b52a.630a0220.1986bb.cf70@mx.google.com>
+Date: Sun, 16 Mar 2025 22:37:46 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============8900839162223178870=="
+MIME-Version: 1.0
+From: Charles Davis <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Confirmation of Medical Equipment Order #231569
+
+--===============8900839162223178870==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Dr. Martha Thompson,
+
+   I hope this message finds you well. I am writing to confirm that we have received and processed your order for the Philips IntelliVent AS-ventilator and the Siemens Healthineers Vista 1800 Ultrasound System.
+
+   Your order number is 231569, and the expected delivery date is between February 14th and 17th, 2023. The items will be shipped via FedEx Ground for a smooth and timely arrival at your location in New York City.
+
+   If you have any questions or need to change the delivery address, please reply to this email, and our customer service team will assist you promptly.
+
+   We appreciate your business and look forward to supporting you in delivering quality healthcare services to your patients.
+
+   Best regards,
+
+   John Doe
+Customer Service Manager
+ABC Medical Supplies Inc.
+12345 Medical Lane
+City, State, Zip Code
+Phone: (123) 456-7890
+Email: johndoe@abcmedsupplies.com
+--===============8900839162223178870==--

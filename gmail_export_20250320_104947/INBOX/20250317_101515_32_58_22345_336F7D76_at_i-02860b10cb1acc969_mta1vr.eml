@@ -1,0 +1,572 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp2221112rcd;
+        Mon, 17 Mar 2025 03:15:19 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IERMCR85KrnNQAQJd81lW8Tvvn3CRXhZDHX3PGiE8qIjJTO0Z/a6FGrQzCEbH19hRAzSSCf
+X-Received: by 2002:a05:6902:1185:b0:e63:ebbf:7ea with SMTP id 3f1490d57ef6-e63f65c44d6mr14642731276.39.1742206518673;
+        Mon, 17 Mar 2025 03:15:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742206518; cv=none;
+        d=google.com; s=arc-20240605;
+        b=cU1HTkVy2sO77tU7zTcmqMNSDsb2Jukl07bA8/NaJLIV+tdc8kJsUia6tiCi3MaU+r
+         BMLeyRX7IotkSzOg0t3W02l3s2Ub59s3k1nE3J+fMrkn2mrkjK2442RtuItyDq0zsj6H
+         lrk8XPUznMRuHzCCHEFFvtwjFTF56gobeWq2JYvaXQdsFkyk+WLUY4A5iZZ8qzjv02CX
+         e7eHDnlUCrzmGs67yq8Fyb+qO3qbxT7mPpteLB/wi4gHS6vkQH7H52RSB0ZYww8JfWlZ
+         eCKkJXM7IrtmYFhinYf0WcwiG9h4z1hkfdd3b1oKNPa7gPVo/rZNcHmzxHTnoBd7ZAuq
+         6Viw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=reply-to:subject:mime-version:date:to:list-unsubscribe-post
+         :list-unsubscribe:message-id:from:dkim-signature;
+        bh=3sHEUHXrw0wAEv1+jghVZ5Fe9bjQnZFd/r+NVasbbrU=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=KQoqBTrl03i3o7bNbDjZjWlpAzCNGsPpMukfOLSkGUYlQ/PFdRUtO43d2GQ4i1Ryvs
+         Wxike05O8i/8xdTQeoOYW6dsTeSPm6VD8WBtGL8OrFOIjdqepiN6f6ybqZWDSio0bLyX
+         0MbqxZDRwvVRb6nam/lcb8AxDaeVovdD+583qLLWJBYjDXI2vbP08R0l5oKPMaCpdo1L
+         KRJLp9GJ9ry1xJYFbWZa9ZqzoRQoaZZWcT2qCxkc4BJ8R3X7ZZ1c1e9SOqP/AZOAzKrz
+         RDw6cDA7MkOM6bqvARZlrTnQxWuzOGu7UkF+jD+wPX5CYv2r2Tq3Nk1OmP26POlHpgIM
+         6BRw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@enl.channelnewsasia.com header.s=scph0421 header.b=fOeC5dr6;
+       spf=pass (google.com: domain of msprvs1=201711tnaajnb=bounces-266693-163@enl.channelnewsasia.com designates 223.165.117.215 as permitted sender) smtp.mailfrom="msprvs1=201711tnAAJNB=bounces-266693-163@enl.channelnewsasia.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=enl.channelnewsasia.com
+Return-Path: <msprvs1=201711tnAAJNB=bounces-266693-163@enl.channelnewsasia.com>
+Received: from bz1461.enl.channelnewsasia.com (bz1461.enl.channelnewsasia.com. [223.165.117.215])
+        by mx.google.com with ESMTPS id 3f1490d57ef6-e63e5795356si7523898276.535.2025.03.17.03.15.18
+        for <desgtest.email@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 17 Mar 2025 03:15:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of msprvs1=201711tnaajnb=bounces-266693-163@enl.channelnewsasia.com designates 223.165.117.215 as permitted sender) client-ip=223.165.117.215;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@enl.channelnewsasia.com header.s=scph0421 header.b=fOeC5dr6;
+       spf=pass (google.com: domain of msprvs1=201711tnaajnb=bounces-266693-163@enl.channelnewsasia.com designates 223.165.117.215 as permitted sender) smtp.mailfrom="msprvs1=201711tnAAJNB=bounces-266693-163@enl.channelnewsasia.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=enl.channelnewsasia.com
+Return-Path: <msprvs1=201711tnAAJNB=bounces-266693-163@enl.channelnewsasia.com>
+X-MSFBL: mXTu97vt2y8b9PNQlm+sy1vgGprJtKJ1HzS8tP9FVEw=|eyJyIjoiZGVzZ3Rlc3Q
+	uZW1haWxAZ21haWwuY29tIiwic3ViYWNjb3VudF9pZCI6IjE2MyIsIm1lc3NhZ2V
+	faWQiOiI2N2JmMzNmNmQ3Njc4NTEwMDUyMyIsImN1c3RvbWVyX2lkIjoiMjY2Njk
+	zIiwidGVuYW50X2lkIjoic3BjIn0=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=enl.channelnewsasia.com; s=scph0421; t=1742206515;
+	i=@enl.channelnewsasia.com;
+	bh=3sHEUHXrw0wAEv1+jghVZ5Fe9bjQnZFd/r+NVasbbrU=;
+	h=From:Message-ID:List-Unsubscribe:List-Unsubscribe-Post:To:Date:
+	 Content-Type:Subject:From:To:Cc:Subject;
+	b=fOeC5dr6q+xGGPWxe/0OCMvZx5kF3bYKnPQgGwoo/oM7fdID14Qm00oVQq95mN8zS
+	 fZSO7U4sIYvwynQcStI/QpkqqBjDgQUmrE7eazGnvFCkaMxdzn3Lqge56nKhWZS0g0
+	 hSjPiULx6tz6InVpYl8gH6k8gRaIUREd2dbqss3o=
+Received: from [10.90.44.115] ([10.90.44.115])
+	by i-02860b10cb1acc969.mta1vrest.sd.prd.sparkpost (ecelerity 4.8.0.74368 r(msys-ecelerity:tags/4.8.0.17)) with REST
+	id 32/58-22345-336F7D76; Mon, 17 Mar 2025 10:15:15 +0000
+From: "CNA Recommended Read" <topread@enl.channelnewsasia.com>
+Message-ID: <32.58.22345.336F7D76@i-02860b10cb1acc969.mta1vrest.sd.prd.sparkpost>
+List-Unsubscribe: <https://login.mediacorp.sg/api/api/v4/subscription/OneClickUnsubscribe?app=meconnect&email=desgtest.email%40gmail.com&userid=8da66f70-9051-48f3-adf0-18e099a49f23&website=cna_recommendedread>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+To: desgtest.email@gmail.com
+Date: Mon, 17 Mar 2025 10:15:15 +0000
+Content-Type: multipart/alternative; boundary="_----RmgMZXuwQVRU8gaY5m7tSg===_8C/48-22345-336F7D76"
+MIME-Version: 1.0
+Subject: A pile of donated shoes lie unwanted in Singapore
+Reply-To: cnanewsletters@mediacorp.com.sg
+
+--_----RmgMZXuwQVRU8gaY5m7tSg===_8C/48-22345-336F7D76
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+
+Less than a quarter of the 400,000 pairs of donated shoes for a=0Arecycling=
+ project in Singapore have been repurposed so far.=0AMarch 17,&nbsp;2025=0A=
+=0AOver 300,000 pairs of donated shoes lie piled up at a Tuas=0Awarehouse. =
+Why=3F =0A( https://ablink.channelnewsasia.com/f/a/SPYziCSIwydOBl42Fl_Dgg~~=
+/AAQRxRA~/XjZgMS0k6Zw73EUAp1BUeoJuEUN7o6dnFUgXWoTiUWmlAg8ZSLt3iqhCDsXLCNn7x=
+VxGRXC-lmWTaS0gvEfG3G3DZQsCbuCBVKwkg1sXPGlaP96EQWQ2SgAPh1msBTFB1xptIqYj2BhU=
+7Iej9YNR2cSm1D8dssBpx7cfGJEQWlHtn4PO7z0-d8eGhEiNZrpJqM9Y83a3z09n8EwDi3SVVvj=
+ko4LFKoq3GBngqPpcYD3XezoT0PITsa2P6T-5n2A4 )=0A=0A=0AIt looked like a step i=
+n the right direction - recycle unloved=0Ashoes for use in running tracks a=
+nd playgrounds. But four years=0Aafter the start of this shoe repurposing p=
+roject, it appears=0Athings have gone off track.=0A=0A=0A( https://ablink.c=
+hannelnewsasia.com/f/a/HdYmxm27Z45DFYlGg0zm4A~~/AAQRxRA~/XjZgMS0k6Zw73EUAp1=
+BUeoJuEUN7o6dnFUgXWoTiUWmlAg8ZSLt3iqhCDsXLCNn7xVxGRXC-lmWTaS0gvEfG3G3DZQsCb=
+uCBVKwkg1sXPGlaP96EQWQ2SgAPh1msBTFB1xptIqYj2BhU7Iej9YNR2amw7GExiBeynujdbmDt=
+61FOtsHJOHPlde94aBsgABL6FB9JkiZA65a7B_mAcyVhKrSyltbrZpWMi-17sL2uNPQIbyG-2C0=
+NrtmCTWimHGIz )=0A Donated pairs of shoes in a heap at B T Sports' warehous=
+e along=0AGul Drive.=0A=0AIn that time, over 70,000 pairs of shoes have bee=
+n repurposed=0Afor 18 projects such as a jogging track. That still leaves m=
+ore=0Athan 300,000 pairs of sneakers, sandals and sports shoes lying in=0Aa=
+ Tuas warehouse, waiting for projects that require them.=0A=0ACNA takes a l=
+ook at why these shoes aren=E2=80=99t moving, what could be=0Adone to shift=
+ this mountain of footwear and whether this could=0Ahave been a green effor=
+t gone wrong.=0A=0ARead the full story =0A( https://ablink.channelnewsasia.=
+com/f/a/6bzyvMQemKCT7e8JsjMT0g~~/AAQRxRA~/XjZgMS0k6Zw73EUAp1BUeoJuEUN7o6dnF=
+UgXWoTiUWmlAg8ZSLt3iqhCDsXLCNn7xVxGRXC-lmWTaS0gvEfG3G3DZQsCbuCBVKwkg1sXPGla=
+P96EQWQ2SgAPh1msBTFB1xptIqYj2BhU7Iej9YNR2dQYWRscLGlbpyE4e8ERXBWAngIGJlPFRpq=
+hd1-i5mHlxYbziS-bScb1ECVxHoZpj1iXcDjsEbuRbRcyuLDJrRzEU--9mpIZ5TgMWW4FyzkM )=
+=0A          ADVERTISEMENT  Ad   Ad  =0A( https://ablink.channelnewsasia.co=
+m/f/a/LTFQ3514VFwgz6gCm1RbIA~~/AAQRxRA~/NI5HtU79wK3ojtmvhw3WLeQ_rWl84PXFwVu=
+GtDSRGeLfMNPrfSyJIh3a1RDYjN33RaFdyEcYN0HxcGdFrMzbmWI5uEhX1URLG5PIB4mB47p4DH=
+7MsCsetb5Upzrv9Ggf_jUFpoOuW18kioDi_KrXNOinl-ue6wRxuq8147SaNMYemFjecHmbd-zV1=
+AHfJAYqWzPWigmBmCVTB5gjWbVmuHocbDVSJj9AOiCcHuGly8HXLl9h193xwaCoTtiH_YBZkR-G=
+Y2E4OgrUqIYzrtQsD28bIZ9xveT7SaMOFbLl9IG_tZZkBVnYMm-XimsHBy4D7evJsvq3efz8MNT=
+McOzRrb-J8-SqqeOAOIsuBIoHwCw~ )=0A=0A=0ACNA =0A( https://ablink.channelnews=
+asia.com/f/a/naYDGbOXmeiX-ldKUN-fcQ~~/AAQRxRA~/hUulR6GP3eZhvQB6PtAbDXQVxdok=
+Gf30qUzS_HPXM1E3kOYG438kzUxi2YHLusobKdHp5ynv_6lQfdhKmKpJDGpcPb2pczaqPW1eS8L=
+VG3xzK65PN6RdWk5-YYpDcVz69CcKYiiwMTx73z-OdXcnUw~~ )=0A=0ATODAY =0A( https:/=
+/ablink.channelnewsasia.com/f/a/yCb-q74oLuXO-DT8EUj9Kw~~/AAQRxRA~/XgMMJ_9lG=
+vTKMwj4W1gHjyW_dHOAp9kCFGQT0qbK5V59GQSLoIaPH-gTuGm55hxOElLPx6oO_Cb8HDxX_QyH=
+s-cx6d4kPLu66fHihg3L96LYCLbwt3mwyYZ0noc_Lny51XhHUyQaIGj6vaPDVJOKD7V5vu_iody=
+h3qe_KEV_K9A~ )  =E2=80=A2=0ALIFESTYLE =0A( https://ablink.channelnewsasia.=
+com/f/a/xPkJhiiSpFPVcjeevy_AOQ~~/AAQRxRA~/_4GAOKUatlXRL6_YeU8Gg7_K96JYR41RH=
+D_P89-qfuENXVtBFAYhX-ro6Jr3LYNgKTDM6rKaNohwUHplUorI-QxkT8Qw00DHwQgqlvK6z6vC=
+ocutuVNBMPBEvERT6jSeWTQD9NhzDBoNV6YN7128zMsaCUrhM_xRqK8EYWGVRx4~ )  =E2=80=
+=A2=0ALUXURY ( https://ablink.channelnewsasia.com/f/a/ltXS3leCnzWY6ai8e1KSC=
+A~~/AAQRxRA~/PZ0aZoawU_WsVKOn1RXbBLB5bzMh4Hr5fwsjSuGdq4p5vtBGTfgUCrVjizltGS=
+aQGQm5BJEjYklnTlcRBeViI5z7bk5-Hfl99BBZD90FggzL4IRr-omMavK0BJcyXalPqdG9Eldg_=
+vyXaBHgEC-sntnqTKvfCE-Iw7QSfWaP0bY~ ) =0A=0ALike what you read=3F=0A=0ASign=
+ up for more newsletters =0A( https://ablink.channelnewsasia.com/f/a/UCk7p5=
+DbQX2neskfAtu0lg~~/AAQRxRA~/RB8eJ3Lo0xfWTLty2SWb0a6laJK82jkQ6AxrKXH4I0kgJKd=
+ADvKUxa9UO109OOBOfpdQFOg6LBjjKISMKj-erg3kuY3FrsL9su0JY3L2c0YLaPPV0gRNIspcMm=
+_Okv6y0vOcMVK6_IZdn_yS3_3S6G1qkPZJ2gcpQhzfmDrMaAo~ )=0AManage my preference=
+s =0A( https://ablink.channelnewsasia.com/f/a/oFmmm_tT-V7S6UBG3nuxIA~~/AAQR=
+xRA~/uDOAiK6zi7-PRrV0s7YAeQogcACTMuzZqzexl_wqqyNYMuYDmfY7PXhqwEyAXKunxpssRl=
+uMyfK4w6-cQrMrU7TV8BOuZJMcV-S0_2sKuTjr9bs59zWpYQzvZ0x_YC-26OpxOWS4GbY0rxW5A=
+j42YqUuePc_fCa6E5vwVY0b87I~ )=0A or  Unsubscribe ( https://ablink.channelne=
+wsasia.com/f/a/xiUPCpLuR4BWRDDo0oBK5g~~/AAQRxRA~/0qahQ4IPnz0Qp_UvV6-rFFmQjm=
+XYYl7e7cWhxsMVL6YIBv3lCqLipb0i6nVps2CKr11pb8SOQMlzKp0hG7RUGnmNJN6mhR_o87pjH=
+tUAON8LFRkagT8y4uzAY-JlWlngUgtO6QX6s0jadTsVIl-SJlclH7S9ebfoOR_lQRJUIPOqirM_=
+G0uRqkcEpkBZdl-57QqZD2evjoKRr7fLI4ykAhYekCYG6wNpeuUv6skv0EVTcyVsgBLfpvHsoeI=
+Ob_w6 )=0A( https://ablink.channelnewsasia.com/f/a/QLqG58RKp2dkDQLlD54AtQ~~=
+/AAQRxRA~/7kM2tx9ArUM3c-7PCVGHUpyASbY0E_RhKJoNeMLI63BJDXOconQlbjq7ApYzWQNDa=
+MLHsVfQGIqGVq9HZe60VQtvwWRw5MueT7DX50__pBCfeKAnU3XjKypTjTBANusVuceZmX93RqcW=
+K4haLhWvMw~~ )          =0A( https://ablink.channelnewsasia.com/f/a/z1RleWi=
+hQYQsmNH7Tif5yQ~~/AAQRxRA~/wTh72ldCTB7x4QfHp9BZicvuhaY6SPpvFodzZp5m8R7L4Hqr=
+GTu8LVUri5MyY-ISIIbIZ_9G_N_dvrQpFWMYr6VsbH7OwrvoYtnJCCu9bb9nnEr0JnmmApp1s2b=
+zJM5yCdm3JlLpZLP8bJuXJC1PfSdLnoIwADt61QknZvrXK7ZwCNqbaHYvbvE_J7-YJzLs )=0A =
+     =0A( https://ablink.channelnewsasia.com/f/a/yRCb7Fhk3OuIaL-avTiV4Q~~/A=
+AQRxRA~/wTh72ldCTB7x4QfHp9BZiZCgI16XTcLT_--RioS2uRb3WKu0PjVWGbNoUuVJELC0yBO=
+Hv8HrAYc2Ynb9tiXl3DysDkLAdB8YHpWfFoEqp0ho0bMBzJzRf-ksnx5ebA02jL6Pled1o_hsa-=
+M7WXzWEmiB74k3aZF4pqszZ2iVqGMfS1_0elpRm4nlXxMMHQs2 )=0A         Mediacorp P=
+te Ltd, 1 Stars Avenue, Singapore 138507=0A=0ACopyright=C2=A9 Mediacorp 202=
+4. Privacy Policy =0A( https://ablink.channelnewsasia.com/f/a/CFOhcZ4uzZVmY=
+jsQcb0KPA~~/AAQRxRA~/ixlTKUXKRBESDrJxzrdFE6ALlvPDfJ6HLhUmOSPv4-w95edFSczziS=
+GeGW7eW2mND-1HiKvLcbwp7SuPCY7Wzrd6MQPPSaa-bLi5XueXChOiBleaunnc0RbDzHmaQ9GcJ=
+YIRdyCjHUG2NODoy9yKQD9TXp3KLV9nFvMPnWXmAdg~ )
+--_----RmgMZXuwQVRU8gaY5m7tSg===_8C/48-22345-336F7D76
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!DOCTYPE html>=0A<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=
+=3D"urn:schemas-microsoft-com:office:office" lang=3D"en">=0A<head>=0A<title=
+></title>=0A<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Dutf-8">=0A<meta name=3D"viewport" content=3D"width=3Ddevice-width,initia=
+l-scale=3D1">=0A<!--[if mso]><xml><o:OfficeDocumentSettings><o:PixelsPerInc=
+h>96</o:PixelsPerInch><o:AllowPNG/></o:OfficeDocumentSettings></xml><![endi=
+f]--><!--[if !mso]><!--><!--<![endif]--><style>=0A*{box-sizing:border-box}b=
+ody{margin:0;padding:0}a[x-apple-data-detectors]{color:inherit!important;te=
+xt-decoration:inherit!important}#MessageViewBody a{color:inherit;text-decor=
+ation:none}p{line-height:inherit}.desktop_hide,.desktop_hide table{mso-hide=
+:all;display:none;max-height:0;overflow:hidden}.image_block img+div{display=
+:none}sub,sup{font-size:75%;line-height:0} @media (max-width:620px){.mobile=
+_hide{display:none}.row-content{width:100%!important}.stack .column{width:1=
+00%;display:block}.mobile_hide{min-height:0;max-height:0;max-width:0;overfl=
+ow:hidden;font-size:0}.desktop_hide,.desktop_hide table{display:table!impor=
+tant;max-height:none!important}.row-2 .column-1 .block-1.paragraph_block td=
+.pad,.row-2 .column-1 .block-2.paragraph_block td.pad{padding:10px 15px!im=
+portant}.row-2 .column-1 .block-4.paragraph_block td.pad{padding:5px 15px 1=
+0px!important}.row-2 .column-1 .block-5.paragraph_block td.pad{padding:9px =
+15px 10px!important}.row-2 .column-1 .block-3.image_block td.pad{padding:0 =
+15px!important}}=0A</style>=0A<!--[if mso ]><style>sup, sub { font-size: 10=
+0% !important; } sup { mso-text-raise:10% } sub { mso-text-raise:-10% }</st=
+yle> <![endif]-->=0A</head>=0A<body class=3D"body" style=3D"margin:0;backgr=
+ound-color:#fff;padding:0;-webkit-text-size-adjust:none;text-size-adjust:no=
+ne">=0A<div style=3D"display:none !important;visibility:hidden;mso-hide:all=
+;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;o=
+pacity:0;overflow:hidden;">Less than a quarter of the 400,000 pairs of dona=
+ted shoes for a recycling project in Singapore have been repurposed so far.=
+ </div>=0A<div style=3D"display:none !important;visibility:hidden;mso-hide:=
+all;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0p=
+x;opacity:0;overflow:hidden;">=CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =
+=CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=
+=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =
+=C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=
+=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =
+=EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=
+=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =
+=E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=
+=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =
+=E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=
+=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=
+=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=
+=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=
+=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =
+=CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=
+=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =
+=C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=
+=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =
+=EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=
+=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =
+=E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=
+=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =
+=E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=
+=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=
+=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=
+=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=
+=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =
+=CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=
+=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =
+=C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=
+=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =
+=EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=
+=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =
+=E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=
+=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =
+=E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=
+=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=
+=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=
+=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=
+=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =
+=CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=
+=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =
+=C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=
+=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =
+=EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=
+=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =
+=E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=
+=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =
+=E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=
+=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=
+=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=
+=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=
+=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =
+=CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=
+=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =
+=C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=
+=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =
+=EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=
+=A0 =E2=80=87 =EF=BB=BF =CD=8F =E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF =CD=8F =
+=E2=80=8C =C2=A0 =E2=80=87 =EF=BB=BF </div>=0A<table class=3D"nl-container"=
+ width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pr=
+esentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;background-color=
+:#fff"><tbody><tr><td>=0A<table class=3D"row row-1" align=3D"center" width=
+=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presenta=
+tion" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td><table=
+ class=3D"row-content stack" align=3D"center" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-t=
+able-rspace:0;background-color:#fff;border-radius:0;color:#000;width:600px;=
+margin:0 auto" width=3D"600"><tbody>=0A<tr><td class=3D"column column-1" wi=
+dth=3D"100%" style=3D"mso-table-lspace:0;mso-table-rspace:0;font-weight:400=
+;text-align:left;vertical-align:top">=0A<table class=3D"paragraph_block blo=
+ck-1" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;word-break=
+:break-word"><tr><td class=3D"pad" style=3D"padding-bottom:5px;padding-righ=
+t:5px"><div style=3D"color:#333;direction:ltr;font-family:Georgia,Arial,San=
+s-serif;font-size:15px;font-weight:400;letter-spacing:0;line-height:normal;=
+text-align:right;mso-line-height-alt:NaNpx"><p style=3D"margin:0">March 17,=
+&nbsp;2025</p></div></td></tr></table>=0A<table class=3D"image_block block-=
+2 mobile_hide" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><=
+tr><td class=3D"pad" style=3D"width:100%"><div class=3D"alignment" align=3D=
+"center" style=3D"line-height:10px"><div style=3D"max-width:600px"><img src=
+=3D"https://braze-images.com/appboy/communication/assets/image_assets/image=
+s/665febd90802c4005960d8ae/original.png=3F1717562329" style=3D"display:bloc=
+k;height:auto;border:0;width:100%" width=3D"600" alt title height=3D"auto">=
+</div></div></td></tr></table>=0A<table class=3D"image_block block-3 deskto=
+p_hide" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" rol=
+e=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;mso-hide:=
+all;display:none;max-height:0;overflow:hidden"><tr><td class=3D"pad" style=
+=3D"width:100%"><div class=3D"alignment" align=3D"center" style=3D"line-hei=
+ght:10px"><div style=3D"max-width:600px"><img src=3D"https://braze-images.c=
+om/appboy/communication/assets/image_assets/images/665febc5a96b2800583116e2=
+/original.png=3F1717562308" style=3D"display:block;height:auto;border:0;wid=
+th:100%" width=3D"600" alt title height=3D"auto"></div></div></td></tr></ta=
+ble>=0A</td></tr>=0A</tbody></table></td></tr></tbody></table>=0A<table cla=
+ss=3D"row row-2" align=3D"center" width=3D"100%" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;=
+mso-table-rspace:0"><tbody><tr><td><table class=3D"row-content stack" align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presen=
+tation" style=3D"mso-table-lspace:0;mso-table-rspace:0;color:#000;width:600=
+px;margin:0 auto" width=3D"600"><tbody><tr><td class=3D"column column-1" wi=
+dth=3D"100%" style=3D"mso-table-lspace:0;mso-table-rspace:0;font-weight:400=
+;text-align:left;padding-bottom:5px;padding-top:5px;vertical-align:top">=0A=
+<table class=3D"paragraph_block block-1" width=3D"100%" border=3D"0" cellpa=
+dding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspa=
+ce:0;mso-table-rspace:0;word-break:break-word"><tr><td class=3D"pad" style=
+=3D"padding-bottom:20px;padding-left:24px;padding-right:24px;padding-top:10=
+px"><div style=3D"color:#333;direction:ltr;font-family:Georgia,Arial,Sans-s=
+erif;font-size:24px;font-weight:700;letter-spacing:0;line-height:120%;text-=
+align:left;mso-line-height-alt:28.799999999999997px"><p style=3D"margin:0">=
+<strong><a href=3D"https://ablink.channelnewsasia.com/f/a/7CFkUfla0vEDaR6Sr=
+NL4qw~~/AAQRxRA~/aQ6X83R31l0mcJuyE2Aiyxm5yrIY0--N7gKWQguff48Nc1U87h2cs1-fev=
+VW13y64XPMZk300Vjj-nyNvck69vkaEAEdDJpESkXe0YdBu37bXnDeBI7rdRutu1iZeaW8dCdzc=
+EjTa_Z30HQs3b5R2uprIAIvy-WrgW2i93W7hgaiEGFrUdZ92l3pXuCJz1n8U1rTZtREFIBwbsvN=
+w_F-k-7M5TmJzuzKZ_x6bVmE-wPyU3ikg_JEjCcPTSKUV9aJJohVtcZFuaVkNmyIQXlTCrsI1zx=
+PoM1LS3A3s7wUd_mRRpkNxUUJdmnN4irzNxMpuaem9PVcFJn7a3xqB7BRKg~~" target=3D"_b=
+lank" style=3D"text-decoration: none; color: #333333;" rel=3D"noopener"><st=
+rong>Over 300,000 pairs of donated shoes lie piled up at a Tuas warehouse. =
+Why=3F</strong></a></strong></p></div></td></tr></table>=0A<table class=3D"=
+paragraph_block block-2" width=3D"100%" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-r=
+space:0;word-break:break-word"><tr><td class=3D"pad" style=3D"padding-botto=
+m:10px;padding-left:24px;padding-right:24px;padding-top:10px"><div style=3D=
+"color:#333;direction:ltr;font-family:Georgia,Arial,Sans-serif;font-size:16=
+px;font-weight:400;letter-spacing:0;line-height:150%;text-align:left;mso-li=
+ne-height-alt:24px"><p style=3D"margin:0">=0AIt looked like a step in the r=
+ight direction - recycle unloved shoes for use in running tracks and playgr=
+ounds. But four years after the start of this shoe repurposing project, it =
+appears things have gone off track.</p></div></td></tr></table>=0A<table cl=
+ass=3D"image_block block-3" width=3D"100%" border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-tabl=
+e-rspace:0"><tr><td class=3D"pad" style=3D"padding-left:24px;padding-right:=
+24px;width:100%"><div class=3D"alignment" align=3D"center" style=3D"line-he=
+ight:10px"><div style=3D"max-width:552px"><a href=3D"https://ablink.channel=
+newsasia.com/f/a/w3K3Nkd2TRzOEp6DZvTEpA~~/AAQRxRA~/aQ6X83R31l0mcJuyE2Aiyxm5=
+yrIY0--N7gKWQguff48Nc1U87h2cs1-fevVW13y64XPMZk300Vjj-nyNvck69vkaEAEdDJpESkX=
+e0YdBu37bXnDeBI7rdRutu1iZeaW8dCdzcEjTa_Z30HQs3b5R2mWBCWbATS0VA2t47zoO03jQ8y=
+ChWLzPzkUU_75DEp8FUQYvl9haQrjFvSzdAHuF4AGA2UberocOJ0NJEtXjuw7vgreAkG3hbZUfV=
+ESAnWzJDSb9IDoTCilSMfDKtw-JoVGY8GDrIjwOWinrPqNw1Su00jWmOYAEYofpxv-M4JKv8tgs=
+4R485lLByy7hvxYqNw~~" target=3D"_blank" style=3D"outline:none" tabindex=3D"=
+-1"><img src=3D"https://dam.mediacorp.sg/image/upload/s--MYxRHFEd--/c_fill,=
+g_auto,h_468,w_830/fl_relative,g_south_east,l_mediacorp:cna:watermark:2021-=
+08:cna,w_0.1/f_auto,q_auto/v1/mediacorp/cna/image/2025/03/17/screenshot_202=
+5-03-17_094718.png=3Fitok=3DNk3-E8iK" style=3D"display:block;height:auto;bo=
+rder:0;width:100%" width=3D"552" alt title height=3D"auto"></a></div></div>=
+</td></tr></table>=0A<table class=3D"paragraph_block block-4" width=3D"100%=
+" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" st=
+yle=3D"mso-table-lspace:0;mso-table-rspace:0;word-break:break-word"><tr><td=
+ class=3D"pad" style=3D"padding-bottom:10px;padding-left:24px;padding-right=
+:24px;padding-top:5px"><div style=3D"color:#333;direction:ltr;font-family:G=
+eorgia,Arial,Sans-serif;font-size:12px;font-weight:400;letter-spacing:0;lin=
+e-height:150%;text-align:left;mso-line-height-alt:18px"><p style=3D"margin:=
+0">Donated pairs of shoes in a heap at B T Sports' warehouse along Gul Driv=
+e.</p></div></td></tr></table>=0A<table class=3D"paragraph_block block-5" w=
+idth=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pres=
+entation" style=3D"mso-table-lspace:0;mso-table-rspace:0;word-break:break-w=
+ord"><tr><td class=3D"pad" style=3D"padding-bottom:10px;padding-left:24px;p=
+adding-right:24px;padding-top:9px"><div style=3D"color:#333;direction:ltr;f=
+ont-family:Georgia,Arial,Sans-serif;font-size:16px;font-weight:400;letter-s=
+pacing:0;line-height:150%;text-align:left;mso-line-height-alt:24px"><p styl=
+e=3D"margin:0">=0AIn that time, over 70,000 pairs of shoes have been repurp=
+osed for 18 projects such as a jogging track. That still leaves more than 3=
+00,000 pairs of sneakers, sandals and sports shoes lying in a Tuas warehous=
+e, waiting for projects that require them.<br><br>CNA takes a look at why t=
+hese shoes aren=E2=80=99t moving, what could be done to shift this mountain=
+ of footwear and whether this could have been a green effort gone wrong.&nb=
+sp;</p></div></td></tr></table>=0A<table class=3D"button_block block-6" wid=
+th=3D"100%" border=3D"0" cellpadding=3D"10" cellspacing=3D"0" role=3D"prese=
+ntation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tr><td class=3D"p=
+ad"><div class=3D"alignment" align=3D"center">=0A<!--[if mso]>=0A<v:roundre=
+ct xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"urn:schemas-microso=
+ft-com:office:word" href=3D"https://ablink.channelnewsasia.com/f/a/NFwong5X=
+yKnizuLQB_05vQ~~/AAQRxRA~/aQ6X83R31l0mcJuyE2Aiyxm5yrIY0--N7gKWQguff48Nc1U87=
+h2cs1-fevVW13y64XPMZk300Vjj-nyNvck69vkaEAEdDJpESkXe0YdBu37bXnDeBI7rdRutu1iZ=
+eaW8dCdzcEjTa_Z30HQs3b5R2snikRO9MR7eTeSIopjHRiDfMTsdWS9h4UeBRFZo6a1hlupIPBu=
+QdA39Tv816LgSbBpEiexWsBsbFPjcffQYT0IDjKoaPbBO9AymHi7elM-7U6OrWMlYGWUEMIbXsD=
+XujYe17dz4S-zcFtYSKpM1a1D1xmDBV3jufFOH0PfmaqlzeZ2ErKmTnZ_XnD6HyIDrDQ~~" sty=
+le=3D"height:42px;width:161px;v-text-anchor:middle;" arcsize=3D"12%" stroke=
+=3D"false" fillcolor=3D"#262626">=0A<w:anchorlock/>=0A<v:textbox inset=3D"0=
+px,0px,0px,0px">=0A<center dir=3D"false" style=3D"color:#FFFFFF;font-family=
+:sans-serif;font-size:16px">=0A<![endif]-->=0A<a class=3D"button" href=3D"h=
+ttps://ablink.channelnewsasia.com/f/a/NFwong5XyKnizuLQB_05vQ~~/AAQRxRA~/aQ6=
+X83R31l0mcJuyE2Aiyxm5yrIY0--N7gKWQguff48Nc1U87h2cs1-fevVW13y64XPMZk300Vjj-n=
+yNvck69vkaEAEdDJpESkXe0YdBu37bXnDeBI7rdRutu1iZeaW8dCdzcEjTa_Z30HQs3b5R2snik=
+RO9MR7eTeSIopjHRiDfMTsdWS9h4UeBRFZo6a1hlupIPBuQdA39Tv816LgSbBpEiexWsBsbFPjc=
+ffQYT0IDjKoaPbBO9AymHi7elM-7U6OrWMlYGWUEMIbXsDXujYe17dz4S-zcFtYSKpM1a1D1xmD=
+BV3jufFOH0PfmaqlzeZ2ErKmTnZ_XnD6HyIDrDQ~~" target=3D"_blank" style=3D"backg=
+round-color:#262626;border-bottom:0px solid #333333;border-left:0px solid #=
+333333;border-radius:5px;border-right:0px solid #333333;border-top:0px soli=
+d #333333;color:#FFFFFF;display:inline-block;font-family:'Georgia', 'Arial'=
+, Sans-serif;font-size:16px;font-weight:400;mso-border-alt:none;padding-bot=
+tom:5px;padding-top:5px;text-align:center;text-decoration:none;width:auto;w=
+ord-break:keep-all;"><span style=3D"word-break: break-word; padding-left: 1=
+6px; padding-right: 16px; font-size: 16px; display: inline-block; letter-sp=
+acing: normal;"><span style=3D"word-break: break-word; line-height: 32px;">=
+Read the full story</span></span></a>=0A<!--[if mso]></center></v:textbox><=
+/v:roundrect><![endif]-->=0A</div></td></tr></table>=0A<table class=3D"html=
+_block block-7" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0=
+"><tr><td class=3D"pad"><div style=3D"font-family:Helvetica,Arial,Sans-seri=
+f;text-align:center" align=3D"center"><table align=3D"center" border=3D"0" =
+cellspacing=3D"0" cellpadding=3D"0" style=3D"border-collapse: collapse; max=
+-width: 100%;">=0A  <tr>=0A    <td align=3D"center" style=3D"text-align: ce=
+nter;">=0A      <table align=3D"center" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" style=3D"padding-top:15px;padding-bottom:15px">=0A        <tb=
+ody>=0A          <tr>=0A            <td valign=3D"top" style=3D"padding: 20=
+px 10px 20px 10px; text-align: center;" bgcolor=3D"#f5f5f5">=0A            =
+  <div style=3D"font-size:11px; margin:0 0 15px 0; color:#636363;">ADVERTIS=
+EMENT</div>=0A              <a href=3D"https://ablink.channelnewsasia.com/f=
+/a/LTFQ3514VFwgz6gCm1RbIA~~/AAQRxRA~/NI5HtU79wK3ojtmvhw3WLeQ_rWl84PXFwVuGtD=
+SRGeLfMNPrfSyJIh3a1RDYjN33RaFdyEcYN0HxcGdFrMzbmWI5uEhX1URLG5PIB4mB47p4DH7Ms=
+Csetb5Upzrv9Ggf_jUFpoOuW18kioDi_KrXNOinl-ue6wRxuq8147SaNMYemFjecHmbd-zV1AHf=
+JAYqWzPWigmBmCVTB5gjWbVmuHocbDVSJj9AOiCcHuGly8HXLl9h193xwaCoTtiH_YBZkR-GY2E=
+4OgrUqIYzrtQsD28bIZ9xveT7SaMOFbLl9IG_tZZkBVnYMm-XimsHBy4D7evJsvq3efz8MNTMcO=
+zRrb-J8-SqqeOAOIsuBIoHwCw~" rel=3D"nofollow" target=3D"_blank">=0A         =
+       <!--[if (gte mso 9)|(IE)]>=0A                        <img align=3D"c=
+enter"=0A                             src=3D"https://inbox-adtargeting.medi=
+acorp.sg/ads/impr=3Fcid=3D79154bbd-1a6c-4992-a9bd-a9a63f664e15$&email=3Ddes=
+gtest.email@gmail.com&tag_id=3DsCldaNjXwIs&sso_id=3D8da66f70-9051-48f3-adf0=
+-18e099a49f23" border=3D"0" width=3D"590" style=3D"width: auto; max-width:5=
+90px !important;"=0A                             alt=3D"Ad"/>=0A           =
+             <![endif]-->=0A                <!--[if !mso]><!-->=0A         =
+       <img align=3D"center" src=3D"https://inbox-adtargeting.mediacorp.sg/=
+ads/impr=3Fcid=3D79154bbd-1a6c-4992-a9bd-a9a63f664e15$&amp;email=3Ddesgtest=
+.email@gmail.com&amp;tag_id=3DsCldaNjXwIs&amp;sso_id=3D8da66f70-9051-48f3-=
+adf0-18e099a49f23" border=3D"0" width=3D"590" style=3D"width: 590px !import=
+ant; max-width:100% !important;" alt=3D"Ad">=0A                <!--<![endif=
+]-->=0A              </a>=0A            </td>=0A          </tr>=0A        <=
+/tbody>=0A      </table>=0A    </td>=0A  </tr>=0A</table></div></td></tr></=
+table>=0A</td></tr></tbody></table></td></tr></tbody></table>=0A<table clas=
+s=3D"row row-3" align=3D"center" width=3D"100%" border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso=
+-table-rspace:0"><tbody><tr><td><table class=3D"row-content stack" align=3D=
+"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentat=
+ion" style=3D"mso-table-lspace:0;mso-table-rspace:0;background-color:#26262=
+6;border-radius:0;color:#000;width:600px;margin:0 auto" width=3D"600"><tbod=
+y><tr><td class=3D"column column-1" width=3D"100%" style=3D"mso-table-lspac=
+e:0;mso-table-rspace:0;font-weight:400;text-align:left;padding-bottom:5px;p=
+adding-top:5px;vertical-align:top"><table class=3D"paragraph_block block-1"=
+ width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pr=
+esentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;word-break:break=
+-word"><tr><td class=3D"pad"><div style=3D"color:#101b24;direction:ltr;font=
+-family:Georgia,Arial,Sans-serif;font-size:14px;font-weight:400;letter-spac=
+ing:0;line-height:normal;text-align:left;mso-line-height-alt:NaNpx">=0A<p s=
+tyle=3D"margin:0">=0A=0A=0A</p>=0A  <meta charset=3D"UTF-8">=0A  <meta name=
+=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1.0">=0A  <s=
+tyle>=0A@font-face {=0A      font-family: 'Roboto';=0A      font-style: nor=
+mal;=0A      src: local('Roboto'), local('Roboto-Regular'), url(https://fon=
+ts.gstatic.com/s/roboto/v16/zN7GBFwfMP4uA6AR0HCoLQ.ttf) format('truetype'),=
+ url(https://fonts.gstatic.com/s/roboto/v16/uYECMKoHcO9x1wdmbyHIm3-_kf6ByYO=
+6CLYdB4HQE-Y.woff2) format('woff2');=0A    }=0A=0A    body {=0A       font-=
+family: 'Georgia', Arial, sans-serif;=0A    }=0A    .main_container {=0A   =
+   background: #262626;=0A      color: #fff !important;=0A      padding: 24=
+px;=0A    }=0A=0A    .footer-text {=0A      font-size: 14px;=0A      font-w=
+eight: 400;=0A      color: #fff !important;=0A      margin-bottom: 15px;=0A=
+    }=0A=0A    .footer-text-2 {=0A      font-weight: 600;=0A    }=0A=0A    =
+.footer-subText {=0A      font-size: 14px;=0A      color: #fff !important;=
+=0A      margin: 0;=0A      line-height: 20px;=0A    }=0A=0A    .anchor-tag=
+ {=0A      color: #fff !important;=0A      font-weight: 400;=0A      font-s=
+ize: 14px;=0A      text-decoration: none;=0A    }=0A=0A    .footer-bottom-b=
+lock {=0A      margin-top: 10px;=0A    }=0A=0A    .whatsapp-icon {=0A      =
+vertical-align: middle;=0A    }=0A=0A    .google-play {=0A      vertical-al=
+ign: middle;=0A    }=0A=0A    .padding-cls {=0A      padding-bottom: 50px;=
+=0A    }=0A=0A    .mobile-view-only {=0A      display: none;=0A    }=0A=0A =
+   @media only screen and (max-width:425px) {=0A      .footer-text {=0A    =
+    font-size: 16px;=0A      }=0A=0A      .mobile-view-text {=0A        fon=
+t-size: 14px;=0A        margin-top: 25px;=0A      }=0A=0A      .footer-text=
+-2 {=0A        font-size: 16px;=0A      }=0A=0A      .footer-bottom-block {=
+=0A        margin-top: 5px;=0A      }=0A=0A      .padding-cls {=0A        p=
+adding-bottom: 0;=0A      }=0A=0A      .main-width {=0A        width: auto =
+!important;=0A        padding-right: 24px !important;=0A      }=0A=0A      =
+.td-mobile {=0A        width: auto !important;=0A      }=0A      .mobile-v=
+iew {=0A        display: none !important;=0A      }=0A=0A      .mobile-view=
+-only {=0A        display: block !important;=0A      }=0A    }=0A  </style>=
+=0A=0A=0A=0A  <div style=3D"background:#262626;">=0A<table style=3D"backgro=
+und-color: #262626;padding: 15px 24px 24px 24px;width:100%">=0A    <tr>=0A =
+     <td align=3D"center" style=3D"width: 100%;">=0A        <table>=0A     =
+     <tr>=0A            <td>=0A              <p class=3D"footer-text-1" sty=
+le=3D"margin: 0;margin-bottom:5px;text-align:center;">=0A                <s=
+pan>=0A                  <a style=3D"color: #fff !important; text-decoratio=
+n: none;font-weight: 600;" class=3D"anchor-tag" target=3D"_blank" href=3D"h=
+ttps://ablink.channelnewsasia.com/f/a/naYDGbOXmeiX-ldKUN-fcQ~~/AAQRxRA~/hUu=
+lR6GP3eZhvQB6PtAbDXQVxdokGf30qUzS_HPXM1E3kOYG438kzUxi2YHLusobKdHp5ynv_6lQfd=
+hKmKpJDGpcPb2pczaqPW1eS8LVG3xzK65PN6RdWk5-YYpDcVz69CcKYiiwMTx73z-OdXcnUw~~"=
+>CNA</a>=0A                </span>=0A              </p>=0A            </td>=
+=0A          </tr>=0A=0A=0A=0A <tr>=0A            <td>=0A              <p c=
+lass=3D"footer-text-1" style=3D"margin:0;margin-bottom:5px;text-align:cente=
+r">=0A                <span style=3D"padding-right: 5px;">=0A              =
+    <a style=3D"color: #fff !important; text-decoration: none;font-weight: =
+600;" class=3D"anchor-tag" target=3D"_blank" href=3D"https://ablink.channel=
+newsasia.com/f/a/yCb-q74oLuXO-DT8EUj9Kw~~/AAQRxRA~/XgMMJ_9lGvTKMwj4W1gHjyW_=
+dHOAp9kCFGQT0qbK5V59GQSLoIaPH-gTuGm55hxOElLPx6oO_Cb8HDxX_QyHs-cx6d4kPLu66fH=
+ihg3L96LYCLbwt3mwyYZ0noc_Lny51XhHUyQaIGj6vaPDVJOKD7V5vu_iodyh3qe_KEV_K9A~">=
+TODAY</a>=0A                </span>=0A                <span style=3D"color:=
+ white;">=E2=80=A2</span>=0A                <span style=3D"padding-left: 5p=
+x;padding-right: 5px;">=0A                  <a style=3D"color: #fff !import=
+ant; text-decoration: none;font-weight: 600;" class=3D"anchor-tag" target=
+=3D"_blank" href=3D"https://ablink.channelnewsasia.com/f/a/xPkJhiiSpFPVcjee=
+vy_AOQ~~/AAQRxRA~/_4GAOKUatlXRL6_YeU8Gg7_K96JYR41RHD_P89-qfuENXVtBFAYhX-ro6=
+Jr3LYNgKTDM6rKaNohwUHplUorI-QxkT8Qw00DHwQgqlvK6z6vCocutuVNBMPBEvERT6jSeWTQD=
+9NhzDBoNV6YN7128zMsaCUrhM_xRqK8EYWGVRx4~">=0A                    LIFESTYLE<=
+/a>=0A                </span>=0A                <span style=3D"color: white=
+;">=E2=80=A2</span>=0A                <span style=3D"padding-left: 5px;">=
+=0A                  <a style=3D"color: #fff !important; text-decoration: n=
+one;font-weight: 600;" class=3D"anchor-tag" target=3D"_blank" href=3D"https=
+://ablink.channelnewsasia.com/f/a/ltXS3leCnzWY6ai8e1KSCA~~/AAQRxRA~/PZ0aZoa=
+wU_WsVKOn1RXbBLB5bzMh4Hr5fwsjSuGdq4p5vtBGTfgUCrVjizltGSaQGQm5BJEjYklnTlcRBe=
+ViI5z7bk5-Hfl99BBZD90FggzL4IRr-omMavK0BJcyXalPqdG9Eldg_vyXaBHgEC-sntnqTKvfC=
+E-Iw7QSfWaP0bY~"> LUXURY</a>=0A                </span>=0A              </p>=
+=0A            </td>=0A          </tr>=0A=0A        </table>=0A        <tab=
+le>=0A          <tr>=0A            <td align=3D"center">=0A              <p=
+ style=3D"color: #fff;font-size: 14px;font-weight: 400;margin: 0;">Like wha=
+t you read=3F</p>=0A            =0A            </td>=0A          </tr>=0A  =
+        <tr>=0A            <td align=3D"center">=0A              <div class=
+=3D"footer-subText">=0A                <span>=0A                  <a style=
+=3D"font-size: 14px;font-weight: 400;text-decoration: underline;color: #fff=
+;" target=3D"_blank" href=3D"https://ablink.channelnewsasia.com/f/a/UCk7p5D=
+bQX2neskfAtu0lg~~/AAQRxRA~/RB8eJ3Lo0xfWTLty2SWb0a6laJK82jkQ6AxrKXH4I0kgJKdA=
+DvKUxa9UO109OOBOfpdQFOg6LBjjKISMKj-erg3kuY3FrsL9su0JY3L2c0YLaPPV0gRNIspcMm_=
+Okv6y0vOcMVK6_IZdn_yS3_3S6G1qkPZJ2gcpQhzfmDrMaAo~" class=3D"anchor-tag">Sig=
+n up for more newsletters</a>=0A                </span>=0A              =0A=
+              </div>=0A            </td>=0A          </tr>=0A          <tr>=
+=0A            <td align=3D"center">=0A              <div class=3D"footer-s=
+ubText">=0A                <span style=3D"text-decoration:underline;">=0A  =
+                <a style=3D"font-size: 14px;font-weight: 400;font-size: 14p=
+x;text-decoration: underline;color: #fff;" href=3D"https://ablink.channelne=
+wsasia.com/f/a/oFmmm_tT-V7S6UBG3nuxIA~~/AAQRxRA~/uDOAiK6zi7-PRrV0s7YAeQogcA=
+CTMuzZqzexl_wqqyNYMuYDmfY7PXhqwEyAXKunxpssRluMyfK4w6-cQrMrU7TV8BOuZJMcV-S0_=
+2sKuTjr9bs59zWpYQzvZ0x_YC-26OpxOWS4GbY0rxW5Aj42YqUuePc_fCa6E5vwVY0b87I~" cl=
+ass=3D"anchor-tag">Manage my preferences</a></span>=0A                <span=
+ style=3D"color:#fff;">or</span>=0A                <span style=3D"color:#ff=
+f;text-decoration:underline;">=0A                  <a style=3D"font-size: 1=
+4px;font-weight: 400;font-size: 14px;text-decoration: underline !important;=
+color: #fff;" href=3D"https://ablink.channelnewsasia.com/f/a/xiUPCpLuR4BWRD=
+Do0oBK5g~~/AAQRxRA~/0qahQ4IPnz0Qp_UvV6-rFFmQjmXYYl7e7cWhxsMVL6YIBv3lCqLipb0=
+i6nVps2CKr11pb8SOQMlzKp0hG7RUGnmNJN6mhR_o87pjHtUAON8LFRkagT8y4uzAY-JlWlngUg=
+tO6QX6s0jadTsVIl-SJlclH7S9ebfoOR_lQRJUIPOqirM_G0uRqkcEpkBZdl-57QqZD2evjoKRr=
+7fLI4ykAhYekCYG6wNpeuUv6skv0EVTcyVsgBLfpvHsoeIOb_w6" class=3D"anchor-tag">U=
+nsubscribe</a>=0A                </span>=0A              </div>=0A         =
+   </td>=0A          </tr>=0A      =0A        </table>=0A=0A     <div style=
+=3D"background-color: #262626;">=0A      <table style=3D"padding-top:10px;"=
+>=0A        <tr>=0A          <td align=3D"center" style=3D"padding:0;">=0A =
+           <div>=0A              <a style=3D"color: #262626;" href=3D"https=
+://ablink.channelnewsasia.com/f/a/QLqG58RKp2dkDQLlD54AtQ~~/AAQRxRA~/7kM2tx9=
+ArUM3c-7PCVGHUpyASbY0E_RhKJoNeMLI63BJDXOconQlbjq7ApYzWQNDaMLHsVfQGIqGVq9HZe=
+60VQtvwWRw5MueT7DX50__pBCfeKAnU3XjKypTjTBANusVuceZmX93RqcWK4haLhWvMw~~" tar=
+get=3D"_blank">=0A                <img class=3D"whatsapp-icon" width=3D"240=
+" src=3D"https://braze-images.com/appboy/communication/assets/image_assets/=
+images/666150853d619000630a1aa1/original.png=3F1717653636">=0A             =
+  =0A              </a>=0A            </div>=0A          </td>=0A        </=
+tr>=0A      </table>=0A=0A      <table style=3D"padding-top: 10px;">=0A    =
+    <tr>=0A          <td align=3D"center">=0A            <div>=0A          =
+    <a style=3D"margin-right: 20px;" href=3D"https://ablink.channelnewsasia=
+.com/f/a/z1RleWihQYQsmNH7Tif5yQ~~/AAQRxRA~/wTh72ldCTB7x4QfHp9BZicvuhaY6SPp=
+vFodzZp5m8R7L4HqrGTu8LVUri5MyY-ISIIbIZ_9G_N_dvrQpFWMYr6VsbH7OwrvoYtnJCCu9bb=
+9nnEr0JnmmApp1s2bzJM5yCdm3JlLpZLP8bJuXJC1PfSdLnoIwADt61QknZvrXK7ZwCNqbaHYvb=
+vE_J7-YJzLs" target=3D"_blank"><img class=3D"google-play" width=3D"108" hei=
+ght=3D"auto" src=3D"https://braze-images.com/appboy/communication/assets/im=
+age_assets/images/66544d8aeef0d800598a0b49/original.png=3F1716800906"></a>=
+=0A            </div>=0A          </td>=0A          <td>=0A            <div=
+>=0A              <a href=3D"https://ablink.channelnewsasia.com/f/a/yRCb7Fh=
+k3OuIaL-avTiV4Q~~/AAQRxRA~/wTh72ldCTB7x4QfHp9BZiZCgI16XTcLT_--RioS2uRb3WKu0=
+PjVWGbNoUuVJELC0yBOHv8HrAYc2Ynb9tiXl3DysDkLAdB8YHpWfFoEqp0ho0bMBzJzRf-ksnx5=
+ebA02jL6Pled1o_hsa-M7WXzWEmiB74k3aZF4pqszZ2iVqGMfS1_0elpRm4nlXxMMHQs2" targ=
+et=3D"_blank"><img width=3D"108" height=3D"auto" src=3D"https://braze-image=
+s.com/appboy/communication/assets/image_assets/images/66544d9e804b380063967=
+18a/original.png=3F1716800926"></a>=0A            </div>=0A          </td>=
+=0A        </tr>=0A      </table>=0A     </div>=0A        <table>=0A       =
+   <tr>=0A            <td align=3D"center" style=3D"padding-top: 10px;">=0A=
+              <p style=3D"margin: 0;color: #fff;font-size: 14px;=0A        =
+                  font-weight: 400;">Mediacorp Pte Ltd, 1 Stars Avenue, Sin=
+gapore 138507</p>=0A            </td>=0A          </tr>=0A        </table>=
+=0A=0A        <table>=0A          <tr>=0A            <td align=3D"center">=
+=0A              <p style=3D"font-size: 12px;color: #FFFFFF;font-weight: 40=
+0;">Copyright=C2=A9 Mediacorp 2024.=0A                <a style=3D"color: #f=
+ff !important; text-decoration: none;" href=3D"https://ablink.channelnewsas=
+ia.com/f/a/CFOhcZ4uzZVmYjsQcb0KPA~~/AAQRxRA~/ixlTKUXKRBESDrJxzrdFE6ALlvPDfJ=
+6HLhUmOSPv4-w95edFSczziSGeGW7eW2mND-1HiKvLcbwp7SuPCY7Wzrd6MQPPSaa-bLi5XueXC=
+hOiBleaunnc0RbDzHmaQ9GcJYIRdyCjHUG2NODoy9yKQD9TXp3KLV9nFvMPnWXmAdg~" target=
+=3D"_blank">Privacy Policy</a>=0A              </p>=0A            </td>=0A =
+         </tr>=0A        </table>=0A      </td>=0A=0A    </tr>=0A  </table>=
+=0A=0A  </div>=0A=0A=0A=0A</div></td></tr></table></td></tr></tbody></table=
+></td></tr></tbody></table>=0A</td></tr></tbody></table>=0A<!-- End -->=0A=
+=0D=0A<img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://ab=
+link.channelnewsasia.com/q/6gCcq2hhkEtRHKKjCCj5RA~~/AAQRxRA~/OxgIcsbZGhOcwC=
+jjzRXxbLLHPkE9KnLk7amzp0P7m6Hg8kmZ4_4NjMVUHhFehPWM0i-uDTgVRCVw6EsuBDKg4A~~"=
+>=0D=0A</body>=0A</html>
+--_----RmgMZXuwQVRU8gaY5m7tSg===_8C/48-22345-336F7D76--
+

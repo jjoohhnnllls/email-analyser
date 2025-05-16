@@ -1,0 +1,112 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp2107978rcd;
+        Sun, 16 Mar 2025 22:37:07 -0700 (PDT)
+X-Received: by 2002:a05:6a00:18a7:b0:736:ab49:d56 with SMTP id d2e1a72fcca58-7372234c6cbmr13003191b3a.1.1742189827415;
+        Sun, 16 Mar 2025 22:37:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742189827; cv=none;
+        d=google.com; s=arc-20240605;
+        b=joTJTIvvFxUg9jzkSCdHeq1MrfPEwP4rUxG7m6hVVcDOQUQsbsmb6dlGgs1HqLjZp+
+         fZFf7IrmcoWf6rNHR83eZteXOd4xPQixc08wVYMEsLrOug8u2KtXu9CIT5FG+6y5+s3V
+         PYB6LFO8mdShMgtwSaYvtwDjM639lOo21cVvIi3mMfM+ULBC+EUtHjlaadkPhF0iq7yH
+         pmr0tMD2rGIt+lyn8d32fc8Wo8cmCUjB+3y2kMmbDAOllVPtFqNkEcENu/Tdohtvl+By
+         O7GiSd68MpgzaSTiW6vX9le9Crr7556RCjanSpZ41gE13QwGcPq2yfnKXc6hL8cNStDp
+         4mqw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=aCF6okMQRP5nklQ6TyT/R4zopQgtN3Q1wJBmAhd6Yas=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=DuUMNIjQ43w0I2LZgfj5yMMDPVsPMIZJLWkGuP1cjtvEh9v5Q+lulTr2X2RNMjEQx3
+         pj2BG85R90D4NB05xwWSJr72K8rNzzfn5q4Kkyfe6zRJWvQWCvd4wbBcNIQnioq5GuAg
+         nG1QUE2OWxGw0k1f1jyFRrEVq4KfnnrhjNsSxlUPWz1N5fTSFV60cXeiYvyO2feKuS9S
+         QQdadcbj/nM1nmnsd83djXVQsHQYa+lRTfRHKI07v6CScZS4ttfbfzYFetfeo7WlsJYz
+         MVMMaIIBK52nfehLZFm6E4eMHcaOxhO/Ovegn2CIs6WYF//+YZNB6C8a8w1VMVR5bqkr
+         whMA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="d2HTF/Ex";
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-7371155b556sor3901236b3a.4.2025.03.16.22.37.07
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Sun, 16 Mar 2025 22:37:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="d2HTF/Ex";
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742189827; x=1742794627; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=aCF6okMQRP5nklQ6TyT/R4zopQgtN3Q1wJBmAhd6Yas=;
+        b=d2HTF/Exwfe8zC3NQAcB0uuSgDV9CuDU6Bh9mm2CttAzMDlAcxBmGoNDILO6Qyk5Oy
+         WS6SyPXp1KHU7jnO69F2yCtrpW0seydQjlbzXHVV1WiD0zqbknqAsrTgESFefk39e59A
+         HRU7Mao5c4wv4ssBwl1X1L7McAH1XxzbUGz3m1cOMq2W6OLi3sppWbLjgYBQT4nO/6/Q
+         l5fLo2e46PC1GoxfeNxu9Ic4DmZS7SMdZNRmYTz+kE9LzKHKkkjHVpPkIg9c+j4L58yC
+         IXeL4DAzdJ1Pqa1a2xuH8XFcwoKmMzVLaOOWO7wK0FRQ2NU48dqbtNJZNpuD7ES265uI
+         /E/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742189827; x=1742794627;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=aCF6okMQRP5nklQ6TyT/R4zopQgtN3Q1wJBmAhd6Yas=;
+        b=wbAaTzutYa0B8F7h6RYykAD4PcaaYea1zEeAloZsRWhT7HkF03k7Xhv/BdZwTJzlZc
+         Uc9950elDZEbOmcfXmFRvKNhY+YpN4xRfg+cmU0yVX3U5LAyXPRxBQEluCFJlX7umfCh
+         rdp1cJjTtxrWvMRJQqTapTr4eXiZ0JCYc1nf5L5KhS7If80Nc7W2+ZF/V28lSSwOmvRc
+         V5yfN2qkH3Ti8Gz80BAEqQIQ+Gnl6+fPB/2Ue35diVaqfBwB7JTcC0lzYC1VFlEWgV1z
+         N0gH8VUX+aAHn7FtfBZlGIecmPp2EivgSqt2LJoafFztjkqN7TnClSG19cRXviIJexL9
+         hpew==
+X-Gm-Message-State: AOJu0YyQDhzFyKUcRgP6OpwlfXQofTm50er+bfaGsfNgpACoD8RNv2HQ
+	7gt81Ah88SOnIspsfRCeN2UsB4a+9LjUQy/1i8IIp+MiciyHL+NWMTbI1A==
+X-Gm-Gg: ASbGnct2JFFB38cVefqTeSALvW60O1FOOSLtA25mnFPdsUpzNwJ0sDx6GoqmsSR7O1n
+	sOvf6e0vOQGHXjbt78UkdPkLbf7KuuVPxI2FKsZIDGRj9vMF3c4Tbhx/AFdBkhCTFGvOUIB6ko3
+	0Dt2VHN1gJ/wl4u0eB1XJAMuKxB4NVplpO5qC+Hg5ifhiB2p6zqQ6DspdAY2i9NQd6/dAuJRohz
+	MTHdWXSr2wwEbQpDb/x4qBlROonFhQ1D3u1rKlYdHuNL0g+fpft7PdcGNTTx5ENdmxQMfpaIV4H
+	2OWMuPgwYeaGdeRtWrFKHWQOW7MqQG3ffbLTttB5xgcpuCthPaF4Rm1KM6svgmZwjUoPcZ17npQ
+	/ZcgF
+X-Google-Smtp-Source: AGHT+IGZblYFNDLApH3nOP14UmlDr7YiiwnmNpq4juC54aFkllxWGbn1wll5pE56wW1doli21qSSGQ==
+X-Received: by 2002:a05:6a21:4683:b0:1f5:93b1:6a58 with SMTP id adf61e73a8af0-1f5c1132fdamr14499608637.8.1742189826656;
+        Sun, 16 Mar 2025 22:37:06 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-af56ea7bcc0sm6339221a12.56.2025.03.16.22.37.05
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 16 Mar 2025 22:37:06 -0700 (PDT)
+Message-ID: <67d7b502.630a0220.1986bb.cf64@mx.google.com>
+Date: Sun, 16 Mar 2025 22:37:06 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============8780211777526939469=="
+MIME-Version: 1.0
+From: Next-Gen Shop <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Your Order #12345 Shipped Successfully!
+
+--===============8780211777526939469==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Valued Customer John Doe,
+
+I hope this message finds you well. I'm writing to inform you that your order #12345 from our online store, ABC E-commerce, has been shipped successfully.
+
+The item(s) you purchased - a black leather jacket and a pair of designer sneakers - will be delivered to your specified address by Example Delivery service provider name, within the estimated delivery time of 3-5 business days.
+
+You can track your package using the tracking number provided below: Example Tracking number
+
+In case you have any questions or concerns, please feel free to reach out to our customer service team at support@abcecommerce.com or call us at +1 (123) 456-7890 during our business hours. We're here to help!
+
+Once again, thank you for shopping with us at ABC E-commerce. We appreciate your business and look forward to serving you in the future.
+
+Warm regards,
+
+Example Your name
+Example Your position
+ABC E-commerce Team
+--===============8780211777526939469==--

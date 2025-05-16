@@ -1,0 +1,46 @@
+Received: by 2002:adf:e28a:0:b0:390:e3b5:d6db with SMTP id v10csp2504929wri;
+        Wed, 23 Apr 2025 19:33:03 -0700 (PDT)
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-22db4d98a2dsor2245625ad.4.2025.04.23.19.33.02
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 23 Apr 2025 19:33:03 -0700 (PDT)
+Received: from [192.168.188.49] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b15f7eb7914sm203752a12.20.2025.04.23.19.33.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 23 Apr 2025 19:33:02 -0700 (PDT)
+From: Nancy Miller <desgtest2.email@gmail.com>
+To: "desgtest.email@gmail.com" <desgtest.email@gmail.com>
+CC: "holland.damean@fabricoak.com" <holland.damean@fabricoak.com>
+Subject: Your Order #3271 Confirmation: Delivery Scheduled for Next Week
+Thread-Topic: Your Order #3271 Confirmation: Delivery Scheduled for Next Week
+Thread-Index: AWFiLmFlKfybeo4NE9rr9QamvxeShQ==
+X-MS-Exchange-MessageSentRepresentingType: 1
+Date: Thu, 24 Apr 2025 02:33:02 +0000
+Message-ID: <6809a2de.630a0220.e9b0b.1aea@mx.google.com>
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-Exchange-Organization-SCL: -1
+X-MS-TNEF-Correlator:
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+received-spf: pass (google.com: domain of desgtest2.email@gmail.com designates
+ 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Content-Type: text/plain; charset="us-ascii"
+Content-ID: <73821735C86DDE44906918C41AE5FBFA@1>
+MIME-Version: 1.0
+
+ 
+   Dear Mr. Johnson,
+
+   I hope this message finds you well. I am writing to confirm that we have received your order #3271 for 500 units of our Standard Gearbox model with serial numbers ranging from GTBX-26489 to GTBX-26988, as per our conversation on March 15th.
+
+   The goods will be carefully packed and prepared for delivery by our logistics team next week, Monday, March 23rd at the latest. You will receive another email with the exact shipping details once everything is arranged. If there are any changes to your order or delivery requirements, kindly let us know immediately so we can make adjustments accordingly.
+
+   In case you have any questions or concerns regarding this order, please feel free to reach out to our Customer Service team at +1 (555) 123-4567 or email us at Example Customerservice@examplemanufacturingco.com(mailto:customerservice@examplemanufacturingco.com).
+
+   We appreciate your business and look forward to serving you again in the future.
+
+   Best regards,
+   Jayden
+   Operations Manager
+   Example Manufacturing Co.

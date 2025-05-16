@@ -1,0 +1,1604 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp2320129rcd;
+        Mon, 17 Mar 2025 06:03:09 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEVj3VpGHMZdIJGm9oy0EFzXpzavLOVeW0EgSW9UtY08eSRefouzknLVQcwAovRzMXwNOl+
+X-Received: by 2002:a05:6a21:6016:b0:1f3:486c:8509 with SMTP id adf61e73a8af0-1f5c11dc272mr17576166637.25.1742216588482;
+        Mon, 17 Mar 2025 06:03:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742216588; cv=none;
+        d=google.com; s=arc-20240605;
+        b=OGT2GR8XID0VXqenuCx+LYl5VXxOUH/Q6fi8vjf1Wwg0IMuc8kuessnXZc4bgnWOhS
+         6WdgzXMaLUPRP+4pjBfknDJRz4Gkez20Pg9WW8QZiDICpEOWSavNeIPpws4a4qO6SqI4
+         RrJulh8MyuaqjhFK0+LlbWCJkL5PGrtPfeHpDZ+C30tpFhNr4VP9GCafLL2As8ohdGrJ
+         DNnAe9sA1VUPicp94D6RP7yrnQT96w6FBl4HHkQA1DL5MykPG4ouYmzU6MA9IhTE1CQA
+         rus6M0slCEkzl1GGdizKwj+F+MH2uag2dEr35T5aPByS4vLE6WztjZL1n+YEaVW/W61V
+         0log==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=message-id:list-unsubscribe-post:list-unsubscribe:feedback-id
+         :subject:reply-to:from:to:date:mime-version:dkim-signature;
+        bh=VeBrQAWJSuslGBu99AFiq9pnoj5BS1fQIu+Nt8dO114=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=K4h69xTOY5z6YbnNH1uGGWOFiW2uMiMd9QnVYIu+GaCnMkv3/bkTimvbuMGLoT5EGe
+         a5Wj8bnd4hpDSoJXnlBdQb2uYo+8OUCuGdZAYRW4o4z5BXsdIHnaVU/RXZmWs2gOJlUK
+         jgn57P7366vwKBtwJWNLxcAZyzSKsyNjfoqiL5Hdk6zPsBS5/9gWzWmanXsAYwGKdasY
+         BWK8//K2gRE04QR2J7/deEpDvWtFJc1UmlcTzlxKgGJ21fzadzsnBeU/nOVDQSP7A+8J
+         njh6oeMenggeOxbtO6Xxh/5NVaYHP4Rx7SrXMTahxxjzBhKCRM6UuBo/w3YvdC+acakY
+         cDvw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@e.newyorktimes.com header.s=newyorktimes header.b=U2Do6Sd9;
+       spf=pass (google.com: domain of nytimes@e.newyorktimes.com designates 207.135.2.55 as permitted sender) smtp.mailfrom=nytimes@e.newyorktimes.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=e.newyorktimes.com
+Return-Path: <nytimes@e.newyorktimes.com>
+Received: from omp.e.newyorktimes.com (omp.e.newyorktimes.com. [207.135.2.55])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-af56eacd4f5si10732386a12.478.2025.03.17.06.03.08
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Mar 2025 06:03:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nytimes@e.newyorktimes.com designates 207.135.2.55 as permitted sender) client-ip=207.135.2.55;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@e.newyorktimes.com header.s=newyorktimes header.b=U2Do6Sd9;
+       spf=pass (google.com: domain of nytimes@e.newyorktimes.com designates 207.135.2.55 as permitted sender) smtp.mailfrom=nytimes@e.newyorktimes.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=e.newyorktimes.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=newyorktimes; d=e.newyorktimes.com;
+ h=MIME-Version:Content-Type:Date:To:From:Reply-To:Subject:Feedback-ID:
+ List-Unsubscribe:List-Unsubscribe-Post:Message-ID;
+ i=nytimes@e.newyorktimes.com;
+ bh=VeBrQAWJSuslGBu99AFiq9pnoj5BS1fQIu+Nt8dO114=;
+ b=U2Do6Sd9XtucNPV33XJxU5ez2KsBnuMad8MNtzCBdgo/AHIsvMSjXXL6G5YsXKduta8NbP8TFybn
+   OUS3jbUN7oJBqJUbnQ/q2br+ldEYYoitTmGToHMkqIV7YVaKFpAS+nLrl5GtKGkA+4O4CkhtaWBZ
+   SXS6aezWAayaPfDUu2w=
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="----msg_border_uCFrPWousy"
+Date: Mon, 17 Mar 2025 12:11:52 +0000
+To: desgtest.email@gmail.com
+From: =?UTF-8?B?VGhlIE5ldyBZb3JrIFRpbWVz?= <nytimes@e.newyorktimes.com>
+Reply-To: =?UTF-8?B?VGhlIE5ldyBZb3JrIFRpbWVz?= <reply@e.newyorktimes.com>
+Subject: =?UTF-8?B?VGhlIFRpbWVzIFNhbGUuIERvbuKAmXQgbWlzcyBvdXQ6ICQxL3c=?=
+	=?UTF-8?B?ay4=?=
+Feedback-ID: 80634:92617565:oraclersys
+List-Unsubscribe: <mailto:unsubscribe-AQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0dsDzgugfutGCzfzfc1pzgzg@imh.rsys136.origin.responsys.ocs.oraclecloud.com?subject=List-Unsubscribe>, <https://e.newyorktimes.com/pub/optout/UnsubscribeOneStepConfirmAction?YES=true&_ri_=X0Gzc2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0dsDzgugfutGCzfzfc1pzgzg&_ei_=EUlaGGF4SNMvxFF7KucKuWPczSq6cDAIQgReWgfYliP960Pn_Zk1asCMt_m4yumRIR1lbiZqmInkIG6ZCqYpTM.>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-sgxh1: KLknlLklQLuHptxnuHptQJhu
+X-rext: 6.rsys136.EZh89Ur4xGhiHf_W2swlSxCatRkkGJDMVqShsmeSYPIQTCaiORKk9FmnMmlE8xxJSiFF
+X-cid: nyt.10504145
+X-ei: EMukt-qlLy8dsZo8tabWZaWtWj6Z5VOJ
+X-cp: ExAezipZv1vVEqJ_PwG19RkVYfiHHSwmbx-DjoDSTVfjrIueolUnj0EFBtFkRFtzJ75H
+Message-ID: <0.2.AC.5B.1DB9735C4C89B3C.0@omp.e.newyorktimes.com>
+
+This is a multi-part message in MIME format.
+
+------msg_border_uCFrPWousy
+Date: Mon, 17 Mar 2025 12:11:52 +0000
+Content-Type: multipart/alternative; boundary="----alt_border_zuYjRbo9fL_1"
+
+
+
+------alt_border_zuYjRbo9fL_1
+Content-Type: text/plain;
+	charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Save now with our best offer on the complete Times experience, including ne=
+ws, puzzles, recipes, product reviews and more=2E=20
+
+-----------------------------------------------------------------
+
+-- The New York Times --
+
+-----------------------------------------------------------------
+
+The New York Times =7C Sale Ends Soon =7C Subscribe Now >
+
+-----------------------------------------------------------------
+
+Click here to view email with images:
+ https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DAQjkPkSUAQGzdoCD3jW=
+zfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0dsDzgugfutGCzfzfc1pzgzgVXtpK=
+X%3DYAARUTY&_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCCx219hDP9du5UBokHOK7UorO5GhE5tX=
+JgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwLcl=2E&_di_=3D1taoqtsb828b2u0ri42tcl3l=
+fhnqu9dfps017sm6qqb0hnklpqj0Jg%3D%3D=20
+
+-----------------------------------------------------------------
+
+This email was sent to desgtest=2Eemail=40gmail=2Ecom
+
+To stop receiving updates and offers from The Times, including those regard=
+ing The Athletic, unsubscribe:  https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=
+=3DX0Gzc2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28=
+Hpw0dsDzgugfutGCzfzfc1pzgzgVXtpKX%3DYAARUWY&_ei_=3DEXnjtQUVmtqqbvnNTHcyAgb1=
+9vpL-YCHzatdNSwalPRvvUjaS2PKexrYK86NgXoL0IJqOFR9L5f1g--VLJMivzSOQCCda5QuOPW=
+h-tFdvIFsDJMdiA4rF0MCBYTjZQlbgXlW6uWublgzG6onfgUsjoNdPlwZLhs2LOnjC6Aho95ytL=
+kJc2B4U3KAJeGhd-KpP42XrAue_G76RKDfm8iBgjyydbU1piPwTyx5gILjadsnsCQeHrvHCFfY-=
+O0V=2E&_di_=3Dp3fkh2r6rvpca82afn4pbj5iaghb06r6o4rr9g2onie98r2ahgcgJg%3D%3D=
+=20
+
+To opt out of newsletters and other promotional emails from The Times, mana=
+ge your email settings:  https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0Gzc=
+2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0dsDz=
+gugfutGCzfzfc1pzgzgVXtpKX%3DYAARUAY&_ei_=3DE_F4z20UL55oCgng-gIUazaSlnpqr9bR=
+VTczLDwGQ4gxpJk2Z_8yihUnjIn5Pg3NLo1hV-jp70E9tZcyOUKGiydBZ3iSRFTZoYkU7a1Uey8=
+7CLs3wGOAiAYBVSdqFs9sP9gbJHz0_yOZIAnbRi__hRU5Tu7Cgru7gvsZRjlAHK73AvhOLox4AX=
+kgEWlzwW40HNttiYJBSW2OskOGHcG25CQ7fAhUV27sBobDEsxMgrP-LoiUDy0Nc6IiN5a1NpKgt=
+VZjfwgzsjYPxKU=2E&_di_=3Dipuuq3r42a9ds7v7upuv6d0h6d3aokh5f6ois6ue9edu11sb1r=
+j0Jg%3D%3D=20
+
+To opt out of updates and offers sent from The Athletic, submit a request: =
+ https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DAQjkPkSUAQGzdoCD3jW=
+zfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0dsDzgugfutGCzfzfc1pzgzgVXtpK=
+X%3DYAARUCY&_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCCx219hDP9du5UBokHOK7UorO5GhE5tX=
+JgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwLcl=2E&_di_=3Dl260kh1amnpnot5nevue4704=
+25uuajod0bo1tc47n5q4unu0chm0Jg%3D%3D=20
+
+Account Login:  https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DAQjk=
+PkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0dsDzgugfutGCz=
+fzfc1pzgzgVXtpKX%3DYAARWRY&_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCCx219hDP9du5UBok=
+HOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwLcl=2E&_di_=3Dfvs4kibgl=
+el1rtv2ftts49kdte9droakosbmnvrgfk2l4vjovm4gJg%3D%3D=20
+
+Help Center:  https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DAQjkPk=
+SUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0dsDzgugfutGCzfz=
+fc1pzgzgVXtpKX%3DYAARWTY&_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCCx219hDP9du5UBokHO=
+K7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwLcl=2E&_di_=3Dpuhkvpmps5l=
+ekpahekdk706o48lg8di761uefsk6fjocatnb2dg0Jg%3D%3D=20
+
+Terms of Service:  https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DA=
+QjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0dsDzgugfut=
+GCzfzfc1pzgzgVXtpKX%3DYAARWWY&_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCCx219hDP9du5U=
+BokHOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwLcl=2E&_di_=3Ddsbt9i=
+7v7d6qjmib5osofudqpdmo17ft5esimln87ma8f9neom80Jg%3D%3D=20
+
+Privacy Policy:  https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DAQj=
+kPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0dsDzgugfutGC=
+zfzfc1pzgzgVXtpKX%3DYAARWAY&_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCCx219hDP9du5UBo=
+kHOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwLcl=2E&_di_=3D34n2gme3=
+vv0vcp7ce2e1oecl0vvu5dogppap454hqpve80a0lam0Jg%3D%3D=20
+
+California Notices:  https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3=
+DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0dsDzgugf=
+utGCzfzfc1pzgzgVXtpKX%3DYAARWCY&_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCCx219hDP9du=
+5UBokHOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwLcl=2E&_di_=3Di4ca=
+5ho6j569q15q1fc2vnflc0vnp3jlgu3sg8nl2m8si4kstr50Jg%3D%3D=20
+
+
+
+
+(c)2025 The New York Times Company =7C 620 Eighth Avenue, New York, NY, 100=
+18
+
+------alt_border_zuYjRbo9fL_1
+Content-Type: text/html;
+	charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<=21DOCTYPE html PUBLIC =22-//W3C//DTD XHTML 1=2E0 Strict//EN=22 =22http://=
+www=2Ew3=2Eorg/TR/xhtml1/DTD/xhtml1-strict=2Edtd=22>
+
+<html style=3D=22opacity: 1;=22 xmlns=3D=22http://www=2Ew3=2Eorg/1999/xhtml=
+=22 xmlns:o=3D=22urn:schemas-microsoft-com:office:office=22 xmlns:v=3D=22ur=
+n:schemas-microsoft-com:vml=22>
+
+<head>
+
+<=21--=5Bif gte mso 9=5D><xml>
+
+ <o:OfficeDocumentSettings>
+
+  <o:AllowPNG/>
+
+  <o:PixelsPerInch>96</o:PixelsPerInch>
+
+ </o:OfficeDocumentSettings>
+
+</xml><=21=5Bendif=5D-->
+
+<title>The Times Sale=2E Don=E2=80=99t miss out: =241/wk=2E</title>
+
+<link href=3D=22https://www=2Enytimes=2Ecom/vi-assets/static-assets/favicon=
+-4bf96cb6a1093748bf5b3c429accb9b4=2Eico=22 rel=3D=22icon=22/>
+
+<meta content=3D=22text/html; charset=3Dutf-8=22 http-equiv=3D=22Content-Ty=
+pe=22 />
+
+<meta http-equiv=3D=22content-type=22 content=3D=22text/html; charset=3DUTF=
+-8=22>
+
+<meta content=3D=22width=3Ddevice-width, initial-scale=3D1=22 name=3D=22vie=
+wport=22>=20
+
+<meta name=3D=22x-apple-disable-message-reformatting=22>=20
+
+<meta http-equiv=3D=22X-UA-Compatible=22 content=3D=22IE=3Dedge=22>=20
+
+   <style type=3D=22text/css=22>
+
+      /* Client Rendering CSS  */
+
+      a=5Bx-apple-data-detectors=5D =7B
+
+        color: inherit=21important;
+
+        text-decoration: none=21important;
+
+        font-size: inherit=21important;
+
+        font-family: inherit=21important;
+
+        font-weight: inherit=21important;
+
+        line-height: inherit=21important;
+
+      =7D
+
+      =23MessageViewBody a =7B
+
+        color: inherit;
+
+        text-decoration: none;
+
+        font-size: inherit;
+
+        font-family: inherit;
+
+        font-weight: inherit;
+
+        line-height: inherit;
+
+      =7D
+
+      a =7B
+
+        text-decoration: none;
+
+      =7D
+
+      * =7B
+
+        -webkit-text-size-adjust: none;
+
+      =7D
+
+      body =7B
+
+        margin: 0 auto =21important;
+
+        padding: 0px=21important;
+
+        width: 100%=21important;
+
+        min-width: 1px=21important;
+
+        margin-right: auto;
+
+        margin-left: auto;
+
+      =7D
+
+      html, body =7B
+
+        margin: 0px;
+
+        padding: 0px=21important;
+
+      =7D
+
+      table, td, th =7B
+
+        border-collapse: collapse;
+
+        border-spacing: 0px;
+
+        mso-table-lspace: 0pt;
+
+        mso-table-rspace: 0pt;
+
+      =7D
+
+      div, p, a, li, td =7B
+
+        -webkit-text-size-adjust: none;
+
+      =7D
+
+      * =7B
+
+        -webkit-text-size-adjust: none;
+
+      =7D
+
+      img =7B
+
+        display: block=21important;
+
+      =7D
+
+      =2EReadMsgBody =7B
+
+        width: 100%;
+
+      =7D
+
+      =2EExternalClass p, =2EExternalClass span, =2EExternalClass font, =2E=
+ExternalClass td, =2EExternalClass div =7B
+
+        line-height: 100%;
+
+        margin: 0px;
+
+        padding: 0px;
+
+      =7D
+
+      =2EExternalClass =7B
+
+        width: 100%;
+
+      =7D
+
+      span=2EMsoHyperlink =7B
+
+        mso-style-priority:99;
+
+        color:inherit;
+
+      =7D
+
+      span=2EMsoHyperlinkFollowed =7B
+
+        mso-style-priority:99;
+
+        color:inherit;
+
+      =7D
+
+      =2Enav =2Eyshortcuts =7B
+
+        color: =23666666
+
+      =7D
+
+      =2Eblacklink =2Eyshortcuts =7B
+
+        color: =23121212
+
+      =7D
+
+      =2Egraylink =2Eyshortcuts =7B
+
+        color: =23999999
+
+      =7D
+
+      =2EfooterLink a =7B
+
+        color: =23999999=21important;
+
+        text-decoration: none=21important;
+
+      =7D
+
+      div, button =7B
+
+        margin: 0=21important;
+
+        padding: 0=21important;
+
+        display: block=21important;
+
+      =7D
+
+      =40media screen and (max-width: 640px) and (min-width: 480px) =7B
+
+        =2Escale =7B
+
+          width: 100%=21important;
+
+          min-width: 1px=21important;
+
+          max-width: 480px=21important;
+
+          height: auto=21important;
+
+          max-height: none=21important;
+
+        =7D
+
+         =2Eouter =7B
+
+          padding-left: 80px=21important;
+
+          padding-right: 80px=21important;
+
+        =7D
+
+      =7D
+
+      =40media (max-width: 600px) =7B
+
+         =2Eouter =7B
+
+          padding-left: 60px=21important;
+
+          padding-right: 60px=21important;
+
+        =7D
+
+      =7D
+
+       =40media (max-width: 560px) =7B
+
+         =2Eouter =7B
+
+          padding-left: 40px=21important;
+
+          padding-right: 40px=21important;
+
+        =7D
+
+      =7D
+
+      =40media (max-width: 480px) =7B
+
+        =2Escale =7B
+
+          width: 100%=21important;
+
+          min-width: 1px=21important;
+
+          max-width: 480px=21important;
+
+          height: auto=21important;
+
+          max-height: none=21important;
+
+        =7D
+
+        =2Estack, =2Estack-up, =2Estack-down =7B
+
+          width: 100%=21important;
+
+          max-width: 480px=21important;
+
+          height: auto=21important;
+
+          display: block=21important;
+
+          padding: 0px 0px 0px 0px=21important;
+
+        =7D
+
+        =2Estack =7B
+
+          float:left=21important;
+
+        =7D
+
+        =2Estack-up =7B
+
+          display: table-header-group=21important;
+
+        =7D
+
+        =2Estack-down =7B
+
+          display: table-footer-group=21important;
+
+        =7D
+
+        =2Ehide =7B
+
+          display: none=21important;
+
+          width: 0px=21important;
+
+          height: 0px=21important;
+
+          max-height: 0px=21important;
+
+          padding: 0px 0px 0px 0px=21important;
+
+          overflow: hidden=21important;
+
+          font-size: 0px=21important;
+
+          line-height: 0px=21important;
+
+        =7D
+
+        =2Eshow-img =7B
+
+          display: block=21important;
+
+          height: auto=21important;
+
+          max-height: inherit=21important;
+
+          max-width: 480px=21important;
+
+          width: 100%=21important;
+
+          line-height: 100%=21important;
+
+          padding: 0px=21important;
+
+          overflow: visible=21important;
+
+          font-size: 14px=21important;
+
+          mso-hide: none=21important;
+
+        =7D
+
+        =2Eno-p =7B
+
+          padding: 0px 0px 0px 0px=21important;
+
+        =7D
+
+        =2Eno-b =7B
+
+          border: none=21important;
+
+        =7D
+
+        =2Em-br =7B
+
+          display: block=21important;
+
+        =7D
+
+        =2Em-scale =7B
+
+          width: 100%=21important;
+
+          min-width: 1px=21important;
+
+        =7D
+
+        /* css */
+
+        =2Erule =7B
+
+          padding: 0px 24px 20px 24px=21important;
+
+        =7D
+
+        =2Eouter =7B
+
+          padding-left: 36px=21important;
+
+          padding-right: 36px=21important;
+
+        =7D
+
+        =2Emod-article-l =7B
+
+          width: 56%=21important;
+
+        =7D
+
+        =2Emod-article-r =7B
+
+          width: 36%=21important;
+
+        =7D
+
+        /* type */
+
+        =2Etext-article =7B
+
+          font-size: 16px=21important;
+
+          line-height: 22px=21important;
+
+        =7D
+
+        =2Eicon-app =7B
+
+          padding-top: 24px=21important;
+
+        =7D
+
+        =2Etext-tech =7B
+
+          line-height: 18px=21important;
+
+        =7D
+
+      =7D
+
+      =40media (max-width: 390px) =7B
+
+        =2Elogo =7Bwidth: 100%=21important;=7D
+
+        =2Etext-tech =7B
+
+          line-height: 16px=21important;
+
+        =7D
+
+      =7D
+
+      =40media (max-width: 350px) =7B
+
+        =2Ebutton-flex =7Bwidth: 100%=21important; min-width: 200px=21impor=
+tant;=7D
+
+      =7D
+
+      =40media (max-width: 320px) =7B
+
+        =2Erule =7B
+
+          padding: 0px 16px 20px 16px=21important;
+
+        =7D
+
+        =2Eouter =7B
+
+          padding-left: 24px=21important;
+
+          padding-right: 24px=21important;
+
+        =7D
+
+        =2Etxt =7Bfont-size: 15px=21important;=7D
+
+        =2Ebutton-flex =7Bwidth: 100%=21important; min-width: 170px=21impor=
+tant;=7D
+
+      =7D
+
+   </style>
+
+</head>
+
+<body style=3D=22margin: 0px; padding: 0px; background-color:=23ffffff; wid=
+th: 100%;=22>
+
+<div style=3D=22display:none;font-size:1px;color:=23ffffff;line-height:1px;=
+font-family:arial;max-height:0px;max-width:0px;opacity:0;overflow:hidden;ms=
+o-hide:all;=22>
+
+Save now with our best offer on the complete Times experience, including ne=
+ws, puzzles, recipes, product reviews and more=2E=20
+
+</div>
+
+<div style=3D=22display: none; max-height: 0px; overflow: hidden;=22>
+
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;=
+&zwnj;&nbsp;
+
+</div>
+
+<table width=3D=22100%=22 border=3D=220=22 cellpadding=3D=220=22 cellspacin=
+g=3D=220=22 role=3D=22presentation=22 style=3D=22background-color:=23f2f2f2=
+;=22>
+
+  <tr>
+
+    <td width=3D=22100%=22 align=3D=22center=22 valign=3D=22top=22 style=3D=
+=22background-color:=23f2f2f2;=22>
+
+      <table width=3D=22480=22 align=3D=22center=22 border=3D=220=22 cellpa=
+dding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22 style=3D=22=
+min-width:480px; width:480px; background-color:=23ffffff;=22 class=3D=22sca=
+le=22>
+
+  <tr>
+
+   <td width=3D=22100%=22 align=3D=22center=22>
+
+    <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22 cellpad=
+ding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+        <tr>
+
+            <td width=3D=22100%=22 class=3D=22hide=22 valign=3D=22top=22 al=
+ign=3D=22center=22 style=3D=22font-family: Arial, Helvetica, sans-serif; fo=
+nt-size:12px; text-align:center; color:=23999999; line-height:13px;font-wei=
+ght:normal; padding: 16px;=22> <a href=3D=22https://e=2Enewyorktimes=2Ecom/=
+pub/cc?_ri_=3DX0Gzc2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1o=
+kuL15ybza28Hpw0dsDzgugfutGCzfzfc1pzgzgVXtpKX%3DYAYDCCY&amp;_ei_=3DEW2tf9zs5=
+9idfPO1Sc_9BbmoCCx219hDP9du5UBokHOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeo=
+CNplzdqSwLcl=2E&amp;_di_=3D0a6fcv4novp55jc737b8lrgqi2q0dj9sd8423c235uirrm2q=
+a220=22 style=3D=22color:=23999999;text-decoration:none;=22 target=3D=22_bl=
+ank=22>View&nbsp;in&nbsp;browser</a></td>
+
+        </tr>
+
+      </table>
+
+    </td>
+
+  </tr>
+
+</table>
+
+<table width=3D=22480=22 align=3D=22center=22 border=3D=220=22 cellpadding=
+=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22 style=3D=22min-w=
+idth:480px; width:480px; background-color:=23D7E831;=22 class=3D=22scale=22>
+
+  <tr>
+
+   <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 0px 80px=
+;=22 class=3D=22outer=22>
+
+    <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22 cellpad=
+ding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+      <tr>
+
+          <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 1=
+6px 0px; color:=23121212; text-align:center; font-family: Arial, sans-serif=
+; font-weight: bold; font-size:12px; line-height: 16px; text-transform: upp=
+ercase; letter-spacing: 1px;=22 class=3D=22kicker=22>
+
+          <a href=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0Gzc2X=
+%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0dsDzgu=
+gfutGCzfzfc1pzgzgVXtpKX%3DYAYDDRY&amp;_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCCx219=
+hDP9du5UBokHOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwLcl=2E&amp;_=
+di_=3Dflg7tbu17rfassi0r59d6mkmnhio74gjmb76fi1lrirn2toqihhg=22 style=3D=22co=
+lor:=23121212; text-decoration: none;=22 target=3D=22_blank=22>SALE ENDS SO=
+ON: <br />ENJOY A FULL YEAR OF SAVINGS=2E</a>
+
+          </td>
+
+        </tr>
+
+    </table>
+
+   </td>
+
+  </tr>
+
+</table>
+
+
+
+<table width=3D=22480=22 align=3D=22center=22 border=3D=220=22 cellpadding=
+=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22 style=3D=22min-w=
+idth:480px; width:480px; background-color:=23000000;=22 class=3D=22scale=22>
+  <tr>
+    <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 0px 0px=
+ 28px 0px;=22>
+      <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22 cellp=
+adding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+          <tr>
+             <td width=3D=22100%=22 align=3D=22center=22 valign=3D=22bottom=
+=22 style=3D=22vertical-align: bottom; padding: 0px;=22>
+              <a href=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0G=
+zc2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0ds=
+DzgugfutGCzfzfc1pzgzgVXtpKX%3DYAYDDTY&amp;_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCC=
+x219hDP9du5UBokHOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwLcl=2E&a=
+mp;_di_=3Dcu772qdlvs7b1pe05i4b82tms3a5k8mrnv59r3b06tf7uvcautl0=22 target=3D=
+=22_blank=22 style=3D=22text-decoration:none; color:=23000000;=22><img src=
+=3D=22https://mwcm=2Enyt=2Ecom/email/20250118_Sale_EM2/anim1=2Egif=22 width=
+=3D=22480=22 style=3D=22display:block; width: 100%; max-width: 480px; heigh=
+t:auto; font-family: arial, sans-serif; font-size: 10px;=22 border=3D=220=
+=22 alt=3D=22Subscribe now to The Times=2E=22 class=3D=22hide=22></a>
+             </td>
+          </tr>
+      <=21--=5Bif gte mso 9=5D><=21-->
+      <tr>
+        <td width=3D=22100%=22 align=3D=22center=22 style=3D=22display:none=
+; max-height:0; max-width:0; overflow:hidden; font-size:0; mso-hide:all;=22=
+ class=3D=22show-img=22>
+          <a href=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0Gzc2X=
+%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0dsDzgu=
+gfutGCzfzfc1pzgzgVXtpKX%3DYAYDDTY&amp;_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCCx219=
+hDP9du5UBokHOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwLcl=2E&amp;_=
+di_=3Dcu772qdlvs7b1pe05i4b82tms3a5k8mrnv59r3b06tf7uvcautl0=22 target=3D=22_=
+blank=22 style=3D=22text-decoration:none; color:=23000000;=22><img src=3D=
+=22https://mwcm=2Enyt=2Ecom/email/20250118_Sale_EM2/anim1m=2Egif=22 border=
+=3D=220=22 style=3D=22max-height: 0px; font-size: 0; display:none; mso-hide=
+: all; overflow:hidden;=22 alt=3D=22Subscribe now to The Times=2E=22 class=
+=3D=22show-img=22></a>
+        </td>
+       </tr>
+      <=21--<=21=5Bendif=5D-->
+      </table>
+    </td>
+    </tr>
+  </table>
+
+   =20
+<table width=3D=22480=22 align=3D=22center=22 border=3D=220=22 cellpadding=
+=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22 style=3D=22min-w=
+idth:480px; width:480px; background-color:=23000000;=22 class=3D=22scale=22>
+
+  <tr>
+
+    <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 0px 80p=
+x 0px 80px;=22 class=3D=22outer=22>
+
+      <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22 cellp=
+adding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+          <tr>
+
+             <td width=3D=22100%=22 align=3D=22center=22 valign=3D=22bottom=
+=22 style=3D=22vertical-align: bottom; padding: 0px 0px 20px 0px;=22>
+
+              <a href=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0G=
+zc2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0ds=
+DzgugfutGCzfzfc1pzgzgVXtpKX%3DYAYDDWY&amp;_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCC=
+x219hDP9du5UBokHOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwLcl=2E&a=
+mp;_di_=3Djvqj6gce7bm5ov77n0j84l4mjm54onhgafgvj7f0btrnmfghve4g=22 target=3D=
+=22_blank=22 style=3D=22text-decoration:none; color:=23000000;=22><img src=
+=3D=22https://mwcm=2Enyt=2Ecom/email/20250118_Sale_EM2/regi_us1=2Epng=22 wi=
+dth=3D=22320=22 style=3D=22display:block; width: 100%; max-width: 320px; he=
+ight:auto; font-family: arial, sans-serif; font-size: 10px;=22 border=3D=22=
+0=22 alt=3D=22PROCEED TO CHECKOUT >=22 class=3D=22scale=22></a>
+
+             </td>
+
+          </tr>
+
+      </table>
+
+    </td>
+
+    </tr>
+
+  </table>
+
+<table width=3D=22480=22 align=3D=22center=22 border=3D=220=22 cellpadding=
+=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22 style=3D=22min-w=
+idth:480px; width:480px; background-color:=23000000;=22 class=3D=22scale=22>
+
+  <tr>
+
+    <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 0px 80p=
+x 0px 80px;=22 class=3D=22outer=22>
+
+      <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22 cellp=
+adding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+          <tr>
+
+             <td width=3D=22100%=22 align=3D=22center=22 valign=3D=22bottom=
+=22 style=3D=22vertical-align: bottom; padding: 0px 0px 0px 0px;=22>
+
+              <a href=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0G=
+zc2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0ds=
+DzgugfutGCzfzfc1pzgzgVXtpKX%3DYAYDDAY&amp;_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCC=
+x219hDP9du5UBokHOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwLcl=2E&a=
+mp;_di_=3Dt21k59om5fp8dfhjrd5ag5683up6djr5p17hr904aug8f4qmt4sg=22 target=3D=
+=22_blank=22 style=3D=22text-decoration:none; color:=23000000;=22><img src=
+=3D=22https://mwcm=2Enyt=2Ecom/email/20250118_Sale_EM2/regi_us2=2Epng=22 wi=
+dth=3D=22320=22 style=3D=22display:block; width: 100%; max-width: 320px; he=
+ight:auto; font-family: arial, sans-serif; font-size: 10px;=22 border=3D=22=
+0=22 alt=3D=22PROCEED TO CHECKOUT >=22 class=3D=22scale=22></a>
+
+             </td>
+
+          </tr>
+
+      </table>
+
+    </td>
+
+    </tr>
+
+  </table>
+
+<table width=3D=22480=22 align=3D=22center=22 border=3D=220=22 cellpadding=
+=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22 style=3D=22min-w=
+idth:480px; width:480px; background-color:=23000000;=22 class=3D=22scale=22>
+
+   <tr>
+
+    <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 0px 80p=
+x 0px 80px;=22 class=3D=22outer=22>
+
+      <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22 cellp=
+adding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+        <tr>
+
+          <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 2=
+0px 0px 0px 0px;=22>
+
+            <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22=
+ cellpadding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+                <tr>
+
+                          <td width=3D=22100%=22 align=3D=22center=22 style=
+=3D=22padding: 0px 0px 0px 0px;=22>
+
+            <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22=
+ cellpadding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+             <tr>
+
+                  <td width=3D=22100%=22 align=3D=22center=22 style=3D=22co=
+lor:=23ffffff; font-family: Arial, sans-serif; font-size: 12px; line-height=
+: 17px; text-align: center; font-weight: normal;=22>
+
+                   Interested in Home Delivery? <br />Get 50% off print for=
+ your first year=2E  <a href=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri=
+_=3DX0Gzc2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza2=
+8Hpw0dsDzgugfutGCzfzfc1pzgzgVXtpKX%3DYAYDDCY&amp;_ei_=3DEW2tf9zs59idfPO1Sc_=
+9BbmoCCx219hDP9du5UBokHOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwL=
+cl=2E&amp;_di_=3Dso4audsth42a9kunejshcov0ug0ntsj3h5phcqmq3rkdljfq75g0=22 ta=
+rget=3D=22_blank=22 style=3D=22text-decoration:underline; color:=23ffffff=
+=22>See offer=2E</a>
+
+                  </td>
+
+                </tr>
+
+            </table>
+
+          </td>
+
+                </tr>
+
+            </table>
+
+          </td>
+
+        </tr>
+
+      </table>
+
+    </td>
+
+   </tr>
+
+</table>
+
+
+      <table width=3D=22480=22 align=3D=22center=22 border=3D=220=22 cellpa=
+dding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22 style=3D=22=
+min-width:480px; width:480px; background-color:=23000000;=22 class=3D=22sca=
+le=22>
+
+  <tr>
+
+    <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 0px 80p=
+x 0px 80px;=22 class=3D=22outer=22>
+
+      <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22 cellp=
+adding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+          <tr>
+
+             <td width=3D=22100%=22 align=3D=22center=22 valign=3D=22bottom=
+=22 style=3D=22vertical-align: bottom; padding: 32px 0px 30px 0px;=22>
+
+              <div style=3D=22width: 48px; border-top: 1px solid =23ffffff;=
+ height: 1px; line-height: 1px; height: 1px=21important;=22></div>
+
+             </td>
+
+          </tr>
+
+      </table>
+
+    </td>
+
+    </tr>
+
+  </table>
+
+<table width=3D=22480=22 align=3D=22center=22 border=3D=220=22 cellpadding=
+=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22 style=3D=22min-w=
+idth:480px; width:480px; background-color:=23000000;=22 class=3D=22scale=22>
+
+   <tr>
+
+    <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 0px 80p=
+x 0px 80px;=22 class=3D=22outer=22>
+
+      <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22 cellp=
+adding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+        <tr>
+
+          <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding:0p=
+x 0px 32px 0px;=22>
+
+            <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22=
+ cellpadding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+                <tr>
+
+                  <td width=3D=22100%=22 align=3D=22center=22 style=3D=22co=
+lor:=23ffffff; font-family: Arial, sans-serif; font-size: 16px; line-height=
+: 22px; text-align: center; font-weight:bold;=22 class=3D=22text-default=22>
+
+                   Discover everything we offer=2E
+
+
+                  </td>
+
+                </tr>
+
+            </table>
+
+          </td>
+
+        </tr>
+
+      </table>
+
+    </td>
+
+   </tr>
+
+</table>
+
+<table width=3D=22480=22 align=3D=22center=22 border=3D=220=22 cellpadding=
+=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22 style=3D=22min-w=
+idth:480px; width:480px; background-color:=23000000;=22 class=3D=22scale=22>
+
+  <tr>
+
+    <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 0px 80p=
+x 0px 80px;=22 class=3D=22outer=22>
+
+      <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22 cellp=
+adding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+          <tr>
+
+             <td width=3D=22100%=22 align=3D=22center=22 valign=3D=22bottom=
+=22 style=3D=22vertical-align: bottom; padding: 0px 0px 20px 0px;=22>
+
+              <a href=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0G=
+zc2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0ds=
+DzgugfutGCzfzfc1pzgzgVXtpKX%3DYAARRRY&amp;_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCC=
+x219hDP9du5UBokHOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwLcl=2E&a=
+mp;_di_=3Dqt1uc36r60almnuc1mn3417o7cp8sra7e203g1mtbk25c70a9r1g=22 target=3D=
+=22_blank=22 style=3D=22text-decoration:none; color:=23000000;=22><img src=
+=3D=22https://mwcm=2Enyt=2Ecom/email/20250118_Sale_EM2/tile1=2Epng=22 width=
+=3D=22320=22 style=3D=22display:block; width: 100%; max-width: 320px; heigh=
+t:auto; font-family: arial, sans-serif; font-size: 10px;=22 border=3D=220=
+=22 alt=3D=22New stories to hear=2E=22 class=3D=22scale=22></a>
+
+             </td>
+
+          </tr>
+
+      </table>
+
+    </td>
+
+    </tr>
+
+  </table>
+
+<table width=3D=22480=22 align=3D=22center=22 border=3D=220=22 cellpadding=
+=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22 style=3D=22min-w=
+idth:480px; width:480px; background-color:=23000000;=22 class=3D=22scale=22>
+
+  <tr>
+
+    <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 0px 80p=
+x 0px 80px;=22 class=3D=22outer=22>
+
+      <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22 cellp=
+adding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+          <tr>
+
+             <td width=3D=22100%=22 align=3D=22center=22 valign=3D=22bottom=
+=22 style=3D=22vertical-align: bottom; padding: 0px 0px 20px 0px;=22>
+
+              <a href=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0G=
+zc2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0ds=
+DzgugfutGCzfzfc1pzgzgVXtpKX%3DYAARRTY&amp;_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCC=
+x219hDP9du5UBokHOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwLcl=2E&a=
+mp;_di_=3Dm40g65haojf1aoph8dl5ivjfaop8kgjfhnamp5ankjoi3e41980g=22 target=3D=
+=22_blank=22 style=3D=22text-decoration:none; color:=23000000;=22><img src=
+=3D=22https://mwcm=2Enyt=2Ecom/email/20250118_Sale_EM2/tile2=2Epng=22 width=
+=3D=22320=22 style=3D=22display:block; width: 100%; max-width: 320px; heigh=
+t:auto; font-family: arial, sans-serif; font-size: 10px;=22 border=3D=220=
+=22 alt=3D=22New games to play=2E=22 class=3D=22scale=22></a>
+
+             </td>
+
+          </tr>
+
+      </table>
+
+    </td>
+
+    </tr>
+
+  </table>
+
+<table width=3D=22480=22 align=3D=22center=22 border=3D=220=22 cellpadding=
+=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22 style=3D=22min-w=
+idth:480px; width:480px; background-color:=23000000;=22 class=3D=22scale=22>
+
+  <tr>
+
+    <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 0px 80p=
+x 0px 80px;=22 class=3D=22outer=22>
+      <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22 cellp=
+adding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+          <tr>
+
+             <td width=3D=22100%=22 align=3D=22center=22 valign=3D=22bottom=
+=22 style=3D=22vertical-align: bottom; padding: 0px 0px 20px 0px;=22>
+
+              <a href=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0G=
+zc2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0ds=
+DzgugfutGCzfzfc1pzgzgVXtpKX%3DYAARRWY&amp;_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCC=
+x219hDP9du5UBokHOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwLcl=2E&a=
+mp;_di_=3Dcpbe728dt8qncaav5hhuid81m59s5nro6tel39ndjjh752jq57qg=22 target=3D=
+=22_blank=22 style=3D=22text-decoration:none; color:=23000000;=22><img src=
+=3D=22https://mwcm=2Enyt=2Ecom/email/20250118_Sale_EM2/tile3=2Epng=22 width=
+=3D=22320=22 style=3D=22display:block; width: 100%; max-width: 320px; heigh=
+t:auto; font-family: arial, sans-serif; font-size: 10px;=22 border=3D=220=
+=22 alt=3D=22New teams to follow=2E=22 class=3D=22scale=22></a>
+
+             </td>
+
+          </tr>
+
+      </table>
+
+    </td>
+
+    </tr>
+
+  </table>
+    <table width=3D=22480=22 align=3D=22center=22 border=3D=220=22 cellpadd=
+ing=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22 style=3D=22mi=
+n-width:480px; width:480px; background-color:=23000000;=22 class=3D=22scale=
+=22>
+
+  <tr>
+
+    <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 0px 80p=
+x 0px 80px;=22 class=3D=22outer=22>
+
+      <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22 cellp=
+adding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+          <tr>
+
+             <td width=3D=22100%=22 align=3D=22center=22 valign=3D=22bottom=
+=22 style=3D=22vertical-align: bottom; padding: 0px 0px 20px 0px;=22>
+
+              <a href=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0G=
+zc2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0ds=
+DzgugfutGCzfzfc1pzgzgVXtpKX%3DYAARRAY&amp;_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCC=
+x219hDP9du5UBokHOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwLcl=2E&a=
+mp;_di_=3D9sklk2rr56v9jcp7gnrausbvkai16mgl0fgt43i5tg5c85pdt3ig=22 target=3D=
+=22_blank=22 style=3D=22text-decoration:none; color:=23000000;=22><img src=
+=3D=22https://mwcm=2Enyt=2Ecom/email/20250118_Sale_EM2/tile4=2Epng=22 width=
+=3D=22320=22 style=3D=22display:block; width: 100%; max-width: 320px; heigh=
+t:auto; font-family: arial, sans-serif; font-size: 10px;=22 border=3D=220=
+=22 alt=3D=22New recipes to try=2E=22 class=3D=22scale=22></a>
+
+             </td>
+
+          </tr>
+
+      </table>
+
+    </td>
+
+    </tr>
+
+  </table>
+   =20
+    <table width=3D=22480=22 align=3D=22center=22 border=3D=220=22 cellpadd=
+ing=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22 style=3D=22mi=
+n-width:480px; width:480px; background-color:=23000000;=22 class=3D=22scale=
+=22>
+
+  <tr>
+
+    <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 0px 80p=
+x 0px 80px;=22 class=3D=22outer=22>
+
+      <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22 cellp=
+adding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+          <tr>
+
+             <td width=3D=22100%=22 align=3D=22center=22 valign=3D=22bottom=
+=22 style=3D=22vertical-align: bottom; padding: 0px 0px 20px 0px;=22>
+
+              <a href=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0G=
+zc2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0ds=
+DzgugfutGCzfzfc1pzgzgVXtpKX%3DYAARRCY&amp;_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCC=
+x219hDP9du5UBokHOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwLcl=2E&a=
+mp;_di_=3Dh97va0ak180gcu8smbeg51nv87ofmmmvro38nl9h4plhaqrdphag=22 target=3D=
+=22_blank=22 style=3D=22text-decoration:none; color:=23000000;=22><img src=
+=3D=22https://mwcm=2Enyt=2Ecom/email/20250118_Sale_EM2/tile5=2Epng=22 width=
+=3D=22320=22 style=3D=22display:block; width: 100%; max-width: 320px; heigh=
+t:auto; font-family: arial, sans-serif; font-size: 10px;=22 border=3D=220=
+=22 alt=3D=22New stories to hear=2E=22 class=3D=22scale=22></a>
+
+             </td>
+
+          </tr>
+
+      </table>
+
+    </td>
+
+    </tr>
+
+  </table>
+
+    <table width=3D=22480=22 align=3D=22center=22 border=3D=220=22 cellpadd=
+ing=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22 style=3D=22mi=
+n-width:480px; width:480px; background-color:=23000000;=22 class=3D=22scale=
+=22>
+
+  <tr>
+
+    <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 0px 80p=
+x 0px 80px;=22 class=3D=22outer=22>
+
+      <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22 cellp=
+adding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+          <tr>
+
+             <td width=3D=22100%=22 align=3D=22center=22 valign=3D=22bottom=
+=22 style=3D=22vertical-align: bottom; padding: 0px 0px 20px 0px;=22>
+
+              <a href=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0G=
+zc2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0ds=
+DzgugfutGCzfzfc1pzgzgVXtpKX%3DYAARSRY&amp;_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCC=
+x219hDP9du5UBokHOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwLcl=2E&a=
+mp;_di_=3Divafnuo7af0ucaltk0ubki0kb8hucdafda3n6nmc6g3t9rfcgt90=22 target=3D=
+=22_blank=22 style=3D=22text-decoration:none; color:=23000000;=22><img src=
+=3D=22https://mwcm=2Enyt=2Ecom/email/20250118_Sale_EM2/tile6=2Epng=22 width=
+=3D=22320=22 style=3D=22display:block; width: 100%; max-width: 320px; heigh=
+t:auto; font-family: arial, sans-serif; font-size: 10px;=22 border=3D=220=
+=22 alt=3D=22New reviews to guide=2E=22 class=3D=22scale=22></a>
+
+             </td>
+
+          </tr>
+
+      </table>
+
+    </td>
+
+    </tr>
+
+  </table>
+
+
+<table width=3D=22480=22 align=3D=22center=22 border=3D=220=22 cellpadding=
+=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22 style=3D=22min-w=
+idth:480px; width:480px; background-color:=23000000;=22 class=3D=22scale=22>
+
+   <tr>
+
+    <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 0px 80p=
+x 0px 80px;=22 class=3D=22outer=22>
+
+      <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22 cellp=
+adding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+        <tr>
+
+          <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding:40=
+px 0px 20px 0px;=22>
+
+            <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22=
+ cellpadding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+                <tr>
+
+                  <td width=3D=22100%=22 align=3D=22center=22 style=3D=22co=
+lor:=23ffffff; font-family: Arial, sans-serif; font-size: 16px; line-height=
+: 22px; text-align: center;=22 class=3D=22text-default=22>
+
+                      <b>Enjoy all of The Times:</b><br />=241/week for you=
+r first year=2E
+
+                  </td>
+
+                </tr>
+
+            </table>
+
+          </td>
+
+        </tr>
+
+      </table>
+
+    </td>
+
+   </tr>
+
+</table>
+
+<table width=3D=22480=22 align=3D=22center=22 border=3D=220=22 cellpadding=
+=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22 style=3D=22min-w=
+idth:480px; width:480px; background-color:=23000000;=22 class=3D=22scale=22>
+
+  <tr>
+
+    <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 0px 80p=
+x 0px 80px;=22 class=3D=22outer=22>
+
+      <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22 cellp=
+adding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+         <tr>
+
+          <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 0=
+px 0px 0px 0px;=22>
+
+           <table border=3D=220=22 cellpadding=3D=220=22 cellspacing=3D=220=
+=22 role=3D=22presentation=22>
+
+            <tr>
+
+             <td align=3D=22center=22 style=3D=22width:143px; min-width:143=
+px; height:40px; font-family: Helvetica, Arial, sans-serif; background-colo=
+r:=23ffffff; color:=23000000; font-weight: bold; -moz-border-radius: 4px; -=
+webkit-border-radius: 4px; border-radius: 4px; text-transform: uppercase; l=
+etter-spacing: 0=2E5px; font-size:12px;=22>
+
+              <a href=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0G=
+zc2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0ds=
+DzgugfutGCzfzfc1pzgzgVXtpKX%3DYAARSTY&amp;_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCC=
+x219hDP9du5UBokHOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwLcl=2E&a=
+mp;_di_=3Dehfm9jos0hjrc7s6ngn3lnka9m4ea06jqfmbdlntq3qjkkmu26c0=22 target=3D=
+=22_blank=22 style=3D=22padding:9px 4px; min-width:143px; display:block; te=
+xt-decoration:none; text-align:center; font-size:12px; color:=23000000; bac=
+kground:=23ffffff; mso-line-height-rule:exactly; line-height:22px; font-wei=
+ght: bold; -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radi=
+us: 4px;=22><font style=3D=22color:=23000000;=22>SUBSCRIBE&nbsp;NOW</font><=
+/a>
+
+             </td>
+
+            </tr>
+
+           </table>
+
+          </td>
+
+        </tr>
+
+      </table>
+
+    </td>
+
+    </tr>
+
+  </table>
+
+<table width=3D=22480=22 align=3D=22center=22 border=3D=220=22 cellpadding=
+=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22 style=3D=22min-w=
+idth:480px; width:480px; background-color:=23000000;=22 class=3D=22scale=22>
+
+   <tr>
+
+    <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 0px 80p=
+x 0px 80px;=22 class=3D=22outer=22>
+
+      <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22 cellp=
+adding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+        <tr>
+
+          <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding:8p=
+x 0px 56px 0px;=22>
+
+            <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22=
+ cellpadding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+                <tr>
+
+                  <td width=3D=22100%=22 align=3D=22center=22 style=3D=22co=
+lor:=23ffffff; font-family: Arial, sans-serif; font-size: 12px; line-height=
+: 17px; text-align: center;=22 class=3D=22text-default=22>
+                   Cancel or pause anytime=2E
+                  </td>
+
+                </tr>
+
+            </table>
+
+          </td>
+
+        </tr>
+
+      </table>
+
+    </td>
+
+   </tr>
+
+</table>
+
+
+<table width=3D=22480=22 align=3D=22center=22 border=3D=220=22 cellpadding=
+=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22 style=3D=22min-w=
+idth:480px; width:480px; background-color:=23ffffff;=22 class=3D=22scale=22>
+
+   <tr>
+
+    <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 0px 80p=
+x 0px 80px;=22 class=3D=22outer=22>
+
+      <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22 cellp=
+adding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+        <tr>
+
+          <td width=3D=22100%=22 align=3D=22center=22 style=3D=22padding: 4=
+0px 0px 48px 0px;=22>
+
+            <table width=3D=22100%=22 align=3D=22center=22 border=3D=220=22=
+ cellpadding=3D=220=22 cellspacing=3D=220=22 role=3D=22presentation=22>
+
+               <tr>
+
+                <td width=3D=22100%=22 align=3D=22left=22 style=3D=22font-f=
+amily: Arial, sans-serif; color:=23999999; font-size:12px; line-height:16px=
+; text-align: left;=22 class=3D=22text-fine=22>
+   Offers for New York Times All Access or New York Times Home Delivery sub=
+scriptions; current subscribers not eligible=2E A New York Times All Access=
+ subscription excludes print edition=2E Some games may be available without=
+ a subscription=2E For a New York Times All Access annual offer, your payme=
+nt method will automatically be charged in advance the introductory rate of=
+ =2450 for the first year; it will then be automatically charged the standa=
+rd rate of =2425 in advance every 4 weeks thereafter=2E For a New York Time=
+s All Access monthly offer, your payment method will automatically be charg=
+ed in advance the introductory rate of =244 every 4 weeks for the first yea=
+r, and after 1 year the standard rate of =2425 every 4 weeks=2E For a New Y=
+ork Times Home Delivery subscription, your payment method will automaticall=
+y be charged in advance the introductory rate every 4 weeks for the first y=
+ear, and after 1 year the standard rate every 4 weeks=2E A New York Times H=
+ome Delivery subscription includes New York Times All Access=2E Your subscr=
+iptions will continue until you <a href=3D=22https://e=2Enewyorktimes=2Ecom=
+/pub/cc?_ri_=3DX0Gzc2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1=
+okuL15ybza28Hpw0dsDzgugfutGCzfzfc1pzgzgVXtpKX%3DYAARSWY&amp;_ei_=3DEW2tf9zs=
+59idfPO1Sc_9BbmoCCx219hDP9du5UBokHOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfe=
+oCNplzdqSwLcl=2E&amp;_di_=3De4rrammm1sd38c2od9n06j09c1jfcuvq20615vg8ignncdh=
+at23g=22 style=3D=22color: =23999999; text-decoration: underline;=22 target=
+=3D=22_blank=22>cancel</a>=2E For digital subscriptions, cancellation takes=
+ effect at the end of your current billing period=2E Upon cancellation of y=
+our Home Delivery subscription, your free New York Times All Access digital=
+ access will end immediately; delivery of the print edition will be suspend=
+ed within several days, and you will receive a refund for any undelivered p=
+apers in your current prepaid billing period=2E Taxes may apply=2E Offer te=
+rms are subject to change=2E
+
+                  <br /><br />
+
+                This email was sent to <a href=3D=22mailto:desgtest=2Eemail=
+=40gmail=2Ecom=22 style=3D=22font-weight:normal;color:=23999999;text-decora=
+tion:none;=22>desgtest=2Eemail=40gmail=2Ecom</a>=2E To stop receiving updat=
+es and offers from The Times, including those regarding The Athletic, <a hr=
+ef=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DAQjkPkSUAQGz=
+doCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0dsDzgugfutGCzfzfc1pzg=
+zgVXtpKX%3DYAARSAY&amp;_ei_=3DEXnjtQUVmtqqbvnNTHcyAgb19vpL-YCHzatdNSwalPRvv=
+UjaS2PKexrYK86NgXoL0IJqOFR9L5f1g--VLJMivzSOQCCda5QuOPWh-tFdvIFsDJMdiA4rF0MC=
+BYTjZQlbgXlW6uWublgzG6onfgUsjoNdPlwZLhs2LOnjC6Aho95ytLkJc2B4U3KAJeGhd-KpP42=
+XrAue_G76RKDfm8iBgjyydbU1piPwTyx5gILjadsnsCQeHrvHCFfY-O0V=2E&amp;_di_=3D7td=
+an88qm4guunckrlpu01dtjcirld6dbilpdq0h22sejeql3ge0=22 style=3D=22color: =239=
+79797; text-decoration: underline;=22 target=3D=22_blank=22>unsubscribe</a>=
+=2E To opt out of newsletters and other promotional emails from The Times, =
+manage your <a href=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0Gzc=
+2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0dsDz=
+gugfutGCzfzfc1pzgzgVXtpKX%3DYAARSCY&amp;_ei_=3DE_F4z20UL55oCgng-gIUazaSlnpq=
+r9bRVTczLDwGQ4gxpJk2Z_8yihUnjIn5Pg3NLo1hV-jp70E9tZcyOUKGiydBZ3iSRFTZoYkU7a1=
+Uey87CLs3wGOAiAYBVSdqFs9sP9gbJHz0_yOZIAnbRi__hRU5Tu7Cgru7gvsZRjlAHK73AvhOLo=
+x4AXkgEWlzwW40HNttiYJBSW2OskOGHcG25CQ7fAhUV27sBobDEsxMgrP-JWOaXDumZg3kqSjUs=
+BdmYssC54hHp5YQMAE6_NhfWIJVlXaNAFc_uUKhSt7k8aIcbQRQOlUs6Je0VsaL5SnD3KKlTiOA=
+JuEVMYwKHInjSPmo95-Z9-7QWG28y0QlEikxsTFZMBFv8MdEpd792AROmmUE5EckTW6X2iED4qC=
+XPNCt5_9IXAo6WcJdz10j282UrCMeOxlJ3pEYpZ1GORvFKZ9EYML9di-wwo0Gnh_HX99PbeGyo4=
+kt74muK835s0sr=2E&amp;_di_=3Dgdhv1hf4io8o3fclsfmujb3el9c3k0029smvhfrd0h1lie=
+ma7og0=22 style=3D=22color: =23999999; text-decoration: underline;=22 targe=
+t=3D=22_blank=22>email settings</a>=2E To opt out of updates and offers sen=
+t from The Athletic, <a href=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri=
+_=3DX0Gzc2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza2=
+8Hpw0dsDzgugfutGCzfzfc1pzgzgVXtpKX%3DYAARTRY&amp;_ei_=3DEW2tf9zs59idfPO1Sc_=
+9BbmoCCx219hDP9du5UBokHOK7UorO5GhE5tXJgmZ3vYWg0rPnq9dGydttzGnZfeoCNplzdqSwL=
+cl=2E&amp;_di_=3Drb0nlo68c5pg8plg1t8chiq1hoj6vo4ni8ro95h8b7sp84rdmk3g=22 st=
+yle=3D=22color:=23999999; text-decoration: underline;=22 target=3D=22_blank=
+=22>submit a request</a>=2E
+
+                <br /><br />
+
+                <a href=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX=
+0Gzc2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0=
+dsDzgugfutGCzfzfc1pzgzgVXtpKX%3DYAARTTY&amp;_ei_=3DEW2tf9zs59idfPO1Sc_9Bbmo=
+CCx219hDP9du5UBokHOK7UorO5GhE5tXJgmZ3vYWg03LdiuCuxtqcmCYPWHjrinasktEhn-Nwtu=
+a3r0PWa7j3BFak1dzDl2LTQaiskU4o5CZXEI0z4xZJywZ8jIyPM=2E&amp;_di_=3Djpnisglm4=
+df81b76bb7q2974tj9dm85n2v7kpoo4nb3gaifu5kig=22 style=3D=22color:=23999999; =
+text-decoration: underline;=22 target=3D=22_blank=22>Account&nbsp;Login</a>=
+ =7C <a href=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DAQ=
+jkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0dsDzgugfutG=
+Czfzfc1pzgzgVXtpKX%3DYAARTWY&amp;_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCCx219hDP9d=
+u5UBokHOK7UorO5GhE5tXJgmZ3vYWg03LdiuCuxtqcmCYPWHjrilI6LC9QSeyAe3ih2ExRZmC8L=
+QKeXXPWZvk1zJsCrXNy770R9-0agWGlCBhgilxazc7C_I=2E&amp;_di_=3Dlabebh7ace8crkg=
+jprd7of973erkosdfldbuf1ca8kk8oh0vqgng=22 style=3D=22color:=23999999; text-d=
+ecoration: underline;=22 target=3D=22_blank=22>Help&nbsp;Center</a> =7C <a =
+href=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DAQjkPkSUAQ=
+GzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0dsDzgugfutGCzfzfc1p=
+zgzgVXtpKX%3DYAARTAY&amp;_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCCx219hDP9du5UBokHO=
+K7UorO5GhE5tXJgmZ3vYWg2s9zn31P8KQQwdS4AQJgXcVJqrIfhQlk-_iJ7kGRx_vzfZNbZYGSZ=
+3PJO8H0Y0sJ7Eb0X_824mMDRIGAOYeT3st6PZWfhRU9vcydeyJzJoY891_9trvtF_Mn2Cp3e_py=
+zCOJM8J9UPC=2E&amp;_di_=3Du7u434opb6baf77h8623higdbfhdtbgojbmbb76kh10d9v09b=
+vvg=22 style=3D=22color:=23999999; text-decoration: underline;=22 target=3D=
+=22_blank=22>Terms&nbsp;of&nbsp;Service</a> =7C <a href=3D=22https://e=2Ene=
+wyorktimes=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DAQjkPkSUAQGzdoCD3jWzfEopaMX4TkOt1z=
+f8Hl0ssEc9fzezb1okuL15ybza28Hpw0dsDzgugfutGCzfzfc1pzgzgVXtpKX%3DYAARTCY&amp=
+;_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCCx219hDP9du5UBokHOK7UorO5GhE5tXJgmZ3vYWg03=
+LdiuCuxtqcmCYPWHjrilI6LC9QSeyAe3ih2ExRZmCeiJ60labqEFuZRJ5ST9x5d-TSv9DztHCKg=
+RjZyAcVzfwQyOIuXqs9-Iw7VsYMXnX4ZHxvvTzzuzSAaQ=2E&amp;_di_=3Ddligk3our5ua10n=
+l3dmckueu7sj90lbdknojkugam91s02gelgjg=22 style=3D=22color:=23999999; text-d=
+ecoration: underline;=22 target=3D=22_blank=22>Privacy&nbsp;Policy</a> =7C =
+<a href=3D=22https://e=2Enewyorktimes=2Ecom/pub/cc?_ri_=3DX0Gzc2X%3DAQjkPkS=
+UAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0dsDzgugfutGCzfzf=
+c1pzgzgVXtpKX%3DYAARURY&amp;_ei_=3DEW2tf9zs59idfPO1Sc_9BbmoCCx219hDP9du5UBo=
+kHOK7UorO5GhE5tXJgmZ3vYWg03LdiuCuxtqcmCYPWHjrilI6LC9QSeyAe3ih2ExRZmCeiJ60la=
+bqEFuZRJ5ST9x5d-TSv9DztHCKgRjZyAcVzcXSq1CMBTafzEfOPzZ_njfH4aQBVZuSiRghw-9yv=
+z85R1YRjxHM05n4EZs28Cv6SinvSYGuSWy7pfV1p-X83IMs4iOweo=2E&amp;_di_=3D07157vq=
+0g1vpu75m0rt8m9tun598e527374miuppf4286held97g=22 style=3D=22color:=23999999=
+; text-decoration: underline;=22 target=3D=22_blank=22>California&nbsp;Noti=
+ces</a><br /><br />
+
+                &copy;2025 The New York Times Company =7C 620 Eighth Avenue=
+, New York, NY 10018
+
+              </td>
+
+             </tr>
+
+            </table>
+
+          </td>
+
+        </tr>
+
+      </table>
+
+    </td>
+
+   </tr>
+
+</table>
+
+
+
+  </td>
+
+  </tr>
+
+</table><table cellpadding=3D=220=22 cellspacing=3D=220=22 style=3D=22borde=
+r: 0px; padding: 0px; margin: 0px; position: absolute; display: none; float=
+: left=22>
+<tr>
+<td height=3D=221=22 style=3D=22font-size: 1px; line-height: 1px; padding: =
+0px;=22>
+<br><img src=3D=22https://e=2Enewyorktimes=2Ecom/pub/as?_ri_=3DX0Gzc2X%3DAQ=
+jkPkSUAQGzdoCD3jWzfEopaMX4TkOt1zf8Hl0ssEc9fzezb1okuL15ybza28Hpw0dsDzgugfutG=
+Czfzfc1pzgzgVXHkMX%3Dw&_ei_=3DEUlaGGF4SNMvxFF7KucKuWPczSq6cDAIQgReWgfYliP96=
+0Pn_Zk1asCMt_m4yumRIR1lbiZqmInkIG6ZCqYpTM=2E=22></img>
+</td>
+</tr>
+</table>
+
+</body>
+
+</html>
+
+------alt_border_zuYjRbo9fL_1--
+
+------msg_border_uCFrPWousy--
+

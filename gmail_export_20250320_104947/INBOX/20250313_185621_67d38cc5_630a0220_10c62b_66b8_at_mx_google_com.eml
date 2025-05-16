@@ -1,0 +1,111 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp347083rcd;
+        Thu, 13 Mar 2025 18:56:23 -0700 (PDT)
+X-Received: by 2002:a05:6a00:1402:b0:736:73ad:365b with SMTP id d2e1a72fcca58-737223c0336mr862776b3a.14.1741917382802;
+        Thu, 13 Mar 2025 18:56:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741917382; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Fa25wnyZbjO0ai2RJKdjCn+VP/iZ7oFborXXmEHFiDvqNB3B5JCK3V/wYm8uHEHDZh
+         30nxozcM2wSMR8P+Xu+rrpPQMM2WdwjS3MK3eSmQIl6QDYEI3d5N6rStK9JS8AVVi5u4
+         xMv/XsQiGC2MdibfXCW30MWL6RQTh0noUNPxpiPy0etUT03cqVaGsBBR+HCyz2cH/PUG
+         bQvbQah/pFl+bLOV7qq/1VSgonYQf62xYiEwEG0prdpTVyJ2+kK46RH8RSjnE9Q5OcXG
+         MsBH++383RXXmCh8765UfTEjn0OvwJk5gMoq/++WUGl1qxp+ZAuTBeZwGE5QxWo+TW/6
+         GuLg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=XJ4gD+d2b0AnHQsHE15vduBolVGQDMV0VIlHoZBeqs4=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=UP4sYKZjZ9Ac+j+rzCiS7DvFZIBlPH53OfrKeMLen+efbCIVOaBCPrUYU6Gi+4cliz
+         LlFLoiHQuE87WGLma6IC+ZfDq20GRR3ytUUnCAXfZwJJUWAStbIGHpRk9LV8xinfh2n2
+         FjVNYj72Belx+ctctWdUbfSOyFtiSaUxZ2Yf7shorgU4jGHkjfaMHLIStbGyRbHbPsGH
+         0hwq1QRYP2i37MHv5MrLXnnTTWCXtEcm03IECQuYFqezOe42c9cmXZpKfXh6xH5spQiY
+         0ZFNrn5oxdvaX1chC2jSnpqVsPf75DpVK+nV0KK/hk9i1tFonRI1eYjddwro+H5cCgE9
+         t04g==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="V5+msj/Q";
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-737113ca80csor2290440b3a.0.2025.03.13.18.56.22
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 18:56:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="V5+msj/Q";
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741917382; x=1742522182; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=XJ4gD+d2b0AnHQsHE15vduBolVGQDMV0VIlHoZBeqs4=;
+        b=V5+msj/QsFewLu4dAPbD0wv/RXLM9d1MAfp9hx9egDWINaRtzkpQVMC+MAaSWh0yL6
+         ltTWUcHuxvPHoypLwZjbzYA7YUfhcTvZg+37WIVwPdjU5y45FqjwCsxnU+lQ0GWw7xTm
+         xI8muCRW8fKbbJ5rxcnai1mzNoeQQJJ1u3a+Xd+5NUu9hfBlffk7z1KaLUDbp9Mg7mHX
+         W1uuDP9HZfK2IPFJWN82jsSwlSxxrBJDi8KoNlqzjYQcqaCfY9zAbm3z7Nb6s0ohfKQl
+         1c7ps6x3Tai/2jnZO4/lb1juX18yVAHDu7iXZc4Wg4M6jDDdYXPepnAs4TQ8hH3ZL3aM
+         xODQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741917382; x=1742522182;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=XJ4gD+d2b0AnHQsHE15vduBolVGQDMV0VIlHoZBeqs4=;
+        b=i/kfhSrRyfVSooBAEUervgUYsv9t0Qd/61F5BOotIcIDSOhw3pRfHEZ2vFrIvUK92d
+         4kkiGNuv6CpUog1ENZrWpTwRSUl0KImVw61XdF75ZYk24TTE40GVlOjGQjWf9DH2S8xk
+         9/tU2OCMlDXj76uVl+stIj86O7Z7LWkgZ1HcdYkzDl9Ji1BDrxBejv/BeMMyBMzv7wMc
+         DmASCXA+2A4DWN7dzzI6KUg2nDFeBjsVTnT82KpAk243ujjq//or4SJx/DFjjGZSJ+eS
+         Gdlrf9tR1+mqGntsIraqud+03Dm+GLmDs1m48wNG+/DnuxZuunlj3nowOSeTd2g8TPZj
+         DTtQ==
+X-Gm-Message-State: AOJu0YzQW2rSBLYQ0wpIu65UuzuP6b11nstKxJ6EDbTlRvTexNuoNTXd
+	0Pwq1fmXOx06k0iAp1RQkrnjWThVLwNG1Ex5WYji4jNTRWFPMFncX5lh3Ai2
+X-Gm-Gg: ASbGncvmZF2Ugn980sVAcU8DfMLfT9RLYHJQsi5I8TBekvivDr8HAXsdBmoiIenUuGg
+	jkftjO+4PEKf265M/GgM41o/gBdSz9X4HbjuWBR0pVZ4ryUHnuN/baLzAHteAAZ92CN2kBSl8fh
+	oEtRPdHRae13S0PX7z9IxWTDkzzwC0P0SgVAap/aRkP3Y3h1HHr2N+OdR9wBn0im284ZLvTjnbM
+	UDInzwBmPN9FGokMnlx7HeSrC/IPO5/Bl1v+3JmnyOPoQ0YOZgT27llxqy8md/bp53UDKLtVv/4
+	WQP1IH/U1gu1pojUH734ogWk55AHkU2YDbUy0CxYPAal5IsLktrkewbo9IcIuFHWmRJQbA==
+X-Google-Smtp-Source: AGHT+IE4/O2RsDw6/ex36CyDn41UQW1BcV7ObmXnwbvoRwOzAPoC8tdpDANnNkaonyNX/WR6UM4jdg==
+X-Received: by 2002:a05:6a00:1402:b0:736:73ad:365b with SMTP id d2e1a72fcca58-737223c0336mr862705b3a.14.1741917381695;
+        Thu, 13 Mar 2025 18:56:21 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-af56e902eb6sm1988895a12.0.2025.03.13.18.56.20
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 18:56:21 -0700 (PDT)
+Message-ID: <67d38cc5.630a0220.10c62b.66b8@mx.google.com>
+Date: Thu, 13 Mar 2025 18:56:21 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============7320242435433064167=="
+MIME-Version: 1.0
+From: Charles Taylor <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Important Account Update for Your Recent Purchase at ABC Retail Store
+
+--===============7320242435433064167==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear John Doe,
+
+   I hope this message finds you well. I am writing to inform you about an update regarding your recent purchase from our store, ABC Retail.
+
+   We have noticed a discrepancy with the payment details associated with your order number 1234567890. To ensure a smooth transaction and deliver your items as soon as possible, we kindly request you to provide us with the missing information at your earliest convenience.
+
+   The issue lies with the card verification value (CVV) and expiry date of your payment method. Please log in to your account or visit our website to update these details securely. If you are unsure about any step, feel free to contact our customer service team at support@abcretail.com or call us at 1-800-1234-5678 from Monday to Friday, between 9 AM and 5 PM.
+
+   We apologize for any inconvenience caused and appreciate your prompt attention to this matter. As a valued customer, we strive to provide you with the best shopping experience at ABC Retail Store.
+
+   Thank you for choosing us!
+
+   Best regards,
+
+   Jane Smith
+   Customer Service Manager
+   ABC Retail Store
+--===============7320242435433064167==--

@@ -1,0 +1,113 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp770092rch;
+        Wed, 12 Mar 2025 23:40:43 -0700 (PDT)
+X-Received: by 2002:a05:6a00:1485:b0:728:f21b:ce4c with SMTP id d2e1a72fcca58-73710711556mr2350453b3a.5.1741848043316;
+        Wed, 12 Mar 2025 23:40:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741848043; cv=none;
+        d=google.com; s=arc-20240605;
+        b=TVNEm4ND3Qcza9PN7xoYEalp3UtuxbFcsmvr8FYN+2Mebibkl56CiMWDGpZezGl1Ip
+         SCxVr1OuGpat3pETSbv/Naa/q4G1GgbYcWqXaS8WwY7CRto4FXxyMvLuAPYGgcjH1boI
+         Knvtw76k088tCtgob/PcB+WDpj8CiEjnX37nGJZFs5qCqeYTaoBv/0PxyIboj2FMabQO
+         9SnnGZXyopncrz+jlSMzHC3uhnngFU9WUc0LyPCaPgdI0LLnlQGO8WmvIXtybGAwWW3J
+         xfzHkpfT2hLTqOlKKGcQbjxDxS8xm24NIev6tYFTi82WpCZhsCkJBrkAEfX+a+IEhVlv
+         VjZQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=+KlxCvy7mdnKiWvcWICxPv+g/0afO7gJBtf736D35m4=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=DHgRVjZlf9B/ehliJorUUmhOjd1gtTejPnCg4Cl97ashFgzDPAD7BRy5/oCMmP8g3H
+         SbV/vQnITECbcUeC4P46MafySaSs5bzkCQdU0oNxUXGZ4Lti7GRm0c5+XPlWAYbSQU4k
+         78elhij8W7arQNBWf3S1Cw6DxUlFNMJQiO4+rUKzvkCqgZSFdl4M8Tl4QRe1EUElHlNL
+         B7hEtjB05pDHKFPe7iCHHFrdxyviix7HdCa49eeuuQiaLKQGUVgGF1Bcjlfk5sgNFyZ8
+         FWcQz/VkdplTHCC4gbAqtJPRZ/6/MoZvdlIwVkwM0AbbmT6RJAj6XzJL2ec8bjmmTzCN
+         ncHQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=C8TLuNVB;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-73711525dd1sor437863b3a.1.2025.03.12.23.40.43
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:40:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=C8TLuNVB;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741848042; x=1742452842; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=+KlxCvy7mdnKiWvcWICxPv+g/0afO7gJBtf736D35m4=;
+        b=C8TLuNVB3rHj4K4iWrnqP4RSL7VDi50OJMGt/dXy29ihFVf3WHn/EdEjo2HrGAyX1F
+         cg6qF8riqQAHInT11eXEdpZH29jux/k80UQ04RPheOZ/W0PLbZxJfm7uUC+5N7dJ1SpN
+         A3PH1bqfjzHB/Kk8nbfbTj79IFH8xIizPmjT1xE96bzKLrxM6DkUkegI+7rOGXLA2joB
+         2sJrYs0mzaD7J4d6PGU4hAJVSNBdKMTotGxtzSETIqdF1Dfd1w3fl77n/zM8qcBdKS+J
+         TxCH7SMYCsAGgvh84uRonMUB3YnSRIPkeSEJMEH3FtnpK7jfv06efuKROLw5qJwg0WOS
+         nFhg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741848042; x=1742452842;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=+KlxCvy7mdnKiWvcWICxPv+g/0afO7gJBtf736D35m4=;
+        b=pCFbl2aHlOy4FnOtHmUanB3h/whWGtRxaNvtTaGtahPYet1syAPZguk8QNYDYaeiLf
+         vRLYQ5w/fjpSI94iEW1A5aKWPKjoYY+BqnzTOvbjxiJ32zhpsMstwGADQyP9TJfaXL69
+         vAjvXsHpdgWo7ttTsxB7a8SRV+MdCiAG6rxi4SBh0qstxMKkZnwd3ZMI75eVL26pBkTR
+         IPITZzU9KMptRMQTym5IKeRZ/6Uo7BEWMTPxq+3M1+31RhU6XNuoIx7UNFiVXr4MJ9xE
+         gz79yyzO2kJ8z4lNblHLXAfdwPucmPXH6B897Gh6A+R8jKz4fcD571E+FsPvumGhM2+I
+         eDtQ==
+X-Gm-Message-State: AOJu0YzEOaqe1trzlAUjH0RrT9q3JZ6xNahbsJyIkXeM7MNM5HjmIM4u
+	F1HqugObdR44f2bGzH7lUZSPLMJSkHQryKG0CIk4wxWzSHZdqwSk579m/YPD
+X-Gm-Gg: ASbGncstO7Mvi1z9rEg+TnfNbg21fmbbIFCKBOlXjSF2fkVXk2vJaZ5yAy07r2lF0TX
+	gngcP8F2oD8/779AFmyGeBf7D0uagJc+Qmbdw/uADUXeEzdEDP9H6/Cnt2l1tumQagg+hw6lTza
+	5k6E5zpsyQAz4RTkLtBwx1eFOqRa27/7sSgxkCei+ziAPKI/n0ssKWuAmnKhpzCwT2ShaROv+41
+	qOHkLaA9dxOw2HPRnbkZ460g+LNO//VlYpqbCjlqNB7G48WHaINgWw++rNupS5a7Cfn8WKqRtBt
+	uMX2H3Px4yQiPLaCvnj8mzEywMf+nRr02xgsOqTq3fYt05tgXNo3A89gBTTav9EtCaxW2g==
+X-Google-Smtp-Source: AGHT+IH441SDhqQYVUYuSRtUGOj48DgmPfmY3Jy537AJRI1vG3HWFsDo4ZwIyeYcy9yu7PUVbz7epA==
+X-Received: by 2002:a05:6a00:9293:b0:736:491b:5370 with SMTP id d2e1a72fcca58-7371073f919mr1890034b3a.10.1741848042537;
+        Wed, 12 Mar 2025 23:40:42 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-af56ea93c84sm578055a12.64.2025.03.12.23.40.41
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:40:42 -0700 (PDT)
+Message-ID: <67d27dea.630a0220.30318a.1cf4@mx.google.com>
+Date: Wed, 12 Mar 2025 23:40:42 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============2771140942143366144=="
+MIME-Version: 1.0
+From: James Smith <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Order Shipment Notification: Your Purchase from TechWares LLC Has
+ Been Shipped
+
+--===============2771140942143366144==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear John Doe,
+
+   I hope this message finds you well. I am writing to inform you that your order number #12345678 with TechWares LLC has been successfully processed and shipped.
+
+   The following items have been dispatched from our warehouse:
+   1. Dell XPS 15 Laptop - Black (SKU: TECH-DLLX15-BLK)
+   2. Logitech MX Master 3 Mouse (SKU: TECH-LOGMM3)
+   3. Samsung T7 Touch Portable SSD 1TB (SKU: TECH-SAMTT7)
+
+   Your order is expected to arrive between March 25th and March 28th, 20XX. You can track your package using the tracking number #12345678 provided in this email. If you have any questions or concerns regarding your shipment, please feel free to contact our customer service team at support@techwaresllc.com or call us toll-free at 1-800-TECH-WARE (1-800-832-4927).
+
+   Thank you for choosing TechWares LLC for your purchase! We value your business and look forward to serving you again in the future.
+
+   Warm regards,
+
+   Example Your name
+   Customer Service Manager
+   TechWares LLC
+--===============2771140942143366144==--

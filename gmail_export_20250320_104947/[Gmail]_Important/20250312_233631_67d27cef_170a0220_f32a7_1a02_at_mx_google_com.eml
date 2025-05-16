@@ -1,0 +1,109 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp768628rch;
+        Wed, 12 Mar 2025 23:36:32 -0700 (PDT)
+X-Received: by 2002:a17:902:f60c:b0:224:826:277f with SMTP id d9443c01a7336-22428c07319mr349667515ad.33.1741847792380;
+        Wed, 12 Mar 2025 23:36:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741847792; cv=none;
+        d=google.com; s=arc-20240605;
+        b=BWa12bcVPviiRRfvqu6z6BW2sX62qQGOvJdGrgo90l0fmn4pVp5oYXha+kNiltpIQ3
+         buormRrR3Uwugt7QevFZhfBMofGY+GKzyZqB7+uuki1aDTBz9TUV3/DrxWqIRhbRPN3e
+         2d0Ge4kRvfldKHkUAVMc9Xh3L9b/s4vGr8xiASupYyJkjbnVhC1XqWl/5GAW0Dekgast
+         OWcZhXCDZYYhCdMF19JBWv7kNxIWrZXoe5RsOjcJGhqn4RDMZXKScbOEn3JVvUWM18Nm
+         19/di5q0Pjf4Q943mBCPPzSVJTbqhTDVExiWVjOjH1jGWBKlwwYHCUEqeWS5554r+UGb
+         3Skg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=F65xSf4kaEMU8Oi28CwDmV7TN7pY1McxbrFEYz4RjWg=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=QM7V8cG2H6MLc76GQGk1QId/HO8RkWLblCRGePeCNLIL93QUmntdqAH8itNwP0lcd4
+         eEqJgJwVfo//+UYQKaj7ijVFxMVe9ERgBY6qarSkSDKqdHRBJVjE5YKCPwG1WM7E1eBu
+         q4SgwvH/+3SMCFySR3rhHpWbomF2xUd33uOUzMeZYN1Id0kM0935y5R5pdff5+VOnXUX
+         lkkCxTx1kXRCDoDQWKiDAQuk9xxD0Xi69K4XBMuePXhPXpy/3E2gPUpVa5gGFfAzg+Nj
+         1o4ir7He652jloVH0oB+aO8LDmg6Gg8dfPdli+tdhnwZ5CkZllK+uMoa38q6Rnb7fZKV
+         pQlA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fC02Xu2M;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 98e67ed59e1d1-30138b3cb4csor575806a91.1.2025.03.12.23.36.32
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:36:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fC02Xu2M;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741847791; x=1742452591; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=F65xSf4kaEMU8Oi28CwDmV7TN7pY1McxbrFEYz4RjWg=;
+        b=fC02Xu2MVddCti5ENxDwLhfn0XJ857KkbknYp2S6Oted1TzaDyZX/VrQ4g8PsYioRc
+         9D0FkL8Bgv7mdeBwM659mbvU7k/IqcqQfECgh5bNsb0TkhBiugvj6/fP8/XUpeMJMh3E
+         WMHGrzLnBmPfNx5h41hnNYDxkYmOJQnNjNDLfeFsXZVV5pYEzAZEavn5T8fl8aDdXHuL
+         DpcXvZTOQmY7eg+v4FVo+PmcnW5MMSaM4kiT1klVV26DujtoW2Xfe+O7FImvr7q6W5VM
+         jHkNyN1txjvU8coJzVxPf8687vrb03uZRIiNAqBIocCskPW3HTOmVtTk6Eia7ixsUP/U
+         4Eug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741847791; x=1742452591;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=F65xSf4kaEMU8Oi28CwDmV7TN7pY1McxbrFEYz4RjWg=;
+        b=dJN+NktlQ7XvatEHQW6f1dz0/MKoFHQ25YOpQb7dBVYJCv1PZJ0JWt2brr0EriUhXJ
+         sfOc4FPYE5egrG0ry+1NBUe+wIXA552xPVAEmlL+8swvNgdznZqS53SfEEXjRjzH8TqW
+         pqNeHzdcTRJcNaR75vUhzenhlrk0b3KhlFAi4zD1F8LPfXb6wYwKaslnc45TC5a0232I
+         mMcdQHf7ihHkPMGJbET2fYSf9KaxWt6ib31PXyynw1iw9LwqX/Funb6TrzerO2ISEgm0
+         llEgbBM71stuyG3/dvaHysv6oz8f7cep2sSayaeoU46vxF+Ig+9tGv3GeVWb/5x41Cnw
+         F2Wg==
+X-Gm-Message-State: AOJu0YwfKLUUKrUqdJnVpUBu7uyWhHtNV04oIL2URs0HTNH8prirr+Mn
+	z6I4bs+r2Ck1yMY2NLY3K3v75p5WJrHcEgZQnMdrr6k/CyPGPzqYSHhPX3H2
+X-Gm-Gg: ASbGncu+dVQD8gopC6nP6a7Nfl1v/49GOQiVyNBz+cLYpZnxOAlrbRfP2B0LUE/6T3u
+	nlNBOq/3LHlMfjLdvdqAzdaqWgP1ypADMxlBPPW4G+a2KF58F18lZyfEjsgGwYc8EPozlgoAi/W
+	2EL8fjbQR2gl1FiDUt7JSXL8cV4lh7XPctvtsil2njjGiDEK8bbwtPfv4VK+b6pNeTkIjm3X2qz
+	hdzqNqVQIREVe61rtU2ROl3pDxm7WY+TYfLFslqQ+CMUCPv5crnA2JzfRUyMG7A2MB7FdU0yZUw
+	cKUavXuN3MbRafMOxDmsreVFO8DfIaRO/aJENFA04MhK0fnWA3U3M11zI5ac8mSO8WcOsg==
+X-Google-Smtp-Source: AGHT+IEjjP+LhvMoszuVqGmhgucdh8duWBfeKW6cvsiknaP5k6kiSvc9rQV4rX5Sepsb6790fbbAkQ==
+X-Received: by 2002:a17:90a:d40f:b0:2ff:618c:a1e0 with SMTP id 98e67ed59e1d1-2ff7cf37945mr34271960a91.29.1741847791332;
+        Wed, 12 Mar 2025 23:36:31 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-301390afea0sm555737a91.45.2025.03.12.23.36.30
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:36:31 -0700 (PDT)
+Message-ID: <67d27cef.170a0220.f32a7.1a02@mx.google.com>
+Date: Wed, 12 Mar 2025 23:36:31 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============1205881009395137761=="
+MIME-Version: 1.0
+From: Advanced Health <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Collaborative Opportunity in Expanding Quality Healthcare Services
+
+--===============1205881009395137761==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Dr. Jane Thompson,
+
+   I hope this message finds you well. I am writing on behalf of MedTech Solutions, a leading provider of innovative healthcare technologies. We have been following your exemplary work at Thompson Medical Center and are impressed by the quality of care you provide to your patients.
+
+   Our company specializes in advanced medical equipment, digital health solutions, and telehealth services. We believe that by joining forces, we can offer an enhanced level of service to both our clientele. In particular, our TeleHealth platform could greatly benefit your rural clinics, ensuring uninterrupted care even in remote areas.
+
+   I would be delighted to arrange a meeting at your earliest convenience to discuss potential partnership opportunities and how collaborating with us could mutually strengthen our positions in the healthcare industry. Please let me know if there is a suitable date and time for you.
+
+   Looking forward to hearing from you soon,
+
+   Sincerely,
+
+   Example Your name
+   Director of Business Development
+   MedTech Solutions
+--===============1205881009395137761==--

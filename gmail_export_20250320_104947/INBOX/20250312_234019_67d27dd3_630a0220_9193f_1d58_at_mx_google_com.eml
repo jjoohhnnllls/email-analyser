@@ -1,0 +1,112 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp770007rch;
+        Wed, 12 Mar 2025 23:40:20 -0700 (PDT)
+X-Received: by 2002:a05:6a21:b97:b0:1f5:889c:3cdb with SMTP id adf61e73a8af0-1f5889c6dc7mr20267869637.8.1741848020329;
+        Wed, 12 Mar 2025 23:40:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741848020; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Gw4CeUnGm2l6bp8+c24RAt15zbqs1RGGSlxEdTleUWKhDCSPPMBx2LzM2RgNHbsl/B
+         b8n4ifc2q4CtJqgtY4LNwyuLCvRKCB4Qrb1rbLFRn3mkXzMMXaVlXAUlgqms4mGJdyS+
+         5457Vx4JntFGtjwVTKjjlSQDJ0jpBHJHWjxzaK8Vx9eMwsCFux3Ymt3rr59wXjcDAaJj
+         c5Bhi/8CF4LUl7J4QTRypb+uzgJ/p2+EaKMMVW92dAt+haQrnVFP2rNpkRQBRlTFK9qp
+         l4IHPA+2g/RtrRA17wK5hoc5HZYFUOnOx/+zMzahHbSChk0AI8AVHYKikSGnu4oWnQm0
+         GRBw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=sfbWq0lCQWHIlXWhlnxu05k2keCC9bAblh5/WHT3HSI=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=Ygh1FNWEvAF1gunmjoJ3Ow7ZlniirIG1Ofbf6gmz1qF9ttczBcA/ScD4xO4X1HX6gx
+         CO38PmP7XyvsOzpJOYZ8EUsZR+HDL0Ygq4wS8kNEPMmEi0p8etff6eAPN+E55Zu/6QWq
+         h4tapFCz2LDifb+EEnnVQIbU7OhZE7RYKsn1Gglmjwk5RoAikpmyp0Zzdj6vzd3QH2un
+         U7DHQZae0I0dgugsOhlxYx3Rf0WjS5nYH91QJWEC/8MdW5rswbewQ+P6JdnUjvTPJvbq
+         mAeRDlGOLV5nBwQFmEbUH0ohysTJ1F8aCUdJLzkJjUu4zycNOCuK/y734q2WRlfN3FKO
+         VsYw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=j6jeOD7K;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id 41be03b00d2f7-af56e9c59bfsor513817a12.1.2025.03.12.23.40.20
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:40:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=j6jeOD7K;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741848019; x=1742452819; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=sfbWq0lCQWHIlXWhlnxu05k2keCC9bAblh5/WHT3HSI=;
+        b=j6jeOD7KhyeWwsmPPMiggq7yIZLRh/In3iKzQ1uh9d7ASFMWBJIYz6EH/OV+ytbaA0
+         jvYZbly7TrsPZUBTbCRn2lO4GjRoyPmt0PP81eyVbbYuJuv9Z4Be5OG391OYRfWVObVk
+         DR7z9eswZY01huK4UdL0dZLdW2cIbIiw0bfVLKFk69alTCD6aStW6cJqQGGPGXNYQUrN
+         if6ibCrBsfVUvC+PTt2q3uWgOtL10p88k8Q4fWYqkMxCwYS+rZo7xEf8+8f5vfOf2Znm
+         w7gy/lDdfsLO8y9yVU/XXE4prv/fXye3xIHBiBsCJmg+FTTvwxsOEN7ggaiQMuyjzeEe
+         8uZg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741848019; x=1742452819;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=sfbWq0lCQWHIlXWhlnxu05k2keCC9bAblh5/WHT3HSI=;
+        b=uc4ovDEc4T4deaDL1fsGajuaAaleHvE0mgwZTuD6o2w43udcoyDByf2Ls2w7JZMxqE
+         yCWyh/gsrCAspvYZcCs8B71lHfjdI3piZdX2GbrfFxA4R6FhZypa/j5aO3fUe1/WeKFv
+         99hlNODXCKtCnrIrWhCH2znZHB6oK9HBAx8MQYRaWT/o3RlIYYI59CFE6PqDJzxWl+jE
+         B07DGTLhHiy3D9J1cFwBT2wzOjC3SYOj3eos466a92qv4ELLOpq1IrLEsOy/7ktfmfsO
+         RaN9NAyzv+lWk5ZWs9k6rYuIxmgqMciK1VIIEj9M1SzqtMUKhZreDOmDeG/7YctE4hRy
+         JQtA==
+X-Gm-Message-State: AOJu0Yy3k9SnjD1IkXVVvNWiZoXrJNrLp/PvHgSGZBLqzOVJkOxRXrLc
+	wigzLh2dBZZLlDa4J5wQZ35iGC9JpjOGThknIXQSP5T9obkvEbrXK+Jej2b/LjQ=
+X-Gm-Gg: ASbGncu53W1jbb8UakhgFVqTx6elORQ3c2rxpkRG3K4T/dKLIkcO9NEsOMkQz8oRiGq
+	9llEt0KE/r0OFlyQZIBAzX6uDweVrxDcK1JTHG9owYgkOq27ZAIPDp9duou9aYevnKz7vxMf7Do
+	fNaGfQL9YXoi777f6gj414JR7QyS94vBrx1+Tywv+MWtCYlt/VTUrQBYjCcipUL/8QacE+e4qXy
+	T47o1WWb3TfswolopbqKjh0AdMKH1j902UBt/24WNeM62vFv72yFIKnAQWT30S+Oz4tl0vNptIc
+	MNj86cjDvCWl6fWzOlUQL3dMcwB+7eKxwhQyFBHGQmLOtWMsr0mPPsF2DKUxCQ6BG83kOrzjS/f
+	fB9t8
+X-Google-Smtp-Source: AGHT+IFRsTsRre2PDbRekmfu7ajE3lgLUZJsJntrDYszmlA88wYkhjoK5On/OdpBlrrmXXKxLF/cJw==
+X-Received: by 2002:a05:6a20:729d:b0:1ee:a914:1d67 with SMTP id adf61e73a8af0-1f544ad7917mr40045281637.2.1741848019636;
+        Wed, 12 Mar 2025 23:40:19 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-af56e9fed33sm592332a12.37.2025.03.12.23.40.18
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:40:19 -0700 (PDT)
+Message-ID: <67d27dd3.630a0220.9193f.1d58@mx.google.com>
+Date: Wed, 12 Mar 2025 23:40:19 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============7881826482175552221=="
+MIME-Version: 1.0
+From: Elite Group <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Re: Your Inquiry About Our Market Research Analysis Services
+
+--===============7881826482175552221==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+Dear Ms. Johnson,
+
+I hope this email finds you well. Thank you for reaching out to us at XYZ Consulting regarding our market research analysis services.
+
+Upon reviewing your request, I understand that you are interested in gaining insights into the competitive landscape of the healthcare industry, specifically focusing on digital health solutions. Your project seems intriguing and aligns with our expertise in this field.
+
+Our team at XYZ Consulting has extensive experience in conducting comprehensive market research analyses for various industries, including healthcare. We would be delighted to collaborate with you on this exciting project.
+
+To provide a more accurate quote and outline the scope of work, I would appreciate if you could share some additional details about your specific needs, such as the geographic regions of interest, key competitors, and any specific market segments you are targeting. This will enable us to tailor our services to meet your requirements effectively.
+
+Please feel free to call me at (123) 456-7890 or reply to this email if you have any questions or need further clarification. I look forward to the opportunity to work with you and help drive your success in the digital health market.
+
+Warm regards,
+
+Example Your name
+Senior Consultant
+XYZ Consulting
+--===============7881826482175552221==--

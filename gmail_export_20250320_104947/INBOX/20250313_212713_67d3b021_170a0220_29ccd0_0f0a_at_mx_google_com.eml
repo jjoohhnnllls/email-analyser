@@ -1,0 +1,109 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp399065rcd;
+        Thu, 13 Mar 2025 21:27:15 -0700 (PDT)
+X-Received: by 2002:a05:6a21:648f:b0:1f5:591b:4f73 with SMTP id adf61e73a8af0-1f5c12d8e83mr1872624637.34.1741926434916;
+        Thu, 13 Mar 2025 21:27:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741926434; cv=none;
+        d=google.com; s=arc-20240605;
+        b=PxEoxOAWz5CUlSdgqG7d9ZwAi/rNS9o47TY7+02s5LDlPAHtxnWurF3/gvHPYaN0/j
+         gXIvtGFY9Nv64z2scjnv297A1GYUyi2qv6O/gblc26dRtRCWlVYb9TYQmS0UzImpmb17
+         lSl13h/ITii+PAqzf1gaupOdWIJU1sF9/y+j0EOFXl5670YHgoObwljV21ZHBKVHMTk6
+         xdNMn2unxgbUxMo/norJgxxeucUBo38uqEM+sEB0J55YirgLFO+0dLnqXu2RLrY3EaGb
+         ZMGSvpGLCER4qhFLwCeEAw5ooJkNOzVVB8VrZ2XYPTLMF6ibTTqzLI/ruHzzVbNtS/tY
+         tyhw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=3+LaBU1KVXNko4HBm6f4BDRBiTPA/Rick2/suS9IXXk=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=HcRUjzEwHIZAZ+5vZ8AvoyM8pRw4NIq7s/AZIv3uYkvLm1UfPokHzNzK1RLosP7Cry
+         BUl+hLDlZ1CLHdW67iuVr8AiD1/D4YUN292c7J4Mz72Z/aNkF+syuSdkgQV4gds36Mf2
+         yo2t82QEdt9W8bZ0NMSwuRu4Ld1gy1e/ruqDnitXfJMChqfHcqYzNmRD7eFlAvw23m3W
+         cCG7eRt8v4GG3CSsBQeGC5HALTe7RuS345sLe/RP8VVptCXKXMo4Zvc++0sOaxpX4tUd
+         zXRmuYdEdFlCb966ATSEGII+CHjWrQE7CtOnCLGS4uPEiufxeVS3DWBFtBDw/C6nGrb2
+         Mx/A==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=LR56rOHQ;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 41be03b00d2f7-af56e9d5fc9sor1668042a12.2.2025.03.13.21.27.14
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 21:27:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=LR56rOHQ;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741926434; x=1742531234; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=3+LaBU1KVXNko4HBm6f4BDRBiTPA/Rick2/suS9IXXk=;
+        b=LR56rOHQ9mAOYj8hvUaYqXWFHybkHNoZWY7A1Fye5aCRlBrfFegK/nKezd6rJZrIX5
+         sLudZeP8l4443g9vG/vPL0xDQ4oQyVJmI9PodPFEqvwfi6R1egtWQGekdFMni2vhfp5j
+         uSrrQ0e2RJr5oiWlWf3Bu3JdwyBtA7WZDsv2rhTfmYKkzePSd7jmTRcVwpnmjppQuxA1
+         QoqM8MsHYivchhUzuL0Gv/Eulc0nVdorfwSLP/cVUZBnXGv5gg9CJWAkl+SRiqqbCGOj
+         V4gR2gzp+jyN2O0WzOUIPD+xA01HiCB276eUoizO85xNdzCw3Cs40VI52SP9KECIoUrQ
+         Wx9Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741926434; x=1742531234;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=3+LaBU1KVXNko4HBm6f4BDRBiTPA/Rick2/suS9IXXk=;
+        b=jbTJFJt8QUb4eKLcl/C6IDU8hpmDIYLwHRaYR9jQB2kQZi8ICRDWeJ3FZq20H1wpMn
+         e4eXMjRy1W0VGhbffqKIOtMyWhebpV1J/atFiWECunO8IDnZbAb6J7t8EHyGCFlhW+V1
+         Y593mkXiwLmficLpI45DQKCWSrMKyLQk3QhY7G786PFzvaB6Mo/DQvPTtnMRv++noFAx
+         /PnDAX64hxlZ5IKkWEiSKZmtWdiOfU4T1cAVqpzhmzy6aXoKEw7HuFUsucm6In4qHv7+
+         DFGORnhwDWrhZ0ocqi4KvgnVvsZOtBUbl7llklBDrH7mrBBHjd4Wr9uo3s9DkNTutddM
+         9HlA==
+X-Gm-Message-State: AOJu0Yy7oat9b53Nt1NWOgoabdXQFDVQwtwE4P1UPrekYZjPxSiQgyVP
+	tNYzjGUvHVS2J2Re8yZiniWhtDrbCjoWHoS4BX4fZ7dbJi9vQnPbZeyoXcdh
+X-Gm-Gg: ASbGnctu8sQcXVt9qRHkzLOfaI2NYrQgwevyy7KPtjd1Ud8oCCGZe7CI1zVAYS11Fwq
+	S9jyEZ4qZTP0q7Xo7XJkenS9HrEtZK436CxI0VUWdKPP2t5lFlUvkGFkRi6GzQlm8nQvjT+CFFz
+	nGaJHfMxk+ltlpD5+o21w6SOOuieis12rGfduH2e3u1+cmPCjEpHAbnBFacjcIdkoA3tQ/6ya6u
+	xoSH+D/tFpouMQcGW/j23/qwBG2GftSwlobjcpMSjPvfZX6nG/3HS/qQBEyXV9zXAfeejWHOMEh
+	jsBGhB8yXSdt2XtqaUTWBH77dmoVvJhXghH6m8dUPvxwn4BMxyqRlG+UlTtWYFlL4HXoRw==
+X-Google-Smtp-Source: AGHT+IGy90Fl0iZ8W8o8uAO+WqslufAREyyBSiNHNCgJaLS1WAMkqceirV6QuVbbiVtbayUqe0dcEg==
+X-Received: by 2002:a17:90b:50ce:b0:2ff:5a9d:937f with SMTP id 98e67ed59e1d1-30151d7106amr1552098a91.24.1741926434179;
+        Thu, 13 Mar 2025 21:27:14 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-30153534589sm243348a91.25.2025.03.13.21.27.13
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 21:27:13 -0700 (PDT)
+Message-ID: <67d3b021.170a0220.29ccd0.0f0a@mx.google.com>
+Date: Thu, 13 Mar 2025 21:27:13 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============1300822485777873128=="
+MIME-Version: 1.0
+From: Mary Taylor <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Your Consulting Engagement Confirmation
+
+--===============1300822485777873128==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Dr. Abigail Johnson,
+
+   I hope this message finds you well. I am writing to confirm that we have received your request for our consulting services on the topic of "AI Strategy and Implementation" as discussed during our meeting on March 10th.
+
+   As per our agreement, our team will commence work on April 5th and deliver the final report by June 30th. The project scope includes a comprehensive analysis of your current AI strategy, identification of gaps, recommendations for improvement, and a roadmap for future implementation.
+
+   Our lead consultant, Mr. David Lee, will be in charge of this engagement. He will liaise with the designated contact from your team, Ms. Lily Chen, to ensure smooth communication and timely delivery of outputs. If there are any changes to these details or if you have additional requirements, please do not hesitate to inform us at your earliest convenience.
+
+   We look forward to working with you on this exciting project. Should you have any questions or concerns, feel free to reach out to me directly at Example Your email address.
+
+   Best regards,
+
+   Example Your name
+   Example Your position
+   Example Your consulting firm's name
+--===============1300822485777873128==--

@@ -1,0 +1,112 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp762160rch;
+        Wed, 12 Mar 2025 23:18:54 -0700 (PDT)
+X-Received: by 2002:a17:902:ea07:b0:224:26f2:97d7 with SMTP id d9443c01a7336-2242888652cmr298371045ad.8.1741846734365;
+        Wed, 12 Mar 2025 23:18:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741846734; cv=none;
+        d=google.com; s=arc-20240605;
+        b=NB1NnBeArjnUiU0+h6Jj/buVpKyLSJXtdF4UYEVPSe+CyDo60Z3JWF+kKxQTzatYAd
+         RFli0DEPmukBctRjA9V1WDzf7gZgWY6mPYlGecw2RYQ0mPvJzoN0RsYeErck0Du4ErS0
+         nsS6b8BGypSt4PITE12jcA4cdVSJDiwuydK+KQu/b494eodASM1doUvC5HOArVtUZ+VM
+         jZaPgTtIB9W7aMH4empJQECQYCHsGYPB0gyYy4vCOwOfYTzvs8YX4FqE8aO9jYwocoyF
+         ci8f21WMX47cs4MubiFh7OorwxnZjHPcYVpK2T2JGK5WAJBzgOq1wJGa27csWwgPDXx4
+         oq+w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=OSLGkjnD99OAGtG88g2ZIrAzhnXVHAb0B49We2DQWTs=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=JKYTEsQ31ASe43L81GkNW7nwltzN9LI+vvEzDJmU6PLlO3qmrx5N4p/veRZaTHfb3C
+         XoWZux4wFKgSYqNmt/Ismrnrr0t/PIS4hjRByb2hH1U0m39tpoGWbl2tMVGJbdJ3pVsu
+         yq/2E7c1Ozhn6s3/VrpOHiYL646PsfD/UQyL8Xr5xNjr0+RG85kKi1lUNxUChiBevvky
+         n7zMrJH7hRzy8LnVBPmSmmqS9YqNks2qexSUFTOVu9sRojyJneA5YxlabcAhfG6p31F8
+         1uP55nEnLk1i480tT1sKTPrPg7JyqR3hWaR7Kdc2I0VaFGqNhzcZEMzMQRIR/o3i4t6t
+         /B2g==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=QO2BSudI;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c6bdb5absor4964745ad.10.2025.03.12.23.18.54
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:18:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=QO2BSudI;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741846734; x=1742451534; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=OSLGkjnD99OAGtG88g2ZIrAzhnXVHAb0B49We2DQWTs=;
+        b=QO2BSudIq4HfOP2lWp7rUhmIHlmJvnuIYuCEaopPMZcS67sYrBoYEeh8yrrxd6yRHo
+         F8TopG9z0JSBgSBAkE8pOnM4L7jowgtyuvoAommAZbSfe3MRX5ywtIZfhnef4NOMj0I+
+         dYFtoSgjH9GhiultXKo1ny8ID2dD3TXCYlZ26CzygPyAHttARV+rAntJ8qhvjra7pJfJ
+         k6MkCnr78LvvP+H/B64qPkEV8UlWDt9cRjj76khQca3gzkP71b960J1tpf4VZljuBgjh
+         8psyuPtzTWeMHU2WgYFxWkIXcqwG6VB5jtixdvwQKakKVKbaml4WXZyiKdIO1pCANtA9
+         UoGg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741846734; x=1742451534;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=OSLGkjnD99OAGtG88g2ZIrAzhnXVHAb0B49We2DQWTs=;
+        b=ZF/C8mg+YQdP3yCBX8e9v7axnJCSXcm3FPN4NhcOd4ld5R63fhP54xXuJC7d3ELowa
+         ZcRWVFIdBTjnba/FLRuTGpdiCWSmNcyWa8ko9ZWEPBEPqDmSygpGjPuPrY2GwRZPmopf
+         F7dhwy6nwDxHXya1VLtFx++JypC0hpXdcVMVdiZj5Q0BD6sv4PcgkU9F9ECcz0/M90Vh
+         fAP8Fw3o+KseC+FuUfwlQq/fS17SfODh2TKMZ63AzGk1O5nzQJyfqYpP23BZ20qdcGcu
+         skg+ngCEvtPVhBfAsthRLrFKMSTy8DdUyNkLR8C8q9sWiLNF2xpAWkjZXER9j63hIDYl
+         HBrw==
+X-Gm-Message-State: AOJu0YwqGUOPsj6nrml0x4EdHN8KcAkW5XvqNWfmmNetsXKGYh35UXjT
+	haseGlpGi9v6BL81KJCo3GodNoWgVfNDxddZ8pLAIkVKjBcPpTYIazn5V53knUk=
+X-Gm-Gg: ASbGncvNQduZ0w1Cfs7fuhSm+AyBlD4iio6Bab182ictruoq4cYWE6QGMxMAJ5QokE3
+	DwXUXX6+lnWeNC5NAtFGqAUeo9CX3qYOo2OhZYZPkkMaDRriaTbTSh8U/8XVVTrMY0Q7t46OMQ6
+	KlukHHjNz3wr58GaUEVoTnge/m5H/I0Z0GJvOfdcVcaq+VsPzo2HIKuAYR1++fSD8JWX4oOIoX+
+	W3bLKAp6+XgRTK6nGKDZTAJXzofLqQSEKQfsFCm+nW5dN8QnYyfhLXXjqDYXp5Sp6pWg27+gOuB
+	oaEzeyJrsJPephStdJ3Gh+SjMDZCBlwnplKL7rScu7U+7y3OVEWnAdcXDxNRJXvx9InO3w==
+X-Google-Smtp-Source: AGHT+IEceR9YyIlnFWw4NocI5oX9ckrCpBnrviQMPV6SeeoAsiPmGH9eiuOy2O3XJ4C1yOuoDaSxjw==
+X-Received: by 2002:a17:90b:180b:b0:2ff:5357:1c7f with SMTP id 98e67ed59e1d1-2ff7cf3d0bfmr32355112a91.30.1741846733456;
+        Wed, 12 Mar 2025 23:18:53 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6888303sm5882965ad.42.2025.03.12.23.18.52
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:18:53 -0700 (PDT)
+Message-ID: <67d278cd.170a0220.2b7faa.1d10@mx.google.com>
+Date: Wed, 12 Mar 2025 23:18:53 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============0367115278866083773=="
+MIME-Version: 1.0
+From: Charles Thomas <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: No subject found
+
+--===============0367115278866083773==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ Subject: Urgent Issue with Recent App Update (Order #123456)
+
+   Dear TechStart Team,
+
+   I hope this message finds you well. I'm reaching out to bring an important matter to your attention concerning the recent update of the TechStart app on my Android device (Model: Samsung Galaxy S20 FE).
+
+   On August 15th, I placed an order using your app (Order #123456) for a new virtual reality headset. Unfortunately, since the latest app update, I have been unable to track the status of this order or access my account, despite multiple attempts and troubleshooting steps.
+
+   This issue has caused significant inconvenience as I was looking forward to using the product for an upcoming event. As a valued customer, I would appreciate it if you could look into this matter promptly and ensure that my order details are available in the app again.
+
+   I understand that updates can sometimes introduce unforeseen complications, but I trust that your team will be able to swiftly rectify this issue and improve the user experience moving forward.
+
+   If there is any additional information you require from me to expedite the resolution of this matter, please let me know. I look forward to hearing from you soon.
+
+   Best regards,
+
+   [Your Name]
+   [Your Email Address]
+   [Your Phone Number]
+--===============0367115278866083773==--

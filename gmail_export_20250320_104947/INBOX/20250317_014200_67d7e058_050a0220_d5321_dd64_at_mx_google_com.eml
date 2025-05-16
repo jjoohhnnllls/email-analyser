@@ -1,0 +1,110 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp2178072rcd;
+        Mon, 17 Mar 2025 01:42:02 -0700 (PDT)
+X-Received: by 2002:a05:6a21:b97:b0:1f5:6b36:f57a with SMTP id adf61e73a8af0-1f5c13da31amr14883030637.39.1742200922170;
+        Mon, 17 Mar 2025 01:42:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742200922; cv=none;
+        d=google.com; s=arc-20240605;
+        b=ghvuiqxvEgAbajf0ZjDVoewi3rIemsIrTpsqRSD5tIfHv3O9+diPn3lMcwPyJOuVUj
+         7vNiaEioeNPILHSfmyAEQdmy5NSeVBvBH26L/imnBGr5CUtBVIZUgd/c3MDy0Yf8qg36
+         VFh8vh0FifoMAv0mzW52AR3vYxL4fT2tJqA0BGu2arnesDdGA4mMnq0I3wna9I8F8/hp
+         PQYryeUgQOEFhR8k9SlOCwzQsinyxlB2ZGXNxIzDYZ3mb8U1HoP9jrKa3L1LNSjuydqa
+         gIjUdBm2gygmms1KFI8CQPntBaG5sMyRgTsbmb+f71H6pJ1f594o9y6TOxUsyS9Ju3gy
+         qESg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=8Em7U6IfQ2qiJ0iuSKUNPrZb/b13MHFyl2NW43kBWT0=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=UR+HsCSMR6hLMuflulnHnYdYMPmNpa9FUCzOFuH+ndqjptVFjgaH/HThpjgeN33Ahk
+         Lb0zuU/7Y6ulpZW6HrzQa55yoNklMUVmf5omEaeozuKY6tBJK3txINp+q7OCB4NLxey9
+         YxRV/tPq8jztrI6Qwke46DIs9GKPyvT52h0ASph9BGtdLnsWGNPUA1MxfevSlTuoijIO
+         TBOoEaUjRoS1JxYkhsiVAjsOynSuPWvlcHEqKySOju6pXjRsJ4sqwsafQwEeDaGFRpvB
+         onB9MxbRkedJN40IPD61QM7R6+94yOQvS/OIs5m73xILySPFkLPCH8qo3+xiPbnSmcAF
+         THmg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=awUDjRI5;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 41be03b00d2f7-af56e9028absor4492109a12.0.2025.03.17.01.42.01
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Mon, 17 Mar 2025 01:42:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=awUDjRI5;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742200921; x=1742805721; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=8Em7U6IfQ2qiJ0iuSKUNPrZb/b13MHFyl2NW43kBWT0=;
+        b=awUDjRI54Cxv5xiKTUPJpdfAp30PVIxhn1CdhezdWWS2JxDh1DWAW+mJaR2KLbnc7S
+         n41rLPw/aADlxFibUc3Dw7hQlWnFuL90mRINORKClqoQb7O9EVc8e2FC5iLk1CaxJhXX
+         ynq7wdlYLBD7DBhGi4EDUUzJDFUd1N1YgIleJA+fSqyrHdDi1mHAObPTHE6GFEJQqRQ0
+         CAs54rC7SQ6vgzF9zzl75cdB/dv9KYQVofMRytTRaZFQ+sH6Q5yP4oj/iZZE5ijW1l4/
+         +67I1qplRUudsphefvcNmb5UleOq7llszmSbaUaJftRB++ELww1iAPMoryInB94RfFER
+         QYMQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742200921; x=1742805721;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=8Em7U6IfQ2qiJ0iuSKUNPrZb/b13MHFyl2NW43kBWT0=;
+        b=OfefFRhDdBIWK5uhluUUdgptBplunqANo7jw12eQ8R2gpiGiX9OpDCoIXagPXwWXTi
+         usyF0KFoL9sTu2crOOs3V9peBKlV7xDXFee8UGITmlLdhAZ48JcYzs3PymAUIn0kiyvw
+         vsX029kMjJd7ZS0u48/phWcS77OGrRscRqukGTEwyhsi5yEhZxyWCljZsSwde79mXvrH
+         A0y8rYRCu5PI0fcb6Yh5oT8gQ6WugV8rxKYp3Ys5OkE8LCcZ5bSz655w+liC1RfNroNp
+         wjMZqjRAnnR7tuEodTY2J/jGL0Z5YVVAeXfjNWzOAYXEFNm37o2DXJ1m9zKCHdpt69N6
+         9uRA==
+X-Gm-Message-State: AOJu0Yw1CoIjd0DdeszIKturKTPvhM3ARzdCTGrTdhyH0XekqCMTA4CI
+	tFINfN9nfLa5dBZOptZZkOp8/htbJ2Z9iht8Jo5aM1e99aZlDpIQEPgX5Q==
+X-Gm-Gg: ASbGncsUW1JR+yLHBQPwhFCJUtpROKWk/fEhNMkxJ88rhlKfrL0AMaD7Jx1ts6e/kGt
+	ljKptfJuNGuQMj0q9I9alQpVOlway8vIAGPI0ibjf1GlsmtmI83nWB4HLry+5iLnrQqdOL/V5JG
+	6OMmOjSnwH1Zm70mmSb11ZMJKTE+XuZBgh69o7tYwhtynTdjv5igGQBToP9rbw4g1KlYrPw0tQ+
+	yM7fMhkzIUh97BB3K0H7aAZHDxhQ8jFlXss99o2e9DaMJAkUGQhRa8jFFWie8ZfYsn47dDRkTB6
+	f1+HVQBwAvQr3FSVz/RNUsXU1Atc2o5rWJMqiJcKeImW3Sz2OiaW2YkYYWQlyacp5wL7vA==
+X-Google-Smtp-Source: AGHT+IHPPfsHavX2SXyPDjtjZkY70adabd8lF583MI/syANX+PPESU+gcOnpN9NA3lO17H7gE3+4uA==
+X-Received: by 2002:a05:6a20:1590:b0:1f5:5b77:3818 with SMTP id adf61e73a8af0-1f5c138641bmr16286019637.27.1742200921406;
+        Mon, 17 Mar 2025 01:42:01 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-737115293desm7025825b3a.9.2025.03.17.01.41.59
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Mar 2025 01:42:00 -0700 (PDT)
+Message-ID: <67d7e058.050a0220.d5321.dd64@mx.google.com>
+Date: Mon, 17 Mar 2025 01:42:00 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============9129346807801238881=="
+MIME-Version: 1.0
+From: Nancy Jackson <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Application for Position of Registered Nurse at Pacific Healthcare
+ Provider
+
+--===============9129346807801238881==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Hiring Manager,
+
+   I am writing to express my interest in the advertised Registered Nurse position at Pacific Healthcare Provider. With a Bachelor's degree in Nursing and over five years of experience in acute care settings, I believe I possess the necessary skills and knowledge for this role.
+
+   In my current role at St. John's Medical Center, I have honed my abilities to assess patient needs, develop comprehensive care plans, and collaborate effectively with interdisciplinary teams. My ability to remain calm under pressure and provide empathetic care has been consistently recognized by both patients and colleagues.
+
+   I am particularly drawn to Pacific Healthcare Provider due to its commitment to patient-centered care and innovative approach to healthcare delivery. I am excited about the opportunity to contribute to your team and help further advance these values.
+
+   Attached is my resume for your consideration. I look forward to discussing my application with you and exploring how I can contribute to Pacific Healthcare Provider's continued success.
+
+   Thank you for considering my application. I appreciate your time and effort in reviewing this email.
+
+   Best regards,
+
+   Jayden Lee
+--===============9129346807801238881==--

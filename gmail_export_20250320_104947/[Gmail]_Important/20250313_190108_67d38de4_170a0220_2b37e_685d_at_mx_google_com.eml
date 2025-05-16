@@ -1,0 +1,111 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp348847rcd;
+        Thu, 13 Mar 2025 19:01:10 -0700 (PDT)
+X-Received: by 2002:a17:90b:5403:b0:2ff:4e90:3c55 with SMTP id 98e67ed59e1d1-30151d70cd0mr957534a91.27.1741917669819;
+        Thu, 13 Mar 2025 19:01:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741917669; cv=none;
+        d=google.com; s=arc-20240605;
+        b=SVuUSF8iYR+LmKpAkGGp5GV/AKE6YUie5GBJvcusFQuNF9Ekw4j+MbIVrTmYqo7uKU
+         7utz47F9h82f52ayQBNrf/O1TxrZpz4q+JFv0vg/7/AfJvJevNJ6sjfJcm079fCiD+5u
+         y6BE5uCpAKoXYKe8rdkJ8vxdMoVR/1N6+IOtvqALteIirvhVH+Zb/fiDN02FQv6gcaVd
+         2eCx2D7TmmRSnGyb4bHCqgAhIxG99XBcGV25ak6wzs6IiCCdM9QY/rR0g5hoXgbKyBlO
+         vniscveVNZrTINPS+VHrg48gxI5nllnTaKEwK9IMhkdjJyyGpfb3VZ27y6ahOqS9s3t7
+         wt6g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=GEqTwVCWCxU0uSKUYTmSOhbui44hyYkmhXxuiaLJAlE=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=SlJCp6zmsX0CMMkXaxjKLmd753k2xBSqdSdPgyVfsnrEykj+Cz7vA2CYkMcJUXFEhI
+         VDshlod7vz4relmw1nW0WQEtAJbcaG2SCaAnbZHUuwdK/uh+Bh/di73nePdBwljRAU/d
+         /eavs0BesB2Bln7fS0wnryfPp9EV1gIr1nz+DeynjEnQ5FTRzaguzVLbufyEWw2UoEtr
+         l/plXzsrXAtYiDYa8wp+Ls43ktcYfT9nP1xwgoMR2XKBWAxu2H9XEBXUDQvW0voyB+qU
+         tLTsxEWG6Eksg3G+ERxfjbAkU95igryzv7wgZwftyEljD0GeRNU+xOu4NUimT8240YAa
+         DCLw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fxnBK7zo;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c68743d5sor15253575ad.3.2025.03.13.19.01.09
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 19:01:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fxnBK7zo;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741917669; x=1742522469; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=GEqTwVCWCxU0uSKUYTmSOhbui44hyYkmhXxuiaLJAlE=;
+        b=fxnBK7zobFyvb/XZT+1ahfmUgRkSM737VRK3aI4TtYHYx902fwMlXncmstYyG5Isa6
+         M9H7n84G2dIqRCGU01rgqt8Rp5kofU7ztN7kaoTC5xFjqVUED2aSLVC1hJlqqJoyP9MR
+         902ueeUzY3icHkNhYJp7q1s+keMUqgxieNqqxDZsXkf/Nn2txjL8o6AdMhTEKGdMo3j6
+         m4UWyWc9M2y+4IDPIh87acdI8G/sWvhH2DnEqkY5g5ISJnP2lIr2DZKQI3HyA9h+DX3K
+         pvrWfJhbvPuGtqg6qnNbM/9yjFYgHSpRgiI9UXkgDf5ZI+F+4LRF1RqHeN7f3WUlJeOQ
+         B5RA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741917669; x=1742522469;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=GEqTwVCWCxU0uSKUYTmSOhbui44hyYkmhXxuiaLJAlE=;
+        b=guj0+QgzHT7Te9AH608dOW7FVdNMWnXJYYoD7NIXPXR4ZR8AGYmTWe7vxnXpQfcKWX
+         cOC2g3QBby2cAWEIbKoRVYtknMrDbJC7FWU1cVli3ECOEsEUGJXmy/38Z4cMuV3hCVzX
+         rIrVkTdOIWIz4LRstsNPQ6pt2lJeSV0/+QadosEaGkUbNqNoFr09Q+elaWLDO2WwZiSa
+         3G7igrXqZZ4cCUotshobwhN0PpeIKCtjTviPWX9o0Kw4xC2sikxq3lHqquyGbXJld4AH
+         IDqe7LAvalFyQgxl1fprARHFx3B+SMsCXQ6ioAxbMtZqFC7WPkvZczyhDPUFljqSj4mW
+         RHfw==
+X-Gm-Message-State: AOJu0YwmYI8fEBlDMOc5mLOhc09pYyzt4BP/F8tNQwaBV4JxgHILZ23s
+	2Uk7oDVaRn2H9GFzpzXHMwqsQofIEwn2C3gi5zuuePx7JS1VKe5wkirlvrVx
+X-Gm-Gg: ASbGncuc87HUoUDWgBHYoDJ4FUjOAqL2Vk9987YWuBgRnZdblDLq3W4wacNlMN0oNlV
+	KDM3bIAADpicHe1NvV/gFx6JPPXFsiCFAFcQwMFze+eloZ6gWPo5uv3PD20B2K2/HyDHoggF51h
+	ggmKY32eKvLvgbP7ScOAd+QddYaed7CEqB7GTe0D8M6UAVGDEZwm1GcDw9ICVwcgW20kKsfl1Sg
+	LK2yWZFhDGIeWGEkITIPNelLw0PjZj2COLlgPS+t+JDfmQXSsCFR7Jo3ldXsojNQNpggfbIRAbm
+	r3mnHGPLpndmafAUwRuu4oUdttirQGVYORHA/Mab3VNVIGpn7JIdrlBwNAnLVNq4lIzXAw==
+X-Google-Smtp-Source: AGHT+IHLJzXvcTX8xZN1wBYRCMUmrzeWp6kH8WIt+apfxaERxhYlxHENNnZQqbrVGT8pE/HjMBLj3Q==
+X-Received: by 2002:a17:902:c952:b0:224:584:6f07 with SMTP id d9443c01a7336-225e0aee8d6mr8769015ad.37.1741917669054;
+        Thu, 13 Mar 2025 19:01:09 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6bbe7b6sm20476735ad.177.2025.03.13.19.01.08
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 19:01:08 -0700 (PDT)
+Message-ID: <67d38de4.170a0220.2b37e.685d@mx.google.com>
+Date: Thu, 13 Mar 2025 19:01:08 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============8036084452861842612=="
+MIME-Version: 1.0
+From: Elite Innovations <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Collaborative Opportunity for Technological Synergy - AI-Driven
+ Healthcare Solutions
+
+--===============8036084452861842612==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Dr. Smith,
+
+   I hope this message finds you well. I am writing on behalf of my company, MedTech XP, a pioneering technology startup specializing in AI-driven healthcare solutions. We have been following your groundbreaking work at Neural Care, particularly your innovative approach to neurological disorder diagnosis and treatment using advanced machine learning techniques.
+
+   Our teams share a common goal: leveraging technology to revolutionize the field of healthcare. In light of this, we believe that a strategic partnership between MedTech XP and Neural Care could yield substantial benefits for both parties, as well as the millions of patients we collectively aim to serve.
+
+   We are excited about the potential of combining our respective expertise in AI-powered diagnostic tools and therapeutic interventions. By collaborating, we can accelerate the development and deployment of cutting-edge solutions that address pressing healthcare challenges, ultimately improving patient outcomes worldwide.
+
+   If you find this proposal intriguing, I would be delighted to discuss it further at your earliest convenience. Please let me know a suitable time for you, and I will make arrangements accordingly. In the meantime, feel free to visit our website (Example Www.medtechxp.com(http://www.medtechxp.com)) to learn more about MedTech XP's mission and offerings.
+
+   Looking forward to the possibility of working together for the greater good of global healthcare.
+
+   Best regards,
+
+   Example Your name
+   Co-founder & CEO, MedTech XP
+--===============8036084452861842612==--

@@ -1,0 +1,108 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp2108611rcd;
+        Sun, 16 Mar 2025 22:39:11 -0700 (PDT)
+X-Received: by 2002:a17:902:e74f:b0:223:26da:4b6f with SMTP id d9443c01a7336-225e0a369b5mr119492965ad.14.1742189951290;
+        Sun, 16 Mar 2025 22:39:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742189951; cv=none;
+        d=google.com; s=arc-20240605;
+        b=PhCrUP9W7BggeODVocy720umDXbdSnSvcnsMFQsCvNLT2YTkCW8E9MyrCM8qStj/jN
+         ibUeVPeTKgq7RzyKyXcrLlPlnV08o/nIg4VmxC+SJvSKzOeQIUAk2qPvbmZqX9FSdQxP
+         p1h4mqjH/aIYt9QeEc+8TeV/QxeqYN7wjkpjZI6P9vjgbsCf8K9BdwavK/uL3zL4iQLw
+         q9N0+5Ovn8M9lJbsGn/bgAy2sNG1aJxBF/2dcpWi+5DA/UG2SLKdmwcOvclb6xFKcWSi
+         5vR/vnK3IuYc1j6tKKq53Itzz0PTQYSkM13eAHnXO41P7AT2XTW6Z2R83BUldcyiYvtY
+         K/5w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=0JFHMdxhgh7a0cTZ2HGIsjLjg7zhfo+1M/5H9DKnuOI=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=TuG1ty9QuLb7dxwBFWenECDgPb2WHLwJvCHsV77CYbdJh73wkIbW095T/VlPSnOHPU
+         7QW2tE16jDhtLzLWuUkYOVRwOhtnCm/UduEEcWMWVQNDVJBcTese1nG8NWkIOnZprKs3
+         +GG/8lwfrgQU3eWoTmIBpEPFY8rV569vQxo2W8h9mAKwoBOn3OjW6S4wE8uy7Oo9QXPu
+         PQFmvg6/bHMRpiSfHIY7tf95hRSsxYq3xeZhkPlFBX9UmClhYrMhIKZZux/6/70+EjFI
+         wTNcXv7p5HDJyYUB+MFB5pCNxHTxdhWzObeii6a4Us92+zKS5jurRtxHqlJpivUb2J9i
+         2vXQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=l4Bt2S6Z;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c6b48166sor60451735ad.3.2025.03.16.22.39.11
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Sun, 16 Mar 2025 22:39:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=l4Bt2S6Z;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742189950; x=1742794750; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=0JFHMdxhgh7a0cTZ2HGIsjLjg7zhfo+1M/5H9DKnuOI=;
+        b=l4Bt2S6ZZtBW+W66P+RxS3KECJNRb3e76ZzLYg6f3atfyKrF8ZfnRAiae1HYnRCs2O
+         QEF2eFz65ire+wjlPtYIjTXRGtQKsUXr2uCT+9A4CJOpc/3EFOfsgSsRjt/diIwwURhY
+         5HQATI7GPXDTfRu6Ha2823CURbJVyyDN0u4OZTCTC3oORX+AUTwIu6/j4N5darLifis3
+         bby6K7oiKzMBu/1lBOzQuwWOLTLDmv8r0BV/FelMhzyCr4ogrpebK6rA2vC8SFXy771f
+         CKjhYPqN3lC1JSdAWlL295U7c+wv8HD6VrUe3JrdzlvJ0/BXn79WG8V6VA3YYFKVy2ea
+         gXXw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742189950; x=1742794750;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=0JFHMdxhgh7a0cTZ2HGIsjLjg7zhfo+1M/5H9DKnuOI=;
+        b=kH1f+0eJIFA2aL0Fy4DtR8XCU/HIULVAk2eGxPbbGSpfV8IaPE0/1Gm1L0Zci63B1f
+         DEWuAbXEHsnCduXQgBJ33etso0QwiZRFEvXUDwY1GgJVfse71bYWPLeV+GRkgkFz7tQd
+         /I4FldZH1SAbIsaPUmQ87PCbVnMHzyqX8cTOxzmOl/ctaI2IOFMUhEhLLKFfCN1FjY4J
+         PLtD4tgojVU0rhZ1ZhTr0UVxeHe+f/dpid8fGU3YKgNxI1msJdAquwM115mY+uFWBzrD
+         K14gOdxOWByjtTl7ZBYXpvCKLNNC15e/4BSjGj50eYN7EMZir/O7q6JG9Hs8AYlRiU2D
+         TyLg==
+X-Gm-Message-State: AOJu0YzKQBux5Z1riKwIQLubB6/pl60EpohO8k1cvlCU7xHDoXYXC/61
+	afAs67rFgnMVQ+6kefMGTjLzpl5qG1lqLfJLAeTX9fzSFyaM1cTK/hWOHA==
+X-Gm-Gg: ASbGnctu0DZyDD+Z6VJWUxMbhjtrckJdCDVv4cdHkCZih+EPyzzfu2trUdwpr4oKcP5
+	SrHYFul+vh3pNxamYQMQTuV88nKdfohEcoRd04qzuQy6PcsizlE8uP39Sa95GkuytZjgb90Wq6c
+	N13dNn1gQ3t/ko+MWdAzedIwbObL5eFaYGkqucY764HxooEobrC5SB2d4Mrft2C2HeCtEV0olXm
+	oUdX+UzrmH5SwPhkGXatu3++EAB4FL7o9mONZLdkMuZnrEKjAJOQSO+RY3w4td0NJEs6vTQT1gc
+	QON5/is5DAeNZl3DQrKw/VpyrdhLZUTYLI4UcUyklJIVsBF1GkKQz7uexb7SgjELXa3ZYQ==
+X-Google-Smtp-Source: AGHT+IHprSDd69Fl7lOXNgR66GZH0uMx3tvRF3VGlvjZGRNq4EhmmDYYYv2XoIDVfHET2nve8eEr5A==
+X-Received: by 2002:a17:902:eccf:b0:224:f12:3734 with SMTP id d9443c01a7336-225e0a7b300mr142286535ad.30.1742189950358;
+        Sun, 16 Mar 2025 22:39:10 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c68883b8sm66405725ad.15.2025.03.16.22.39.09
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 16 Mar 2025 22:39:10 -0700 (PDT)
+Message-ID: <67d7b57e.170a0220.1a67c9.d8bf@mx.google.com>
+Date: Sun, 16 Mar 2025 22:39:10 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============3600822658209471717=="
+MIME-Version: 1.0
+From: Joseph Williams <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Inquiry Regarding Your AI Chat Solution - John Doe, XYZ Tech
+
+--===============3600822658209471717==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Team at InnovativeTech,
+
+   I hope this message finds you well. I am writing to inquire about your AI chat solution that has recently piqued my interest. As the head of product development at XYZ Tech, I have been tasked with exploring innovative ways to enhance our customer service experience and was drawn to InnovativeTech's offering due to its impressive reputation.
+
+   Our company specializes in developing cutting-edge software solutions for the finance sector. We are currently looking to improve our customer support by integrating AI technology that can handle common queries efficiently, freeing up our human agents for more complex tasks. I believe your product could be a perfect fit for our needs given its ability to learn and adapt over time.
+
+   Could you please provide me with detailed information about the features, pricing, implementation process, and any case studies demonstrating the effectiveness of your solution? I would also appreciate if we could arrange a call to discuss how we can tailor this product to best suit our requirements.
+
+   Thank you for your time and consideration. I look forward to hearing from you soon.
+
+   Best regards,
+
+   John Doe
+Head of Product Development, XYZ Tech
+--===============3600822658209471717==--

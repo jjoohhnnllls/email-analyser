@@ -1,0 +1,112 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp399744rcd;
+        Thu, 13 Mar 2025 21:29:33 -0700 (PDT)
+X-Received: by 2002:a05:6a00:139a:b0:736:476b:fcd3 with SMTP id d2e1a72fcca58-73722457fe7mr1512922b3a.24.1741926573112;
+        Thu, 13 Mar 2025 21:29:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741926573; cv=none;
+        d=google.com; s=arc-20240605;
+        b=T2Rm81iCaBm2YWwBdySZo3E5m7RNiBxsaxxPkIZkMzNHAFVxi+GEW27q6Ku8dJdMfg
+         MEwU1G2b/j6VumKKiwVrth0vyeR1cIu99Zf1FLd1gvJ1kMWBdILA/zVMqemdASTia49e
+         CyIgaTUAfe0hQl8h3hukBfbW52Tq2IJHp9oZg2u8cf1jhFxiubjnKx5TUt8g8H8MQm3e
+         cdmLsOCtiX8jwTf9ND+T+95bVsdS9SQFm+W8WFfSJKlIZ3PLSksF0ro5ZVsQKoNpz+6R
+         T+KSOf11Iw3vAFsas8AyZ7C7gFIn6peTnQDfJ8XJvlom+abo1I6kqkoWYt6yLa6bIo6o
+         /a6A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=3mLP9v8PvAEEJ8Q6+uMzXcLA/MW3C1fu1WDzSs48978=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=Ae8y78fGEdo+0kT+Gsgq7V1UzTiiChIXSDmoq9QshBMdPievbkGtX52msVYtSMsBF9
+         gVIEZo6zJE0+tnk3M3iOX9UQYdXstWkMzfaCeMrI87g5uPweFIrMCgzYQ+jVrHm4TLn7
+         vu6j1H0tF8VWi5i2ceG1Mvf4j9ebPETTp+IkesWbRSSeVREquSQUxnF9nqGIAfLNmcoH
+         Dy8wzyVGCpII32kQosEb+LvZoby4bw/3iDwlhLf/8LQfVKhANvQTDS/E3/oXPWAZNDEH
+         Il59WWZ12phjLrZBN1x3xoB8gc2rU+++SdrEALJQU+Ntx0mEz30F5bkC5Diq5X2kvVDz
+         f5DQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cun+EAJA;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-7371151ebeasor1790418b3a.2.2025.03.13.21.29.32
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 21:29:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cun+EAJA;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741926572; x=1742531372; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=3mLP9v8PvAEEJ8Q6+uMzXcLA/MW3C1fu1WDzSs48978=;
+        b=cun+EAJAsYyZaPkmXnTNZJMwiDJOdAs4iD9IPu/+PolCWbOaxgCiz+BuGxmEshZCiQ
+         WPbfUwhnUGp5ZYjbZQ1qbSeVnornwwBeVatGjRwwGPh7LNZsUCY822RE/FGlY6v5usA0
+         e34pq2H4Ka2h/D26pbMmL/gghiacQetmxLmuWKU5thdDyxgcQh3SaV0AbPe2MazCaupT
+         0On6XLBhuBzJhF+L7cLKaxrVJ6FdVuqlTd8Fzr1sGMtmwf/J0VqfW7G/hWSGEwRwGYWN
+         dUweWIlmEmdJ/8xSm5kveI9IK8xxl9yg4Tqn5i0W1MIoYbEYvXX0JQNyMR3fUNL+vlXu
+         O6jQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741926572; x=1742531372;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=3mLP9v8PvAEEJ8Q6+uMzXcLA/MW3C1fu1WDzSs48978=;
+        b=Hi74eTS54DuzxDjzWZ2i7CXoAshIMHVetPoiU6RS1JKMRaPvxcJHlQ3tkSQMKktGgp
+         yYxRZk2EoC5PCvFFz7r5iQPgzQuf/isxUHmYKjTrXk7uHST5laLQWTVKAHx9y/DTetSb
+         2r+1T+73LTk5ccMLtDvpt3r0DuNfYvTDsCEPrCmsPJskHI9taxJuO+KeN4bX6ZnAD0hO
+         HtxPZOW5PdRwqZBgnmaacLI0qMHPonSLZ6BzWNCgforn1ronG4mMILM/pUdRLoue1C8g
+         y+9Q7ZEsasI3sT72mu6fWm9FOWM/YDJnkwV2oShi+uQoQhmfX073lsy2EuGuJMiCMgr0
+         m+hA==
+X-Gm-Message-State: AOJu0YzGzLwOwbJZGmRcxqiVW4/6JPVdmM96jBFGNvhQv0pukeviNrKs
+	qg6lQh68ZS+J6SrRFJvuNUhq60+uN+98A0hqixpGxxzhfTQmfzcMGjlqOeR4
+X-Gm-Gg: ASbGncsDbjc/A1/mCjgcQ7rrqDbzv9mUQm59GPnv5Rf14OzwZYdAdZHl3CRTUaTilcH
+	gHChisufxRNF+/zZCdFct+nLuQ+odnuwy3zq0Cx2Z+X7ap2Avwr6y44kFWNaMGebjsYSa8YfRER
+	lrCFjGF7lOXAGOpiC5ss8gcKacWFOwPOM3RWMo6IIuhrZqiy2JyCfdV93+SclimrdMWGVhMNuzZ
+	68UsksBNcf1YQVfI/wLjHFXYFeKHVLmhR1LKmGYAtmyVWW0RVb+UFOD+qjvlA1IipmHGTkBFAnd
+	zT5UUzFyMWZ8zLsszQhFI5xiQ2/LWrrcR8TXFvz/41Nxfv5mecZiSA8rCKYIdjLrNHo/8g==
+X-Google-Smtp-Source: AGHT+IGJLNBz7O5bp+KcgCwogfaGasc7Xw+Sqy5gKrSzzEDbaFLJ4xfD/Jz5e+ikJbjNFtVnCe6Y/A==
+X-Received: by 2002:a05:6a21:7308:b0:1ee:d8c8:4b82 with SMTP id adf61e73a8af0-1f5c12d8153mr2054696637.31.1741926572334;
+        Thu, 13 Mar 2025 21:29:32 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7371167d764sm2266409b3a.98.2025.03.13.21.29.31
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 21:29:31 -0700 (PDT)
+Message-ID: <67d3b0ab.050a0220.da6e1.7dc2@mx.google.com>
+Date: Thu, 13 Mar 2025 21:29:31 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============7664155728822638722=="
+MIME-Version: 1.0
+From: David Thomas <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Confirmation of Your Recent Investment in Blue Chip Mutual Fund
+
+--===============7664155728822638722==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Mr. Johnson,
+
+   I hope this message finds you well. I am writing to confirm your recent investment into our Blue Chip Mutual Fund. Your application was processed successfully on the 12th of March, and we have initiated the transfer of funds from your provided bank account.
+
+   The total amount invested is $50,000, which will be allocated towards the Blue Chip Mutual Fund starting from the next business day. You can find a detailed breakdown of the fund's composition in the attached PDF document. Please review it at your earliest convenience.
+
+   We appreciate your trust in our services and look forward to providing you with exceptional returns on your investment. Should you have any questions or require further clarification, please do not hesitate to contact us at investorservices@finservcorp.com or call us directly at (555) 123-4567.
+
+   Once again, thank you for choosing FinServ Corp as your investment partner. We are committed to helping you grow and achieve financial success.
+
+   Best Regards,
+
+   Example Your name
+   Investment Executive
+   FinServ Corp.
+   801 Park Avenue, Suite 2500
+   New York, NY 10022
+   (555) 123-4567 | investorservices@finservcorp.com
+--===============7664155728822638722==--

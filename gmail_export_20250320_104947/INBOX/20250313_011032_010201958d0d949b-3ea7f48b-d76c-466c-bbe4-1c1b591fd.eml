@@ -1,0 +1,600 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp659957rch;
+        Wed, 12 Mar 2025 18:10:33 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEQAKex3H6UToKRtMmIpMz8ZtqCZRdO0vBSa/vwIm6GEJQJhn8Zx+xXdfwTrEflOTojdvz7
+X-Received: by 2002:a17:907:9691:b0:abf:6a53:2cd5 with SMTP id a640c23a62f3a-ac253035876mr3037152466b.48.1741828232816;
+        Wed, 12 Mar 2025 18:10:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741828232; cv=none;
+        d=google.com; s=arc-20240605;
+        b=hy1+PG1pkHMzm3/G75XWCVbcfVvIBvAgV8FEfx43OWNyXgmbnNxIdARlVsHiUEDZYk
+         xtBZNvgc8wnOOR158cCSrJJST/hfggORG3V2uoetuMJJX8RQjN2j/kulPa/9GHW347JL
+         gstsxUSLUh6rZvL14oSN06dLp47X4BSbEC/wPPWHv92E9C4c9scFXLEYAKSzz6VYRVAl
+         ul5R+sMzPKJkOXAJkpbil5yMZQwE8kbTPRiE7eeOxhn7lHd8RQP3qytkBhOAp9+lelXq
+         A7ADX0+zDFbXNqRy7GjZBrz3255bp9DIM7heB3Sj5+xpF0iOOGd8PjLHg40PCgACvw3o
+         ONig==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:message-id:content-transfer-encoding:mime-version
+         :subject:to:from:date:dkim-signature:dkim-signature;
+        bh=lulHl4lG+NkFY8f5UtKKjRFM5qQ5op0V1B8oCXJfokc=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=ARwerB0ddXhrfR093mIxxaGXAmtGayR6WvT2I+WMNUPgZxYmCRMfaorTl7iW1VykMf
+         iFI+TmfJWZAmyYUdrZZPjpyRqtjFzND3ctgPreWfj0+nWr4ubypX+Tpq27jcr/1XyM8g
+         yW1MSplS7LisfFKwVxhoHqdsIwALNzfRFTTp4bWVuoQx4UDllc7XEsW+0udrDIwgdcZn
+         8wyn+a8hJsgE7R8DyNL3EI/JniuQXS01zTxlEp4+GJUrNDL1VnX1gg+BZ9dzqHrn7txz
+         l8bO+Ia9NHreogUhTyvXA4cRHBRCXWAM10bdK86BVSlNeCQTbgMBjoK3yczcxtOcGFtm
+         S/mA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@bbc.co.uk header.s=dzyjlgihhtedcfszn3wfupmk2ob37tuw header.b=LXY7koE5;
+       dkim=pass header.i=@amazonses.com header.s=ihchhvubuqgjsxyuhssfvqohv7z3u4hn header.b=C4B7DwBi;
+       spf=pass (google.com: domain of 010201958d0d949b-3ea7f48b-d76c-466c-bbe4-1c1b591fd020-000000@eu-west-1.amazonses.com designates 54.240.55.45 as permitted sender) smtp.mailfrom=010201958d0d949b-3ea7f48b-d76c-466c-bbe4-1c1b591fd020-000000@eu-west-1.amazonses.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=bbc.co.uk
+Return-Path: <010201958d0d949b-3ea7f48b-d76c-466c-bbe4-1c1b591fd020-000000@eu-west-1.amazonses.com>
+Received: from a55-45.smtp-out.eu-west-1.amazonses.com (a55-45.smtp-out.eu-west-1.amazonses.com. [54.240.55.45])
+        by mx.google.com with ESMTPS id a640c23a62f3a-ac3146ab807si22226766b.117.2025.03.12.18.10.32
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 12 Mar 2025 18:10:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 010201958d0d949b-3ea7f48b-d76c-466c-bbe4-1c1b591fd020-000000@eu-west-1.amazonses.com designates 54.240.55.45 as permitted sender) client-ip=54.240.55.45;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@bbc.co.uk header.s=dzyjlgihhtedcfszn3wfupmk2ob37tuw header.b=LXY7koE5;
+       dkim=pass header.i=@amazonses.com header.s=ihchhvubuqgjsxyuhssfvqohv7z3u4hn header.b=C4B7DwBi;
+       spf=pass (google.com: domain of 010201958d0d949b-3ea7f48b-d76c-466c-bbe4-1c1b591fd020-000000@eu-west-1.amazonses.com designates 54.240.55.45 as permitted sender) smtp.mailfrom=010201958d0d949b-3ea7f48b-d76c-466c-bbe4-1c1b591fd020-000000@eu-west-1.amazonses.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=bbc.co.uk
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=dzyjlgihhtedcfszn3wfupmk2ob37tuw; d=bbc.co.uk; t=1741828232;
+	h=Date:From:To:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-ID;
+	bh=Um+0VuRu+/rBo0lOwMxf3upIs4vVPCC+fJ8W/V1xoYg=;
+	b=LXY7koE5IQaVcgh/vmX11tCzss2YkD0nugvhXVhnbPSwsoFVaY0OlJg2Z7AZC6jS
+	ij7uO+4kmZ6HUmV0+xx4SErnKftoj99tuJtK+D0dfFNFrVXIE3Dw8dSp7nAZE7nLOce
+	uQt8jqHNK8FXmupX4SoQLk65tjD5pLKG2JGB6mEA=
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=ihchhvubuqgjsxyuhssfvqohv7z3u4hn; d=amazonses.com; t=1741828232;
+	h=Date:From:To:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-ID:Feedback-ID;
+	bh=Um+0VuRu+/rBo0lOwMxf3upIs4vVPCC+fJ8W/V1xoYg=;
+	b=C4B7DwBit83mfAEODFZB0LTlQqLqmWrQOKKIz3BNmiJ3nxZcjdpxkr8/GYdcx6bQ
+	3yHQEm4eYVikqXOy47aA2ZYixJllDHX/7q3iR7qmvvthz1HyTHCzcfTGq6yeNp45Lea
+	AQKRnTFH49bbp839g0yd2DDu112iVyWpGcvvijFU=
+Date: Thu, 13 Mar 2025 01:10:32 +0000
+From: BBC Account <bbcaccount@bbc.co.uk>
+To: desgtest.email@gmail.com
+Subject: Please verify your email address
+MIME-Version: 1.0
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Message-ID: <010201958d0d949b-3ea7f48b-d76c-466c-bbe4-1c1b591fd020-000000@eu-west-1.amazonses.com>
+Feedback-ID: ::1.eu-west-1.6sA9NWVM+bY9AN8owkf/2rOWhyyWgeK87ecABABzFIo=:AmazonSES
+X-SES-Outgoing: 2025.03.13-54.240.55.45
+
+<!DOCTYPE html>
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3DUTF-8">
+
+
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1.=
+0">
+<meta name=3D"apple-mobile-web-app-capable" content=3D"yes">
+<meta content=3D"yes" name=3D"apple-touch-fullscreen">
+<meta name=3D"apple-mobile-web-app-status-bar-style" content=3D"black">
+<meta name=3D"format-detection" content=3D"telephone=3Dno">
+<meta name=3D"format-detection" content=3D"date=3Dno">
+<meta name=3D"format-detection" content=3D"address=3Dno">
+<meta name=3D"format-detection" content=3D"email=3Dno">
+<!--[if !mso]><!-->
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+<!--<![endif]-->
+<style type=3D"text/css">
+div, p, a, li, td {
+=09-webkit-text-size-adjust: none;
+=09-ms-text-size-adjust: none;
+}
+body {
+=09margin: 0;
+=09padding: 0;
+=09background-color: #ffffff;
+=09
+}
+
+
+table td {
+=09border-collapse: collapse;
+}
+.ExternalClass {
+=09width: 100%;
+}
+.ExternalClass * {
+=09line-height: 110%
+}
+* a {
+=09color: inherit;
+!important;
+}
+.appleLinksPink a {
+=09color: #d64d88 !important;
+=09text-decoration: none !important
+}
+/*hover over blue links turn them white*/
+a:hover.udl {
+=09color: #ffffff !important;
+=09text-decoration: none !important;
+}
+
+@media only screen and (max-width: 800px) {
+*[class=3Dholder] {
+=09width: 100% !important;
+}
+*[class=3Dwrapto100pc-clearbg] {
+=09width: 100% !important;
+}
+}
+
+@media only screen and (max-width: 500px) {
+*[class=3Dnomob] {
+=09display: none !important;
+}
+*[class=3Dwrapto100pc] {
+=09width: 100% !important;
+=09height: auto !important;
+=09min-width: 1px !important;
+}
+*[class=3Dmobile-align] {
+=09padding: 20px 10px 0 0 !important;
+=09vertical-align:text-top !important;
+=09width: 100% !important;
+=09height:auto !important;
+=09font-size:30px !important;
+=09line-height: 35px !important;
+}
+
+*[class=3Dpadding-20] {
+=09padding: 0 20px 0 20px 0 !important;
+}
+
+*[class=3Dbgf5f5f5] {
+=09background-color:#f5f5f5 !important;
+}
+
+*[class=3Dfooter-button] {
+
+=09display: block !important;
+=09padding: 7px 1px;
+=09margin-top: 15px !important;
+=09font-size: 15px;
+=09text-align: left !important;
+}
+}
+
+@media only screen {
+a[x-apple-data-detectors] {
+=09color: inherit !important;
+=09text-decoration: none !important;
+=09font-size: inherit !important;
+=09font-family: inherit !important;
+=09font-weight: inherit !important;
+=09line-height: inherit !important;
+}
+}
+
+
+@media only screen and (max-width: 444px) {
+
+*[class=3Dmobile-align] {
+=09padding: 14px 10px 0 0 !important;
+=09vertical-align:text-top !important;
+=09width: 100% !important;
+=09height:auto !important;
+=09font-size:25px !important;
+=09line-height: 26px !important;
+}
+
+}
+</style>
+<!--[if gte mso 9]>
+<xml>
+<o:OfficeDocumentSettings>
+<o:AllowPNG/>
+<o:PixelsPerInch>
+96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+</head>
+<body>
+
+<!-- Content Block - Header -->
+<style type=3D"text/css">
+@media only screen and (max-width: 600px) {
+*[class=3Dpadding0] {
+padding-left: 0px!important;
+}
+}
+</style>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" bgco=
+lor=3D"#006def">
+=09<tbody>
+=09=09<tr>
+=09=09=09<td width=3D"100%" align=3D"center" bgcolor=3D"#006def">
+=09=09=09<table width=3D"650" border=3D"0" cellspacing=3D"0" cellpadding=3D=
+"0" class=3D"wrapto100pc">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td width=3D"20">&nbsp;</td>
+=09=09=09=09=09=09<td valign=3D"top">
+=09=09=09=09=09=09<table width=3D"100%" border=3D"0" cellspacing=3D"0" cell=
+padding=3D"0">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td>
+=09=09=09=09=09=09=09=09=09<table width=3D"100%" border=3D"0" cellspacing=
+=3D"0" cellpadding=3D"0" class=3D"wrapto100pc" align=3D"left">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td>
+=09=09=09=09=09=09=09=09=09=09=09=09<table width=3D"100%" border=3D"0" clas=
+s=3D"wrapto100pc" cellspacing=3D"0" cellpadding=3D"0">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td width=3D"100%" height=3D"1=
+0" style=3D"font-size: 1px; line-height: 1px;">&nbsp;</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td width=3D"100%" align=3D"le=
+ft" style=3D"padding-left: 10px;" class=3D"padding0"><a href=3D"http://www.=
+bbc.co.uk/" target=3D"_blank" conversion=3D"false" title=3D""><img style=3D=
+"display: block; width: 84px; height: 24px; border-color: #000000; margin: =
+0px;" border=3D"0" src=3D"http://image.e.bbcmail.co.uk/lib/fe90137277610778=
+72/m/3/BBCLogoHeader.png" width=3D"84" height=3D"24" alt=3D"BBC Logo" title=
+=3D"BBC Logo" mdid=3D"c8373c2e-f96a-4383-84e2-08d5f95f4c9f"></a></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<table width=3D"370" border=3D=
+"0" cellspacing=3D"0" cellpadding=3D"0" align=3D"left" class=3D"wrapto100pc=
+">
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td width=3D"100%" height=3D"1=
+0" style=3D"font-size: 1px; line-height: 1px;">&nbsp;</td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09=09<td width=3D"20" class=3D"nomob">&nbsp;</td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09</tbody>
+</table><!-- /Content Block - Header -->=20
+
+<!-- Template Level - CONTAINER WRAPPER OPEN -->
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" bgco=
+lor=3D"#f5f5f5">
+  <tbody>
+    <tr>
+      <td width=3D"100%" align=3D"center" bgcolor=3D"#f5f5f5" height=3D"20"=
+>&nbsp;</td>
+    </tr>
+    <tr>
+      <td width=3D"100%" align=3D"center" bgcolor=3D"#f5f5f5" style=3D"padd=
+ing:0 20px 0 20px"><table width=3D"600" border=3D"0" cellspacing=3D"0" cell=
+padding=3D"0" class=3D"wrapto100pc" bgcolor=3D"#ffffff">
+          <tbody>
+            <tr>
+              <td width=3D"25">&nbsp;</td>
+              <td valign=3D"top"><table width=3D"100%" border=3D"0" cellspa=
+cing=3D"0" cellpadding=3D"0">
+                  <tbody>
+                    <tr>
+                      <td width=3D"100%" height=3D"25" style=3D"font-size:1=
+px; line-height:1px;"></td>
+                    </tr>
+                  </tbody>
+                </table>
+               =20
+                <!-- /Template Level - CONTAINER WRAPPER OPEN -->=20
+               =20
+                <!-- Hello & first Para -->
+               =20
+                <table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpa=
+dding=3D"0">
+                  <tbody>
+                    <tr>
+                      <td align=3D"left" valign=3D"top" bgcolor=3D"#ffffff"=
+ style=3D"color:#000001; font-size:14px; font-family: &#39;Helvetica Neue&#=
+39;, Helvetica, Arial, sans-serif; line-height:22px;">Hello,</td>
+                    </tr>
+                    <tr>
+                      <td width=3D"100%" height=3D"20" style=3D"font-size:1=
+px; line-height:1px;"></td>
+                    </tr>
+                    <tr>
+                      <td bgcolor=3D"#ffffff" valign=3D"top" style=3D"color=
+:#000001; font-size:14px; font-family: &#39;Helvetica Neue&#39;, Helvetica,=
+ Arial, sans-serif; line-height:22px;">Please verify the email address used=
+ with your BBC account by clicking this button. It expires on <span style=
+=3D"font-weight: bold">Thursday 20 March 2025</span>.</td>
+                    </tr>
+                    <tr>
+                      <td width=3D"100%" height=3D"20" style=3D"font-size:1=
+px; line-height:1px;"></td>
+                    </tr>
+                  </tbody>
+                </table>
+               =20
+                <!-- /Hello & first Para -->=20
+
+
+                <!-- Button -->
+               =20
+                <table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpa=
+dding=3D"0">
+=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09<td valign=3D"top" align=3D"left">
+=09=09=09=09=09=09=09=09=09=09=09<table border=3D"0" cellspacing=3D"0" cell=
+padding=3D"0" bgcolor=3D"#006def" class=3D"wrapto100pc">
+=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"center" valign=3D"mi=
+ddle" bgcolor=3D"#006def" style=3D"color: #ffffff; padding: 16px; white-spa=
+ce: nowrap; vertical-align: middle; font-size: 14px; font-family: Helvetica=
+, Arial, sans-serif;"><strong><a style=3D"display: block; color: #ffffff; t=
+ext-align: center; text-decoration: none;" href=3Dhttps://account.bbc.com/s=
+ignin/verify/email?token=3DeyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2Iiwi=
+a2lkIjoic2h6Yy1mbGcifQ..n7zxgq6NpUUMtkBPiCOcOA.xUEprvZgnyMHlKGDJz0qeZg8LDa6=
+p2MPM9r31pnueEJUw0EfqhDNitEs1M313gcVqOp_Bd_Im25Ln6c5o3218sLB_cvcpojYLC6PJua=
+gnTtv_jx6lf-vHgurKZsvcLNjf2KbmzOeC7809l9QRLpnv4EBZ5APW2T9ianrFJoWWMa-q8oTcE=
+exCsDRMmAKI6T3cDEFRoBhxNbbTUb8PB2sLKv1oZi9HTOKMz6dRDUejOK9elb-fdX-uS25UEM4k=
+SFuMJeF23eytpg77zFvZROtOkRKHD787U5Tpm3qQ_e7qbtwZTQDoASpFA2QswK2Dlqt1-rvDBrt=
+RcjoyLcV9S0L4Q.GGPC4ZT4ng1t2PRyXJnEyg&lang=3Den-GB>Verify your email addres=
+s</a></strong></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09<td width=3D"100%" height=3D"20" style=3D"=
+font-size: 1px; line-height: 1px;"></td>
+=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09</table>
+               =20
+                <!-- /Button -->=20
+
+               <!-- Second Para -->
+               =20
+                <table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpa=
+dding=3D"0">
+                  <tbody>
+                    <tr>
+                      <td align=3D"left" valign=3D"top" bgcolor=3D"#ffffff"=
+ style=3D"color:#000001; font-size:14px; font-family: &#39;Helvetica Neue&#=
+39;, Helvetica, Arial, sans-serif; line-height:22px;">If you need it, you c=
+an <a href=3D"https://www.bbc.co.uk/usingthebbc/account/im-having-problems-=
+verifying-my-email">get help here</a>.</td>
+                    </tr>
+                    <tr>
+                      <td width=3D"100%" height=3D"20" style=3D"font-size:1=
+px; line-height:1px;"></td>
+                    </tr>
+                  </tbody>
+                </table>
+               =20
+                <!-- /Second & first Para -->=20
+               =20
+                <!-- Sign Off -->
+               =20
+                <table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpa=
+dding=3D"0">
+                  <tbody>
+                    <tr>
+                      <td bgcolor=3D"#ffffff" valign=3D"top" style=3D"color=
+:#000001; font-size:14px; font-family: &#39;Helvetica Neue&#39;, Helvetica,=
+ Arial, sans-serif; line-height:22px;">All the best,</td>
+                    </tr>
+                    <tr>
+                      <td width=3D"100%" height=3D"20" style=3D"font-size:1=
+px; line-height:1px;"></td>
+                    </tr>
+                    <tr>
+                      <td bgcolor=3D"#ffffff" valign=3D"top" style=3D"color=
+:#000001; font-size:14px; font-family: &#39;Helvetica Neue&#39;, Helvetica,=
+ Arial, sans-serif; line-height:22px;">The BBC</td>
+                    </tr>
+                    <tr>
+                      <td width=3D"100%" height=3D"20" style=3D"font-size:1=
+px; line-height:1px;"></td>
+                    </tr>
+                  </tbody>
+                </table>
+               =20
+                <!-- /Sign Off -->=20
+               =20
+
+               =20
+                <!-- Template Level - CONTAINER WRAPPER CLOSE -->
+               =20
+                <table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpa=
+dding=3D"0">
+                  <tbody>
+                    <tr>
+                      <td width=3D"100%" height=3D"25" style=3D"font-size:1=
+px; line-height:1px;"></td>
+                    </tr>
+                  </tbody>
+                </table></td>
+              <td width=3D"25">&nbsp;</td>
+            </tr>
+          </tbody>
+        </table></td>
+    </tr>
+    <tr>
+      <td width=3D"100%" align=3D"center" bgcolor=3D"#f5f5f5" height=3D"20"=
+></td>
+    </tr>
+  </tbody>
+</table>
+<!-- /Template Level - CONTAINER WRAPPER CLOSE -->=20
+
+<!-- Content Block - Menu Footer -->
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" bgco=
+lor=3D"#ffffff">
+=09<tbody>
+=09=09<tr>
+=09=09=09<td width=3D"100%" align=3D"center" bgcolor=3D"#ffffff" style=3D"p=
+adding: 0px 20px;" class=3D"bgf5f5f5">
+=09=09=09<table width=3D"650" border=3D"0" cellspacing=3D"0" cellpadding=3D=
+"0" class=3D"wrapto100pc" bgcolor=3D"#ffffff">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td width=3D"20">&nbsp;</td>
+=09=09=09=09=09=09<td style=3D"border-bottom: 1px solid #e6e6e6;" bgcolor=
+=3D"#ffffff">
+=09=09=09=09=09=09<table width=3D"600" border=3D"0" cellspacing=3D"0" cellp=
+adding=3D"0" class=3D"wrapto100pc">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td width=3D"100%">
+=09=09=09=09=09=09=09=09=09<table width=3D"100%" cellspacing=3D"0" cellpadd=
+ing=3D"0" border=3D"0">
+=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td width=3D"100%" height=3D"15"></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td width=3D"100%" valign=3D"middle">
+=09=09=09=09=09=09=09=09=09=09=09=09<table cellspacing=3D"0" cellpadding=3D=
+"0" border=3D"0" class=3D"wrapto100pc" align=3D"left" width=3D"93">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td width=3D"10" class=3D"nomo=
+b"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td align=3D"left" height=3D"3=
+5" valign=3D"middle"><img style=3D"display: block; width: 84px; height: 24p=
+x; border-color: #000000; margin: 0px;" border=3D"0" src=3D"http://image.e.=
+bbcmail.co.uk/lib/fe9013727761077872/m/3/BBCLogoFooter.png" width=3D"84" he=
+ight=3D"24" alt=3D"BBC logo" title=3D"BBC logo" mdid=3D"5c6a01ad-711a-43ac-=
+9b35-6df1a2c6d0b9"></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09<!--[if (gte mso 9)|(IE)]></td>
+=09=09=09=09=09=09=09=09=09=09=09=09<td><![endif]-->
+=09=09=09=09=09=09=09=09=09=09=09=09<table cellspacing=3D"0" cellpadding=3D=
+"0" border=3D"0" class=3D"wrapto100pc" align=3D"right" width=3D"445">
+=09=09=09=09=09=09=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09=09<td style=3D"padding-top: 7px;=
+ padding-bottom: 7px; text-align: right; font-family: Arial, sans-serif; fo=
+nt-size: 14px; line-height: 19px; color: #000001; font-weight: bold;"><a hr=
+ef=3D"http://www.bbc.co.uk/usingthebbc/account/" target=3D"_blank" style=3D=
+"text-decoration: underline; color: #000001;" class=3D"footer-button">About=
+ BBC accounts</a> <span class=3D"nomob">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;</span> <a href=3D"http://www.bbc.co.uk/usingthebbc/privacy/" target=3D"_b=
+lank" style=3D"text-decoration: underline; color: #000001;" class=3D"footer=
+-button">Privacy and Cookies</a> <span class=3D"nomob">&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;</span> <a href=3D"http://www.bbc.co.uk/usingthebbc/terms/"=
+ target=3D"_blank" style=3D"text-decoration: underline; color: #000001;" cl=
+ass=3D"footer-button">Terms of Use</a></td>
+=09=09=09=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09=09=09=09<td width=3D"100%" height=3D"15"></td>
+=09=09=09=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09=09=09=09</table>
+=09=09=09=09=09=09=09=09=09</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09=09<td width=3D"20">&nbsp;</td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09</tbody>
+</table>
+<!-- /Content Block - Menu Footer -->=20
+
+
+<!-- Content Block - Small print -->
+<style type=3D"text/css">
+@media only screen and (max-width: 600px) {
+*[class=3Dbgf5f5f5] {
+background-color:#f5f5f5 !important;
+}
+}
+</style>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" bgco=
+lor=3D"#ffffff" class=3D"bgf5f5f5">
+=09<tbody>
+=09=09<tr>
+=09=09=09<td width=3D"100%" align=3D"center" bgcolor=3D"#ffffff" class=3D"b=
+gf5f5f5" style=3D"padding: 0px 20px;">
+=09=09=09<table width=3D"650" border=3D"0" cellspacing=3D"0" cellpadding=3D=
+"0" class=3D"wrapto100pc" bgcolor=3D"#ffffff">
+=09=09=09=09<tbody>
+=09=09=09=09=09<tr>
+=09=09=09=09=09=09<td width=3D"20">&nbsp;</td>
+=09=09=09=09=09=09<td valign=3D"top" bgcolor=3D"#ffffff">
+=09=09=09=09=09=09<table width=3D"100%" border=3D"0" cellspacing=3D"0" cell=
+padding=3D"0">
+=09=09=09=09=09=09=09<tbody>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td bgcolor=3D"#ffffff" valign=3D"top" align=3D"=
+center" style=3D"color: #000001; font-size: 13px; line-height: 22px; font-f=
+amily: Helvetica, Arial, sans-serif; padding-top: 16px;">We=E2=80=99ve sent=
+ this email because you registered for a BBC account. Unless you=E2=80=99ve=
+ signed up for any BBC newsletters, we=E2=80=99ll only email you if we need=
+ to contact you about your account. <br>
+=09=09=09=09=09=09=09=09=09<br>
+=09=09=09=09=09=09=09=09=09BBC Broadcasting House, Portland Place, London W=
+1A 1AA</td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09=09<tr>
+=09=09=09=09=09=09=09=09=09<td width=3D"100%" height=3D"20" style=3D"font-s=
+ize: 1px; line-height: 1px;"></td>
+=09=09=09=09=09=09=09=09</tr>
+=09=09=09=09=09=09=09</tbody>
+=09=09=09=09=09=09</table>
+=09=09=09=09=09=09</td>
+=09=09=09=09=09=09<td width=3D"20">&nbsp;</td>
+=09=09=09=09=09</tr>
+=09=09=09=09</tbody>
+=09=09=09</table>
+=09=09=09</td>
+=09=09</tr>
+=09</tbody>
+</table><!-- /Content Block - Extra Text Module -->=20
+
+<!-- gmail app prevent optimisation option fix -->
+<div style=3D"display:none; white-space:nowrap; font:15px courier; color:#f=
+fffff; line-height:0;width:600px !important; min-width:600px !important; ma=
+x-width:600px !important;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp;</div>
+<!-- end gmail app prevent optimisation option fix -->
+
+
+
+</body></html>

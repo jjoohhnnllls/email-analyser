@@ -1,0 +1,111 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp2108427rcd;
+        Sun, 16 Mar 2025 22:38:30 -0700 (PDT)
+X-Received: by 2002:a05:6a00:464f:b0:736:52d7:daca with SMTP id d2e1a72fcca58-737223ccd7dmr15211375b3a.18.1742189910297;
+        Sun, 16 Mar 2025 22:38:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742189910; cv=none;
+        d=google.com; s=arc-20240605;
+        b=UZtY5tJndYlchW5D5tPKBsOQnKyBMz0yXekd6tDvoojXFJmFpziIZByP18I0Iaj/Pu
+         dXO3h8rvuJSTqlxu7NFn8lUOBKk31UADsVQx7pl0/vkojW+VLjelTe95PzV6IwEby7GL
+         tFfklLgmnhW/JCZoeBEWhJabTs88fXFfP+6fow+Rqr2zrDYIDAjIP2EpfLFMosfj4U3J
+         vuSAMRyOxlb/T8XmZDeVRj3UflNmfsPas3Y/ovt+W8uejASXRZKK7RbpO2lU/8H1N/6H
+         h21AY+qTtFZl8xMOl0zHkzljiCMeYCAkhFOQ8c4e/lxdUxB/FIGfIhL2lLHkcm6P6VTs
+         Wl9g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=nkJIpiy1EZ2zvFn6mBy2js3Fy+IXOxPdaX3kZ7AMV3A=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=RLog0sOKjgN6VAucYnyR97r8EUG2prGcF5LxXKTRz0isgphp1/SN+upOg+GC7uEyKQ
+         2bkg9p4P8By/za98V+KAt2iZAvs1rlzoVDdPx77V3XBMQ011kkJZaD0e7qPn/5f3KiqC
+         zVb3sqzgpmSa2B4jeQmpZkaSYC9qvqpslWOEQgMOT8dksVU3yoiU2VLW4gdXVCm7e51N
+         g4Tm1IMFGDChUM+4gru8T0UWJQ4Zwcp0AeLNdp8bCqj7GpLL24+0dXIiPPLnwnWhf8Kv
+         RDgE7Mgu/VWJWImajjitcYQ8z4Sqtr/cXCDZPSmvCJnq1+WPiKS+4b2pdwXWo9WsWSiv
+         bjmQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=O3UKrx4c;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 41be03b00d2f7-af56ea5b3ebsor6200997a12.4.2025.03.16.22.38.30
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Sun, 16 Mar 2025 22:38:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=O3UKrx4c;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742189909; x=1742794709; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=nkJIpiy1EZ2zvFn6mBy2js3Fy+IXOxPdaX3kZ7AMV3A=;
+        b=O3UKrx4c6BPePwqHCBqfSj+9CdVzG43xiXQu53v6/0SxlNjGPlqZbzAlgJEahYdVgM
+         s8ykaa0VkUK7iu92SsMrI1QMLZFsYOdfXF88hBPzBk6IjTN0tnjFudpftLT2OIqQdY/z
+         csbWZ9Z9aXSuLg3fzHdBQssHcGanNRrMrLfzwUxyP7MnwfnFEabNN+GvK3QSUxg/BLBs
+         fdfmRaNc+9VIma96I0TbHjWnzkuXzTYxgiGmDNdarswFNtzY0M0JUP90QpBUhHGoKycH
+         2XZxmt3THKbtlY71Piw8QPi3mgbAgzeIQq1jT2Tq9NryNmkAyBwFo6HSHlq2viN7qIen
+         CHWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742189909; x=1742794709;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=nkJIpiy1EZ2zvFn6mBy2js3Fy+IXOxPdaX3kZ7AMV3A=;
+        b=ancMyP9NFI6b0dLLMjKvZ4Oi/42SNgyUgJABR8QaEJ6+YQmWZFuWiCBzIQlq9cTd2u
+         w3IwhjLDBsG0yncdGdIj19q00i4KWzpQtvBvsV4CDaUgzmORDB9amyT6uyLrKxI0gtqd
+         AydaScq7wDPnaSWoKB3RGqCWEfipTbtsSCZUjTedlrf19gR8FMMXkqAhXG1RhTpmfLXT
+         3L41Oq1Uc8/bqr5duSMNpeH1Y9E7nn4xY55zJDVMG9JDHH23NAk5Islv+VymVMK3W2Cp
+         Y8npLpvz+bQPcrLIKCnjguzjm9ckkoW1q/j4MSkgCodA53S5fZMc+mx536une/bxNd0a
+         6hPg==
+X-Gm-Message-State: AOJu0Yxx2CYxaQo760ArLHLYhD+YtZyt/vcfkFIukE3SKExBiQyjzs3e
+	Z2WqfGlNVIEb0j1kiqzSj+K5orgVcARLgShi2VMxoSsBNCVqlBUtLIF6/w==
+X-Gm-Gg: ASbGncu/X/Fh5r30SQHUc3SOZwI0vH92GUw6iHFsG0ftx6gzsu7Iup9PCHec6tQvt6V
+	g11/47tuWF8WDeDDY6/oBja94zuc5yEbbPGKDGPS2m8M2yl0MqVJOkqVDzNhfZjyDYmuEjl7OZZ
+	wbgfoQ3gZKWCwQgBB3SpUPDtLD43WbXitA2S9Mj0HOapk+WI+hlHIDlwO2iWQN4rbqLNra+rdLW
+	6isMPC9ApD63pnUF1Kew1qQLH6cMl0bbxDoQKsZvuETDEZ1od7BzRrLcXttuLGKuwKAHnuW9w5Z
+	Z9UqQGJTiWywg4jsqLEnjGRU0X/Dx7ZfDoZIXxpu+HDynrClc29TEsk+p4t/JEQ8L7cu1Q==
+X-Google-Smtp-Source: AGHT+IEqTsSvC3sA7Y0Z6iVx6SEtoAaHSaKNkpj3e6CI8C9dK69ksS4MbT25POGGynROCu7CspaDuQ==
+X-Received: by 2002:a05:6a20:7f8e:b0:1f5:889c:3cbd with SMTP id adf61e73a8af0-1f5c1348879mr17639686637.35.1742189909354;
+        Sun, 16 Mar 2025 22:38:29 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-737116b114asm6696250b3a.164.2025.03.16.22.38.28
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 16 Mar 2025 22:38:28 -0700 (PDT)
+Message-ID: <67d7b554.050a0220.90b60.dea1@mx.google.com>
+Date: Sun, 16 Mar 2025 22:38:28 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============1361209141152040049=="
+MIME-Version: 1.0
+From: Smart Investments <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Proposal for Strategic Partnership in Financial Services
+
+--===============1361209141152040049==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Mr. Johnson,
+
+   I hope this message finds you well. I am writing on behalf of our company, ABC Wealth Management, a leading provider of comprehensive financial services.
+
+   Over the past few months, we have been closely monitoring your firm, XYZ Investments, and we are impressed by your innovative approach to wealth management. We believe that our respective strengths could synergize effectively, creating value for our clients while expanding our market presence.
+
+   We propose a strategic partnership where ABC Wealth Management and XYZ Investments collaborate on joint marketing initiatives, share industry insights, and cross-refer our client bases. Our goal is to offer a more comprehensive suite of financial services and create an unparalleled client experience.
+
+   To discuss this proposal further and explore potential areas of collaboration, I would like to arrange a meeting at your earliest convenience. I am confident that a partnership between our firms will be mutually beneficial and set new standards in the financial services industry.
+
+   I look forward to hearing from you soon. Should you have any questions or need additional information, please do not hesitate to contact me.
+
+   Best regards,
+
+   Example Your name
+   Example Your position
+   ABC Wealth Management
+--===============1361209141152040049==--

@@ -1,0 +1,112 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp2107887rcd;
+        Sun, 16 Mar 2025 22:36:47 -0700 (PDT)
+X-Received: by 2002:a05:6a21:6f12:b0:1f5:5807:13c7 with SMTP id adf61e73a8af0-1f5c118e6abmr14777163637.17.1742189807091;
+        Sun, 16 Mar 2025 22:36:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742189807; cv=none;
+        d=google.com; s=arc-20240605;
+        b=j4N/w6lWiqUXuvV0xrVOeoK5vO1XLi3MYjLZly++dhkjVT+yH0Vm3a8u5OkqiSBqfX
+         REM3kTSAVdxbNcnMtGSjiKtbypScpgVMvXOoddTFjwLCX8aizae91NUTeuCGxi22Quh5
+         y8El8/CBroaL819Iv9wJYe2hceuliNUU4/2JcdY2DVX6LKS355nFLMSK6heoSTv96cbM
+         xKOBSvx8RGMptu2PTV3ypGyab56F6Guthc7rNO1PsFdTQpjzrtkww2rV62pQ0+Lf3YkS
+         l/Fvlh/R1hzTs/UjeE4qwnr3NRGW3v/FwTf3zeFkQbmq6DwVsOZwR0KqZBHcN8lWFo7S
+         ek1A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=C1FhiEwdvnyB5C6P+4NARvTlMto2Xdu8PE/sDxHLn9A=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=OklOkhYGr/rOKwnypCwXXSlQHUrcqzOWZ+B2yI9aofZ/o/ldKoQpmSqTw1+K0ifVh9
+         kuGfAyrhRh/CV4JTK9jB5hilLlvsjAygFe0yCqMjS/KkSJCryjZc/6A7mPHLD5qXDK0p
+         MUN6J+fXlHNrMkIszLp3doeVTbUxklzhWW6aXQ3vBHoLTF4NLQZm1gK7CNzXOEOHqmMZ
+         fJGAZjTIX+nyLbBzFR+ElxryySac/98q6DoRlHv5I4WnKBzN9ShRVj2c6yP9b9bNmipi
+         iR/iJEXP26lUoAyiZBbK5ILSySYdFzUssIi54RmaRY5hQv0rv+64rb0NdVZ+aS+vR6xR
+         OI7w==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=biSPGNWz;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 41be03b00d2f7-af56e9c95afsor4329520a12.2.2025.03.16.22.36.46
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Sun, 16 Mar 2025 22:36:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=biSPGNWz;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742189806; x=1742794606; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=C1FhiEwdvnyB5C6P+4NARvTlMto2Xdu8PE/sDxHLn9A=;
+        b=biSPGNWzmArH7ulfL1tsIPwZx+UfjI4a51UjE1NpwiNTp9qu2/TYBXAJoNl5wOmmr+
+         y8FNlvPE2rJNHo8lDmNcsZ1VUy/eypCtd0KrxXb4wfPh79tvzYkhudCsuWJvmr+DXt0M
+         WAYTXRoiClppZvZ/ZpkAxUvfQDTOR4bFZh1TPWRE5AMJjRsYIgQXOYCOzh/ZIVIR61UU
+         I6qwczwWae3WHo1ddqKKRkOflFhbpweyXA9ENiIPrdpBQp82YGrKGDY2emdOmeDA078v
+         uNJ07PP78raI3CD8zoE8DXhQpzHknrQS0XzFFFTBCll+nopP3y+vVuZaW/xltUGyEiZi
+         eqxQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742189806; x=1742794606;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=C1FhiEwdvnyB5C6P+4NARvTlMto2Xdu8PE/sDxHLn9A=;
+        b=wI9QK1LVODO9frOsBC+P95hy5wuKp8B9zdk+KUqlknLg9Q+jrmGMumHVaQajqL+zD1
+         KSN9wSFwpq33ciu+JP3N6JQ+9MIuTrf+IbX4I8p+1kEVghk64JduPl4XorcbYsISSFoE
+         mzOt2oCtbUfgTVhep5gZ62wkWEQ4RhegU2p+JFLNvio5mi3+0VR2tmxGrgfy4LCwosTE
+         m13tb+I2HnbYDJuSt4xX4cJLAe6DLxfvZmsaul1vwD41WcCAqHXkl4KAI4ciASZO2Pt8
+         MdXgK1b5JzMcA5Go9ENMeJlIuGtT+bGtOkRnSHN//C0EjOyHh762OHCfZ92FXPkPElvj
+         CPEw==
+X-Gm-Message-State: AOJu0YxIXCu4JOuEWaQASt7fG/izJcEQNv8HHuGxEg3TtlvtrjLpAADI
+	D95XgbUZ0SC+aqRSkONOHBFfoIX639mo5k5Eg1i3qAnjK15m0uhgOESN2g==
+X-Gm-Gg: ASbGncsVZIT2jPY/NzqvKP625JLrQbMotJoH4hnvaIyGOk1NuenDeW3XogvWJTHHUiL
+	Lost5eaP+K9pR6IS0hmWkklpts9GjOA18fWs9i7a3S3xW2YM4nNhfaWQCrohIW3e0nE0OtE/whr
+	tOGe4i7qU6eU3L0h4EHwyvYA0z/LhKfdh6SQi3TnWjlL1/SyJlNgEh98s5rjZWi27ieBzpfFExA
+	eLpmfdKqDCVhNESAH6KiWQitxFwOSPaK7HQ78XPbjN5PrVgLSK4rn/mXxyD3HjLFSQ6xIU9zr8K
+	SSkK8U46CbDvLYN5pcMIx6vyWTDfZBw6OILbG7/TjggnHtWb2W0/AlwDWONe9ioDhHUrtA==
+X-Google-Smtp-Source: AGHT+IF2usWxGoz5DLLYfw4+TL6l0839DlJiPld6XajtxkvjIMJVB14qBPIbKzXZgkTFNHf2OR7c3Q==
+X-Received: by 2002:a17:90a:fc4c:b0:2f4:4500:bb4d with SMTP id 98e67ed59e1d1-30151cc8c11mr13436616a91.20.1742189806357;
+        Sun, 16 Mar 2025 22:36:46 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-30153afb544sm5774323a91.21.2025.03.16.22.36.45
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 16 Mar 2025 22:36:46 -0700 (PDT)
+Message-ID: <67d7b4ee.170a0220.2402f2.cb81@mx.google.com>
+Date: Sun, 16 Mar 2025 22:36:46 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============2739044589864141890=="
+MIME-Version: 1.0
+From: Michael Garcia <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Update on Delivery of Critical Medical Supplies - Order #2357896
+
+--===============2739044589864141890==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Dr. Jane Thompson,
+
+   I hope this message finds you well. I am writing to inform you about the status of your recent order, Order #2357896, which included critical medical supplies for St. John's Hospital.
+
+   We are pleased to confirm that the shipment has been dispatched from our warehouse and is currently in transit. The estimated time of arrival is Monday, July 19th, between 9:00 AM and 12:00 PM (local time).
+
+   To ensure a smooth delivery, please ensure that the receiving department is aware and prepared to receive the package upon arrival. If there are any changes or updates regarding the delivery address or contact person, kindly inform us at your earliest convenience.
+
+   Once the supplies are delivered, our logistics team will provide you with the proof of delivery as well as a detailed inventory list for your records.
+
+   We appreciate your business and are committed to ensuring the timely delivery of essential medical supplies during these challenging times. If you have any questions or concerns, please do not hesitate to contact us at support@medicalsupplyco.com or call us at +1 (800) 123-4567.
+
+   Wishing you and your team the best in your ongoing fight against COVID-19.
+
+   Best Regards,
+
+   Example Your name
+   Logistics Coordinator, Medical Supply Co.
+--===============2739044589864141890==--

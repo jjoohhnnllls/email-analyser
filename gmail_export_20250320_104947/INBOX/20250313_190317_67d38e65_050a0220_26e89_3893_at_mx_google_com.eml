@@ -1,0 +1,111 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp349864rcd;
+        Thu, 13 Mar 2025 19:03:19 -0700 (PDT)
+X-Received: by 2002:a05:6a00:3e08:b0:736:34a2:8a18 with SMTP id d2e1a72fcca58-737224378ecmr980069b3a.24.1741917799160;
+        Thu, 13 Mar 2025 19:03:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741917799; cv=none;
+        d=google.com; s=arc-20240605;
+        b=g/U9872+9ai5hV2lKRD/CWPKPy9ljTxqK/pbUdc9+kahtXoUp+zNEc7uNVGtyUfxiq
+         eu90xsBSIyb4We4Sq+pwTlv9634sDXASb7nDROmbsEEkKKsPEcZWlngTkFuh6l6p/4P/
+         GvKH8+enQlWKOO2rf8q+C+MPOrcwgGmcB1b/EU+bn1/AW/U3hkAEVnioJ6qoppDlf//S
+         9qxxSF7vtW8Zfk8ow5BH14na6W1g5MemF430UwKY7rE/91xs4UEMJxBduO3sOgmKBEks
+         U1pKEvCCCT+UqqKR8sxy4y+/LdDhyDCY4qEAAVLDlGQZiOKMQWnZhG1pcrOIETD4WWvX
+         NZ/w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=wr3+9yHgYM2Qi4Tm3ZY8xPT588KsDmnO84gOncsNTgA=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=RWYSAxOLlMAREBW63yzeqkrXViDG4Bmedr6kQgBe0SZEB3Zq25UMOubDSJR8llagU9
+         0hQZQKFf0zofVQCAwzA94E/ayoRFQMI/piGD1rItu9NQ6EWB0yrfgsSAGZ4qNPo7AmIE
+         tJt35G8bWL7UYWfW5pAQUHCByI9FRi8ZRDACwpSTovNxy0rXN9oOA3Pjjj/0mLwHQJqK
+         wBuj+7i4huSS/hCljeZtccki/Ftw8ITs51gO9fJngsABphl8y5fPsfss0tZIO6XMUq77
+         f7mnTyINkwDt97znStIgTLIMsOKOdbY8twXDh0GxB0AsE617UjWK7iviO/Ae8Lg2p1Zr
+         LygA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DBFtT7ZJ;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-737115262basor2272501b3a.2.2025.03.13.19.03.18
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 19:03:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DBFtT7ZJ;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741917798; x=1742522598; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=wr3+9yHgYM2Qi4Tm3ZY8xPT588KsDmnO84gOncsNTgA=;
+        b=DBFtT7ZJi4+5kOhHpbxSkBEp4UzfQEPk2DYRQWBM7tItvJbbPY527cT5q2wu2eKWYh
+         0QUxWYjMrMlh9Ccen2QnGu7Qv1BE9K9CwzPDAbMSVxAbinuWcCFXmRCUEsskEFqFB6DM
+         IMXLrxRVUsO4xLo3DA0XhRF48A0PPKxhzWVSXnR9vu4ysiny92s0Nldyt9Lyqkp41B65
+         lu7IhkRuFwsEBoSVMB2NadqKy307TusGSZo2X93/5AcLCZweYpp0sfuiQAXeiwlvOpKA
+         9PUJun2tpXheOD2RXxcTbOed/drVmyQMarQ+t33zry0TOAstseqlUcOISgLpAm0PYgdJ
+         99gw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741917798; x=1742522598;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=wr3+9yHgYM2Qi4Tm3ZY8xPT588KsDmnO84gOncsNTgA=;
+        b=KI0gVsHsg/eg+aM7UAREueBAmATBvlcQoFVDKEeptSqHR3kAwkIw3ZLRYOMV0clCMb
+         q7xZ+W8Pu8sdZct2WTHPrmRntgPrDL89UqG9xVPiNvMN5zvz113VONJ1pdkEFqkfODrs
+         HuKbnpvfORQDi9oGBCcJFNHC+LYei+U5pB+imQiGa6ud0+tc0FmPKLcR1C1P8nf5nQ5D
+         qIJ/KVvtiupUSdmQAvtmvxZSn7MvkOShEDuhc65Rcuwzc///jCeR7VTNERiWHK+icLD5
+         lUINdVGHW+o0Bh9tCR3625nq6Bxp3WUZZncaTYr6h2C6FBnU8ANb2yumKFVhCF0qLdfj
+         qy2w==
+X-Gm-Message-State: AOJu0YwnHWn93cvFjCX/psu3QY99GU//i9CdB3AL5yfPlmuXOsr8BqUl
+	whfhwDYAO+zywq8GWkOHY7izXNhIvuomOEAG0l+Ou1rdsmUDGlJdEMdzMhCs
+X-Gm-Gg: ASbGncuxtFrbfm2IlM+R5xVNCPKFrUxzh18LJ20iPZT63ZGV06oqY8gxdB1Xb4Tg2cp
+	F1ewokvBStx+MiCzg8qHCGLs9CBG67R79fpvfD3usrxutUc2D48aDbmb5YxRVb07iVKvnSzIVRc
+	uNXYECGR/sUcQ3sdZPhTx7jN7I9dYneCaVDhft4WGWyrHvjbBQySI1I62hl3Igx2e7XOEoQlpLG
+	DT9fuQa8ivanEWWXywNgvth8rBseVwK2BMlREaRTOaZD/au6nZcYmyEjWVPzNZcLrbqEMCJuQYd
+	3kLIyCG6nl2dpArOw+3A6mYAgVfpoJ+zzdblVVHJacrKShayIF4Pj+9YlykiVil7RcWQjg==
+X-Google-Smtp-Source: AGHT+IGXLzV2Q3bywrbXDffqCPFWwOZYkzLvPHhsqjjTgKLsCrqBfdWs5qO74Jb2uvgxp3f2G+htgA==
+X-Received: by 2002:a05:6a21:50b:b0:1f3:47d6:aa05 with SMTP id adf61e73a8af0-1f5c0eeec4bmr1345072637.0.1741917798486;
+        Thu, 13 Mar 2025 19:03:18 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-af56ea041e7sm1667278a12.44.2025.03.13.19.03.17
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 19:03:17 -0700 (PDT)
+Message-ID: <67d38e65.050a0220.26e89.3893@mx.google.com>
+Date: Thu, 13 Mar 2025 19:03:17 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============6565220948544699700=="
+MIME-Version: 1.0
+From: Michael Taylor <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Quality Issue with Order #123456 (Batch ID: MFG-0987)
+
+--===============6565220948544699700==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Mr. Johnson,
+
+   I hope this message finds you well. I am writing to express my concern regarding the shipment of our order #123456, which was sent on August 1st and arrived at your facility yesterday.
+
+   Upon inspection, we discovered that the batch ID MFG-0987 contains several defective units. Specifically, three out of ten units are failing quality control checks due to a malfunction in the gear assembly. This issue is preventing our production line from operating smoothly and causing delays in meeting our customer deadlines.
+
+   I understand that this is an unusual occurrence for our company, and I assure you that we take this matter very seriously. We have initiated a thorough investigation into the manufacturing process to identify the root cause of this issue and have already implemented corrective actions.
+
+   In light of this situation, we kindly request your team to replace the defective units at your earliest convenience. To expedite the process, I have attached a return shipping label for your convenience. Once received, our quality assurance team will verify the replacement parts before integrating them into production.
+
+   If there are any questions or concerns regarding this matter, please do not hesitate to contact me directly at (555) 123-4567 or via email at Example Your_email@ourcompany.com. We value your business partnership and strive to maintain the highest quality standards in all our dealings.
+
+   Sincerely,
+
+   Jane Doe
+Quality Assurance Manager
+OurCompany Inc.
+--===============6565220948544699700==--

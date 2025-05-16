@@ -1,0 +1,112 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp347548rcd;
+        Thu, 13 Mar 2025 18:57:47 -0700 (PDT)
+X-Received: by 2002:a17:902:f681:b0:21f:6f33:f96 with SMTP id d9443c01a7336-225c651f518mr56805055ad.6.1741917467370;
+        Thu, 13 Mar 2025 18:57:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741917467; cv=none;
+        d=google.com; s=arc-20240605;
+        b=jb/xXJn9u/+dV8XSoMT7TYiPtryVZ13q2G5ctTiArkgmWl7HwStlcY3RO6Z3AxXL+T
+         rQjcMMDeId3iyCbKSbhH+LH/7zjPYhmQ8/T3WsFYm8E9oyh7o94Wc8YFnVvvx0IJsuDg
+         w6ubelUOf0jrNJ4HtBOqg8N/9dqmYgJeUpAJGAkhX4rJuquMe9hYIdKy38KKt1o0440g
+         8Vq/mi+bNzSl+kIcTG/7iUbEkPTpx+5ZtXVhD2AlsrdjNs+d84OFVtIeB7BqyvJ78ZOp
+         vYbHSABmf7uEDOhh0X5KmkLh2Sidi3ZGXlDCbBLSwy54dboR0edSY401waPaqMD9qL38
+         kAqQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=VR4arhZMBTpGbnV9lfu5FqfzEoUdXXQL9NgmvlEY+Ag=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=WNvQ4OYOVu/ohob5EKSn0RA9JudgJHYWURm11UoeTXUGHlYVWLdFitetDsFnZwmfku
+         /L8gZjJKEIPuZDHKNSe2FMbUX3ax0umhkWUC3JLOMiFf4U7bREGu2ZQU6aQxddXWtSz9
+         wy/c/uElOBWp9vFqbglO01J0OkW8m70YyRrKF8aGJtB+MtsxZ3qlEJ4Ognxh7Xfzb9Lp
+         Rdjf8ogxzhWfdRJXdB1sRcbQtSTgKLVL70oVZqHl2L3cvyiEvzhfmJi1/EntFNyh/pR5
+         bmWpTmRWu1bEB7h/VJ0vrkEghcNrZpxS71TNd7/Iow3rrAJi00MA9DMM6osi+9LaEVUh
+         wZmQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="KGRqP/nq";
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-737113cc572sor1507389b3a.0.2025.03.13.18.57.47
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 18:57:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="KGRqP/nq";
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741917467; x=1742522267; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=VR4arhZMBTpGbnV9lfu5FqfzEoUdXXQL9NgmvlEY+Ag=;
+        b=KGRqP/nqWgmDnZ0vHPECOk4vpPGYpc9NKyy3gm6AQO3Q797uI8tpM31TIPHcg3nZ4R
+         LymWmOggJxx3zFbXFFPDnIkqqlS1y6dYrhmMPWOmbMrIcxOygBD3tK1loXV5A6m6CNbn
+         ksShjLe2DfcMZ1fiwzj1xJH5kRkYfj/ZLX3NE0liDHeAN2pjW5up6FCVfaW9RSo3nc3m
+         M9zbK8iJROrmjKV+JDrjCWR7zMtPmW/Dd30cLXO/0FoQJKetG0OPQ7fB4BIWgkOYyMGW
+         m+hbkUa+/MRN7Oh3CtUjOfvQAxPX18slhp2/34qZiCjJP0QUPfZt+R8gcUr+WurdLhSA
+         5YrQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741917467; x=1742522267;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=VR4arhZMBTpGbnV9lfu5FqfzEoUdXXQL9NgmvlEY+Ag=;
+        b=vQvqyJqRRv1N5OHRynvuGZHJrEJ6gTbziPxCOOREyCeC/K57ZSeEZLGqdiIhaj5PYt
+         JeU9i+ZJdByDwNRQz8Sy7kaRmbM86gwVIwprvVs3San6J6sFg0jyJD0r6Qxavjue0NOT
+         ya9Qwjwy/PGKw6TzBlWVMUEvDfiCH9M1xuN+pfPRB0LHvaWigiRLzHuu7fAb9BUO+yUC
+         ubHxh5i2gvIF0fhC5yyUe0l0POaoN08yDN1m7asrHWijRAMF+ogwJVhvkLM65ZwOIUir
+         EYANhyrJExXiFVrzSVsdpqq6D68RwXx5C2jwHHLi+YsbO1QkJv64qtgOHN17cuhJWfvz
+         KWfQ==
+X-Gm-Message-State: AOJu0YwSi5JtB4btb56uK+dsWTfh5VT/DjoZWGSaAppiYA6p7eSjZlZa
+	aNBH3FOCHUzaAdaHvF7Fy+fMiUiU1ohzBDyhFzDr79GWKf1UbHhhRyFk2ZBw
+X-Gm-Gg: ASbGnctMGpTJqvcda/s6NuzeaFMi63qvDoB0uKSWut/aCUBRs1r+WbI/fQoK+v+9f7H
+	hHpYvmbI8YuBeJX5wb0WeUnwVoZIJevBgkuf2nYYc4g01YYlnerSq86kZS6Vmf0FlXobJi8erbe
+	EhYZeOBdJmhWHoiHkgk++REQCYfeRNhnSI5ycTkTt/DQ79PsSLOsOSrlkXdZewlA0uY/c5Y/DBK
+	1xa1ZxLIvpVvnDspPFETPxtEM1XdXATnSYIw4+1FUkZfwT4pmNnCGtqUlTW9KiHasV46B0LxCwB
+	rP0MjBByIZ5fhMmaAnhjVRDMnY0UBhSvtz9m0/+IK3UqODviTQpLXPjaDW9eLWkgWWpBpg==
+X-Google-Smtp-Source: AGHT+IE6itmoAfR7Pv2+ZTiBCOJwEyRoc/Ac1HNyU/L3hEqiEZPfSNiG8KxvHhtXtRQDRpJMtOtMHQ==
+X-Received: by 2002:a17:90b:3c8b:b0:2fa:3b6b:3370 with SMTP id 98e67ed59e1d1-30135f603d8mr6281324a91.16.1741917466630;
+        Thu, 13 Mar 2025 18:57:46 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-301533e6515sm89254a91.0.2025.03.13.18.57.45
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 18:57:46 -0700 (PDT)
+Message-ID: <67d38d1a.170a0220.1418c3.0627@mx.google.com>
+Date: Thu, 13 Mar 2025 18:57:46 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============0668635281760299011=="
+MIME-Version: 1.0
+From: Joseph Smith <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Re: John Doe's Travel Arrangements to Paris on June 15th
+
+--===============0668635281760299011==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Mr. Doe,
+
+   I hope this message finds you well. I am writing to express my sincere apologies regarding the inconvenience that occurred with your travel arrangements to Paris on June 15th.
+
+   Upon reviewing your booking, it appears that there was a clerical error on our part. Instead of booking a direct flight from JFK to Charles de Gaulle as requested, we inadvertently scheduled a connection through Amsterdam Schiphol. I understand that this has caused significant inconvenience and frustration, and for this, I deeply apologize.
+
+   In an attempt to rectify the situation, I have rebooked your flight to depart from JFK on June 15th, direct to Charles de Gaulle. Your new itinerary will be sent to you shortly. I recommend checking your email inbox and spam folder for the updated details.
+
+   As a token of our apology, we would like to offer you a complimentary one-hour airport lounge access at JFK. This should provide some comfort during your travel. Please let me know if this is acceptable, or if there's anything else we can do to make amends for the inconvenience caused.
+
+   Once again, I deeply apologize for any discomfort this may have caused and appreciate your understanding in this matter. We are committed to providing excellent service and aim to ensure that such incidents do not occur in the future.
+
+   Warm regards,
+
+   Example Your name
+   Example Your position
+   Example Travel agency's name
+   Example Contact information
+--===============0668635281760299011==--

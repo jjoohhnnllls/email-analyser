@@ -1,0 +1,114 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp398737rcd;
+        Thu, 13 Mar 2025 21:26:12 -0700 (PDT)
+X-Received: by 2002:a17:902:e74f:b0:223:5124:a16e with SMTP id d9443c01a7336-225e0a363damr12933865ad.5.1741926372744;
+        Thu, 13 Mar 2025 21:26:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741926372; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Ef5H9iQKwkSxYMOAoInlgACGgVgdZXOydPzu+u6cLc8KmCL1Mw21cPdljMl8WgBNp4
+         BQhsZ0DjHcyw86y/hJ6bi/UKs78oP4AB/mOgTTccNFoMRMHMUzi+qKvTONw6GiAxdOTy
+         etBT9BK5XyQA817D78bgSYeQTgAZAbPTs7p385GlaEndb+Mn5NQTtDP2cjKD6Nkv5CFc
+         ENsVGv0jgWbwPqKsJ9yxjHPKzFo99IHJTo+55nMW6HBkzMzlkIpFZraDbudJeN7FNue7
+         dm9XfeuVTdJiVJyq/Sja1ksDUZJxbrS+yD2MvMw5eW/YSoMbscSmGcSsYYlNQIoPexVt
+         uyTQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=aehb/6za7ToNm4zLKzDUgONPxIjmA0UqoymWzpJQZR8=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=NjfWBFN6IgM1M2nA+T0cQQcwuRyf27tuiQHSTyXRsFY+fntEVdbnKukGeFZP8WBky+
+         ijMlhT2vOnXQ+K5BCoM7ZwuBxi7/Otx+eZxNpk2OC4V2QZJDNtUT9QcfYV76Wx8H8Z5Y
+         xeWIALrEhvdEBN3Ghqg/iqIjF7GHqDlCYIkH7/o6dU+YxNoQHsMuHLsq86j7Ub82LXni
+         mjmITDIrc0j8Dd0a8uycF/gSsst1Q7sT2xeVTp5nbvNeI2vpDv3nhoAEMk56On68vzAi
+         kyhqkkjtvY8Cx6PFHWzdg51UC+RJZnSL+JKZ+6HMNinFZzVNKoWqD5t/W/9IabmnUQEv
+         3pbw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gu2g6v7K;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c96a8845sor19217915ad.8.2025.03.13.21.26.12
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 21:26:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gu2g6v7K;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741926372; x=1742531172; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=aehb/6za7ToNm4zLKzDUgONPxIjmA0UqoymWzpJQZR8=;
+        b=gu2g6v7KExlbte9JYsQVOsNw3Y/Cwpw3j1yLsReehf5Fxil/mGxx1zn5bPoiX8He/E
+         Hrzi0kLf9R1jH/nWaEL9bO3A8ZySq0j45LarT1c0yuEydTc/rsBPqSIG9bik4Sy8Wo2m
+         RTThrnJponKyEvy3Q3m0qk0s5NZcimqJp1zlUDxBO2FtcbiurYni/dmW3qZecoJJDRy7
+         riM2GzJow0jgWmzje28mcxC2NEqB59oXsyA7ZBZUg5is2+FHFiX2+auTHMckhRbYRWeo
+         sOTbY+D+7feQkHB0PeasHN9mTMFmoXw2V4KfLBGx0sHpLEOYNVCYXh5giSCoe9N/viNU
+         yZig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741926372; x=1742531172;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=aehb/6za7ToNm4zLKzDUgONPxIjmA0UqoymWzpJQZR8=;
+        b=nA16ivDJkaU1VFcytrT7YEE5DN3e6Z0DqkVHDTaNcVadKaDv+qQiA5u7izM9XhqFoC
+         /ZrUO32l/RSMxe6npGotuUvN2f45gMGgsFFH4C7r1BmzzZOle+GbSIRCBvuYXSz5oBS7
+         3Guanla1vTiRPFXEb3UTeV1UOTO9ygYZMB706j+t2V0EB11KUeBzu5yPNKKRjmL383r7
+         JA3zRjgiD33cZig7l/UXAA2FqYaO3cEjUzmpIC8GfdLsbNdRuxviWu7lsWcl8ixCiLRt
+         nSiki/YVeh+vbWH7qwXcgmGbi00tHo9T2NOQJPosZdUv5upeCKa4zE4NtohMFLqOlXAh
+         /zqg==
+X-Gm-Message-State: AOJu0YxL3DwHSe/N5dErQz//CompAcVMWLosraevvgPorraDWOWGrSyT
+	bg27mtG16vM+R9oGLKI7btKTcSGNHBAdhPxPwSuZGx7/kxbjqMG3A9+zKZK9
+X-Gm-Gg: ASbGnct0vxnU/v29grOSQ5MCFALtyg/bBMFJG78HIfQHyZ4oaz+nY502M+7J4OmwR2H
+	KByo5KCKVYCtEkEMli6zjcV+YVBMovstFl9mKVVL95J4hiBO7994V1D/s7WkS1/VK9sfc/OodoS
+	Ifv26BjKXoCZUWxyMEAwEWrP9ZKmysNLhiWPfc3eRd1h6pQqM06kidGWHhZwdEdBFG3Q9sAmzwd
+	LmuC3/k6EgmievCends8XHHDusne+/xVFnM4jF5vT2Uhik25TBHJ7J46iyh1kyaWaL95HxsxTuf
+	R6F/K00TgdyLjekhpfCjpmT89d7eg7IPrIJlvxBKvMPdwgtaDb1wuedAgoinxiodE4TZVg==
+X-Google-Smtp-Source: AGHT+IEkwfp/SXGJN8qid0IgoIbtWlXS9lTzbKtGrdvOd0VG/NXryAdmq9VIeB7U5lb8xUv4O5ALnQ==
+X-Received: by 2002:a17:902:f68f:b0:219:e4b0:4286 with SMTP id d9443c01a7336-225e0a940aamr11654065ad.29.1741926372050;
+        Thu, 13 Mar 2025 21:26:12 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6bd5ae4sm21756815ad.229.2025.03.13.21.26.11
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 21:26:11 -0700 (PDT)
+Message-ID: <67d3afe3.170a0220.f2e97.748a@mx.google.com>
+Date: Thu, 13 Mar 2025 21:26:11 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============0707505371828183478=="
+MIME-Version: 1.0
+From: James Miller <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Your Order #ABC123 Has Been Shipped!
+
+--===============0707505371828183478==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear John Doe,
+
+   I hope this message finds you well. I am writing to inform you that your order with our online store, ShopEcoFriendly, has been successfully processed and shipped!
+
+   Here are the details of your order:
+   - Product: Organic Cotton T-Shirt - Navy Blue
+   - SKU: SHP007
+   - Quantity: 2
+   - Total Amount: $49.98
+   - Shipping Method: Standard Delivery (ETA: 5-7 business days)
+
+   You can track the progress of your package using the tracking number provided in this email. If you have any issues with tracking or concerns regarding your order, please do not hesitate to contact us at support@shopecofriendly.com. We are always here to help!
+
+   Thank you for choosing ShopEcoFriendly and supporting sustainable fashion. We appreciate your business and look forward to serving you again in the future.
+
+   Warm regards,
+
+   Example Your name
+   Customer Service Representative
+   ShopEcoFriendly
+--===============0707505371828183478==--

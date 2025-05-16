@@ -1,0 +1,112 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp768295rch;
+        Wed, 12 Mar 2025 23:35:30 -0700 (PDT)
+X-Received: by 2002:a17:902:cf0e:b0:223:4d5e:76a6 with SMTP id d9443c01a7336-225c651f50dmr21507985ad.1.1741847730155;
+        Wed, 12 Mar 2025 23:35:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741847730; cv=none;
+        d=google.com; s=arc-20240605;
+        b=HAQevxq0H/6gWKrJ8lnV1UdUIbSUrdYA9/P11Lhwl/vGYGXxQwSPFnv4wX1Re6MdzY
+         5qF7ZqnI2qB5M+ulmPwQpSr7T+9/qdYn2EAUKDWtsBhk2474Vj3/pfIq3VhkW/qoHx9e
+         z6iYudKnuyXgp0S8uXwrrhWgABuI1gyi3BC2SCds5YXWD25RC7hjb7qhrUJKiuw+FqZk
+         MXMkuqxcmh7PQnKeKOhr1gJfSTeb10ck0DkSF311WvcrY38vfvF0PljxnAhXXj3kXbJf
+         rfCQ2xG+/yeLIlAIemgDiiXdYcFnabJmazG5gFYx28S2tW5gWAniKOOwP9kdLb7SWoid
+         dQDA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=YxF7EuG92wqX7e8uVXow7JWQxklsuI8rnmY93RwTzdk=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=NcPS6jeQr91oERkG0C4QzcGT3t52KmAny6T0B5RH0fuKrPecu+Wt31vTPhPCbj9YIM
+         F36Oo3kxyPBt2clJtghseZiSR6a49VyHNn9Bcert7HIV6iJ8vEVTKJhN7YXFZnH8a0kw
+         r5Gpi9WwFaE2xV3E/fs/nD8tf7HxmO1RAJoFDeSbFsHA3myPpbAGZfshlfBfMgYQ4b/B
+         vw9Mv3ZwPi2KpMUp9Op+vu2CybETfbFnl2nz/6rW7nbFXnH3XOsGgEtg1GspIfnFlobH
+         Gy7mRCeaXa0DNN6NFd233Cv2dxNU+tckK1pgnlTEB5/xluKB+7GqaN8hd48ueTIlojDz
+         FA9Q==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=W4sGWXn1;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c6b20e47sor4693825ad.6.2025.03.12.23.35.29
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:35:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=W4sGWXn1;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741847729; x=1742452529; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=YxF7EuG92wqX7e8uVXow7JWQxklsuI8rnmY93RwTzdk=;
+        b=W4sGWXn1s8tBSdCu9qTURMBbupRSNrWVszj9mbHB//vyRkxhFYpB64BNFerPy7Rd17
+         EMGVBrdnkz6ED9ChP+epR8IMjqClrcWaSpTk0GQl70Rch7CjPQDBaWaWgqMjQOv6IfNg
+         5hXIxr9sCKaRBX/JT8DglPewaJ3xWHuufoVBM9TKz/Pwj1amtQelGCd1JI2J+VB7d24D
+         WlvYHcO+gn8e913Yue+OoIL/PrVz6SAvchS1cR2CTdvcBiSsLF0s0iF3VNEBcvovvd6V
+         VEHOaPxAnNWgsGErZqNSGguCdCf6loF2japqe7+/DvA75Ey+HYskfxeMgsC1cX7/r6Lp
+         vh+A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741847729; x=1742452529;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=YxF7EuG92wqX7e8uVXow7JWQxklsuI8rnmY93RwTzdk=;
+        b=cobbFFZn1Ev2ReHRMQLyS5OG3sjPgY+oyWje/HCTUN+ETQ/ouNDEMEw1j8xR3Etybk
+         kSmsgawroHskqoWugzPBc2WB96sm4ugc8F3m6Q2JDDIN3n8XbxoGKvfQjneRr3QCBKzt
+         M7lEFojyz7TAhdz4YNvFACphPRn3VcDE2dVJO43B0IDGPeiudiBsgKegIfzRNb3q/Rjh
+         hLZ9S3ANoG8Ec8PoIZEr4okRxL8eLhPd4M280XFbwdkShBnFIf0w3a3n1h958zEhMmwt
+         IndR80lPmeEQ1UhuWT+Ka9W9mMBDuMjYhIcrrGHhbvNs6bdJXGSWUWDDDcRKXFuW8YAp
+         NKXA==
+X-Gm-Message-State: AOJu0YwPT2PCcgad9d1avFRSRGayveG09IXieBM3mxOYpa6isVB29Kvw
+	J7sgWUwezwvXZbuTshFCXsN7l51Yl5hGLLtfdd+8fCKC/gGsvOD50phgcg5t
+X-Gm-Gg: ASbGncvLDKF8JDRefzgcLb9JL9lCO8yThGzoap3A5FR3cfE+Cw0s8JCMJiRf4UdvAdg
+	SJArum0+iVQKVY3hYCGqQ2l9ElrAhBYJbp7omTESBKzk/Sc71UfHRz/xigT+0sdsOCGnjvnRo38
+	K21ykgYCOUsfz8pWtOOKReONYsFdfzG76dJoM0BkLu+5Oqi6fQ4VbOwZf640mpPvu1Clz7oOQrl
+	n0NeP7bu0Fzh8XFJvdTM48dGxxz8TyEqmdzdLp9fJkQIpxLvWSo1zrN1G/Pr3MqWkzVchHPCLvb
+	iqh7lsckbGIVX+KkS9sPM+9/eS/2uD26m4ct98Km9tyWSEhBmOpxWAEPgoH2UV/Rd01XFw==
+X-Google-Smtp-Source: AGHT+IGfRn3xVZraoSHKmENVohzEyVieezPK1/974AbEg2bzN2hW5OZDBiXDQIpw2hToqWHWfsBBpQ==
+X-Received: by 2002:a17:903:1b64:b0:223:517a:d4ed with SMTP id d9443c01a7336-225c666aab7mr19947785ad.15.1741847729459;
+        Wed, 12 Mar 2025 23:35:29 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6888303sm6175395ad.42.2025.03.12.23.35.28
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:35:29 -0700 (PDT)
+Message-ID: <67d27cb1.170a0220.2b7faa.1e7b@mx.google.com>
+Date: Wed, 12 Mar 2025 23:35:29 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============1101010302194316663=="
+MIME-Version: 1.0
+From: Modern Digital <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Collaboration Opportunity: Leveraging Our AI Solutions in Your
+ Fintech Space
+
+--===============1101010302194316663==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Mr. John Doe,
+
+   I hope this message finds you well. I am writing to you from XYZ Technologies, a pioneering technology startup that specializes in developing advanced Artificial Intelligence (AI) solutions.
+
+   We have been closely following your journey at ABC Fintech, and we are particularly impressed by the innovative strides you have made in the fintech industry. Our team believes that our AI capabilities could significantly enhance the user experience and efficiency of your services.
+
+   Specifically, we would like to propose a partnership where XYZ Technologies integrates our AI-powered chatbot, FinBot, into your digital banking platform. FinBot is designed to provide 24/7 customer support, handle complex financial transactions, and offer personalized financial advice based on user behavior and preferences.
+
+   We are confident that this collaboration will bring mutual benefits. For ABC Fintech, it means improved customer service and increased operational efficiency. For XYZ Technologies, it signifies a strategic alliance with a respected fintech leader like yourself, opening up new avenues for growth and innovation.
+
+   If you are interested in discussing this opportunity further, please let me know a suitable time to schedule a call. I look forward to the possibility of working together and exploring how we can revolutionize the fintech landscape.
+
+   Best Regards,
+
+   Example Your name
+   Example Your position
+   XYZ Technologies
+--===============1101010302194316663==--

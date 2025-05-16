@@ -1,0 +1,112 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp347984rcd;
+        Thu, 13 Mar 2025 18:59:12 -0700 (PDT)
+X-Received: by 2002:a05:6a00:2d08:b0:736:ba49:97bb with SMTP id d2e1a72fcca58-7372236a891mr828525b3a.5.1741917552516;
+        Thu, 13 Mar 2025 18:59:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741917552; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Wab2WSsG5hQJxjYDgndZJY2JvsZCFz0MKO7CiC/sf2kiHjypinunbUf/kUyNrrCnjo
+         i0C48wYprm5b3ThtMS3roigrXX2+RfF30Ke35vAuzzzJp+NBg/1xz9RQcp+Kpml0+3NN
+         eJZ2OS3bCQMQfZ7nqUxf8864WLqBN+jjrxan2KOwTgxWgilRBWF/A6Wxjzhng9ILGaCu
+         +Kg/5MpXT22yDQ9f4Ghtz+nIguXwebVr98RtCOqJHH7uoKDGx9QnmNfDgozrtGZuz8Fw
+         JvJxRkXqB0QfniMXU0rLhbsn2bmEUlioiTSYetsqBV6Gpwlop1JswxyyW08A+r5VjF62
+         eWdw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=iedrRi8cIK6CVrqb8NxjaL/YXZcg/lo7mOfezoiXp1I=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=bPqykoxjSihK7dq0HZIcHoZUw0R53J8ZsYyCMU434xB7aIIyeuQa7f0iKFDI2sxs40
+         CW62b8bb+IY71js5K+dJMc8AZeLLvrsW+6fBbpCYV058mk2Y6K80P9ywumeAhXN0CWAX
+         iCLZ2811nLSrTBuvTas5FanpgHKZ/fZBPUBoeaWgvG9BO7qDL3+zSWFgjucV+AAuzeda
+         32n042M4GZev+FwHu+AMDAd2FJyo/j6KWB6jDlYQ6Nh/X5zjXYolx62C0ZXPNTTvuLKD
+         /TpyUP4EvwKdn324PUnmA7JiC+mzWfwvmr6KhPulovmC0gQydhGSERsgFNKNFTLMhzUL
+         +iKQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=UR9NFqie;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-73712bcf73asor1344206b3a.5.2025.03.13.18.59.12
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 18:59:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=UR9NFqie;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741917551; x=1742522351; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=iedrRi8cIK6CVrqb8NxjaL/YXZcg/lo7mOfezoiXp1I=;
+        b=UR9NFqieUmNlWhpjGLBMdc2YB02MavZ3eQJj5oC3DkJSY+8rNTes8hYwaL6zVluN3w
+         9Dip7hZVyLcd3q6pGAIr+NF6qesfUm5hCiiJzPeth8EiXVjoKmw6JUzoRXqnDQHEVykK
+         V8XyDid9O++ONgtb/5tQYPWkNrnoeGHVMGowE+R7BOJNGVX3JggotVE5m8PlZsNPGrLO
+         3n5iEpr+/zOWHrE7iGGYAaPvBjKoSvhFujpvc6FEBDcUconOoWovseIKciWDFy5JMtg/
+         3z68kwnS8TKl0Zb0kekwSVAFwKFhGnr4AOJvH/9jsjdYJkjNZ+SyjmiQRBJgDcXx/zSe
+         HANw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741917551; x=1742522351;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=iedrRi8cIK6CVrqb8NxjaL/YXZcg/lo7mOfezoiXp1I=;
+        b=raXgNVTEGx72cAJegkO5F1s++hN7zSdP7LLub05K1Y39MOTp5JYeDd0W/T1515insd
+         9wKnh8ay+LoLpWsF9qg5fCuXtygoMJrRQCxZgPDwAy5TJIXb1Oc/sl91QhleOblvpQIl
+         PuI9Mt+EHCH3WJQ9f5QF89toUGIdKMJ+l5G6KXVvmr4xnBM9acyAnN49ivdqUmrjD51u
+         /OosyNI/6iUN9soZHDR5QHlXhVy55kmWCLHLWhfzRTFrmwfSh1hye2HOQRH7TMteQSo9
+         tNNgPQmohmGGqDeGw7yw0COj/8nckF46fKwhF95YOBVNs0QjqHffBszJMdEBje7UpucM
+         G5TA==
+X-Gm-Message-State: AOJu0YxoH58ZLQTlfxEb7mL4nxsBDpeFOBpTass1Cm/SGbVEl8WdNo3W
+	VUMWkjUoOCWfZRXyhx+jcQhK6bsKxOewQDqIlMi0VrjWK9lXKQGDSRZlIrNP
+X-Gm-Gg: ASbGncv7nwliWiahZC0InaDZSd7xGmCzVwy46oYvXKv1eYGOqAzOxr5xCq5zo/OhQOT
+	vSnOjcZyjIXFAcZXemURU5zmZrq2sNaXLv7tUH57PwVvGhaEY1KdvMbhCT9rM9DHMc4fYUFjwGP
+	TJIdCk79gYOf8oS9NkqaHU4IM272TSEnwdl6mt2eRLn8m+oqUwX18L0/NRaEAfIXc0k5HU1xq/C
+	ZrkDOZ+kf/q4w7Lqyj34zlWpshrAJUh0qJZ5AlhDJNdQejR6Nb5/YsEEHcipPX7VW8m2Mk0CG20
+	SgZPkB2gKe8C0Iu6L1vyNKglSH3pYWWjhrGhCQAkPKhncRcbk+f5TkqT6OcwTYjdPtYOTQ==
+X-Google-Smtp-Source: AGHT+IH+klrXktQYrPbBkaNlXLYm76H0qc961PywibWf4cCnVTQ5FZwwkszG24TmYfRpBo2JD2DSWw==
+X-Received: by 2002:a05:6a00:4c86:b0:736:a540:c9b5 with SMTP id d2e1a72fcca58-737224726d9mr745425b3a.22.1741917551479;
+        Thu, 13 Mar 2025 18:59:11 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73711529381sm2072413b3a.33.2025.03.13.18.59.10
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 18:59:11 -0700 (PDT)
+Message-ID: <67d38d6f.050a0220.864d7.67e9@mx.google.com>
+Date: Thu, 13 Mar 2025 18:59:11 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============2973440205121262676=="
+MIME-Version: 1.0
+From: Charles Anderson <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Patient Records Inaccuracy Regarding John Doe
+
+--===============2973440205121262676==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Healthcare Provider Support Team,
+
+   I hope this message finds you well. I am writing to express my concern regarding an inaccuracy in the medical records of our patient, Mr. John Doe.
+
+   On August 15, 2023, during a routine checkup at your facility located on Elm Street, it was noted that there was a discrepancy in John's allergy list. Specifically, his record indicated an allergy to penicillin, which he does not have. This information has been confirmed by John himself and his personal physician.
+
+   I understand that errors can occur, but given the critical nature of patient records, it is imperative that such inaccuracies are promptly rectified to ensure the best possible care for our patients.
+
+   If you could kindly look into this matter and correct the error at your earliest convenience, we would greatly appreciate it. A timely response will not only help us avoid any potential risks but also restore confidence in our relationship with your esteemed institution.
+
+   I look forward to hearing from you soon and resolving this issue promptly. If you need any additional information from our end, please do not hesitate to contact me.
+
+   Best regards,
+
+   Example Your name
+   Example Your position
+   Example Your hospital/clinic name
+   Example Your contact information
+--===============2973440205121262676==--

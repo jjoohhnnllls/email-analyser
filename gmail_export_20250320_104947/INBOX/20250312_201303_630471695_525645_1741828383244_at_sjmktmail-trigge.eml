@@ -1,0 +1,979 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp661028rch;
+        Wed, 12 Mar 2025 18:13:04 -0700 (PDT)
+X-Received: by 2002:a05:620a:6608:b0:7c5:3b4a:a61e with SMTP id af79cd13be357-7c55e86b28amr1450858485a.24.1741828384743;
+        Wed, 12 Mar 2025 18:13:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741828384; cv=none;
+        d=google.com; s=arc-20240605;
+        b=iKFXFIrbveCYqV5jfPqvsufemCoK1lB700Yd5SlqJhkYU8RdKertayZsYQecSm41KO
+         15Satp+FC3ZT3ceUHbiXVghN3YJcga6HCmDLl4ncLWWxULF8ZK+Ly1tD6O/N9valNb1n
+         nVxSnLeKANAbD+i6mcUW5xZCMEf4ZVcSdLQPS0oVPhOsuzVXS4AG4FPspjv452MRyVOn
+         KLZr/N7rt/n1lCzbkpQrCyA55wPn08uzSWug2e8miWykIkMoFPoMbUXO9EcVk2eYfLdv
+         0H2inzlpAHnnTRL9OQipC8Y/fkGQCQ4b01QSCH3PdYmKE9hzKbBeFaGPLeq7tkpSwiFz
+         mIRA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:subject:message-id:to:reply-to:from:date
+         :dkim-signature;
+        bh=hH1ZhgMQBO0STPXDP1GEjQQYDtyMUf466O0dT5qjbsk=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=DdDfySHLs5hI7nhUmE5nR+VBC4wIi19+iuJGbEafYg/DZTAOWGUPvCIn0T1QZ9g++k
+         /x5XcH4UE7ftcrmHH2z0PaDwCPQVkZR6QLGp06rrNKXY97Fnw9ti+uUC2EP6bMFb8lwU
+         O1Iu98+D69FFSKKuVztf6a5YzQp4Z+9KfciAWFai6hJmc9u6zx8e+QstygVMq5S9LSc7
+         RyPf9+s3RY2unpKDXS2DJUGLSp7Azhk6FDiD34lHWdwHF7dS6Liwq47557Ks8yJEv6/W
+         jbx7AF9ThR9/W7H+5gGQnisqEZtmZODy45P7CcwHDjYqlvlwACNtrUygucFhh1DStLB5
+         zx5g==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=HUG2Y6Vd;
+       spf=pass (google.com: domain of 808-gjw-314.0.250101.0.0.659731.9.57958442-1@google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=808-GJW-314.0.250101.0.0.659731.9.57958442-1@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <808-GJW-314.0.250101.0.0.659731.9.57958442-1@google.com>
+Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
+        by mx.google.com with SMTPS id af79cd13be357-7c573bb16f6sor21949985a.8.2025.03.12.18.13.04
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 18:13:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 808-gjw-314.0.250101.0.0.659731.9.57958442-1@google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=HUG2Y6Vd;
+       spf=pass (google.com: domain of 808-gjw-314.0.250101.0.0.659731.9.57958442-1@google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=808-GJW-314.0.250101.0.0.659731.9.57958442-1@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1741828384; x=1742433184; dara=google.com;
+        h=mime-version:subject:message-id:to:reply-to:from:date:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=hH1ZhgMQBO0STPXDP1GEjQQYDtyMUf466O0dT5qjbsk=;
+        b=HUG2Y6VdZDbpDGJyhH13w3bmjXVMiYexVleifyUiUu4Hi6kJpvMd8BBejQs8vPDTLY
+         w9uxgtknZmaPpqjvjeRKvVjh2EUymJM5p/oKYx4DXbqcuwKaV6UtHLhqOUG638j7qMFK
+         yD7CkgIZDut8P6+wEDTnfb1iEMO5kXd2BSW+Sn/ZOH/g7vgCPHD+MIX32GbHG1lBNy5y
+         mCP9yodEpClOniDTUJrOwcaJpMcEPdG/TOjYlIBSECeq80Q/oSs+GOJz5Ds/a+dtYWrV
+         D1+MnxAJlbMuHJ3BXqNNkkz7RKtDjKbJ6i2rwCRPzT0Vn9EsTS9ydmV/aZO4/ZXILXe1
+         YvoA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741828384; x=1742433184;
+        h=mime-version:subject:message-id:to:reply-to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=hH1ZhgMQBO0STPXDP1GEjQQYDtyMUf466O0dT5qjbsk=;
+        b=eSfNm/OvC2XZq9O5RBkiIDanTvFz9XCYBpn8Fc/9U4thVSEbGZsdqAJU0NrOlu2hse
+         gSEA4EMmECbKXmR+sTXgUo2Ex8DgMCDCuQA5V+CmHMj8KjBbKXtT52AjBs+DLiQhjBtj
+         xUrI0kXhyrgRqpPCBUNX7I+LIYjDhVSs9uOMKP19bQ/M+Uh2yiz29JkNm+KPe0KaTWCx
+         WX3C/I9+rq8KAQEV5weM5K4KtLZLeVDDEY2veVNsrgbOwm72W2KzoVfrPgbw+6WLuZho
+         PG3JHPS075HpbUdYK8ZMY6Ndp9o9sVF8NhmCRiUH5fX8wWTpKfYMtVddHzn5tglD4vly
+         N68A==
+X-Gm-Message-State: AOJu0YwY3qaGC/Pca6Ka/7lYzFwAhewJuXtV1DicPMw3piWru/Uw0RvL
+	iLFGwoOC47e1A3y8XUh+T7P0l9C4U9bFr7rNAmSDw1tGSU2XlW5IM5q1H4dRQfmNF8aVZ0qsDT7
+	pwDmcskUXmYqtnTJpkg==
+X-Google-Smtp-Source: AGHT+IHb2Off6XDL3Nqyx7r/7Jf5LTyUTWj77ChndMjQirhE72d9MEYOIUZD4BZRzsHmCovwN2jJhA6jfzAHGReWCYs=
+X-Received: by 2002:a05:622a:134b:b0:476:76bc:cfb8 with SMTP id d75a77b69052e-47676bce1d9mr271579141cf.31.1741828384478;
+        Wed, 12 Mar 2025 18:13:04 -0700 (PDT)
+Return-Path: <808-GJW-314.0.250101.0.0.659731.9.57958442-1@google.com>
+Received: from oak.mktdns.com (oak.mktdns.com. [199.15.214.195])
+        by gmr-mx.google.com with ESMTPS id d75a77b69052e-476bb732f78si122451cf.4.2025.03.12.18.13.04
+        for <desgtest.email@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 12 Mar 2025 18:13:04 -0700 (PDT)
+X-MSFBL: mFvteGYzJyGgH0EnbJtcOseYNdwD+uVhMo+B0s0otzw=|eyJiIjoiZHZwLTE5OS0
+	xNS0yMTQtMTk1IiwiZyI6ImJnLXNqci0xOTQiLCJ1IjoiODA4LUdKVy0zMTQ6MDo
+	xNzI2MTQ6MTQ3MjE5OTozOjY1OTczMTo5OjI1MDEwMTo1Nzk1ODQ0Mi0xIiwiciI
+	6ImRlc2d0ZXN0LmVtYWlsQGdtYWlsLmNvbSJ9
+Date: Wed, 12 Mar 2025 20:13:03 -0500 (CDT)
+From: Google Cloud <contactcloud@google.com>
+Reply-To: contactcloud@google.com
+To: desgtest.email@gmail.com
+Message-ID: <630471695.525645.1741828383244@sjmktmail-trigger1e.marketo.org>
+Subject: =?UTF-8?Q?Google_Cloud_Newsletter_|_You=E2=80=99re_subscribed?=
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_525644_1295040360.1741828383239"
+X-Binding: bg-sjr-194
+X-MarketoID: 808-GJW-314:0:172614:1472199:3:659731:9:250101:57958442-1
+X-Mailfrom: 808-GJW-314.0.250101.0.0.659731.9.57958442-1@google.com
+X-MktArchive: false
+X-MSYS-API: {"options":{"open_tracking":false,"click_tracking":false}}
+
+------=_Part_525644_1295040360.1741828383239
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Welcome to the Google Cloud Newsletter.
+The new way to cloud is here =E2=80=93 and now, it=E2=80=99s in your inbox =
+every month.
+Thank you for subscribing!
+
+If you want to learn more about maximizing the benefits of generative AI, a=
+ccelerating digital transformation, and more, please check out our blog <ht=
+tps://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGZLAiSAsujWjcGykKerN4OXU=
+TH83dNMn8N-RY-cphbkqRjcGxQuzIcnRxKcXJlLTsaU3n361c=3D>.
+Read the blog <https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGZLAiSA=
+sujWjcGykKerN4OXUTH83dNMn8N-RY-cphbkqRjcGxQuzIcnRxKcXJlLTsaU3n361c=3D>
+See you in the cloud,=20
+The Google Cloud team
+Hear from customers <https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAG=
+ZLAiSArKl8dcfDx6x97zqtoAtTRty_3_u_7JcmHKm9S9qEywoM3KeLHKkNJzjfmABYObTXg8=3D=
+>
+
+
+
+
+=C2=A0
+
+
+
+
+
+=C2=A0Follow on social <https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQA=
+AAGZLAiSAtEgrk66_FW5XlN2CZQMWDyuR6ws1D76y10pmzSGsOwdr8bDOartXyVLZQa_4yCxo2Y=
+=3D>
+
+
+
+
+=C2=A0
+
+
+
+
+
+=C2=A0Contact sales <https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAG=
+ZLAiSAl9Qm2RqIS9xvfY_MYefqpFdhFzH7zabEapiw7bhziNOSfn4D0ISbNBzOKLs87zkEBo=3D=
+>
+=C2=A9 2025 Google LLC
+1600 Amphitheatre Parkway, Mountain View, CA 94043
+
+We sent you this email because you have indicated that you are willing to r=
+eceive periodic emails on news, product updates, and invitations to events =
+from the Google Cloud team. If you no longer wish to receive these emails, =
+click on the following link to unsubscribe <https://go.cloudplatformonline.=
+com/dc/i9aUyq_pA-1GPdIKBLIqifthbYqnCveUjQWzTAy-DQ4O-23YJ-Vi_rQVP9lcz0MDQq8q=
+1LF63UDwBInbVGekD0LDPPlvl3rAqsU6e7AQt9BBB7ZlAzDcc8AJSXPYA2fLU6VRZIwhlmhFqpk=
+GNM4AqslUte-zH3HfSdSFq9N0qiRNiIHFNM2N9_FmeVXnMQcAPhDi4Hv-LbNHKYWglEi2gK4w7I=
+7_1Yz3ZCLWvzYQXJMmh4ldSdh41YWWXsnCy5Xz24UkCdTNWwgk7DiXDvRwqf5s68FTQBcbvPoq0=
+hFGH45WEIdkZ3dkImlsAmBgLD_EaXXWt7Z0UrfhlcxHGji0gWsgWXlJAX6CjjkcEubuVrJ2Sjt1=
+Js49gC8fkhme1xlY8CgqOElsNdKVrRUvFKNrOCkcbTTvxxZGBR-8WJQHXWpmiVooqoEWZ5a9ZkA=
+vwLIfYt4CngDgcBsXTK5cxYfcaHHuPPPd_afjtA9CKWFDisqdqaGTnB0L3_IawAEho82J5s4rPv=
+DuLafir5uEdGaYXD_CrZv0xSDQxzIUnKM83p8B74GSIfwBUV6ONxL8jLpy5agI47m1-7T_GF18h=
+keild6-m_d6tqM52WHO0B1WMFsPjpo17pajMLPiHQNGQUoFZ5KQ8LP81gG6MoDgSBXYN0omrKim=
+2EiGvnnb6N7ZGtW2aqtvzI24yV6cUAzjfGxZUskfKM7HqlATWh609l1Ufan_EMVryKpiqxcnxzy=
+N0tXT3foEJ_aw0Usbiy7Xia_5cOFm1LHiwJHp--CXxVQTQ-khfMR_LfnzvISjG2_6kI_nrZxAbe=
+QAJp4gF4BHIbHn0Ja94IVxIuc_nr_2MCr_uVEV63fAkcboEkuoeA_h69WqMyfoqIPCmeoDFplns=
+z2d9W5k_f3iXWOJ0igfvpbEsIZcJ9Z2aCClgkWgMugSz8Be9Ygbtv46wupmmdLF2omBb-jCgNQP=
+ObPJUvyYJRqyfMlfTuaBnkYZqLPW7uzam3DMWElAUAMj7-k63WcbFuqdAUmPcmsKZUfGGINe8-w=
+tXSe7KZTNNU7VIju9cGEK9Qc=3D/ODA4LUdKVy0zMTQAAAGZLAiSAofeZraQvCemHAAfkUvsW8r=
+WjSM03QXRSU57FfYAOELPS4pRFhEHAfPWtD8ChcRuqgo=3D>.
+
+------=_Part_525644_1295040360.1741828383239
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
+w3.org/TR/html4/loose.dtd">
+<html lang=3D"en" xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:sch=
+emas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office"=
+>
+<head>=20
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">=
+=20
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1"=
+>=20
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">=20
+<!-- Created by @aivy Oct.
+ 25, 2019 -->=20
+<!-- Updated by @janderson Aug 7, 2020 -->=20
+<!--[if gte mso 9]>
+<style>
+li { text-indent: -1em; }
+</style>
+<![endif]-->=20
+<!--[if gte mso 9]><xml>
+<o:OfficeDocumentSettings>
+<o:AllowPNG/>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml><![endif]-->=20
+<!--[if mso]>
+<style>
+span, td, table, div, p, h1, h2, h3, h4, h5, h6, a {
+font-family: Arial, sans-serif !important;
+}
+</style>
+<![endif]-->=20
+<!-- EM TITLE --> =20
+<!-- DATE/LOCATION MODULE --> =20
+<!-- CTA & LINKS -->         =20
+<!-- CUSTOM CSS OPTION FOR DEVS --> =20
+<!-- CONFIRMATION MARKUP -->   =20
+<!-- HEADLINE COLOR ACCENT --> =20
+<!-- IMAGE CARDS -->   =20
+<!-- JP-KO -->  =20
+<!-- RTL -->   =20
+<!-- Two Columns Section CTA's -->  =20
+<title></title>=20
+<style type=3D"text/css">
+  @font-face {
+    font-family: 'Google Sans';
+    font-style: normal;
+    font-weight: 400;
+    mso-font-alt: Arial;
+    src: local('Google Sans Regular'), local('GoogleSans-Regular'), url('ht=
+tps://fonts.gstatic.com/s/googlesans/v6/4UaGrENHsxJlGDuGo1OIlL3Owps.ttf') f=
+ormat('truetype');
+  }
+  @font-face {
+    font-family: 'Google Sans';
+    font-style: normal;
+    font-weight: 500;
+    mso-font-alt: Arial;
+    src: local('Google Sans Medium'), local('GoogleSans-Medium'), url('http=
+s://fonts.gstatic.com/s/googlesans/v6/4UabrENHsxJlGDuGo1OIlLU94YtzCwM.ttf')=
+ format('truetype');
+  }
+  @font-face {
+    font-family: 'Google Sans';
+    font-style: normal;
+    font-weight: 700;
+    mso-font-alt: Arial;
+    src: local('Google Sans Bold'), local('GoogleSans-Bold'), url('https://=
+fonts.gstatic.com/s/googlesans/v6/4UabrENHsxJlGDuGo1OIlLV154tzCwM.ttf') for=
+mat('truetype');
+  }
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    mso-font-alt: Arial;
+    src: local('Roboto'), local('Roboto-Regular'), url('https://fonts.gstat=
+ic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxP.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    mso-font-alt: Arial;
+    src: local('Roboto Medium'), local('Roboto-Medium'), url('https://fonts=
+.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc9.ttf') format('truetype')=
+;
+  }
+  @font-face {
+    font-family: 'Noto Sans JP';
+    font-style: normal;
+    font-weight: 500;
+    src: url('https://lp.cloudplatformonline.com/rs/808-GJW-314/images/noto=
+-sans-jp-v24-latin_japanese-500.woff');
+    src: local('Noto Sans Japanese Medium'), local('NotoSansJapanese-Medium=
+'),
+    url('https://lp.cloudplatformonline.com/rs/808-GJW-314/images/noto-sans=
+-jp-v24-latin_japanese-500.eot?#iefix') format('embedded-opentype'),
+    url('https://lp.cloudplatformonline.com/rs/808-GJW-314/images/noto-sans=
+-jp-v24-latin_japanese-500.woff2') format('woff2'),
+    url('https://lp.cloudplatformonline.com/rs/808-GJW-314/images/noto-sans=
+-jp-v24-latin_japanese-500.woff') format('woff'),
+    url('https://lp.cloudplatformonline.com/rs/808-GJW-314/images/noto-sans=
+-jp-v24-latin_japanese-500.ttf') format('truetype'),
+    url('https://lp.cloudplatformonline.com/rs/808-GJW-314/images/noto-sans=
+-jp-v24-latin_japanese-500.svg#NotoSansJP') format('svg');
+  }
+  @font-face {
+    font-family: 'Noto Sans JP';
+    font-style: normal;
+    font-weight: 400;
+    src: url('https://lp.cloudplatformonline.com/rs/808-GJW-314/images/noto=
+-sans-jp-v24-latin_japanese-regular.woff');
+    src: local('Noto Sans Japanese Regular'), local('NotoSansJapanese-Regul=
+ar'),
+    url('https://lp.cloudplatformonline.com/rs/808-GJW-314/images/noto-sans=
+-jp-v24-latin_japanese-regular.eot?#iefix') format('embedded-opentype'),
+    url('https://lp.cloudplatformonline.com/rs/808-GJW-314/images/noto-sans=
+-jp-v24-latin_japanese-regular.woff2') format('woff2'),
+    url('https://lp.cloudplatformonline.com/rs/808-GJW-314/images/noto-sans=
+-jp-v24-latin_japanese-regular.woff') format('woff'),
+    url('https://lp.cloudplatformonline.com/rs/808-GJW-314/images/noto-sans=
+-jp-v24-latin_japanese-regular.ttf') format('truetype'),
+    url('https://lp.cloudplatformonline.com/rs/808-GJW-314/images/noto-sans=
+-jp-v24-latin_japanese-regular.svg#NotoSansJP') format('svg');
+  }
+  @font-face {
+    font-family: 'Noto Sans JP';
+    font-style: normal;
+    font-weight: 700;
+    src: url('https://lp.cloudplatformonline.com/rs/808-GJW-314/images/noto=
+-sans-jp-v24-latin_japanese-700.woff');
+    src: local('Noto Sans Japanese Bold'), local('NotoSansJapanese-Bold'),
+    url('https://lp.cloudplatformonline.com/rs/808-GJW-314/images/noto-sans=
+-jp-v24-latin_japanese-700.eot?#iefix') format('embedded-opentype'),
+    url('https://lp.cloudplatformonline.com/rs/808-GJW-314/images/noto-sans=
+-jp-v24-latin_japanese-700.woff2') format('woff2'),
+    url('https://lp.cloudplatformonline.com/rs/808-GJW-314/images/noto-sans=
+-jp-v24-latin_japanese-700.woff') format('woff'),
+    url('https://lp.cloudplatformonline.com/rs/808-GJW-314/images/noto-sans=
+-jp-v24-latin_japanese-700.ttf') format('truetype'),
+    url('https://lp.cloudplatformonline.com/rs/808-GJW-314/images/noto-sans=
+-jp-v24-latin_japanese-700.svg#NotoSansJP') format('svg');
+  }
+  /* CLIENT-SPECIFIC STYLES */
+  body, table, th, td { -webkit-text-size-adjust: 100%; -ms-text-size-adjus=
+t: 100%; color: #3C4043; font-family: sans-serif; font-weight: 400;}
+  table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing:=
+ 0; color: #3C4043; font-family: sans-serif;}
+  img { -ms-interpolation-mode: bicubic; }
+  /* RESET STYLES */
+  img { border: 0; outline: none; text-decoration: none;}
+  table { border-collapse: collapse !important; }
+  body,
+  html {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  /* iOS BLUE LINKS */
+  a[x-apple-data-detectors] {
+    color: inherit !important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+    text-decoration: none !important;
+  }
+  #MessageViewBody a {
+    color: inherit;
+    text-decoration: none;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  /* SAMSUNG CENTER FIX */
+  #MessageViewBody,
+  #MessageWebViewDiv {
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+  /* ANDROID CENTER FIX */
+  div[style*=3D"margin: 16px 0;"] { margin: 0 !important; }
+</style>=20
+<style type=3D"text/css">
+  @media (max-width: 600px) {
+    .container {
+      width: 95% !important;
+    }
+    .inner-container {
+      padding-left: 25px !important;
+      padding-right: 25px !important;
+    }
+    .inner-container-alt {
+      padding-left: 25px !important;
+      padding-right: 0 !important;
+    }
+    .inner-container.social-container {
+      padding-left: 10px !important;
+      padding-right: 10px !important;
+    }
+    img {
+      height: auto !important;
+      max-width: 100% !important;
+    }
+    img.logo {
+      width: 140px !important;
+    }
+    img.partner-logo {
+      max-height: 30px !important;
+      width: auto !important;
+    }
+    .header {
+      padding: 24px 10px !important;
+    }
+    .h-logos {
+      width: 150px !important;
+    }
+    h1.headline {
+      font-size: 24px !important;
+      line-height: 32px !important;
+    }
+    .headline-icon {
+      width: 50px !important;
+    }
+    .hom {
+      display: none !important;
+    }
+    .mobile-map-img {
+      width: 100% !important;
+      display:block !important;
+      max-height:100% !important;
+      overflow:visible !important;
+    }
+    .mobile-pa-hero-img {
+      padding-bottom: 24px !important;
+      width: 100% !important;
+      display:block !important;
+      max-height:100% !important;
+      overflow:visible !important;
+    }
+    .mobile-map-img img{
+      width: 100% !important;
+    }
+    .width100 {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .mobile-block {
+      display: block !important;
+    }
+    .pad-b24 {
+      padding-bottom: 24px !important;
+    }
+    .pad-t2 {
+      =09padding-top: 2px !important;
+      }
+    .pad-t16 {
+      padding-top: 16px !important;
+    }
+    .pad-l10 {
+      padding-left: 10px !important;
+    }
+    .pad-l0 {
+      padding-left: 0 !important;
+    }
+    .pad-all0 {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    .pad-location {
+      padding-top: 20px !important;
+      padding-left: 0 !important;
+    }
+    .pad-img-features {
+      padding-top: 16px !important;
+      padding-bottom: 24px !important;
+    }
+    .pad-map-cal1 {
+      padding: 24px 25px 14px 25px !important;
+      width: auto !important;
+    }
+    .pad-map-cal2 {
+      padding: 0 25px 20px 25px !important;
+      width: auto !important;
+    }
+    .pad-map-cal3 {
+      padding: 20px 25px 20px 25px !important;
+      width: auto !important;
+    }
+    .time {
+      width: 100% !important;
+      display: block !important;
+      border-bottom: none !important;
+      padding-bottom: 0!important;
+    }
+    .info {
+      width: 100% !important;
+      display: block !important;
+      padding-top: 0 !important;
+    }
+    .column {
+      max-width: 50% !important;
+      width: 49% !important;
+    }
+    .contents {
+      width: 90% !important;
+    }
+    .three-column img {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .p-column {
+      max-width: 50% !important;
+      width: 49% !important;
+      padding-bottom: 20px !important;
+    }
+    .partner-column img {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .prefooter-parent {
+      padding-bottom: 22px !important;
+    }
+    .no-float {
+      float: none !important;
+    }
+    .valign-top {
+      =09vertical-align: top !important;
+      }
+  }
+  @media screen and (max-width: 380px) {
+    img.partner-logo {
+      max-height: 20px !important;
+      width: auto !important;
+    }
+  }
+  @media screen and (max-width: 350px) {
+    .column {
+      max-width: 100% !important;
+      width: 100% !important;
+      text-align: center !important;
+    }
+    .contents {
+      width: 100% !important;
+    }
+    .three-column img {
+      width: 80% !important;
+      max-width: 80% !important;
+      margin: 0 auto !important;
+    }
+  }
+  img.no-arrow + div{
+    display: none !important;
+  }
+ =20
+</style>=20
+</head>=20
+<body style=3D"width: 100%; margin:0; padding:0 !important; background-colo=
+r: #f8f9fa;" bgcolor=3D"#f8f9fa"><style type=3D"text/css">div#emailPreHeade=
+r{ display: none !important; }</style><div id=3D"emailPreHeader" style=3D"m=
+so-hide:all; visibility:hidden; opacity:0; color:transparent; mso-line-heig=
+ht-rule:exactly; line-height:0; font-size:0px; overflow:hidden; border-widt=
+h:0; display:none !important;">The new way to cloud is here =E2=80=93 and n=
+ow,  it=E2=80=99s in your inbox every month.</div>=20
+<center style=3D"width: 100%; table-layout: fixed;">=20
+<div style=3D"background-color:#f8f9fa; width: 100%; max-width: 600px; marg=
+in: 0 auto;" bgcolor=3D"#f8f9fa">=20
+<!--[if mso]>
+<table role=3D"presentation" width=3D"600" cellspacing=3D"0" cellpadding=3D=
+"0" border=3D"0" align=3D"center" style=3D"background-color:#f8f9fa;" bgcol=
+or=3D"#f8f9fa">
+<tr>
+<td>
+<![endif]-->=20
+<table role=3D"presentation" width=3D"600" class=3D"container" cellspacing=
+=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center" style=3D"max-width:6=
+00px; width:600px; word-break: break-word; Margin: 0 auto;" bgcolor=3D"#FFF=
+FFF">=20
+<tbody>
+<tr>=20
+<td class=3D"mktoContainer" id=3D"moduleContainer" align=3D"center" valign=
+=3D"top" bgcolor=3D"#ffffff" style=3D"background-color: #ffffff;">
+<table role=3D"presentation" class=3D"mktoModule" id=3D"headerCloudLogoModu=
+le" width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D=
+"center" style=3D"max-width:600px; width:100%; background: #f8f9fa;">=20
+<tbody>=20
+<tr>=20
+<td valign=3D"top" style=3D"padding:24px 24px 24px 30px;" class=3D"header m=
+ktoText" id=3D"header-logo">
+<table role=3D"presentation" width=3D"600" cellspacing=3D"0" cellpadding=3D=
+"0" border=3D"0" align=3D"left" style=3D"max-width:600px; width:100%;">=20
+<tbody>=20
+<tr>=20
+<td dir=3D"ltr" valign=3D"middle" class=3D"h-logos pad-l15" width=3D"300" a=
+lign=3D"left" style=3D"font-family: Google Sans&#x2C;Roboto&#x2C;Arial&#x2C=
+;sans-serif; font-size: 14px; vertical-align: middle; width: 300px; text-al=
+ign: left; padding-left: 20px;"> <img src=3D"https://lp.cloudplatformonline=
+.com/rs/808-GJW-314/images/google-cloud-2021-em.png" alt=3D"Google Cloud" c=
+lass=3D"logo no-arrow" height=3D"32" style=3D"max-height: 32px; display: bl=
+ock;"> </td>=20
+</tr>=20
+</tbody>=20
+</table></td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table role=3D"presentation" class=3D"mktoModule" id=3D"heroHeadlineModule"=
+ width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"ce=
+nter" style=3D"max-width:600px; width:100%;">=20
+<tbody>=20
+<tr>=20
+<td dir=3D"ltr" valign=3D"top" style=3D"padding:40px 50px 4px 50px;" class=
+=3D"inner-container"> <h1 class=3D"mktoText headline" id=3D"headlineContent=
+" style=3D"font-family: Google Sans,Roboto,Arial,sans-serif; font-size: 32p=
+x; line-height: 40px; color: #3C4043; text-align: left; font-weight: bold; =
+margin: 0; padding: 0;">Welcome to the Google Cloud Newsletter.</h1> </td>=
+=20
+</tr>=20
+</tbody>=20
+</table>
+<table role=3D"presentation" class=3D"mktoModule" id=3D"subheadlineModule" =
+width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"cen=
+ter" style=3D"max-width:600px; width:100%;">=20
+<tbody>=20
+<tr>=20
+<td dir=3D"ltr" valign=3D"top" style=3D"padding:4px 50px 8px 50px;" class=
+=3D"inner-container"> <p class=3D"mktoText" id=3D"subheadlineContent" style=
+=3D"font-family: Google Sans&#x2C;Roboto&#x2C;Arial&#x2C;sans-serif; font-s=
+ize: 16px; line-height: 26px; color: #3C4043; text-align: left; margin: 0; =
+padding: 0;">The new way to cloud is here =E2=80=93 and now, it=E2=80=99s i=
+n your inbox every month.</p> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table role=3D"presentation" class=3D"mktoModule" id=3D"imgFullWidthModuled=
+c566692-d4d5-4333-b78d-7eabc88d20e4" width=3D"600" cellspacing=3D"0" cellpa=
+dding=3D"0" border=3D"0" align=3D"center" style=3D"max-width:600px; width:1=
+00%;">=20
+<tbody>=20
+<tr>=20
+<td valign=3D"top" style=3D"padding:16px 50px 16px 50px;" class=3D"inner-co=
+ntainer">=20
+<div class=3D"mktoText" id=3D"fullImg94d78cdc-b737-442f-96b8-2b3a69fe3f23">=
+=20
+<img class=3D"width100" src=3D"https://lp.cloudplatformonline.com/rs/808-GJ=
+W-314/images/new-way-to-cloud-2024-banner.png?version=3D0" alt=3D"The New W=
+ay To Cloud Banner" border=3D"0" width=3D"100%" style=3D"display: block; wi=
+dth: 500px; border-radius: 5%/20%;" constrain=3D"true" imagepreview=3D"fals=
+e">=20
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table role=3D"presentation" class=3D"mktoModule" id=3D"salutationModule" w=
+idth=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"cent=
+er" style=3D"max-width:600px; width:100%;">=20
+<tbody>=20
+<tr>=20
+<td dir=3D"ltr" valign=3D"top" style=3D"padding:16px 50px 4px 50px;" class=
+=3D"inner-container"> <p class=3D"mktoText" id=3D"greeting" style=3D"font-f=
+amily: Roboto&#x2C;Arial&#x2C;sans-serif; font-size: 14px; line-height: 24p=
+x; color: #3C4043; text-align: left; margin: 0; padding: 0; font-weight: bo=
+ld;">Hi Desgtest,</p> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table role=3D"presentation" class=3D"mktoModule" id=3D"bodyCopyModule" wid=
+th=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center=
+" style=3D"max-width:600px; width:100%;">=20
+<tbody>=20
+<tr>=20
+<td dir=3D"ltr" valign=3D"top" style=3D"padding:8px 50px 8px 50px;" class=
+=3D"inner-container"> <p class=3D"mktoText" id=3D"bodyCopy" style=3D"font-f=
+amily: Roboto&#x2C;Arial&#x2C;sans-serif; font-size: 14px; line-height: 24p=
+x; color: #3C4043; margin: 0; padding: 0; text-align: left;">Thank you for =
+subscribing!<br><br>If you want to learn more about maximizing the benefits=
+ of generative AI, accelerating digital transformation, and more, <a href=
+=3D
+"https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGZLAiSAsujWjcGykKerN4=
+OXUTH83dNMn8N-RY-cphbkqRjcGxQuzIcnRxKcXJlLTsaU3n361c=3D" target=3D"_blank" =
+style=3D"color: #1a73e8; font-family: Roboto&#x2C;Arial&#x2C;sans-serif; fo=
+nt-size: 14px; font-weight: 400; line-height: 24px;"
+>please check out our blog</a>.<br></p> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table role=3D"presentation" class=3D"mktoModule" id=3D"ctaModule" width=3D=
+"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center" sty=
+le=3D"max-width:600px; width:100%;">=20
+<tbody>=20
+<tr>=20
+<td valign=3D"top" style=3D"padding:16px 50px 16px 50px;" class=3D"inner-co=
+ntainer">=20
+<table role=3D"presentation" border=3D"0" cellspacing=3D"0" cellpadding=3D"=
+0" align=3D"left">=20
+<tbody>=20
+<tr>=20
+<td dir=3D"ltr" class=3D"mktoText" id=3D"cta" bgcolor=3D"#1a73e8" style=3D"=
+border-radius: 3px;"><a role=3D"button" href=3D
+"https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGZLAiSAsujWjcGykKerN4=
+OXUTH83dNMn8N-RY-cphbkqRjcGxQuzIcnRxKcXJlLTsaU3n361c=3D" target=3D"_blank" =
+style=3D"font-family: 'Google Sans',Roboto,Arial,sans-serif; color: #ffffff=
+; text-decoration: none; font-size: 14px; letter-spacing: 1px; font-weight:=
+ 500; -webkit-border-radius: 3px; border-radius: 3px; border: 1px solid #1a=
+73e8; padding: 14px 16px 14px 16px; display: inline-block;"
+>Read the blog</a></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table role=3D"presentation" class=3D"mktoModule" id=3D"signOffModule" widt=
+h=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center"=
+ style=3D"max-width:600px; width:100%;">=20
+<tbody>=20
+<tr>=20
+<td dir=3D"ltr" valign=3D"top" style=3D"padding:8px 50px 30px 50px;" class=
+=3D"inner-container">=20
+<div class=3D"mktoText" id=3D"signOffContent" style=3D"font-family: Google =
+Sans&#x2C;Roboto&#x2C;Arial&#x2C;sans-serif; font-size: 14px; line-height: =
+24px; color: #3C4043; margin: 0; padding: 0; text-align: left;">
+See you in the cloud,=20
+<br>
+<strong>The Google Cloud team</strong>
+<br>
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table role=3D"presentation" class=3D"mktoModule" id=3D"toutRuleModule" wid=
+th=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center=
+" style=3D"max-width:600px; width:100%;">=20
+<tbody>=20
+<tr>=20
+<td class=3D"inner-container" valign=3D"top" style=3D"padding:16px 50px 16p=
+x 50px;">=20
+<table role=3D"presentation" cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0" width=3D"100%">=20
+<tbody>=20
+<tr>=20
+<td class=3D"inner-container" valign=3D"top" height=3D"1" style=3D"backgrou=
+nd-color: #F1F3F4; height: 1px; mso-line-height-rule: exactly; line-height:=
+ 1px; font-size: 1px;">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table role=3D"presentation" class=3D"mktoModule" id=3D"toutModule0379a4cf-=
+abd5-4d81-ab85-713bfe068d88" width=3D"600" cellspacing=3D"0" cellpadding=3D=
+"0" border=3D"0" align=3D"center" style=3D"max-width:600px; width:100%;">=
+=20
+<tbody>=20
+<tr>=20
+<td dir=3D"ltr" align=3D"left" valign=3D"top" style=3D"padding:8px 50px 20p=
+x 50px;" class=3D"inner-container">=20
+<div class=3D"mktoText" id=3D"toutModuleContentb98d8dd6-a4a6-442f-9298-dd5a=
+f2b73798">=20
+<table role=3D"presentation" class=3D"width100" cellspacing=3D"0" cellpaddi=
+ng=3D"0" border=3D"0">=20
+<tbody>=20
+<tr>=20
+<th class=3D"width100 mobile-block prefooter-parent" style=3D"text-align: l=
+eft;">=20
+<table role=3D"presentation" cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0">=20
+<tbody>=20
+<tr>=20
+<td dir=3D"ltr" width=3D"24" align=3D"middle" style=3D"width: 24px;"><img c=
+lass=3D"no-arrow" src=3D"https://lp.cloudplatformonline.com/rs/808-GJW-314/=
+images/v2-cloud-icon.png" height=3D"20" style=3D"display: block; margin: 0;=
+ height: 20px;" constrain=3D"true" imagepreview=3D"false"></td>=20
+<td dir=3D"ltr" style=3D"white-space: nowrap; padding-: 7px;">&nbsp;<a styl=
+e=3D"font-family: Google Sans,Roboto,Arial,sans-serif; font-size: 14px; fon=
+t-weight: 500; line-height: 18px; color: #1a73e8; margin: 0; padding: 0; te=
+xt-align: left; text-decoration: none;" href=3D
+"https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGZLAiSArKl8dcfDx6x97z=
+qtoAtTRty_3_u_7JcmHKm9S9qEywoM3KeLHKkNJzjfmABYObTXg8=3D" target=3D"_blank"
+>Hear from customers</a></td>=20
+</tr>=20
+</tbody>=20
+</table> </th>=20
+<th class=3D"hom" style=3D"width: 60px; min-width: 20px;">&nbsp;</th>=20
+<th class=3D"width100 mobile-block prefooter-parent" style=3D"text-align: l=
+eft;">=20
+<table role=3D"presentation" cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0">=20
+<tbody>=20
+<tr>=20
+<td dir=3D"ltr" width=3D"24" align=3D"middle" style=3D"width: 24px;"><img c=
+lass=3D"no-arrow" src=3D"https://lp.cloudplatformonline.com/rs/808-GJW-314/=
+images/v2-screens-icon.png" height=3D"20" style=3D"display: block; margin: =
+0; height: 20px;" constrain=3D"true" imagepreview=3D"false"></td>=20
+<td dir=3D"ltr" style=3D"white-space: nowrap; padding-: 7px;">&nbsp;<a styl=
+e=3D"font-family: Google Sans,Roboto,Arial,sans-serif; font-size: 14px; fon=
+t-weight: 500; line-height: 18px; color: #1a73e8; margin: 0; padding: 0; te=
+xt-align: left; text-decoration: none;" href=3D
+"https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGZLAiSAtEgrk66_FW5XlN=
+2CZQMWDyuR6ws1D76y10pmzSGsOwdr8bDOartXyVLZQa_4yCxo2Y=3D" target=3D"_blank"
+>Follow on social</a></td>=20
+</tr>=20
+</tbody>=20
+</table> </th>=20
+<th class=3D"hom" style=3D"width: 60px; min-width: 20px;">&nbsp;</th>=20
+<th class=3D"width100 mobile-block" style=3D"text-align: left;">=20
+<table role=3D"presentation" cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0">=20
+<tbody>=20
+<tr>=20
+<td dir=3D"ltr" width=3D"24" align=3D"middle" style=3D"width: 24px;"><img c=
+lass=3D"no-arrow" src=3D"https://lp.cloudplatformonline.com/rs/808-GJW-314/=
+images/v2-mail-icon.png" height=3D"20" style=3D"display: block; margin: 0; =
+height: 20px;" constrain=3D"true" imagepreview=3D"false"></td>=20
+<td dir=3D"ltr" style=3D"white-space: nowrap; padding-: 7px;">&nbsp;<a styl=
+e=3D"font-family: Google Sans,Roboto,Arial,sans-serif; font-size: 14px; fon=
+t-weight: 500; line-height: 18px; color: #1a73e8; margin: 0; padding: 0; te=
+xt-align: left; text-decoration: none;" href=3D
+"https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGZLAiSAl9Qm2RqIS9xvfY=
+_MYefqpFdhFzH7zabEapiw7bhziNOSfn4D0ISbNBzOKLs87zkEBo=3D" target=3D"_blank"
+>Contact sales</a></td>=20
+</tr>=20
+</tbody>=20
+</table> </th>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table role=3D"presentation" class=3D"mktoModule" id=3D"footerModuleNonOp" =
+width=3D"600" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"cen=
+ter" style=3D"max-width:600px; width:100%; background: #f8f9fa;">=20
+<tbody>=20
+<tr>=20
+<td valign=3D"top" style=3D"padding:40px 50px 0 50px;" class=3D"inner-conta=
+iner">=20
+<table role=3D"presentation" width=3D"600" cellspacing=3D"0" cellpadding=3D=
+"0" border=3D"0" style=3D"max-width:600px; width:100%;">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<table role=3D"presentation" cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0" style=3D"width: 100%;">=20
+<tbody>=20
+<tr>=20
+<td dir=3D"ltr" align=3D"left" style=3D"padding-bottom: 16px;">=20
+<div class=3D"mktoText" id=3D"footerLogo">
+<img class=3D"no-arrow" src=3D"https://lp.cloudplatformonline.com/rs/808-GJ=
+W-314/images/google-cloud-a11y.png" alt=3D"Google Cloud" width=3D"140" heig=
+ht=3D"25" style=3D"width: 140px; display: block; margin: 0; border: none;">
+</div> </td>=20
+</tr>=20
+<tr>=20
+<td dir=3D"ltr" style=3D"font-family: Roboto&#x2C;Arial&#x2C;sans-serif; fo=
+nt-size: 12px; font-weight: 400; line-height: 18px; color: #5F6368; margin:=
+ 0; padding: 0; text-align: left; padding-bottom: 18px;">=20
+<div class=3D"mktoText" id=3D"footer-copyright-address"></div>=20
+<div>=20
+<br>=20
+</div>=20
+<div class=3D"mktoText" id=3D"footer-copy">
+=C2=A9&nbsp;2025 Google LLC
+<br>1600 Amphitheatre Parkway, Mountain View, CA 94043
+<br>
+<br>We sent you this email because you have indicated that you are willing =
+to receive periodic emails on news, product updates, and invitations to eve=
+nts from the Google Cloud team. If you no longer wish to receive these emai=
+ls, click on the following link to=20
+<a href=3D
+"https://cloud.google.com/preferences/?mkt_unsubscribe=3D1ODA4LUdKVy0zMTQAA=
+AGZLAiSAo6z9dZYfHW6NDDm5ekBqjdbiMvhXALSNWuG829VmoAsqnDmPD3Fvg7ng98Vzw35jeuA=
+nIFTjxKGB1GeK_R2jEL-ePV8e56lB_iI_fnbf_cw3Q&amp;Opt_In_Events__c=3DYes&amp;O=
+pt_In_Newsletter__c=3DYes&amp;Opt_In_Offers__c=3DYes&amp;Opt_In_Products__c=
+=3DYes&amp;Opt_In_Research__c=3DYes&amp;preferenceCenterSubscription1=3DYes=
+&amp;preferenceCenterSubscription2=3DYes&amp;preferenceCenterSubscription3=
+=3DYes&amp;preferenceCenterSubscription4=3DYes" class=3D"mktNoTrack" style=
+=3D"text-decoration: underline; color: #1a73e8;" target=3D"_blank"
+>unsubscribe</a> or=20
+<a href=3D
+"https://cloud.google.com/preferences/?Opt_In_Events__c=3DYes&amp;Opt_In_Ne=
+wsletter__c=3DYes&amp;Opt_In_Offers__c=3DYes&amp;Opt_In_Products__c=3DYes&a=
+mp;Opt_In_Research__c=3DYes&amp;preferenceCenterSubscription1=3DYes&amp;pre=
+ferenceCenterSubscription2=3DYes&amp;preferenceCenterSubscription3=3DYes&am=
+p;preferenceCenterSubscription4=3DYes" class=3D"mktNoTrack" style=3D"text-d=
+ecoration: underline; color:=20
+#1a73e8;" target=3D"_blank"
+>customize your communication preferences</a>.
+<!--https://lp.cloudplatformonline.com/UnsubscribePage.html?mkt_unsubscribe=
+=3D1&mkt_tok=3DODA4LUdKVy0zMTQAAAGZLAiSAo6z9dZYfHW6NDDm5ekBqjdbiMvhXALSNWuG=
+829VmoAsqnDmPD3Fvg7ng98Vzw35jeuAnIFTjxKGB1GeK_R2jEL-ePV8e56lB_iI_fnbf_cw3Q-=
+->=20
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+<tr>=20
+<td valign=3D"top" style=3D"padding:0 50px 40px 35px;" class=3D"inner-conta=
+iner social-container">=20
+<table role=3D"presentation" width=3D"600" cellspacing=3D"0" cellpadding=3D=
+"0" border=3D"0" style=3D"max-width:600px; width:100%;">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<table role=3D"presentation" cellspacing=3D"0" cellpadding=3D"0" border=3D"=
+0" style=3D"width: 100%;">=20
+<tbody>=20
+<tr>=20
+<td align=3D"left">=20
+<div class=3D"mktoText" id=3D"footerlinks">
+<table role=3D"presentation" align=3D"left" class=3D"footer-icon-table" cel=
+lpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"width: auto;">=20
+<tbody>=20
+<tr>=20
+<td width=3D"48" style=3D"width: 48px; font-family: Roboto&#x2C;Arial&#x2C;=
+sans-serif;"><a href=3D
+"https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGZLAiSAvb9RamC2K1TI47=
+NdNMiVO31wiGzxchHRUGYeyf9S72axuD3ANAyPbisSxyFzFi6rHU=3D"
+><img src=3D"https://lp.cloudplatformonline.com/rs/808-GJW-314/images/blog-=
+a11y.png" alt=3D"Blogger" border=3D"0" height=3D"48" style=3D"height:48px;"=
+></a></td>=20
+<td width=3D"48" style=3D"width: 48px; padding-left: 8px; font-family: Robo=
+to&#x2C;Arial&#x2C;sans-serif;"><a href=3D
+"https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGZLAiSAh8qRP061R2lRKp=
+AUeFoUqCBnLMA88ZX6NEaX5Ny_Ieh6Qf2zK4NX2CehA2tjFNIVy8=3D"
+><img src=3D"https://lp.cloudplatformonline.com/rs/808-GJW-314/images/githu=
+b-a11y.png" alt=3D"Github" border=3D"0" height=3D"48" style=3D"height:48px;=
+"></a></td>=20
+<td width=3D"48" style=3D"width: 48px; padding-left: 8px; font-family: Robo=
+to&#x2C;Arial&#x2C;sans-serif;"><a href=3D
+"https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGZLAiSAmmGMfLisLAL7DX=
+4LTulhRJ8OtZaHfEEdJWhZ82EvDxCWkKOj6hASl7e9wGL9VVRSdI=3D"
+><img src=3D"https://lp.cloudplatformonline.com/rs/808-GJW-314/images/linke=
+din-a11y.png" alt=3D"LinkedIn" border=3D"0" height=3D"48" style=3D"height:4=
+8px;"></a></td>=20
+<td width=3D"48" style=3D"width: 48px; padding-left: 8px; font-family: Robo=
+to&#x2C;Arial&#x2C;sans-serif;"><a href=3D
+"https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGZLAiSAtsm8jazFJ6CyZu=
+Ls4_GLl-0U-onnEsRIHUyBAtO5idhw18mxhz7RBA1CeeaiqtTkv0=3D"
+><img src=3D"https://lp.cloudplatformonline.com/rs/808-GJW-314/images/twitt=
+er-a11y.png" alt=3D"Twitter" border=3D"0" height=3D"48" style=3D"height:48p=
+x;"></a></td>=20
+<td width=3D"48" style=3D"width: 48px; padding-left: 8px; font-family: Robo=
+to&#x2C;Arial&#x2C;sans-serif;"><a href=3D
+"https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGZLAiSAlEpAWJfcicMg5A=
+G-YTPPuo3Kr9pxEFhGpBNVTlCfIWuOn6p5s1hVYa4TkVcxqnOOIw=3D"
+><img src=3D"https://lp.cloudplatformonline.com/rs/808-GJW-314/images/faceb=
+ook-a11y.png" alt=3D"Facebook" border=3D"0" height=3D"48" style=3D"height:4=
+8px;"></a></td>=20
+<td width=3D"48" style=3D"width: 48px; padding-left: 8px; font-family: Robo=
+to&#x2C;Arial&#x2C;sans-serif;"><a href=3D
+"https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGZLAiSAtkybpZgukm1evE=
+RZvRBmhIxwYWlMxh6RmrQqfY60g6MQVLDqc3IQr2y9zet297bYcc=3D"
+><img src=3D"https://lp.cloudplatformonline.com/rs/808-GJW-314/images/youtu=
+be-a11y.png" alt=3D"YouTube" border=3D"0" height=3D"48" style=3D"height:48p=
+x;"></a></td>=20
+</tr>=20
+</tbody>=20
+</table>
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table></td>=20
+</tr>=20
+</tbody>
+</table>=20
+<!--[if mso]>
+</td>
+</tr>
+</table>
+<![endif]-->=20
+</div>=20
+</center>  =20
+<a href=3D
+"https://go.cloudplatformonline.com/ODA4LUdKVy0zMTQAAAGZLAiSAtfgGE-_axIP2T9=
+lNKf6zavQLt0bkIybktuB72Gk_m61riguVxLdIlhKfYRM6JDoxg8=3D"
+></a>
+<img src=3D"https://go.cloudplatformonline.com/trk?t=3D1&mid=3DODA4LUdKVy0z=
+MTQAAAGZLAiSAhVF_SDvIbqtqLVqojkjv3FLYc0XV1C_KPsAM_UfO3W72DopjC9V25d4oXBzx-n=
+q_40xhsijfWQddcV5p7FS0jqEHqx9Z3gkqahTQeIRtg3MfZQrBK_iMZFxJg" width=3D"1" he=
+ight=3D"1" style=3D"display:none !important;" alt=3D"" />
+</body>
+</html>
+------=_Part_525644_1295040360.1741828383239--

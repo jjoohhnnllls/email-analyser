@@ -1,0 +1,251 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:520:b0:81:c1e5:8e27 with SMTP id 32csp1686350rch;
+        Tue, 11 Mar 2025 02:08:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHy7gcxcLx3Yw3fKwdvrGgRBNZYINe5oyAyHpgHVuXKO8qEb3CO76o4wN0x6vYwFerEuj9W
+X-Received: by 2002:a05:6902:348a:b0:e60:aa39:11f2 with SMTP id 3f1490d57ef6-e635c1d97c3mr17924622276.32.1741684081487;
+        Tue, 11 Mar 2025 02:08:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741684081; cv=none;
+        d=google.com; s=arc-20240605;
+        b=fU+khMdYQWndn0gGv0Uktrf805YUmINTcH5DtmeF0NXj8iimzD0xtId/juum1R056J
+         xdG3BMK1wDnE+gWHOmCWEgNh9LJX1Vwq8G9AwJYIGLiwxby2UJkLdOku5+0qGLwqb6zG
+         97s56aWUEyNXRHBeNTP0zPirS/fSNQKkbWl9zb4X1tHk/b8tRHRk/FEytrk8M1QCeTZQ
+         eIhWVyiteqPSPqvF0l1KwdY9oR7IPssFgnoPDjlyNhh53AHzZMW8AHhnbCHM98klpJaw
+         kmWcBPNu+XgVsEi0TMqNU3UXVlEYou79/hraOItCglQZou9uhmjRJUUxwg77yo0/f6vV
+         esJw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=from:subject:reply-to:mime-version:date:message-id:to
+         :content-transfer-encoding:dkim-signature;
+        bh=pAQCPH6g0vgWRElsBQ2LkIj0COv4jQujp0pbvKwSDUI=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=F4kn4cgqUQPhLv2chd49WqsbYxCvJYOaXWPrMm2x2qZx2ZulscOl4JyzZ13f3unJg7
+         rHOwBi/DpgZx2QhKu1v1TNB7SNZ2/KZ7Jqe/II/9k9N1mZDlcbEFHPKTIYIbf8EH7kWE
+         RrEbb0/Sdi6Qis+gamFXCq27/QHqiLgf9aLHqG2Bl6h2L6o0fUuUnvqPeeF66GeI+5Ir
+         WlyGBuHOkKIbXCL1HQrz519NPMz7WHsnDr9pJ8QiooUU1IuaZUxC4jpuE6IUrnpC/Nf+
+         Zkw0hNigfSKdw2fWk0USFDKl0ss5fUsQ1xwExAJj2Hsc+VIdpV0mB9IXk3rkHIEo7BaW
+         YZVA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@nytimes.com header.s=scph0118 header.b="IpGbQi/V";
+       spf=pass (google.com: domain of msprvs1=201651gilih6f=bounces-1-3@bounce.nytimes.com designates 192.174.83.67 as permitted sender) smtp.mailfrom="msprvs1=201651giLIH6F=bounces-1-3@bounce.nytimes.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nytimes.com
+Return-Path: <msprvs1=201651giLIH6F=bounces-1-3@bounce.nytimes.com>
+Received: from mta-83-67.sparkpostmail.com (mta-83-67.sparkpostmail.com. [192.174.83.67])
+        by mx.google.com with ESMTPS id 3f1490d57ef6-e637177bef8si6078917276.513.2025.03.11.02.08.01
+        for <desgtest.email@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 11 Mar 2025 02:08:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of msprvs1=201651gilih6f=bounces-1-3@bounce.nytimes.com designates 192.174.83.67 as permitted sender) client-ip=192.174.83.67;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@nytimes.com header.s=scph0118 header.b="IpGbQi/V";
+       spf=pass (google.com: domain of msprvs1=201651gilih6f=bounces-1-3@bounce.nytimes.com designates 192.174.83.67 as permitted sender) smtp.mailfrom="msprvs1=201651giLIH6F=bounces-1-3@bounce.nytimes.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nytimes.com
+Return-Path: <msprvs1=201651giLIH6F=bounces-1-3@bounce.nytimes.com>
+X-MSFBL: 11GjfKTwBH3ym4vn3Dql2u2MD2CuImdvzKy7kfUjxgU=|eyJtZXNzYWdlX2lkIjo
+	iNjdiZjcwZmRjZjY3NWU3OTNlNzgiLCJyIjoiZGVzZ3Rlc3QuZW1haWxAZ21haWw
+	uY29tIiwiY3VzdG9tZXJfaWQiOiIxIiwidGVuYW50X2lkIjoibnl0Iiwic3ViYWN
+	jb3VudF9pZCI6IjMifQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nytimes.com;
+	s=scph0118; t=1741684080; i=@nytimes.com;
+	bh=pAQCPH6g0vgWRElsBQ2LkIj0COv4jQujp0pbvKwSDUI=;
+	h=Content-Type:To:Message-ID:Date:Subject:From:From:To:Cc:Subject;
+	b=IpGbQi/V36FFy7NFUZQc6x1/gxX+1/WzLAjwcIwquLBy41AtJW6aeeiKeLFqUNavF
+	 YHWdgm9FwxDpOQRnXzhZKlN5SxPYWFBHlh6bkpWAokeTV/4sphpAbh+XR6KIR86d3r
+	 clIchlXcC4XWZXWMkYDy7O2So5J/JcMK/AJh2LCw=
+Received: from [10.90.0.185] ([10.90.0.185])
+	by i-0b0f9bd3fbb0c30d6.mta2vrest.sd.prd.sparkpost (ecelerity 4.8.0.74368 r(msys-ecelerity:tags/4.8.0.17)) with REST
+	id 87/EB-31326-07DFFC76; Tue, 11 Mar 2025 09:08:00 +0000
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+To: desgtest.email@gmail.com
+Message-ID: <87.EB.31326.07DFFC76@i-0b0f9bd3fbb0c30d6.mta2vrest.sd.prd.sparkpost>
+Date: Tue, 11 Mar 2025 09:08:00 +0000
+MIME-Version: 1.0
+Reply-To: nytdirect@nytimes.com
+Subject: Welcome to The Morning newsletter
+From: The New York Times <nytdirect@nytimes.com>
+
+<!DOCTYPE html><html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:=
+schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:offi=
+ce"><head><title>Welcome to The Morning newsletter</title><!--[if !mso]><!-=
+- --><meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"><!--<![endi=
+f]--><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-=
+8"><meta name=3D"viewport" content=3D"width=3Ddevice-width,initial-scale=3D=
+1"><style type=3D"text/css">#outlook a{padding:0}body{margin:0;padding:0;-w=
+ebkit-text-size-adjust:100%;-ms-text-size-adjust:100%}table,td{border-colla=
+pse:collapse;mso-table-lspace:0;mso-table-rspace:0}img{border:0;height:auto=
+;line-height:100%;outline:0;text-decoration:none;-ms-interpolation-mode:bic=
+ubic}p{display:block;margin:13px 0}p,ul{margin-top:0}@media (max-width:600p=
+x){body{padding:0 15px!important}}</style><!--[if mso]>=0A        <xml>=0A =
+       <o:OfficeDocumentSettings>=0A          <o:AllowPNG/>=0A          <o:=
+PixelsPerInch>96</o:PixelsPerInch>=0A        </o:OfficeDocumentSettings>=0A=
+        </xml>=0A        <![endif]--><style type=3D"text/css">@media (max-w=
+idth:480px){.css-1pf6b0h{height:10px!important}}.css-sdwaa1:hover{-webkit-t=
+ext-decoration:none!important;text-decoration:none!important}.css-1n5iqtj:h=
+over{-webkit-text-decoration:none!important;text-decoration:none!important}=
+@media (max-width:600px){.css-1n5iqtj{display:inline-block;border-right:1px=
+ solid #dcdcdc;padding-right:10px;margin-right:10px}}.css-wf08f0:hover{-web=
+kit-text-decoration:none!important;text-decoration:none!important}@media (m=
+ax-width:600px){.css-wf08f0{display:inline-block!important}}</style></head>=
+<body>=0D=0A<div style=3D"color:transparent;visibility:hidden;opacity:0;fon=
+t-size:0px;border:0;max-height:1px;width:1px;margin:0px;padding:0px;border-=
+width:0px!important;display:none!important;line-height:0px!important;"><img=
+ border=3D"0" width=3D"1" height=3D"1" src=3D"https://nl.nytimes.com/q/8xvJ=
+VMEDaKulsxYJbj9Kmw~~/AAAAARA~/XD4SF0OUTObOf7J6Gtt4MjEbSFgLLXYCe7gzhvfY3Esqw=
+ey50kxTSMQlFjOLHixJ_zqII5A1F9gh2tB7mAys5g~~" alt=3D""/></div>=0D=0A<div sty=
+le=3D"display:none;font-size:1px;color:#fff;line-height:1px;max-height:0;ma=
+x-width:0;opacity:0;overflow:hidden">We'll bring you news, clarity and even=
+ delight.</div><div><!--[if mso | IE]><table border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"margin-right: auto; margin-left: auto" width=3D=
+"600" align=3D"center"><tr><td><![endif]--><table width=3D"100%" align=3D"l=
+eft" border=3D"0" style=3D"margin:0" bgcolor=3D"#FFFFFF"><tbody><tr><td id=
+=3D"EMAIL_CONTAINER" align=3D"left" width=3D"100%"><div style=3D"margin:0 a=
+uto;max-width:600px;width:100%"><table border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"width:100%"><tbody><tr><td height=3D"4" class=3D"css-=
+1pf6b0h"></td></tr><tr><td style=3D"border-bottom:1px solid #000"><a href=
+=3D"https://nl.nytimes.com/f/a/XScGj1_l4EFXLRwY6pOE7w~~/AAAAARA~/VUnPvApakz=
+_BvjhGDzCUlIrZH4RqKehXKXU7ViYHzOq8rM2M_J8oBPlOi7foVatraGfVXvqZucmqJNbBqbW6W=
+4_2CPgVrJYWW5SIZ4TPWs74D31PPp07Aw-6HB7HYaQQ" class=3D"css-sdwaa1" style=3D"=
+color:#286ed0;-webkit-text-decoration:underline;text-decoration:underline">=
+<img src=3D"https://static01.nyt.com/email-images/New_Headers/NYT-WMK-B-RGB=
+-opaque-wide-high-def.png" alt=3D"The New York Times" width=3D"600" style=
+=3D"margin:auto;display:block;width:100%"></a><table style=3D"width:100%" c=
+ellpadding=3D"0" cellspacing=3D"0"><tbody><tr><td height=3D"10"></td></tr><=
+/tbody></table></td></tr></tbody></table><table border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0" style=3D"width:100%"><tbody><tr><td style=3D"border-t=
+op:0 solid transparent"></td></tr><tr><td height=3D"30"></td></tr><tr><td><=
+a href=3D"https://nl.nytimes.com/f/a/WXqBJ9OkHUHY6i3__Ahnfw~~/AAAAARA~/CY5z=
+Zw0Nh0oNR2vzdmzqc-4ZH6EKV0Y2yaWycZEC81MePji9O75Ag_SMEYTiClAisapcoOmkJIenMDs=
+ggR_b1MElpiAO9wGKWV_EP-jSN1hkAgni7lrOYDpdiYnssXYuKmrTKnFyyaRG6F393aoDrg~~" =
+class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:underli=
+ne;text-decoration:underline"><img id=3D"NN" src=3D"https://static.nytimes.=
+com/email-images/NYT-Newsletters-TheMorning-Icon-500px.jpg" alt=3D"The Morn=
+ing" width=3D"145" style=3D"display:block;width:145px"></a></td></tr><tr><t=
+d height=3D"30"></td></tr><tr><td style=3D"border-bottom:0 solid transparen=
+t"></td></tr></tbody></table><p style=3D"font:400 22.5px/30px georgia,serif=
+;color:#333;margin:0 0 15px"><span>Hello from The New York Times.</span></p=
+><p style=3D"font:400 22.5px/30px georgia,serif;color:#333;margin:0 0 15px"=
+><span>Every day, you will be receiving an email from us =E2=80=93 called =
+=E2=80=9CThe Morning=E2=80=9D =E2=80=93 that will help you make sense of th=
+e day=E2=80=99s biggest news. The email is meant to provide you with clarit=
+y, context and, ideally, some delight.</span></p><p style=3D"font:400 22.5p=
+x/30px georgia,serif;color:#333;margin:0 0 15px"><span>The Morning gives yo=
+u a peek inside The Times =E2=80=93 at the more than 2,000 Times journalist=
+s stationed in 159 countries, including doctors, lawyers, cartographers, fo=
+rmer Marines and other experts.</span></p><p style=3D"font:400 22.5px/30px =
+georgia,serif;color:#333;margin:0 0 15px"><span>We hope this newsletter bec=
+omes a part of your morning. See you in your inbox soon.</span></p><p style=
+=3D"font:400 22.5px/30px georgia,serif;color:#333;margin:0 0 15px"><span>=
+=E2=80=94 Adam Kushner, editor</span></p><table><tbody><tr><td style=3D"hei=
+ght:15px"></td></tr><tr><td style=3D"padding:12px 0;border-top:1px solid #0=
+00"><p style=3D"font:12px/15px arial,sans-serif;color:#666;margin-bottom:7p=
+x">Need help=3F Review our <a href=3D"https://nl.nytimes.com/f/a/NManDmkavL=
+uur2qg3udIaA~~/AAAAARA~/_FPvO_T9gOsEjlasTimvK7yg_4v3PLch_f-R4KLVjNgNStNe2jV=
+w2c1RBk8o6Q2VyPZJX4bUz5CVfRXL_03gJIq_5BXKPgeM5Nc-oKSfYH3JM_I5sbNBwwHv_nJTlt=
+YuohHc60v7tmn4ZQ9xmxCRb2eS7UKaAkUFYQ6NgPUOknY~" class=3D"css-sdwaa1" style=
+=3D"-webkit-text-decoration:underline;text-decoration:none;color:#286ed0">n=
+ewsletter help page</a> or <a href=3D"https://nl.nytimes.com/f/a/ztJLKfejN-=
+kA_xAVeVdsaA~~/AAAAARA~/QD00DYRUAyQFy6_enAJvCc2lPeY074F34cEWBbsOG_K6wFxQRdZ=
+9rwrdwEhCI8KKyuIoyR-Aab6qBxrDL7MzoaLO_qeETXyt1I2P5yMBm6MwO9U5qNlA5l6GwuWXyY=
+4x-YWbz8gPDUiAFNcBLCWY3-9VJcTAE9hkzj__-AhO6Rc~" class=3D"css-sdwaa1" style=
+=3D"-webkit-text-decoration:underline;text-decoration:none;color:#286ed0">c=
+ontact us</a> for assistance.</p><p style=3D"font:12px/15px arial,sans-seri=
+f;color:#666;margin-bottom:7px"><span>You received this email because you s=
+igned up for the Morning newsletter from The New York Times, or as part of =
+your New York Times account.</span></p><p style=3D"font:12px/15px arial,san=
+s-serif;color:#666;margin-bottom:7px">To stop receiving The Morning, <a hre=
+f=3D"https://nl.nytimes.com/f/a/krkIyf3onQfFQT-ZSQsXQA~~/AAAAARA~/BToPwn6t3=
+p0cyoXna0b1JMT5p5PN77fnza1L76Swm-8Q5O_hFgZW4J_aLqVLgBoMRvcLvKBLIdCAgFAiFGh6=
+R0Gus59Q832J488T0knyBXoLkbn8z3O8q4rbI7psQd9-2bKSmisAXFrDDT99Bf6nx9SWwaLH91u=
+Fdmgzn4fd2pN5HD7w2irQRPEs163oET65X43s49rHh5Kgks9mDQmqpBU8CNwxM9tsDzMYdQROe2=
+hR43ODIz11DV_OegAtmt5W5GYkmikmdhLafagmBc3LKI9_YezMolScGhlhVbIq3o4~" class=
+=3D"css-sdwaa1" style=3D"-webkit-text-decoration:underline;text-decoration:=
+none;color:#286ed0">unsubscribe</a>. To opt out of other promotional emails=
+ from The Times, including those regarding The Athletic, <a href=3D"https:/=
+/nl.nytimes.com/f/a/QBecMnDjhb8HQ-ecDctZuw~~/AAAAARA~/Q8ua92sho6Lvj8Bd3MYJd=
+b5yV-VyadhUQlGcADTNeQO4UHEWT4MBWWBFOIlUuSBRnnN1dhfsIXWs3w7UqbPWLFKE-QS2d3Q7=
+PTi8MQU6TtbOqia10vVaTZSVmTHeVc-ZjA6iNwxXSYQ8YjhwBNgnli2bQ3Hx4Q2OjyOYCs5Rd-a=
+oGH2GfQlGEhJV-RbVYRGJn7qeAoa6x2z3MW8heS5BFHOdUQRvmk8LX5Ycc9csHS-MSbw7jhaILj=
+9JZJYzQERWaIadNKKUbk-10LMziAReAuGlSFRSJt7LLviuEclzD6w~" class=3D"css-sdwaa1=
+" style=3D"-webkit-text-decoration:underline;text-decoration:none;color:#28=
+6ed0">manage your=C2=A0email=C2=A0settings</a>. To opt out of updates and o=
+ffers sent from The Athletic, <a href=3D"https://nl.nytimes.com/f/a/j7PJN11=
+NOhejqFwcLr9nyg~~/AAAAARA~/o4ytt5MfMma14Fcv26rLQlyf4H0fbFGmMlVvHnLmPMhT_Hd7=
+kzjsiKxZgQ-D2hfvSxKpMEEjIuPCKPEs7-Vt4XnoKCAepHJhVd9NTU7o0aIxDkVL6I79NicNO95=
+L9V9FtYbHGavonsyiFldnVhw7eA~~" class=3D"css-sdwaa1" style=3D"-webkit-text-d=
+ecoration:underline;text-decoration:none;color:#286ed0">submit a request</a=
+>.</p></td></tr><tr><td style=3D"padding:10px 0;border-top:1px solid #dcdcd=
+c"><p style=3D"font:12px/15px arial,sans-serif;color:#666;margin:0"><a clas=
+s=3D"css-1n5iqtj" href=3D"https://nl.nytimes.com/f/a/nRDXj0ynEgFSQPtULuXhpQ=
+~~/AAAAARA~/o4ytt5MfMma14Fcv26rLQkNw2eVVNzvM9EncU8XKIJ-WqlRLCyJVtjwirzZjjkI=
+K2A3fjaraB_loqLtBa8V2Kp3U5-5ga_naipgpv3f9-L8zYhYD--tyZ1l-j4r5r5Bdoa7EF4mFZ9=
+Kr7y1itv009Q~~" style=3D"-webkit-text-decoration:underline;text-decoration:=
+none;color:#286ed0">Subscribe to The Times</a><a class=3D"css-wf08f0" href=
+=3D"https://nl.nytimes.com/f/a/2J6cR2Zl7zaZM8k1PB_GKQ~~/AAAAARA~/RNcXlU45y4=
+WGuiuPSUDfSD5mpJLn0fiP-EPrtGAgSfdn1cHNG9CxQYZcaIUL342BF6xowWH6Kb-8IRQRJ4ucA=
+WdgRjvH5A2bQxnLAGNElDennkltVDiKLhZIDJRvZ1iIbOyIw7tl3RmxYgWraGLywQ~~" style=
+=3D"-webkit-text-decoration:underline;text-decoration:none;color:#286ed0;di=
+splay:none">Get The New York Times app</a></p></td></tr><tr><td style=3D"pa=
+dding:9px 0 8px;border-top:1px solid #dcdcdc"><table><tbody><tr><td style=
+=3D"padding-right:15px"><p style=3D"font:12px/15px arial,sans-serif;color:#=
+666;margin:0">Connect with us on:</p></td><td style=3D"padding-right:15px">=
+<a href=3D"https://nl.nytimes.com/f/a/tM_YgmjuF9qlOq8LYLXnPA~~/AAAAARA~/9Hw=
+V7_uC3f5ZBtjjkdr7txfoJkFG2qzP8LSFcBRP-P9ta6Ic1-AzWWsz93B7M0foxobbhYoVa1QuzQ=
+tIcluYTGbtYV3f2MikDrU7Ou4xfneVr22aFr9tfiVfhh9yuxxP" class=3D"css-sdwaa1" st=
+yle=3D"color:#286ed0;-webkit-text-decoration:underline;text-decoration:unde=
+rline"><img width=3D"25" height=3D"25" alt=3D"facebook" style=3D"vertical-a=
+lign:middle" src=3D"https://static.nytimes.com/email-images/design-system/s=
+ocial-icons/facebook.png"></a></td><td style=3D"padding-right:15px"><a href=
+=3D"https://nl.nytimes.com/f/a/mLLT5IfvW-qRqXuOWsWclw~~/AAAAARA~/t9j3mimk3Z=
+HFiFu__PZxJm8V2N02KPPHnQ9ko21jmqsXT662HZWBtOKRqXxQM1CiDo6SQ-D_3kgvhZUSKVTr6=
+c-4C2iY89aXx_mCG2SxRD0~" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webki=
+t-text-decoration:underline;text-decoration:underline"><img width=3D"25" he=
+ight=3D"25" alt=3D"x" style=3D"vertical-align:middle" src=3D"https://static=
+=2Enytimes.com/email-images/design-system/social-icons/x.png"></a></td><td =
+style=3D"padding-right:15px"><a href=3D"https://nl.nytimes.com/f/a/QaV2nX3r=
+qZddaDMwQkBlVg~~/AAAAARA~/KReyy7jyHqr5-WQ7wWDyH5YenEtd9XCUz3Jap1--mGai3Sijc=
+vntDwNDqVdmb5znYnlx80MnsYIOR5ovqWz67h9b8weNPW3SP-0q8-nV-iHlJNypdjLGiiU2DFEv=
+RNKY" class=3D"css-sdwaa1" style=3D"color:#286ed0;-webkit-text-decoration:u=
+nderline;text-decoration:underline"><img width=3D"25" height=3D"25" alt=3D"=
+instagram" style=3D"vertical-align:middle" src=3D"https://static.nytimes.co=
+m/email-images/design-system/social-icons/instagram.png"></a></td><td style=
+=3D"padding-right:15px"><a href=3D"https://nl.nytimes.com/f/a/7ZoeonOCYU6vM=
+tgAxipgkA~~/AAAAARA~/SJttcauvS2SqlZ426sVKiY3mcs0CpPZINGygkFO7rX-KUxRQu_cGOh=
+z9oFXn999ZlvNTydWP0zK86EjjONozu0-K5lgpMUiaXxL6BhQqBEHfkyJrpEmMEvbFyMZJR4l_P=
+2-iCRocsxM3vSOAROYrElXPTzuWPiWTijyZMM_lbso~" class=3D"css-sdwaa1" style=3D"=
+color:#286ed0;-webkit-text-decoration:underline;text-decoration:underline">=
+<img width=3D"25" height=3D"25" alt=3D"whatsapp" style=3D"vertical-align:mi=
+ddle" src=3D"https://static.nytimes.com/email-images/design-system/social-i=
+cons/whatsapp.png"></a></td></tr></tbody></table></td></tr><tr><td style=3D=
+"padding:10px 0;border-top:1px solid #dcdcdc"><p style=3D"font:12px/15px ar=
+ial,sans-serif;color:#666;margin:0;line-height:20px"><a href=3D"https://nl.=
+nytimes.com/f/a/Q5cJBMhnblpktiN5AiOTXQ~~/AAAAARA~/czi1ALcivDo4IL-VQpkGqqdVA=
+IHcOi5uCNWDFvMGaDznfQKB21_F52x_cGJFly05fMfksw9Y_lOkzNRPO5d7eNIjD6h2TNnfGwUQ=
+5f7sKeHZhxQw4hUwkhncwMb5Ia0Q1yIHVL4I2xmvao-QXQbHPw~~" class=3D"css-sdwaa1" =
+style=3D"-webkit-text-decoration:underline;text-decoration:none;color:#286e=
+d0;display:inline-block;border-right:1px solid #dcdcdc;padding-right:10px;m=
+argin-right:10px">Change Your Email</a><a href=3D"https://nl.nytimes.com/f/=
+a/E4PlpC2rGF82cK5qzZGSSQ~~/AAAAARA~/GzzfBenmYixd9gmAnMvplbu4ToIZYknX207JIiI=
+a1zUnDawLVDm5NjsVxYTMjv-TIQ8lWO2jK8LlTS9lBv0SazRJ_lyynrrwKM4L7KwmLPVIXKW9WQ=
+zQQ7qux2jRZ60dlyFCywTe_ZijA6ivkm_FLNN3TMT147lBEZaAsY_BVezs_VTyuPGkHlezuML1G=
+WP2" class=3D"css-sdwaa1" style=3D"-webkit-text-decoration:underline;text-d=
+ecoration:none;color:#286ed0;display:inline-block;border-right:1px solid #d=
+cdcdc;padding-right:10px;margin-right:10px">Privacy Policy</a><a href=3D"ht=
+tps://nl.nytimes.com/f/a/ec9o2HFtxWiSOLmprMHQkg~~/AAAAARA~/M1MYnIsDy0tCFduI=
+7HmlP4xkUQQnvuDI0XnAbxHiMw9mtFRovWEH3YpeO-VlGJUPRLG4zmORFS6AAbaMSDkBsupmYqn=
+5WbUOZl80xR1KQR5BSmygDOajWus8GvKMInuG43RbQX8OFyMlQnp3sRsEsw~~" class=3D"css=
+-sdwaa1" style=3D"-webkit-text-decoration:underline;text-decoration:none;co=
+lor:#286ed0;display:inline-block;border-right:1px solid #dcdcdc;padding-rig=
+ht:10px;margin-right:10px">Contact Us</a><a href=3D"https://nl.nytimes.com/=
+f/a/jXDEpNgdlymv2Tko1iI2QA~~/AAAAARA~/pVSgWs2DFAjEEjMVFva0DMK4YWCKzipm4K-GE=
+8ajZ2JkWa2ecJJwyCLnQNtBQ0HWgPKQCrSps1R0_EVPYM7PH0GeZV1nGMK4Dpq09bB8de8a9nfl=
+MV-1nQn-kK8z3YBc7wRKheLiE_DJnjlzeTFcbw~~" class=3D"css-sdwaa1" style=3D"-we=
+bkit-text-decoration:underline;text-decoration:none;color:#286ed0">Californ=
+ia Notices</a></p></td></tr><tr><td style=3D"border-top:1px solid #dcdcdc;p=
+adding:10px 0 30px"><p style=3D"color:#999;font:12px/15px arial,sans-serif;=
+margin:0">The New York Times Company. 620 Eighth Avenue New York, NY 10018<=
+/p></td></tr></tbody></table></div></td></tr></tbody></table><!--[if mso | =
+IE]></td></tr></table><![endif]--></div>=0D=0A<img border=3D"0" width=3D"1"=
+ height=3D"1" alt=3D"" src=3D"https://nl.nytimes.com/q/Phw-cvyyyw8H-m3OM_H6=
+RA~~/AAAAARA~/dZsK1W-HUTI49IeNyuankG6L7-4MaMHH7DR-tykVvHWE_ixIWoE_IGgVWQLOX=
+aepYM8eIJsz_4eVE6w2jocPNQ~~">=0D=0A</body></html>
+

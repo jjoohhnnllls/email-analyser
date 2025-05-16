@@ -1,0 +1,115 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp2108292rcd;
+        Sun, 16 Mar 2025 22:38:09 -0700 (PDT)
+X-Received: by 2002:a17:90b:4ec3:b0:2ee:5bc9:75c3 with SMTP id 98e67ed59e1d1-30151c7a2c4mr12366918a91.5.1742189889210;
+        Sun, 16 Mar 2025 22:38:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742189889; cv=none;
+        d=google.com; s=arc-20240605;
+        b=KOFgd/TFIs0K6PFQLwfaV0eCN4mDIMFbGz9l+xYpqjUbDSWtXMO4soHXNtha3gZzet
+         7aTnJXNFx+OISYgGTiW+LW+0lwjenQQ94EDbHYmK3t+IDo3X7hXtLX95WkSTqyg2MQFx
+         FEApSCj09lCOHwTYXuUq2hxVj/Ys7DOmxUw23IFTzCy7GhrKiQxTP2PC1Pwrz1K3h/WG
+         CeosBjeNhPrHbSJ+DH9PmeOypqYirp51QwKy/kGHaUdzHXrtXDqch/2x80ChjFr8WorB
+         YPtxHnAvMNEm90yxrvKNDRRQufeRqpa38NicoKhcSAucvFjnm44j45fPMnNt7NDUwAf2
+         maCw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=uL6MRJUkNnuZz7NDMCiVu8e7kEtYXWooNYGIDnvYIA0=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=ZnM5HbbprzZu9Jji4Pr0e5hmDETZVoGpTkiid9l8sxCybxlDMqvV64u1uXkj1SXOnV
+         A2FWgXWyoBIntv8qFdQ0Pp7lfnTHuC8AIDdi/EqMrhoXosIJdipml+Wfcd5pOeLbszoc
+         LexzxMDhQrHIQ/F80JyqAP82sUsNz8KkWyMdCz+nZBYREnDQOp0okI7WINyYdMmeAhcR
+         jBKS0HML9Q06hqxQasO4bumkJvlDqU3n8546UI8aOxDBcjTPZANDjeOzRNlhW9z+Tmp3
+         FChms00LL8XYGRQypojMysq1iGqVeu08JT/iSjm12tZjPNG+XM1IF82AljAoikzvm2it
+         QIWw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=eh0HWuaB;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c6882434sor70693285ad.4.2025.03.16.22.38.09
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Sun, 16 Mar 2025 22:38:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=eh0HWuaB;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742189888; x=1742794688; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=uL6MRJUkNnuZz7NDMCiVu8e7kEtYXWooNYGIDnvYIA0=;
+        b=eh0HWuaBJUld8XeC7sN+aqOyzcjIIqJR8cCCMw73lHKQdhYBwV5NdE5w0YpPvgoRNR
+         fYFtv4Y3QEgc2f+AcER20lZ8Y2sAUhQg0c1YW4dJCiZd8G2L+PdglSLYwkkwTBvUprzU
+         pR618swCnZw5F46zQW1pGKERnFsocXySi8gk8R+pcjbDt1IQYR1hJJOw43QE5VHmiDjB
+         EfP/VsN+x7fT0Qq+4Y6e8zHmlawMVFg41QHMTieVuS2R3EtdZ/ixsavgfsuon/h39sx6
+         FagCWIDcoCChmT2gZ4/VcVCqKD3y4rv8ocbQHXkpbB0t1MvIqHMkr5vYFPAqowjhWw3t
+         fPxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742189888; x=1742794688;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=uL6MRJUkNnuZz7NDMCiVu8e7kEtYXWooNYGIDnvYIA0=;
+        b=Iq8rYwvNsOK5b7GoDf8ZjaprDUp20dFUo4EIFknMabuoNyFq6Bn6GvDYnGzTEUw1lu
+         PgbpuFJM6kbuNuO1vBIztgwCUy3xaASHIAmGCsOh2UBjx1lbStabDZtJ5zGBfxpTPaD4
+         z/myVz1LKjVQPyK/coe2Om/UVn15OoOYZmqEiSaoZIhma2urg9Ng6DyxHS7H2gbz+ZuR
+         T3BKNCFFJDZNZE5Wz5OEYRBfgn9YgzeyEMUqD1NYqx/nwI3gwty5hfDc30NwsnUto+kW
+         FKlBMw70KWDXjBwH6BuuyxQkJ1fq15q1Cd0ULml/YIT/zQjqszHOqMfd58XrB/XDM8SN
+         1AEA==
+X-Gm-Message-State: AOJu0Yw3H/1kX5Vavwh+twpzKzN8JsgGZKdhzqLOm0h5jJuSyRTQytU6
+	ZalUBe2tbSkbcF6C8AyYsBdQm57G6ArIPIp7sjQQH8R7Q5dOInjmqL5c4w==
+X-Gm-Gg: ASbGncucN80L3GEQn9xz5fwOoeCB2PzKJLp+iVugcyfZxa60GMoC7vPE6IRSNTQn1FZ
+	i8+zHdMpFIg2wN+S3FU4yq9PCNFpNklBfDafeN/ySjyzt+jEvM3PY2wgUNHcE2TOV8+Vzh6+EBC
+	nmTljqKF3yctNZyyHrVSt/vuO0Ya+06o+65Q7BBFdeTz0FRNiCLXmUQvaoW7E1/Iw/lonRoZOuY
+	/k2g244BcM7hxu+Z5JmAk8327Do7gjQHjm0IUZwRFek8LIKWUcV1LeN3ojJUlB+MN/verTEDTvR
+	mEkLoX2K38KiabJ7zS9LeNrJ2QClVYpWdNySk5L+DXLUW/zuNsRsCnC6UXkKdPBPvd1l0g==
+X-Google-Smtp-Source: AGHT+IH/AAHIXo3VGeiZ1WHDw5UG4J++VrZoJUasPI5JmZAwkj5hE4byuQROq96vcLbocKgO5UcNAQ==
+X-Received: by 2002:a17:902:ce0b:b0:224:b60:3ce0 with SMTP id d9443c01a7336-225e0a1d612mr145748735ad.5.1742189888533;
+        Sun, 16 Mar 2025 22:38:08 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6ba6d5dsm66501725ad.153.2025.03.16.22.38.07
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 16 Mar 2025 22:38:08 -0700 (PDT)
+Message-ID: <67d7b540.170a0220.34fbdf.df7c@mx.google.com>
+Date: Sun, 16 Mar 2025 22:38:08 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============5089829248297135012=="
+MIME-Version: 1.0
+From: Strategic Life <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Order Confirmation for Prescription #123456789
+
+--===============5089829248297135012==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+Dear Dr. Johnson,
+
+I hope this message finds you well. I am writing to confirm that we have received and processed your order for the prescribed medication for patient Smith.
+
+The details of your order are as follows:
+- Medication: Levothyroxine Sodium 100 mcg, Quantity: 90 tablets
+- Prescription Number: 123456789
+- Order Date: January 10, 2023
+- Expected Delivery Date: January 14, 2023
+- Payment Method: Invoice Paid in Advance
+- Shipping Address: Mayo Clinic Pharmacy, 200 1st St SW, Rochester, MN 55905
+
+Please find attached a digital copy of the prescription and invoice for your records. If you have any questions or concerns regarding this order, please do not hesitate to contact us at pharmacy@mayoclinic.org or call us at (507) 284-2511 ext. 12345.
+
+We appreciate your trust in our services and look forward to serving you in the future.
+
+Best regards,
+
+Example Your name
+Pharmacy Manager
+Mayo Clinic Pharmacy
+--===============5089829248297135012==--

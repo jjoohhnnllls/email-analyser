@@ -1,0 +1,107 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp769412rch;
+        Wed, 12 Mar 2025 23:38:37 -0700 (PDT)
+X-Received: by 2002:a17:90b:5408:b0:2fe:93be:7c9d with SMTP id 98e67ed59e1d1-30135eb696emr1967311a91.7.1741847917501;
+        Wed, 12 Mar 2025 23:38:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741847917; cv=none;
+        d=google.com; s=arc-20240605;
+        b=RfVcWLVKb0kDqYaXy02hlsRQ23qjkKt7JHyVdgz+KwFNrwK59bThPWaHUorgGl/HnP
+         zpqElGZsZBNM/2JUmA2/pyfGf7yE5jWgrpe+SksJlW6bhUFMlZnNWWt589Hf2UIzdVMB
+         u9aq/Fa1ao/8nJXJuAiSpq1E7RaN2s21mT+in0ow+LiRwvRaj0iGNfl8BB95wga4p6ln
+         h077i9lWAVOEbXYL3Wk60J0btrtJIimX2ec54KUhupoL9iy8Qy/8tXroJZIrTUUcZcRw
+         ZWt3sDjNZsMihRjnzWWumMveO3taF56T7pla6n7Tgseu9A7x40Uo3WntPJWu1m9HIfY7
+         flkA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=uQTCsgq79gQ+DIyxQeIhScbyO38hZ1FC5u5H1dYSxSI=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=RD/3et0LpqaCEaekoNUy/Gamk1/qtYG1EosEfSafJI64Zud0eTFin8C8CDjb48AW+n
+         LhbDs7Okjvga16EOif+Wsud52AT7LqRSj6b3Yme9axMmqQfFjcMVCZfYsdkzT/MXh4tT
+         yD2lQbIgsj+IOXJG+s2p4qFttWxs+gs2xmBqiZG2Q5LEmcp6H9tKsFZbNFVm5N13csiV
+         dm9M0lRiurg1QlNca/aSRd5mASYN7v6FvP/6sTH8UvsNmCeARUXQynGFtLF7B8rIW9jz
+         j35iQk9HwY5DIlCrrxi9oQYATdsHw8eJTzbjIk1r0mMwYfES7ZFUweTfXryPAMZsP7Dz
+         iZsA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=G3R8WKSG;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 98e67ed59e1d1-301382e5ca1sor389052a91.0.2025.03.12.23.38.37
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:38:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=G3R8WKSG;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741847916; x=1742452716; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=uQTCsgq79gQ+DIyxQeIhScbyO38hZ1FC5u5H1dYSxSI=;
+        b=G3R8WKSGSoIMHvxp53kKe015SOginWuNHBNDedm24xvf2fqMOMgZjGppAaMZW1QPpf
+         hd4qfgh8UJu+7Ad09acQZj+ItLAbQxvDNbWZzyRXB2hjQbt9EEMeWuwxBItRSjhhvulL
+         02Bb9sVI/YE6n5ysvlbZPwEXYMKedZLgJRDf6j4aA6Fir1/+M5kj1zCzenZoUkCs15CF
+         A3QEtaX3KbFOjZyTt7kA55RGgL9RC8rgBsLp4AiYbF0jbRT+ii+Lo5ebkHvKAr8uL41j
+         qJkvkEq9ahZnWpzEbrxG5HJX3rrw7AIQT5qKRipaGYd8J0DLxQDHaOOeIcNd+w6SatTm
+         ZO/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741847916; x=1742452716;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=uQTCsgq79gQ+DIyxQeIhScbyO38hZ1FC5u5H1dYSxSI=;
+        b=ZX0Md0mZb6Lcbe+xywNbE4UMrA4gWEbh+qiexzHjMmyWOZwdNoRucLFghbS1pcts35
+         hfFzzbD/3f3leI0qzeKdLnHsDp0HdKeqeK5PdxwY61Io9aKHzhR2x+IvSu8XqM/OAcJX
+         GrnDOC5ZZpl2jIltdbWdqZtWLs39eAWghgC7pKP7NztHJPzsarCXqNeh6yMDNpab+lzD
+         q4y7QhzRH2s60NsnlBm4mEOdbx5RgRTrpV1/vFf92WWy/YQQsISLzpizqiKz0nPF3Lnm
+         HaTGKQcaxO5d6aauBHpIyPW23p1g16zeSdwggkAuiuDfSzRd4iwB5R86WWz4nJTAlu84
+         kBkQ==
+X-Gm-Message-State: AOJu0YyUc+oCt3mwk0bmQBDPMH14qYS0Qro7iyGnfNAAw2AzTop4T7nQ
+	487ZpaxLgl/ZIkOSLL6vK3n6TPG0Oi5VanEQ+AL/YWAqBFc9xpgkzHpSM9gV
+X-Gm-Gg: ASbGncsHowA7N96FrmEYumCwRDUp0xj0jnJc3BpkwmZ/V2PyI/yx2jYZ3knF64t8z59
+	UANbQ/yf4sIIvmOfKO6eGcwNUtG5RhMl6EbmihVJXkG+fwKooFE/SP3yrkdYPvA5jDE0r22SWKF
+	DBFSpWGSB28JLNlJPlNK/m4FpgHtXUMyyZO/EjCDmDSjcNjJzHX2L27qr2eQyVAr7arLl7ydMp1
+	EjAYoQI3vitLD5iqyK2UkBId62nmawgPetGDwhhXOsktsd/i9FrgVyyoR1xRbvbjJhgSfoNI+fC
+	DY1YmUzC4uz4VqW9ex4EiPuo6thf4Nx7nBOZ4hrHTLl9uYiY1vDBK5yVpO23iVpwvn9dkg==
+X-Google-Smtp-Source: AGHT+IGMQHRr+peopvOz96UJqzmgwFk99pw/mZNePMY8hwBnLx1IBpOtG9UFbr1iuaCCEZoAB/3vUg==
+X-Received: by 2002:a17:90b:2742:b0:2f1:2e10:8160 with SMTP id 98e67ed59e1d1-30135ed3cdemr2005232a91.11.1741847916477;
+        Wed, 12 Mar 2025 23:38:36 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-301390adb6csm560101a91.44.2025.03.12.23.38.35
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:38:36 -0700 (PDT)
+Message-ID: <67d27d6c.170a0220.2b04ec.1d51@mx.google.com>
+Date: Wed, 12 Mar 2025 23:38:36 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============2371908359951928222=="
+MIME-Version: 1.0
+From: Elite Health <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Request for Case Discussion on Patient XXXX
+
+--===============2371908359951928222==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+Dear Dr. John Smith,
+
+I hope this message finds you well. I am writing to propose a case discussion regarding our patient, Mr. XXXX. As you are aware, he has been battling diabetes and hypertension for the past few years. His latest lab results show an alarming trend in his HbA1c levels, which, if not addressed promptly, may lead to severe complications.
+
+I believe that with your extensive expertise in endocrinology and nephrology, we could collaboratively formulate a more effective treatment plan for Mr. XXXX. I am suggesting we meet next Tuesday, April 12th, at 3 PM in the conference room. If this time doesn't suit you, please feel free to suggest an alternative.
+
+Looking forward to your positive response and the insights you will undoubtedly bring to this case.
+
+Best regards,
+
+Dr. Laura Bennett
+Diabetes and Endocrinology Department
+XYZ Hospital and Medical Center
+--===============2371908359951928222==--

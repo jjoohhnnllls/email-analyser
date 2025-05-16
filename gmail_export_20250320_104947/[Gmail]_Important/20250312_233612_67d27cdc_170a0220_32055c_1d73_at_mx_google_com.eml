@@ -1,0 +1,112 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp768498rch;
+        Wed, 12 Mar 2025 23:36:14 -0700 (PDT)
+X-Received: by 2002:a17:902:ecd1:b0:220:fe36:650c with SMTP id d9443c01a7336-225c66ae2a6mr18764055ad.23.1741847773777;
+        Wed, 12 Mar 2025 23:36:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741847773; cv=none;
+        d=google.com; s=arc-20240605;
+        b=ljtis9wlAWOiHsKbityKHncLKmJJLLxlrL9mOJje7cmtjR9H9Z1ovjYFK92PBJcLjm
+         CIooa2Ku+kbQImYX7lBIrhJpyquo1C0wQSiFqnTbRhuc2ve6PDQyfmI36v5ARkR1Ma2N
+         N9oJbGCv9drLytpPO7pkQdQxOM813ZGiu39vHQqPQ8mj2Maz8xxko/goS7KugG1tWMTr
+         8xp+UFCElo4E0wM2NOQAM+yX/Z2LL3PyHccZyY6XrH0F3JbIPfoquO9dcE9tPseY5vq9
+         EQFBXCYmImQzokjb19/aojNUUFGt7fveWQd4pTvpJR9NJWLuMYskWvHF243GVHBqqqcq
+         YM/Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=N+yCu2BE8EllHSCjJIzcB0jAIcSNAKscRX6U5zak2aA=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=VeGFaUjtGunfrVNz5LS8ZVHhjIEsDTvVascSvRwsAtScCvxlEz3wuM54ReNo8jcUCU
+         jFOihkJVecVPZzjRqqj1SYEGfQ/PvxyuXGvlPjq2u87RiYKvPBvjZxggB9AFukx99BQy
+         pS/Cq+Hyck3iEQpBR8gD00UOouNTneKit9HHCn1PLO16PokuTb6kJF1UGQs3/GFBnIhD
+         VBvx7VeAxzKwLFeHMNB+EmAmbymd5GIrySA4n8lI9qy91CxwMm3nqCn3i/P6VZN63Xes
+         SjB17KIG+teb7pAuYKJ/tsQpl4DvIRBLuG91TW9/Ktnj46P67djsCwm5Jq57BjlKxKJA
+         twvA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=C1SueqRr;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c6884265sor3927745ad.1.2025.03.12.23.36.13
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:36:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=C1SueqRr;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741847773; x=1742452573; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=N+yCu2BE8EllHSCjJIzcB0jAIcSNAKscRX6U5zak2aA=;
+        b=C1SueqRrTw9W3kEPMlXhVnXaxE39RhYeKsarw8rLzkT+7oF6hinUVTT9QnGuonWK7X
+         UGg2fpPfLJ8D1s/A52uq69o/ti0CELGeo9Vbilr/wi03rBguyveyBQdoWvxWVqKOqApV
+         WOZY9fWC9jHLHSxO7vMrrcGCfZf+BsRJhErbkEgZ2CYBa+wXzYSEEJTdy2madalyrfCK
+         /oEtTVbl2pcoZPdNfcSFho49uZA3h46hSaQyIVvXMXtXRYMThcMUKuQPePUOucnG3L/n
+         1MwrLZ29VJ7lzSg4+rc6JsPmmQ9T1TZX7iEk4+xQsix/0pbH83qT98wmZSOX1mFWH+wB
+         wAdA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741847773; x=1742452573;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=N+yCu2BE8EllHSCjJIzcB0jAIcSNAKscRX6U5zak2aA=;
+        b=aqVgQLJDGHI1KJJiA7AS75iipu7o0UIRtEF+c+NDU04xXVlKHbu3ucO2q5yPqFxvDV
+         StTwZ8AQ8q+Z/AiDAJg1YUAx2j8QU4+dACJbslfCOC1EdmwFS9hpMfbwJZij+ejVVi/K
+         Ufm13qnporlVv9rAKpTebCAtZiLP3qf/+gx+5ITSvIO1C5NHQhzGldcvCXTEZgBCChnF
+         SUBn6F5fd8Tgt+LEPgC6sMFv+Tw5hVH+AcxXU/RA/mawklY5+HU3NmoZpkjVSq5jeeJ2
+         TpP+d9ozuzuZwYDRlDqaN59hWEUT/7hbn5Zlgzo2TRA3ttTLuOMe/qoT6FE3dM2LgY03
+         jtjA==
+X-Gm-Message-State: AOJu0YyP4Ma98NkzHceU49H8kHN/709K3ACgHgKe6jfDUSBlqZH5gQkH
+	KMKLmf6+TegIgExEogkHPtl7Ad1dkpr09wi+cYNei2odUybommZNLbVWhCP/
+X-Gm-Gg: ASbGncuJ2vEPQqeV1VAvBVDGXcONKtnXlMnEXCgKsH09BW2+zYo4FjICwFJqU9g+EjC
+	pw77LHjFIlSv7LThr0lLmot4lXl5qRfzAJMYcBXgTwg6pPCwoVVAtwLK05YfKj26L0kiuWWr2X3
+	3+oKvzzkEJrX9iURKQ9fBrvYE0zEzhUN7nB1WSZNHtedjMGwig346fH9E5F85QEKlRvI67RrTQJ
+	OqtVs1tMgUaN7qnsEDMW0vyIuksZ0aZzeBa6YeME3yD6rXFUbPVuRB+Vr/T8ink/miYvOauJQ+1
+	Jml/jbwwISNeBu58eLvDZPaQXBKbYRMvmkb3uRrVKKf0mhbA0lN4r+fEF2DaBiMXJT33lQ==
+X-Google-Smtp-Source: AGHT+IE8jH0G5wTHwk2b5qMKERZguFXMYzjS4HVFMrjyRJOwV2jg3tIPFTq4waAJNyydb79EV7e+xg==
+X-Received: by 2002:a17:903:3d03:b0:223:5187:a886 with SMTP id d9443c01a7336-225c66a7cb6mr23709805ad.22.1741847772788;
+        Wed, 12 Mar 2025 23:36:12 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6bd5db8sm6008705ad.257.2025.03.12.23.36.12
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:36:12 -0700 (PDT)
+Message-ID: <67d27cdc.170a0220.32055c.1d73@mx.google.com>
+Date: Wed, 12 Mar 2025 23:36:12 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============3799092975582610070=="
+MIME-Version: 1.0
+From: Karen Williams <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Request for Store Meeting on Tuesday, 3rd of August at 10 am
+
+--===============3799092975582610070==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Alex,
+
+   I trust this message finds you well. I'm writing to propose a meeting next week to discuss some crucial points regarding our store performance and upcoming promotional campaigns. The proposed date is Tuesday, the 3rd of August, at 10 am. If this time doesn't suit your schedule, please let me know your availability, and we can reschedule accordingly.
+
+   During the meeting, I'd like to present our latest sales data analysis, share insights on competitor strategies, and discuss potential improvements for our in-store customer experience. Additionally, I will brief you about the new autumn line that is due to arrive next month, and we can plan our promotional tactics for this season.
+
+   Please bring any ideas or concerns you might have regarding the store's performance or the upcoming promotions. Your input is highly valued, as it plays a significant role in the success of our retail store.
+
+   Kindly confirm your attendance at your earliest convenience, so I can finalize the meeting arrangements. If you have any questions or need further details, feel free to reach out.
+
+   Looking forward to our productive discussion.
+
+   Best Regards,
+
+   Jane Doe
+   Store Manager - ABC Retail
+   jane.doe@abcretail.com
+   123-456-7890 (Office)
+--===============3799092975582610070==--

@@ -1,0 +1,108 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp2177459rcd;
+        Mon, 17 Mar 2025 01:40:26 -0700 (PDT)
+X-Received: by 2002:a17:903:1b03:b0:220:ec62:7dc8 with SMTP id d9443c01a7336-225e0a52c5dmr154167895ad.2.1742200826188;
+        Mon, 17 Mar 2025 01:40:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742200826; cv=none;
+        d=google.com; s=arc-20240605;
+        b=eqeexVCoMipr9QpihNCQ7IGWkkfAab+kWK7+1eofep+OJmA1jHgEj2wz8O0dzvzkQm
+         IJ+lbLigh8OXEkc9f7aPiOUSU9gGprsLGfKFSPaT+1r0B/HRBeKKSbtriQINsMJ21zWP
+         ysIT+/tzF6TLk7JvVAOmVLsSkD1DgInhD7OLDuotGRc2AyuT1U1MBpIb2CE7MkT6Lvj4
+         FXx9dpqi3OA2p9LBsiPBsYwiQJ8IkQdaMPoQleW+6cPYCLRrSQvWftTNTkK2fmWF44mu
+         v88QZBGNadw2TubPB08AYfDZpHla5nC9vt7Myw73ZWHLi+NfFtLPU8rQYQjYgwuMSAkg
+         o6IA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=LAJN58djUme52SFmr72xxbPRLEuCibhv/ntZ1Y5/aCI=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=Z7adasf7WIq/JzAwLBQ/HOwPJiCFvHKceKvqGjiHg7oVTCLflgy0rbCMtSJYvfqE8R
+         jc0Lj+uoU40ZiFbAXZ4y3ztO5CKWO7jmwO6RTOEPtoN6zYKxhlq3NZ0GPQNdFHIdfMVk
+         L3oZeTc7ypkr0vTlzXRs4+zcf9Xqa+EeCEEzLej4PwjNIdFTW44d4S1x9JbCZCXDOfNw
+         /i16wS1MOW1I4gAV33h2VcnlLQdFVJ8IQ02qK5eM90bZ/Y663oPPpu+Fuw9x6J+z4lmQ
+         X4iuc9TO+dhBnNXxstl3y/XFVBCVB7nsl2CLG8SMwAJNwgM57VvwEhhkvoj7bMOwKRoQ
+         +CUg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=BqLBbIHq;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c68ab48fsor43262375ad.8.2025.03.17.01.40.25
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Mon, 17 Mar 2025 01:40:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=BqLBbIHq;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742200825; x=1742805625; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=LAJN58djUme52SFmr72xxbPRLEuCibhv/ntZ1Y5/aCI=;
+        b=BqLBbIHq26kTobLg+WpVgW2E4dEpyraCyP7DLVbNdp1+WZftNRZNwwQnpcYS7ykF9O
+         H0S35ffMiPLBIbCgSJdnBNnGcXyuxpIW7/IfL4npgFiJweba7Zr7x+nUI6fNvVV3Qup4
+         TdMJQrE+VDko3PVxe/V4yGAsX56p4jVoYDNMpGdcd1t9gFr1Luz6+ZDZw6nJHfAWDyTY
+         8lLOIPw7MIgnJz9up5xM/hgTH83XwMDmjXV8Epim7Gbhcj89Vk6eP3HrtKmI7j7vj6YU
+         Y4F6yu89UD3wnk7lSSorgi2YBM1ls2l9lwjyr5BAjCKRcy6tz5bEd90MLvqOEfQ0HuFA
+         uthQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742200825; x=1742805625;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=LAJN58djUme52SFmr72xxbPRLEuCibhv/ntZ1Y5/aCI=;
+        b=W0wLrxhcj5VdxF1ost99lLkoYO/LM+jx2emfsKJLcVARKqfe+npXDVDWzEoUfm0ihk
+         Hwzx52Hwy40kajioCSSNBMEyZZjSmfDebM3+fwZxlsbCUyE37GdhoG0eAfZzKPxBZkj/
+         T7AElaYgnYtQaK3CQAo95YY1n9mHob95WNlHwLd+uo30NK8RWKUWDq3hDPR6iLf3P6qO
+         WWTjJ+9z+Y0FZcEEk4u/15ohNbrWFbjkqHDFTIoQfv0kf0BBq7kkkSDgqCRw8z+HKI+l
+         MI/TDcEzWv/8jfVkYxHFTXeaBSey39YP0olu0juj6hHooITdmTFMWcq3rR1pcMa+DXRm
+         0fBQ==
+X-Gm-Message-State: AOJu0YyOZpR/QyasC/exLGKl6hJunThqhlOiJFgKF2vXvnCZi6AbzyoO
+	IpJRcosLlmCrs2YSCnGIerl+HIsiG+4MN0nXFBBraMtMhmNPYhHN43v03A==
+X-Gm-Gg: ASbGncswLRCL/rk3MvfVNv5DInkcWYK7rFz3uHYmziuPS+SntSw3VeIasXg7u2aQEeM
+	iuMLKgL2qypj4uej4Y3LpSijUYIgkGhNnuNdu+rLsdGBEUoRRNUh1tbSueeWe7pb8FUcwyp0IQI
+	2qBiJA1Jz+qY9uLuyxq3D0IhbPJAwL+52OsPcwLbnDw4u8H3vwm9LEY44mYFpISjEuR/gc4V9UR
+	TLCk9BtWWFH8LZUCruowp5nqbyzuvtfiJhZh227Jx9UxSdAHJ/LS4oNL+GALJt4zkvlS99CHEI+
+	E5tpYUTDoJhZQOQLMancSIrrN5z0tst/sxBPuiQ+mOPRcHRMN+1eetE8JgaEh5PNe4v+1g==
+X-Google-Smtp-Source: AGHT+IGauPiraXP+q/HsBA8bIhR9oRqxYwXPVXbI4Qpm4L/mSjkdD8kBhxJxYfboPbhjBq4WhnZi+w==
+X-Received: by 2002:a17:903:1a27:b0:224:1af1:87ed with SMTP id d9443c01a7336-225e0a8fbf0mr150686695ad.27.1742200825374;
+        Mon, 17 Mar 2025 01:40:25 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c68a47c1sm70084575ad.68.2025.03.17.01.40.24
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Mar 2025 01:40:25 -0700 (PDT)
+Message-ID: <67d7dff9.170a0220.5992f.e41e@mx.google.com>
+Date: Mon, 17 Mar 2025 01:40:25 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============5392476172259031848=="
+MIME-Version: 1.0
+From: David Gonzalez <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Feedback on Our Latest Product Release - AppNav V3.0
+
+--===============5392476172259031848==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Innovative Tech Community,
+
+   I hope this message finds you well! We recently launched our latest product, AppNav V3.0, and your valuable feedback is essential in helping us continue to improve.
+
+   I appreciate the time you've taken to test our new navigation app. Your insights have been instrumental in shaping our development process. As you've shared, the overall user experience has received positive reviews; however, we noticed some minor issues with the real-time traffic updates and GPS accuracy during peak hours.
+
+   We are committed to providing the best possible experience for our users. Our developers are working diligently to address these concerns in an upcoming update. In the meantime, please share any further insights or suggestions you might have to help us improve even more.
+
+   Thank you once again for your continuous support and valuable feedback. We're excited to hear about your experiences with AppNav V3.0 and look forward to making it even better!
+
+   Best Regards,
+   Maya Patel
+   Director of Product Management
+   NaviTech Inc.
+--===============5392476172259031848==--

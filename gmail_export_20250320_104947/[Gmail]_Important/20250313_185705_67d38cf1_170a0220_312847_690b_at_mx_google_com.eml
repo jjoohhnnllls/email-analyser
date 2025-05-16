@@ -1,0 +1,113 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp347322rcd;
+        Thu, 13 Mar 2025 18:57:06 -0700 (PDT)
+X-Received: by 2002:a17:903:2287:b0:21f:6bda:e492 with SMTP id d9443c01a7336-225e0aee821mr12694505ad.35.1741917426499;
+        Thu, 13 Mar 2025 18:57:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741917426; cv=none;
+        d=google.com; s=arc-20240605;
+        b=gFX+5CmsiXsYlNLBpw53Gj8EmnsUTJ7CDAojRI97qXNHgYDOXExa+hJMGTihieB0Fv
+         BvoFPBU6wSTcVSYFCep6BAryD/IFzecup8T/u4jyx6yUYNk8IRM2+JUCoH0bbYFg3kFT
+         n1IhUQbvqkgkgBiaec1pIpVvksyl1k27LcOApH/1KAYgcaAA9CucrLeaOh+qUw8WEfEi
+         WmxtwQJEq9K94PTT6rgVxtgQ7ahKthRIQ2XYA5n6nr0QsZRjmIykZUD9gIYNGucNYxZp
+         eHzYFMeFgwyANe12tJSfhujjR/9EoN0IpR5R03w1TrHwGPWTCoPYQtJ+VKCzV8hVDo6Q
+         SErw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=/ULwqcdLrIQiu23EX5e0kWcyoeYblkB6sBhXtEziSFM=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=gQZuJ9fHCc8raIcV9xfDzi803+cWezzUFJTkawibt4LQgSOlUKeB6nuf69RZEmNeGf
+         ESS6vCBGaMrInKrWwh9Qh7pOMCSJudlszMslkZ3O5iqMMus1xXGCiV3DBclpeLAWbtoQ
+         Jc0g3SCWv1Zu9o+Ga/L9Wr8MD0x3c73D0vSauiHItLsiAnIDXc5StslWxq8FDfl+qSil
+         pndH3U04HJCg7ClHEHQOdjg7bd2ExRCJizYgJaiRV7h4qEaWCaslzZawzDVXcHKFp0F8
+         HME33Bkohaxmp8dB9dE6X5P6T/zuvmG9EOslosYVXAIvxXJVSRK16bomE098dBHWvTTr
+         K2ww==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=QBU7tIJL;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id d9443c01a7336-225c6b6840asor23845175ad.6.2025.03.13.18.57.06
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 18:57:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=QBU7tIJL;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741917425; x=1742522225; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=/ULwqcdLrIQiu23EX5e0kWcyoeYblkB6sBhXtEziSFM=;
+        b=QBU7tIJL+VhBvqTlkPYZbTH87lis8CYo70GuxvytbOY1451C5NhxIMbebVnoUY/UXs
+         hRo+yywHFf6sODkLmtufYG4IrlTSRtmf8H17OMWq3abdD9v1Tf7w9jcMMrdQdkDBZzwf
+         YMNVOis/2Dw4EdM/iNI/smN4LlLVzDbjBCtDGcoN9EdbIaEidHvhd9qivM/jUI+IcrCf
+         K9ed4OTtTekeqO8NT/wTUn7gDo2+KV07CrnevLH4FIcX+QKKA/cpMUNSRsZgW8EtBZc7
+         7rIk2Z6QuRLW/vm9rIYT/p2SGAreXhbXpSmZXHBQKd6x41C7JsSloOcN0ZqDmaBfKarn
+         Z8kQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741917425; x=1742522225;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=/ULwqcdLrIQiu23EX5e0kWcyoeYblkB6sBhXtEziSFM=;
+        b=YpXT2VqzkEgMTYfHCqdeAsS/PUmqRlBLH9hyA6qNKsXPd4Qw8oJ+XSqZ6QL1tuDs1+
+         zNLWRaBLowZHbxe8JBNFgQtCgf814v4QH741fUbKoJegn2uQcjGNsGfOOdyGWYDBDNkd
+         B9mqiRL1pIuhO39wvjFBHtDiq7wSH+LKEmJ6XwEH0UtxqkB/iCNw7VMuA9gGQDR/mN+W
+         uOuG5QHfRNI4ccKrjJ3c1vWi3XEv+S8CNw7PT31Vgj2H9esDjkoadVGOf08Xd8ZqnkMD
+         EY36YnlqEmWtldQamhGshi+w6LpDk4GQnlhb/0yYV4OUWPfJoEEzSPC+ZaZz+1xLddHt
+         hbhg==
+X-Gm-Message-State: AOJu0Yzy6IRF3HM4gaZOasUPI53mdc9gzPry9mK/Q2lkCK2VDy84sPux
+	ZAGvHQTeuaStRf7vA0oD7CftJV3sND4cmu21DAqO1QlSAr4sTGxgrq/kW4hYpio=
+X-Gm-Gg: ASbGncuSycNFx2YI9AN5rlO+74vvH4uyAuqybT8AjVkdv5HgP1ABGl9kXOJlROicW1j
+	78khvwguKCW0TRQ0s5mSxPlp/frsptMZ09hpHWzJtrNYDdHhbb0mvdp7sFHEMXun5KMGIl6H2p7
+	NnMNHgBl5Q7ADK/3+bQiDXf+CH1W9BveoMTtxoqvzVFRYAL/pzx6sK4O9rfDBR+P5EroIixqdlJ
+	lf/Qcx2hAR0wcxyyvE9X17Z3mTY4lrJ77BZyDdnK7xGGwCdt0nvXM83/Y+tS55QoOvKy31vEcKP
+	c7jjiNR2ssLGfDgzcVwGhXptd5fQ4TDRzkMR3mdRNnHyL4GMYeAxPcxwWZWzppLAbpbkJg==
+X-Google-Smtp-Source: AGHT+IGNqkXo4DW5jBisu34XE3Y+5i5bIUE4qW+YZXqltCEhg/nIwX6FpFilsYPiRZCajvHDt9gHqA==
+X-Received: by 2002:a17:902:ce0a:b0:224:1074:638e with SMTP id d9443c01a7336-225e0b2ba1fmr10460755ad.52.1741917425478;
+        Thu, 13 Mar 2025 18:57:05 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c68aa637sm20506605ad.94.2025.03.13.18.57.04
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 18:57:05 -0700 (PDT)
+Message-ID: <67d38cf1.170a0220.312847.690b@mx.google.com>
+Date: Thu, 13 Mar 2025 18:57:05 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============0684921448489315976=="
+MIME-Version: 1.0
+From: Mary Brown <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Request for Assistance with Order #1234567890-ABCDEFG
+
+--===============0684921448489315976==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Customer Care Team,
+
+   I hope this message finds you well. I am writing to seek your assistance regarding an issue with my recent order (Order #1234567890-ABCDEFG).
+
+   On August 15th, I placed an order for the Apple MacBook Pro 16" with a black sleek case and matching keyboard cover. However, when I received the package yesterday, it only contained the laptop, without the additional accessories. I have attached images of both my order confirmation and the delivered package for your reference.
+
+   I would greatly appreciate it if you could look into this matter promptly and arrange for the missing items to be shipped as soon as possible. I understand that such oversights can happen, but I am eager to complete my purchase as planned.
+
+   In case there are any questions or if additional information is required, please do not hesitate to contact me via email at Example Email@example.com. I will be checking my inbox regularly and respond promptly.
+
+   Thank you for your understanding and assistance in resolving this issue. I look forward to a swift resolution so that I may enjoy my complete order soon.
+
+   Warm regards,
+
+   Example Your name
+   Example Your street address
+   Example City, state, zip code
+   Example Country
+   Example Phone number
+--===============0684921448489315976==--

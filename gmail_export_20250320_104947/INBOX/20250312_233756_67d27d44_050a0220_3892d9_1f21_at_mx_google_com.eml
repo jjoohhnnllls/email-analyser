@@ -1,0 +1,109 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp769172rch;
+        Wed, 12 Mar 2025 23:37:58 -0700 (PDT)
+X-Received: by 2002:a17:903:230d:b0:21a:8300:b9d5 with SMTP id d9443c01a7336-22428a9a060mr338388655ad.23.1741847877850;
+        Wed, 12 Mar 2025 23:37:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741847877; cv=none;
+        d=google.com; s=arc-20240605;
+        b=W+SkvEo7B3m5P6vXpc+7tRqwCZhg6OYugHn2YyvNFAii2jfO23RxA+6F5QXtWYnHYD
+         6FMumxVAtjvBt4KS0HxYq1OKGDSR1R5wElac9dplStAYrJjFeLGrnqu/GqHhdGiabAr2
+         5N6gFVKXOVSrerMd+Ci3cYYfksKRif/3JtuiTcxPGzBKa8sdkqJiQYl9oP0Ex69Yz7MI
+         ldJ2lu+4ilrR839UwHXIECTjNgGGN5/M185pyOWvems/fu3USjvbrJ+RpYzvxbo/SmEY
+         itw84xffvGC1WS3xMfU3ywIc2UBx4a0pnBMZRghXvZ5G8DbMR/iC4AXGtYQoDZdUSYAL
+         Rgtw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=9Wazs5+2Z36KoAWaCzTXcBxGGKNGz7w9rlH9rvIAIpc=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=jjluIFUz8kRkThKoUap2AZ63Tn9bE2lbBboxFwXLSYWVXaPvJMoCDvtJBy0nQC7Z6b
+         CA8vpXc/Jhf4IyngdA8sO5MyGjYbx85b3MTnkBn4GDDSZAGZ2V5eXtkzrCcrW1djwgyp
+         U+wCNV9yl6rom5YGbkE9GwUrhgZkLoXxvCjXrrQCoe1yo76577wJeGsbZlqHpCQEbRqp
+         qpBl+KhhtsodrxGyM2FGpf5ZhNdbN/1ucIGWtDgvJnjOJ6QkOMfNUGpYFKWoYJNjlfjE
+         5vPGXbfFniTF+lVN2KaAXsrrYaLaoBo3ZANo8iVW4MAYGc0ZQSWh0ejKpdXgYm7iRL5a
+         ujBg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Zd2dJRAD;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c6bae96esor5080075ad.4.2025.03.12.23.37.57
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:37:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Zd2dJRAD;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741847877; x=1742452677; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=9Wazs5+2Z36KoAWaCzTXcBxGGKNGz7w9rlH9rvIAIpc=;
+        b=Zd2dJRADH94dgFbc9qqNfQZb35bCl+hjRfUNKQy+aT8iTrBmA1D7L8kC0Y5/6jWhqD
+         Sp1SB7+bAFlQTCovV8Wb10iaFcpnJuEG1EfDq5bzxc6axaUBWq9Q4vYu9FXlDkuXWSWF
+         EWTlyNVV2OjXApZCNpJZKXHqFULjTzjv5T37o+Ga+z/X0xqBME4XA+rKLLaCVBPa1Y0B
+         PgdNA8qxG4jtcf8ESd2YGz4v+pI1ARBWzbdSvQL0mqoTUq4VZcgz1iJsplo80B7J7Lqs
+         qgRkTLc59aZNo2zZy8PIzVQz9jYo+N4JxcDMqKZ0sqL9iWUN54LCYy6hYoPnJ+yVdMxJ
+         t/dQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741847877; x=1742452677;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=9Wazs5+2Z36KoAWaCzTXcBxGGKNGz7w9rlH9rvIAIpc=;
+        b=Ey2Ux+APNQO2sUyzvAGCPpc9V0nIWGs+ff29tM169P8HMbvnxeF5XTQJXRN6tF/1u5
+         uc6l/9RpvkhXpXwEcSYoXdS74npOOVi6qpbEWf2YENN62CSWHsIPen8s9r31vwNbQCZ4
+         15H0gCyjPBWfU8i0fyGrMkH6NoJhT9RPrg/Q/TbLwTefspYDqVWsmV7cw7Xpcbto3W7S
+         nh16jzVYQeoaNCyY92tJAgCV2UKqdbKgqY2s+RcWwauOoTt3eaW0GIpt57kQLQTBbYRl
+         xq6JKcnYKiTBkSOjbZUqZKYNWLmkKjq4MEMsmM37ziaXYI6GgPoQsBRAqqr9KM6R1bx4
+         JTfw==
+X-Gm-Message-State: AOJu0YxLe8js7teno5EZmNNkuuW/hKtTkPqUnFIQ7MWw6Ztb6iTMKzmf
+	6zZ43VCMlXbC0eWDsNM0PqRNisp1/Ia0wOjqMtinvWzK++TWpsHsTWTg1RkQ
+X-Gm-Gg: ASbGncvTNdAWNNzFSPBiSpiZxGHIPnLB6+4kc23KcbZEFpViEBkGLIxdofktGxuAdS4
+	awwGmPP33g7qam61+sxIMrottKI6IMHN/9/ZYKmomLquSrXMP5EkIDlUuSzEhf1GoiEMdu6A/0f
+	sg48SdDOO7XSzUaYPBXlUb6+aBjzuTJykBgIutgKdwDy5io/1AZea3GSnIBLzhQs4uWPM5/KPf0
+	LtGzPX6MMQIX+rkuwD6FJFczVcvbud4IvRu7ZEJ6Du+uKMUOpYSpgk0wFiVO77VJIftQTzXBD/X
+	q0pX/BUy3Z3begza/eRqse9SStSNApS3PTtZ8vo2Eao2LyzSk/W50EdKVY7Mfjn62roB/w==
+X-Google-Smtp-Source: AGHT+IE2wX+J1/Qad9RfcQ4iiYDuzj/mZ+bvlm43M+pREVwZgPtCjiFfmVHzOvkLoIYqXRDKvbm76w==
+X-Received: by 2002:a17:902:e812:b0:211:e812:3948 with SMTP id d9443c01a7336-2242850b42amr354766185ad.0.1741847877079;
+        Wed, 12 Mar 2025 23:37:57 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-737116944f5sm586436b3a.124.2025.03.12.23.37.56
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:37:56 -0700 (PDT)
+Message-ID: <67d27d44.050a0220.3892d9.1f21@mx.google.com>
+Date: Wed, 12 Mar 2025 23:37:56 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============8882820996629623168=="
+MIME-Version: 1.0
+From: Prime Retail <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Shipping Update for Your Order #1234567890
+
+--===============8882820996629623168==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Valued Customer John Doe,
+
+   I hope this message finds you well. I am writing to inform you about an update regarding the shipment of your recent order (#1234567890) placed at our retail store, ABC Retail Inc.
+
+   Your order has been packed and is now in transit. The package is with our trusted carrier, FedEx, who are currently experiencing a slight delay due to high shipping volume. According to the latest information we received from FedEx, your order should arrive at your address by next Thursday, March 24th. We sincerely apologize for any inconvenience this delay may cause and appreciate your understanding during these challenging times.
+
+   In the meantime, if you have any questions or concerns about your order, please do not hesitate to contact our customer service team at support@abcretailinc.com or call us directly at 1-800-123-4567. We are available 24/7 to assist you.
+
+   Once again, thank you for choosing ABC Retail Inc., and we look forward to serving you in the future!
+
+   Warm regards,
+
+   Example Your name
+   Customer Service Manager
+   ABC Retail Inc.
+--===============8882820996629623168==--

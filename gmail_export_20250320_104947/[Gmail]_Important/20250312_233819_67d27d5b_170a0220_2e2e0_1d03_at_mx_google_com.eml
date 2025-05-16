@@ -1,0 +1,114 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp769308rch;
+        Wed, 12 Mar 2025 23:38:20 -0700 (PDT)
+X-Received: by 2002:a17:902:eb81:b0:224:1935:d9a3 with SMTP id d9443c01a7336-2242888ab01mr388211725ad.21.1741847900554;
+        Wed, 12 Mar 2025 23:38:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741847900; cv=none;
+        d=google.com; s=arc-20240605;
+        b=ltpVuM7EtSuL17HO6NvdX3LeYGuVZhVMQwvrODN576iMQiEBc3Q0bfCwhnzs42ub/J
+         vexrGJ1ZoospK2Vnbwry7Qu/aFfSoM6jicOIf/3NildMAl4pXS0+hMxv/OO5beBwsgYR
+         w2ycz25osv85ZL/NcMW095ZTc66RchC0AIyGvua0wtz3sxHyPf7edSSWUdRkmtlWN0ep
+         eaoSGjEcJcvrusccqgUYguBaye4WqwUPMv5Yx5AnE5sow6ri4CBi7uziZfAmy2a4ESF2
+         jv0l3VXzypzi4fTFQTji91Wj4nzhV7k56o0puzfnXdGAthDQyB3g1VVN0HGsWvHDg5qH
+         AyAQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=a0fUkkNVGzAgNbrduw39+2RD2Cf67xe9pUoFtsa4IF0=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=Yf5tWa+gQEgYP3ZXJuxqcyqCCQUv7psAS02luf26kaUwqRK5ZlmezCYYjdgAiKeV2V
+         YAv8oh4cwXCWkqEYm3jN1sMlVNoCfEhB1efG2g4NLa1HqzUNEo17W/HemotIeJMpx5xZ
+         NbqqN8B9XQ6vFXR+IBjxuoHWstuTpSjM5X7uTwYj1pYSWSfCnComzuevnrE3iDwMaPt6
+         /+FLsQK6dG/nw6TMlS64Ti+QyZzNYDN5kStwMDPczdjYqffZ++51B9dotbHRGvhEb7uV
+         ympuiRFZWOVOCy35KQFIcaiDtRv2Yd4i109QpUSeHVMbgVjAXp43FzvxK06o8YntQkmC
+         7PSA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=eDhhb6Xy;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c68b3afasor5311085ad.9.2025.03.12.23.38.20
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:38:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=eDhhb6Xy;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741847900; x=1742452700; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=a0fUkkNVGzAgNbrduw39+2RD2Cf67xe9pUoFtsa4IF0=;
+        b=eDhhb6XyZVVGc3Y21DcdJv96tQdz3IaFfokjIuLyrZAAJj2gXTZVNQCYfyGEFsvWcG
+         Lm1sAhDjqPh7gpxWNhIr8vIJC1MVyzYflbZixq/JtDOAscYxpDMQaVZV1kYsh5LyS3tH
+         DHxpsXYv/EmDIrmL7CjLgW6iURL1qwOzitjDWTp9esj2byMwOWIwUbFvzdSY1KJNO56B
+         xzEHzn4BhdgBQNYsS9RdUB+jgi+V/W2WZeo1qJGDLAonULWTLdSW9bb6Amf6WCwvQ7aA
+         yvn5LwVLkV2j+oGKntE/Kk4p1mu9aWlvYeA1spH+69DaORo63pGRkuBPTBVz0yy/CB0T
+         eNJQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741847900; x=1742452700;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=a0fUkkNVGzAgNbrduw39+2RD2Cf67xe9pUoFtsa4IF0=;
+        b=P68VxugS9AQ3VpNBrZN903P5un6SUc2b+Vs60OvydfiVVvm0rH82HneiKNcZo07/Nx
+         GeiWvTKR0VOhkSVisfKYz3Th6Ct735ETNRa+QDSnbnogOG35bY0Idsv1NjnYcqWkYur1
+         M/AxspvR091VqwEZj7D8kXy7g/DhXl7YqmNNT6gU5Im1fQUg9F5xmNcuUEqZbrdjrENh
+         rh05D7sfq/yTjrx/o+aDBQtPJ7zklaScJKDnVBEHashiFCbCy2cpiwDPtecbbwk29qc6
+         E7eDbcOnz0powhXBloWqJPqFjfRuOXoMNbFGouLZN+uXBXUxdUQjv26kJtRy9tHm5MTD
+         BhXA==
+X-Gm-Message-State: AOJu0YxHsoIK3l9OimPExcEsDGnFoqzQtlGxD2aN1GdV0rwFXRZ56BsG
+	/kcJU6wLhi5NqL6tByL+iFdNb9KK0okWPM1mMY8/iOoHrjp+SjaPaLCSbwtw
+X-Gm-Gg: ASbGncsZU6lS/p+GT3Lp1zd9f3baZtwcZsNRqVKsxmLAC1bqKzdZmPiY3gzil+IJ862
+	cEKsCxoh2yKMbS/jwOqB1Jz/WiNjoO2UFR7zJ0VWRCM8xkg3rXzJjvU8Qsw+H4qsYOPkcjasy8P
+	2wkUI5XUJUOp108ocEYJn+YQ7gfQbImnvRBvIvg3Z43W5UGz+G6XVhN2GY2pgMfUk3neiTh18pg
+	bGNWq178/ZtzGUDf5llq32bGravXqkeKQ4+QEbfJ7K9EH0z4bm1o+kZCTpus/dH5bZ0LJIsoB6a
+	t57nIZaFEHfe/x8XYKZO8KMvOeR3RlL/a5Cj6dQIDlTWBRVQaRAtZ1XVz8Tyw0g5Hp4vXQ==
+X-Google-Smtp-Source: AGHT+IHLkRBxMnf3xnaZtkV6ONp5SXmS3n+pmS+OTw1alwIJM2Q8aBn7ZjNhyUhy7wdAuZyo7loK7Q==
+X-Received: by 2002:a17:902:ea0c:b0:21f:b483:2ad5 with SMTP id d9443c01a7336-2242888b35dmr311250565ad.20.1741847899777;
+        Wed, 12 Mar 2025 23:38:19 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6bbed4fsm6050955ad.163.2025.03.12.23.38.19
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:38:19 -0700 (PDT)
+Message-ID: <67d27d5b.170a0220.2e2e0.1d03@mx.google.com>
+Date: Wed, 12 Mar 2025 23:38:19 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============4930284219050004009=="
+MIME-Version: 1.0
+From: William Thomas <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Delay in Shipment of Your Payment Device - Apology and Explanation
+
+--===============4930284219050004009==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Mr. Johnson,
+
+   I hope this message finds you well. I am writing to inform you about a slight delay in the shipment of your payment device, the X-Series Terminal, as part of our Account Manager Program.
+
+   Unfortunately, there was an unforeseen issue with the production line that has caused a minor setback. However, rest assured that our team is working diligently to rectify the situation, and we expect the shipment to arrive at your doorstep by next Tuesday, May 18th.
+
+   We understand that this delay may cause inconvenience, and we sincerely apologize for any issues this might bring about in your operations. To make up for this inconvenience, we will be crediting a one-time bonus of $50 to your account upon receipt of the device.
+
+   We appreciate your understanding and patience during this time. If you have any questions or concerns regarding this matter, please do not hesitate to contact our dedicated support team at 1-800-ABC-SUPPORT (1-800-222-7867).
+
+   Thank you for choosing ABC Financial Services as your trusted partner in the digital payment industry. We are committed to providing you with top-notch service, and this small delay will not diminish our dedication to serving you better.
+
+   Best Regards,
+
+   Example Your name
+   Example Your position
+   ABC Financial Services
+   1234 Main St, Anytown, USA
+   support@abcfinancialservices.com
+   1-800-ABC-SUPPORT (1-800-222-7867)
+--===============4930284219050004009==--

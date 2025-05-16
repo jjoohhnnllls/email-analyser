@@ -1,0 +1,962 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp664399rch;
+        Wed, 12 Mar 2025 18:21:54 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHSmTWV+AswS1XJ/nobauwsqcDlEkiomp0w56JfrV12Eg+wQ2wrynQjNda/YqrEMhu+xMqT
+X-Received: by 2002:a05:622a:406:b0:476:6df0:954f with SMTP id d75a77b69052e-476ba8edf34mr15936741cf.10.1741828914589;
+        Wed, 12 Mar 2025 18:21:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741828914; cv=none;
+        d=google.com; s=arc-20240605;
+        b=GZ0tjAxBYhazypDYeU9hOCjE1MS6/qI/F7MAmAimE1GlVljUOqYQJ9Tg/8D4jLqkNQ
+         QQ+PMumv912qz0wQdfMgG40loqP8+sjPuvuJEznQ9Vte6CbOS4/U9ZVo2UrdK9c/0w1x
+         uxibEUBVFt3gLgRiATPXRHjFbEZ6bt/8NlSfS0JNz7eSlBvS2QtIUAGoftER96gDfdz3
+         MOAafG3HESAWuhbBKVRx2Ock4Tjne/pYp39yHYchoyTpcNf0PG7bRwtb70msal4LQUYc
+         n20ONw+QXH4HZA+7eZ0Li951HTdHzwFiytYqq/2ok33mbCg7dhkbPUrJxQLJRLJJU616
+         LGXQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:subject:message-id:to:from
+         :date:sender:dkim-signature:dkim-signature;
+        bh=fSzpGV0ho2A38fmNRg2ThSH+UyCPD5h/XObk4u9WUxY=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=IyrbLhb38VB+AXKYuy+ZHGX+zleZ7+6sco7vfpP22e1eCz5UGbzDqTRmMyEYQxqjsW
+         8aOF1y0QFpuuDeWx2ZmMv+OpSy8WNkgY8tCRIczIrsPmJ093wEr2O6sn1HbUwCdPXnvO
+         FEWMDRAIIKcZRUoxlcy3HT/UpAHVC0IjSEqozerj6HazFM50PC8C67a3TaAQOhHeo4uh
+         Q+2hx8S5Z49lJvOJBmyIc5EI0hBZniykgSG1wR8FKxKzxVqDvA01YFEWrl7JovBBoBgi
+         ZvAHT6oShpN7RjVRB4aG7fK/BYBrLPqNWYbDIrecURN+Ntdy9J5phjJG1QnK0MrlAkPO
+         nm+Q==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@heroku.com header.s=mx header.b="KX2Z4M/3";
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=jaOa7qxi;
+       spf=pass (google.com: domain of bounce+1b1154.726e-desgtest.email=gmail.com@heroku.com designates 159.112.245.149 as permitted sender) smtp.mailfrom="bounce+1b1154.726e-desgtest.email=gmail.com@heroku.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=heroku.com
+Return-Path: <bounce+1b1154.726e-desgtest.email=gmail.com@heroku.com>
+Received: from m245-149.mailgun.net (m245-149.mailgun.net. [159.112.245.149])
+        by mx.google.com with UTF8SMTPS id d75a77b69052e-476bb7deb3esi3977361cf.263.2025.03.12.18.21.54
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 12 Mar 2025 18:21:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce+1b1154.726e-desgtest.email=gmail.com@heroku.com designates 159.112.245.149 as permitted sender) client-ip=159.112.245.149;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@heroku.com header.s=mx header.b="KX2Z4M/3";
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=jaOa7qxi;
+       spf=pass (google.com: domain of bounce+1b1154.726e-desgtest.email=gmail.com@heroku.com designates 159.112.245.149 as permitted sender) smtp.mailfrom="bounce+1b1154.726e-desgtest.email=gmail.com@heroku.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=heroku.com
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=heroku.com; q=dns/txt; s=mx; t=1741828914; x=1741836114;
+ h=Content-Transfer-Encoding: Content-Type: Mime-Version: Subject: Subject: Message-ID: To: To: From: From: Date: Sender: Sender: X-Feedback-Id;
+ bh=fSzpGV0ho2A38fmNRg2ThSH+UyCPD5h/XObk4u9WUxY=;
+ b=KX2Z4M/37ah+v95dUDSaMBCWlo3GHBKa81ndQSEpRGYdrPAcsegqSqPGkVQOZz4GGeZ1XZaw/1YzAkH+xCflffYAAckzuJve/fXKYs7bbGqmDTmtgY9n3SRcbKkQhs5xhSfggr5mw/mAmW6bekRuvOBVxphrPCmqKRGtLO0Y+Gk=
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mailgun.org; q=dns/txt; s=mg; t=1741828914; x=1741836114;
+ h=Content-Transfer-Encoding: Content-Type: Mime-Version: Subject: Subject: Message-ID: To: To: From: From: Date: Sender: Sender: X-Feedback-Id;
+ bh=fSzpGV0ho2A38fmNRg2ThSH+UyCPD5h/XObk4u9WUxY=;
+ b=jaOa7qxiqZLbogUZpFjZAH+K/sg9MxneQ8Ov5Js/812KFLIOko8ZHOcTMSW838IfRgkvmIFWXXPm3pEb1no5Q/9UyGrVtsbg6LL5acdk8EPFbwJ0nM6Rh56BHuwkeDAbYRgKh+PFOy43lRMt9nTj5YVhRvI0Dr8yyNmsQOTzmUs=
+X-Feedback-Id: communications@heroku.com::5018cb933533547f6800dad7:mailgun
+X-Mailgun-Sending-Ip: 159.112.245.149
+X-Mailgun-Sending-Ip-Pool-Name: 
+X-Mailgun-Sending-Ip-Pool: 
+X-Mailgun-Sid: WyI0OGQ0NCIsImRlc2d0ZXN0LmVtYWlsQGdtYWlsLmNvbSIsIjcyNmUiXQ==
+Received: from heroku.com (ec2-54-89-1-31.compute-1.amazonaws.com [54.89.1.31]) by
+ 88810f30bc55 with SMTP id 67d23332e5d9c4251aacaddc (version=TLS1.3,
+ cipher=TLS_AES_128_GCM_SHA256); Thu, 13 Mar 2025 01:21:54 GMT
+Sender: communications@heroku.com
+Date: Thu, 13 Mar 2025 01:21:54 +0000
+From: Heroku <communications@heroku.com>
+To: desgtest.email@gmail.com
+Message-ID: <67d2333226e7c_a1b5bc1083e1@dyno-14a355f7-7257-4f51-8fc6-a031e1fc4c55.mail>
+Subject: Confirm your Heroku Newsletter sign up
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_67d2333226561_a1b5bc108212";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_67d2333226561_a1b5bc108212
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hello there,
+
+You=E2=80=99re just one click away from confirming your Heroku newsletter=
+ subscription.
+Please open the link below to verify your email address.
+
+https://www.heroku.com/newsletter_signup/confirm/JzaOXME6cmuvyT-Fy0uPcw
+
+Salesforce
+415 Mission Street
+Suite 300
+San Francisco, CA 94105
+
+https://blog.heroku.com
+https://twitter.com/heroku
+https://facebook.com/heroku
+https://github.com/heroku
+
+----==_mimepart_67d2333226561_a1b5bc108212
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.o=
+rg/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns=3D"http://www.w3.org/1=
+999/xhtml">
+  <head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width" />
+  </head>
+  <body style=3D"width: 100% !important; min-width: 100%; -webkit-text-si=
+ze-adjust: 100%; -ms-text-size-adjust: 100%; color: #222; font-family: He=
+lvetica,Arial,sans-serif; font-weight: 400; text-align: left; line-height=
+: 19px; font-size: 14px; background: #fff; margin: 0; padding: 0;" bgcolo=
+r=3D"#fff">
+<style type=3D"text/css">a:active {
+color: #2795b6 !important;
+}
+a:hover {
+color: #2795b6 !important;
+}
+a:visited {
+color: #2ba6cb !important;
+}
+h1 a:active {
+color: #2ba6cb !important;
+}
+h1 a:visited {
+color: #2ba6cb !important;
+}
+h2 a:active {
+color: #2ba6cb !important;
+}
+h2 a:visited {
+color: #2ba6cb !important;
+}
+h3 a:active {
+color: #2ba6cb !important;
+}
+h3 a:visited {
+color: #2ba6cb !important;
+}
+h4 a:active {
+color: #2ba6cb !important;
+}
+h4 a:visited {
+color: #2ba6cb !important;
+}
+h5 a:active {
+color: #2ba6cb !important;
+}
+h5 a:visited {
+color: #2ba6cb !important;
+}
+h6 a:active {
+color: #2ba6cb !important;
+}
+h6 a:visited {
+color: #2ba6cb !important;
+}
+table.button:active td {
+background: #2795b6 !important;
+}
+table.button:hover td {
+background: #2795b6 !important;
+}
+table.button:visited td {
+background: #2795b6 !important;
+}
+table.button:active td a {
+color: #fff !important;
+}
+table.button:hover td a {
+color: #fff !important;
+}
+table.button:visited td a {
+color: #fff !important;
+}
+table.button:hover td {
+background: #2795b6 !important;
+}
+table.large-button:hover td {
+background: #2795b6 !important;
+}
+table.medium-button:hover td {
+background: #2795b6 !important;
+}
+table.small-button:hover td {
+background: #2795b6 !important;
+}
+table.tiny-button:hover td {
+background: #2795b6 !important;
+}
+table.button td a:visited {
+color: #fff !important;
+}
+table.button:active td a {
+color: #fff !important;
+}
+table.button:hover td a {
+color: #fff !important;
+}
+table.large-button td a:visited {
+color: #fff !important;
+}
+table.large-button:active td a {
+color: #fff !important;
+}
+table.large-button:hover td a {
+color: #fff !important;
+}
+table.medium-button td a:visited {
+color: #fff !important;
+}
+table.medium-button:active td a {
+color: #fff !important;
+}
+table.medium-button:hover td a {
+color: #fff !important;
+}
+table.small-button td a:visited {
+color: #fff !important;
+}
+table.small-button:active td a {
+color: #fff !important;
+}
+table.small-button:hover td a {
+color: #fff !important;
+}
+table.tiny-button td a:visited {
+color: #fff !important;
+}
+table.tiny-button:active td a {
+color: #fff !important;
+}
+table.tiny-button:hover td a {
+color: #fff !important;
+}
+table.secondary:hover td {
+background: #d0d0d0 !important; color: #555;
+}
+table.secondary td a:visited {
+color: #555 !important;
+}
+table.secondary:active td a {
+color: #555 !important;
+}
+table.secondary:hover td a {
+color: #555 !important;
+}
+table.success:hover td {
+background: #457a1a !important;
+}
+table.alert:hover td {
+background: #970b0e !important;
+}
+.container .content h2 a:visited {
+color: #583ea4 !important;
+}
+.container .content h2 a:after {
+display: inline-block; content: ''; background: url(img/icon_arrow.png); =
+width: 14px; height: 14px; margin-left: 9px;
+}
+.container .content h2 a:visited:after {
+display: inline-block; content: ''; background: url(img/icon_arrow.png); =
+width: 14px; height: 14px; margin-left: 9px;
+}
+.container .content h2 a:hover {
+color: #0099d5 !important;
+}
+.container .content h2 a:visited:hover {
+color: #0099d5 !important;
+}
+.container .content h3 a:visited {
+color: #602397 !important;
+}
+.container .content h4 a:visited {
+color: #583ea4 !important;
+}
+.container .content h4 a:hover {
+color: #0099d5 !important;
+}
+.container .content h4 a:visited:hover {
+color: #0099d5 !important;
+}
+.container .content h5 a:visited {
+color: #351D7D !important;
+}
+.container .content h5 a:hover {
+color: #0099d5 !important;
+}
+.container .content h5 a:visited:hover {
+color: #0099d5 !important;
+}
+.container .content .button.purple td:hover {
+background: #6245b6 !important;
+}
+.container .content .button.blue td:hover {
+background: #00abef !important;
+}
+.container .content .button.white td:hover {
+background: #583ea4 !important;
+}
+.container .content .button.white td:hover a {
+color: #fff !important;
+}
+.container.footer td a:visited {
+color: #222 !important; text-decoration: underline;
+}
+p a:visited {
+text-decoration: underline; color: #0099d5 !important;
+}
+a:visited.browser-link {
+color: #999 !important; text-decoration: underline;
+}
+a:hover {
+text-decoration: none;
+}
+a:visited:hover {
+text-decoration: none;
+}
+@media only screen and (max-width:615px) {
+  .footer-contact .social .social-holder {
+    text-align:center!important;
+    margin-right:0!important;
+  }
+}
+@media only screen and (max-width:600px) {
+  table[class=3Dbody] img {
+    width: auto !important; height: auto !important;
+  }
+  table[class=3Dbody] center {
+    min-width: 0 !important;
+  }
+  table[class=3Dbody] .container {
+    width: 95% !important;
+  }
+  table[class=3Dbody] .row {
+    width: 100% !important; display: block !important;
+  }
+  table[class=3Dbody] .wrapper {
+    display: block !important; padding-right: 0 !important;
+  }
+  table[class=3Dbody] .column {
+    table-layout: fixed !important; float: none !important; width: 100% !=
+important; padding-right: 0 !important; padding-left: 0 !important; displ=
+ay: block !important;
+  }
+  table[class=3Dbody] .columns {
+    table-layout: fixed !important; float: none !important; width: 100% !=
+important; padding-right: 0 !important; padding-left: 0 !important; displ=
+ay: block !important;
+  }
+  table[class=3Dbody] .wrapper.first .column {
+    display: table !important;
+  }
+  table[class=3Dbody] .wrapper.first .columns {
+    display: table !important;
+  }
+  table[class=3Dbody] table.column td {
+    width: 100% !important;
+  }
+  table[class=3Dbody] table.columns td {
+    width: 100% !important;
+  }
+  table[class=3Dbody] .column td.one {
+    width: 8.333333% !important;
+  }
+  table[class=3Dbody] .columns td.one {
+    width: 8.333333% !important;
+  }
+  table[class=3Dbody] .column td.two {
+    width: 16.666666% !important;
+  }
+  table[class=3Dbody] .columns td.two {
+    width: 16.666666% !important;
+  }
+  table[class=3Dbody] .column td.three {
+    width: 25% !important;
+  }
+  table[class=3Dbody] .columns td.three {
+    width: 25% !important;
+  }
+  table[class=3Dbody] .column td.four {
+    width: 33.333333% !important;
+  }
+  table[class=3Dbody] .columns td.four {
+    width: 33.333333% !important;
+  }
+  table[class=3Dbody] .column td.five {
+    width: 41.666666% !important;
+  }
+  table[class=3Dbody] .columns td.five {
+    width: 41.666666% !important;
+  }
+  table[class=3Dbody] .column td.six {
+    width: 50% !important;
+  }
+  table[class=3Dbody] .columns td.six {
+    width: 50% !important;
+  }
+  table[class=3Dbody] .column td.seven {
+    width: 58.333333% !important;
+  }
+  table[class=3Dbody] .columns td.seven {
+    width: 58.333333% !important;
+  }
+  table[class=3Dbody] .column td.eight {
+    width: 66.666666% !important;
+  }
+  table[class=3Dbody] .columns td.eight {
+    width: 66.666666% !important;
+  }
+  table[class=3Dbody] .column td.nine {
+    width: 75% !important;
+  }
+  table[class=3Dbody] .columns td.nine {
+    width: 75% !important;
+  }
+  table[class=3Dbody] .column td.ten {
+    width: 83.333333% !important;
+  }
+  table[class=3Dbody] .columns td.ten {
+    width: 83.333333% !important;
+  }
+  table[class=3Dbody] .column td.eleven {
+    width: 91.666666% !important;
+  }
+  table[class=3Dbody] .columns td.eleven {
+    width: 91.666666% !important;
+  }
+  table[class=3Dbody] .column td.twelve {
+    width: 100% !important;
+  }
+  table[class=3Dbody] .columns td.twelve {
+    width: 100% !important;
+  }
+  table[class=3Dbody] td.offset-by-eight {
+    padding-left: 0 !important;
+  }
+  table[class=3Dbody] td.offset-by-eleven {
+    padding-left: 0 !important;
+  }
+  table[class=3Dbody] td.offset-by-five {
+    padding-left: 0 !important;
+  }
+  table[class=3Dbody] td.offset-by-four {
+    padding-left: 0 !important;
+  }
+  table[class=3Dbody] td.offset-by-nine {
+    padding-left: 0 !important;
+  }
+  table[class=3Dbody] td.offset-by-one {
+    padding-left: 0 !important;
+  }
+  table[class=3Dbody] td.offset-by-seven {
+    padding-left: 0 !important;
+  }
+  table[class=3Dbody] td.offset-by-six {
+    padding-left: 0 !important;
+  }
+  table[class=3Dbody] td.offset-by-ten {
+    padding-left: 0 !important;
+  }
+  table[class=3Dbody] td.offset-by-three {
+    padding-left: 0 !important;
+  }
+  table[class=3Dbody] td.offset-by-two {
+    padding-left: 0 !important;
+  }
+  table[class=3Dbody] table.columns td.expander {
+    width: 1px !important;
+  }
+  table[class=3Dbody] .right-text-pad {
+    padding-left: 10px !important;
+  }
+  table[class=3Dbody] .text-pad-right {
+    padding-left: 10px !important;
+  }
+  table[class=3Dbody] .left-text-pad {
+    padding-right: 10px !important;
+  }
+  table[class=3Dbody] .text-pad-left {
+    padding-right: 10px !important;
+  }
+  table[class=3Dbody] .hide-for-small {
+    display: none !important;
+  }
+  table[class=3Dbody] .show-for-desktop {
+    display: none !important;
+  }
+  table[class=3Dbody] .hide-for-desktop {
+    display: inherit !important;
+  }
+  table[class=3Dbody] .show-for-small {
+    display: inherit !important;
+  }
+}
+</style>
+<table bgcolor=3D"#fff" class=3D"body" style=3D"border-spacing: 0; border=
+-collapse: collapse; vertical-align: top; text-align: left; height: 100%;=
+ width: 100%; color: #222; font-family: Helvetica,Arial,sans-serif; font-=
+weight: 400; line-height: 19px; font-size: 14px; background: #fff; margin=
+: 0; padding: 0;">
+  <tbody>
+    <tr align=3D"left" style=3D"vertical-align: top; text-align: left; pa=
+dding: 0;">
+      <td align=3D"center" class=3D"center" style=3D"word-break: break-wo=
+rd; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-coll=
+apse: collapse !important; vertical-align: top; text-align: center; color=
+: #222; font-family: Helvetica,Arial,sans-serif; font-weight: 400; line-h=
+eight: 19px; font-size: 14px; margin: 0; padding: 0;" valign=3D"top">
+      <center style=3D"width: 100%; min-width: 580px;"><!-- HEADER -->
+      <table class=3D"container header" style=3D"border-spacing: 0; borde=
+r-collapse: collapse; vertical-align: top; text-align: inherit; width: 58=
+0px; margin: 0 auto; padding: 0;">
+        <tbody>
+          <tr align=3D"left" style=3D"vertical-align: top; text-align: le=
+ft; padding: 0;">
+            <td align=3D"left" style=3D"word-break: break-word; -webkit-h=
+yphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collaps=
+e !important; vertical-align: top; text-align: left; color: #222; font-fa=
+mily: Helvetica,Arial,sans-serif; font-weight: 400; line-height: 19px; fo=
+nt-size: 14px; margin: 0; padding: 0;" valign=3D"top">
+            <table class=3D"row" style=3D"border-spacing: 0; border-colla=
+pse: collapse; vertical-align: top; text-align: left; width: 100%; positi=
+on: relative; display: block; padding: 0;">
+              <tbody>
+                <tr align=3D"left" style=3D"vertical-align: top; text-ali=
+gn: left; padding: 0;">
+                  <td align=3D"left" class=3D"wrapper last" style=3D"word=
+-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: a=
+uto; border-collapse: collapse !important; vertical-align: top; text-alig=
+n: left; position: relative; color: #222; font-family: Helvetica,Arial,sa=
+ns-serif; font-weight: 400; line-height: 19px; font-size: 14px; margin: 0=
+; padding: 10px 0 0;" valign=3D"top">
+                  <table class=3D"twelve columns" style=3D"border-spacing=
+: 0; border-collapse: collapse; vertical-align: top; text-align: left; wi=
+dth: 580px; margin: 0 auto; padding: 0;">
+                    <tbody>
+                      <tr align=3D"left" style=3D"vertical-align: top; te=
+xt-align: left; padding: 0;">
+                        <td align=3D"left" class=3D"no-padding" pardot-re=
+gion=3D"header" style=3D"word-break: break-word; -webkit-hyphens: auto; -=
+moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important; v=
+ertical-align: top; text-align: left; color: #222; font-family: Helvetica=
+,Arial,sans-serif; font-weight: 400; line-height: 19px; font-size: 14px; =
+margin: 0; padding: 0;" valign=3D"top"><img align=3D"none" alt=3D"Heroku"=
+ class=3D"center" height=3D"170" src=3D"http://storage.pardot.com/36622/8=
+7708/header.png" style=3D"outline: 0; text-decoration: none; -ms-interpol=
+ation-mode: bicubic; width: auto; max-width: 100%; float: none; clear: bo=
+th; display: block; margin: 0 auto;" width=3D"580"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- /HEADER -->
+
+<!-- Main Content Block -->
+
+      <table class=3D"container" style=3D"border-spacing: 0; border-colla=
+pse: collapse; vertical-align: top; text-align: inherit; width: 580px; ma=
+rgin: 0 auto; padding: 0;">
+        <tbody>
+          <tr align=3D"left" style=3D"vertical-align: top; text-align: le=
+ft; padding: 0;">
+            <td align=3D"left" style=3D"word-break: break-word; -webkit-h=
+yphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collaps=
+e !important; vertical-align: top; text-align: left; color: #222; font-fa=
+mily: Helvetica,Arial,sans-serif; font-weight: 400; line-height: 19px; fo=
+nt-size: 14px; margin: 0; padding: 0;" valign=3D"top">
+            <table bgcolor=3D"#fff" class=3D"row content" style=3D"border=
+-spacing: 0; border-collapse: collapse; vertical-align: top; text-align: =
+left; width: 100%; position: relative; display: block; border-bottom-styl=
+e: solid; border-bottom-color: #ddd; border-bottom-width: 1px; background=
+: #fff; padding: 0;">
+              <tbody>
+                <tr align=3D"left" style=3D"vertical-align: top; text-ali=
+gn: left; padding: 0;">
+                  <td align=3D"left" class=3D"wrapper last" style=3D"word=
+-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: a=
+uto; border-collapse: collapse !important; vertical-align: top; text-alig=
+n: left; position: relative; color: #222; font-family: Helvetica,Arial,sa=
+ns-serif; font-weight: 400; line-height: 19px; font-size: 14px; margin: 0=
+; padding: 0 0 20px;" valign=3D"top">
+                  <table class=3D"twelve columns" style=3D"border-spacing=
+: 0; border-collapse: collapse; vertical-align: top; text-align: left; wi=
+dth: 580px; margin: 0 auto; padding: 0;">
+                    <tbody>
+                      <tr align=3D"left" style=3D"vertical-align: top; te=
+xt-align: left; padding: 0;">
+                        <td align=3D"left" pardot-region=3D"main-content"=
+ style=3D"word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: au=
+to; hyphens: auto; border-collapse: collapse !important; vertical-align: =
+top; text-align: left; color: #222; font-family: Helvetica,Arial,sans-ser=
+if; font-weight: 400; line-height: 19px; font-size: 14px; margin: 0; padd=
+ing: 0 0 10px;" valign=3D"top" class=3D""><h2 align=3D"left" style=3D"col=
+or: #222; font-family: Helvetica,Arial,sans-serif; font-weight: 400; text=
+-align: left; line-height: 1.25; word-break: normal; font-size: 21px; mar=
+gin: 25px 0 10px; padding: 0;"><span style=3D"color: rgb(0, 0, 0); font-f=
+amily: Arial; font-size: 14.6666666666667px; white-space: pre-wrap; line-=
+height: 1.38; background-color: transparent;">Hello there, </span></h2>
+
+<p dir=3D"ltr" style=3D"font-family: arial, sans-serif; font-size: 12.800=
+0001907349px; line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;"><b=
+r>
+<span style=3D"font-size: 14.6666666666667px; font-family: Arial; color: =
+rgb(0, 0, 0); vertical-align: baseline; white-space: pre-wrap; background=
+-color: transparent;">You=E2=80=99re just one click away from confirming =
+your Heroku newsletter subscription. Please click the link below to verif=
+y your email address.</span></p>
+
+<p dir=3D"ltr" style=3D"font-family: arial, sans-serif; font-size: 12.800=
+0001907349px; line-height: 1.38; margin-top: 0pt; margin-bottom: 0pt;">&n=
+bsp;</p>
+
+<table class=3D"button purple" style=3D"border-spacing: 0; border-collaps=
+e: collapse; vertical-align: top; text-align: left; width: 100%; overflow=
+: hidden; padding: 0;">
+  <tbody>
+    <tr align=3D"left" style=3D"vertical-align: top; text-align: left; pa=
+dding: 0;">
+      <td align=3D"center" bgcolor=3D"#583ea4 !important" pardot-region=3D=
+"button-purple" pardot-removable=3D"" style=3D"word-break: break-word; -w=
+ebkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: =
+collapse !important; vertical-align: top; text-align: center; color: #fff=
+; font-family: Helvetica,Arial,sans-serif; font-weight: 400; line-height:=
+ 19px; font-size: 14px; display: block; width: auto !important; backgroun=
+d-color: #583ea4 !important; border-radius: 5px; margin: 10px 0; padding:=
+ 13px 0; border: 0 solid #2284a1;" valign=3D"top"><a href=3D"https://www.=
+heroku.com/newsletter_signup/confirm/JzaOXME6cmuvyT-Fy0uPcw" style=3D"  f=
+ont-weight: 400; font-family: Helvetica,Arial,sans-serif; font-size: 16px=
+; display: block;text-decoration:none;color: #fff;">Verify now</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<table class=3D"button blue" style=3D"border-spacing: 0; border-collapse:=
+ collapse; vertical-align: top; text-align: left; width: 100%; overflow: =
+hidden; padding: 0;">
+  <tbody>
+    <tr align=3D"left" style=3D"vertical-align: top; text-align: left; pa=
+dding: 0;">
+    </tr>
+  </tbody>
+</table>
+
+<table class=3D"button white" style=3D"border-spacing: 0; border-collapse=
+: collapse; vertical-align: top; text-align: left; width: 100%; overflow:=
+ hidden; padding: 0;">
+  <tbody>
+    <tr align=3D"left" style=3D"vertical-align: top; text-align: left; pa=
+dding: 0;">
+    </tr>
+  </tbody>
+</table>
+<br>
+Link not working? Copy and paste this into your browser:&nbsp;<a class=3D=
+"new-window" href=3D"https://www.heroku.com/newsletter_signup/confirm/Jza=
+OXME6cmuvyT-Fy0uPcw" style=3D"color: rgb(23, 89, 120); outline: 0px; outl=
+ine-offset: -2px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-s=
+erif; line-height: 19.6000003814697px;">https://www.heroku.com/newsletter=
+_signup/confirm/JzaOXME6cmuvyT-Fy0uPcw</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- spacer -->
+
+            <table class=3D"row" style=3D"border-spacing: 0; border-colla=
+pse: collapse; vertical-align: top; text-align: left; width: 100%; positi=
+on: relative; display: block; padding: 0;">
+              <tbody>
+                <tr align=3D"left" style=3D"vertical-align: top; text-ali=
+gn: left; padding: 0;">
+                  <td align=3D"left" class=3D"wrapper last" style=3D"word=
+-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: a=
+uto; border-collapse: collapse !important; vertical-align: top; text-alig=
+n: left; position: relative; color: #222; font-family: Helvetica,Arial,sa=
+ns-serif; font-weight: 400; line-height: 19px; font-size: 14px; margin: 0=
+; padding: 10px 0 0;" valign=3D"top">
+                  <table class=3D"columns" style=3D"border-spacing: 0; bo=
+rder-collapse: collapse; vertical-align: top; text-align: left; margin: 0=
+ auto; padding: 0;">
+                    <tbody>
+                      <tr align=3D"left" style=3D"vertical-align: top; te=
+xt-align: left; padding: 0;">
+                        <td align=3D"left" class=3D"no-padding" height=3D=
+"30" style=3D"word-break: break-word; -webkit-hyphens: auto; -moz-hyphens=
+: auto; hyphens: auto; border-collapse: collapse !important; vertical-ali=
+gn: top; text-align: left; color: #222; font-family: Helvetica,Arial,sans=
+-serif; font-weight: 400; line-height: 19px; font-size: 14px; margin: 0; =
+padding: 0;" valign=3D"top">&nbsp;</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- /spacer --></td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- /Main Content Block -->
+
+
+      <!-- FOOTER -->
+
+      <table class=3D"container footer" style=3D"border-spacing: 0; borde=
+r-collapse: collapse; vertical-align: top; text-align: inherit; width: 58=
+0px; margin: 0 auto; padding: 0;">
+        <tbody>
+          <tr align=3D"left" style=3D"vertical-align: top; text-align: le=
+ft; padding: 0;">
+            <td align=3D"left" style=3D"word-break: break-word; -webkit-h=
+yphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: collaps=
+e !important; vertical-align: top; text-align: left; color: #aaa; font-fa=
+mily: Helvetica,Arial,sans-serif; font-weight: 400; line-height: 19px; fo=
+nt-size: 12px; margin: 0; padding: 0;" valign=3D"top">
+            <table class=3D"row" style=3D"border-spacing: 0; border-colla=
+pse: collapse; vertical-align: top; text-align: left; width: 100%; positi=
+on: relative; display: block; padding: 0;">
+              <tbody>
+                <tr align=3D"left" style=3D"vertical-align: top; text-ali=
+gn: left; padding: 0;">
+                  <td align=3D"left" class=3D"wrapper" style=3D"word-brea=
+k: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; =
+border-collapse: collapse !important; vertical-align: top; text-align: le=
+ft; position: relative; color: #aaa; font-family: Helvetica,Arial,sans-se=
+rif; font-weight: 400; line-height: 19px; font-size: 12px; margin: 0; pad=
+ding: 10px 20px 0 0;" valign=3D"top">
+                  <table class=3D"three columns" style=3D"border-spacing:=
+ 0; border-collapse: collapse; vertical-align: top; text-align: left; wid=
+th: 130px; margin: 0 auto; padding: 0;">
+                    <tbody>
+                      <tr align=3D"left" style=3D"vertical-align: top; te=
+xt-align: left; padding: 0;">
+                        <td align=3D"center" class=3D"center" style=3D"wo=
+rd-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens:=
+ auto; border-collapse: collapse !important; vertical-align: top; text-al=
+ign: center; color: #aaa; font-family: Helvetica,Arial,sans-serif; font-w=
+eight: 400; line-height: 19px; font-size: 12px; margin: 0; padding: 0 0 1=
+0px;" valign=3D"top"><img align=3D"none" alt=3D"Salesforce + Heroku" clas=
+s=3D"center" src=3D"https://hello.heroku.com/l/36622/2015-05-06/4hz4xw/36=
+622/87696/sfdc_logo.png" style=3D"outline: 0; text-decoration: none; -ms-=
+interpolation-mode: bicubic; width: auto; max-width: 100%; float: none; c=
+lear: both; display: block; margin: 0 auto;"></td>
+                        <td align=3D"left" class=3D"expander" style=3D"wo=
+rd-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens:=
+ auto; border-collapse: collapse !important; vertical-align: top; text-al=
+ign: left; visibility: hidden; width: 0; color: #aaa; font-family: Helvet=
+ica,Arial,sans-serif; font-weight: 400; line-height: 19px; font-size: 12p=
+x; margin: 0; padding: 0;" valign=3D"top">&nbsp;</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </td>
+                  <td align=3D"left" class=3D"wrapper" style=3D"word-brea=
+k: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; =
+border-collapse: collapse !important; vertical-align: top; text-align: le=
+ft; position: relative; color: #aaa; font-family: Helvetica,Arial,sans-se=
+rif; font-weight: 400; line-height: 19px; font-size: 12px; margin: 0; pad=
+ding: 10px 20px 0 0;" valign=3D"top"><!-- legal -->
+                  <table class=3D"six columns" style=3D"border-spacing: 0=
+; border-collapse: collapse; vertical-align: top; text-align: left; width=
+: 280px; margin: 0 auto; padding: 0;">
+                    <tbody>
+                      <tr align=3D"left" style=3D"vertical-align: top; te=
+xt-align: left; padding: 0;">
+                        <td align=3D"center" class=3D"center" pardot-regi=
+on=3D"footer" style=3D"word-break: break-word; -webkit-hyphens: auto; -mo=
+z-hyphens: auto; hyphens: auto; border-collapse: collapse !important; ver=
+tical-align: top; text-align: center; color: #aaa; font-family: Helvetica=
+,Arial,sans-serif; font-weight: 400; line-height: 19px; font-size: 12px; =
+margin: 0; padding: 0 0 10px;" valign=3D"top">Salesforce, 415 Mission Str=
+eet. Suite 300<br>
+San Francisco, CA 94105<br>
+                        <td align=3D"left" class=3D"expander" style=3D"wo=
+rd-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens:=
+ auto; border-collapse: collapse !important; vertical-align: top; text-al=
+ign: left; visibility: hidden; width: 0; color: #aaa; font-family: Helvet=
+ica,Arial,sans-serif; font-weight: 400; line-height: 19px; font-size: 12p=
+x; margin: 0; padding: 0;" valign=3D"top">&nbsp;</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </td>
+                  <td align=3D"left" class=3D"wrapper last" style=3D"word=
+-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: a=
+uto; border-collapse: collapse !important; vertical-align: top; text-alig=
+n: left; position: relative; color: #aaa; font-family: Helvetica,Arial,sa=
+ns-serif; font-weight: 400; line-height: 19px; font-size: 12px; margin: 0=
+; padding: 10px 0 0;" valign=3D"middle">
+                  <table class=3D"three columns social" style=3D"border-s=
+pacing: 0; border-collapse: collapse; vertical-align: top; text-align: le=
+ft; width: 135px !important; margin: 0 auto; padding: 0;">
+                    <tbody>
+                      <tr align=3D"left" style=3D"vertical-align: top; te=
+xt-align: left; padding: 0;">
+                        <td align=3D"center" class=3D"center" pardot-remo=
+vable=3D"" style=3D"word-break: break-word; -webkit-hyphens: auto; -moz-h=
+yphens: auto; hyphens: auto; border-collapse: collapse !important; vertic=
+al-align: top; text-align: center; color: #aaa; font-family: Helvetica,Ar=
+ial,sans-serif; font-weight: 400; line-height: 19px; font-size: 12px; mar=
+gin: 0; padding: 0 0 10px;" valign=3D"top"><div class=3D"social-holder" s=
+tyle=3D"-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;hyphens:n=
+one;margin-right:20px;text-align:right"><a href=3D"https://blog.heroku.co=
+m/" style=3D"-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;Marg=
+in:0;color:#8a7ecb;font-family:Helvetica,Arial,sans-serif;font-weight:400=
+;hyphens:none;line-height:1.5;margin:0;padding:0;text-align:left;text-dec=
+oration:underline!important"><img alt=3D"Heroku Blog" style=3D"-moz-hyphe=
+ns:none;-ms-hyphens:none;-ms-interpolation-mode:bicubic;-webkit-hyphens:n=
+one;border:0;clear:both;display:inline;height:16px!important;hyphens:none=
+;max-width:100%;outline:0;text-align:center;text-decoration:none;width:au=
+to!important" height=3D"16" src=3D"http://hello.heroku.com/l/36622/2019-0=
+3-29/ld3vmx/36622/164931/footer_icon_rss_grey.png"></a>&nbsp; <a href=3D"=
+https://heroku.com/podcasts" style=3D"-moz-hyphens:none;-ms-hyphens:none;=
+-webkit-hyphens:none;Margin:0;color:#8a7ecb;font-family:Helvetica,Arial,s=
+ans-serif;font-weight:400;hyphens:none;line-height:1.5;margin:0;padding:0=
+;text-align:left;text-decoration:underline!important"><img alt=3D"Code[is=
+h] Podcasts" style=3D"-moz-hyphens:none;-ms-hyphens:none;-ms-interpolatio=
+n-mode:bicubic;-webkit-hyphens:none;border:0;clear:both;display:inline;he=
+ight:16px!important;hyphens:none;max-width:100%;outline:0;text-align:cent=
+er;text-decoration:none;width:auto!important" height=3D"16" src=3D"http:/=
+/hello.heroku.com/l/36622/2019-03-29/ld3vmv/36622/164927/footer_icon_podc=
+ast_grey.png"></a>&nbsp; <a href=3D"https://twitter.com/heroku" style=3D"=
+-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;Margin:0;color:#8=
+a7ecb;font-family:Helvetica,Arial,sans-serif;font-weight:400;hyphens:none=
+;line-height:1.5;margin:0;padding:0;text-align:left;text-decoration:under=
+line!important"><img alt=3D"Heroku Twitter" style=3D"-moz-hyphens:none;-m=
+s-hyphens:none;-ms-interpolation-mode:bicubic;-webkit-hyphens:none;border=
+:0;clear:both;display:inline;height:16px!important;hyphens:none;max-width=
+:100%;outline:0;text-align:center;text-decoration:none;width:auto!importa=
+nt" height=3D"16" src=3D"http://hello.heroku.com/l/36622/2019-03-29/ld3vn=
+6/36622/164935/footer_icon_twitter_grey.png"></a>&nbsp; <a href=3D"https:=
+//www.instagram.com/heroku/" style=3D"-moz-hyphens:none;-ms-hyphens:none;=
+-webkit-hyphens:none;Margin:0;color:#8a7ecb;font-family:Helvetica,Arial,s=
+ans-serif;font-weight:400;hyphens:none;line-height:1.5;margin:0;padding:0=
+;text-align:left;text-decoration:underline!important"><img alt=3D"Heroku =
+on Instagram" style=3D"-moz-hyphens:none;-ms-hyphens:none;-ms-interpolati=
+on-mode:bicubic;-webkit-hyphens:none;border:0;clear:both;display:inline;h=
+eight:16px!important;hyphens:none;max-width:100%;outline:0;text-align:cen=
+ter;text-decoration:none;width:auto!important" height=3D"16" src=3D"http:=
+//hello.heroku.com/l/36622/2019-03-29/ld3vml/36622/164919/footer_icon_ins=
+tagram_grey.png"></a><br style=3D"-moz-hyphens:none;-ms-hyphens:none;-web=
+kit-hyphens:none;hyphens:none"><a href=3D"https://www.youtube.com/c/Herok=
+uOfficial" style=3D"-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:no=
+ne;Margin:0;color:#8a7ecb;font-family:Helvetica,Arial,sans-serif;font-wei=
+ght:400;hyphens:none;line-height:1.5;margin:0;padding:0;text-align:left;t=
+ext-decoration:underline!important"><img alt=3D"Heroku on YouTube" style=3D=
+"-moz-hyphens:none;-ms-hyphens:none;-ms-interpolation-mode:bicubic;-webki=
+t-hyphens:none;border:0;clear:both;display:inline;height:16px!important;h=
+yphens:none;max-width:100%;outline:0;text-align:center;text-decoration:no=
+ne;width:auto!important" height=3D"16" src=3D"https://hello.heroku.com/l/=
+36622/2020-03-11/lt599y/36622/168836/footer_icon_yt_grey.png"></a>&nbsp; =
+<a href=3D"https://www.facebook.com/Heroku/" style=3D"-moz-hyphens:none;-=
+ms-hyphens:none;-webkit-hyphens:none;Margin:0;color:#8a7ecb;font-family:H=
+elvetica,Arial,sans-serif;font-weight:400;hyphens:none;line-height:1.5;ma=
+rgin:0;padding:0;text-align:left;text-decoration:underline!important"><im=
+g alt=3D"Heroku on Facebook" style=3D"-moz-hyphens:none;-ms-hyphens:none;=
+-ms-interpolation-mode:bicubic;-webkit-hyphens:none;border:0;clear:both;d=
+isplay:inline;height:16px!important;hyphens:none;max-width:100%;outline:0=
+;text-align:center;text-decoration:none;width:auto!important" height=3D"1=
+6" src=3D"http://hello.heroku.com/l/36622/2019-03-29/ld3vmb/36622/164911/=
+footer_icon_facebook_grey.png"></a>&nbsp; <a href=3D"https://github.com/h=
+eroku" style=3D"-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;M=
+argin:0;color:#8a7ecb;font-family:Helvetica,Arial,sans-serif;font-weight:=
+400;hyphens:none;line-height:1.5;margin:0;padding:0;text-align:left;text-=
+decoration:underline!important"><img alt=3D"Heroku on GitHub" style=3D"-m=
+oz-hyphens:none;-ms-hyphens:none;-ms-interpolation-mode:bicubic;-webkit-h=
+yphens:none;border:0;clear:both;display:inline;height:16px!important;hyph=
+ens:none;max-width:100%;outline:0;text-align:center;text-decoration:none;=
+width:auto!important" height=3D"16" src=3D"http://hello.heroku.com/l/3662=
+2/2019-03-29/ld3vmj/36622/164915/footer_icon_github_grey.png"></a>&nbsp; =
+<a href=3D"https://www.linkedin.com/company/heroku" style=3D"-moz-hyphens=
+:none;-ms-hyphens:none;-webkit-hyphens:none;Margin:0;color:#8a7ecb;font-f=
+amily:Helvetica,Arial,sans-serif;font-weight:400;hyphens:none;line-height=
+:1.5;margin:0;padding:0;text-align:left;text-decoration:underline!importa=
+nt"><img alt=3D"Heroku on LinkedIn" style=3D"-moz-hyphens:none;-ms-hyphen=
+s:none;-ms-interpolation-mode:bicubic;-webkit-hyphens:none;border:0;clear=
+:both;display:inline;height:16px!important;hyphens:none;max-width:100%;ou=
+tline:0;text-align:center;text-decoration:none;width:auto!important" heig=
+ht=3D"16" src=3D"http://hello.heroku.com/l/36622/2019-03-29/ld3vms/36622/=
+164921/footer_icon_linkedin_grey.png"></a></div></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- SPACER -->
+
+            <table class=3D"container spacer" style=3D"border-spacing: 0;=
+ border-collapse: collapse; vertical-align: top; text-align: inherit; wid=
+th: 580px; margin: 0 auto; padding: 0;">
+              <tbody>
+                <tr align=3D"left" style=3D"vertical-align: top; text-ali=
+gn: left; padding: 0;">
+                  <td align=3D"left" style=3D"word-break: break-word; -we=
+bkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto; border-collapse: c=
+ollapse !important; vertical-align: top; text-align: left; color: #aaa; f=
+ont-family: Helvetica,Arial,sans-serif; font-weight: 400; line-height: 19=
+px; font-size: 12px; margin: 0; padding: 0;" valign=3D"top">
+                  <table class=3D"row" style=3D"border-spacing: 0; border=
+-collapse: collapse; vertical-align: top; text-align: left; width: 100%; =
+position: relative; display: block; padding: 0;">
+                    <tbody>
+                      <tr align=3D"left" style=3D"vertical-align: top; te=
+xt-align: left; padding: 0;">
+                        <td align=3D"left" class=3D"wrapper last" style=3D=
+"word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphe=
+ns: auto; border-collapse: collapse !important; vertical-align: top; text=
+-align: left; position: relative; color: #aaa; font-family: Helvetica,Ari=
+al,sans-serif; font-weight: 400; line-height: 19px; font-size: 12px; marg=
+in: 0; padding: 10px 0 0;" valign=3D"top">
+                        <table class=3D"columns" style=3D"border-spacing:=
+ 0; border-collapse: collapse; vertical-align: top; text-align: left; mar=
+gin: 0 auto; padding: 0;">
+                          <tbody>
+                            <tr align=3D"left" style=3D"vertical-align: t=
+op; text-align: left; padding: 0;">
+                              <td align=3D"left" height=3D"30" style=3D"w=
+ord-break: break-word; -webkit-hyphens: auto; -moz-hyphens: auto; hyphens=
+: auto; border-collapse: collapse !important; vertical-align: top; text-a=
+lign: left; color: #aaa; font-family: Helvetica,Arial,sans-serif; font-we=
+ight: 400; line-height: 19px; font-size: 12px; margin: 0; padding: 0 0 10=
+px;" valign=3D"top">&nbsp;</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- SPACER --></td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- /FOOTER --></center>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>=
+
+----==_mimepart_67d2333226561_a1b5bc108212--

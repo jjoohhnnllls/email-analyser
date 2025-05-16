@@ -1,0 +1,109 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp398955rcd;
+        Thu, 13 Mar 2025 21:26:56 -0700 (PDT)
+X-Received: by 2002:a05:6a21:168d:b0:1f5:70d8:6a98 with SMTP id adf61e73a8af0-1f5c0f190acmr1918292637.0.1741926416670;
+        Thu, 13 Mar 2025 21:26:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741926416; cv=none;
+        d=google.com; s=arc-20240605;
+        b=LRR75L8Y4sSvwivx4JPW6g9DenY3oB5z3ktA67ZBMlDlMy/O4nCuHeUcA9Z/n/qEDR
+         yj1/+oknIV3ktt8/eUgMt3zftgPHKjt5IZaITuMLOOeyx545ZNhxeMSAalvN/EV+g+eD
+         mC3NbtFPCkKekg02JWyaWlYJSKzHiSYEQdJ8tVySXXGamNsCthravRHDh34wyvU4VJD7
+         9VHC/apl33Xs6Qdvgun9L2XYTFGVZffDiKEAmAm9DG6gCw5Hfycs37BSL1DFUrIOz5ma
+         DocKNQs3uCXgl+NmoVXymTcBi21t0rT2zzk/qBi9mowXjwWNHxFzv8LBgyohBAgeF9d5
+         dJoA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=naNMvet2IfEDagerjPjR4C5HOLPUZ2Xo0eC0Inwi38k=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=FQrer8VZZnNu0BU8eka1ABPfBlfoLk4FsvJN0z3rVfmWktMZJxsIjm4hyYMZGZh5yv
+         MzXsQOUM1OKzlqOpDtRun4h8z4YqI40bUuLuLv2Z1p+KZK7UsdDGeFL+cRV3o/SG+yUX
+         c/kIqgz4TidKYSx+wW7vkSxo3QquP0O1p/jWP00/6sQctOpg/1yAfAOSJ0ghbAIZ9G2Q
+         uy++y1cbO6em+ql23on95g5/13piwmlMWON7I73LSCq1aBYPfH0mLKFeglA9cWeepl9u
+         f3dHIuKrzZF7LJNsPUNt+N+41RcvrYcD14VysJ6EDI6vbk+3e5w8D+n/C3CRlwJ7h7+p
+         lvBA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JSRI4zGF;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-73711527c67sor2431557b3a.1.2025.03.13.21.26.56
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 21:26:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JSRI4zGF;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741926416; x=1742531216; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=naNMvet2IfEDagerjPjR4C5HOLPUZ2Xo0eC0Inwi38k=;
+        b=JSRI4zGF2tXPrK6+YzOZ3bKBBpOHRcRVxO9jhPcpDw+K6Q5xMcw4II6PaCFR9cr7k1
+         +guEDXS6aOtw5KgOqVcOMzUyizskJdvmJzif3g783X55vvPmB07Z/hypMOfJVMx9gvWv
+         ZMwL9ocNkTM6Ms3BEUzJ3vFKNEW3Pa3MVL1aPZfw8X4k7XbDQoI6/M731PWdUjkz/n8s
+         esMo93AzAvFFzzE6HdI0QlySnxWdqg21hnV2DEmDQTVuu6Eeuo8vsGYL9HwTlbsX1OQ5
+         UZpxlDPBM6/C46rYS5vcYaLOL3FyQrBydgofdXvnbDj9IARLSvJ0/H8kuaJUJVDD/dnA
+         AZiw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741926416; x=1742531216;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=naNMvet2IfEDagerjPjR4C5HOLPUZ2Xo0eC0Inwi38k=;
+        b=BrAx014EEOZsxz4yGq6iTZatvHL+rMGwLrDjMk01fad5qr3p41tJ8AucFLGAw009ef
+         /lhC5xlP8nTJ8ZwS+jqPboPSAmw8hTFqPu9NMZXIEUdDPq3pQe2mFzuIUCM+T66zdC8m
+         98Yq3MAybD6oXr55JRjmwygJNYTHys/UZ2lrqi2Z5gVfcT2hPN8ZpQK0Xip8fi1J8pji
+         IbveiAia04Pt4WHa886UuL5rH/WM8MMYyOAduRfh0WfbTjCZOME9lz8QRiIO2SSS6XPC
+         jefWT1GPpsrxQBSdkI3M0AhLuGpOxwwSKT6OPZhtOfNcQvVtYCCqhczahax2w3HiZfuw
+         3spw==
+X-Gm-Message-State: AOJu0YzL+p9SRaF2S8zdkWcMKoJ44Vy1PdQabdNfJCaauWeyfmR8QA8a
+	1UW4db1t+sPF0ORkS/8SF5SFfOiVJ/1zFrsLQqV8WBjunVbdZu4OdP1G4uED
+X-Gm-Gg: ASbGncu1KI+dszOp6tDwMpWGTkMbt+fyXX1W+fsC4EvML8DM5U+fwzCNL65c1fAN7te
+	M7NnFYdVtBUHa84x1uOXWKNcQfioI5asF9bM3a1XyJ+1gTmKzrJyHv2HQSTWDuMsPjSyX3yPVkY
+	agfVw4Ga3ATC8iKpFe5ugAwONZ+M55pKb7jvmaOoyXbAAqnIm9cvG1B9UP3PzVM1aYJDr19hjv0
+	YfK9HfAHeywujx16EXaJA/Z1WPSgztJeg/OdTzw+gYbWGhhELhrIZBHfgbGKIZRQWdix+4wZnvw
+	l1Tlf2x3OKxQ6mRPyhz/mY98h2J2Qf62Q4FYI+S5yjXRbuOwNoHcvGHM/KKaPcED1ay+KQ==
+X-Google-Smtp-Source: AGHT+IFBkQ3AyyfZf385jyDlSnfpGnyV217pBRYTSjwRggTBMNh253JLs0KaZ/1gf90IFC3tFrleuw==
+X-Received: by 2002:a05:6a20:3d87:b0:1f5:8748:76b0 with SMTP id adf61e73a8af0-1f5c1316f86mr1794103637.29.1741926415894;
+        Thu, 13 Mar 2025 21:26:55 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73711578e09sm2206221b3a.73.2025.03.13.21.26.55
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 21:26:55 -0700 (PDT)
+Message-ID: <67d3b00f.050a0220.a043a.6e01@mx.google.com>
+Date: Thu, 13 Mar 2025 21:26:55 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============8647985602234474770=="
+MIME-Version: 1.0
+From: Susan Jones <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Feedback on Our Recent Trip to Bali
+
+--===============8647985602234474770==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Mr. Johnson,
+
+   I hope this message finds you well. We are writing to express our gratitude for choosing our agency, Sunset Vacations, for your recent trip to Bali. Your feedback is invaluable to us as it helps us maintain and improve the quality of service we provide.
+
+   The entire process, from booking to departure and return, was seamless. Our travel consultant, Maya, was exceptionally helpful with her recommendations for accommodations and activities tailored to our family's interests. We particularly enjoyed the villa you booked for us at the Anantara Uluwatu Bali Resort. The location was breathtaking, and the service exceeded our expectations.
+
+   However, we did encounter a minor issue with our airport transfer on the return journey. Despite this hiccup, our driver was quick to rectify the situation, ensuring we reached the airport in plenty of time for our flight. We appreciate your swift response in addressing this matter.
+
+   Overall, we had an unforgettable experience and look forward to planning our next adventure with Sunset Vacations. If there are any improvements or suggestions you'd like to share, please don't hesitate to reach out.
+
+   Once again, thank you for choosing us for your Bali vacation. We look forward to serving you in the future!
+
+   Warm regards,
+
+   The Sunset Vacations Team
+--===============8647985602234474770==--

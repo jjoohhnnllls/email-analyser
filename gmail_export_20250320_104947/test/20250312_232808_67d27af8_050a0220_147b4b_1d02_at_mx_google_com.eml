@@ -1,0 +1,114 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp765305rch;
+        Wed, 12 Mar 2025 23:28:10 -0700 (PDT)
+X-Received: by 2002:a17:902:f681:b0:224:179a:3b8f with SMTP id d9443c01a7336-22428a8cd24mr305484215ad.23.1741847290090;
+        Wed, 12 Mar 2025 23:28:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741847290; cv=none;
+        d=google.com; s=arc-20240605;
+        b=cU4SsnfLDXjm4cPXnSAGZZ8465WuU+rK8HDBxmO7E7AOn6JPZw15rQ1v0t8S5iHQB3
+         Nz3MSmv/yZ9LkJsIB+eS9KE2IDbIKfYFyB+l1ZWqgZ6YprJ86z9bcf0O7CF4cnoZg9jP
+         +85av7g35lC+tibI7ApvLCuPKQc3XskYhjBrFUDHtLCWdFIzlqD3roUkUYqbgOWFJX/H
+         rR1ZlL1d+O8zYfR1fpkn3upQ2Z9T7EIWVuLJEfS+27vVznGS24dJKKaXTJGeQEXSa6QQ
+         gMdoGDmmn0K/FDY+hWEI+FKewGyyn5tFZZV0u07v9bwnsDteiEnq9QcWj5hFmaP46jrR
+         ZnHA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=ZnmtGRTQnuUOv5oZxjlQv6vPrBeBod03orI7wSgbKCk=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=Qj2uO2aZWzdeRjnqGvYLpDZkTU/fu+psDclCw6E5kl7hJtnozXGDdm/Eh2TvxlIZZ+
+         nB63L4l9BTjryR2vr4sHlL9/tJ1CLu4oHmuWHkbXDsWTmvzf9BVletQ7jV8PN9AldJhz
+         MdDlYHdsxHEvScb7dCA7hgN5XJp+FjJAkd1rLPE59NJIW0I9PNzh6EEWqKsvEeNjqUAV
+         3dVF/YjQ0kVXmMdmiu1PkmyQ+Rcn9c++5zBDam9SAcc5bRzjDo318WbKNFve2aXGNCcS
+         2vnLVPm9qw2hWmh/1TD78f7UIwuOu8IW1d83uVOnFbgf9184U3X25jyDjmjWLE8OvNuB
+         psXA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=IUzNII3y;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-7371155067fsor603157b3a.4.2025.03.12.23.28.09
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:28:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=IUzNII3y;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741847289; x=1742452089; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=ZnmtGRTQnuUOv5oZxjlQv6vPrBeBod03orI7wSgbKCk=;
+        b=IUzNII3yz1e59Im9IBJwBdWCV25pi5mpI597VANRxwvi0dTH90OWw40KD3fIcRyfMj
+         pJzQCHB3Wpc9OrERymFPa5CSDn7+AJ3OWw3JjPw1ggacGl3rYTFj852o4In+ym+rk2tS
+         Zf6nTgtkiJmuATHrAWhZ0VJ4/snPvASzVVEUm5F69jL7iCt67HbQ41RxA1nSiJqf1/2a
+         PZ/uK/7+2vGDL9CB3PgAIUqfZDViAE+ZNuJ/VX9zZQN4R4wgnVOY/NnZdQWpsV7/rXgB
+         /AHcKwxUFfP4svqTDPtz0Ls20GtVxX0QkC4RHpFTe1FzORnv6ZC28XVh6+E+l2VB4wo8
+         zg1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741847289; x=1742452089;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ZnmtGRTQnuUOv5oZxjlQv6vPrBeBod03orI7wSgbKCk=;
+        b=MsWybJVEmDtmgGjGtK8NFQTcolcaMLXOcZ/IdufKq6bPIv9z281FMo2nTaEts26mNb
+         MJJ28DQc9znkNH7if8A8HM6HlYvpGborOomWiCR4jSYdig7Ux3PvhsrVaXf5B/BhgfWo
+         hYcV9v2PMgP+oKvCwrIC44qCb9shsjCWAbIOpQTSFHHuPtKtBPkuGjKc2UQJAZ7LAdpU
+         rStoyRDnG1DXyP8iVMF39Lkb4J1tM9mb/Mb0h56y3kLWSzQE3GE5K+SFrPK8vWSz2iuX
+         9My42gfC7lUwHvmUWubLdqVO9y1xC5f5CAua39UIuLpdOoG07uDz3ekggO9tqVQCws74
+         kMzA==
+X-Gm-Message-State: AOJu0YzK5B0Nto0b+3aW5wshOPg7yYXxsCRURj0ydwh3kLO23ojJQtm+
+	o7pTRpZD8c3molbhV4Kao/BTeQptT+zyiVvvsh0OJFkkIrEUaUtQysXpEFkJlnA=
+X-Gm-Gg: ASbGncs1ln0xBuwC350i39u0DIx7hLZMuPxVi3zw9QSRjQ6K+0J/R3KmeV0cop6OOhZ
+	Nftx6YKmg9Z1AjiFqU/HLLZuogblS8Ka0xMk6XDISK8SxF0RK813v8rYOK3WZ2nrPgZ8ayp5Gog
+	CfIpyyLQp7Gw28DPrgggLamE9BqHj0eRi4g6RxevD01hfSSq7W3ixHsWBwMIcUtS0/wfZRIvQff
+	oxHH2mU461cE4QPt9uNDzyKm+OtFbbjj7bHAbrWJu2EIBCMP0YHQnyecbT9nS95DsSTQTzW+SJ1
+	Vu3scleTYHsEg4Dv3X0KRejIxt0czfkHafR7FNlYKAJGDZKtIMhgJQVc2m5o6BHb5nG5BQ==
+X-Google-Smtp-Source: AGHT+IGgrQetWpdBooH8xsDz0evYWhxBLs4t3h9zmx6bk66j+i/6YYPDrnE54hf+HD0l0cmTc0ZoyA==
+X-Received: by 2002:a05:6a00:10d2:b0:736:ff65:3fd0 with SMTP id d2e1a72fcca58-736ff654674mr6758099b3a.16.1741847289182;
+        Wed, 12 Mar 2025 23:28:09 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73711557eddsm598506b3a.63.2025.03.12.23.28.08
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:28:08 -0700 (PDT)
+Message-ID: <67d27af8.050a0220.147b4b.1d02@mx.google.com>
+Date: Wed, 12 Mar 2025 23:28:08 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============3608173149923819183=="
+MIME-Version: 1.0
+From: Richard Martin <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: No subject found
+
+--===============3608173149923819183==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ Subject: Patient Feedback Regarding Recent Visit
+
+   Dear [Patient's Name],
+
+   I hope this message finds you in good health and spirits. I am writing to express my gratitude for choosing [Your Hospital's Name] as your healthcare provider during your recent visit.
+
+   Your feedback is crucial to our ongoing efforts to improve the quality of care we provide, and I appreciate the time you took to share your thoughts. It was heartening to learn that our team made you feel comfortable and cared for throughout your stay.
+
+   Specifically, I would like to acknowledge the praise directed towards Dr. [Doctor's Name] and her dedication during your treatment. We are proud of the exceptional care she provides, and it is uplifting to hear that this commitment has made a positive impact on our patients.
+
+   Your feedback on the efficiency of the check-in process was also noted. We are currently working on streamlining these procedures further to minimize wait times and improve overall patient experience.
+
+   If you have any additional comments or suggestions, please do not hesitate to share them with us. Your input is invaluable in helping us serve our patients better.
+
+   Once again, thank you for choosing [Your Hospital's Name] and for taking the time to provide your feedback. We look forward to continuing to serve you and the community.
+
+   Warm regards,
+
+   [Your Name]
+   [Your Position]
+   [Your Contact Information]
+--===============3608173149923819183==--

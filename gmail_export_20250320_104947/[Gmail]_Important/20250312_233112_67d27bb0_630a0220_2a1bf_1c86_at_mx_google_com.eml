@@ -1,0 +1,118 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp766632rch;
+        Wed, 12 Mar 2025 23:31:13 -0700 (PDT)
+X-Received: by 2002:a05:6a00:190a:b0:736:31cf:2590 with SMTP id d2e1a72fcca58-736aaaad27fmr33231488b3a.16.1741847473428;
+        Wed, 12 Mar 2025 23:31:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741847473; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Kea5r3Q+Dbn4beDiO/+BZAIYOj/uCmbyU58xLZYAxpnXm3291k6+EDG9BKs7l3R8GI
+         OD6UNX5OBDfO+XM4Gkm1GisziZla6O6vCjj3F2pDPdrGS+cEv1htITKcMIKQCZTVVIKx
+         HNG3LFSU3lHiQJUo++sK50h7qroMfNumLIEk82dornn9V9wxt6X9Ph+Ir1F7E2PoLQ1F
+         4OCvNaLgx+6OgyqkMXgoDe0Nkk3w2/LwE9R63S9hb9C4NsnhmGbuO6bpyw15JplrwL4K
+         ANxdAdqABHRLNoZJs9N0yBy3xPPyKpi/GpnLsXGjwte7hMpYB25+AEGo8WMo13pH145A
+         Jcow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=DYv+e1hocAFXs7OcZkNFJNxPefEyClhM1sbjbsmn4Wc=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=DlMHOrAIRJZrR7zukxgt6wC2WHtnthH/siXpRvKY9J9l/rBjw2L+DbA2LHklgb2Czb
+         IWEhwe8Ymq977c8s0TxipjHgXpZBAUCQMlhMz1/CWZ9W3cIltgoyYjB0SBr5WRnVcqHy
+         rQ0KrfYe1nbsQ/kfJ0m9F19CilR4JD0uV56Qp0zFfaehN6+tE1yQdmXYh5WfIgLzL+YE
+         PYPJFIzLoE7iMaCmAyglWGGM1Ok41Mz15uHNMcjxypCDYJFPG+YXLLESVvKVI33eM+/W
+         /COev9unqNiqK1zqiGKk4fbsML6AyiVpGPy1KvXZ4s2vLCNurVMI1tFIeaGccr7PRwn/
+         VJpQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=SV7Gs8SQ;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-737116b2335sor644608b3a.10.2025.03.12.23.31.13
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:31:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=SV7Gs8SQ;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741847472; x=1742452272; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=DYv+e1hocAFXs7OcZkNFJNxPefEyClhM1sbjbsmn4Wc=;
+        b=SV7Gs8SQ5yMkIgkOnDDemE8mU+GAZxt6H0VjFlKoPA1JnmY8zEHEPB+9vTw+P8Osdf
+         uaG8wDsI3O6fry/KfHNdACE4q7AL57K+MVyUdRwx/JgmKYfem6uABbOrCi5FxYt44TG9
+         EdBLjzi3OtuZhDT/NGiIKSjMXUUgqwiUd+nAHZ7EvJtYinljeMIe/SxpQ4Jl4XmZbeL3
+         jJVrIS4ZO73Y+T+Ev9NqfIil+ffD2K4W6Mh3OWrHl0xm+wJx5POCArru1vjPPRCzLz/+
+         zRFRBi96d+vBsdX5xrcCttGPomqDR4bn0H7nZrOWPnkg/UC1FbIOhYh9V7WA8B/GTC+W
+         eieA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741847472; x=1742452272;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=DYv+e1hocAFXs7OcZkNFJNxPefEyClhM1sbjbsmn4Wc=;
+        b=SFnZ8fbjnKmiwVpWR6AdEfUt0vKPUziMW13R0vcVQ3liFGET0hthYBJBB7g4EZ80sk
+         656RrxgqJ0WHoSkywY3kPJborIxcHU0J7rsiX6ZzD0s+0q6Ipi4z3XidwKCAJkEAyVXp
+         XvEcl+6Hd9mMgzOjB4MHSCF0zTjV1J5z3zXefDNm13Fs4oeJmqV/pNmrL0EZwJnGPUy2
+         RM+jIZubVfJmrHDOb1eEBelYRNWu2L/H/HbarKky52Q8YMu2YoHxTurKvNX2ixQUX4oT
+         CJEtq0Away9sPqObJag8OGn7WRJ6PULMHDOFHgwvAamPa81llWF142ZuUqAMf9aKcQmK
+         bg9g==
+X-Gm-Message-State: AOJu0YxvJZhpyVdev/zq6MVjvK5gghiDFSP6wJp4xJZ/YvTibfoMI/od
+	5LFeLUrtoFiQiDRvC4VjmIFWL7GB+Y2K+b88gzHBJuZ4ERc/PAdwnUaYgqhcGz4=
+X-Gm-Gg: ASbGncvFNP9k2rtQGn5YqiAQNPBsMbdQD6KMp37RjOuQny40DAb+DAQIb7qAGcsQ8Gl
+	exz44icD4Qvy2UixbsYyTP8z1kzEdOhDJ/pYlamTBN/1EnE02q/zgXxZiA6XBi9aLlkZ+uCxrCO
+	pYiBF0xasFU1HF5Pe0b2sRuFzGgOIuAigwTVKqBtGVLG8rQVLICUXARA8jDYlJpDLkt7Y3+LEH+
+	1ohUaajA6KD3qMvDB0l9HQ1YDUrCV+E6wOogae3nxKuTDpLFR7kDDVG5vIIHBysTHhqFwBa2eOE
+	9Wn+wyht+Kzoawf86dEdryBpHNotSHGYbn9KcVixqBJhVwR5p8ASuLhmuIIyQZdBwUdMlw==
+X-Google-Smtp-Source: AGHT+IGh4tPNloYJvGwsEL8B8izbCFHpEIr4WIumu8tPQRluQI/cRc1J75uBJIta74/WCfjyg06hEQ==
+X-Received: by 2002:a05:6a20:c6c1:b0:1f5:8d30:a4db with SMTP id adf61e73a8af0-1f58d30a87cmr14826114637.9.1741847472538;
+        Wed, 12 Mar 2025 23:31:12 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-af56ea964e3sm570511a12.76.2025.03.12.23.31.11
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:31:12 -0700 (PDT)
+Message-ID: <67d27bb0.630a0220.2a1bf.1c86@mx.google.com>
+Date: Wed, 12 Mar 2025 23:31:12 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============7278269203054867611=="
+MIME-Version: 1.0
+From: Susan Hernandez <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Follow-up on Your Recent Appointment at XYZ Healthcare
+
+--===============7278269203054867611==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Mr. Johnson,
+
+   I hope this message finds you in good health. I am writing to follow up on your recent appointment with us at XYZ Healthcare on March 15th.
+
+   Firstly, I would like to express my gratitude for choosing our facility for your medical care. We strive to make every patient's experience comfortable and informative, and it was a pleasure serving you.
+
+   During our conversation, we discussed your concern regarding your diabetes management. I understand that this is a complex issue, and finding the right balance can be challenging. To help support you better, I have attached a detailed dietary plan and an explanation of the medication regimen recommended by Dr. Lee.
+
+   We also discussed arranging follow-up appointments to monitor your progress. Please find my suggested schedule below:
+
+   - April 12th, 20XX - Regular Check-up
+   - June 8th, 20XX - HbA1c Test and Consultation
+   - August 17th, 20XX - Comprehensive Review and Adjustments (if necessary)
+
+   If you have any questions or concerns about the attached materials, please do not hesitate to contact me. I am always here to help!
+
+   Wishing you all the best in managing your health. We look forward to seeing you again on April 12th.
+
+   Sincerely,
+
+   Jane Doe
+   Patient Care Coordinator, XYZ Healthcare
+   345-6789 Extension 123
+   Example Xyzhealthcare.com(http://XYZHealthcare.com)
+--===============7278269203054867611==--

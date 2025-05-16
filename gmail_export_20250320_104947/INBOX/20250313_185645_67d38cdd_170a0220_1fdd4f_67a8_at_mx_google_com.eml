@@ -1,0 +1,113 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp347217rcd;
+        Thu, 13 Mar 2025 18:56:46 -0700 (PDT)
+X-Received: by 2002:a17:902:e808:b0:224:2657:2c04 with SMTP id d9443c01a7336-225e0a285f2mr9021935ad.4.1741917406127;
+        Thu, 13 Mar 2025 18:56:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741917406; cv=none;
+        d=google.com; s=arc-20240605;
+        b=c9tdlawFOGRTGC1PjeKRpoPoJwrtiPclldLwqXBLdPhymJ87n6BJNZ6Lnz/lfiYiMJ
+         uPx5BcO/CCAIDdcX3YO48tfxgFtGFaiw/m4bX1QHjmg5ZdACK3TeZvfHBf2j9GzPCEYd
+         ElO+iT+qK0oszhuCNS+JLKXk1Mg8s1lMpaqiSrDVQWP5vk17XmdoEpTz5j6uDuhbf5On
+         8ZRmFFBtqOw41sbJf4RFS4odsYzylQZIXGy8ilQVHsKAFjZ0oPteJUpRG0TJZEP6/Fow
+         mZ4pkTf2mCm1XC+l8oPaUWC2n7Iz9T8GN5CwgTHz1vJHi8682srfYx7OwqMgw3BVx845
+         51yg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=HApM2hb/BMwqQGdkSlCmiYZyRxWD+6U9o+RXfaH51cE=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=Z9L2EFlwX0FT1bFdr5FmwVwGEKEFWJz1tv4jdNHHUaaOqnhgtdnCQejFNZUXbnxh/M
+         mvySKiKLB8KyPcE/E4C/XeuM2OCOBDUp5Qg5sv5PbGHFI9GQMJ5tjcA/s/TeTq2Irai7
+         aIHQ2LgJIpL4WZOoBrlwbLbdf2FJlBlcj1v+yWdnvETgFukNghE2wxWgNB8xKDls92uT
+         sYxR4HViQN/Sgy9aAGqdMkiDHzpWGtxscBXWnvl/n5z4IaL/n/WVU53+UlE6+ybktEGU
+         V9evQ0R5GEBIWbY3IVkQrnN1mOuRfp6K7+9+C2105LKOUKBTv+TYo1uH3dpVgx9W8z0r
+         cVKQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=VQaDLMOf;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c6b42cfesor18652495ad.14.2025.03.13.18.56.45
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 18:56:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=VQaDLMOf;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741917405; x=1742522205; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=HApM2hb/BMwqQGdkSlCmiYZyRxWD+6U9o+RXfaH51cE=;
+        b=VQaDLMOfL9CopgDz1s7hb4e1Q67hNk6Z1YWe9jhL1Ezv3fb/fx3fCe4/8uccuPV4oI
+         J7OxUpsZ4e9sJwZ9JH0UvX0au1ogjCO1vLa8PRNCysl+LSFnUBrUiTC2PEuFvBGjyBTQ
+         J3CigFXclOiOpiQGOR6h5IQSIYrkEKFyZ6u2E3o1Hm4w8ie+pqZbogVFTXQENPK2v/5g
+         PuBcSFwea5ZCjo5+RumshD0oSIcg09UlsLGHrwqVgaZMxzgAkc1SUjSYdK2DveNloptf
+         2xsuGUaV5SBf+d6l7jPs/tZPNaYjgOog3w8q4o+UGwuqTAaWA1HiMO7ka4+sZQseSVJZ
+         A/3w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741917405; x=1742522205;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=HApM2hb/BMwqQGdkSlCmiYZyRxWD+6U9o+RXfaH51cE=;
+        b=tSgszzOaXmWL/1/2wi+8GCLHOKV3sJnzcYH/st6C24aeXuDyBREgX3/WqKRoOe3c7t
+         uxhSx8JDQyEW+AdetQ4NEKDqJmSkFVEeR7BPDklGWLZjNifxItLl/HWmTm5DDw6MdVta
+         I8nAPxlDjMGDd9O5CuKh60TFSEuAUhBCvE/b7k2P83wsY9QWBjSWOoPgToasQVvxk/Kc
+         NBoKMk/UNFg2s4DKnakig7N53kNmJWg/zNW8MAfvo1Ha3oXQUhODG20l0BKaCTrnXY+2
+         Ius6QCDJor199tIsjWpboEVnvXwpLadWGrDa+RrVFs+5myrMxDt9bio57v66L5oVOR59
+         fCqw==
+X-Gm-Message-State: AOJu0Yzj/UdIMyzN+yEn8xKb4hRHZLXHvidKI5V41qG2kFV5KSDVkiyG
+	ZrCusKVPoX09kmjdg8ZuIIggwyLH3M1FvO5dhYX+Oi+Im8Dp5Q4DKpSbZ87I
+X-Gm-Gg: ASbGncuGTkxywq3vmlpkGgQgNDqsxNO6wOyY9EpkRojS+BqHdBhqS3TMZKpFMqkxQED
+	4C/l4UUzy1eShVJl2EgWsnvXY5smq8TnkxSHHD9qtz4Tkr/xgtRnSox9kA4tRizK4/9xgDxi/4Z
+	UUwxH6yQzUAItQ0ols3qVeyPez5Fu/wLDqHbllx7uitYDiUa0fwkLfssIC7Y0i/PoC+aHmqz0aW
+	v/Eb1Gj6O/05fyJPvaHDFD8PgL7mVeimufoasdTVdpiThsC4hbybVMJVC5JVwvFMuop1d1ckCHI
+	76irY+dzU1JEzUOresfkFsy73/YVXAk6K6BjxwsIZPXZIrxHvFwkWF+xslKlkQyYQaoDBA==
+X-Google-Smtp-Source: AGHT+IGvgM4NAH3VdjeS2gna4YTLN3ENGZCQ2qWhaeBHW71DyFY5YGytSuP9s+An5ppZytE35MXTyg==
+X-Received: by 2002:a17:902:f545:b0:21c:fb6:7c3c with SMTP id d9443c01a7336-225e0a626b7mr8482745ad.17.1741917405359;
+        Thu, 13 Mar 2025 18:56:45 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c68a6dfesm20574125ad.71.2025.03.13.18.56.44
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 18:56:45 -0700 (PDT)
+Message-ID: <67d38cdd.170a0220.1fdd4f.67a8@mx.google.com>
+Date: Thu, 13 Mar 2025 18:56:45 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============0479485832667401282=="
+MIME-Version: 1.0
+From: Digital Industries <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Request for Quotation - Custom Machining Services for Aluminum
+ Components
+
+--===============0479485832667401282==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Example Recipient's name,
+
+   I hope this message finds you well. I am writing on behalf of Precision Manufacturing Solutions, a leading provider of high-quality custom machining services in the Midwest.
+
+   Our company specializes in manufacturing complex aluminum components for various industries such as aerospace, automotive, and defense. We have recently expanded our capabilities to include CNC milling, turning, and grinding of exotic metals like titanium and zirconium.
+
+   I understand that your organization, Example Recipient's company, is in need of aluminum components for an upcoming project. Our team has reviewed your specifications and we believe we can provide the quality and precision you require.
+
+   To begin the process, we would be grateful if you could provide us with more detailed drawings or technical specifications of the components you need. This will enable our engineers to generate an accurate quote based on dimensions, tolerances, and surface finishes required.
+
+   We look forward to hearing from you soon and working together to meet your needs. If you have any questions or require additional information, please do not hesitate to contact me at Example Your email or call me directly at Example Your phone number.
+
+   Best Regards,
+
+   Example Your name
+   Example Your position
+   Precision Manufacturing Solutions
+   Example Your contact information
+--===============0479485832667401282==--

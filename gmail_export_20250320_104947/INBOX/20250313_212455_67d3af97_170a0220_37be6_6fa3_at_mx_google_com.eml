@@ -1,0 +1,112 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp398375rcd;
+        Thu, 13 Mar 2025 21:24:56 -0700 (PDT)
+X-Received: by 2002:a05:6a20:9c92:b0:1f3:418c:6281 with SMTP id adf61e73a8af0-1f5c1126c3bmr1966369637.4.1741926296329;
+        Thu, 13 Mar 2025 21:24:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741926296; cv=none;
+        d=google.com; s=arc-20240605;
+        b=lp90RuVwW9KT56XHz72fOTeo2UOPdh4piVX5tKzhJgtYt2ZSxfWWU3+O5Lxv2uXSnV
+         09/YTz2cN/m0eUrIrVoWHTUXVIHgt9ieGVjUL3irB666sCFe/8LKGYCxN2eRgFWNOOEs
+         Ru4BvDpYDyVZ7AAgnpbrAWU0Ur9e+w8TXJDCnsmOn7ZsTLBXprZlTZryCwT6TpP/pwma
+         bVH6gAn/y5Xn3GpvOiWlUOJLiEG1bIdAhjvPkUvOjdibWMUdBdABuI2GTNIAeoEeS0S5
+         Jrvj55Uh1opEQXNuevmbMF+25Ll2a9EgBUExHsGEZOGRXNx/ZNcYc7wbNZRh6aE+vsH+
+         mdBQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=RD8siAJ8XRuIafZ52WgAHjNecfOfFuFHCqvu9kd4piE=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=kSID+OuRpmMNgUvx4eqZ7LLsAm3jNkW2CV+neAoDKV8D9O2Ap+xV55sjsRNMbQcR5b
+         RuWh8tNNLhekjHtQ30jvbwv+fdsnbc6o6MsfxBMnrk6ycjgrlwyJHUTrpHbm7b5MbIuh
+         X0ad6ONKbyzlm1FGcZ0FS6rwSfOioyHMffv3p7VbW3efsgvvrmIVi3Xa7ToDlW8wnUCl
+         1O+9FJrSv2GaUrZ7qI6/OLOwx9ALTXfrLdVA1lR4vKdpX/ZE8T+UHzf1HIK8E2Vlt4GX
+         YglQo8yVlAVjFyrkjhQcMwJP/9JjCfja7bm0wKKOlk6vRehtQShH1yKCnYV/xRvJkD69
+         BBmA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="EE/fvkK5";
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 41be03b00d2f7-af56e9d15ebsor1702303a12.1.2025.03.13.21.24.56
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 21:24:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="EE/fvkK5";
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741926295; x=1742531095; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=RD8siAJ8XRuIafZ52WgAHjNecfOfFuFHCqvu9kd4piE=;
+        b=EE/fvkK5UJ9Ma6K/vUkTkn7Hc8X/ZKvn3nJE+bDNGeRn0mfVzZJOmhp0627B7jaEdk
+         lIpqxDTH/HTgjkdRtcralENYVV3ypajLn7O2eWEYE+VTJDPYaeIBNWFJYebNGfEmNYLn
+         6Rfy5PlTBT6ZY4qAIy5AikNCEUllBEwN6e3toxYypvpAfySe/bcGpXxqFb2wz9A1Q0qT
+         Busg+ANyMz6s0Xaa3RW/7VSkI6tUtNubFjp108Fze8c046kLHV0FAy7a/5AnMFwzMXQ4
+         vg6uP4X7G4FYxX8sxjQrpBEcz+yGMrEP1+RTtD1uklzOM30aBCR5DZ7JRW05OQQqqgOH
+         y1Ag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741926295; x=1742531095;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=RD8siAJ8XRuIafZ52WgAHjNecfOfFuFHCqvu9kd4piE=;
+        b=xD66ocUwmPIkjpshKAUIDI61ZSKI+Dx/XhDPuHzJPLUwYzr4YCZgCQSQpXURJr2919
+         9hOHCnKlwrfCB9lc4FlTQ+thdmE7H7rzBGL3gBJjzfMGbcne72n3dsyctsnRMDisFpUr
+         zBeYL8tSRi3gLx5fOER7TymTzVFN7vABHdWPHmqRGuxjvt+BUIPIHgfIRll778actrOI
+         1rTuo9sEBk6cxKEfLIW9U4ie+Z0eZIaadOOKsw8KDqM2P9pxKfZPIL36n9Mo4DLQT81Z
+         iu3Twg93YKntw3zygQ7bMp0p2+BozBfK2vrM9QmDud484rU9EOSDw7MepOntzLifNp5y
+         XLlw==
+X-Gm-Message-State: AOJu0YxliUIO5oRtPIEACcCfBQHAW7Y/+IAJWvd1ILf1Sd0gVBy5Egrw
+	KUx8hAPLFUE2QXH97UBhp8UotrTjwms+xX7dBRFLZ66V1ZJFvL8mg6e37L1x
+X-Gm-Gg: ASbGncs1E10f0jr6w2pBRQ7yd9FaU0++Cx/cCBTkZSS1KKEElrYGC1f6Jg/0IThDPcZ
+	PI0ISr9SPpqvkcjiETyVcoo5do1XRA2bep87kVlpdWRl8GfKYVe18Jht323mBnsULR8dfdYEriT
+	9lat3dX1ql/e//TSuGJTqHXUA4Ur11UM7FGGAYv2Viug2bjdeqHeEsnPLjteMcl9Nqw5mf1iGBN
+	aD3uzA5NpShbdwnWrscwekMNXAxN7nmE79D0lpU6fcanehue1nB2PoVY2kgnJh+rHudscZINIlq
+	2KNiL5+Mzlu2ZtsB4LpLd9ikDjuh766eR2CCRqVVVRNuYLZ3Y2R1L/YDfC2S/7MYVRJkpQ==
+X-Google-Smtp-Source: AGHT+IEt797yOlwMsvplI8bcbX4Kr3BsK1mYX/ihmtVzwyLualzYoE2tO/0YUyy4+jJUD22VL2gDMw==
+X-Received: by 2002:a17:90b:3a10:b0:2ff:784b:ffe with SMTP id 98e67ed59e1d1-30151cc1f23mr1503181a91.11.1741926295557;
+        Thu, 13 Mar 2025 21:24:55 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c68883e6sm21951405ad.8.2025.03.13.21.24.54
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 21:24:55 -0700 (PDT)
+Message-ID: <67d3af97.170a0220.37be6.6fa3@mx.google.com>
+Date: Thu, 13 Mar 2025 21:24:55 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============5873092491199346849=="
+MIME-Version: 1.0
+From: Susan Thomas <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Re: Your Query Regarding Strategic HR Planning for XYZ Inc.
+
+--===============5873092491199346849==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+Dear Mr. Johnson,
+
+I hope this email finds you well. I am writing in response to your query regarding our strategic HR planning services for XYZ Inc.
+
+Firstly, I would like to thank you for choosing ABC Consulting as your partner in navigating the complexities of your workforce management challenges. We are honored to be a part of your growth journey.
+
+Upon reviewing your needs, our team has developed a comprehensive plan that addresses your specific requirements, including talent acquisition, employee development, and organizational structure optimization. This plan is designed to align with XYZ Inc.'s unique business objectives and culture, ensuring a seamless integration into your existing operations.
+
+We have scheduled an initial consultation on Friday, 15th of next month at 10:00 AM. During this meeting, our lead HR strategist, Ms. Lisa Green, will present the proposed plan in detail, answer any questions you might have, and discuss potential timelines and milestones.
+
+Please let us know if this time works for you or if there are alternative slots that would be more convenient. We look forward to working closely with you and contributing to XYZ Inc.'s continued success.
+
+Best regards,
+
+Example Your name
+Example Your position
+ABC Consulting
+Example Your contact information
+--===============5873092491199346849==--

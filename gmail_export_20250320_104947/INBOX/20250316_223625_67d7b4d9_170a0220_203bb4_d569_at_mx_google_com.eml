@@ -1,0 +1,111 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp2107796rcd;
+        Sun, 16 Mar 2025 22:36:26 -0700 (PDT)
+X-Received: by 2002:a17:902:e802:b0:216:3466:7414 with SMTP id d9443c01a7336-225e0b094dcmr138279055ad.44.1742189786612;
+        Sun, 16 Mar 2025 22:36:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742189786; cv=none;
+        d=google.com; s=arc-20240605;
+        b=CBpeORmTeYFpEfv1YTJyHh7K3boirA5BNzByzN37QAMqgp0F/pvVCEuQzMM9St3v4q
+         BtxpL13gtpDN32YNU6MYdLUPzULoZGz+YPNy/lE6EWvWDf7TSe2Q7WQohWCJbM79Y0Ii
+         9fcMHfUogJTspekorBMKjALbKdFzaa8a6PoaIMxH0HL6W1ywoGnepCsEYEzkHV0oG4Bh
+         uiblUmBpMwDfbRxxscYbad090nS/3I/E+7fB5ER0IEqu0MGdi1v0nCkm0bR+Oe1UI06B
+         RkdKgSjMad5HxDSl1jB1eCqJKgawn2exKlb+ZPAT8As8yDyOaXngdRuBZbv7WJWnXP2m
+         qshg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=mkuN6SKbqzqjHX/8Y33g7vvjCzJK4aiGU0jiguZp9tE=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=kN99SUIs5qvBmeG6Y1jYXqyDaCe19jJs+vA/3WH4crBEf1Nggmxm+ChmeuG4k0FPmD
+         ZF7DklCWGfPiRG5c/fQd3wgEnwfR2TDFFgu2GOoTd28s6ZEoHASmzjlZknUACOnkUCCj
+         A68Bjnw8GzcjXJck8VApHPNpHbkhhFyqVD56q/dm7aoDcxZvv4zCWzfo3nCpCbyyPaQD
+         JsdpPnQPKOABVcYvNc9kHrjkgsc56bDrNLkcM+YhP2Qxj4YhUxfKMT/+/Ch9wfd5Tnhx
+         VeYEmW7Pla7JOLxmaT8cET3Ey30GgfRB+oBctBGWLhdktlurP6Pu1crmT6ktxNVYz0n4
+         5K9A==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=BkttRKhU;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c9921fe9sor44097615ad.11.2025.03.16.22.36.26
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Sun, 16 Mar 2025 22:36:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=BkttRKhU;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742189786; x=1742794586; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=mkuN6SKbqzqjHX/8Y33g7vvjCzJK4aiGU0jiguZp9tE=;
+        b=BkttRKhUG8UfFQkKeo5Y1qWUvdiX+7T/AwSLniVE5hkuguQKgnnsdfT4ifx2r0gwaF
+         roKV1b6VXoBxSaMXyMAXtPC9IpvrRHaERdMhJROLlxdBwWpYg6wcitFZTKW33fPdbt4u
+         HT1KopC3bEAg0xz85eQhHS4I1H2JDbfw5UbPUcv0yysZuDs2KO6EETtrdtCGIMyrykEP
+         Ea+pebWa3PfWZl1+lhrM2/BqYNl9752imRvWVxK519qY2YaOT533+IP9BefK+WMaAGqs
+         uvHyBduM5V8iRcchIrY9umGo5fjbfOt/cLADIK7J8opClTKWJrwjCGMMD1Bv6RJE7R0X
+         9N2w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742189786; x=1742794586;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=mkuN6SKbqzqjHX/8Y33g7vvjCzJK4aiGU0jiguZp9tE=;
+        b=c86xwxKihRqVg1kqKvtVZ1kF/1Gw6SXdOrgxhqgt81lE597o7Oyi7ajPZc2avvFXm8
+         5UApFYm+iyKS1dqBp0jqJ2dLk8VE6bOiangnxxt8+iCUOWJ4DrNxtFHOjdnyqpJ85jup
+         H3pbmE7HlzToNhFL4yi8Ipbq22UOOY2h6IsFPuC/gfTcpLjklN9lhyQZz9WTW+VBn/tG
+         Gkv6NbJNUldrXfRMoq3F1GLC6lWFCP54hnZPteVTzKAbzdcPekDe7UVW895JN56Hxq5c
+         fFNQ51Rz4JmijxwyuwEX1RTUCDnG6Q9YtMGETa9ncfrAk8TwDZVZsfHJZ3+9yG0Caiv6
+         Z/Hw==
+X-Gm-Message-State: AOJu0YwFHLykTzQvh5M00/Ap8KwH4Ym+1olXIft9YG3YhM//FGaXx7VU
+	86GYbh3CGAJ3trjBzg0rVuO2K2flNvGeMlMTqIydO6kfYf4rZHwaUqREug==
+X-Gm-Gg: ASbGncu3kSQrGTgNN3YGt8B0LTTV3Fgj/8xipIA6HrE+jpwuJgppMM2u7r2Cdnob8l2
+	e7Yh6PtJ3xQkFctYqnQlENn0PBLCFTLqsDpvBa5YN00SCo1jC5tNFX4Arf/qfFisHh15Ko6haNW
+	H7qCv3NYASSxWAH7uZSrBCie1yU6WEAFOuEBOwcBBx+6MMH5g2tJCTuJh6YWsqranqlTTrEliuU
+	fffHsCYLcJu6GU6L8Dd/9fiPeafpcfrUwAmxDV5nBylxAMUTyf2d1nKGKNRUoMSUM1DdOKHZixu
+	2bCyvbtEbcSbC+ifi4CbEdFIKIjqPpburAMOjfpyOmfdHTb1UDHR3M13e3n4E0VCfz9rZ4XsHNR
+	dQiMR
+X-Google-Smtp-Source: AGHT+IHToRUoYpyvhFxWw2hmNyiptMcG3UnpihonfAfu/CiPO1aosKcM1C9zxbh4lsc7im1IxnjzOg==
+X-Received: by 2002:a17:902:d50e:b0:223:2630:6b82 with SMTP id d9443c01a7336-225e0a36298mr141202185ad.10.1742189785780;
+        Sun, 16 Mar 2025 22:36:25 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6bbe7c1sm66193855ad.187.2025.03.16.22.36.24
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 16 Mar 2025 22:36:25 -0700 (PDT)
+Message-ID: <67d7b4d9.170a0220.203bb4.d569@mx.google.com>
+Date: Sun, 16 Mar 2025 22:36:25 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============1166596149238080968=="
+MIME-Version: 1.0
+From: Innovative Tech <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Application for Sales Development Representative Position at
+ LeadSailor
+
+--===============1166596149238080968==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Hiring Manager,
+
+   I came across the open position for a Sales Development Representative at LeadSailor on your website and am excited to apply. As a seasoned professional with over five years of experience in SaaS sales, I believe that my skills and passion make me an ideal candidate for this role.
+
+   In my current position at CloudPilot, I have consistently exceeded my monthly targets by effectively identifying and engaging potential clients through targeted outreach strategies. My strong understanding of the SaaS market, combined with my ability to build relationships quickly, has resulted in numerous successful deals.
+
+   I am particularly drawn to LeadSailor due to its innovative approach to sales automation and the impact it has on businesses worldwide. I am confident that my skills and dedication would contribute significantly to your team's success.
+
+   Enclosed is my resume for your consideration, along with a few references from satisfied clients who can vouch for my capabilities. I look forward to discussing my application further and exploring the opportunity to join LeadSailor.
+
+   Thank you for considering my application.
+
+   Sincerely,
+
+   Example Your name
+--===============1166596149238080968==--

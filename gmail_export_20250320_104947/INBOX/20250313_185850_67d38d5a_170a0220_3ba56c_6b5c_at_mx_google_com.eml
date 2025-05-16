@@ -1,0 +1,119 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp347869rcd;
+        Thu, 13 Mar 2025 18:58:51 -0700 (PDT)
+X-Received: by 2002:a17:902:ce0a:b0:224:1074:638e with SMTP id d9443c01a7336-225e0b2ba1fmr10515445ad.52.1741917531565;
+        Thu, 13 Mar 2025 18:58:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741917531; cv=none;
+        d=google.com; s=arc-20240605;
+        b=bo0uqEdvMFeovXjIBNFcEPoz3JoVxgiWUaQ84YHeTXnvLPszguIlORMw/BxacKvCCa
+         i7uvzUL5La02ULbYvklAIhxOMPP12mU4Rpfzzpo6wZqRPGKPMwYRhT5UMXd7XBaiiFsP
+         WJ/nYldNm0R5j6WyPEa4j/tvxnXv1/EqJAd3qRMTrpR/2lPmwPlD4JUWn5qqd9DgCGgm
+         gItDxqs+zBtFTi2zS4TPn9Bqv2eolN0683ZGb0IWTIDK/ynzxM5S9hD03JF93G9mOlia
+         5/oqT7aRNdBis+Gvjb61OYUPXywnaIzfgOILvBhuzkFqla1GDg8wcpZr3dtsysFRqSdz
+         ZWeQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=nAe+KOpI8uGA/HQYhrhDEQVeD0CGJauce9hdvUJz4OA=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=b56IL1NCo9QrECUc5UuKKBRI9ozmnSHOp0jIf8iTd6rUa+C5hDK/Z/yWGbQQWZ4YI4
+         //QK7RhV1x8nLiNqNIrFUa0maempMOEMUiqGEZh1815xMk00LlRlN04yfyQCZHCFjfRn
+         V6QOZeSUKkF6XwNCfQWnjj9DEQvtE75WFMAVTrUl7pVMMw1h5O6Fk7TbljTM3hhc7SzK
+         a+uxUBbOqBXEsebjGt+e4Ppb91bUDys1Zm8wnAsheoyIjC2pTyoWJNazPiej23Rl7g9g
+         Ub9w05/QypyCsG4OZr15X1zyRFuZ2L0PKXigydZtFhQfTTDQKxXQUJTu+6jvJUPD+Igl
+         5CDw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=HsNLq3+K;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c6b6840asor23870405ad.6.2025.03.13.18.58.51
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 18:58:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=HsNLq3+K;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741917530; x=1742522330; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=nAe+KOpI8uGA/HQYhrhDEQVeD0CGJauce9hdvUJz4OA=;
+        b=HsNLq3+KWgm/QHmX35kKRYaC//ds+nQ+6iRICSYG36G5H3PJCnDVVKroClzgs8QegQ
+         ZuskIrLMkfbwAAfJDRnM+n3G7RdKsy4T87bSv2AwG5aWtC8z4O09YYMO5nl6VswcsNRI
+         faDwQwy680DjL8emxBx3StzDqZUm8khJ5TZd7We74ZlSWGTq+yKlY8nEa0eBU7JELbup
+         bUlNh9QeCp9cySXOO5wndsn/kEVCF/gz1mZy/GqgNcLYs4jRtNi4KRyTKyQUEhqE4tuc
+         DzUixIAi58zoUWzGFjBlgn1COoKp2RClyZgDgEmo5dNL5Wgz2we5MAR1RI7/oECG77al
+         jAzw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741917530; x=1742522330;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=nAe+KOpI8uGA/HQYhrhDEQVeD0CGJauce9hdvUJz4OA=;
+        b=YA0sRwc4MjD1JckoNqgdV/QCUQPil3qUJi1n9uguqTwslHYqUKD8P9Cf++Ct9xOJ5Z
+         I1/W5ID3TA/cOtlZFDA/n3UBoVYhFggXkZx7q/OdUXq+VXjnpXnwo4EB+n7iyJ8v+fV7
+         zmPIfCQaBg79dW6bqnzqrhY+24JGgdrC72wqucMx0tq6obS2eB9iKi8hh8NkyrP/3XTl
+         Ffn4JFGM2dQen51UfvXNxdyONCviU0F4hhK3pYTPBB93M1oL/BOq28plvONk/EQiJk3n
+         e2TIaoO/OPVj8l5cT9GVVujDW4+oK3lQY9CPMbJv+24rfFyzKYcMpxXlrOumtGzUkCKB
+         MAJw==
+X-Gm-Message-State: AOJu0Yypw4crztWMJnkVsAI0qwmh6LZs0WbckwWJ6X0jpWF7hexklB+b
+	pVeVwB1wMoMERQpCfwZ3wcChzv8jZ6vx8SOJWG9OYw6n/sIptIZpYHYVlAq2
+X-Gm-Gg: ASbGncvul/4fq5DQH8hJanhLpNtuTeWq6PwlAH0+ZMX3B22i5vf8xd7vySWi35F/9+q
+	mZipc+qDCD4ohRhMm98gYL9AJ2xFB1KXCZQ5pRIMctvfl6/9pbKgMuYIxN4UVW8iD0oicn21bs8
+	pzzQXqUrc0BOXbYPb4TAdNc5QHN+UPBUr9J0zaI9a7Pqxv3qBXPiVYTRfWBAMkyaOI3aoEza+4K
+	Inw/MfEEUhAJTeryVo46u3Ib83ZvKRULMkNJieSQUdSZYadX5ZC+73/3UEJkkf2GcFZ/IMJ9dZK
+	h6ut5BCyHLdtO6ekKgnlBDplQPmBIJfM49SclPqUFBDA6HMGziM5w+ZdWjmM6xUTlEOGqw==
+X-Google-Smtp-Source: AGHT+IGT2DHi0t7nnVBIfON94z0RtsI78Ye8+j9a1GF7RrfSMLKvPFQI2J1cg/Za3O7nXlEL3JLMfg==
+X-Received: by 2002:a17:902:f643:b0:224:24d5:f20a with SMTP id d9443c01a7336-225e0b195d1mr12162445ad.48.1741917530650;
+        Thu, 13 Mar 2025 18:58:50 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6bd4e0dsm20536485ad.221.2025.03.13.18.58.49
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 18:58:50 -0700 (PDT)
+Message-ID: <67d38d5a.170a0220.3ba56c.6b5c@mx.google.com>
+Date: Thu, 13 Mar 2025 18:58:50 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============0617652685593291830=="
+MIME-Version: 1.0
+From: David Brown <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Collaborative Partnership Proposal for Boosting Our E-commerce Growth
+
+--===============0617652685593291830==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Mr. John Doe,
+
+   I hope this message finds you well. I am writing to you on behalf of GreenLeaf Digital Solutions, a leading e-commerce platform provider based in California.
+
+   Over the past few months, we have been closely monitoring your company, EcoFriendly Corner, and its impressive growth trajectory in the sustainable product market. We believe that our strengths complement each other, making us ideal partners to jointly explore new opportunities in the e-commerce space.
+
+   GreenLeaf Digital Solutions specializes in providing robust, user-friendly e-commerce platforms tailored to meet the unique needs of businesses like yours. Our technology enables seamless integration with various marketing channels, ensuring efficient customer acquisition and retention strategies.
+
+   By partnering with EcoFriendly Corner, we aim to leverage your strong brand reputation in the sustainable product market to enhance our platform's credibility and attract more environmentally-conscious consumers. In return, we will provide you with a state-of-the-art e-commerce solution that caters specifically to your needs, thereby streamlining your online sales process and increasing overall efficiency.
+
+   We invite you for an introductory meeting where we can discuss this collaboration in greater detail. Our team is available at your earliest convenience. Please find our contact information below:
+
+   GreenLeaf Digital Solutions
+   1234 E. California St., Suite 567
+   San Jose, CA 95112
+   Phone: (408) 123-4567
+   Email: partnerships@greenleafdigital.com
+
+   We look forward to exploring this exciting opportunity with EcoFriendly Corner and believe that our combined strengths will lead us towards mutual success in the e-commerce industry.
+
+   Best Regards,
+
+   Example Your name
+   Example Your position
+   GreenLeaf Digital Solutions
+--===============0617652685593291830==--

@@ -1,0 +1,1615 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp50260rcd;
+        Thu, 13 Mar 2025 09:11:22 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFvsF5usIDmavZhmq8AJB2Q6pIz+wvc/dxlvd4dXIbj38x10Pyg/YpFhRcu3+0NRo0FHgo6
+X-Received: by 2002:ac8:7d10:0:b0:476:b700:2c0f with SMTP id d75a77b69052e-476b7002e2bmr70865971cf.22.1741882282175;
+        Thu, 13 Mar 2025 09:11:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741882282; cv=none;
+        d=google.com; s=arc-20240605;
+        b=VOjBgy87cFYADYAQNTV92edRTKIm5fuq8Yenndl9lKRWvZhGaGLJbvk764xfdIQTVx
+         hUEqNXtXmqudeBOha20fKaqMtxhS3SLp++qrqQRiNxQ1eO7J64r3M7o5AO/5nT4Jg14n
+         6fk6Pm/DzrIzdCUDba+vpp/iILnOGKQfcwwZvfXHEyv0PP7v2b5TbKHkmnhVQg1iHvxP
+         yxEAlbONbhyEpkp1uZw4wdIrXN4SheS8sHdpD6n/UY6TNT+8kmYJdrdJ+VD2A4xlsnGi
+         LCOq9LoD+p1weyUDDIw2zDl7xdNGz3ZZBj9Uaab4KhqI9DxiJOcWnJmFneAfZyL4RqBc
+         8SZw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=list-unsubscribe-post:list-unsubscribe:list-post:list-id
+         :list-archive:list-url:list-owner:reply-to:in-reply-to:references
+         :sender:feedback-id:date:message-id:to:from:subject:mime-version
+         :dkim-signature:dkim-signature;
+        bh=CJoun3CQ87Grg8y5nOTgHZ452M27PsS70m+pqzt2lUA=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=aJZXXYvX9/mOykwaHdIe5NQ9HQ7/pfuFePTo0TpsTMN1fCXXvKZW0rMGQVlzbyd7X8
+         DYI46HK+r00JCzwqvoDYspuBkpxTDkpquW0bKVvndovoPYvD7A5Eutu3uyO9pQgz4yON
+         3HEXftFYzz8I2vVIjP7abo9Zx9iu+7V/9tl58bGAo5FRNMeTd+ffmwiUQ2GlsMu8qQpn
+         vaiOKtBn0NqwPcAOVEZKfZ/1ROFxvo9Oy2vYVzxAmGMX1X4LLlzHazdzvTW7zPjQ2uQn
+         /yqeR7Whp4YcrDacU5bQgXjjUxmpYuAaZBAiTg64qPNtcnFn0nFSjR+QU1hQGUBO71Iy
+         KLNw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mg-d1.substack.com header.s=k1 header.b=jYYy8dIg;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=La6WnBN2;
+       spf=pass (google.com: domain of bounce+26ccba.39b08c6-desgtest.email=gmail.com@mg-d1.substack.com designates 159.112.244.4 as permitted sender) smtp.mailfrom="bounce+26ccba.39b08c6-desgtest.email=gmail.com@mg-d1.substack.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=substack.com
+Return-Path: <bounce+26ccba.39b08c6-desgtest.email=gmail.com@mg-d1.substack.com>
+Received: from m244-4.mailgun.net (m244-4.mailgun.net. [159.112.244.4])
+        by mx.google.com with UTF8SMTPS id d75a77b69052e-476bb8644e6si18297921cf.602.2025.03.13.09.11.21
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 13 Mar 2025 09:11:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce+26ccba.39b08c6-desgtest.email=gmail.com@mg-d1.substack.com designates 159.112.244.4 as permitted sender) client-ip=159.112.244.4;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mg-d1.substack.com header.s=k1 header.b=jYYy8dIg;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=La6WnBN2;
+       spf=pass (google.com: domain of bounce+26ccba.39b08c6-desgtest.email=gmail.com@mg-d1.substack.com designates 159.112.244.4 as permitted sender) smtp.mailfrom="bounce+26ccba.39b08c6-desgtest.email=gmail.com@mg-d1.substack.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=substack.com
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg-d1.substack.com; q=dns/txt; s=k1; t=1741882281; x=1741889481;
+ h=List-Unsubscribe-Post: List-Unsubscribe: List-Post: List-Id: List-Archive: List-Owner: Reply-To: In-Reply-To: References: sender: sender: Date: Message-Id: To: To: From: From: Subject: Subject: Content-Type: Mime-Version: X-Feedback-Id;
+ bh=CJoun3CQ87Grg8y5nOTgHZ452M27PsS70m+pqzt2lUA=;
+ b=jYYy8dIgOt+GV9MdyrF2oV9qPvtQ+/RMc/u/6LsqmcITX0IvUpCFIipsqQ7xQiGpbotLI8FYVXzN22nNC1MprqtMficUo7QWyzQU1Jy+Qe1lvZGFZGaial8G0dIauX4qO8Fl0LPnW5pk81rDlSRMDUFwqlBiylXfc461AOAPans=
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mailgun.org; q=dns/txt; s=mg; t=1741882281; x=1741889481;
+ h=List-Unsubscribe-Post: List-Unsubscribe: List-Post: List-Id: List-Archive: List-Owner: Reply-To: In-Reply-To: References: sender: sender: Date: Message-Id: To: To: From: From: Subject: Subject: Content-Type: Mime-Version: X-Feedback-Id;
+ bh=CJoun3CQ87Grg8y5nOTgHZ452M27PsS70m+pqzt2lUA=;
+ b=La6WnBN2qZSwTFSkFNxTu/tX7QMRzq0oPTBWEVBgLl9eO+Eo9ElTqUg4u2PprO++2ohG+CTvvOjupi/0DkkriqBwZjj/QmuSLZegtSuPhaehCnJPevvwUTzx948XUxVXistoX8VoaUmW7Y0UXrj3FNgrb5yCjESC7HH5kPwRpVA=
+X-Feedback-Id: postmaster@mg-d1.substack.com:post:614a1297c57bbbe25fa40e08:mailgun
+X-Mailgun-Sending-Ip: 159.112.244.4
+X-Mailgun-Sending-Ip-Pool-Name: 
+X-Mailgun-Sending-Ip-Pool: 
+X-Mailgun-Sid: WyJiZDRkMiIsImRlc2d0ZXN0LmVtYWlsQGdtYWlsLmNvbSIsIjM5YjA4YzYiXQ==
+Received: by 8eb054deddbf with HTTP id 67d303a8d3303cd871e3d63e; Thu, 13 Mar 2025
+ 16:11:20 GMT
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="1726d137b956c0870be98d959ecb810d9dce18a6a62b21eec9d4cb1aaaf4"
+Subject: (I got the) News | Issue 43
+From: Steely Dan Newsletter <steelydannewsletter@substack.com>
+To: desgtest.email@gmail.com
+X-Mailgun-Tag: post
+X-Mailgun-Track-Clicks: false
+Message-Id: <20250313160932.3.862985e5b3ca8de6@mg-d1.substack.com>
+Date: Thu, 13 Mar 2025 16:09:32 +0000
+Feedback-ID: post-159002919:cat-post:pub-1862653:substack
+sender: Steely Dan Newsletter <steelydannewsletter@substack.com>
+References: <post-159002919@substack.com>
+In-Reply-To: <post-159002919@substack.com>
+Reply-To: Steely Dan Newsletter
+ <reply+2mnzfr&5dpnf1&&9b22bf1aeb336c75923e99212e809a3ed38eb3eb03efe2a714982dbcb41a499d@mg1.substack.com>
+List-Owner: <mailto:steelydannewsletter@substack.com>
+List-URL: <https://steelydannewsletter.substack.com/>
+List-Archive: <https://steelydannewsletter.substack.com/archive>
+List-Id: <steelydannewsletter.substack.com>
+List-Post: <https://steelydannewsletter.substack.com/p/i-got-the-news-issue-43>
+List-Unsubscribe: <https://steelydannewsletter.substack.com/action/disable_email/disable?token=eyJ1c2VyX2lkIjozMjUzNjI2MzcsInBvc3RfaWQiOjE1OTAwMjkxOSwiaWF0IjoxNzQxODgyMjgwLCJleHAiOjE3NzM0MTgyODAsImlzcyI6InB1Yi0xODYyNjUzIiwic3ViIjoiZGlzYWJsZV9lbWFpbCJ9.vJMTb30gxBs7l7aisAWCQECWYxLpj5rtfvMaJk8pq-M>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-Mailgun-Variables: {"category": "post", "email_generated_at": "1741882280660", "is_freemail":
+ "true", "post_audience": "everyone", "post_id": "159002919", "post_type":
+ "newsletter", "pub_community_enabled": "true", "publication_id": "1862653",
+ "subdomain": "steelydannewsletter", "user_id": "325362637"}
+
+--1726d137b956c0870be98d959ecb810d9dce18a6a62b21eec9d4cb1aaaf4
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+View this post on the web at https://steelydannewsletter.substack.com/p/i-g=
+ot-the-news-issue-43
+
+Hello! Hope you are well!
+We all have our favorites, our top 5s and our numero uno Steely Dan tune. N=
+ot sure I=E2=80=99d be able to choose a favorite from their catalog. Of cou=
+rse there=E2=80=99s songs I like more than others, but picking a true #1 fe=
+els like a tough task.=20
+I usually shy away from any rankings where =E2=80=98art=E2=80=99 is concern=
+ed, but the Rolling Stone breakdown [ https://substack.com/redirect/9f079d3=
+8-2bc5-46e2-8a92-ccea473c3fc4?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxy=
+LHpwHNgKZDZaCgNCOeJjZQ ] is an enjoyable, well-produced package of words, m=
+usic and images as they run down all 84 of Steely Dan=E2=80=99s songs =E2=
+=80=94 ranked.
+Steely Dan: Every Song Ranked [ https://substack.com/redirect/9f079d38-2bc5=
+-46e2-8a92-ccea473c3fc4?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHN=
+gKZDZaCgNCOeJjZQ ]
+There=E2=80=99s no story anywhere in music like Steely Dan.=20
+The Seventies jazz-rock masterminds have gone in and out of style over the =
+years, but they=E2=80=99ve never been more popular, more influential, more =
+of a cultural obsession than they are right now. Donald Fagen and Walter Be=
+cker were truly ahead of their time, with a string of classic albums, satir=
+izing 1970s coked-out yacht-rock smoothitude even as they luxuriated in it.=
+ And one thing never changes =E2=80=94 no band is more fun to argue about.=
+=20
+Steely Dan fans love to debate every last detail in the band=E2=80=99s musi=
+c, every song, every drum break or sax solo, from the caves of Altamira to =
+the oleanders of Annandale. So let=E2=80=99s bring on the ultimate Steely D=
+an argument starter: all 84 of their songs, ranked. The good, the bad, and =
+the Gaucho.
+Jeff Baxter on His Best Songs, From Steely Dan to Doobies [ https://substac=
+k.com/redirect/0867d83d-6b98-43fd-a80b-71ddffe7d567?j=3DeyJ1IjoiNWRwbmYxIn0=
+=2EHeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ ]
+If we were to write a list called =E2=80=9CSkunks, Ranked,=E2=80=9D Jeff =
+=E2=80=9CSkunk=E2=80=9D Baxter would triumph over his opponent, Pep=C3=A9 L=
+e Pew, every single time. (Sorry Pep=C3=A9, but you=E2=80=99re not a featur=
+ed player on Pretzel Logic.) The guitarist, already a deity among Steely Da=
+n and Doobie Brothers fans for formative stints with both bands, considers =
+his life as a studio musician similar to to a craftsman who has the tools t=
+o construct whatever is needed. =E2=80=9CYou=E2=80=99re basically standing =
+by and waiting for a call,=E2=80=9D he explains. =E2=80=9CIt=E2=80=99s kind=
+ of like a combination of an EMT, a carpenter, and a number of other things=
+ to ultimately satisfy the artist. You park your ego at the door and get th=
+e job done.=E2=80=9D
+Behind the Album: =E2=80=98Two Against Nature,=E2=80=99 Which Found Steely =
+Dan Returning After Two Decades as if They=E2=80=99d Never Left [ https://s=
+ubstack.com/redirect/96439d5a-a750-47d9-8388-3cb2770c2c98?j=3DeyJ1IjoiNWRwb=
+mYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ ]
+It looked for quite some time the legacy of Steely Dan [ https://substack.c=
+om/redirect/4737cd4c-cc33-48f9-aa9d-ae3e6f43b5dc?j=3DeyJ1IjoiNWRwbmYxIn0.He=
+F6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ ] would be confined to the =E2=80=
+=9870s, a decade their music helped define. Who could ever have expected th=
+at they=E2=80=99d make a grand return, sounding eerily the same as they did=
+ in their heyday, to enchant and mystify the new millennium as they=E2=80=
+=99d done the previous one.
+The Steely Dan song Michael McDonald deemed impossible to sing [ https://su=
+bstack.com/redirect/0358b68d-4127-4a5b-9e49-ce451050a8ac?j=3DeyJ1IjoiNWRwbm=
+YxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ ]
+Once one of the many bywords for 1970s lameness, Steely Dan have been embra=
+ced by a new generation for their jazz-inflected character sketches and ste=
+llar pop hooks. Their 1975 record =E2=80=98Katy Lied=E2=80=99 is arguably t=
+he best example of both these sides of the band. Four albums in, most artis=
+ts are starting to run out of ideas but part of The Dan=E2=80=99s creative =
+windfall came from an unlikely source. Namely, their new backing singer!
+Steely Dan's "Gaucho" Is a Masterpiece About Being Past Your Prime [ https:=
+//substack.com/redirect/03121865-9928-4428-af7f-eabc8e064b8f?j=3DeyJ1IjoiNW=
+RwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ ]
+The band=E2=80=99s seventh album in under a decade, and last until 2000=E2=
+=80=99s Two Against Nature, Gaucho sets itself apart from the rest of the b=
+and=E2=80=99s output with just how seamless it is despite a historically di=
+fficult production process.=20
+It=E2=80=99s a moody album, a loose concept record looking at a bunch of pe=
+ople whose best days are behind them but maybe don=E2=80=99t want to admit =
+it. As Alex Pappademas wrote for Pitchfork, =E2=80=9CThe only character who=
+=E2=80=99s having any kind of communal fun is the coke dealer on =E2=80=98G=
+lamour Profession,=E2=80=99 who makes calls from a basketball star=E2=80=99=
+s car phone and takes meetings over Mr. Chow dumplings with =E2=80=98Jive M=
+iguel=E2=80=A6from Bogot=C3=A1.=E2=80=99=E2=80=99 People being past their p=
+rime honestly never sounded so good.
+=F0=9F=92=AC The excellent Expanding Dan [ https://substack.com/redirect/47=
+47fb8f-08f4-4da1-abe3-701e48127fe9?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj=
+9JSxyLHpwHNgKZDZaCgNCOeJjZQ ] newsletter
+Steely Dan vs. the world: 'Two Against Nature' at 25 [ https://substack.com=
+/redirect/22062414-22cd-448e-b9f0-a09ffd64fd7f?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6=
+Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ ]
+Listen back to Barney Hoskyns's incisive conversation with Walter Becker an=
+d Donald Fagen on the eve of the release of their millennium midlife master=
+work.
+=F0=9F=93=B7 The awesome Barney Hurley [ https://substack.com/redirect/51b0=
+0a5e-e09f-4f29-9519-4c5f86cb40f9?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9J=
+SxyLHpwHNgKZDZaCgNCOeJjZQ ] X account
+Barney Hurley continues to feature great Steely Dan content on his must-see=
+ X account [ https://substack.com/redirect/51b00a5e-e09f-4f29-9519-4c5f86cb=
+40f9?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ ].=
+ There=E2=80=99s equally terrific non-steely Dan content as well!
+Promo poster for Steely Dan's 1980 masterpiece, 'Gaucho'
+Have a GREAT day!  =F0=9F=98=8E
+
+Unsubscribe https://substack.com/redirect/2/eyJlIjoiaHR0cHM6Ly9zdGVlbHlkYW5=
+uZXdzbGV0dGVyLnN1YnN0YWNrLmNvbS9hY3Rpb24vZGlzYWJsZV9lbWFpbD90b2tlbj1leUoxYz=
+JWeVgybGtJam96TWpVek5qSTJNemNzSW5CdmMzUmZhV1FpT2pFMU9UQXdNamt4T1N3aWFXRjBJa=
+m94TnpReE9EZ3lNamd3TENKbGVIQWlPakUzTnpNME1UZ3lPREFzSW1semN5STZJbkIxWWkweE9E=
+WXlOalV6SWl3aWMzVmlJam9pWkdsellXSnNaVjlsYldGcGJDSjkudkpNVGIzMGd4QnM3bDdhaXN=
+BV0NRRUNXWXhMcGo1cnRmdk1hSms4cHEtTSIsInAiOjE1OTAwMjkxOSwicyI6MTg2MjY1MywiZi=
+I6dHJ1ZSwidSI6MzI1MzYyNjM3LCJpYXQiOjE3NDE4ODIyODAsImV4cCI6MTc0NDQ3NDI4MCwia=
+XNzIjoicHViLTAiLCJzdWIiOiJsaW5rLXJlZGlyZWN0In0.oxQeRsb3hHrTmZp1589Ar04WYig6=
+hLJP--TUuZJc-VQ?
+--1726d137b956c0870be98d959ecb810d9dce18a6a62b21eec9d4cb1aaaf4
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html style=3D"scrollbar-width: thin;scrollbar-color: #dbdbdbrgb(255,255,25=
+5);"><head><meta charset=3D"utf-8"><title>(I got the) News | Issue 43</titl=
+e><style>
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .typography .markup table.image-wrapper img,
+  .typography.editor .markup table.image-wrapper img,
+  .typography .markup table.kindle-wrapper img,
+  .typography.editor .markup table.kindle-wrapper img {
+    max-width: 550px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .typography .markup div.youtube-overlay,
+  .typography.editor .markup div.youtube-overlay,
+  .typography .markup div.vimeo-overlay,
+  .typography.editor .markup div.vimeo-overlay {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 370px) {
+  .typography .markup div.tiktok-wrap,
+  .typography.editor .markup div.tiktok-wrap {
+    width: calc(95vw - 32px);
+    height: calc((95vw - 32px - 2px) / 0.485714);
+  }
+}
+@media screen and (max-width: 650px) {
+  .typography .markup div.embedded-publication-wrap .embedded-publication.s=
+how-subscribe,
+  .typography.editor .markup div.embedded-publication-wrap .embedded-public=
+ation.show-subscribe {
+    padding: 24px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .typography .markup div.subscription-widget-wrap .subscription-widget.sho=
+w-subscribe,
+  .typography.editor .markup div.subscription-widget-wrap .subscription-wid=
+get.show-subscribe,
+  .typography .markup div.subscription-widget-wrap-editor .subscription-wid=
+get.show-subscribe,
+  .typography.editor .markup div.subscription-widget-wrap-editor .subscript=
+ion-widget.show-subscribe,
+  .typography .markup div.captioned-button-wrap .subscription-widget.show-s=
+ubscribe,
+  .typography.editor .markup div.captioned-button-wrap .subscription-widget=
+=2Eshow-subscribe {
+    padding: 0px 24px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .typography .markup div.subscription-widget-wrap .subscription-widget.sho=
+w-subscribe .subscription-widget-subscribe .button,
+  .typography.editor .markup div.subscription-widget-wrap .subscription-wid=
+get.show-subscribe .subscription-widget-subscribe .button,
+  .typography .markup div.subscription-widget-wrap-editor .subscription-wid=
+get.show-subscribe .subscription-widget-subscribe .button,
+  .typography.editor .markup div.subscription-widget-wrap-editor .subscript=
+ion-widget.show-subscribe .subscription-widget-subscribe .button,
+  .typography .markup div.captioned-button-wrap .subscription-widget.show-s=
+ubscribe .subscription-widget-subscribe .button,
+  .typography.editor .markup div.captioned-button-wrap .subscription-widget=
+=2Eshow-subscribe .subscription-widget-subscribe .button {
+    padding: 10px 12px;
+    min-width: 110px;
+  }
+}
+@media (max-width: 650px) {
+  .typography .markup .tweet,
+  .typography.editor .markup .tweet {
+    padding: 12px;
+  }
+}
+@media (max-width: 650px) {
+  .typography .markup .tweet .tweet-text,
+  .typography.editor .markup .tweet .tweet-text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 650px) {
+  .typography .markup .tweet .tweet-photos-container.two,
+  .typography.editor .markup .tweet .tweet-photos-container.two,
+  .typography .markup .tweet .tweet-photos-container.three,
+  .typography.editor .markup .tweet .tweet-photos-container.three,
+  .typography .markup .tweet .tweet-photos-container.four,
+  .typography.editor .markup .tweet .tweet-photos-container.four {
+    height: 200px;
+  }
+}
+@media (max-width: 650px) {
+  .typography .markup .tweet a.expanded-link .expanded-link-img,
+  .typography.editor .markup .tweet a.expanded-link .expanded-link-img {
+    max-height: 180px;
+  }
+}
+@media (max-width: 650px) {
+  .typography .markup .tweet a.expanded-link .expanded-link-description,
+  .typography.editor .markup .tweet a.expanded-link .expanded-link-descript=
+ion {
+    display: none;
+  }
+}
+@media screen and (max-width: 650px) {
+  .typography .markup .apple-podcast-container,
+  .typography.editor .markup .apple-podcast-container {
+    width: unset;
+  }
+}
+@media (max-width: 420px) {
+  .typography .markup .install-substack-app-embed img.install-substack-app-=
+embed-img,
+  .typography.editor .markup .install-substack-app-embed img.install-substa=
+ck-app-embed-img {
+    margin: 0 auto 16px auto;
+  }
+}
+@media (max-width: 420px) {
+  .typography .markup .install-substack-app-embed .install-substack-app-emb=
+ed-text,
+  .typography.editor .markup .install-substack-app-embed .install-substack-=
+app-embed-text {
+    margin: 0 0 12px 0;
+    max-width: 100%;
+    width: auto;
+    text-align: center;
+  }
+}
+@media (max-width: 420px) {
+  .typography .markup .install-substack-app-embed .install-substack-app-emb=
+ed-link,
+  .typography.editor .markup .install-substack-app-embed .install-substack-=
+app-embed-link {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 481px) {
+  .share-button-container {
+    height: 38px;
+  }
+}
+@media screen and (min-width: 481px) {
+  .share-button-container a.comment {
+    height: 38px;
+    line-height: 38px;
+    padding-right: 10px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .share-button-container .separator {
+    display: block;
+    margin: 0;
+    height: 8px;
+    border-left: none;
+  }
+}
+@media screen and (max-width: 480px) {
+  .share-button-container a.share.first img {
+    padding-left: 0;
+  }
+}
+@media screen and (min-width: 481px) {
+  .share-button-container a.mobile {
+    display: none !important;
+  }
+}
+@media screen and (min-width: 541px) {
+  .settings-add-pub-modal-wrapper .container .add-recommending-pub-modal-co=
+ntainer {
+    padding: 36px;
+    height: 680px;
+  }
+}
+@media screen and (min-width: 541px) {
+  .settings-add-pub-modal-wrapper .container .add-recommending-pub-modal-co=
+ntainer .footer {
+    position: absolute;
+    bottom: 36px;
+    margin: 0px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .header-anchor-parent {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .post {
+    padding: 16px 0 0 0;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post .post-header .post-label {
+    margin-top: 8px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post .post-header .meta-author-wrap.alternative-meta .meta-right-column =
+=2Epost-meta {
+    margin-top: 6px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post .footer-facepile-container {
+    height: 64px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post .post-footer.use-separators {
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post .post-footer.next-prev {
+    height: 64px;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post-contributor-footer .post-contributor-bio-table {
+    display: block;
+  }
+  .post-contributor-footer .post-contributor-bio-table-row {
+    display: flex;
+    flex-direction: row;
+  }
+  .post-contributor-footer .post-contributor-bio-userhead-cell,
+  .post-contributor-footer .post-contributor-bio-body-cell {
+    display: block;
+  }
+  .post-contributor-footer .post-contributor-bio-body-cell {
+    flex-grow: 1;
+  }
+  .post-contributor-footer .post-contributor-bio-body-table {
+    display: block;
+  }
+  .post-contributor-footer .post-contributor-bio-body-table-row {
+    display: block;
+  }
+  .post-contributor-footer .post-contributor-bio-copy-cell,
+  .post-contributor-footer .post-contributor-bio-controls-cell {
+    display: block;
+  }
+  .post-contributor-footer .post-contributor-bio-copy-cell {
+    margin: 0 0 16px 0;
+  }
+  .post-contributor-footer .post-contributor-bio-controls-cell {
+    width: auto;
+  }
+  .post-contributor-footer .post-contributor-bio-controls {
+    margin: auto;
+  }
+  .post-contributor-footer .post-contributor-bio-controls .button.primary {
+    width: 100%;
+  }
+  .post-contributor-footer .post-contributor-bio-text {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .post-silhouette {
+    padding: 32px 0;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post-silhouette .post-silhouette-title {
+    margin-top: 10.44225025px;
+    height: 120px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post-silhouette .post-silhouette-meta {
+    width: 75%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post-silhouette .post-silhouette-meta.with-byline-image {
+    margin: 20px 0;
+  }
+}
+@media screen and (max-width: 650px) {
+  .use-theme-bg .post-meta.alternative-meta .post-meta-item,
+  .post-meta.alternative-meta .post-meta-item {
+    padding-right: 16px;
+  }
+}
+@media screen and (max-width: 370px) {
+  .use-theme-bg .post-meta.alternative-meta .post-meta-item,
+  .post-meta.alternative-meta .post-meta-item {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .use-theme-bg .post-meta.alternative-meta .post-meta-item.guest-author-pu=
+blication,
+  .post-meta.alternative-meta .post-meta-item.guest-author-publication {
+    display: none;
+  }
+}
+@media screen and (max-width: 370px) {
+  .post-meta .post-meta-item .post-meta-button {
+    height: 36px !important;
+    /* important to override in-line height style on emails */
+  }
+  .post-meta .post-meta-item .post-meta-button .meta-button-label {
+    display: none;
+  }
+  .post-meta .post-meta-item .post-meta-button > svg {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 370px) {
+  .post-meta .post-meta-item {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post .floating-subscribe-button {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  body .markup table.image-wrapper img,
+  body .markup table.kindle-wrapper img {
+    max-width: 550px;
+  }
+}
+@media screen and (max-width: 650px) {
+  body .markup div.youtube-overlay,
+  body .markup div.vimeo-overlay {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 370px) {
+  body .markup div.tiktok-wrap {
+    width: calc(95vw - 32px);
+    height: calc((95vw - 32px - 2px) / 0.485714);
+  }
+}
+@media screen and (max-width: 650px) {
+  body .markup div.embedded-publication-wrap .embedded-publication.show-sub=
+scribe {
+    padding: 24px;
+  }
+}
+@media screen and (max-width: 650px) {
+  body .markup div.subscription-widget-wrap .subscription-widget.show-subsc=
+ribe,
+  body .markup div.subscription-widget-wrap-editor .subscription-widget.sho=
+w-subscribe,
+  body .markup div.captioned-button-wrap .subscription-widget.show-subscrib=
+e {
+    padding: 0px 24px;
+  }
+}
+@media screen and (max-width: 650px) {
+  body .markup div.subscription-widget-wrap .subscription-widget.show-subsc=
+ribe .subscription-widget-subscribe .button,
+  body .markup div.subscription-widget-wrap-editor .subscription-widget.sho=
+w-subscribe .subscription-widget-subscribe .button,
+  body .markup div.captioned-button-wrap .subscription-widget.show-subscrib=
+e .subscription-widget-subscribe .button {
+    padding: 10px 12px;
+    min-width: 110px;
+  }
+}
+@media (max-width: 650px) {
+  body .markup .tweet {
+    padding: 12px;
+  }
+}
+@media (max-width: 650px) {
+  body .markup .tweet .tweet-text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+@media (max-width: 650px) {
+  body .markup .tweet .tweet-photos-container.two,
+  body .markup .tweet .tweet-photos-container.three,
+  body .markup .tweet .tweet-photos-container.four {
+    height: 200px;
+  }
+}
+@media (max-width: 650px) {
+  body .markup .tweet a.expanded-link .expanded-link-img {
+    max-height: 180px;
+  }
+}
+@media (max-width: 650px) {
+  body .markup .tweet a.expanded-link .expanded-link-description {
+    display: none;
+  }
+}
+@media screen and (max-width: 650px) {
+  body .markup .apple-podcast-container {
+    width: unset;
+  }
+}
+@media (max-width: 420px) {
+  body .markup .install-substack-app-embed img.install-substack-app-embed-i=
+mg {
+    margin: 0 auto 16px auto;
+  }
+}
+@media (max-width: 420px) {
+  body .markup .install-substack-app-embed .install-substack-app-embed-text=
+ {
+    margin: 0 0 12px 0;
+    max-width: 100%;
+    width: auto;
+    text-align: center;
+  }
+}
+@media (max-width: 420px) {
+  body .markup .install-substack-app-embed .install-substack-app-embed-link=
+ {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 500px) {
+  body .header a.logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+}
+@media screen and (max-width: 420px) {
+  body .subscription-receipt table:first-of-type .subscription-amount .subs=
+cription-discount {
+    width: 72px !important;
+  }
+}
+@media screen and (min-width: 481px) {
+  body .share-button-container {
+    height: auto;
+  }
+}
+@media screen and (max-width: 480px) {
+  body .share-button-container .separator {
+    display: block !important;
+    margin: 0 !important;
+    height: 8px !important;
+    border-left: none !important;
+  }
+}
+@media screen and (max-width: 650px) {
+  .digest .item .post-meta-item.audience {
+    display: none;
+  }
+}
+@media screen and (min-width: 500px) {
+  .digest-publication .logo img {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .comments-page .container .comment-list .collapsed-reply {
+    margin-left: calc(10 + 32px - 24px);
+  }
+}
+@media screen and (max-width: 650px) {
+  .comment > .comment-list {
+    padding-left: 24px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .finish-magic-login-modal .modal-content .container {
+    padding: 24px 0;
+  }
+}
+@media (max-width: 650px) {
+  .reader2-text-b3 {
+    line-height: 24px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .reader2-text-h4 {
+    line-height: 24px;
+  }
+}
+@media screen and (min-width: 541px) {
+  .user-profile-modal {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .subscribe-widget form.form .sideBySideWrap button.rightButton {
+    padding: 10px 12px;
+  }
+}
+@media screen and (min-width: 541px) {
+  .pub-icon:hover .logo-hover,
+  .feed-item-icon:hover .logo-hover {
+    display: block;
+  }
+}
+@media screen and (max-width: 650px) {
+  .post-ufi.single-full-width-button .post-ufi-button-wrapper {
+    width: 100%;
+    padding: 16px;
+  }
+  .post-ufi.single-full-width-button .post-ufi-button-wrapper:empty {
+    display: none;
+  }
+  .post-ufi.single-full-width-button .post-ufi-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 768px) {
+  .file-embed-wrapper {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .file-embed-wrapper-editor {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .file-embed-wrapper-editor:active {
+    padding: 0;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .file-embed-button.wide,
+  .file-embed-error-button.wide {
+    display: none;
+  }
+}
+@media only screen and (min-width: 630px) {
+  .file-embed-button.narrow,
+  .file-embed-error-button.narrow {
+    display: none;
+  }
+}
+@media screen and (min-width: 541px) {
+  .audio-player-wrapper .audio-player {
+    min-width: 500px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .audio-player-wrapper .audio-player .audio-player-progress {
+    border-left-width: 16px;
+    border-right-width: 16px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .audio-player-wrapper .audio-player .audio-player-progress .audio-player-=
+progress-bar .audio-player-progress-bar-popup {
+    top: -54px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .audio-player-wrapper-fancy .audio-player .audio-player-progress {
+    border-left-width: 16px;
+    border-right-width: 16px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .audio-player-wrapper-fancy .audio-player .audio-player-progress .audio-p=
+layer-progress-bar .audio-player-progress-bar-popup {
+    top: -54px;
+  }
+}
+@media (min-width: 250px) {
+  .audio-player-wrapper-fancy .audio-player {
+    padding: 32px;
+  }
+  .audio-player-wrapper-fancy .audio-player .btn-group {
+    display: flex;
+  }
+  .audio-player-wrapper-fancy .audio-player .btn-group .button:last-of-type=
+ {
+    display: block;
+  }
+}
+@media (min-width: 300px) {
+  .audio-player-wrapper-fancy .audio-player .btn-group {
+    display: block;
+  }
+  .audio-player-wrapper-fancy .audio-player .btn-group .button:first-of-typ=
+e {
+    display: block;
+  }
+}
+@media (min-width: 350px) {
+  .audio-player-wrapper-fancy .audio-player .audio-player-substack-logo {
+    display: block;
+  }
+  .audio-player-wrapper-fancy .audio-player .audio-player-title {
+    margin-top: 16px;
+  }
+  .audio-player-wrapper-fancy .audio-player .audio-player-hero-image-contai=
+ner {
+    padding-top: 15%;
+    width: 15%;
+    display: block;
+  }
+  .audio-player-wrapper-fancy .audio-player .btn-group .button:first-of-typ=
+e {
+    display: block;
+  }
+  .audio-player-wrapper-fancy .audio-player .audio-player-substack-logo {
+    display: block;
+  }
+}
+@media (min-width: 350px) {
+  .audio-player-wrapper-fancy .audio-player .audio-player-hero-image-contai=
+ner {
+    padding-top: 25%;
+    width: 25%;
+    display: block;
+  }
+  .audio-player-wrapper-fancy .audio-player .btn-group {
+    display: flex;
+  }
+  .audio-player-wrapper-fancy .audio-player .btn-group .button:first-of-typ=
+e {
+    display: block;
+  }
+}
+@media (min-width: 400px) {
+  .audio-player-wrapper-fancy .audio-player .audio-player-hero-image-contai=
+ner {
+    padding-top: 40%;
+    width: 40%;
+  }
+}
+@media (max-width: 400px) {
+  .audio-player-wrapper-fancy .audio-player .btn-group {
+    margin-top: 12px;
+  }
+  .audio-player-wrapper-fancy .audio-player .btn-group .button {
+    font-size: 13px;
+    padding: 6px 12px;
+    height: auto;
+    margin-top: 10px;
+  }
+}
+@media (min-width: 600px) {
+  .audio-player-wrapper-fancy .audio-player .audio-player-hero-image-contai=
+ner {
+    padding-top: 55%;
+    width: 55%;
+  }
+}
+@media (max-width: 650px) {
+  .poll-editor-modal {
+    min-width: calc(100% - 20px);
+  }
+}
+@media (max-width: 750px) {
+  .poll-embed .poll-anchor-target .poll-anchor-copy-button {
+    left: 8px;
+    top: 45px;
+  }
+}
+@media screen and (min-width: 541px) {
+  .poll-embed .poll-wrapper.poll-web .poll-dialog .modal-table .modal-row .=
+modal-content > .container {
+    width: 552px;
+    padding: 26px 24px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .poll-embed .poll-wrapper.poll-web .poll-dialog .modal-table .modal-row .=
+modal-content > .container {
+    padding: 40px 0;
+  }
+}
+@media screen and (max-width: 650px) {
+  .poll-embed .poll-wrapper.poll-web .poll-dialog .modal-row .modal-cell .m=
+odal-exit-btn {
+    margin-right: -20px;
+  }
+}</style></head><body class=3D"email-body" style=3D"font-kerning: auto;"><i=
+mg src=3D"https://eotrx.substackcdn.com/open?token=3DeyJtIjoiPDIwMjUwMzEzMT=
+YwOTMyLjMuODYyOTg1ZTViM2NhOGRlNkBtZy1kMS5zdWJzdGFjay5jb20-IiwidSI6MzI1MzYyN=
+jM3LCJyIjoiZGVzZ3Rlc3QuZW1haWxAZ21haWwuY29tIiwiZCI6Im1nLWQxLnN1YnN0YWNrLmNv=
+bSIsInAiOjE1OTAwMjkxOSwidCI6Im5ld3NsZXR0ZXIiLCJhIjoiZXZlcnlvbmUiLCJzIjoxODY=
+yNjUzLCJjIjoicG9zdCIsImYiOnRydWUsInBvc2l0aW9uIjoidG9wIiwiaWF0IjoxNzQxODgyMj=
+gwLCJleHAiOjE3NDQ0NzQyODAsImlzcyI6InB1Yi0wIiwic3ViIjoiZW8ifQ.2CQq2zvKHMPHmr=
+_A5oywuBtqtb2aY5Z8Sf-z1W0oY2Y" alt=3D"" width=3D"1" height=3D"1" border=3D"=
+0" style=3D"height:1px !important;width:1px !important;border-width:0 !impo=
+rtant;margin-top:0 !important;margin-bottom:0 !important;margin-right:0 !im=
+portant;margin-left:0 !important;padding-top:0 !important;padding-bottom:0 =
+!important;padding-right:0 !important;padding-left:0 !important;"/><div cla=
+ss=3D"preview" style=3D"display:none;font-size:1px;color:#333333;line-heigh=
+t:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">Rolling Ston=
+e ranks all 84 Steely Dan songs</div><div class=3D"preview" style=3D"displa=
+y:none;font-size:1px;color:#333333;line-height:1px;max-height:0px;max-width=
+:0px;opacity:0;overflow:hidden;">&#847; &nbsp; &#8199; &#173;&#847; &nbsp; =
+&#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847=
+; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#=
+173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &=
+#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847;=
+ &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#1=
+73;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#=
+8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; =
+&nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#17=
+3;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8=
+199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &=
+nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173=
+;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#81=
+99; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &n=
+bsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;=
+&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#819=
+9; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nb=
+sp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&=
+#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199=
+; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbs=
+p; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#=
+847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199;=
+ &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp=
+; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#8=
+47; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; =
+&#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp;=
+ &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#84=
+7; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &=
+#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; =
+&#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847=
+; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#=
+173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &=
+#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847;=
+ &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#1=
+73;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#=
+8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; =
+&nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#17=
+3;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8=
+199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &=
+nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173=
+;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#81=
+99; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &n=
+bsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;=
+&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#819=
+9; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nb=
+sp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&=
+#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199=
+; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbs=
+p; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#=
+847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199;=
+ &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp=
+; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#8=
+47; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; =
+&#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp;=
+ &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#84=
+7; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &=
+#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; =
+&#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847=
+; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#=
+173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &=
+#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847;=
+ &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#1=
+73;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#=
+8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; =
+&nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#17=
+3;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8=
+199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &=
+nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173=
+;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#81=
+99; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &n=
+bsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;=
+&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#819=
+9; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nb=
+sp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&=
+#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199; &#173;&#847; &nbsp; &#8199=
+; &#173;</div><table class=3D"email-body-container" role=3D"presentation" w=
+idth=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><=
+td></td><td class=3D"content" width=3D"550"></td><td></td></tr><tr><td></td=
+><td class=3D"content" width=3D"550" align=3D"left"><div style=3D"font-size=
+: 16px;line-height: 26px;max-width: 550px;width: 100%;margin: 0 auto;overfl=
+ow-wrap: break-word;"><table role=3D"presentation" width=3D"100%" border=3D=
+"0" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><td align=3D"right" styl=
+e=3D"height:20px;"><table role=3D"presentation" width=3D"auto" border=3D"0"=
+ cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><td style=3D"vertical-align=
+:middle;"><span class=3D"pencraft pc-reset reset-IxiVJZ tw-font-body tw-tex=
+t-ssm tw-text-substack-secondary" style=3D"font-family: SF Pro Text, -apple=
+-system, system-ui, BlinkMacSystemFont, Inter, Segoe UI, Roboto, Helvetica,=
+ Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;font=
+-size: 13px;color: unset;list-style: none;text-decoration: unset;margin: 0;=
+"><div class=3D"pencraft pc-reset align-right-VJbKw5 size-12-mmZ61m reset-I=
+xiVJZ" style=3D"list-style: none;color: unset;text-align: right;font-size: =
+12px;line-height: 16px;text-decoration: unset;margin: 0;"><span class=3D"pe=
+ncraft pc-reset reset-IxiVJZ" translated=3D"" style=3D"list-style: none;col=
+or: unset;text-decoration: unset;margin: 0;">Forwarded this email? <a class=
+=3D"pencraft pc-reset decoration-underline-ClTkYc reset-IxiVJZ" href=3D"htt=
+ps://substack.com/redirect/2/eyJlIjoiaHR0cHM6Ly9zdGVlbHlkYW5uZXdzbGV0dGVyLn=
+N1YnN0YWNrLmNvbS9zdWJzY3JpYmU_dXRtX3NvdXJjZT1lbWFpbCZ1dG1fY2FtcGFpZ249ZW1ha=
+Wwtc3Vic2NyaWJlJnI9NWRwbmYxJm5leHQ9aHR0cHMlM0ElMkYlMkZzdGVlbHlkYW5uZXdzbGV0=
+dGVyLnN1YnN0YWNrLmNvbSUyRnAlMkZpLWdvdC10aGUtbmV3cy1pc3N1ZS00MyIsInAiOjE1OTA=
+wMjkxOSwicyI6MTg2MjY1MywiZiI6dHJ1ZSwidSI6MzI1MzYyNjM3LCJpYXQiOjE3NDE4ODIyOD=
+AsImV4cCI6MTc0NDQ3NDI4MCwiaXNzIjoicHViLTAiLCJzdWIiOiJsaW5rLXJlZGlyZWN0In0.b=
+VzmtGuool9wme_hADTTUdEo0LmV3vqbPWlSCixm6s4?" style=3D"list-style: none;colo=
+r: unset;text-decoration: unset;margin: 0;-webkit-text-decoration-line: und=
+erline;text-decoration-line: underline;">Subscribe here</a> for more</span>=
+</div></span></td></tr></tbody></table></td></tr></tbody></table><div class=
+=3D"post typography" dir=3D"auto" style=3D"padding: 32px 0 0 0;font-size: 1=
+6px;line-height: 26px;"><div class=3D"post-header" style=3D"font-size: 16px=
+;line-height: 26px;"><h1 class=3D"post-title published" style=3D"color: rgb=
+(54,55,55);font-family: 'SF Pro Display', -apple-system, system-ui, BlinkMa=
+cSystemFont, 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Ap=
+ple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';font-weight: 700;-web=
+kit-font-smoothing: antialiased;-moz-osx-font-smoothing: antialiased;-webki=
+t-appearance: optimizelegibility;-moz-appearance: optimizelegibility;appear=
+ance: optimizelegibility;margin: 0;line-height: 36px;font-size: 32px;"><a h=
+ref=3D"https://substack.com/app-link/post?publication_id=3D1862653&post_id=
+=3D159002919&utm_source=3Dpost-email-title&utm_campaign=3Demail-post-title&=
+isFreemail=3Dtrue&r=3D5dpnf1&token=3DeyJ1c2VyX2lkIjozMjUzNjI2MzcsInBvc3RfaW=
+QiOjE1OTAwMjkxOSwiaWF0IjoxNzQxODgyMjgwLCJleHAiOjE3NDQ0NzQyODAsImlzcyI6InB1Y=
+i0xODYyNjUzIiwic3ViIjoicG9zdC1yZWFjdGlvbiJ9.eRHfW7StV32Zs95bo5vElSyaPNYSaEE=
+byUV5sit77YA" style=3D"color: rgb(54,55,55);text-decoration: none;">(I got =
+the) News | Issue 43</a></h1><h3 class=3D"subtitle" style=3D"font-family: '=
+SF Pro Display',-apple-system-headline,system-ui,-apple-system,BlinkMacSyst=
+emFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Se=
+goe UI Emoji','Segoe UI Symbol';font-weight: normal;-webkit-font-smoothing:=
+ antialiased;-moz-osx-font-smoothing: antialiased;-webkit-appearance: optim=
+izelegibility;-moz-appearance: optimizelegibility;appearance: optimizelegib=
+ility;margin: 4px 0 0;color: #777777;line-height: 24px;font-size: 18px;marg=
+in-top: 12px;">Rolling Stone ranks all 84 Steely Dan songs</h3><table class=
+=3D"post-meta custom" cellpadding=3D"0" cellspacing=3D"0" style=3D"margin: =
+1em 0;height: 20px;align-items: center;"><tbody><tr><td class=3D"post-meta-=
+item post-date" title=3D"2025-03-13T16:09:35.678Z" style=3D"position: relat=
+ive;padding: 0px 12px 0px 0;height: 14px;font-size: 14px;font-family: syste=
+m-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,san=
+s-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';color: #7777=
+77;text-decoration: none;margin-right: 0;padding-right: 0;white-space: nowr=
+ap;font-weight: 400;padding-top: 0;padding-bottom: 0;"><div class=3D"pencra=
+ft pc-reset color-secondary-ls1g8s line-height-20-t4M0El font-meta-MWBumP s=
+ize-11-NuY2Zx weight-medium-fw81nC transform-uppercase-yKDgcq reset-IxiVJZ =
+meta-EgzBVA" style=3D"list-style: none;font-size: 11px;line-height: 20px;te=
+xt-decoration: unset;color: rgb(119,119,119);margin: 0;font-family: 'SF Com=
+pact',-apple-system,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',R=
+oboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Sego=
+e UI Symbol';font-weight: 500;text-transform: uppercase;letter-spacing: .2p=
+x;"><time datetime=3D"2025-03-13T16:09:35.678Z">Mar 13</time></div></td></t=
+r></tbody></table><table class=3D"email-ufi-2-top" role=3D"presentation" wi=
+dth=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=3D"bord=
+er-top: 1px solid rgb(0,0,0,.1);border-bottom: 1px solid rgb(0,0,0,.1);min-=
+width: 100%;"><tbody><tr height=3D"16"><td height=3D"16" style=3D"font-size=
+:0px;line-height:0;">&nbsp;</td></tr><tr><td><table role=3D"presentation" w=
+idth=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><=
+td><table role=3D"presentation" width=3D"auto" border=3D"0" cellspacing=3D"=
+0" cellpadding=3D"0"><tbody><tr><td style=3D"vertical-align:middle;"><table=
+ role=3D"presentation" width=3D"38" border=3D"0" cellspacing=3D"0" cellpadd=
+ing=3D"0"><tbody><tr><td align=3D"center"><a class=3D"email-icon-button" hr=
+ef=3D"https://substack.com/app-link/post?publication_id=3D1862653&post_id=
+=3D159002919&utm_source=3Dsubstack&isFreemail=3Dtrue&submitLike=3Dtrue&toke=
+n=3DeyJ1c2VyX2lkIjozMjUzNjI2MzcsInBvc3RfaWQiOjE1OTAwMjkxOSwicmVhY3Rpb24iOiL=
+inaQiLCJpYXQiOjE3NDE4ODIyODAsImV4cCI6MTc0NDQ3NDI4MCwiaXNzIjoicHViLTE4NjI2NT=
+MiLCJzdWIiOiJyZWFjdGlvbiJ9.YGMRo4frIbt41Y1zUbbaExcnmOoyi8eZG-eTczKT_1o&utm_=
+medium=3Demail&utm_campaign=3Demail-reaction&r=3D5dpnf1" style=3D"font-fami=
+ly: system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,=
+Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';dis=
+play: inline-block;font-weight: 500;border: 1px solid rgb(0,0,0,.1);border-=
+radius: 9999px;text-transform: uppercase;font-size: 12px;line-height: 1;pad=
+ding: 9px 0;text-decoration: none;color: rgb(119,119,119);min-width: 38px;b=
+ox-sizing: border-box;width: 38px"><img class=3D"icon" src=3D"https://subst=
+ackcdn.com/image/fetch/w_36,c_scale,f_png,q_auto:good,fl_progressive:steep/=
+https%3A%2F%2Fsubstack.com%2Ficon%2FLucideHeart%3Fv%3D4%26height%3D36%26fil=
+l%3Dnone%26stroke%3D%2523808080%26strokeWidth%3D2" width=3D"18" height=3D"1=
+8" style=3D"border: none;vertical-align: middle;max-width: 18px" alt=3D""><=
+/a></td></tr></tbody></table></td><td width=3D"8" style=3D"min-width: 8px">=
+</td><td style=3D"vertical-align:middle;"><table role=3D"presentation" widt=
+h=3D"38" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><td al=
+ign=3D"center"><a class=3D"email-icon-button" href=3D"https://substack.com/=
+app-link/post?publication_id=3D1862653&post_id=3D159002919&utm_source=3Dsub=
+stack&utm_medium=3Demail&isFreemail=3Dtrue&comments=3Dtrue&token=3DeyJ1c2Vy=
+X2lkIjozMjUzNjI2MzcsInBvc3RfaWQiOjE1OTAwMjkxOSwiaWF0IjoxNzQxODgyMjgwLCJleHA=
+iOjE3NDQ0NzQyODAsImlzcyI6InB1Yi0xODYyNjUzIiwic3ViIjoicG9zdC1yZWFjdGlvbiJ9.e=
+RHfW7StV32Zs95bo5vElSyaPNYSaEEbyUV5sit77YA&r=3D5dpnf1&utm_campaign=3Demail-=
+half-magic-comments&action=3Dpost-comment&utm_source=3Dsubstack&utm_medium=
+=3Demail" style=3D"font-family: system-ui,-apple-system,BlinkMacSystemFont,=
+'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI =
+Emoji','Segoe UI Symbol';display: inline-block;font-weight: 500;border: 1px=
+ solid rgb(0,0,0,.1);border-radius: 9999px;text-transform: uppercase;font-s=
+ize: 12px;line-height: 1;padding: 9px 0;text-decoration: none;color: rgb(11=
+9,119,119);min-width: 38px;box-sizing: border-box;width: 38px"><img class=
+=3D"icon" src=3D"https://substackcdn.com/image/fetch/w_36,c_scale,f_png,q_a=
+uto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Ficon%2FLucideCom=
+ments%3Fv%3D4%26height%3D36%26fill%3Dnone%26stroke%3D%2523808080%26strokeWi=
+dth%3D2" width=3D"18" height=3D"18" style=3D"border: none;vertical-align: m=
+iddle;max-width: 18px" alt=3D""></a></td></tr></tbody></table></td><td widt=
+h=3D"8" style=3D"min-width: 8px"></td><td style=3D"vertical-align:middle;">=
+<table role=3D"presentation" width=3D"38" border=3D"0" cellspacing=3D"0" ce=
+llpadding=3D"0"><tbody><tr><td align=3D"center"><a class=3D"email-icon-butt=
+on" href=3D"https://substack.com/app-link/post?publication_id=3D1862653&pos=
+t_id=3D159002919&utm_source=3Dsubstack&utm_medium=3Demail&utm_content=3Dsha=
+re&utm_campaign=3Demail-share&action=3Dshare&triggerShare=3Dtrue&isFreemail=
+=3Dtrue&r=3D5dpnf1&token=3DeyJ1c2VyX2lkIjozMjUzNjI2MzcsInBvc3RfaWQiOjE1OTAw=
+MjkxOSwiaWF0IjoxNzQxODgyMjgwLCJleHAiOjE3NDQ0NzQyODAsImlzcyI6InB1Yi0xODYyNjU=
+zIiwic3ViIjoicG9zdC1yZWFjdGlvbiJ9.eRHfW7StV32Zs95bo5vElSyaPNYSaEEbyUV5sit77=
+YA" style=3D"font-family: system-ui,-apple-system,BlinkMacSystemFont,'Segoe=
+ UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji'=
+,'Segoe UI Symbol';display: inline-block;font-weight: 500;border: 1px solid=
+ rgb(0,0,0,.1);border-radius: 9999px;text-transform: uppercase;font-size: 1=
+2px;line-height: 1;padding: 9px 0;text-decoration: none;color: rgb(119,119,=
+119);min-width: 38px;box-sizing: border-box;width: 38px"><img class=3D"icon=
+" src=3D"https://substackcdn.com/image/fetch/w_36,c_scale,f_png,q_auto:good=
+,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Ficon%2FLucideShare2%3Fv%=
+3D4%26height%3D36%26fill%3Dnone%26stroke%3D%2523808080%26strokeWidth%3D2" w=
+idth=3D"18" height=3D"18" style=3D"border: none;vertical-align: middle;max-=
+width: 18px" alt=3D""></a></td></tr></tbody></table></td><td width=3D"8" st=
+yle=3D"min-width: 8px"></td><td style=3D"vertical-align:middle;"><table rol=
+e=3D"presentation" width=3D"38" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0"><tbody><tr><td align=3D"center"><a class=3D"email-icon-button" href=
+=3D"https://substack.com/redirect/2/eyJlIjoiaHR0cHM6Ly9vcGVuLnN1YnN0YWNrLmN=
+vbS9wdWIvc3RlZWx5ZGFubmV3c2xldHRlci9wL2ktZ290LXRoZS1uZXdzLWlzc3VlLTQzP3V0bV=
+9zb3VyY2U9c3Vic3RhY2smdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249ZW1haWwtcmVzd=
+GFjay1jb21tZW50JmFjdGlvbj1yZXN0YWNrLWNvbW1lbnQmcj01ZHBuZjEmdG9rZW49ZXlKMWMy=
+VnlYMmxrSWpvek1qVXpOakkyTXpjc0luQnZjM1JmYVdRaU9qRTFPVEF3TWpreE9Td2lhV0YwSWp=
+veE56UXhPRGd5TWpnd0xDSmxlSEFpT2pFM05EUTBOelF5T0RBc0ltbHpjeUk2SW5CMVlpMHhPRF=
+l5TmpVeklpd2ljM1ZpSWpvaWNHOXpkQzF5WldGamRHbHZiaUo5LmVSSGZXN1N0VjMyWnM5NWJvN=
+XZFbFN5YVBOWVNhRUVieVVWNXNpdDc3WUEiLCJwIjoxNTkwMDI5MTksInMiOjE4NjI2NTMsImYi=
+OnRydWUsInUiOjMyNTM2MjYzNywiaWF0IjoxNzQxODgyMjgwLCJleHAiOjE3NDQ0NzQyODAsIml=
+zcyI6InB1Yi0wIiwic3ViIjoibGluay1yZWRpcmVjdCJ9.NUdI68wilSK6iDwFes_-ESnZeD3Im=
+b8NIqyrCDAwoA8?&utm_source=3Dsubstack&utm_medium=3Demail" style=3D"font-fam=
+ily: system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica=
+,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';di=
+splay: inline-block;font-weight: 500;border: 1px solid rgb(0,0,0,.1);border=
+-radius: 9999px;text-transform: uppercase;font-size: 12px;line-height: 1;pa=
+dding: 9px 0;text-decoration: none;color: rgb(119,119,119);min-width: 38px;=
+box-sizing: border-box;width: 38px"><img class=3D"icon" src=3D"https://subs=
+tackcdn.com/image/fetch/w_36,c_scale,f_png,q_auto:good,fl_progressive:steep=
+/https%3A%2F%2Fsubstack.com%2Ficon%2FNoteForwardIcon%3Fv%3D4%26height%3D36%=
+26fill%3Dnone%26stroke%3D%2523808080%26strokeWidth%3D2" width=3D"18" height=
+=3D"18" style=3D"border: none;vertical-align: middle;max-width: 18px" alt=
+=3D""></a></td></tr></tbody></table></td></tr></tbody></table></td><td alig=
+n=3D"right"><table role=3D"presentation" width=3D"auto" border=3D"0" cellsp=
+acing=3D"0" cellpadding=3D"0"><tbody><tr><td style=3D"vertical-align:middle=
+;"><table role=3D"presentation" width=3D"auto" border=3D"0" cellspacing=3D"=
+0" cellpadding=3D"0"><tbody><tr><td align=3D"center"><a class=3D"email-butt=
+on-outline" href=3D"https://open.substack.com/pub/steelydannewsletter/p/i-g=
+ot-the-news-issue-43?utm_source=3Demail&redirect=3Dapp-store&utm_campaign=
+=3Demail-read-in-app" style=3D"font-family: system-ui,-apple-system,BlinkMa=
+cSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji=
+','Segoe UI Emoji','Segoe UI Symbol';display: inline-block;font-weight: 500=
+;border: 1px solid rgb(0,0,0,.1);border-radius: 9999px;text-transform: uppe=
+rcase;font-size: 12px;line-height: 12px;padding: 9px 14px;text-decoration: =
+none;color: rgb(119,119,119);"><div class=3D"email-button-spacer" style=3D"=
+font-size: 16px;line-height: 26px;display: inline-block;vertical-align: mid=
+dle;max-width: 0;min-height: 18px;"></div><span class=3D"email-button-text"=
+ style=3D"vertical-align: middle;margin-right: 4px">READ IN APP</span><img =
+class=3D"icon text-icon" src=3D"https://substackcdn.com/image/fetch/w_36,c_=
+scale,f_png,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fi=
+con%2FLucideArrowUpRight%3Fv%3D4%26height%3D36%26fill%3Dnone%26stroke%3D%25=
+23808080%26strokeWidth%3D2" width=3D"18" height=3D"18" style=3D"min-width: =
+18px;min-height: 18px;border: none;vertical-align: middle;margin-right: 0;m=
+argin-left: 0;max-width: 18px" alt=3D""></a></td></tr></tbody></table></td>=
+</tr></tbody></table></td></tr></tbody></table></td></tr><tr height=3D"16">=
+<td height=3D"16" style=3D"font-size:0px;line-height:0;">&nbsp;</td></tr></=
+tbody></table></div></div><div class=3D"post typography" dir=3D"auto" style=
+=3D"padding: 32px 0 0 0;font-size: 16px;line-height: 26px;"><div class=3D"b=
+ody markup" dir=3D"auto" style=3D"text-align: initial;font-size: 16px;line-=
+height: 26px;width: 100%;word-break: break-word;margin-bottom: 16px;"><p st=
+yle=3D"margin: 0 0 20px 0;color: rgb(54,55,55);line-height: 26px;font-size:=
+ 16px;margin-top: 0;">Hello! Hope you are well!</p><p style=3D"margin: 0 0 =
+20px 0;color: rgb(54,55,55);line-height: 26px;font-size: 16px;">We all have=
+ our favorites, our top 5s and our numero uno Steely Dan tune. Not sure I&#=
+8217;d be able to choose a favorite from their catalog. Of course there&#82=
+17;s songs I like more than others, but picking a true #1 feels like a toug=
+h task. </p><p style=3D"margin: 0 0 20px 0;color: rgb(54,55,55);line-height=
+: 26px;font-size: 16px;"><span>I usually shy away from any rankings where &=
+#8216;art&#8217; is concerned, but the </span><a href=3D"https://substack.c=
+om/redirect/9f079d38-2bc5-46e2-8a92-ccea473c3fc4?j=3DeyJ1IjoiNWRwbmYxIn0.He=
+F6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"color: rgb(54,=
+55,55);text-decoration: underline;">Rolling Stone breakdown</a><span> is an=
+ enjoyable, well-produced package of words, music and images as they run do=
+wn all 84 of Steely Dan&#8217;s songs &#8212; ranked.</span></p><h1 class=
+=3D"header-anchor-post" style=3D"position: relative;--highlight-bg: rgba(va=
+r(--color-bg-accent-themed-rgb), 0.2);font-family: 'SF Pro Display',-apple-=
+system-headline,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Robot=
+o,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI=
+ Symbol';font-weight: bold;-webkit-font-smoothing: antialiased;-moz-osx-fon=
+t-smoothing: antialiased;-webkit-appearance: optimizelegibility;-moz-appear=
+ance: optimizelegibility;appearance: optimizelegibility;margin: 1em 0 0.625=
+em 0;color: rgb(54,55,55);line-height: 1.16em;font-size: 2em;"><a href=3D"h=
+ttps://substack.com/redirect/9f079d38-2bc5-46e2-8a92-ccea473c3fc4?j=3DeyJ1I=
+joiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=
+=3D"color: rgb(54,55,55);text-decoration: underline;">Steely Dan: Every Son=
+g Ranked</a></h1><p style=3D"margin: 0 0 20px 0;color: rgb(54,55,55);line-h=
+eight: 26px;font-size: 16px;">There&#8217;s no story anywhere in music like=
+ Steely Dan. </p><p style=3D"margin: 0 0 20px 0;color: rgb(54,55,55);line-h=
+eight: 26px;font-size: 16px;">The Seventies jazz-rock masterminds have gone=
+ in and out of style over the years, but they&#8217;ve never been more popu=
+lar, more influential, more of a cultural obsession than they are right now=
+=2E Donald Fagen and Walter Becker were=
+ truly ahead of their time, with a str=
+ing of classic albums, satirizing 1970s coked-out yacht-rock smoothitude ev=
+en as they luxuriated in it. And one thing never changes &#8212; no band is=
+ more fun to argue about. </p><p style=3D"margin: 0 0 20px 0;color: rgb(54,=
+55,55);line-height: 26px;font-size: 16px;"><span>Steely Dan fans love to de=
+bate every last detail in the band&#8217;s music, every song, every drum br=
+eak or sax solo, from the caves of Altamira to the oleanders of Annandale. =
+So let&#8217;s bring on the ultimate Steely Dan argument starter: all 84 of=
+ their songs, ranked. The good, the bad, and the </span><em>Gaucho.</em></p=
+><div style=3D"font-size: 16px;line-height: 26px;"><hr style=3D"margin: 32p=
+x 0;padding: 0;height: 1px;background: #e6e6e6;border: none;"></div><h4 cla=
+ss=3D"header-anchor-post" style=3D"position: relative;--highlight-bg: rgba(=
+var(--color-bg-accent-themed-rgb), 0.2);font-family: 'SF Pro Display',-appl=
+e-system-headline,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Rob=
+oto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe =
+UI Symbol';font-weight: bold;-webkit-font-smoothing: antialiased;-moz-osx-f=
+ont-smoothing: antialiased;-webkit-appearance: optimizelegibility;-moz-appe=
+arance: optimizelegibility;appearance: optimizelegibility;margin: 1em 0 0.6=
+25em 0;color: rgb(54,55,55);line-height: 1.16em;font-size: 1.125em;"><a hre=
+f=3D"https://substack.com/redirect/0867d83d-6b98-43fd-a80b-71ddffe7d567?j=
+=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"=
+" style=3D"color: rgb(54,55,55);text-decoration: underline;">Jeff Baxter on=
+ His Best Songs, From Steely Dan to Doobies</a></h4><p style=3D"margin: 0 0=
+ 20px 0;color: rgb(54,55,55);line-height: 26px;font-size: 16px;"><span>If w=
+e were to write a list called &#8220;Skunks, Ranked,&#8221; Jeff &#8220;Sku=
+nk&#8221; Baxter would triumph over his opponent, Pep&#233; Le Pew, every s=
+ingle time. (Sorry Pep&#233;, but you&#8217;re not a featured player on </s=
+pan><em>Pretzel Logic</em><span>.)</span><strong> </strong><span>The guitar=
+ist, already a deity among Steely Dan and Doobie Brothers fans for formativ=
+e stints with both bands, considers his life as a studio musician similar t=
+o to a craftsman who has the tools to construct whatever is needed. &#8220;=
+You&#8217;re basically standing by and waiting for a call,&#8221; he explai=
+ns. &#8220;It&#8217;s kind of like a combination of an EMT, a carpenter, an=
+d a number of other things to ultimately satisfy the artist. You park your =
+ego at the door and get the job done.&#8221;</span></p><h4 class=3D"header-=
+anchor-post" style=3D"position: relative;--highlight-bg: rgba(var(--color-b=
+g-accent-themed-rgb), 0.2);font-family: 'SF Pro Display',-apple-system-head=
+line,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica=
+,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';fo=
+nt-weight: bold;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing=
+: antialiased;-webkit-appearance: optimizelegibility;-moz-appearance: optim=
+izelegibility;appearance: optimizelegibility;margin: 1em 0 0.625em 0;color:=
+ rgb(54,55,55);line-height: 1.16em;font-size: 1.125em;"><a href=3D"https://=
+substack.com/redirect/96439d5a-a750-47d9-8388-3cb2770c2c98?j=3DeyJ1IjoiNWRw=
+bmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"colo=
+r: rgb(54,55,55);text-decoration: underline;">Behind the Album: &#8216;Two =
+Against Nature,&#8217; Which Found Steely Dan Returning After Two Decades a=
+s if They&#8217;d Never Left</a></h4><p style=3D"margin: 0 0 20px 0;color: =
+rgb(54,55,55);line-height: 26px;font-size: 16px;"><span>It looked for quite=
+ some time the legacy of </span><a href=3D"https://substack.com/redirect/47=
+37cd4c-cc33-48f9-aa9d-ae3e6f43b5dc?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj=
+9JSxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"color: rgb(54,55,55);text-de=
+coration: underline;">Steely Dan</a><span> would be confined to the &#8216;=
+70s, a decade their music helped define. Who could ever have expected that =
+they&#8217;d make a grand return, sounding eerily the same as they did in t=
+heir heyday, to enchant and mystify the new millennium as they&#8217;d done=
+ the previous one.</span></p><h4 class=3D"header-anchor-post" style=3D"posi=
+tion: relative;--highlight-bg: rgba(var(--color-bg-accent-themed-rgb), 0.2)=
+;font-family: 'SF Pro Display',-apple-system-headline,system-ui,-apple-syst=
+em,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple C=
+olor Emoji','Segoe UI Emoji','Segoe UI Symbol';font-weight: bold;-webkit-fo=
+nt-smoothing: antialiased;-moz-osx-font-smoothing: antialiased;-webkit-appe=
+arance: optimizelegibility;-moz-appearance: optimizelegibility;appearance: =
+optimizelegibility;margin: 1em 0 0.625em 0;color: rgb(54,55,55);line-height=
+: 1.16em;font-size: 1.125em;"><a href=3D"https://substack.com/redirect/0358=
+b68d-4127-4a5b-9e49-ce451050a8ac?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9J=
+SxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"color: rgb(54,55,55);text-deco=
+ration: underline;">The Steely Dan song Michael McDonald deemed impossible =
+to sing</a></h4><p style=3D"margin: 0 0 20px 0;color: rgb(54,55,55);line-he=
+ight: 26px;font-size: 16px;">Once one of the many bywords for 1970s lamenes=
+s, Steely Dan have been embraced by a new generation for their jazz-inflect=
+ed character sketches and stellar pop hooks. Their 1975 record &#8216;Katy =
+Lied&#8217; is arguably the best example of both these sides of the band. F=
+our albums in, most artists are starting to run out of ideas but part of Th=
+e Dan&#8217;s creative windfall came from an unlikely source. Namely, their=
+ new backing singer!</p><h4 class=3D"header-anchor-post" style=3D"position:=
+ relative;--highlight-bg: rgba(var(--color-bg-accent-themed-rgb), 0.2);font=
+-family: 'SF Pro Display',-apple-system-headline,system-ui,-apple-system,Bl=
+inkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color =
+Emoji','Segoe UI Emoji','Segoe UI Symbol';font-weight: bold;-webkit-font-sm=
+oothing: antialiased;-moz-osx-font-smoothing: antialiased;-webkit-appearanc=
+e: optimizelegibility;-moz-appearance: optimizelegibility;appearance: optim=
+izelegibility;margin: 1em 0 0.625em 0;color: rgb(54,55,55);line-height: 1.1=
+6em;font-size: 1.125em;"><a href=3D"https://substack.com/redirect/03121865-=
+9928-4428-af7f-eabc8e064b8f?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLH=
+pwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"color: rgb(54,55,55);text-decoratio=
+n: underline;">Steely Dan's "Gaucho" Is a Masterpiece About Being Past Your=
+ Prime</a></h4><p style=3D"margin: 0 0 20px 0;color: rgb(54,55,55);line-hei=
+ght: 26px;font-size: 16px;"><span>The band&#8217;s seventh album in under a=
+ decade, and last until 2000&#8217;s </span><em>Two Against Nature</em><spa=
+n>, </span><em>Gaucho</em><span> sets itself apart from the rest of the ban=
+d&#8217;s output with just how seamless it is despite a historically diffic=
+ult production process. </span></p><p style=3D"margin: 0 0 20px 0;color: rg=
+b(54,55,55);line-height: 26px;font-size: 16px;">It&#8217;s a moody album, a=
+ loose concept record looking at a bunch of people whose best days are behi=
+nd them but maybe don&#8217;t want to admit it. As Alex Pappademas wrote fo=
+r Pitchfork, &#8220;The only character who&#8217;s having any kind of commu=
+nal fun is the coke dealer on &#8216;Glamour Profession,&#8217; who makes c=
+alls from a basketball star&#8217;s car phone and takes meetings over Mr. C=
+how dumplings with &#8216;Jive Miguel&#8230;from Bogot&#225;.&#8217;&#8217;=
+ People being past their prime honestly never sounded so good.</p><div styl=
+e=3D"font-size: 16px;line-height: 26px;"><hr style=3D"margin: 32px 0;paddin=
+g: 0;height: 1px;background: #e6e6e6;border: none;"></div><h4 class=3D"head=
+er-anchor-post" style=3D"position: relative;--highlight-bg: rgba(var(--colo=
+r-bg-accent-themed-rgb), 0.2);font-family: 'SF Pro Display',-apple-system-h=
+eadline,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvet=
+ica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol'=
+;font-weight: bold;-webkit-font-smoothing: antialiased;-moz-osx-font-smooth=
+ing: antialiased;-webkit-appearance: optimizelegibility;-moz-appearance: op=
+timizelegibility;appearance: optimizelegibility;margin: 1em 0 0.625em 0;col=
+or: rgb(54,55,55);line-height: 1.16em;font-size: 1.125em;"><strong>&#128172=
+;</strong><span> The excellent </span><em><a href=3D"https://substack.com/r=
+edirect/4747fb8f-08f4-4da1-abe3-701e48127fe9?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pn=
+l-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"color: rgb(54,55,5=
+5);text-decoration: underline;">Expanding Dan</a><span> </span></em><span>n=
+ewsletter</span></h4><h4 class=3D"header-anchor-post" style=3D"position: re=
+lative;--highlight-bg: rgba(var(--color-bg-accent-themed-rgb), 0.2);font-fa=
+mily: 'SF Pro Display',-apple-system-headline,system-ui,-apple-system,Blink=
+MacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emo=
+ji','Segoe UI Emoji','Segoe UI Symbol';font-weight: bold;-webkit-font-smoot=
+hing: antialiased;-moz-osx-font-smoothing: antialiased;-webkit-appearance: =
+optimizelegibility;-moz-appearance: optimizelegibility;appearance: optimize=
+legibility;margin: 1em 0 0.625em 0;color: rgb(54,55,55);line-height: 1.16em=
+;font-size: 1.125em;"><a href=3D"https://substack.com/redirect/22062414-22c=
+d-448e-b9f0-a09ffd64fd7f?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwH=
+NgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"color: rgb(54,55,55);text-decoration: =
+underline;">Steely Dan vs. the world: 'Two Against Nature' at 25</a></h4><p=
+ style=3D"margin: 0 0 20px 0;color: rgb(54,55,55);line-height: 26px;font-si=
+ze: 16px;">Listen back to Barney Hoskyns's incisive conversation with Walte=
+r Becker and Donald Fagen on the eve of the release of their millennium mid=
+life masterwork.</p><div style=3D"font-size: 16px;line-height: 26px;"><hr s=
+tyle=3D"margin: 32px 0;padding: 0;height: 1px;background: #e6e6e6;border: n=
+one;"></div><h4 class=3D"header-anchor-post" style=3D"position: relative;--=
+highlight-bg: rgba(var(--color-bg-accent-themed-rgb), 0.2);font-family: 'SF=
+ Pro Display',-apple-system-headline,system-ui,-apple-system,BlinkMacSystem=
+Font,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Sego=
+e UI Emoji','Segoe UI Symbol';font-weight: bold;-webkit-font-smoothing: ant=
+ialiased;-moz-osx-font-smoothing: antialiased;-webkit-appearance: optimizel=
+egibility;-moz-appearance: optimizelegibility;appearance: optimizelegibilit=
+y;margin: 1em 0 0.625em 0;color: rgb(54,55,55);line-height: 1.16em;font-siz=
+e: 1.125em;"><span>&#128247; The awesome </span><a href=3D"https://substack=
+=2Ecom/redirect/51b00a5e-e09f-4f29-951=
+9-4c5f86cb40f9?j=3DeyJ1IjoiNWRwbmYxIn0.=
+HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"color: rgb(5=
+4,55,55);text-decoration: underline;">Barney Hurley</a><span> X account</sp=
+an></h4><p style=3D"margin: 0 0 20px 0;color: rgb(54,55,55);line-height: 26=
+px;font-size: 16px;"><span>Barney Hurley continues to feature great Steely =
+Dan content on his must-see </span><a href=3D"https://substack.com/redirect=
+/51b00a5e-e09f-4f29-9519-4c5f86cb40f9?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2=
+WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" rel=3D"" style=3D"color: rgb(54,55,55);text=
+-decoration: underline;">X account</a><span>. There&#8217;s equally terrifi=
+c non-steely Dan content as well!</span></p><p style=3D"margin: 0 0 20px 0;=
+color: rgb(54,55,55);line-height: 26px;font-size: 16px;"><em>Promo poster f=
+or Steely Dan's 1980 masterpiece, 'Gaucho'</em></p><div class=3D"captioned-=
+image-container-static" style=3D"font-size: 16px;line-height: 26px;margin: =
+32px auto;"><figure style=3D"width: 100%;margin: 0 auto;"><table class=3D"i=
+mage-wrapper" data-component-name=3D"Image2ToDOMStatic" width=3D"100%" bord=
+er=3D"0" cellspacing=3D"0" cellpadding=3D"0" style=3D"mso-padding-alt: 1em =
+0 1.6em;"><tbody><tr><td style=3D"text-align: center;"></td><td class=3D"co=
+ntent" align=3D"left" width=3D"460" style=3D"text-align: center;"><a class=
+=3D"image-link" rel=3D"" target=3D"_blank" href=3D"https://substack.com/red=
+irect/cad1635c-aba7-4c0f-977d-af5889b166b2?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-=
+ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" style=3D"position: relative;flex-direc=
+tion: column;align-items: center;padding: 0;width: auto;height: auto;border=
+: none;text-decoration: none;display: block;margin: 0;"><img class=3D"" dat=
+a-attrs=3D"{&quot;src&quot;:&quot;https://substack-post-media.s3.amazonaws.=
+com/public/images/a0ba5ebb-57d2-4db6-822e-9075abdbf492_2250x3434.jpeg&quot;=
+,&quot;srcNoWatermark&quot;:null,&quot;fullscreen&quot;:null,&quot;imageSiz=
+e&quot;:null,&quot;height&quot;:2222,&quot;width&quot;:1456,&quot;resizeWid=
+th&quot;:460,&quot;bytes&quot;:1036684,&quot;alt&quot;:null,&quot;title&quo=
+t;:null,&quot;type&quot;:&quot;image/jpeg&quot;,&quot;href&quot;:null,&quot=
+;belowTheFold&quot;:true,&quot;topImage&quot;:false,&quot;internalRedirect&=
+quot;:&quot;https://steelydannewsletter.substack.com/i/159002919?img=3Dhttp=
+s%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa0ba5ebb=
+-57d2-4db6-822e-9075abdbf492_2250x3434.jpeg&quot;,&quot;isProcessing&quot;:=
+false}" alt=3D"" width=3D"460" height=3D"702.0054945054945" src=3D"https://=
+substackcdn.com/image/fetch/w_460,c_limit,f_auto,q_auto:good,fl_progressive=
+:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages=
+%2Fa0ba5ebb-57d2-4db6-822e-9075abdbf492_2250x3434.jpeg" style=3D"border: no=
+ne !important;vertical-align: middle;display: block;-ms-interpolation-mode:=
+ bicubic;height: auto;margin-bottom: 0;width: auto !important;max-width: 10=
+0% !important;margin: 0 auto;"></a></td><td style=3D"text-align: center;"><=
+/td></tr></tbody></table></figure></div><div style=3D"font-size: 16px;line-=
+height: 26px;"><hr style=3D"margin: 32px 0;padding: 0;height: 1px;backgroun=
+d: #e6e6e6;border: none;"></div><p style=3D"margin: 0 0 20px 0;color: rgb(5=
+4,55,55);line-height: 26px;font-size: 16px;"><strong>Have a GREAT day!  &#1=
+28526;</strong></p><div style=3D"font-size: 16px;line-height: 26px;"><hr st=
+yle=3D"margin: 32px 0;padding: 0;height: 1px;background: #e6e6e6;border: no=
+ne;"></div><div class=3D"subscribe-widget is-signed-up" data-component-name=
+=3D"SubscribeWidget" style=3D"margin: 0 0 1em;direction: ltr;font-size: 16p=
+x;line-height: 26px;margin-bottom: 0;"><div class=3D"pencraft pc-reset butt=
+on-wrapper" style=3D"text-decoration: unset;list-style: none;font-size: 16p=
+x;line-height: 26px;text-align: center;cursor: pointer;border-radius: 4px;"=
+><a class=3D"button subscribe-btn primary" href=3D"https://substack.com/red=
+irect/2/eyJlIjoiaHR0cHM6Ly9zdGVlbHlkYW5uZXdzbGV0dGVyLnN1YnN0YWNrLmNvbS9zdWJ=
+zY3JpYmU_dXRtX3NvdXJjZT1wb3N0JnV0bV9jYW1wYWlnbj1lbWFpbC1jaGVja291dCZuZXh0PW=
+h0dHBzJTNBJTJGJTJGc3RlZWx5ZGFubmV3c2xldHRlci5zdWJzdGFjay5jb20lMkZwJTJGaS1nb=
+3QtdGhlLW5ld3MtaXNzdWUtNDMmcj01ZHBuZjEmdG9rZW49ZXlKMWMyVnlYMmxrSWpvek1qVXpO=
+akkyTXpjc0ltbGhkQ0k2TVRjME1UZzRNakk0TUN3aVpYaHdJam94TnpRME5EYzBNamd3TENKcGM=
+zTWlPaUp3ZFdJdE1UZzJNalkxTXlJc0luTjFZaUk2SW1Ob1pXTnJiM1YwSW4wLnZQTEJCYkotYn=
+VtbzVyWE5wd3hLRXdEWDhVb09nX0FlRkpfTmNIUDh5elkiLCJwIjoxNTkwMDI5MTksInMiOjE4N=
+jI2NTMsImYiOnRydWUsInUiOjMyNTM2MjYzNywiaWF0IjoxNzQxODgyMjgwLCJleHAiOjE3NDQ0=
+NzQyODAsImlzcyI6InB1Yi0wIiwic3ViIjoibGluay1yZWRpcmVjdCJ9.VcJQoBjcL9Qn4Y_8WL=
+O4uuj5M2Cw5ArrtHk4maJnZYE?&utm_medium=3Demail&utm_source=3Dsubscribe-widget=
+&utm_content=3D159002919" style=3D"font-family: system-ui,-apple-system,Bli=
+nkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color E=
+moji','Segoe UI Emoji','Segoe UI Symbol';display: inline-block;box-sizing: =
+border-box;cursor: pointer;border: none;border-radius: 8px;font-size: 14px;=
+line-height: 20px;font-weight: 600;text-align: center;opacity: 1;outline: n=
+one;white-space: nowrap;text-decoration: none !important;margin: 0 auto;bac=
+kground-color: #5365d0;color: #ffffff !important;padding: 12px 20px;height:=
+ auto;"><span style=3D"color: #ffffff;text-decoration: none;">Upgrade to pa=
+id</span></a></div></div></div></div><div class=3D"container-border" style=
+=3D"margin: 32px 0 0;width: 100%;box-sizing: border-box;border-top: 1px sol=
+id #e6e6e6;font-size: 16px;line-height: 26px;"></div><div class=3D"post-cta=
+ typography markup" style=3D"text-align: initial;word-break: break-word;mar=
+gin-bottom: 32px;margin: 32px 0;font-size: 16px;line-height: 26px;"><p styl=
+e=3D"color: rgb(54,55,55);margin: 0 auto 20px;text-align: center;width: 90%=
+;line-height: 26px;font-size: 16px;margin-top: 0;"><span class=3D"pencraft =
+pc-reset reset-IxiVJZ" translated=3D"" style=3D"list-style: none;color: uns=
+et;text-decoration: unset;margin: 0;">You're currently a free subscriber to=
+ <a href=3D"https://substack.com/redirect/b16236ed-46c3-4c4e-8b6d-1f20b734b=
+ee6?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZDZaCgNCOeJjZQ" st=
+yle=3D"color: rgb(54,55,55);text-decoration: underline;">Steely Dan Newslet=
+ter</a>. For the full experience, <a href=3D"https://substack.com/redirect/=
+2/eyJlIjoiaHR0cHM6Ly9zdGVlbHlkYW5uZXdzbGV0dGVyLnN1YnN0YWNrLmNvbS9zdWJzY3JpY=
+mU_dXRtX3NvdXJjZT1wb3N0JnV0bV9jYW1wYWlnbj1lbWFpbC1jaGVja291dCZuZXh0PWh0dHBz=
+JTNBJTJGJTJGc3RlZWx5ZGFubmV3c2xldHRlci5zdWJzdGFjay5jb20lMkZwJTJGaS1nb3QtdGh=
+lLW5ld3MtaXNzdWUtNDMmcj01ZHBuZjEmdG9rZW49ZXlKMWMyVnlYMmxrSWpvek1qVXpOakkyTX=
+pjc0ltbGhkQ0k2TVRjME1UZzRNakk0TUN3aVpYaHdJam94TnpRME5EYzBNamd3TENKcGMzTWlPa=
+Up3ZFdJdE1UZzJNalkxTXlJc0luTjFZaUk2SW1Ob1pXTnJiM1YwSW4wLnZQTEJCYkotYnVtbzVy=
+WE5wd3hLRXdEWDhVb09nX0FlRkpfTmNIUDh5elkiLCJwIjoxNTkwMDI5MTksInMiOjE4NjI2NTM=
+sImYiOnRydWUsInUiOjMyNTM2MjYzNywiaWF0IjoxNzQxODgyMjgwLCJleHAiOjE3NDQ0NzQyOD=
+AsImlzcyI6InB1Yi0wIiwic3ViIjoibGluay1yZWRpcmVjdCJ9.VcJQoBjcL9Qn4Y_8WLO4uuj5=
+M2Cw5ArrtHk4maJnZYE?&utm_source=3Dsubstack&utm_medium=3Demail&utm_content=
+=3Dpostcta" style=3D"color: rgb(54,55,55);text-decoration: underline;">upgr=
+ade your subscription.</a></span></p><p class=3D"cta-box" style=3D"color: r=
+gb(54,55,55);margin: 0 auto 20px;width: 90%;line-height: 26px;font-size: 16=
+px;margin-bottom: 0;text-align: center;margin-left: auto;margin-right: auto=
+;"><a class=3D"button primary" role=3D"button" href=3D"https://substack.com=
+/redirect/2/eyJlIjoiaHR0cHM6Ly9zdGVlbHlkYW5uZXdzbGV0dGVyLnN1YnN0YWNrLmNvbS9=
+zdWJzY3JpYmU_dXRtX3NvdXJjZT1wb3N0JnV0bV9jYW1wYWlnbj1lbWFpbC1jaGVja291dCZuZX=
+h0PWh0dHBzJTNBJTJGJTJGc3RlZWx5ZGFubmV3c2xldHRlci5zdWJzdGFjay5jb20lMkZwJTJGa=
+S1nb3QtdGhlLW5ld3MtaXNzdWUtNDMmcj01ZHBuZjEmdG9rZW49ZXlKMWMyVnlYMmxrSWpvek1q=
+VXpOakkyTXpjc0ltbGhkQ0k2TVRjME1UZzRNakk0TUN3aVpYaHdJam94TnpRME5EYzBNamd3TEN=
+KcGMzTWlPaUp3ZFdJdE1UZzJNalkxTXlJc0luTjFZaUk2SW1Ob1pXTnJiM1YwSW4wLnZQTEJCYk=
+otYnVtbzVyWE5wd3hLRXdEWDhVb09nX0FlRkpfTmNIUDh5elkiLCJwIjoxNTkwMDI5MTksInMiO=
+jE4NjI2NTMsImYiOnRydWUsInUiOjMyNTM2MjYzNywiaWF0IjoxNzQxODgyMjgwLCJleHAiOjE3=
+NDQ0NzQyODAsImlzcyI6InB1Yi0wIiwic3ViIjoibGluay1yZWRpcmVjdCJ9.VcJQoBjcL9Qn4Y=
+_8WLO4uuj5M2Cw5ArrtHk4maJnZYE?&utm_source=3Dsubstack&utm_medium=3Demail&utm=
+_content=3Dpostcta" style=3D"font-family: system-ui,-apple-system,BlinkMacS=
+ystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji',=
+'Segoe UI Emoji','Segoe UI Symbol';display: inline-block;box-sizing: border=
+-box;cursor: pointer;border: none;height: 40px;border-radius: 8px;font-size=
+: 14px;line-height: 20px;font-weight: 600;text-align: center;padding: 10px =
+20px;margin: 0;opacity: 1;outline: none;white-space: nowrap;color: #ffffff =
+!important;text-decoration: none !important;background-color: #5365d0;">Upg=
+rade to paid</a></p></div><table class=3D"email-ufi-2-bottom" role=3D"prese=
+ntation" width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" st=
+yle=3D"border-top: 1px solid rgb(0,0,0,.1);border-bottom: 1px solid rgb(0,0=
+,0,.1);min-width: 100%;"><tbody><tr height=3D"16"><td height=3D"16" style=
+=3D"font-size:0px;line-height:0;">&nbsp;</td></tr><tr><td><table role=3D"pr=
+esentation" width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"=
+><tbody><tr><td><table role=3D"presentation" width=3D"auto" border=3D"0" ce=
+llspacing=3D"0" cellpadding=3D"0" style=3D"margin:0 auto;"><tbody><tr><td s=
+tyle=3D"vertical-align:middle;"><table role=3D"presentation" width=3D"auto"=
+ border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><td align=3D"c=
+enter"><a class=3D"email-button-outline" href=3D"https://substack.com/app-l=
+ink/post?publication_id=3D1862653&post_id=3D159002919&utm_source=3Dsubstack=
+&isFreemail=3Dtrue&submitLike=3Dtrue&token=3DeyJ1c2VyX2lkIjozMjUzNjI2MzcsIn=
+Bvc3RfaWQiOjE1OTAwMjkxOSwicmVhY3Rpb24iOiLinaQiLCJpYXQiOjE3NDE4ODIyODAsImV4c=
+CI6MTc0NDQ3NDI4MCwiaXNzIjoicHViLTE4NjI2NTMiLCJzdWIiOiJyZWFjdGlvbiJ9.YGMRo4f=
+rIbt41Y1zUbbaExcnmOoyi8eZG-eTczKT_1o&utm_medium=3Demail&utm_campaign=3Demai=
+l-reaction&r=3D5dpnf1" style=3D"font-family: system-ui,-apple-system,BlinkM=
+acSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoj=
+i','Segoe UI Emoji','Segoe UI Symbol';display: inline-block;font-weight: 50=
+0;border: 1px solid rgb(0,0,0,.1);border-radius: 9999px;text-transform: upp=
+ercase;font-size: 12px;line-height: 12px;padding: 9px 14px;text-decoration:=
+ none;color: rgb(119,119,119);"><img class=3D"icon" src=3D"https://substack=
+cdn.com/image/fetch/w_36,c_scale,f_png,q_auto:good,fl_progressive:steep/htt=
+ps%3A%2F%2Fsubstack.com%2Ficon%2FLucideHeart%3Fv%3D4%26height%3D36%26fill%3=
+Dnone%26stroke%3D%2523808080%26strokeWidth%3D2" width=3D"18" height=3D"18" =
+style=3D"margin-right: 8px;min-width: 18px;min-height: 18px;border: none;ve=
+rtical-align: middle;max-width: 18px" alt=3D""><span class=3D"email-button-=
+text" style=3D"vertical-align: middle;">Like</span></a></td></tr></tbody></=
+table></td><td width=3D"8" style=3D"min-width: 8px"></td><td style=3D"verti=
+cal-align:middle;"><table role=3D"presentation" width=3D"auto" border=3D"0"=
+ cellspacing=3D"0" cellpadding=3D"0"><tbody><tr><td align=3D"center"><a cla=
+ss=3D"email-button-outline" href=3D"https://substack.com/app-link/post?publ=
+ication_id=3D1862653&post_id=3D159002919&utm_source=3Dsubstack&utm_medium=
+=3Demail&isFreemail=3Dtrue&comments=3Dtrue&token=3DeyJ1c2VyX2lkIjozMjUzNjI2=
+MzcsInBvc3RfaWQiOjE1OTAwMjkxOSwiaWF0IjoxNzQxODgyMjgwLCJleHAiOjE3NDQ0NzQyODA=
+sImlzcyI6InB1Yi0xODYyNjUzIiwic3ViIjoicG9zdC1yZWFjdGlvbiJ9.eRHfW7StV32Zs95bo=
+5vElSyaPNYSaEEbyUV5sit77YA&r=3D5dpnf1&utm_campaign=3Demail-half-magic-comme=
+nts&action=3Dpost-comment&utm_source=3Dsubstack&utm_medium=3Demail" style=
+=3D"font-family: system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Robo=
+to,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe U=
+I Symbol';display: inline-block;font-weight: 500;border: 1px solid rgb(0,0,=
+0,.1);border-radius: 9999px;text-transform: uppercase;font-size: 12px;line-=
+height: 12px;padding: 9px 14px;text-decoration: none;color: rgb(119,119,119=
+);"><img class=3D"icon" src=3D"https://substackcdn.com/image/fetch/w_36,c_s=
+cale,f_png,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fic=
+on%2FLucideComments%3Fv%3D4%26height%3D36%26fill%3Dnone%26stroke%3D%2523808=
+080%26strokeWidth%3D2" width=3D"18" height=3D"18" style=3D"margin-right: 8p=
+x;min-width: 18px;min-height: 18px;border: none;vertical-align: middle;max-=
+width: 18px" alt=3D""><span class=3D"email-button-text" style=3D"vertical-a=
+lign: middle;">Comment</span></a></td></tr></tbody></table></td><td width=
+=3D"8" style=3D"min-width: 8px"></td><td style=3D"vertical-align:middle;"><=
+table role=3D"presentation" width=3D"auto" border=3D"0" cellspacing=3D"0" c=
+ellpadding=3D"0"><tbody><tr><td align=3D"center"><a class=3D"email-button-o=
+utline" href=3D"https://substack.com/redirect/2/eyJlIjoiaHR0cHM6Ly9vcGVuLnN=
+1YnN0YWNrLmNvbS9wdWIvc3RlZWx5ZGFubmV3c2xldHRlci9wL2ktZ290LXRoZS1uZXdzLWlzc3=
+VlLTQzP3V0bV9zb3VyY2U9c3Vic3RhY2smdXRtX21lZGl1bT1lbWFpbCZ1dG1fY2FtcGFpZ249Z=
+W1haWwtcmVzdGFjay1jb21tZW50JmFjdGlvbj1yZXN0YWNrLWNvbW1lbnQmcj01ZHBuZjEmdG9r=
+ZW49ZXlKMWMyVnlYMmxrSWpvek1qVXpOakkyTXpjc0luQnZjM1JmYVdRaU9qRTFPVEF3TWpreE9=
+Td2lhV0YwSWpveE56UXhPRGd5TWpnd0xDSmxlSEFpT2pFM05EUTBOelF5T0RBc0ltbHpjeUk2SW=
+5CMVlpMHhPRFl5TmpVeklpd2ljM1ZpSWpvaWNHOXpkQzF5WldGamRHbHZiaUo5LmVSSGZXN1N0V=
+jMyWnM5NWJvNXZFbFN5YVBOWVNhRUVieVVWNXNpdDc3WUEiLCJwIjoxNTkwMDI5MTksInMiOjE4=
+NjI2NTMsImYiOnRydWUsInUiOjMyNTM2MjYzNywiaWF0IjoxNzQxODgyMjgwLCJleHAiOjE3NDQ=
+0NzQyODAsImlzcyI6InB1Yi0wIiwic3ViIjoibGluay1yZWRpcmVjdCJ9.NUdI68wilSK6iDwFe=
+s_-ESnZeD3Imb8NIqyrCDAwoA8?&utm_source=3Dsubstack&utm_medium=3Demail" style=
+=3D"font-family: system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Robo=
+to,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe U=
+I Symbol';display: inline-block;font-weight: 500;border: 1px solid rgb(0,0,=
+0,.1);border-radius: 9999px;text-transform: uppercase;font-size: 12px;line-=
+height: 12px;padding: 9px 14px;text-decoration: none;color: rgb(119,119,119=
+);"><img class=3D"icon" src=3D"https://substackcdn.com/image/fetch/w_36,c_s=
+cale,f_png,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fic=
+on%2FNoteForwardIcon%3Fv%3D4%26height%3D36%26fill%3Dnone%26stroke%3D%252380=
+8080%26strokeWidth%3D2" width=3D"18" height=3D"18" style=3D"margin-right: 8=
+px;min-width: 18px;min-height: 18px;border: none;vertical-align: middle;max=
+-width: 18px" alt=3D""><span class=3D"email-button-text" style=3D"vertical-=
+align: middle;">Restack</span></a></td></tr></tbody></table></td></tr></tbo=
+dy></table></td><td align=3D"right"><table role=3D"presentation" width=3D"a=
+uto" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"><tbody><tr></tr></tbo=
+dy></table></td></tr></tbody></table></td></tr><tr height=3D"16"><td height=
+=3D"16" style=3D"font-size:0px;line-height:0;">&nbsp;</td></tr></tbody></ta=
+ble><div class=3D"footer footer-ZM59BM" style=3D"color: rgb(119,119,119);te=
+xt-align: center;font-size: 16px;line-height: 26px;padding: 24px0;"><div st=
+yle=3D"font-size: 16px;line-height: 26px;padding-bottom: 24px"><p class=3D"=
+pencraft pc-reset color-secondary-ls1g8s size-12-mmZ61m reset-IxiVJZ small =
+meta-B2bqa5" style=3D"list-style: none;font-family: system-ui,-apple-system=
+,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Col=
+or Emoji','Segoe UI Emoji','Segoe UI Symbol';padding-bottom: 0;font-size: 1=
+2px;line-height: 16px;margin: 0;color: rgb(119,119,119);text-decoration: un=
+set;">&#169; 2025 <span>Jeff</span><br>548 Market Street PMB 72296, San Fra=
+ncisco, CA 94104 <br><a href=3D"https://substack.com/redirect/2/eyJlIjoiaHR=
+0cHM6Ly9zdGVlbHlkYW5uZXdzbGV0dGVyLnN1YnN0YWNrLmNvbS9hY3Rpb24vZGlzYWJsZV9lbW=
+FpbD90b2tlbj1leUoxYzJWeVgybGtJam96TWpVek5qSTJNemNzSW5CdmMzUmZhV1FpT2pFMU9UQ=
+XdNamt4T1N3aWFXRjBJam94TnpReE9EZ3lNamd3TENKbGVIQWlPakUzTnpNME1UZ3lPREFzSW1s=
+emN5STZJbkIxWWkweE9EWXlOalV6SWl3aWMzVmlJam9pWkdsellXSnNaVjlsYldGcGJDSjkudkp=
+NVGIzMGd4QnM3bDdhaXNBV0NRRUNXWXhMcGo1cnRmdk1hSms4cHEtTSIsInAiOjE1OTAwMjkxOS=
+wicyI6MTg2MjY1MywiZiI6dHJ1ZSwidSI6MzI1MzYyNjM3LCJpYXQiOjE3NDE4ODIyODAsImV4c=
+CI6MTc0NDQ3NDI4MCwiaXNzIjoicHViLTAiLCJzdWIiOiJsaW5rLXJlZGlyZWN0In0.oxQeRsb3=
+hHrTmZp1589Ar04WYig6hLJP--TUuZJc-VQ?" style=3D"text-decoration: underline;c=
+olor: rgb(119,119,119);"><span style=3D"color: rgb(119,119,119);text-decora=
+tion: underline;">Unsubscribe</span></a></p></div><p class=3D"footerSection=
+-EHR0jG small powered-by-substack" style=3D"padding: 0 24px;font-size: 12px=
+;line-height: 20px;margin: 0;color: rgb(119,119,119);font-family: system-ui=
+,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-se=
+rif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';padding-bottom: =
+0;margin-top: 0;"><a href=3D"https://substack.com/redirect/17c39ee4-ca81-43=
+ac-b78d-ded0bcef76b2?j=3DeyJ1IjoiNWRwbmYxIn0.HeF6Pnl-ReYQ2WSj9JSxyLHpwHNgKZ=
+DZaCgNCOeJjZQ" style=3D"color: rgb(119,119,119);text-decoration: none;displ=
+ay: inline-block;margin: 0 4px;"><img src=3D"https://substackcdn.com/image/=
+fetch/w_262,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fs=
+ubstack.com%2Fimg%2Femail%2Fgeneric-app-button%402x.png" srcset=3D"https://=
+substackcdn.com/image/fetch/w_131,c_limit,f_auto,q_auto:good,fl_progressive=
+:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Femail%2Fgeneric-app-button.png, h=
+ttps://substackcdn.com/image/fetch/w_262,c_limit,f_auto,q_auto:good,fl_prog=
+ressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Femail%2Fgeneric-app-button=
+%402x.png 2x, https://substackcdn.com/image/fetch/w_393,c_limit,f_auto,q_au=
+to:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Femail%2Fgen=
+eric-app-button%403x.png 3x" width=3D"131" alt=3D"Get the app" height=3D"40=
+" style=3D"max-width: 550px;border: none !important;vertical-align: middle;=
+"></a><a href=3D"https://substack.com/redirect/2/eyJlIjoiaHR0cHM6Ly9zdWJzdG=
+Fjay5jb20vc2lnbnVwP3V0bV9zb3VyY2U9c3Vic3RhY2smdXRtX21lZGl1bT1lbWFpbCZ1dG1fY=
+29udGVudD1mb290ZXImdXRtX2NhbXBhaWduPWF1dG9maWxsZWQtZm9vdGVyJmZyZWVTaWdudXBF=
+bWFpbD1kZXNndGVzdC5lbWFpbEBnbWFpbC5jb20mcj01ZHBuZjEiLCJwIjoxNTkwMDI5MTksInM=
+iOjE4NjI2NTMsImYiOnRydWUsInUiOjMyNTM2MjYzNywiaWF0IjoxNzQxODgyMjgwLCJleHAiOj=
+E3NDQ0NzQyODAsImlzcyI6InB1Yi0wIiwic3ViIjoibGluay1yZWRpcmVjdCJ9.t3KyYYcggkRW=
+w6-Z7MLWWlC235OoQwndYtY4qQzNQfw?" style=3D"color: rgb(119,119,119);text-dec=
+oration: none;display: inline-block;margin: 0 4px;"><img src=3D"https://sub=
+stackcdn.com/image/fetch/w_270,c_limit,f_auto,q_auto:good,fl_progressive:st=
+eep/https%3A%2F%2Fsubstack.com%2Fimg%2Femail%2Fpublish-button%402x.png" src=
+set=3D"https://substackcdn.com/image/fetch/w_135,c_limit,f_auto,q_auto:good=
+,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Femail%2Fpublish-bu=
+tton.png, https://substackcdn.com/image/fetch/w_270,c_limit,f_auto,q_auto:g=
+ood,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Femail%2Fpublish=
+-button%402x.png 2x, https://substackcdn.com/image/fetch/w_405,c_limit,f_au=
+to,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack.com%2Fimg%2Femai=
+l%2Fpublish-button%403x.png 3x" width=3D"135" alt=3D"Start writing" height=
+=3D"40" style=3D"max-width: 550px;border: none !important;vertical-align: m=
+iddle;"></a></p></div></div></td><td></td></tr></tbody></table><img src=3D"=
+https://eotrx.substackcdn.com/open?token=3DeyJtIjoiPDIwMjUwMzEzMTYwOTMyLjMu=
+ODYyOTg1ZTViM2NhOGRlNkBtZy1kMS5zdWJzdGFjay5jb20-IiwidSI6MzI1MzYyNjM3LCJyIjo=
+iZGVzZ3Rlc3QuZW1haWxAZ21haWwuY29tIiwiZCI6Im1nLWQxLnN1YnN0YWNrLmNvbSIsInAiOj=
+E1OTAwMjkxOSwidCI6Im5ld3NsZXR0ZXIiLCJhIjoiZXZlcnlvbmUiLCJzIjoxODYyNjUzLCJjI=
+joicG9zdCIsImYiOnRydWUsInBvc2l0aW9uIjoiYm90dG9tIiwiaWF0IjoxNzQxODgyMjgwLCJl=
+eHAiOjE3NDQ0NzQyODAsImlzcyI6InB1Yi0wIiwic3ViIjoiZW8ifQ.OAOuZVGbdw2MpGMtg31b=
+BIgQsrOkRPI2MHkWHvqFjwo" alt=3D"" width=3D"1" height=3D"1" border=3D"0" sty=
+le=3D"height:1px !important;width:1px !important;border-width:0 !important;=
+margin-top:0 !important;margin-bottom:0 !important;margin-right:0 !importan=
+t;margin-left:0 !important;padding-top:0 !important;padding-bottom:0 !impor=
+tant;padding-right:0 !important;padding-left:0 !important;"/><img width=3D"=
+1" height=3D"1" alt=3D"" src=3D"https://email.mg-d1.substack.com/o/eJxMkEuK=
+8zAQBk8T7X6jhyXLC53F6PHFvxhbDlIrg28_xAnMrBqqobro6AnrUU_3OBqx5NQcuI2GwYlpFNZ=
+KaQXD7vO2rCionpAWT79bbgxn_51Nk9aQQcZg9T1YBaFnq3wc9XjHpFh2kkvNlVDC8FnJQQ3WyN=
+lq6KCitwnmNvJ9_ZfE0Hpo5OPXEI-d5bbcK64ER7WDvUoX31NGiXB4op5H-eCcnNAz53IW85vQ-=
+YAr-G4biFDZo4clHvveS6ZzQfFhQ_qIe9hy9JSPcomskUYrVl1CWwmNhqviNvL1Na-61kM6dp-L=
+awRsZ_LlzzF6v7U31JdRSa2MNGpiTyd_AgAA___vEn3d"></body></html>
+--1726d137b956c0870be98d959ecb810d9dce18a6a62b21eec9d4cb1aaaf4--

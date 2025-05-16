@@ -1,0 +1,115 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp769030rch;
+        Wed, 12 Mar 2025 23:37:37 -0700 (PDT)
+X-Received: by 2002:a17:90b:4ad0:b0:2ff:5cb7:5e73 with SMTP id 98e67ed59e1d1-2ff7cef8994mr29730265a91.23.1741847856952;
+        Wed, 12 Mar 2025 23:37:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741847856; cv=none;
+        d=google.com; s=arc-20240605;
+        b=fieLxUsGNNw7hsoe4w0ve7wkPvUDZcN72pRQbcnJ6yi7zYxABh7gqg1c0Z1wx5/Dt/
+         CkutPqqfQo7tM59wAiERHn14fGTvxXCvowattj+uJq/Kr8flieLLEdg9wio1KEjt9LQp
+         D/XBq5S0afRW6kKB9JZ2IU77YERIcUwgkSeqGznUvjq9YvN7pfEEzeleWHpquzkLZJ5l
+         eeqt3HDNUf3VhulOgcxVW1B06D/CazRTWVM6AoJiHecwF6o9yVlxaGIUDZMhq3q2zJX9
+         JV9MpbvCpuEp2/bvZ3Jihf8WYYzCU0wkAO3Y0ebCvz6iIfae8yNrsCZJKwGFlMqmOOy9
+         InJw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=LawZ30uv09+6ge0T+g52SZSH1KxTwFaOwV0uj5MeL50=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=Jf1OmfOycDNLZ/BecXlTkeILQOVVCZJb4Kt/rZPFiO1vjW43kqepp6B23qoJh4x1cX
+         vL3AEAEoYGuOtPhr4d58FKJVUdkWb0UpNdre5Uz7xw4Bhj2fuD5zW6kujZ2wT9NKa0g7
+         4oM/w/72CaeZb8sdRajYm/OV0fBLPF7saYrbfnmeCH0I1TMr4cIHjwefyV3lfnsmWZEh
+         wAlq7Yyrc6i+Biu2aocmGaTbFTUSdHZFs831ozECbRdCqVT0Dh2190E9cHB0hDDM0/Wu
+         qlU3Ehn+KqX5WOwX8oX/taZN5SNXvLa/xWVdjxpR51gqM8z2JQ0yhMQZ/XKfyr2zxr3b
+         1xzA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JwLszbS7;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 98e67ed59e1d1-30138f497d8sor658688a91.6.2025.03.12.23.37.36
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:37:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JwLszbS7;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741847856; x=1742452656; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=LawZ30uv09+6ge0T+g52SZSH1KxTwFaOwV0uj5MeL50=;
+        b=JwLszbS7c9UGqDl1jLLW6wtlDFFmHFS3RnHlw85cmT7+aGA4YJrJtk/N7oEnBLuh/P
+         UjLzFUpC0oEyQRrpQ3Spkpyf5Cm81J82hov91aW/jxHA50BLTAoCH4GzMS8Py/llzcFY
+         4QmOpMApB7IeCu4vOKGGIeGjzbiE8dXXltvA7feG879k2r79NB8G7egC58P8q1Y8KAPH
+         lJmcEz2ZcRNU03UUsdAVcLZFQ0UNfMiaIKaGTEkyCrRZz5kr6pa2ypkakXkUeg3yrIHw
+         7eNpHspCWXgzQF3WFQE7PJ/kcy+Z4j4halLbCinz+cbCOutng+Svr4nKIrZMxa19j0on
+         po3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741847856; x=1742452656;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=LawZ30uv09+6ge0T+g52SZSH1KxTwFaOwV0uj5MeL50=;
+        b=MLa25tD5Mr6Sv5LZZEl5M4i9DxMgpnMAPLY9UM2nRIkkb8nzktU+1bxnfRpgYp0Bo5
+         1rQaLxwc4mY9y93EtCQ+fHzAV9nZ6sdroXBR9DecPi4Mlo8Q1CjAp6m3kQiVMcdG3w/b
+         8jc/EGY3kYWwdInOj5YeEOSb61gYr/ryMCIQK2HV/ZYXOTBNPXJJ/123SzRHHhjMHCBX
+         WwEGZBeQUhiT0AKtF3Xolz8ZesW8FLJ3Bz5mkCVf8t6UckKxdyA8Sp9b+/7ASW5mtrqQ
+         NJfjx18rAiIIJZUzQYl8+xuE/s47c1e3HDZZJKs0f1E8N2GKUPmhZJa+8UuJRkJ8kaFi
+         lg1g==
+X-Gm-Message-State: AOJu0Yw4VptuvYoR76XSMdqSKicHct9J3qbXWh5OQI8V8riWCUPAdlfX
+	9Tv0dJlCdWdUbbTdGRqOGP31vGfdIzgnhniZJtFsGJShTzfieb94zw1vNucn
+X-Gm-Gg: ASbGncs5LYIJ/xOtGlH1kH5t/VA3vm260O0xM07lzg23W03zTm0exfH4y2C7N4oDs77
+	L0zOg2nZUueojOfamws8H502NHa/Tob5YVn5iB+psLrJT4jpd8GGlaw/Tt2kPJUIEco/3p07Wby
+	Bd8hOdRw0iorkVNiy55i3j2dj5ysl/dgjRjt4uj4ZFNM0qGHbDSFKDvmP6tGaG57k6FXSRHMyDp
+	tcrgGTWFmXybYcRms2sHL3ySFQvQwRvRg4V2Q+PrRjEyAg/8WKWKUitZHATU/7huupzC1jx2Dxn
+	OVHN7MN2Gp5lBOc6BImPwXQsSXZ7xFK/ZrYtryd8TidJwfh0paMg3sm4AbCDF3kQjczdcgHJww9
+	QfTOU
+X-Google-Smtp-Source: AGHT+IGmv2ebrH8NJiHtmhY9p0Va0XXTVpNxB6Z8o0CJtnVeg92bvqg3LKLGjq0XO27Om5kUFvVLwg==
+X-Received: by 2002:a17:90b:5186:b0:2ff:58e1:2bb1 with SMTP id 98e67ed59e1d1-2ff7cf317efmr30775981a91.32.1741847856167;
+        Wed, 12 Mar 2025 23:37:36 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-30138f89df8sm563929a91.35.2025.03.12.23.37.35
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:37:35 -0700 (PDT)
+Message-ID: <67d27d2f.170a0220.2f5c43.1b57@mx.google.com>
+Date: Wed, 12 Mar 2025 23:37:35 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============0537148829210422519=="
+MIME-Version: 1.0
+From: Mary Lopez <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Following up on Invoice #123456 for Your Recent Subscription Renewal
+ with CloudX
+
+--===============0537148829210422519==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear John Doe,
+
+   I hope this email finds you well. I am writing to follow up on the invoice we sent regarding your recent subscription renewal with CloudX. The payment status is currently marked as "unpaid." As you know, timely payment of this invoice ensures uninterrupted access to our platform and support services.
+
+   Invoice #123456 totaled $987.00 for the annual subscription fee, as well as any applicable taxes and fees. The due date for payment was on 12/05/2022. If you have already made the payment, please disregard this email. However, if you are yet to process the payment or have encountered any issues, kindly respond to this email at your earliest convenience.
+
+   We understand that unexpected circumstances may arise, and we appreciate your prompt attention to this matter. Our team is available Monday through Friday from 9 AM to 5 PM EST should you need assistance. You can reach us via phone or email, with contact information provided below.
+
+   Once payment has been processed, we will reinstate your access to CloudX immediately. If you have any questions about this invoice, please do not hesitate to get in touch. We value your business and are committed to providing you with the best possible service.
+
+   Looking forward to hearing from you soon.
+
+   Warm regards,
+
+   Example Your name
+   Example Your title
+   CloudX Invoicing Department
+   (555) 123-4567
+   support@cloudx.com
+--===============0537148829210422519==--

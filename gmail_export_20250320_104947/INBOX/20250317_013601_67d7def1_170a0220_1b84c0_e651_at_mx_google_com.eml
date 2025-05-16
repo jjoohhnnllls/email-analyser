@@ -1,0 +1,108 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp2175750rcd;
+        Mon, 17 Mar 2025 01:36:03 -0700 (PDT)
+X-Received: by 2002:a17:903:189:b0:221:8568:c00f with SMTP id d9443c01a7336-225c64097abmr204269625ad.0.1742200562930;
+        Mon, 17 Mar 2025 01:36:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742200562; cv=none;
+        d=google.com; s=arc-20240605;
+        b=NwAPYoU3MEntOxW3/hwwKVcKJrOof8XLFKYwomvbusu6f9HFiDpsPx/OZlWrTzWUW4
+         dUBPZEBNFIDme1FFUMkUbr4CoIl6k0BGK0JiRU5cQwYWoA/jN6AGxddEHnRGHqzy2Tc5
+         1qkEgXqQRltlO+Y5TC45zEiHCxfFvKYvOYhxZDKOqVsq6oWInYQaExmBdZJ6+Y79bHeF
+         7wSYQGa7PD6BhVXXevuKX7a1zoOGGEMALahmM99i8apZ8MSaMW8CoNffplZxgEjB4SW1
+         H1c8zlovTyTkhbSbdA+8StbBvJvfCk/fj1kTa4kxONwFzfnPtL/c+CZnsR29aMJfXq8C
+         Fi7w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=y+XbPPwgnfHJUWeXEETF9prOribvGVjncnjNpGwMx3c=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=hV2TYX3aYC+qpju1TWmx3Nkt1XwhHa8rXwWx+ClAN0BirIgme+2A9uV15uP6iACOKa
+         IjaKuQiCr+HVzmkcIwiALSbMj1Oy+6WG35uGrNorxQHVddsuBeAJpzH1BEl1lHc0Nh/H
+         fvAptroj+82K9eE490HJI+cAw9eomo6ucSSxxHMOsArrrNUX4vvPX3zc2sKP2Kx6yX6u
+         y3/UtmGa8m0kig9sYRqEhv2PLh+wLSYgrmI6cOsS/K3guvcRhGCrMvVDOYpo7QbgCcfT
+         1rpTT/mLfhUz+w0HxLBJYbeXwIhB9YQ6SRqRdaPD9Ulpqbt8t86tLB5WL7BN+rbMOJ6o
+         IlUA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=USujHGPU;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c5639297sor35959415ad.2.2025.03.17.01.36.02
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Mon, 17 Mar 2025 01:36:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=USujHGPU;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742200562; x=1742805362; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=y+XbPPwgnfHJUWeXEETF9prOribvGVjncnjNpGwMx3c=;
+        b=USujHGPUua0pCOZ0v77nvNl1L8cy8NohHCnXi+r5DYGDppRaT6vshebbgpkDPltvIx
+         neiJEg+Zq/ZMasz8UPSi/WLYzPfG3tiRnwCZpHD6k/ZKfp57wo6H60uTeru2Qp4cmzbH
+         5kFjA/gQN0mJHshA9EfrPNBiNP2PaknYWciJu2GJcqFC8sDg6kqj5yaN2V/MOCFPCnoP
+         jT/Fn7anechLALnIPFE0Enra8RYdbqhWwFZ9va0/ZFw9aMvLNg1xKXWfZX6S5bOfcqqO
+         0gxb5enVv6mIhZawhL9ZD0anRdfjpOFtv4MFgFRdFR6GxsHJbhNoVcYG6OCHBx/+AS8d
+         yW5Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742200562; x=1742805362;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=y+XbPPwgnfHJUWeXEETF9prOribvGVjncnjNpGwMx3c=;
+        b=Kik5UIF5EZQldUnyG/KI78bJVHlgoaRC7b5uPZtyDnpTz/K7Ron1ZYSAGj2bqHalQJ
+         oGW6Vs3sykfqDUQIs4uxTXtB1LqhA0EDZO70Ig/50nD07wZsOCyPtCgccWVaYl3+LRxH
+         7SlnjoXvXeFNO/644uPVbP+QmbJezlAWfLtVo8oS51TbZvOq1bi+ftEl2cVzddAbm5hy
+         rcE3N028EFqNuaDrO9BCTDS4tJc+BHh0igqVIoBxV7MFUrivvucr7c7CB29MXJFlN4Rn
+         nGspRkMv92iaElU0Nj7HtPAOrMrRULYZ1IIT131WFcQRD+c1N6Jo8aO3Pq2UWGGXv5wn
+         uMkA==
+X-Gm-Message-State: AOJu0YxmBSEfr3D+WAdvnRhsKjkzwL4Qxwhr1SD/t7etTgd732Tccmlm
+	nU99ndMh+wDIq5DZmzSQ39uYSPSZk86AmOl5hMkiiKNQ6wWpdw+QaLZgeg==
+X-Gm-Gg: ASbGncsZ/Dm6H0sAhKPt7J43wsJQFPI58+cr11pEZY5NFdDx5XPCZWQNd5QnrAt9iZ4
+	NFd4pXDsJzZLgEvU4DQYYTvlFddDC/I1mh+wkZFEfPMN/yRBIIdro8UPRBGSTol2Wz29CsIZ+pR
+	47zY5Wx5qAFGS/WzeFJWouxy14O95OrsUQcfqFic3ZHsMGLz5KCsKUEEInjapsXz6m7NPRNpZOp
+	nHSGdFA+9wgp28RpZ3fngxvi4c1oOe/3xYsZnnnP73o2Eu2mBXhGqP7IiMOmnJjVJ/ApkeS0V3y
+	SnPZWXxUqdCQsYHPFkvlUpT2VwCXGV/MJ2lx6pajc6za/TKEdOruqV+tLwOWM9RBf3QPKQ==
+X-Google-Smtp-Source: AGHT+IHitoXEQ/7kvQyWg2SLdP6FILoJvbGKyC9/asOvaks5RIIuLzRosqg7U5B+G8kuVNaLm8EkIg==
+X-Received: by 2002:a17:902:f78b:b0:215:58be:334e with SMTP id d9443c01a7336-225e16b0e67mr136598895ad.10.1742200562171;
+        Mon, 17 Mar 2025 01:36:02 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6ba70f3sm69607845ad.157.2025.03.17.01.36.01
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Mar 2025 01:36:01 -0700 (PDT)
+Message-ID: <67d7def1.170a0220.1b84c0.e651@mx.google.com>
+Date: Mon, 17 Mar 2025 01:36:01 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============5169355584218713638=="
+MIME-Version: 1.0
+From: Thomas Moore <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Feedback on Recent Order - Product Model XYZ-3012
+
+--===============5169355584218713638==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear John Doe,
+
+   I hope this message finds you well. I am writing to express my appreciation for your recent purchase of our Product Model XYZ-3012. It was a pleasure doing business with you and your esteemed company, Widgets Inc.
+
+   Upon inspecting the shipment, we were delighted to find that everything was packed meticulously and arrived at our warehouse in excellent condition. The product itself exceeded our expectations regarding quality and performance. The precision engineering on display is a testament to your dedication to excellence, which mirrors our own commitment here at ABC Manufacturing.
+
+   We are already looking forward to potential future collaborations and would be more than happy to discuss any upcoming projects you might have in mind that could benefit from our expertise in manufacturing high-quality precision machinery.
+
+   Once again, thank you for your business, John. I am confident that our partnership will prove mutually beneficial and look forward to strengthening it further.
+
+   Best regards,
+
+   Jayden Lee
+   Production Manager, ABC Manufacturing
+--===============5169355584218713638==--

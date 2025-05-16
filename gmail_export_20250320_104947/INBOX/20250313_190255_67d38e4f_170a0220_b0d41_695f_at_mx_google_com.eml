@@ -1,0 +1,114 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp349717rcd;
+        Thu, 13 Mar 2025 19:02:57 -0700 (PDT)
+X-Received: by 2002:a17:903:98b:b0:223:5e6a:57ab with SMTP id d9443c01a7336-225e0af040amr11309475ad.39.1741917776804;
+        Thu, 13 Mar 2025 19:02:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741917776; cv=none;
+        d=google.com; s=arc-20240605;
+        b=YngTLiioLHHVn87q/PSbE+E2i2nsUIK0Jlcj+e0z+32LMpx/3VWrbnyVooGOl3O3jP
+         JTeZs0hUPhI8C3YRbJ8I9YbgSxQcO2nDjATBpBf2qidM31QDRZsEM8wfn48QW3MY9BxZ
+         npzGC02YenZFuclLh4gjPRoasj+mKvK92wr2f6r+eXFCjdwxfIl6IXZRqHU0Lc8KXCqi
+         Bg+NruIZQD0x9g7vxwywlMfaHuHdH161bVoSGCrnqwhub0gxkOYzEWZg//VHCJlX2qtA
+         L11uppUnevvNHtGSKlcvvvRqx85GT0TJIF4BG1wxizjq1UvsSqpg4ncPkel6JUmI/faB
+         xd2g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=6vMYgO6DfLZ95hfQzBXnrTMhLnVfi218OnLTn7pg0tY=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=kTTahZHJZ6jjKENH3jdJTeaG08PUKH57/m7vFLTQlXCuQPIPPSSm2mUC0QAy7Lr+ul
+         sdrVHB/J3Ts/W1C+EWVFp79WgBIzpfFlSu7VuMpGk1lhgGYPJ7TejVt4buFsZYiKtqHb
+         1A7hgCURlXmj99D0UEnbHBuCYKSJ5v7MnJWkp0+wo4Q8kNlx3RFztn6JQQWhjwnv7XWb
+         ACKJ8Py3cDtTCwdd85/pXtG0FfpniZ33L1CoSZfBnVBj5SevHn6NfJLViTPPhgkDKXEy
+         jysDnLyeTNEq0E0damlEieYxxsQKaqWHivu74ummJOeDXj7PYOG7F40+AV+WcvY73Z/D
+         LiIQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=SO5ucANK;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c928dac2sor15240495ad.0.2025.03.13.19.02.56
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 19:02:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=SO5ucANK;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741917776; x=1742522576; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=6vMYgO6DfLZ95hfQzBXnrTMhLnVfi218OnLTn7pg0tY=;
+        b=SO5ucANK0xuin1Bx6ny362/xfGavU2ohafx/66nr89rXvpJQNwfqjwGy1ARtPHpoD/
+         esURj2EGY4T3DKP7nk0aVJcHNLHIkbDntU5P6JY8qskMQAjCApOzXMWPpA9WRVisFfK8
+         WcDtygE7pOPbCB1i4huy61qh4/GrASYch1E/EgJXk2LkaYt3LhMLArR9YPU/b+9HVmnM
+         3u8Kh9pQFFKCx2foJjMcnkQuAuR4e6AfOL8bgn7L3EXba8DVIkUzYmxwQb4R633gLZtp
+         OuVZLAHQvFELxETYCGOWam0TqIj784+akiP/AcvdbgO8FbY7PbnLD5p9RxAjlTvbFj/E
+         HfPQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741917776; x=1742522576;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=6vMYgO6DfLZ95hfQzBXnrTMhLnVfi218OnLTn7pg0tY=;
+        b=rte/2JKWvu/cr0u9+RVre7+RACrVeTou/hh5vi6KfRlxbT1PPy4H5kpI/UeY9MK6PL
+         y0uALdAXKOh+70Q+oxXCKp4TJsTsFAO6NgO8ZZKiaCXQcDkcHGe9xDYBJI2kEqJ+UnKU
+         NXgt/urgbTsUZpepD/Oho7U9tgIVc1+7N98yUTUfAJ6YoSp9rGDS+EauyFzkNjCAlAuB
+         87pgTG3MUHW1KDI3+Li7Cyri12/b8rlwsrZcXlWL1LUOO2wxmUPIrRezL/9pfNs6IWut
+         bLBYPczHhocLRf/j+KoKCSU/UN0+Cw0jgKUbS0NfbAQfIUWtLdDc9CtVUpaW5fvBc9Iv
+         c2WQ==
+X-Gm-Message-State: AOJu0Yw0b0z6kSNgOOTAzx4T69TODws+L/9KYKmWMprTKRQeTKXkOr0N
+	NTTkdGMmp7U9wN9v0k+i57OaTKj+R4WuEV36YUckLI750gQjneiVeb8DcW+M
+X-Gm-Gg: ASbGnctyuVnEy4L/jqwXZyV+E5RV/d7emER42TdyuiWRxLWqZGqSdO9ffuzChNMbV+F
+	ye3bT14waEh7vAbS3cb+TVNus8FtYT3+tWVCxCJR3fEwhcj4+AR23HInevbAAUWqrlihfn+Joft
+	UsjmYLkNrw8B82J0a7tYPaDTDh66o0Aq3Fm96LC54tYpBMX6YrlZ0DamYVp0uYqHs0oN+/1zwBB
+	rGgoaUtDZg7OfvnEi69P9UYU6g+cKgResXvPqnEVQFPnHa7raMZfN9pmqWQsZccnOwHLo4XWS0u
+	Mv7Qcv3dWQ4tp88v5k+yQIt/EgIByGaU9ejoYXGGMVZEcd8t80w3AxdtCk40tB2pVtbiOQ==
+X-Google-Smtp-Source: AGHT+IFCV/6o7+kZWsweiaH0kH8GIV7Rspb29+NvUBhU+Wk4K199P7qFX3ffhQWvFMCJOQqikP3aUg==
+X-Received: by 2002:a17:902:f686:b0:221:7eae:163b with SMTP id d9443c01a7336-225e0b09706mr9136015ad.46.1741917775801;
+        Thu, 13 Mar 2025 19:02:55 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c68a8758sm20630195ad.85.2025.03.13.19.02.55
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 19:02:55 -0700 (PDT)
+Message-ID: <67d38e4f.170a0220.b0d41.695f@mx.google.com>
+Date: Thu, 13 Mar 2025 19:02:55 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============4160922084643224468=="
+MIME-Version: 1.0
+From: Premium Wellness <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Your Order Confirmation for Delivery of Patient Data Software
+
+--===============4160922084643224468==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Dr. John Doe,
+
+   I hope this message finds you well. We are pleased to confirm that your order for the latest PatientDataPro software has been processed successfully.
+
+   Here's a quick summary of your order:
+
+   - Product Name: PatientDataPro 3.0
+   - Order Number: ORD-123456789
+   - Estimated Delivery Date: January 15, 2022
+   - Total Cost: $15,000 (Inclusive of all taxes and shipping charges)
+
+   Your payment has been successfully processed. If you have any questions or concerns regarding your order, please do not hesitate to contact our Customer Support team at support@healthcare-software.com or call us at 555-1234-5678 between 9 AM and 5 PM (EST), Monday through Friday.
+
+   We appreciate your business and look forward to serving you with our top-notch healthcare solutions.
+
+   Warm regards,
+
+   Example Your name
+   Example Your position
+   Healthcare Software Solutions Inc.
+--===============4160922084643224468==--

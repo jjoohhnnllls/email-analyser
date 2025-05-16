@@ -1,0 +1,112 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp397819rcd;
+        Thu, 13 Mar 2025 21:23:09 -0700 (PDT)
+X-Received: by 2002:a17:902:cecc:b0:224:1294:1d26 with SMTP id d9443c01a7336-225e0a6c3a7mr12686905ad.13.1741926189159;
+        Thu, 13 Mar 2025 21:23:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741926189; cv=none;
+        d=google.com; s=arc-20240605;
+        b=BBajheyI+TN9Mf5jm8mauFJPlrKEb8SWu7RfamvNj5Tsk6Y0QP18Hk/qZRmNeg83bL
+         aeXNIaB/9/wUbAWCHxuRDm7nTfNCf6dZAWkmnsSSBXn+rFKFx4k7mqGPK4DDFWDpT89E
+         RPrVwOmI36k0J5ovFU1kUI18HsT+hWd/a0En5szXCm/SEvzOMm5BllEMvc6WT8a9JE8M
+         89CHLhVPRlKWIpshEaZGk0VfDblZ7+5wCoFSV6rkNvFNFJkuyAhp6Iuj01uqbBULiDV/
+         PQ8bsNsJA8yXWqb7NEjxruCYFciWgnFGsqZLmmqizQgjPTKx4lQGZfswbJ5r3hk+GpeO
+         y/ig==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=9IW7GQC+8vTzG5rlJkV0+nIEZ/sSaJYJ5h7Izt7B/wk=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=IjRgAU6QgnS7e5Q2xLQojs+eb8pOPrpF81tOjAqcXgclxm/bXy/5IUpOCd3wPpoDqB
+         Md55j0HIK34o2ozk/EC4DSzw8+fOMxwjLc9BFsnvscZZyHYKD0Q9ezlKCMux1yT18DQ9
+         OUuqaI4mEW3pchXxs4499QV3W0trl9OvNel81OfwptpxHfjXu8phlT6GPdsy1yXALJ/v
+         VIz1mI1cfXWiJUFJRDbxgD9gvFl0eIM3h7uXRtw1ENKqIMjRo7Rw68t/9S+AJ1bLgVg8
+         bBBfHCMLVSIM0osAOdUaLb96STjbYD1cwuzU8aUtP1F5P1HhF8sKiRmpXLNIBiG+GAb3
+         /b2w==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=BkdN9wWi;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c6b6bb14sor19372045ad.14.2025.03.13.21.23.08
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 21:23:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=BkdN9wWi;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741926188; x=1742530988; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=9IW7GQC+8vTzG5rlJkV0+nIEZ/sSaJYJ5h7Izt7B/wk=;
+        b=BkdN9wWi+ZC8wSDZPwx3s+eUFHmnXXmtaU1/RyQh8UO48RfOJ3aH5ZPBRivPs4fUew
+         Ju9SK3+6o8JlN0p2hukm5+7IhzSP42NISUrmGm3/7Cc39X0qiX+QI8MxcwgATy+tFpY8
+         5tKSwKLgh19S4cTUWRFz85ePW+m98UAU0gjEF8XdtqQat6g3o5SlLJv71MCkA0XuBdDr
+         YIt7BcX8xEN5gJBWsinHp4WY7oVFAHw3hWifLhLw1yB6ggjecXespVd3RRwbwGA74pf/
+         88Nl5iowIOOEAVxFeRkG7XE+GGAUYDCrsy6DDYwTHg/pak70fnzztPIUR3BSXS001yYN
+         7ksA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741926188; x=1742530988;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=9IW7GQC+8vTzG5rlJkV0+nIEZ/sSaJYJ5h7Izt7B/wk=;
+        b=IFpYP8KrMywmCDEcsTPQ/o1osE7lJytF3jjLr4o+qtgh2GFzF/84Gsq6O8dofRsIku
+         082h7d6d9OpGCLZu339CN5/H0LTRqezy1g0sTaYnXGyPhxL8ZVbCQfRPH1cN0K2SqWTa
+         oPmPHE2a+sUvmvm0MhL2UPqd4yoS7Igty+dK6QAulaHJVH7FAWaRd1Fwo/QVUerR+1Xp
+         ag13o4Z7h0PZToz0m+sM9Oa6Y4DRCI2myntE7I1CmiJEaayrtAYeJSe+DIrgyHzWWQZV
+         SrMOuSR0re79+0H2HiDebcrJP7WtMzoC+mcfpuM9aTz1Ix8ywibmoBneEcDUNTqkDolO
+         TGVw==
+X-Gm-Message-State: AOJu0YxjV5fWhzc588WQ1HnvxupTWvioqiK7STCozwdbusJ5xTUvxxCI
+	3JlY/v8CCQvVa505mQwR1idj+ChCkmlAt6kqJWuXK4yyRAYuIneT/e+oLNwp
+X-Gm-Gg: ASbGncvtjrUWDJgUVk38wGfgDhjMN5qogw7rzT2Rjx+aLYbbbwcmVyb1nhPlHxGsx6Q
+	OXLKYepDIJYFyYgqW4qhaeiUQUFIYa/2PPgwmeZll5rsWHWifMKH5aC0uq5g1/5byNqjc0fkPej
+	XKc2MZvlA3zoYbj+9Tuu4zKMYvBZkFVhlsOF7SMxVrHR29NLHYzGVNwh1eFH/ffXmmIhjVfuBEx
+	CSLIl/HtgEuPGeV500WjSjwfRvWSXcv5pqV9EU6JCKkVNM65vhpLOj3hx068beJdfQcvPmEbBXQ
+	KhHOEhN4uZ33ivcn12X6ym7xG2w8n2GOgWNXL39J1/MpDF86NS2uAZdTld9YSEbiB/ZOuA==
+X-Google-Smtp-Source: AGHT+IEHZ8FQ8mBghvk4hOKmnMp5P+g/MMrXORlw5N5nfGyWJ08SjCAfZuj2RbsANfQnkZ2+NIM9Vg==
+X-Received: by 2002:a17:903:40ce:b0:216:7926:8d69 with SMTP id d9443c01a7336-225e0b10845mr14399465ad.47.1741926188349;
+        Thu, 13 Mar 2025 21:23:08 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6bd4e02sm21647225ad.226.2025.03.13.21.23.07
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 21:23:07 -0700 (PDT)
+Message-ID: <67d3af2b.170a0220.12d54e.7123@mx.google.com>
+Date: Thu, 13 Mar 2025 21:23:07 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============5083459691117331544=="
+MIME-Version: 1.0
+From: Elite Shop <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Feedback on Recent Order from TechGear store
+
+--===============5083459691117331544==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear John,
+
+   I hope this message finds you well. I am writing in response to your recent purchase at TechGear, specifically order number 1234567890-1111.
+
+   Firstly, I would like to express our gratitude for choosing TechGear as your e-commerce platform. Your patronage means a great deal to us, and we are committed to ensuring a seamless shopping experience for you.
+
+   Regarding your order, there appears to have been a slight delay in the shipping process. This was due to unforeseen circumstances with our logistics partner, but rest assured, your package has now been dispatched and is on its way to you. We understand that such delays can be inconvenient, and for this, we apologize sincerely.
+
+   In addition, I noticed that you opted for the express shipping service. As a token of our apology for the delay, we have credited your account with 20% off your next purchase at TechGear, to make up for any inconvenience caused.
+
+   If there is anything else you would like to discuss or if you have further questions about this matter, please do not hesitate to reach out. Our customer service team is always ready to assist.
+
+   Once again, thank you for your understanding and continued support. We look forward to serving you better in the future!
+
+   Best regards,
+
+   Example Your name
+   TechGear Customer Service Team
+--===============5083459691117331544==--

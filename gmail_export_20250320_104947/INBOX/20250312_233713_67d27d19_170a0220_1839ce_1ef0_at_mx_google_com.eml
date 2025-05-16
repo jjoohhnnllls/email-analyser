@@ -1,0 +1,113 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp768902rch;
+        Wed, 12 Mar 2025 23:37:15 -0700 (PDT)
+X-Received: by 2002:a17:90b:390c:b0:2f9:cf97:56a6 with SMTP id 98e67ed59e1d1-2ff7ce63ffbmr39659096a91.14.1741847834766;
+        Wed, 12 Mar 2025 23:37:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741847834; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Olbr8rF7bneeyVSPtd+vHZ9ePKFwCE3WuhmDHg86kiW7uonUq/S1VBvH1iw9zagIOe
+         HRDao1xfRacC52gk9R4TkuOoWtZeZAkQWUsKhHE62Vf2x01MDll2iGyzKup2zt/63sE2
+         rRwqq6MZdwpIYbq8qcZJ4IHxLATlx2jPIWRG69ct2+Eq9ROi/Txbg6EB0RELT6C2459e
+         7vloGJAfYWeGRqID0Llytjoq+4+KdDOeIc4ZDnN2Hs73VXfRUL5Io+XZXl29pZiJfOdg
+         0z4HZZsNEsIGOkXkYBdOYvKAiuc9DzEpPzUXbOHuwJdIWTiMW5pibT5mRC/L09nkN5h1
+         sS/Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=ZhxclD/b3M4KLqLdGHtbmUdCijO5ezSJqlCIq+yn/g0=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=ZcvJpUwPkBvImr+2NzxaRnziiXbiPVmPi+1zdKnmru1ohBJ4xtAkRRw/9QwHlkDoe/
+         J89We7Y34ysoDcdlGKpfH/cK+5fRZOYRZqG+MfU+e0z1nTQYnJWTganHNle5TBpomPUV
+         fdq7rwWigVbIYpRKzLNL8jOX+jNBkYfvBDwRjH2oyO4Vfqe8LiuAPSMi3ApjC9Y+qu+7
+         r6KS0lC80g+W+PNCwT90/LPuxaq1VrFAFXAuZBTdNK2dvjYBZKvKt2BeyQAG2wOqHbGr
+         BUb+MKA1umKmvSnMkxhbT+fWY14bFgjzLv+8bA0mXJb73TZvNEFOGiTb2+I9HQwnpMKi
+         R+ng==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=VlcfwGdL;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id d9443c01a7336-225c68843f6sor7362305ad.1.2025.03.12.23.37.14
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:37:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=VlcfwGdL;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741847834; x=1742452634; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=ZhxclD/b3M4KLqLdGHtbmUdCijO5ezSJqlCIq+yn/g0=;
+        b=VlcfwGdLKzkqfnIFm990y76OIgcO33OjqCSAE18fZ4+57v1xfWUUCAVn2IOMMxmV5z
+         nUvTB48j96lZaQ41u/mSH8ta2ygTq1TJ6jldpVphnJaf1JF0XETJ0gQZa7JjVG5lTfKU
+         OfonmQMrVHtOp8YBPp+1FaWJX6LCrqMBjHLECpuZ90w040tiQxD6VY+1uvbq6VeA+RSR
+         80+CsT9M4WH4SC1hn/5dSCZ5IQTcHLRF9Mk0lFoSjgK3/IzvmwBLqCf/rYq3YxVon2Md
+         rbRHw/twio8mnd6VDnwmmLlmAJZIbVtpj+L/tnoS4HP+J5xW2o/IuONk3spZpNKezXdp
+         qYKA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741847834; x=1742452634;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ZhxclD/b3M4KLqLdGHtbmUdCijO5ezSJqlCIq+yn/g0=;
+        b=S1bIOcnGxAUedb7X2mdojD7wGhu9AbsAyjeg+93fL5E9iPduD8uV6NuIRLeGP7TxoM
+         t4tzT+s/tOBgdR1FXK794eS8ZaNNr0bFCwHE8ys89lDiNd+ooXJjSIfX+892Mg/igTV7
+         7YB55thwgipZwZ8mde7CyIZdt28YoDKa3L6su7tzxHMGODHw4o51dT/sIphJjNU4wk1Y
+         dHuJXnuJsaymOcmgjVpuNG0e6Cf2jZGDTX8b2vchDhp2FqcrREZKxpUK7CAliHYoL2HC
+         47U0ejOn/cNJoTP4pE0QS5LScAZdUtxQUWdRPnVLdmmK6+0nJ0ecZiixWBHk9fSf247P
+         8O6A==
+X-Gm-Message-State: AOJu0YzJ/+B/Clp6+n+5rco3aHDztGSxCHCklxPbJhINh9+SjhxZcLMb
+	Yf+O+ZHQwlqMwBsY3gkvC7QbBv6aDLX2DlwEHLx9PgTFIJhJ/rZ/qtvgQme50nU=
+X-Gm-Gg: ASbGncseQtsrVgXxR4ytI2CDUg4B0E1vIUG2tyPpjb2cLs1f5tTmDSRY6I6k8JlmA0d
+	3bSG2ojLtyp085rIB/3+9Dvee4XAgz3VJVd74uqrX1jtb5MkvwFfQ1vi9RscsQV+GOmaZWLP6iE
+	tYgX36EKmjWGlByP+WkOn405KeWQzqp58hNYoXyL1RWDsJAWw0/F8XSV2ewyDiYXc6K6sbQc74C
+	DFaQ7RJcBhKHOta0XiivU2iVV5E/ukzAED8g7KFkzM3jlMgQYrXZgK+ehzFdyIXCq5vI1+S13fM
+	zfSpH9LUvetr9xeq/hTT/M4pTDnEe412r6jV5Gq5bpfV4juCH0P8OqR+EsNOlj2gXSTBGg==
+X-Google-Smtp-Source: AGHT+IHJMvIoDG05IX0JBcTf2xg8hSaBavKa7ZiOx5IIxfinZbp+e+OGzzEigCXflVKie8hB9MDiMA==
+X-Received: by 2002:a17:902:e802:b0:220:e1e6:4472 with SMTP id d9443c01a7336-2242888a998mr318952045ad.13.1741847833992;
+        Wed, 12 Mar 2025 23:37:13 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c68aa837sm6208595ad.103.2025.03.12.23.37.13
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:37:13 -0700 (PDT)
+Message-ID: <67d27d19.170a0220.1839ce.1ef0@mx.google.com>
+Date: Wed, 12 Mar 2025 23:37:13 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============8541630296049989684=="
+MIME-Version: 1.0
+From: Robert Davis <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Assistance Required for Machine Model XYZ Maintenance
+
+--===============8541630296049989684==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear John Doe,
+
+   I hope this message finds you well. I am writing to you in regards to your Machine Model XYZ that was purchased from our company last month. We have received a report regarding an issue with its operation, and we would like to help resolve it promptly.
+
+   Upon further investigation, it appears that the problem may be due to a malfunctioning cooling fan. This component is crucial for maintaining optimal temperatures during prolonged usage, and if not addressed, could potentially lead to more significant issues down the line.
+
+   To remedy this situation, we kindly request that you arrange for the machine's immediate transportation back to our facility so our technical team can perform a thorough inspection and make any necessary repairs. We understand that this may cause some inconvenience, but we assure you that our priority is ensuring your machine operates at its maximum efficiency and productivity level.
+
+   Once we receive the machine, we will keep you updated on its status and expected return date. In the meantime, if there are any specific concerns or questions regarding the transport process, please do not hesitate to reach out to us. Our customer support team is ready to assist you at a moment's notice.
+
+   Thank you for your understanding and cooperation in this matter. We appreciate your continued patronage of our products and services.
+
+   Best regards,
+
+   Example Your name
+   Example Your position
+   Example Your company
+   Example Phone number
+   Example Email address
+--===============8541630296049989684==--

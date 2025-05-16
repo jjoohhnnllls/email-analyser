@@ -1,0 +1,114 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp348447rcd;
+        Thu, 13 Mar 2025 19:00:24 -0700 (PDT)
+X-Received: by 2002:a17:902:f647:b0:21f:4649:fd49 with SMTP id d9443c01a7336-225e0b14ec4mr11350365ad.49.1741917624192;
+        Thu, 13 Mar 2025 19:00:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741917624; cv=none;
+        d=google.com; s=arc-20240605;
+        b=gU7clW/I/Bn9TTE1DbOMTK6uR7lEqh0dcYVyCK6hd70P3DF4se0IItHoVHxyKMCy42
+         oo3tHg5KfdC5srPvkjc1XJPbg0GdCm85fp6D8sYQ9F5upnsOFFx5Eak7V7bcZOsAI8/H
+         m3wbx2i7kbrDyZOwx6QS6SM5LRolntjXgPNTxhkVCYVE31zRJeDyHJzmjgiI7kGqoRei
+         zn8a5kw+AB4MArs7vqEGqWqyokllvSSs4EFzJmO/Ci88NrTqGZpbfkE7gkORXn+1x7HQ
+         Ri8JcnN8lLJDtNOtniJI/YaoAazayA11ZmgKF3xpSoHZiqZV+ZHP3a46e+nPluGaRaZI
+         KKAg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=yviTP+J8QOxENGnyGMSVaeeY6PuXzEvKeeb8VZ7438Y=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=BJO6CrPzHtOyCI0gvGBwmwmyPMrkfKjnLtPnqW+QO18JQ4ZdNLFu8m8Q8oqIQjBlKa
+         wFxr6ud7CX57L4YsUFN7AIbRMQihNh21+JujQkDhT2nKRHv1NJEvZrLl0qdzYilHn9GC
+         7yNUc3WSGqa3xdqbITg1YrrPy8/+vVYYSf0g3h5y8vRE96zNIq8t8lfXyFA4YQthIOPI
+         v//q2eFXndrTsG9njUggFgX4KwwrWCGDuxc+62sTfz4cpljKGjOu2d5rcHs3opjaT/GJ
+         ntATSgRCwadLoT/1eGMP8jzcqpLgiMrrswpHZPUYZDPqAkaLA1iCUSg4YMDe9/a8wR+/
+         p7vw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="jP/NkN76";
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c6d1ab21sor15477985ad.13.2025.03.13.19.00.23
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 19:00:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="jP/NkN76";
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741917623; x=1742522423; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=yviTP+J8QOxENGnyGMSVaeeY6PuXzEvKeeb8VZ7438Y=;
+        b=jP/NkN76r5OavDsqGgoRMeDz/v8dBqrkbqy651T9IeL0HZUxsUgBU0IYW3MNjgN6qK
+         VWP9GcqzRKSsAwE8X8SGsSr7zZIi1C0+PwXauI5R1XKv4U4nnO/ezXe7nWmtyjIm2FeT
+         tXKhc6DRWmf5avjb/oJIo3EMlcFGgIU6giPGBjm7MNIvDgybiN1qrVHMKU8OaY10FFB/
+         mLEDq2KUdN6JgrlCUE184oVbgkHsq67el2u3U+5I2UIa3F2NHimEJ8GzJM1FsXeAPLgu
+         TSmvXqhUKXCbhPXq6B6HgzLr1lA/1BxqCvK9hM+7f5/iN+PI92pZ5exFiz2/aAyznClj
+         UKXA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741917623; x=1742522423;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=yviTP+J8QOxENGnyGMSVaeeY6PuXzEvKeeb8VZ7438Y=;
+        b=BI4gehl7bqENrlDD0DIgIsVO0sjrxuVLEYi6XuseGt743gXGB59oDeJHWKKPYuwe6L
+         TlG7UlE/jO5PZNjo+eXj+rxgX41T3yXAEUyrQQEaX4FqZjL4C5kPtFk3wEDDRviFdTPh
+         zs7I+9Nl3oq/7FW90LP3AMOE3mHOXIdH9JHskyqBKDcnAxH6VnBGrp5eieVMaUXawzQq
+         dPspqSp4rdFFAWpuhQgVtnE0ip2jEgeEBIHjs7QnjkzmNe3f8oQvudWPCHOjHts+lyzQ
+         XhGr6dzAeY+wFq5VD7BlTiEH7OG939TZkfikzORZw6jSIJ1c17rz83C0qEEEwi+iOSfg
+         BJFA==
+X-Gm-Message-State: AOJu0YzSvbDPBvNc76WPs0gv7NoZwbsis0Tcy/p5Hl2OnTjTNCVVnIoc
+	y60ct8XIftT5L6T3N385YgtFQ/mrbNf0Z+OgS1VPCwYMcBdqALddwbUiq4/x
+X-Gm-Gg: ASbGncuP6H7jTszlhIUo8zaVKVvk6hNZokrq5GiL+G4xaErgSxTOKey8SHXQMPTXztg
+	R1kegCXOHdsBia1fxTty6Z2NMMe5YYetGdyiK4WNNSBbDj31tTosRx5iq1zRHEM4xvh4Y8BzmdY
+	H33drWtfvdeZytDAAnf0kXQiok9bLMggc4doqMpGB0QKHvOXNz8aGvMqT92NiujfQmYFkf71Kio
+	jAxL/He8Bbgua7XuF9eGYMZlkWUpj1beeIdUTPuBx0GA5OOt1/cQFuIICoCGlU0hgdIwNIX34oW
+	dCZeDb45M/J5iuCORK7aiMOkgoSJz+dVL8isO6oukZeqdlLpe0YEz6deoy/zg/htaPxwwA==
+X-Google-Smtp-Source: AGHT+IFeFUR1tiO9uhRxyjOxeiH1FHlRJIRw7Syqn8IryxRiu5ukyZiC0+IX20Qt5auXD11Q844yMg==
+X-Received: by 2002:a17:903:3d03:b0:223:f9a4:3f9c with SMTP id d9443c01a7336-225e0a16958mr9972755ad.9.1741917623127;
+        Thu, 13 Mar 2025 19:00:23 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6bbcbbdsm20394975ad.170.2025.03.13.19.00.22
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 19:00:22 -0700 (PDT)
+Message-ID: <67d38db6.170a0220.3be187.67ed@mx.google.com>
+Date: Thu, 13 Mar 2025 19:00:22 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============7634310971130638176=="
+MIME-Version: 1.0
+From: Mary Lopez <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Proposal for a Familiarization Trip to Bali in October
+
+--===============7634310971130638176==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Ms. Johnson,
+
+   I hope this message finds you well. I am writing to propose an exciting opportunity for our travel agency, Sunrise Journeys, to familiarize you with the breathtaking destination of Bali.
+
+   We are planning a Familiarization (FAM) trip in October and would be delighted if you could join us. This trip will provide you with a firsthand experience of the luxurious accommodations at The Ayana Resort and Spa, exceptional dining options at Jimbaran Bay, and thrilling adventures such as white-water rafting and temple visits.
+
+   The itinerary also includes a presentation by our local partners on the unique cultural attractions Bali offers, which we believe will greatly enhance your ability to sell these packages effectively.
+
+   To make this trip even more rewarding, Sunrise Journeys will cover all expenses related to travel, accommodation, and activities. We understand that you are a valuable asset to our team, and we strive to provide opportunities for personal growth and professional development.
+
+   If you are interested in joining us on this FAM trip, please let me know at your earliest convenience so we can make the necessary arrangements. I look forward to hearing from you soon.
+
+   Best regards,
+
+   Example Your name
+   Travel Consultant
+   Sunrise Journeys
+   123 Main Street, City, State, Zip Code
+   Email: youremail@sunrisejourneys.com
+   Phone: (555) 555-5555
+--===============7634310971130638176==--

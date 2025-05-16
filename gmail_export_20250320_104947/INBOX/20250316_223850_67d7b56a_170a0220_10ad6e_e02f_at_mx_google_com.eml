@@ -1,0 +1,113 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp2108519rcd;
+        Sun, 16 Mar 2025 22:38:51 -0700 (PDT)
+X-Received: by 2002:a05:6a21:329d:b0:1f5:6f5d:3366 with SMTP id adf61e73a8af0-1f5c134a12bmr12648935637.37.1742189931304;
+        Sun, 16 Mar 2025 22:38:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1742189931; cv=none;
+        d=google.com; s=arc-20240605;
+        b=WCDGQ8dj0YS/tvWPiKdg4YIUgqFDsHPz4qLAPmJLroSnByjgXvuqknXzgJI675u+qH
+         z1+8HnPeeWqUfSMHn5yWZflVXhKy0kIP/N++UpFZq6+3+NvC8+F60TbCphQJku3Zcoeb
+         eJb0EemszkPvE2vUVy2slD2Y1ggfzswUUD5UpSnuKte1Otf8WtcO6V6t/2QTQkdnVTNO
+         cSGKcWC0QUdu/g+Y2q/9RyJNOI6T+nElyRCmYMyPYEVclV9XLT2AYzRTrooUYWsua8gU
+         V/TQLd1KSCaJIbTs+gnmyy3HCKhTGDIUjSD1PG66Y93m7xkoSrN3EftlzxYcSg1R0UNe
+         zhpg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=UbOStYE8ORVJf5Gopfg0iNSc/8wHWM6Muq8avfomoVA=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=OnTEkLSwqS6KF3NTkd9oiXP3pkLCaXOpnIcvNIo4NaUi2dtrklda1TnBUGVYTyCdV9
+         xQPtn5ne5TWjNnK4ksOAcbMoSEUd2aO/FqdgKfnjTMHgObYFgaOpbPLdEqRPpIGU6+rC
+         fMSlSGX7erZX26RoiW8Za6knmlU1m00tZumq4hmUd70LRcJFy5CDeKkawJq+neHYvsMt
+         6eMiBbM/rkpW62Vy49lH8UCLNMWW7IQZWS/KjMjuBTVCMRSAFt2dP7X7JJkNMWpnsSUf
+         IpADOkCn8bgNVrnt7b9qzbEzdUfYa3JwRS7n2DFFzDwSKQ8dMQ1kOPDtTXv4hLQGTCve
+         v11Q==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="a/dIp/c7";
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 41be03b00d2f7-af56ea5b3ebsor6201480a12.4.2025.03.16.22.38.51
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Sun, 16 Mar 2025 22:38:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="a/dIp/c7";
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742189930; x=1742794730; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=UbOStYE8ORVJf5Gopfg0iNSc/8wHWM6Muq8avfomoVA=;
+        b=a/dIp/c7b2aHC7XG0eNEFJ3pPwOSoF8mbCSPSWi28sEJj6Zw4LjflmIjG/IDrkXdYD
+         c78B/wqdwG3dRVp9EAZF5XTcR0GY2bZBkiRzGLGpuU/MDzXO0Wc3be6PC2Gdp11oxIld
+         n1SfqBA0dLKPosQCetkKejDB4wd2eSCS5vgvlR4kSQCvHUf8pIceCSHoKoXXBunv4sQv
+         9IFLoWStf8o2jjJpBLTGttrjANVZie/UKy0SaI4VjgIjGc+ASe8x0vtYN1DAeTlYJsUp
+         chgdkjHEPH/3QLyVvMph//Q3d/w3BdV3urU8iGp8ELa8lLYRpqM02i9BXnYcgVF0+y1S
+         K1Tw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742189930; x=1742794730;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=UbOStYE8ORVJf5Gopfg0iNSc/8wHWM6Muq8avfomoVA=;
+        b=TGxzIeCuSseKeRIUCAxU4Iw3I641dyrkC4DzUlb/2nu06dZf9WfNUjkLb56Wdntowf
+         tzfw4LDbd5lLx5t7FZd3KUMh7f95QMJ7xbjNQTu+N9Fs8W9aO2oRO7tXxspWwIHGZ10r
+         BlSCZJXHp5y0CXgAvH3e76ACpqRWZOzliGuLnJ4JaXzMU+F89m+MRblTdDNFOMXX5vX4
+         Xc5oa3lCWbnTeRJDxMnC+ajXKOYm1LzQEUo4E1z/56bPq0+5QA3sokbRm1ovvFzopQld
+         o0jSoZn8mu2Pkd5bi0lmll7zqTnf3l4LwEDSwq2mU+Dg1eMaPvnIgZ84jUGIY/ohQ5el
+         JQZg==
+X-Gm-Message-State: AOJu0YybzrkH5aV6DsQ2VWyHYSdaeS8wjQyI02UVtZdIWtzN7igeJ+hi
+	BrMoB2iiN+bLldn0BuHOF5BpCCTKxRUIt1BW/oNeHT5sFwqNpPnCRz9A9w==
+X-Gm-Gg: ASbGncum2Wb5zfnTvK/IsfXva4qkV0E/tJlcNuRHQo8kITOoxoud256QPBPWPPtSwRh
+	bK2KZ34oXxuDrgnBgd31f6sfAwmRSWR8L6aXvauIzyCrd/DF2MB7hUt9T0kDU4XGEgncVi+s8WF
+	ISdcoxfJ2o4/qgrAML0uOe9SijLMAT4ALsGhBiX/tRTDypNYZfwQkwLx+x2oLkErGkKubtVuKur
+	02OoKG2qDTLY4gvbEeNMFKYiK3xxF6a9x2UxQPF51tWwIv4Y3syzkh5oDAjNbej14//f+zXJms8
+	vRw6Wl3MdGF7q+P/dxSGFp6HUm6YIb/DKgypfaQZCj/LNpLPU/Z2DgZsAMev18bqhF6wsQ==
+X-Google-Smtp-Source: AGHT+IE2+I/l9C3NcwYREAX7tRX71VbaZyQZq5v/L4h/LuIAW8zyaCQiZHhq1BzbeN0lc6Yl7h5zAw==
+X-Received: by 2002:a17:903:1c8:b0:224:1ec0:8a1a with SMTP id d9443c01a7336-225e0b21af9mr122817275ad.51.1742189930601;
+        Sun, 16 Mar 2025 22:38:50 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6bd547asm66139165ad.248.2025.03.16.22.38.49
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 16 Mar 2025 22:38:50 -0700 (PDT)
+Message-ID: <67d7b56a.170a0220.10ad6e.e02f@mx.google.com>
+Date: Sun, 16 Mar 2025 22:38:50 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============6100443477342395864=="
+MIME-Version: 1.0
+From: John Anderson <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Important Account Update Regarding Your Recent Transaction
+
+--===============6100443477342395864==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Mr. John Doe,
+
+   I hope this message finds you well. I am writing to inform you about a recent activity on your account with us, ABC Financial Services.
+
+   On Example Date, a transaction of $1,500 was processed from your savings account number 1234-5678-9012. This transaction was for the monthly installment of your home equity loan that we facilitated last month.
+
+   In case this is an unexpected notification, please ensure that you have made the payment for this month and confirm its successful debit. If this is not a recognized activity or if you have any questions about it, kindly contact us immediately at our customer service line (1-800-123-4567) or email us at Example Support@abcfinancialservices.com(mailto:support@abcfinancialservices.com).
+
+   We value your business with us and strive to provide you with the best possible service. If you have any feedback, please do not hesitate to share it with us.
+
+   Thank you for choosing ABC Financial Services.
+
+   Warm Regards,
+
+   Example Your name
+   Example Your position
+   ABC Financial Services
+   Example Phone number
+   Example Email address
+--===============6100443477342395864==--

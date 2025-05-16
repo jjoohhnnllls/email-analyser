@@ -1,0 +1,113 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp348100rcd;
+        Thu, 13 Mar 2025 18:59:34 -0700 (PDT)
+X-Received: by 2002:a05:6a00:139f:b0:736:9e40:13b1 with SMTP id d2e1a72fcca58-737224726e5mr715914b3a.23.1741917574227;
+        Thu, 13 Mar 2025 18:59:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741917574; cv=none;
+        d=google.com; s=arc-20240605;
+        b=DxBSh9nR9smWJFN/DVHNVKa/ejykvvRr9XqF/70Id++tKc7iqReRVmPMAx4tHerRMO
+         ZKfATtN9qhvMGNKcrsAx6HDmVPQZ8sK5MOUXEr47Ax6zt2zo59l40ilfpTUaURMzj6AU
+         KJ+TI/XYJT6pHJ97mYSopdLJL4WyfC6Nn5VKUtfizRMvowBq5Sv92Tk6dNDqzDCRUoUv
+         26+TblZ0//U8EmzpHcC2Gves4G9CtSbgedc0+C01/kJDwL0ZDe2TQ+uE1R3ncktt6Gww
+         Oj1oLSSDbaxI+FJlv+aX8On5x7N6yb7HWTaQPE4F3N9ukouHgwz4hwrt7xQg3mBbCfzr
+         QLKg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=KqX7ChFXzZ3vWAD98T1aCG/JLhp3rgIeddLtoi44hI0=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=iTPPkitekzwSpZIWEO8Zmb4vkey9gPuxUn2NSFORivnvlH7B5ruAIJR7Qz93deg4d1
+         XCSSnxOXRJwpMEYhgd8bjaDB41MMIanTFcQtxw1EezYpUnjWG907gKWOs15rrM3gOp3l
+         m1txR2FceuVaAUZ8/pyV/oQRO3HiWJbSQVwEg07ECl5gX2GAW2h+1raxw41dX96gIlbl
+         zjLHDjyglYq/FDi8pupMx1gkyAG+2W65x8Nuh7ZtuHU4tgrK1ha3qxR3xm+/VWcqmAUN
+         937DBWuZeW9XJrVXERGsiw2qNTGPn4d436c29Uq7luZ/8xtapWJY3+H5xhHc0KJzX67i
+         T2mA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OfZGY8h3;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-737128d5294sor1556679b3a.0.2025.03.13.18.59.34
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 18:59:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OfZGY8h3;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741917573; x=1742522373; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=KqX7ChFXzZ3vWAD98T1aCG/JLhp3rgIeddLtoi44hI0=;
+        b=OfZGY8h3RUjK7Jb9Fjhs6bGQw/nfKQek2dx9FCKnC5yfDv3WKlwRfWHnC3b+4tmmpE
+         INvqE+4J5cCZ1zaaxIOzG59HeBz+CtBlyk3qu8CL/AIPg0zNjwQ1i5ENutPCa3CC5JjB
+         lpbPyc/XU/2AAw3QqcywcKEVNar3x6fMRKEefcUTA9O8Y6KX36V19gGKj5xP2D2Nndlb
+         WvL6VtTL3iq3d60hxiL8YdL0SigH6Xhx9K6CmzKYxiqrf27kM0a4CWUL915TLXCaihjx
+         cMbH5Q+APrHyCDPalWlCSd7indun9/Xl70Gw+m7NTd6Yynybf/Tb/YXNKsyWd8Bg57Ej
+         ICKg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741917573; x=1742522373;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=KqX7ChFXzZ3vWAD98T1aCG/JLhp3rgIeddLtoi44hI0=;
+        b=bEvcGM31DWGQUVQvy3ceDsH/q05+SfEl3RLMSEzlCLBMygnw62iLSXA9jT8/PzH1a+
+         io4DMtvWfJNdO4Sv2zOLyz06F5CeVkvsdkxRg5P506UkwcXp5INlSh03NfuRLvEHWDIi
+         QSb8gDvwRhY3QTdruO1iYYga15waBdjreDrxWI8GVWkUsGFl94+AL53N8iFAY2IB0+y5
+         8AO1EjBm5czZdPYjrbsiHbvIrfLOeD3yLXplfgFACylFV3a4BTrIkNb2Ax1wvG8cHD9A
+         x4G6DxEGXsoP6R4z8a8KovHsh2qbU3O93PWaRKBOtOQAuSHONlCoUSSQb1M+Ozfz3gJp
+         yPBQ==
+X-Gm-Message-State: AOJu0YyNM2izkW7en1xBH4zT6qQvjndjuNlt1+G7ngW54D1NnYlI3IAy
+	p+OBJNmvmmsVMi3N3Psuj+ejKZumowgDky55OsugW4vG3EM106MB2CGKrFc9
+X-Gm-Gg: ASbGncvXtc8OrdmG+0Q4GVRJzfhFfKEIYBjrrgr2yA5R2APo0wmgJpVjB+kvwetRTQR
+	rflrSX/UovutribrP5V0IQ2TYplYGKpeWGg6JmDcQGW7kXdg6Ww3vZg8EevNGPwzb5tO6f8l/mu
+	fSUg7yuwyIQO88YWxFYlQAtCkl8lYhsyVNgW+1gzzhqSkKZJcycnbk1kz9dzqKGxtwD40/KctZJ
+	HUJl5sB+rKOSxiMcA3ijNV/xJOOaPAhqfVpiccLg1gwlap0IIyEH42RwLt9U1ebgCKlU5pPgz4U
+	BnuyHi1jUtK7r4L8m93Rvwof7PidksIGb/BgXrrs244M+oSF+v7xNLRGtAjME7oIQnjr7w==
+X-Google-Smtp-Source: AGHT+IGmqi2E2dVK8jg5DjoecoxaTVRpNyOftitPaT6vwaUHq2piYe3R+lHitrXd+CE1SFhQlAZssQ==
+X-Received: by 2002:a05:6a00:4b52:b0:736:33fd:f57d with SMTP id d2e1a72fcca58-737224371f0mr732839b3a.17.1741917573443;
+        Thu, 13 Mar 2025 18:59:33 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7371167e02esm2114725b3a.95.2025.03.13.18.59.32
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 18:59:33 -0700 (PDT)
+Message-ID: <67d38d85.a70a0220.209636.71d2@mx.google.com>
+Date: Thu, 13 Mar 2025 18:59:33 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============4044972390824106479=="
+MIME-Version: 1.0
+From: David Garcia <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Inquiry Regarding Part #37981 Production Schedule
+
+--===============4044972390824106479==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Mr. Johnson,
+
+   I hope this email finds you well. I am writing from XYZ Manufacturing, a leading producer of automotive parts based in Detroit, Michigan.
+
+   I recently came across your company's innovative electric vehicle on our latest industry tour and was particularly impressed by the use of Part #37981 in its motor assembly. I understand that this part is critical to the efficiency and performance of your vehicles.
+
+   Given the increasing demand for these electric vehicles, we have been experiencing a significant surge in orders for Part #37981. Our current production schedule indicates a delivery delay until the third week of next month. However, recognizing the importance of this part to your operation, I would like to explore the possibility of expediting the production process for you.
+
+   Could we arrange a call at your earliest convenience to discuss potential solutions and determine if XYZ Manufacturing can accommodate an earlier delivery date? I am confident that we can work together to find a mutually beneficial solution.
+
+   I look forward to hearing from you soon.
+
+   Best regards,
+
+   Example Your name
+   Example Your position
+   XYZ Manufacturing Inc.
+   Example Contact number
+   Example Email address
+--===============4044972390824106479==--

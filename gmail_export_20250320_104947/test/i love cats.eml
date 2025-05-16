@@ -1,0 +1,46 @@
+Received: by 2002:adf:e28a:0:b0:390:e3b5:d6db with SMTP id v10csp2501435wri;
+        Wed, 23 Apr 2025 19:17:35 -0700 (PDT)
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id af79cd13be357-7c958c99190sor24230185a.4.2025.04.23.19.17.34
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 23 Apr 2025 19:17:34 -0700 (PDT)
+From: desg test2 <desgtest2.email@gmail.com>
+To: "wotin77275@agiuse.com" <wotin77275@agiuse.com>
+CC: "desgtest.email@gmail.com" <desgtest.email@gmail.com>
+Subject: i love cats
+Thread-Topic: i love cats
+Thread-Index: AUE9VXBmH1QraLvlCW+P59d9Py5h9Q==
+X-MS-Exchange-MessageSentRepresentingType: 1
+Date: Thu, 24 Apr 2025 02:17:24 +0000
+Message-ID:
+	<CABgHKGP0DfhvpS2xRqXpKDXzeewa4UcNEYHrbms=Mg+MhLSTrA@mail.gmail.com>
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-Exchange-Organization-SCL: -1
+X-MS-TNEF-Correlator:
+X-MS-Exchange-Organization-RecordReviewCfmType: 0
+received-spf: pass (google.com: domain of desgtest2.email@gmail.com designates
+ 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Content-Type: multipart/alternative;
+	boundary="_000_CABgHKGP0DfhvpS2xRqXpKDXzeewa4UcNEYHrbmsMgMhLSTrAmailgm_"
+MIME-Version: 1.0
+
+--_000_CABgHKGP0DfhvpS2xRqXpKDXzeewa4UcNEYHrbmsMgMhLSTrAmailgm_
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+
+dGhpcyBlbWFpbHMgaXMgdG8gdGVzdCB3aXRoIENDIGFuZCBCQ0Mgb24uIG1lb3cgbWVvdyBtZW93
+ICwgYmVzdCByZWdhcmRzICwgdGVzdGVyDQo=
+
+--_000_CABgHKGP0DfhvpS2xRqXpKDXzeewa4UcNEYHrbmsMgMhLSTrAmailgm_
+Content-Type: text/html; charset="utf-8"
+Content-ID: <BB9A0C30D8BC134E949CCC7A44C7C410@1>
+Content-Transfer-Encoding: base64
+
+PGh0bWw+DQo8aGVhZD4NCjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0i
+dGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCjwvaGVhZD4NCjxib2R5Pg0KPGRpdiBkaXI9Imx0
+ciI+dGhpcyBlbWFpbHMgaXMgdG8gdGVzdCB3aXRoIENDIGFuZCBCQ0Mgb24uIG1lb3cgbWVvdyBt
+ZW93ICwgYmVzdCByZWdhcmRzICwgdGVzdGVyPC9kaXY+DQo8L2JvZHk+DQo8L2h0bWw+DQo=
+
+--_000_CABgHKGP0DfhvpS2xRqXpKDXzeewa4UcNEYHrbmsMgMhLSTrAmailgm_--

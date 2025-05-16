@@ -1,0 +1,117 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp349462rcd;
+        Thu, 13 Mar 2025 19:02:17 -0700 (PDT)
+X-Received: by 2002:a17:90b:5347:b0:2ff:58c7:a71f with SMTP id 98e67ed59e1d1-30151dc7588mr840270a91.32.1741917736825;
+        Thu, 13 Mar 2025 19:02:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741917736; cv=none;
+        d=google.com; s=arc-20240605;
+        b=GzvfaUXRXvws99nzsuC8Fo2DcXAQfgLCZsN7dtR0jye1VfBeJrtOltJ2JuXjUbhCB1
+         XrlMnBK0v8iJ2QfDb7SmLXa4gI0Vk4a3d/J/sCJxhFqQl0aV0xHGTwW6kQu7BYh4UYBt
+         +oHH+6d7zig9EYPBBQc0HS/AFVbitGPdTiZ/RRiDs4Y1bP7hZP2TwL8dJCryIRdJPJz8
+         77gRqjtVhTjHsmUPJjqgVpeo+TyKATxM2b6Kd/TiK1P15JvT/jv6g9X9dFZ6g3Apn1df
+         C10JhK7UKmLjkzk+GE3098+DzuN42epuDp9Am9+UQbq2Fsm7IDlmmS7EMyW8X0HsLufW
+         GH2g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=uQeYlfTPcVy3TThOGq/akKvd5Q+Se7l5KlALpCjeu9g=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=TZQOvXImp03lC2pFGnhh/CHZ1PGggO1RvsPAeGMRxEiwEmycIOx+4kYbgb61OOxehr
+         ZPjtJm2/KEtBIH/8Ewm11K8W1r2YXKe19Icgj9wpnkmXW+Ean994yxMCExY2oK9AgcPz
+         BIEw0GVCFxCyfW3dmnuWDNuLSmvPVp0Mp/6SarmU1/jmNL1nbEDc1FRrY7+7HcpXBRuD
+         GM0aWSI6rdr+pEWLRzAn/R7LWTH6Grzywieuyl0duNXnW/NJjbD1QrRwPImqujSEukas
+         rGEVliJDNo6yQES7pLvgOLP7Kssh6UBRUMqUTfpdTHgYVngYfG3dQ4OGvUhHyXXAoJiZ
+         fwHg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JZSHkLFA;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c96ba481sor14739925ad.10.2025.03.13.19.02.16
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 19:02:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JZSHkLFA;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741917736; x=1742522536; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=uQeYlfTPcVy3TThOGq/akKvd5Q+Se7l5KlALpCjeu9g=;
+        b=JZSHkLFA4etFIq9LaQeLKE7hknRZKNd2UyG253iPLOqBzY0wx8w9mklnGpXXJANqi0
+         CvLfnkdUpPHZ4T6P+bfsRo8+5Sz9DdqflONgPRg+13kKjQWSS5PqHcdLm70K2rX/y9JR
+         pm6bBGyjCazXLDCH2voHK/36byNoxugCSksg5eYBHIcnahI9cJ/ijWutnzxOiD0rGoD6
+         YWc4gOlTAwHKgJXxEKmDoAQwoPkQaP8jAPRHO7s5aziguLm9spJEcSWVLvyjCZqppgPB
+         M0PCjPiJM6UZnTON7K6Ym17qV7aUqBDVRsFTtCvjynWZQyFzzzwdfMTqjnGX8hIMqcNt
+         7iaQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741917736; x=1742522536;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=uQeYlfTPcVy3TThOGq/akKvd5Q+Se7l5KlALpCjeu9g=;
+        b=SukC/GS3ikV48APXQGHBr8984QH8KR3FWdiqwZz7xFIMVfqSZvhHN1S4WS687MCHOo
+         uDOAhrOGyVyQby20RnZcxB6zYWheBTlraWs2J1uEO9FixLLl5XWGg5gFvDmTR4DQjjrg
+         n7wB7/lotwTWcboG96QjZ70dGTKNHoOEuImU9VuIxAKuJdjawFmBaWdwHUK9KxqYrUqN
+         S/5NJu61ycVE5TIjRRCgLfyy1UFJE4sq4XWsc8GASUKkGOuX2N0Bnhc/iCLukiz0lMA0
+         9yTqvwEaj/OCRrU33TSJ+ot5FjfV/I7QDD+6PZKrpIw7eW5WF2w1LQyZCEcuuLUck0nC
+         4UKA==
+X-Gm-Message-State: AOJu0Yxw60Yl58RusSn43S5eqlCYlBk37phNikWnzL3deznW1hmPOW1A
+	HMj0ZbYVzqXzhEhbyui2CLdsJWCehFTr03Jqo4W9v35dvFsn1cr2f7JfPx+y
+X-Gm-Gg: ASbGncsi5mQ0wb4eMkuLLGUEUicbyogKgWz/6ZlIQVHPkPsnAE04uhbICUGkDekDVFT
+	/FpJ4WhDOz+z4atsTdbHs+j9MC6ylYruBEbmYWMFtPHVdEn2J/n34VibQ/c1ZJ7xGNdTlpa6941
+	u/e+OhO8Y9HE5j3FiQbjxa6/byS8HE0IPjI0rOc7jvL04UtGVLdlqm6ZwXAnNFcX5mVoj8V8jim
+	RmBz2QA5zVucnXwglOxhSe+HWBRm8ntgAsX4YOQkah+pokHxDk5q2QpNWM2F4hOWrIDETVxzYTO
+	EZ+69mSyytBS39ow8U/po9kWZGwwkRM4GAvkccaQjD/AvN1JH4gSmcXkTwts/Qmri7It8Q==
+X-Google-Smtp-Source: AGHT+IF/ZAnJP6lVWsdRIFRilpj3mjanlJRjFRfxnHqZXIpy11g0PJ00qRRL5tLKM7C6vPDSHsVBeg==
+X-Received: by 2002:a17:902:dad1:b0:224:b60:3cd3 with SMTP id d9443c01a7336-225e0a6c240mr11472815ad.19.1741917735846;
+        Thu, 13 Mar 2025 19:02:15 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6ba6a13sm20458525ad.118.2025.03.13.19.02.15
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 19:02:15 -0700 (PDT)
+Message-ID: <67d38e27.170a0220.20b069.6901@mx.google.com>
+Date: Thu, 13 Mar 2025 19:02:15 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============2961904402683268319=="
+MIME-Version: 1.0
+From: Karen Thomas <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Inquiry for a Customized Travel Package for our Upcoming Team Retreat
+
+--===============2961904402683268319==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Example Travel agency's name,
+
+   I hope this message finds you well! I am writing to you on behalf of Globex Technologies, a leading software development company based in New York City. We are planning an upcoming team retreat in the vibrant city of Bangkok, Thailand, and your expertise in travel arrangements would be greatly appreciated.
+
+   Our team consists of approximately 30 individuals, and we are looking for a comprehensive package that includes:
+   1. Round-trip economy class airfare from New York to Bangkok
+   2. Accommodation at a centrally located hotel with modern amenities and excellent service
+   3. Daily breakfast buffet at the hotel restaurant
+   4. A half-day city tour, including popular attractions like the Grand Palace and Wat Phra Kaew
+   5. Team building activities such as cooking classes or outdoor adventures
+   6. Ground transportation within Bangkok during our stay
+
+   We are open to suggestions regarding customization of the itinerary and any additional services that you think would enhance our experience. Our preferred travel dates are between August 1st and 8th, but we are flexible if these dates do not work for your schedules.
+
+   I would greatly appreciate if you could provide us with a detailed quote and proposed itinerary at your earliest convenience. Please feel free to contact me directly at Example Your email or call me at Example Your phone number should you require any further information.
+
+   Thank you in advance for your time and assistance, and I look forward to hearing from you soon!
+
+   Best Regards,
+
+   Example Your name
+   Example Your position
+   Globex Technologies
+--===============2961904402683268319==--

@@ -1,0 +1,109 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp398020rcd;
+        Thu, 13 Mar 2025 21:23:48 -0700 (PDT)
+X-Received: by 2002:a17:903:22c1:b0:224:1935:d9a3 with SMTP id d9443c01a7336-225e0a67914mr17258205ad.21.1741926227704;
+        Thu, 13 Mar 2025 21:23:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741926227; cv=none;
+        d=google.com; s=arc-20240605;
+        b=E9Wi1vrAQQ5N3ySETx/42MWlrTLNnF/4832PGWxIEuBpFgz8mC+yVos7HbGn28XTxA
+         qrdJUvXZF4oHqtMUrKRX9PJpSt+C54Vazp086YGT9DvYMsrDNuuK0aIQG7Z/XIfL0SNE
+         aoT+8gMiNPRektQlT4cJVye2+JqPOBp026WIKxfSZC6IBx/koMgW6UpqKoF5H+A1nqzT
+         fmS09boUfiWIox2Sn7RQARRa9NpFYf6E+N05S3VEvkVVta40E45pdZLIpz6iSjJ8/f6Y
+         i0cxP3ZRvaLor4Q7RuBtGECAnrfVQlVqLXTGXmH/tOysU/MreSL7TlkoHgQoFuASDOL0
+         05sQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=+D3J1rS1eIEBtcu6KsFhB3j/0+XSm2ZHMP2ucUADrC0=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=gsagVtUKvp1wEtUPA576EXVFgzGwOhM0/1KX+kt80JTRa+gzRiAJnJ3gwFPQf41PE4
+         q2GFV/Zr7I4f11OQ8ZQArd99NO29CKfjrTI8Mb4wmk4lt7iBcON/ux8zAmiWoR3woias
+         /rFEeypwbTc2YwJGhfm/xi+LAfe3nYSZujP8kBwNWqM3chKBMznrC98hmbBcnTQ7yht3
+         gA6TTA75HFSMg7GpKCu0lREGlrhcG8eR2hYDcBZWm0rCjkZeR3qfcan3Tuap6fbOuMNA
+         D8jATb/32lFhRr5oeuaOnszq2vRc+KPF4rB6hY2/y9CxU+qT9xg+HB3y+IQmJ2x9NRor
+         kWOA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=P9rLDBVJ;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-225c68b3afasor20366515ad.9.2025.03.13.21.23.47
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 21:23:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=P9rLDBVJ;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741926227; x=1742531027; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=+D3J1rS1eIEBtcu6KsFhB3j/0+XSm2ZHMP2ucUADrC0=;
+        b=P9rLDBVJMcNLD7A+QOW1CEYFpU8r6w8hJsS/cPurxAxrQxqit1okPl7lXnJa/eMGb+
+         QMR1XT/amJgFjhGF/ErKUGdYxI7UfsGYHzrTIDWR3Z8oIEb6OZm0kCV3dNwwh6FCXlkQ
+         hGZHGlKfSA6zpXl0YIaO/ehbwtuRsPSriR3IyTAY0SrIz/8fs4ugZIb5ZdwcB+uEjT9D
+         ewrFIkn8weYdZ9AEtN2TsCW27Sj3RUxe3OphufZepXbTuO95DyHkJCHbNoSgAn/SW+iE
+         aD00ivMluoMQvGOKhODMztIz5hGXooGLpnmdzBI/2hryAsw00tFSEjRyFmTAl5kmTM1I
+         n52g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741926227; x=1742531027;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=+D3J1rS1eIEBtcu6KsFhB3j/0+XSm2ZHMP2ucUADrC0=;
+        b=VUkkxmTmk7A80cWZ+/g2ac6bKGClOMJk7yFlF4L4dPhou8sbO6F2Dpk3vMN0i/vRyw
+         t0Ss5kI3w0Z/VUoEWccFbrbTX411luYh5ve4t4VVks7whHXiUQfU9WxLjXq2NcM74Uy9
+         iE0qFCzhJA0Q7MYZB1VNjJGJV2eXmvnieOTIAKQevNjO+ej94YkvoJTbrW3Y87Q0Vvi8
+         RG/tQ4uaq6iDKdInmN6sAkHlXsB00izNoWyxm7v3C8AJrKAYcEJUVd09h15nx+m/O0Yy
+         9LzX2ij60APmtdNp7jjIh45g/ssicycoE2bodQV6bol94TeO08UZV981eEvDxN+X7iL8
+         2UwQ==
+X-Gm-Message-State: AOJu0YyMv4VqExfEdcfUbvsiPz9sPaOB0PfxPqyH666ILu6PAO4yRHH3
+	0Qf3Ld8WVjG0jfYvcR1+i3RvEf68RBFdEiE+ud7tnJ77735ozYd0nv1ysCah
+X-Gm-Gg: ASbGncttJSGoV7g7vCu5uegddSW9eYImhEZUz2SHoCMcXYYVQyptghBVqDWk6RWhgK6
+	dmYcn2AzWOutPiT2x0L/ylBQndcv/puu/CSMvuAYsTkGne8UEyWqxHnF5DHvjrfMHGy4Wl5gmg7
+	AniAzKOmjrsRrS61PpSrwwL2bMLWDGhuR5hcxMX/11cX09NibE9KSaE7UyFMEocA6RvrB0F7mTq
+	QvEq2isKWsGlduL//RhftWVwhnmW69/WEmpRe+uHeC/QwD849ncNQJR1FZUfpyVpsGJf2eUZ1qF
+	gGlmdGw/1Tj+PWSjMImMdeqFVH1/K3EqEPZjMX5sfyGLnhbVYM0p4jYCL6+AM7IughwgZg==
+X-Google-Smtp-Source: AGHT+IEYras5wCXhFhfVggjR50mTSN6nuwhfGlEWjnHURc2JwIC4Xqc4JgjRWhyufta7stu6lBHi9Q==
+X-Received: by 2002:a17:902:f602:b0:215:9642:4d7a with SMTP id d9443c01a7336-225e085b95emr18798215ad.0.1741926226651;
+        Thu, 13 Mar 2025 21:23:46 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-225c6ba6d47sm21782775ad.119.2025.03.13.21.23.45
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 21:23:46 -0700 (PDT)
+Message-ID: <67d3af52.170a0220.279e33.718d@mx.google.com>
+Date: Thu, 13 Mar 2025 21:23:46 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============1042896814587463950=="
+MIME-Version: 1.0
+From: Elizabeth Hernandez <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Shipment Status Update for Medical Supplies Order #32106789
+
+--===============1042896814587463950==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Dr. Thompson,
+
+   I hope this message finds you well. I am writing to update you on the status of your order #32106789 placed with our company, Quantum Healthcare Solutions.
+
+   We are pleased to inform you that your shipment containing the requested medical supplies has been dispatched and is currently en route to your facility in Dallas, Texas. The consignment includes 50 units of Bio-Sensor Probes, Model BSP-300, and 100 units of Disposable Sensors, Model DS-250.
+
+   As per our records, the shipment is expected to arrive at your facility by 18th May, between 9:00 AM and 12:00 PM (CDT). For any queries or concerns regarding this shipment, please feel free to contact us via phone at 555-555-5555 or email at support@quantumhealth.com.
+
+   We appreciate your business and are committed to ensuring the timely delivery of all orders to maintain the uninterrupted supply of healthcare essentials. Should you have any other requirements, do not hesitate to let us know.
+
+   Kind regards,
+
+   John Doe
+   Customer Service Manager
+   Quantum Healthcare Solutions
+--===============1042896814587463950==--

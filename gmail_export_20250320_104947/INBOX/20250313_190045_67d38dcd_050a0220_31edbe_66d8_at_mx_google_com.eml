@@ -1,0 +1,108 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:8294:b0:81:c1e5:8e27 with SMTP id j20csp348647rcd;
+        Thu, 13 Mar 2025 19:00:46 -0700 (PDT)
+X-Received: by 2002:a05:6a21:33aa:b0:1f5:6e00:14c4 with SMTP id adf61e73a8af0-1f5c1316799mr1311647637.42.1741917646031;
+        Thu, 13 Mar 2025 19:00:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741917646; cv=none;
+        d=google.com; s=arc-20240605;
+        b=dOxrF+BZ9Uk6c4IEl6wFQ1Slvhm4KUeWOqzWCEDbg3QpwsJZY1pc3uUy6jhUX1hpKl
+         KDy5q3qA9IkRJpqn2TQ8hXAYra2Y2jdZ4gBa23Li8itBmsttCvCfYGAhVHvQn6V8idiL
+         cyGqSrS1uncVtu3jsEbvt6n9c1hbltTWxIeV1W1Y+LeaZDXXFX0QqdZIFOc75drG98P+
+         MZhxGR07UWhKtyPONChP0pK9MlWCcm7zpI0/vjeqnCQNPuOOvt6Mz7ioVGfDPk2FaDHC
+         lFGEm1uFo+dL40L0bjKEpvnjIlMlsUzc+kBkfEj0l43MOnzV1VHkY5JSmO2MJ80hXr2Y
+         CnAA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=oV7Y8K+sQoaRdsJXz3ke9s7h5rq2VxgI5OdldPQv0iI=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=MF72Ti7iOrvjwWVeyKPcGDoUvCb57j6s4PM7rjVPbRg8pGCFQa39/fzKdsiUMQWnUT
+         TLJsb8omXP5xmfSCqiywQ2I/+eVZhkW90wqxrQIV9gTk46ALAfcQTDJQ3KPDkolI/5cV
+         EP0YWeTqL9EUWSzapAOkmXHSS3GUKEjzFfgmx1T/P7bd9FypJX3COLL4nh+FD7xGGYI3
+         EvzvVIIvi5/oZDbY3C7fiBrUGh9sr/SZh62KH6hKNaZ+YlRou2+nwNCkgrx47VdAhWU1
+         O0SU+AV39M9NkTqod6anWhRmj+QVZk1L1PuuHZcDJZY+uKUmLtBqBhYL9LGXwk5ZPUI8
+         RU9Q==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Xs32k0j2;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 41be03b00d2f7-af56ebeb49fsor1483345a12.5.2025.03.13.19.00.45
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Thu, 13 Mar 2025 19:00:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Xs32k0j2;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741917645; x=1742522445; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=oV7Y8K+sQoaRdsJXz3ke9s7h5rq2VxgI5OdldPQv0iI=;
+        b=Xs32k0j2R+Zr3AFmT+aNQCcJDHi2vBYzI3KUMRkDC1Uel1epanTVcm0wHaYqFrOmND
+         YPXBsipRXqgJfldiExJSeTJlolMitEe2TxMcYVMrFFgURwSPfP1WAb65y5clYXyM7Ui5
+         8pzc/ytQrMufcxsqizQe/PSAH5S4p2s/ZJ0Lp6E0C4tRPhiZDDAJeRPJy4ZE+xvnn2ia
+         +FyQPpLO5ELhAZ/vHv0NlIxsRheyw85ckeVCRxtjlsV+RmzaBj3v4U/FVtjz7YSpAM6t
+         5dy79V79THg4eQ4qGgx8ishgxwZp/R0Udzn+TccWMIhie56ou9/H/JTmCrY+iZ0NWMh3
+         lTDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741917645; x=1742522445;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=oV7Y8K+sQoaRdsJXz3ke9s7h5rq2VxgI5OdldPQv0iI=;
+        b=fJbNfhlOZAlxtUj9L6DKIfubwElDQPzqLixTFlKVFatFbKQpb8bM7PaEqCGDryKkRq
+         Fl09rLxizmDZ1cXE/pJaNt2NDBSJ1qq+jGWSfN6DkZGd1pDOBJeCMIy6jfHfr9s/F347
+         KcwqduI7Tcp2jj0Jf9NRRxJOozoIxj1KGxpsCwV7ABWyW52UUY38f2lAmh+0IhgnV3qH
+         zFRSTAn64JHijAVDT2bz9FXm2Pu/0wnRyYE1V7xP3kGo3RmtlYhXQIOa5uA/S1MOKlhY
+         vMrBIvbzV9G68Ey9gNPjOb8V7RHiE2BSvYxsfHRaPrBBfjX8tTtLrnz1+oWZliOT9fss
+         ctpg==
+X-Gm-Message-State: AOJu0YzIXMTyES+k4ifbCnPjbHd/efrtGT30dczGZiOP/dY7r99rgM08
+	JKbT/HXORoMjQjnQYjY4MFTKxuIXsDnya1lqbgbsM18OAZ6GIjOrx6d4Ao54
+X-Gm-Gg: ASbGncsxVZKLggltg0i0R8einBNk2LpixjoVMsLuptDT9TUuPHByxhH7zUoppCNa3ZR
+	mdhxnnTgPqj+Qv2E3xMFavlSTOdQoryJIJ3A4ZFDePd8KbHUwNuhem2ITzR6Zpc0AlxS+cybMV/
+	KaQc3MH7i8zba7SNianQ52I8zWQGbiNk/aVbm7MIt5vStuj1dZ/QkDVt3imCMZGG+JjhA0yEOmX
+	7E08qp5h7r9zVqEz273D8veqrw0ku1ekcQMRxjhHIq5s8T1pTrZadXDddBzFzyr04dBjMjT2gjN
+	q+JvRqrrVj4MguMJFU2sklw3Aa5j22GDV+9+24feBgZRAXLq10w/npGeZc5vq2Y9whpHRQ==
+X-Google-Smtp-Source: AGHT+IFnlPNTYldFTuOAiIQ5vE5k6pMQXVw482WJsRdBevhyxPOOGLsM7V6XzRvJSBDs1qmFMbPT/Q==
+X-Received: by 2002:a05:6a21:62c8:b0:1f5:92ac:d6a1 with SMTP id adf61e73a8af0-1f5c10fd57amr1254147637.4.1741917645256;
+        Thu, 13 Mar 2025 19:00:45 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73711695ee8sm2052760b3a.154.2025.03.13.19.00.44
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 13 Mar 2025 19:00:45 -0700 (PDT)
+Message-ID: <67d38dcd.050a0220.31edbe.66d8@mx.google.com>
+Date: Thu, 13 Mar 2025 19:00:45 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============4995710947542269680=="
+MIME-Version: 1.0
+From: Elite Tech <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Potential Strategic Partnership for Mutual Growth
+
+--===============4995710947542269680==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Innovation Leaders at AgileTech,
+
+   I hope this message finds you well. I am writing to express my interest in exploring a potential strategic partnership between our technology startup, QuantumLeap Solutions (QLS), and your innovative tech company, AgileTech.
+
+   At QLS, we have been developing cutting-edge artificial intelligence solutions that optimize business processes for clients across various industries. We believe that by joining forces with AgileTech, a recognized leader in cloud computing and IoT, we could create synergies that would propel both our businesses to new heights.
+
+   Specifically, our teams can collaborate on developing AI-powered solutions leveraging your expertise in cloud infrastructure and IoT devices. This collaboration would not only enrich the product offerings of both companies but also provide significant value to our combined clientele.
+
+   I would be delighted to discuss this proposal further at a time that suits you best. Please feel free to reach out via email or phone call at your convenience. I look forward to exploring this exciting opportunity with AgileTech and the potential benefits it could bring to both of our organizations.
+
+   Warm regards,
+
+   Example Your name
+   Founder & CEO, QuantumLeap Solutions
+--===============4995710947542269680==--

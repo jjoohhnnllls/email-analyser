@@ -1,0 +1,117 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp769547rch;
+        Wed, 12 Mar 2025 23:38:59 -0700 (PDT)
+X-Received: by 2002:a05:6a21:58d:b0:1f5:591b:4f82 with SMTP id adf61e73a8af0-1f5591b545amr30152680637.16.1741847938826;
+        Wed, 12 Mar 2025 23:38:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741847938; cv=none;
+        d=google.com; s=arc-20240605;
+        b=SR0x5iZH3o10U3upLLLmcozHA4cpXMaxJsCCAy5n0U0RfYJBHwvrzT4MYTT2tX7p5J
+         MG2Z5SZ32C1I0m4lITFf9CEe35utZg8v5vCv2REHUazsVWDFb+M0Ft6hmL/xNzQFr30f
+         IW9dIlMVFFT5ZW5pIponrdOwjKwLeb/bRMWCjDbvRFhTUOGIpKe/7SLdqSR2Zc/bI/I/
+         Wo9HBdy0NKPCtGKJHKAGviJnc+FUrBE76q/GqVnP84x7NgXyQ2EmEdL0mz39NRUBCx/I
+         dzcXZVUyUmfnCXL50SVJ9pu9pigcd3S1sPOPLkBM7ZtThn0dtFGi83PDdTpM+AVCfESn
+         XzQg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=64avTNbiejiJvZFD1aBCYLWJESN83rHGTuiaeN0kNE4=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=LNrItlCQbF+T4ELeBEdNo1ycwsw9nVeanxcjnNSVDZ/bnGd+gws/607MUg2aAUO4b9
+         qMkHQhLWTNd5MYt7DHQzlQFuM+sRr7BZlNppOXIwnhn/1mG3xi3WU6eeSfsoum5J+bJ/
+         y5UFmRfrj7mn5KQz9uML2M99GIrJqn/gBpbfFvwhbqyeF8uwAfXtbjIGkZwL+HQn6RJC
+         WPt+iT+6bjTR69Z2JQNP7BRUtYFacxBX6Ce+UyhCsnTeTQoz3aw/hfO2dhMI+yh0z1VO
+         m4mBWkYNVajfT3O7H7sMpBmOROlVknZG5GJWCIvsNzG1jWJBeZG1af09YEQN5dMT6gtO
+         MdnA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=LkRmVzjz;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-73711527c67sor705101b3a.1.2025.03.12.23.38.58
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:38:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=LkRmVzjz;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741847938; x=1742452738; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=64avTNbiejiJvZFD1aBCYLWJESN83rHGTuiaeN0kNE4=;
+        b=LkRmVzjzdhWpSWQ/S5k6UR6YlEiNEMngCtl2bc7xfB2MIItok8R0qWTOhKgU/c+q7C
+         9mSZhVtbGshiMTFfvPFNYWW15Hni0ZKW4qiC/PfcISBVFAHa3sLm9shYwNRnLZizpk9L
+         TTFOFB0SmvXvtZjjN5A91cczcZi7sSunTjXiEzGu2SaIRdQEFKlLBuGTpDjLiFuLYWE3
+         VH688RhtVN9kvafXD9z8qof/N3mD4cCal8eGnR8U3V2Tdh5e2fs8/hBbV9DWCMOG+uCy
+         mBcTfU6qPNAk5NXL+9TpLiDOCna2E9UBHc10UoEn0R4hp9J0ojspkyVlR7B6GCqPOPVv
+         HdnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741847938; x=1742452738;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=64avTNbiejiJvZFD1aBCYLWJESN83rHGTuiaeN0kNE4=;
+        b=BfVsa3PD1nKcocCW24uoCPxdWaeJdfJxNIZROZAbt4y+ly46Cdv+zx5yUvhDmXP+MN
+         3ktosqqPqi++yPfR4ersksEKyb9DwtGu98/7oOcMLbsU9XoVSc0N277MRY2wEN0+xTfJ
+         e1EU//AUAc50fFKPvpQtE9GY3yWuBJ+LqRx3RNbD44jgRBwqqSjAPWacaAWSjCZH6td2
+         WE99RLWyb2+jOKXbUCekHu9/h17cdfW75wJkl68Np3bxPWfQQLsoK6NW5KvAm77n6Wea
+         KSdBcXfpyhIFJHY4mHaybtbxzKUUxir019yfGYBjRbgeAaqNA/gn7rAt4z/OFhT2hoQ4
+         4UTQ==
+X-Gm-Message-State: AOJu0YyF7X+XvoSd25Gk/xA9x4JMNjl+bn35QAqWfnmrJV+btLvRpYUF
+	8I0TpSBOu/TeOaRNgCeqoqKXgdWRNitrv2GwS2htOHWKKBXFBBdvaNdOWK2V
+X-Gm-Gg: ASbGnctS7ATZD05f1th3SOUHcw+NhRxU0l9s3vWAL3+W9ZbDi3fLyukTbtccZ6AUlNy
+	WaAyX4LQq2LVY2OJS4g1mLxUH5vwxUxS5FjTdL5zKVJ3xPn7mE7Q+I67ek+XgdImJ355/uNHP8J
+	0POmjj2LTilxzQ3PTkK/YQlJr734qsyADaK/xRWogudGlQjdbqept33h/uOvOYuAxA5ViaOV1mY
+	XgBPcr6Gxtov4SynGHE18ADD4l7tepAgNMefh/2RCOjyEB69p906C6Mw5XT3XzCBcs7sLAZ3Ydz
+	K8j3KPucdFfr8YUlRx6qwvdN/FxnWmVTlY34/SgxgA1U/vcvuyFibs8ekKrNfwRDAPJMhg==
+X-Google-Smtp-Source: AGHT+IGjwHBlXWU7m6OP4BGwYZu+G83STq5gZG8SsvGwK/OmDUgavXzAKNlz1unGf8DdyoXQS68Wkg==
+X-Received: by 2002:a05:6a20:c996:b0:1f5:8903:860f with SMTP id adf61e73a8af0-1f589038757mr19733734637.14.1741847938169;
+        Wed, 12 Mar 2025 23:38:58 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73711551307sm600985b3a.44.2025.03.12.23.38.57
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:38:57 -0700 (PDT)
+Message-ID: <67d27d81.050a0220.270110.1be5@mx.google.com>
+Date: Wed, 12 Mar 2025 23:38:57 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============2382395992436336703=="
+MIME-Version: 1.0
+From: Thomas Martinez <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Your Recent Purchase at TechWise Store - Order Confirmation
+ #003456789
+
+--===============2382395992436336703==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear John Doe,
+
+   I hope this message finds you well. I'm writing to confirm that your order with TechWise Store has been successfully processed.
+
+   Here are the details of your purchase:
+
+   - Product Name: Apple iPhone 13 Pro Max
+   - SKU: APP-IPH-13PMAX-BLK
+   - Quantity: 1
+   - Total Amount: $1,299.00 USD
+   - Delivery Address: 456 Elm Street, New York, NY 10001, USA
+   - Expected Delivery Date: October 18, 2022 (Monday)
+
+   Please find attached the invoice for your reference. If you have any questions or concerns regarding this order, feel free to reply to this email or contact our customer support at Example Support@techwisestore.com(mailto:support@techwisestore.com).
+
+   We appreciate your business and hope that you will enjoy your new Apple iPhone 13 Pro Max. Thank you for shopping with TechWise Store!
+
+   Warm regards,
+
+   Example Your name
+   Customer Service Team
+   TechWise Store
+--===============2382395992436336703==--

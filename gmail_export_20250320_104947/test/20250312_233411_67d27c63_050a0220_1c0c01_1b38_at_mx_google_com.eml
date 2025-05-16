@@ -1,0 +1,111 @@
+Delivered-To: desgtest.email@gmail.com
+Received: by 2002:a05:6f02:525:b0:81:c1e5:8e27 with SMTP id 37csp767849rch;
+        Wed, 12 Mar 2025 23:34:12 -0700 (PDT)
+X-Received: by 2002:a05:6a21:7116:b0:1f5:8479:dfe2 with SMTP id adf61e73a8af0-1f58479e277mr21794294637.6.1741847652491;
+        Wed, 12 Mar 2025 23:34:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1741847652; cv=none;
+        d=google.com; s=arc-20240605;
+        b=jtyF+O2pEIT8nlx+GB4W+bv8uS2d2Jkuevaq/qFls7EsuTztgsO9lfbRZX1ptGtyCE
+         /xfjghWuxRh/meLy22c9MJe9jJd11WQuhhf5hKE92i1oH4qPgP4qA0l628lO1p0u4w+d
+         VtrmTmbg3TtDLqBxKCwDkaKU6Z4Ysqxi653ZQOVEmg1lyaxw8lZZRpwqaDGs9XqXfpXL
+         Ew6tf2xCKbjZpIb0sPtV7y1yjS0NVoN2+s1pqa+YENSSXwp8vYgGi8N8Lsqk17oaJqjm
+         vVL3AKrheUpiTCUWpzA/y12Stdvr7SKyehtRvz6dhdTRpAtyQxrGJFc0iZ42/0O/o4Ue
+         TiKQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=subject:to:from:mime-version:date:message-id:dkim-signature;
+        bh=kfu41zfTbqNe2jgF0J3fRR2LJSUfEL0TMiCaHWb2c/A=;
+        fh=9qJS/cqhTgWAlGi6ir25Rd7OUPIN2QHyDau2qr38WIY=;
+        b=XvqszX7Lxiaz8Ke1k6ZowKJLGtdcaWE8QZxneS+pqU2bL4XE8YSuG00XbFPbECdS3X
+         TIk7ybdd7tfQ+EtyrotbNV+RmAIuVH6fpd5KciSRhKSuLLRG4KtHVb0V6uTIzRHWYelr
+         m+CqjGmyyeCYlq2UDpyCkvY77wZ19hqPMeO6H48/XFIul9MUQBvZ3zk9yMnowPtity7U
+         dxdfKSpGRMbKsEGCaYzCMf8aY4iryqeISLyoQ35xzPo2cGA/y3qtuZ1Uc6V+lHG4PLP0
+         kMlO6p7lYLHahbypReUOEx3Vbn5E/XEuxhqWmWMefHsnIMY75oXrAYCqEy91nJ2gxaPs
+         +UpA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZWIZt6h7;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <desgtest2.email@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-73711529402sor453753b3a.1.2025.03.12.23.34.12
+        for <desgtest.email@gmail.com>
+        (Google Transport Security);
+        Wed, 12 Mar 2025 23:34:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZWIZt6h7;
+       spf=pass (google.com: domain of desgtest2.email@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=desgtest2.email@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1741847652; x=1742452452; dara=google.com;
+        h=subject:to:from:mime-version:date:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=kfu41zfTbqNe2jgF0J3fRR2LJSUfEL0TMiCaHWb2c/A=;
+        b=ZWIZt6h7qT5kg+R0kDUwL2p39u8Op+JGMYf0j/WyogLe+eF+geOJcR0O8cZdEzu/IL
+         VNDfV49Wj69rjK9qnGZdOdLXckqvF9yLhtfD2IpJk242rQfjNC7b5zhCDpN1/kMaIb5F
+         qn/dHXPTdQgVrELWL4NFVWotCGo3aWVPyk1cRfekSxYU5nzWxEUbYT4Xp/1IJ0Aa+may
+         HE4ffefJCtw7aqrYaABxPVpHltYS+lU7LLtBO2ZiglqA6t2EB1HsBjOWpZH+v5Vjqz65
+         TZA4ije4sgczmbKhy5xDOmkGRanPAWBLIeX7cr+ukq5ZxD3ptYA76mgO1vfePEYF1QE8
+         j10A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1741847652; x=1742452452;
+        h=subject:to:from:mime-version:date:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=kfu41zfTbqNe2jgF0J3fRR2LJSUfEL0TMiCaHWb2c/A=;
+        b=JFxg4HthG9AwJvefpiYkMG+ilGr6oCknGBiLSRIoybZjJ7iVyJbuPBEeA43FxWHfW+
+         6jv6idKiQd/hmZ6P13lQcAk+7Trnqwns8Uqa2lh4KOTdDA5BjnsJ/NSKdsCbeUkKIAAn
+         GjGG1rsmZiuwuqDZ2T4RWDAIXOo/k++wrnRCufKH5sBBYQXFG7+VhU7OQVdMYVNu4ELS
+         4WrLzqHoTnhVXJDsKFBHrpHJ6WB1GY+iTRQcVuUh9xE4+4VXS7bdvqcTSFdQDChvW1CU
+         3wAQesf/qzbPROfDNCMucE0SzDgYI5s6SU5ZSOPrKBnO6WzLgFJwsY8cFVXvKleIs67R
+         na4Q==
+X-Gm-Message-State: AOJu0YyKl1Na3GoHYO++c03VFWPuY42zNgIM9ZllyHxb2lBqSpZboaZk
+	8DDEb9pM/W6JUGfk4gxPSlQZqly7svyWWKVnzeka42yz/+TcIO7ytBTQqtch
+X-Gm-Gg: ASbGncvZBWZyNZEz7FsE8ymtKLV+OMfBPHFqeGIjhEY2TI7zLmaue3jnzlKtRV6o8Gu
+	CHQ6owWLl/1Fi5PTs5Bc0AlHU+3SIDNul77GH7Ot7/kWUIiZ14ETZRKy9q9RVgr71PnyAfp2P9l
+	dlDuBcwvWBF6CCHkBfGgl9uh2geWzeYqZmy82S0zwlBPIt/Us07V8ZEqZ/0/XkSGV/BJk2Tgza5
+	zT9UltgBMBVjTJrf/N5q4k4KuM7VKBQ204bnkCjX8z1/uOkiWnsb9n2RR4M1WzXRYJQVsQ7jMNB
+	/D0ct8zn/x/BXuiACpJ4LhCgvf28cZZIscslW1pBpETS8kefqayK3Sdv6W4UHagzcV3Cfw==
+X-Google-Smtp-Source: AGHT+IHlxMXH8dPhbJ85hgknTS/tXYHPENUR02Ubwlt6GZDYa2eFL+l74V6k1oVOgLRdiKvKnFqE6g==
+X-Received: by 2002:a05:6a00:4fce:b0:736:34ca:deee with SMTP id d2e1a72fcca58-736aa9e4e79mr35314764b3a.7.1741847651701;
+        Wed, 12 Mar 2025 23:34:11 -0700 (PDT)
+Return-Path: <desgtest2.email@gmail.com>
+Received: from [192.168.0.182] ([124.155.215.246])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-73711529526sm591270b3a.24.2025.03.12.23.34.10
+        for <desgtest.email@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Mar 2025 23:34:11 -0700 (PDT)
+Message-ID: <67d27c63.050a0220.1c0c01.1b38@mx.google.com>
+Date: Wed, 12 Mar 2025 23:34:11 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="===============6826814413523375824=="
+MIME-Version: 1.0
+From: Advanced Retail <desgtest2.email@gmail.com>
+To: desgtest.email@gmail.com
+Subject: Your Order Shipping Update - TheTechStore.com
+
+--===============6826814413523375824==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+ 
+   Dear Valued Customer John Doe,
+
+   I hope this message finds you well. I am writing to update you on the shipping status of your recent purchase from TheTechStore.com.
+
+   We are pleased to inform you that your order (order number #12345678) containing the Apple iPhone 13 Pro and Beats Studio3 Wireless Headphones has been shipped today, October 15th.
+
+   Your package is expected to be delivered between October 18th and October 20th, according to our shipping partner, FedEx. You will receive a tracking number via email once it is assigned by FedEx.
+
+   In the meantime, if you have any questions or concerns regarding your order, please do not hesitate to contact us at support@thetechstore.com or call us at (555) 123-4567 during our business hours (9 AM - 6 PM EST).
+
+   We appreciate your patience and are committed to ensuring a smooth shopping experience with TheTechStore.com. Thank you for choosing us as your preferred online tech store.
+
+   Warm regards,
+
+   Sarah Johnson
+   Customer Support Specialist
+   TheTechStore.com
+--===============6826814413523375824==--
